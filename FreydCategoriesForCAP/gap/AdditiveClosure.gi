@@ -136,6 +136,12 @@ InstallMethod( ADDITIVE_CLOSURE,
         
     fi;
     
+    if HasIsStrictMonoidalCategory( underlying_category ) and IsStrictMonoidalCategory( underlying_category ) then
+      SetIsStrictMonoidalCategory( category, true );
+    elif HasIsMonoidalCategory( underlying_category ) and IsMonoidalCategory( underlying_category ) then
+      SetIsMonoidalCategory( category, true );
+    fi;
+    
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
     
     HandlePrecompiledTowers( category, underlying_category, "AdditiveClosure" );
@@ -1352,6 +1358,230 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                       );
                 
             end );
+        fi;
+        
+    fi;
+    
+    if HasIsMonoidalCategory( underlying_category ) and IsMonoidalCategory( underlying_category ) then
+        
+        ##
+        AddTensorUnit( category,
+          function( cat )
+            
+            return AdditiveClosureObject( cat, [ TensorUnit( UnderlyingCategory( cat ) ) ] );
+            
+          end );
+        
+        ##
+        AddTensorProductOnObjects( category,
+          function( cat, obj_1, obj_2 )
+            local underlying_category, len_1, len_2;
+            
+            underlying_category := UnderlyingCategory( cat );
+            len_1 := Length( ObjectList( obj_1 ) );
+            len_2 := Length( ObjectList( obj_2 ) );
+            
+            return AdditiveClosureObject( cat,
+                    List( [ 0 .. len_1 * len_2 - 1 ], i ->
+                      TensorProductOnObjects( underlying_category,
+                        obj_1[1 + QuoInt( i, len_2 )],
+                        obj_2[1 + RemInt( i, len_2 )] ) ) );
+            
+          end );
+        
+        ##
+        AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+          function( cat, source, morph_1, morph_2, target )
+            local underlying_category, source_1, source_2, target_1, target_2,
+                  len_s1, len_s2, len_t1, len_t2;
+            
+            underlying_category := UnderlyingCategory( cat );
+            source_1 := Source( morph_1 );
+            source_2 := Source( morph_2 );
+            target_1 := Target( morph_1 );
+            target_2 := Target( morph_2 );
+            len_s1 := Length( ObjectList( source_1 ) );
+            len_s2 := Length( ObjectList( source_2 ) );
+            len_t1 := Length( ObjectList( target_1 ) );
+            len_t2 := Length( ObjectList( target_2 ) );
+            
+            return AdditiveClosureMorphism( cat,
+                    source,
+                    List( [ 0 .. len_s1 * len_s2 - 1 ], i ->
+                      List( [ 0 .. len_t1 * len_t2 - 1 ], j ->
+                        TensorProductOnMorphismsWithGivenTensorProducts( underlying_category,
+                          source[1 + len_s2 * QuoInt( i, len_s2 ) + RemInt( i, len_s2 )],
+                          morph_1[1 + QuoInt( i, len_s2 ), 1 + QuoInt( j, len_t2 )],
+                          morph_2[1 + RemInt( i, len_s2 ), 1 + RemInt( j, len_t2 )],
+                          target[1 + len_t2 * QuoInt( j, len_t2 ) + RemInt( j, len_t2 )] ) ) ),
+                    target );
+            
+          end );
+        
+        if not ( HasIsStrictMonoidalCategory( underlying_category ) and IsStrictMonoidalCategory( underlying_category ) ) then
+            
+            ##
+            AddLeftUnitorWithGivenTensorProduct( category,
+              function( cat, obj, unit_tensor_obj )
+                local underlying_category, length, source_diagram, target_diagram;
+                
+                underlying_category := UnderlyingCategory( cat );
+                length := Length( ObjectList( obj ) );
+                source_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ unit_tensor_obj[ o ] ] ) );
+                target_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ obj[ o ] ] ) );
+                
+                return DirectSumFunctorialWithGivenDirectSums( cat,
+                        unit_tensor_obj,
+                        source_diagram,
+                        List( [ 1 .. length ], o ->
+                          AdditiveClosureMorphism( cat,
+                            source_diagram[ o ],
+                            [ [ LeftUnitorWithGivenTensorProduct( underlying_category,
+                              obj[ o ],
+                              unit_tensor_obj[ o ] ) ] ],
+                            target_diagram[ o ] ) ),
+                        target_diagram,
+                        obj );
+                
+              end );
+            
+            ##
+            AddLeftUnitorInverseWithGivenTensorProduct( category,
+              function( cat, obj, unit_tensor_obj )
+                local underlying_category, length, source_diagram, target_diagram;
+                
+                underlying_category := UnderlyingCategory( cat );
+                length := Length( ObjectList( obj ) );
+                source_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ obj[ o ] ] ) );
+                target_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ unit_tensor_obj[ o ] ] ) );
+                
+                return DirectSumFunctorialWithGivenDirectSums( cat,
+                        obj,
+                        source_diagram,
+                        List( [ 1 .. length ], o ->
+                          AdditiveClosureMorphism( cat,
+                            source_diagram[ o ],
+                            [ [ LeftUnitorInverseWithGivenTensorProduct( underlying_category,
+                              obj[ o ],
+                              unit_tensor_obj[ o ] ) ] ],
+                            target_diagram[ o ] ) ),
+                        target_diagram,
+                        unit_tensor_obj );
+                
+              end );
+            
+            ##
+            AddRightUnitorWithGivenTensorProduct( category,
+              function( cat, obj, obj_tensor_unit )
+                local underlying_category, length, source_diagram, target_diagram;
+                
+                underlying_category := UnderlyingCategory( cat );
+                length := Length( ObjectList( obj ) );
+                source_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ obj_tensor_unit[ o ] ] ) );
+                target_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ obj[ o ] ] ) );
+                
+                return DirectSumFunctorialWithGivenDirectSums( cat,
+                        obj_tensor_unit,
+                        source_diagram,
+                        List( [ 1 .. length ], o ->
+                          AdditiveClosureMorphism( cat,
+                            source_diagram[ o ],
+                            [ [ RightUnitorWithGivenTensorProduct( underlying_category,
+                              obj[ o ],
+                              obj_tensor_unit[ o ] ) ] ],
+                            target_diagram[ o ] ) ),
+                        target_diagram,
+                        obj );
+                
+              end );
+            
+            ##
+            AddRightUnitorInverseWithGivenTensorProduct( category,
+              function( cat, obj, obj_tensor_unit )
+                local underlying_category, length, source_diagram, target_diagram;
+                
+                underlying_category := UnderlyingCategory( cat );
+                length := Length( ObjectList( obj ) );
+                source_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ obj[ o ] ] ) );
+                target_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ obj_tensor_unit[ o ] ] ) );
+                
+                return DirectSumFunctorialWithGivenDirectSums( cat,
+                        obj,
+                        source_diagram,
+                        List( [ 1 .. length ], o ->
+                          AdditiveClosureMorphism( cat,
+                            source_diagram[ o ],
+                            [ [ RightUnitorInverseWithGivenTensorProduct( underlying_category,
+                              obj[ o ],
+                              obj_tensor_unit[ o ] ) ] ],
+                            target_diagram[ o ] ) ),
+                        target_diagram,
+                        obj_tensor_unit );
+                
+              end );
+            
+            ##
+            AddAssociatorLeftToRightWithGivenTensorProducts( category,
+              function( cat, source, obj_1, obj_2, obj_3, target )
+                local underlying_category, len_1, len_2, len_3, length, source_diagram, target_diagram;
+                
+                underlying_category := UnderlyingCategory( cat );
+                len_1 := Length( ObjectList( obj_1 ) );
+                len_2 := Length( ObjectList( obj_2 ) );
+                len_3 := Length( ObjectList( obj_3 ) );
+                length := len_1 * len_2 * len_3;
+                source_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ source[ o ] ] ) );
+                target_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ target[ o ] ] ) );
+                
+                return DirectSumFunctorialWithGivenDirectSums( cat,
+                        source,
+                        source_diagram,
+                        List( [ 0 .. length - 1 ], o ->
+                          AdditiveClosureMorphism( cat,
+                            source_diagram[1 + o],
+                            [ [ AssociatorLeftToRightWithGivenTensorProducts( underlying_category,
+                              source[1 + o],
+                              obj_1[1 + QuoInt( o, len_2 * len_3 )],
+                              obj_2[1 + RemInt( QuoInt( o, len_3 ), len_2 )],
+                              obj_3[1 + RemInt( o, len_3 )],
+                              target[1 + o] ) ] ],
+                            target_diagram[1 + o] ) ),
+                        target_diagram,
+                        target );
+                
+              end );
+            
+            ##
+            AddAssociatorRightToLeftWithGivenTensorProducts( category,
+              function( cat, source, obj_1, obj_2, obj_3, target )
+                local underlying_category, len_1, len_2, len_3, length, source_diagram, target_diagram;
+                
+                underlying_category := UnderlyingCategory( cat );
+                len_1 := Length( ObjectList( obj_1 ) );
+                len_2 := Length( ObjectList( obj_2 ) );
+                len_3 := Length( ObjectList( obj_3 ) );
+                length := len_1 * len_2 * len_3;
+                source_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ source[ o ] ] ) );
+                target_diagram := List( [ 1 .. length ], o -> AdditiveClosureObject( cat, [ target[ o ] ] ) );
+                
+                return DirectSumFunctorialWithGivenDirectSums( cat,
+                        source,
+                        source_diagram,
+                        List( [ 0 .. length - 1 ], o ->
+                          AdditiveClosureMorphism( cat,
+                            source_diagram[1 + o],
+                            [ [ AssociatorRightToLeftWithGivenTensorProducts( underlying_category,
+                              source[1 + o],
+                              obj_1[1 + QuoInt( o, len_2 * len_3 )],
+                              obj_2[1 + RemInt( QuoInt( o, len_3 ), len_2 )],
+                              obj_3[1 + RemInt( o, len_3 )],
+                              target[1 + o] ) ] ],
+                            target_diagram[1 + o] ) ),
+                        target_diagram,
+                        target );
+                
+              end );
+            
         fi;
         
     fi;
