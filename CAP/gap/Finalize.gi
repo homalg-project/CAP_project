@@ -28,7 +28,7 @@ InstallMethod( Finalize,
     
     if not CAP_NAMED_ARGUMENTS.disable_derivations then
         
-        TriggerAllDerivations( category );
+        InstallDerivations( category );
         
     fi;
     

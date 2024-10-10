@@ -64,9 +64,8 @@ DeclareCategory( "IsDerivedMethod", IsAttributeStoringRep );
 #!  <C>IsCapCategory</C>. The output of <A>category_filter</A> must not
 #!  change during the installation of operations. In particular, it must
 #!  not rely on `CanCompute` to check conditions.
-#! @Arguments target_op_name, description, used_ops_with_multiples, func, weight, category_filter
-DeclareOperation( "CreateDerivation",
-                  [ IsString, IsString, IsDenseList, IsFunction, IsPosInt, IsFunction ] );
+#! @Arguments target_op_name, description, used_ops_with_multiples, func, weight, category_filter, loop_multiplier, category_getters
+DeclareGlobalFunction( "CreateDerivation" );
 
 #! @Description
 #!  A description of the derivation.
@@ -240,7 +239,7 @@ DeclareOperation( "DerivationOfOperation", [ IsOperationWeightList, IsString ] )
 #! @Description
 #!  Performs a search from the operation <A>op_name</A>, and triggers all derivations
 #!  that give improvements over the current state.
-#!  This is used internally by <C>TriggerAllDerivations</C> and <C>Reevaluate</C>.
+#!  This is used internally by <C>InstallDerivations</C> and <C>Reevaluate</C>.
 #!  It should normally not be necessary to call this function directly.
 #! @Arguments owl, op_name
 DeclareOperation( "TriggerDerivationsUsingOperation",
@@ -294,11 +293,11 @@ DeclareGlobalFunction( "AddFinalDerivationBundle" );
 
 #################################
 ##
-## Triggering derivations
+## Installing derivations
 ##
 #################################
 
-DeclareGlobalFunction( "TriggerAllDerivations" );
+DeclareGlobalFunction( "InstallDerivations" );
 
 #################################
 ##
