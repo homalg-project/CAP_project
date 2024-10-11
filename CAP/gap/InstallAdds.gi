@@ -23,9 +23,9 @@ InstallMethod( AddCapOperation,
     [ "IsPrecompiledDerivation", false ],
   ],
   function( CAP_NAMED_ARGUMENTS, function_name, category, func_to_install, weight )
-    local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
-        input_human_readable_identifier_getter, input_sanity_check_functions, filter_string, data_type,
-        output_human_readable_identifier_getter, output_data_type, output_sanity_check_function, type;
+    local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, type, replaced_filter_list,
+        input_human_readable_identifier_getter, input_sanity_check_functions, data_type, output_human_readable_identifier_getter,
+        output_data_type, output_sanity_check_function, filter_string;
     
     record := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
     
@@ -49,6 +49,24 @@ InstallMethod( AddCapOperation,
     
     if weight = -1 then
         weight := 100;
+    fi;
+    
+    if is_derivation then
+        
+        type := "ordinary_derivation";
+        
+    elif is_final_derivation then
+        
+        type := "final_derivation";
+        
+    elif is_precompiled_derivation then
+        
+        type := "precompiled_derivation";
+        
+    else
+        
+        type := "primitive_installation";
+        
     fi;
     
     # If there already is a faster method: do nothing but display a warning because this should not happen.
@@ -87,6 +105,20 @@ InstallMethod( AddCapOperation,
         fi;
         
     fi;
+    
+    category!.operations.(function_name) := rec(
+        type := type,
+        weight := weight,
+        func := func_to_install,
+    );
+    
+    if not IsBound( category!.added_functions.( function_name ) ) then
+        
+        category!.added_functions.( function_name ) := [ ];
+        
+    fi;
+    
+    Add( category!.added_functions.( function_name ), func_to_install );
     
     replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( record.filter_list, category );
     
@@ -137,14 +169,6 @@ InstallMethod( AddCapOperation,
         output_sanity_check_function := ReturnTrue;
         
     fi;
-    
-    if not IsBound( category!.added_functions.( function_name ) ) then
-        
-        category!.added_functions.( function_name ) := [ ];
-        
-    fi;
-    
-    Add( category!.added_functions.( function_name ), func_to_install );
     
     if not IsBound( category!.timing_statistics.( function_name ) ) then
         
@@ -266,30 +290,6 @@ InstallMethod( AddCapOperation,
         end : InstallMethod := InstallOtherMethod, Cache := GET_METHOD_CACHE( category, function_name, Length( replaced_filter_list ) ) );
         
     fi;
-    
-    if is_derivation then
-        
-        type := "ordinary_derivation";
-        
-    elif is_final_derivation then
-        
-        type := "final_derivation";
-        
-    elif is_precompiled_derivation then
-        
-        type := "precompiled_derivation";
-        
-    else
-        
-        type := "primitive_installation";
-        
-    fi;
-    
-    category!.operations.(function_name) := rec(
-        type := type,
-        weight := weight,
-        func := func_to_install,
-    );
     
     # return void for Julia
     return;
