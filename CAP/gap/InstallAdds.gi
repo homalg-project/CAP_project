@@ -69,32 +69,49 @@ InstallMethod( AddCapOperation,
         
     fi;
     
-    # If there already is a faster method: do nothing but display a warning because this should not happen.
-    if CanCompute( category, function_name ) and weight > OperationWeight( category, function_name ) then
+    # Display a warning in various cases when overwriting existing functions
+    if IsBound( category!.operations.(function_name) ) then
         
-        Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", OperationWeight( category, function_name ), "." );
-        
-        if is_precompiled_derivation then
+        # If there already is a faster method: do nothing but display a warning because this should not happen.
+        if weight > category!.operations.(function_name).weight then
             
-            Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+            Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", category!.operations.(function_name).weight, "." );
+            
+            if type = "precompiled_derivation" then
+                
+                Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+                
+            fi;
+            
+            Print( "\n" );
+            
+            return;
             
         fi;
         
-        Print( "\n" );
-        
-        return;
-        
-    fi;
-    
-    # Display a warning when overwriting primitive operations with derivations.
-    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.operations.( function_name ) ) and category!.operations.( function_name ).type = "primitive_installation" then
-        
-        # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
-        if weight <> 1 then
+        if category!.operations.( function_name ).type = "primitive_installation" then
             
-            Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
+            # Display a warning when overwriting primitive operations with derivations.
+            # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
+            if type <> "primitive_installation" and weight <> 1 then
+                
+                Print( "WARNING: Overwriting a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
+                
+                if type = "precompiled_derivation" then
+                    
+                    Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+                    
+                fi;
+                
+                Print( "\n" );
+                
+            fi;
             
-            if is_precompiled_derivation then
+        else
+            
+            Print( "WARNING: A function for ", function_name, " of type ", category!.operations.( function_name ).type, " is unexpectedly overwritten by a function of type ", type, "." );
+            
+            if category!.operations.( function_name ).type = "precompiled_derivation" then
                 
                 Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
                 
