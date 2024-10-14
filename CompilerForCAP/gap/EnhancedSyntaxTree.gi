@@ -879,9 +879,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     
 end );
 
-# Helper variable for working around https://github.com/oscar-system/GAP.jl/issues/814
-CAP_JIT_INTERNAL_TREE_TO_CODE := rec( );
-
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
   local orig_tree, is_dummy_function, seen_function_ids, stat, pre_func, result_func, additional_arguments_func, func;
     
@@ -1620,9 +1617,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     
     tree := CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ [ ], [ ] ] );
     
-    # We work around https://github.com/oscar-system/GAP.jl/issues/814 by calling SYNTAX_TREE_CODE inside an `EvalString`
-    CAP_JIT_INTERNAL_TREE_TO_CODE := tree;
-    func := EvalString( "SYNTAX_TREE_CODE( CAP_JIT_INTERNAL_TREE_TO_CODE )" );
+    func := SYNTAX_TREE_CODE( tree );
     
     return func;
     
