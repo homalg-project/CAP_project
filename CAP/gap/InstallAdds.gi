@@ -23,9 +23,9 @@ InstallMethod( AddCapOperation,
     [ "IsPrecompiledDerivation", false ],
   ],
   function( CAP_NAMED_ARGUMENTS, function_name, category, func_to_install, weight )
-    local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, replaced_filter_list,
-        input_human_readable_identifier_getter, input_sanity_check_functions, filter_string, data_type,
-        output_human_readable_identifier_getter, output_data_type, output_sanity_check_function, type;
+    local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, type, replaced_filter_list,
+        input_human_readable_identifier_getter, input_sanity_check_functions, data_type, output_human_readable_identifier_getter,
+        output_data_type, output_sanity_check_function, filter_string;
     
     record := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
     
@@ -51,32 +51,67 @@ InstallMethod( AddCapOperation,
         weight := 100;
     fi;
     
-    # If there already is a faster method: do nothing but display a warning because this should not happen.
-    if CanCompute( category, function_name ) and weight > OperationWeight( category, function_name ) then
+    if is_derivation then
         
-        Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", OperationWeight( category, function_name ), "." );
+        type := "ordinary_derivation";
         
-        if is_precompiled_derivation then
-            
-            Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
-            
-        fi;
+    elif is_final_derivation then
         
-        Print( "\n" );
+        type := "final_derivation";
         
-        return;
+    elif is_precompiled_derivation then
+        
+        type := "precompiled_derivation";
+        
+    else
+        
+        type := "primitive_installation";
         
     fi;
     
-    # Display a warning when overwriting primitive operations with derivations.
-    if (is_derivation or is_final_derivation or is_precompiled_derivation) and IsBound( category!.operations.( function_name ) ) and category!.operations.( function_name ).type = "primitive_installation" then
+    # Display a warning in various cases when overwriting existing functions
+    if IsBound( category!.operations.(function_name) ) then
         
-        # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
-        if weight <> 1 then
+        # If there already is a faster method: do nothing but display a warning because this should not happen.
+        if weight > category!.operations.(function_name).weight then
             
-            Print( "WARNING: Overriding a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
+            Print( "WARNING: Ignoring a function added for ", function_name, " with weight ", weight, " to \"", category_name, "\" because there already is a function installed with weight ", category!.operations.(function_name).weight, "." );
             
-            if is_precompiled_derivation then
+            if type = "precompiled_derivation" then
+                
+                Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+                
+            fi;
+            
+            Print( "\n" );
+            
+            return;
+            
+        fi;
+        
+        if category!.operations.( function_name ).type = "primitive_installation" then
+            
+            # Display a warning when overwriting primitive operations with derivations.
+            # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
+            if type <> "primitive_installation" and weight <> 1 then
+                
+                Print( "WARNING: Overwriting a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
+                
+                if type = "precompiled_derivation" then
+                    
+                    Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
+                    
+                fi;
+                
+                Print( "\n" );
+                
+            fi;
+            
+        else
+            
+            Print( "WARNING: A function for ", function_name, " of type ", category!.operations.( function_name ).type, " is unexpectedly overwritten by a function of type ", type, "." );
+            
+            if category!.operations.( function_name ).type = "precompiled_derivation" then
                 
                 Print( " Probably you have to rerun the precompilation to adjust the weights in the precompiled code." );
                 
@@ -87,6 +122,20 @@ InstallMethod( AddCapOperation,
         fi;
         
     fi;
+    
+    category!.operations.(function_name) := rec(
+        type := type,
+        weight := weight,
+        func := func_to_install,
+    );
+    
+    if not IsBound( category!.added_functions.( function_name ) ) then
+        
+        category!.added_functions.( function_name ) := [ ];
+        
+    fi;
+    
+    Add( category!.added_functions.( function_name ), func_to_install );
     
     replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( record.filter_list, category );
     
@@ -137,14 +186,6 @@ InstallMethod( AddCapOperation,
         output_sanity_check_function := ReturnTrue;
         
     fi;
-    
-    if not IsBound( category!.added_functions.( function_name ) ) then
-        
-        category!.added_functions.( function_name ) := [ ];
-        
-    fi;
-    
-    Add( category!.added_functions.( function_name ), func_to_install );
     
     if not IsBound( category!.timing_statistics.( function_name ) ) then
         
@@ -266,30 +307,6 @@ InstallMethod( AddCapOperation,
         end : InstallMethod := InstallOtherMethod, Cache := GET_METHOD_CACHE( category, function_name, Length( replaced_filter_list ) ) );
         
     fi;
-    
-    if is_derivation then
-        
-        type := "ordinary_derivation";
-        
-    elif is_final_derivation then
-        
-        type := "final_derivation";
-        
-    elif is_precompiled_derivation then
-        
-        type := "precompiled_derivation";
-        
-    else
-        
-        type := "primitive_installation";
-        
-    fi;
-    
-    category!.operations.(function_name) := rec(
-        type := type,
-        weight := weight,
-        func := func_to_install,
-    );
     
     # return void for Julia
     return;
