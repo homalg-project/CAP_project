@@ -198,16 +198,29 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
     fi;
     
-    tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree, with_or_without_post_processing, category );
+    tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree );
     
     Remove( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
     
-    return tree;
+    if with_or_without_post_processing = "without_post_processing" then
+        
+        return tree;
+        
+    elif with_or_without_post_processing = "with_post_processing" then
+        
+        return CAP_JIT_INTERNAL_POST_PROCESSED_TREE( tree, category );
+        
+    else
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "with_or_without_post_processing must be either \"without_post_processing\" or \"with_post_processing\" but is ", with_or_without_post_processing );
+        
+    fi;
     
 end );
     
-InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function ( tree, with_or_without_post_processing, category )
-  local debug_idempotence, func, resolving_phase_functions, orig_tree, tmp, rule_phase_functions, tree_without_post_processing, changed, pre_func, domains, additional_arguments_func, f;
+InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function ( tree )
+  local debug_idempotence, func, resolving_phase_functions, orig_tree, tmp, rule_phase_functions, f;
     
     debug_idempotence := false;
     
@@ -227,20 +240,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
         
         if CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS then
             
-            if with_or_without_post_processing = "without_post_processing" or with_or_without_post_processing = "with_post_processing" then
-                
-                return tree;
-                
-            elif with_or_without_post_processing = "with_and_without_post_processing" then
-                
-                return Pair( tree, tree );
-                
-            else
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "with_or_without_post_processing must be one of \"without_post_processing\", \"with_post_processing\" or \"with_and_without_post_processing\" but is ", with_or_without_post_processing );
-                
-            fi;
+            return tree;
             
         else
             
@@ -418,28 +418,54 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
         
     od;
     
-    # post-processing
-    if with_or_without_post_processing = "with_post_processing" or with_or_without_post_processing = "with_and_without_post_processing" then
+    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        Print( "######## Finished compilation of\n" );
+        Print( "# ", tree.name, "\n" );
+        Print( "# result:\n" );
+        Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+        Print( "\n" );
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Compilation finished." );
+    
+    if not EndsWith( tree.name, " (compiled)" ) then
+        
+        tree.name := Concatenation( tree.name, " (compiled)" );
+        
+    fi;
+    
+    if CAP_JIT_RESOLVE_ONE_LEVEL_ONLY then
+        
+        CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
+        
+    fi;
+    
+    return tree;
+    
+end );
+    
+InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, category )
+  local changed, pre_func, domains, additional_arguments_func;
         
         if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
             
             # COVERAGE_IGNORE_BLOCK_START
-            Print( "#### Continue compilation of\n" );
+            Print( "######## Start post-processing of\n" );
             Print( "# ", tree.name, "\n" );
-            Print( "# finished rule phase, current state:\n" );
-            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-            Print( "## start of post-processing\n" );
             Print( "\n" );
             # COVERAGE_IGNORE_BLOCK_END
             
         fi;
         
-        tree_without_post_processing := StructuralCopy( tree );
-        
         if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
             
             # COVERAGE_IGNORE_BLOCK_START
-            Print( "#### Continue compilation of\n" );
+            Print( "#### Continue post-processing of\n" );
             Print( "# ", tree.name, "\n" );
             Print( "# apply CapJitInlinedBindingsFully\n" );
             # COVERAGE_IGNORE_BLOCK_END
@@ -463,7 +489,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
                 # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue compilation of\n" );
+                Print( "#### Continue post-processing of\n" );
                 Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitAppliedCompilerHints\n" );
                 # COVERAGE_IGNORE_BLOCK_END
@@ -492,7 +518,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
                 # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue compilation of\n" );
+                Print( "#### Continue post-processing of\n" );
                 Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitExtractedExpensiveOperationsFromLoops\n" );
                 # COVERAGE_IGNORE_BLOCK_END
@@ -516,7 +542,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
                 # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue compilation of\n" );
+                Print( "#### Continue post-processing of\n" );
                 Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitHoistedExpressions\n" );
                 # COVERAGE_IGNORE_BLOCK_END
@@ -540,7 +566,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
                 # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue compilation of\n" );
+                Print( "#### Continue post-processing of\n" );
                 Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitDeduplicatedExpressions\n" );
                 # COVERAGE_IGNORE_BLOCK_END
@@ -564,7 +590,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
                 # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue compilation of\n" );
+                Print( "#### Continue post-processing of\n" );
                 Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitCleanedUpHoistedAndDeduplicatedExpressions\n" );
                 # COVERAGE_IGNORE_BLOCK_END
@@ -899,7 +925,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                     
                     # COVERAGE_IGNORE_BLOCK_START
-                    Print( "#### Continue compilation of\n" );
+                    Print( "#### Continue post-processing of\n" );
                     Print( "# ", tree.name, "\n" );
                     Print( "# apply generalized loop fusion\n" );
                     # COVERAGE_IGNORE_BLOCK_END
@@ -966,48 +992,18 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             
         fi;
         
-    fi;
-    
-    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
-        
-        # COVERAGE_IGNORE_BLOCK_START
-        Print( "######## Finished compilation of\n" );
-        Print( "# ", tree.name, "\n" );
-        Print( "# result:\n" );
-        Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-        Print( "\n" );
-        # COVERAGE_IGNORE_BLOCK_END
-        
-    fi;
-    
-    Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, "Compilation finished." );
-    
-    if not EndsWith( tree.name, " (compiled)" ) then
-        
-        tree.name := Concatenation( tree.name, " (compiled)" );
-        
-    fi;
-    
-    if CAP_JIT_RESOLVE_ONE_LEVEL_ONLY then
-        
-        CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
-        
-    fi;
-    
-    if with_or_without_post_processing = "without_post_processing" or with_or_without_post_processing = "with_post_processing" then
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
+            
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "######## Finished post-processing of\n" );
+            Print( "# ", tree.name, "\n" );
+            Print( "# result:\n" );
+            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+            Print( "\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
         
         return tree;
         
-    elif with_or_without_post_processing = "with_and_without_post_processing" then
-        
-        return Pair( tree_without_post_processing, tree );
-        
-    else
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "with_or_without_post_processing must be one of \"without_post_processing\", \"with_post_processing\" or \"with_and_without_post_processing\" but is ", with_or_without_post_processing );
-        
-    fi;
-    
 end );

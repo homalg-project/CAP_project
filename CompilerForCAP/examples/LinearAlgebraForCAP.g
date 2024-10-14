@@ -50,11 +50,12 @@ Display( compiled_func2 );
 #!             end ) ), T_1 );
 #! end
 
-Display( ENHANCED_SYNTAX_TREE_CODE(
+Display( ENHANCED_SYNTAX_TREE_CODE( CAP_JIT_INTERNAL_POST_PROCESSED_TREE(
     CapJitCompiledCAPOperationAsEnhancedSyntaxTree(
-        vec, "KernelEmbedding", true
-    )
-) );
+        vec, "KernelEmbedding"
+    ),
+    vec
+) ) );
 #! function ( cat_1, alpha_1 )
 #!     local morphism_attr_1_1;
 #!     morphism_attr_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
