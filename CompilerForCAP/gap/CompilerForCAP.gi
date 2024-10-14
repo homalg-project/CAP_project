@@ -213,6 +213,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
     
     Assert( 0, tree.type = "EXPR_DECLARATIVE_FUNC" );
     
+    if not IsBound( tree.name ) then
+        
+        tree.name := "unknown";
+        
+    fi;
+    
     Assert( 0, not IsEmpty( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK ) );
     
     func := Last( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
@@ -251,7 +257,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
         
         # COVERAGE_IGNORE_BLOCK_START
         Print( "######## Start compilation of\n" );
-        Print( "# ", NameFunction( func ), "\n" );
+        Print( "# ", tree.name, "\n" );
         Display( CapJitPrettyPrintFunction( func ) );
         Print( "\n" );
         # COVERAGE_IGNORE_BLOCK_END
@@ -272,7 +278,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
         
         # COVERAGE_IGNORE_BLOCK_START
         Print( "#### Continue compilation of\n" );
-        Print( "# ", NameFunction( func ), "\n" );
+        Print( "# ", tree.name, "\n" );
         Print( "# current state:\n" );
         Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
         Print( "## start of resolving phase\n" );
@@ -292,7 +298,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue compilation of\n" );
-                Print( "# ", NameFunction( func ), "\n" );
+                Print( "# ", tree.name, "\n" );
                 Print( "# apply ", NameFunction( f ), "\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
@@ -354,7 +360,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
         
         # COVERAGE_IGNORE_BLOCK_START
         Print( "#### Continue compilation of\n" );
-        Print( "# ", NameFunction( func ), "\n" );
+        Print( "# ", tree.name, "\n" );
         Print( "# finished resolving phase, current state:\n" );
         Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
         Print( "## start of rule phase\n" );
@@ -374,7 +380,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue compilation of\n" );
-                Print( "# ", NameFunction( func ), "\n" );
+                Print( "# ", tree.name, "\n" );
                 Print( "# apply ", NameFunction( f ), "\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
@@ -419,7 +425,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             
             # COVERAGE_IGNORE_BLOCK_START
             Print( "#### Continue compilation of\n" );
-            Print( "# ", NameFunction( func ), "\n" );
+            Print( "# ", tree.name, "\n" );
             Print( "# finished rule phase, current state:\n" );
             Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
             Print( "## start of post-processing\n" );
@@ -434,7 +440,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
             
             # COVERAGE_IGNORE_BLOCK_START
             Print( "#### Continue compilation of\n" );
-            Print( "# ", NameFunction( func ), "\n" );
+            Print( "# ", tree.name, "\n" );
             Print( "# apply CapJitInlinedBindingsFully\n" );
             # COVERAGE_IGNORE_BLOCK_END
             
@@ -458,7 +464,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue compilation of\n" );
-                Print( "# ", NameFunction( func ), "\n" );
+                Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitAppliedCompilerHints\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
@@ -487,7 +493,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue compilation of\n" );
-                Print( "# ", NameFunction( func ), "\n" );
+                Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitExtractedExpensiveOperationsFromLoops\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
@@ -511,7 +517,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue compilation of\n" );
-                Print( "# ", NameFunction( func ), "\n" );
+                Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitHoistedExpressions\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
@@ -535,7 +541,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue compilation of\n" );
-                Print( "# ", NameFunction( func ), "\n" );
+                Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitDeduplicatedExpressions\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
@@ -559,7 +565,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue compilation of\n" );
-                Print( "# ", NameFunction( func ), "\n" );
+                Print( "# ", tree.name, "\n" );
                 Print( "# apply CapJitCleanedUpHoistedAndDeduplicatedExpressions\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
@@ -894,7 +900,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                     
                     # COVERAGE_IGNORE_BLOCK_START
                     Print( "#### Continue compilation of\n" );
-                    Print( "# ", NameFunction( func ), "\n" );
+                    Print( "# ", tree.name, "\n" );
                     Print( "# apply generalized loop fusion\n" );
                     # COVERAGE_IGNORE_BLOCK_END
                     
@@ -966,7 +972,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
         
         # COVERAGE_IGNORE_BLOCK_START
         Print( "######## Finished compilation of\n" );
-        Print( "# ", NameFunction( func ), "\n" );
+        Print( "# ", tree.name, "\n" );
         Print( "# result:\n" );
         Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
         Print( "\n" );
@@ -976,6 +982,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Compilation finished." );
+    
+    if not EndsWith( tree.name, " (compiled)" ) then
+        
+        tree.name := Concatenation( tree.name, " (compiled)" );
+        
+    fi;
     
     if CAP_JIT_RESOLVE_ONE_LEVEL_ONLY then
         
