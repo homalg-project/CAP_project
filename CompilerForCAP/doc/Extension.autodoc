@@ -43,7 +43,7 @@ To simplify the handling of syntax trees, the CAP compiler enhances syntax trees
   right hand side of the last variable assignment in the body of the branch. Caution: The remaining statements in the body of the
   if branch are moved outside of the if/elif/else statement!
 * Statements which are not assignments to local variables or if/else statements as well as nested if/else statements are not supported.
-* `EXPR_FUNC`s are coded as `EXPR_DECLARATIVE_FUNC`s: The latter has not key `nloc` and no key `name`.
+* `EXPR_FUNC`s are coded as `EXPR_DECLARATIVE_FUNC`s: The latter has not key `nloc`.
   Additionally, instead of `stats`, the latter has a key `bindings` of type `FVAR_BINDING_SEQ`.
   A syntax tree of type `FVAR_BINDING_SEQ` describes a set(!) of bindings (= assignments) of local variables.
   It has a key `names`, a list of bound names. Values of bindings can be added/obtained/unbound via

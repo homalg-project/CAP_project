@@ -812,7 +812,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             fi;
             
             # ignore these keys
-            if key = "CAP_JIT_NOT_RESOLVABLE" then
+            if key = "CAP_JIT_NOT_RESOLVABLE" or (template_tree.type = "EXPR_DECLARATIVE_FUNC" and key = "name") then
                 
                 continue;
                 

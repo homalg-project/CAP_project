@@ -3,15 +3,14 @@
 #
 # Implementations
 #
-InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name, post_processing_enabled )
-  local function_to_compile, global_variable_name, info, trees;
+InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name )
+  local function_to_compile, global_variable_name, info;
     
     Assert( 0, CanCompute( cat, operation_name ) );
     
     if not IsBound( cat!.compiled_functions_trees ) then
         
         cat!.compiled_functions_trees := rec( );
-        cat!.compiled_functions_post_processed_trees := rec( );
         
     fi;
     
@@ -35,21 +34,10 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
         
-        trees := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, "with_and_without_post_processing", cat, info.filter_list, info.return_type );
-        
-        cat!.compiled_functions_trees.(operation_name) := trees[1];
-        cat!.compiled_functions_post_processed_trees.(operation_name) := trees[2];
+        cat!.compiled_functions_trees.(operation_name) := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, "without_post_processing", cat, info.filter_list, info.return_type );
         
     fi;
     
-    if post_processing_enabled then
-        
-        return CapJitCopyWithNewFunctionIDs( cat!.compiled_functions_post_processed_trees.(operation_name) );
-        
-    else
-        
-        return CapJitCopyWithNewFunctionIDs( cat!.compiled_functions_trees.(operation_name) );
-        
-    fi;
+    return CapJitCopyWithNewFunctionIDs( cat!.compiled_functions_trees.(operation_name) );
     
 end );

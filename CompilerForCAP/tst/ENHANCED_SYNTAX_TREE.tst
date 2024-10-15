@@ -62,10 +62,11 @@ gap> CapJitPrettyPrintSyntaxTree( tree );
 rec(
   0_type := "EXPR_DECLARATIVE_FUNC",
   1_id := 1,
-  2_nams := [ "x", "a", "b", "c", "d", "e", "f", "g", "RETURN_VALUE" ],
-  3_narg := 1,
-  4_variadic := false,
-  5_bindings := rec(
+  2_name := "func",
+  3_nams := [ "x", "a", "b", "c", "d", "e", "f", "g", "RETURN_VALUE" ],
+  4_narg := 1,
+  5_variadic := false,
+  6_bindings := rec(
       0_type := "FVAR_BINDING_SEQ",
       1_names := [ "a", "b", "d", "c", "e", "f", "g", "RETURN_VALUE" ],
       2_BINDING_a := rec(
@@ -231,10 +232,11 @@ gap> CapJitPrettyPrintSyntaxTree( tree );
 rec(
   0_type := "EXPR_DECLARATIVE_FUNC",
   1_id := 2,
-  2_nams := [ "x", "y", "RETURN_VALUE" ],
-  3_narg := 1,
-  4_variadic := false,
-  5_bindings := rec(
+  2_name := "func",
+  3_nams := [ "x", "y", "RETURN_VALUE" ],
+  4_narg := 1,
+  5_variadic := false,
+  6_bindings := rec(
       0_type := "FVAR_BINDING_SEQ",
       1_names := [ "y", "RETURN_VALUE" ],
       2_BINDING_y := rec(
@@ -287,10 +289,11 @@ rec(
       signature := [ [  ], rec(
               filter := <Category "IsInt"> ) ] ),
   2_id := 7,
-  3_nams := [ "RETURN_VALUE" ],
-  4_narg := 0,
-  5_variadic := false,
-  6_bindings := rec(
+  3_name := "func",
+  4_nams := [ "RETURN_VALUE" ],
+  5_narg := 0,
+  6_variadic := false,
+  7_bindings := rec(
       0_type := "FVAR_BINDING_SEQ",
       1_names := [ "RETURN_VALUE" ],
       2_BINDING_RETURN_VALUE := rec(

@@ -74,6 +74,7 @@ DeclareGlobalFunction( "CapJitSetDebugLevel" );
 
 # helper
 DeclareGlobalFunction( "CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE" );
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_POST_PROCESSED_TREE" );
 
 #! @Description
 #!   Returns a compiled version of the function <A>func</A> with signature <A>type_signature</A> (see <Ref Func="CapJitInferredDataTypes" />).
@@ -93,7 +94,6 @@ DeclareGlobalFunction( "CapJitCompiledFunction" );
 #!   <A>post_processing</A> can be one of the following strings:
 #!   * `"with_post_processing"`: The post-processing step, e.g. the application of compiler hints, is executed.
 #!   * `"without_post_processing"`: The post-processing step is not executed.
-#!   * `"with_and_without_post_processing"`: A pair of trees is returned: The second tree with post-processing applied, the first tree without.
 #! @Returns a record
 #! @Arguments func, post_processing[, type_signature]
 DeclareGlobalFunction( "CapJitCompiledFunctionAsEnhancedSyntaxTree" );

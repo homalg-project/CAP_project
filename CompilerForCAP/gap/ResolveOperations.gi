@@ -166,7 +166,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                         # COVERAGE_IGNORE_BLOCK_END
                     ) );
                     
-                    resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name, false );
+                    resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name );
                     
                 fi;
                 

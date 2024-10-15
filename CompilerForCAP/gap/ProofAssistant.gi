@@ -780,7 +780,9 @@ InstallMethod( StateLemma,
     Print( text, "\n" );
     Print( func, "\n" );
     
-    tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree, "with_post_processing", cat );
+    tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree );
+    
+    tree := CAP_JIT_INTERNAL_POST_PROCESSED_TREE( tree, cat );
     
     function_string := CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) );
     
@@ -998,7 +1000,9 @@ InstallMethod( AttestValidInputs,
         
     fi;
     
-    tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree, "with_post_processing", cat );
+    tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree );
+    
+    tree := CAP_JIT_INTERNAL_POST_PROCESSED_TREE( tree, cat );
     
     function_string := CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) );
     
@@ -1052,7 +1056,9 @@ InstallMethod( ApplyLogicTemplate,
     
     old_tree := StructuralCopy( tree );
     
-    new_tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree, "with_post_processing", cat );
+    new_tree := CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE( tree );
+    
+    new_tree := CAP_JIT_INTERNAL_POST_PROCESSED_TREE( new_tree, cat );
     
     function_string := CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( new_tree ) );
     
