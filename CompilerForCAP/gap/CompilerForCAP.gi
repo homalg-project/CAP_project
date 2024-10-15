@@ -451,28 +451,52 @@ end );
     
 InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, category )
   local changed, pre_func, domains, additional_arguments_func;
+    
+    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
         
-        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
-            
-            # COVERAGE_IGNORE_BLOCK_START
-            Print( "######## Start post-processing of\n" );
-            Print( "# ", tree.name, "\n" );
-            Print( "\n" );
-            # COVERAGE_IGNORE_BLOCK_END
-            
-        fi;
+        # COVERAGE_IGNORE_BLOCK_START
+        Print( "######## Start post-processing of\n" );
+        Print( "# ", tree.name, "\n" );
+        Print( "\n" );
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        Print( "#### Continue post-processing of\n" );
+        Print( "# ", tree.name, "\n" );
+        Print( "# apply CapJitInlinedBindingsFully\n" );
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+    tree := CapJitInlinedBindingsFully( tree );
+    
+    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+        
+        # COVERAGE_IGNORE_BLOCK_START
+        Print( "# result:\n" );
+        Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+        Print( "\n" );
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+    if category <> fail then
         
         if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
             
             # COVERAGE_IGNORE_BLOCK_START
             Print( "#### Continue post-processing of\n" );
             Print( "# ", tree.name, "\n" );
-            Print( "# apply CapJitInlinedBindingsFully\n" );
+            Print( "# apply CapJitAppliedCompilerHints\n" );
             # COVERAGE_IGNORE_BLOCK_END
             
         fi;
         
-        tree := CapJitInlinedBindingsFully( tree );
+        tree := CapJitAppliedCompilerHints( tree, category );
         
         if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
             
@@ -484,119 +508,467 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, ca
             
         fi;
         
-        if category <> fail then
+    fi;
+    
+    # do not hoist/deduplicate expressions in proof assistant mode
+    if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
+        
+        # CapJitExtractedExpensiveOperationsFromLoops
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
             
-            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                
-                # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue post-processing of\n" );
-                Print( "# ", tree.name, "\n" );
-                Print( "# apply CapJitAppliedCompilerHints\n" );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
-            
-            tree := CapJitAppliedCompilerHints( tree, category );
-            
-            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                
-                # COVERAGE_IGNORE_BLOCK_START
-                Print( "# result:\n" );
-                Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-                Print( "\n" );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "#### Continue post-processing of\n" );
+            Print( "# ", tree.name, "\n" );
+            Print( "# apply CapJitExtractedExpensiveOperationsFromLoops\n" );
+            # COVERAGE_IGNORE_BLOCK_END
             
         fi;
         
-        # do not hoist/deduplicate expressions in proof assistant mode
-        if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
+        tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
             
-            # CapJitExtractedExpensiveOperationsFromLoops
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "# result:\n" );
+            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+            Print( "\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
+        
+        # CapJitHoistedExpressions
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+            
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "#### Continue post-processing of\n" );
+            Print( "# ", tree.name, "\n" );
+            Print( "# apply CapJitHoistedExpressions\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
+        
+        tree := CapJitHoistedExpressions( tree );
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+            
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "# result:\n" );
+            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+            Print( "\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
+        
+        # CapJitDeduplicatedExpressions
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+            
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "#### Continue post-processing of\n" );
+            Print( "# ", tree.name, "\n" );
+            Print( "# apply CapJitDeduplicatedExpressions\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
+        
+        tree := CapJitDeduplicatedExpressions( tree );
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+            
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "# result:\n" );
+            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+            Print( "\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
+        
+        # CapJitCleanedUpHoistedAndDeduplicatedExpressions
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+            
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "#### Continue post-processing of\n" );
+            Print( "# ", tree.name, "\n" );
+            Print( "# apply CapJitCleanedUpHoistedAndDeduplicatedExpressions\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
+        
+        tree := CapJitCleanedUpHoistedAndDeduplicatedExpressions( tree );
+        
+        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+            
+            # COVERAGE_IGNORE_BLOCK_START
+            Print( "# result:\n" );
+            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+            Print( "\n" );
+            # COVERAGE_IGNORE_BLOCK_END
+            
+        fi;
+        
+        # Generalized loop fusion: Simplify `List( list, func )[index]` to `func( list[index] )`
+        # We do not want to do this during compilation because of the following situation:
+        # expr1 := List( [ 1 .. var1 ], x -> very_expensive_operation( x ) ); expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> expr1[x][y] ) );
+        # If we inline and transform this to
+        # expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> very_expensive_operation( x )[y] ) );
+        # we cannot simply hoist `very_expensive_operation( x )`.
+        # One solution is "generalized hoisting" (see CapJitExtractedExpensiveOperationsFromLoops): We can detect that the subexpression
+        # `very_expensive_operation( x )` and its domain `[ 1 .. var1 ]` are independent of `y` and thus extract `expr1` from `expr2` again.
+        # However, this only improves the runtime if looping over `[ 1 .. var1 ]` is less expensive than the additional computations of `very_expensive_operation( x )`
+        # in the inlined expression. This information has to be passed to CompilerForCAP explicitly via CAP_JIT_EXPENSIVE_FUNCTION_NAMES.
+        # The general case is the following:
+        # hoisted_expr := List( domain, func ); result := List( enclosing_domain_1, x -> List( enclosing_domain_2, y -> hoisted_expr[i] ) );
+        # where of course there can be more or fewer enclosing domains. It makes sense to transform this into
+        # result := List( enclosing_domain_1, x -> List( enclosing_domain_2, y -> func( domain[i] ) ) );
+        # if and only if looping over `domain` is more expensive than looping over the cartesian product of the enclosing domains (assuming that `hoisted_expr` was
+        # not deduplicated, i.e. is not used multiple times. If it is, the argument is not correct).
+        # In particular, this depends on the level to which `hoisted_expr` can be hoisted. However, the function levels on which `hoisted_expr` depends can
+        # change during the compilation due to cancellation. So we can only do this optimization here at the end.
+        # This might lead to new instances of `List( list, func )[index]`, so we repeat the process until no occurrences of `List( list, func )[index]` remain
+        # In principle, we should rerun the whole rule phase, but this could rewrite `func( list[index] )` to `List( list, func )[index]` again,
+        # so we only run a subset of functions of the rule phase. As a consequence, one cannot apply logic to the result of this simplification.
+        # For now, we only consider two special cases below: The cases of no or a single enclosing domain.
+        # This simplifies checking if looping over `domain` is more expensive than looping over the cartesian product of the enclosing domains:
+        # If there is no domain, this is true trivially. If there is a single enclosing domain, we only have to compare that to `domain`, see `is_shorter_than`.
+        # The implementation of `is_shorter_than` only covers special cases.
+        # In the case with a single enclosing domain we do not check if `hoisted_expr` was deduplicated, i.e. is used multiple times, yet.
+        # However, in this case we might not want to apply the simplification.
+        # Note: In the case of a single enclosing domain which is equal to the domain, this would more or less correspond to the traditional concept of loop fusion.
+        # That is why we call it "generalized loop fusion".
+        while true do
+            
+            changed := false;
+            
+            # fuse loops with the same domain
+            domains := rec( );
+            
+            pre_func := function ( tree, func_stack )
+              local value_of_binding_iterated, value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain, index, resolved_domain, resolved_index, element, element_type;
+                
+                value_of_binding_iterated := function ( tree )
+                  local func;
+                    
+                    if tree.type = "EXPR_REF_FVAR" then
+                        
+                        func := SafeUniqueEntry( func_stack, f -> f.id = tree.func_id );
+                        
+                        if SafeUniquePosition( func.nams, tree.name ) > func.narg then
+                            
+                            return value_of_binding_iterated( CapJitValueOfBinding( func.bindings, tree.name ) );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                end;
+                
+                value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated := function ( tree )
+                  local func;
+                    
+                    if CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INCOMPLETE_LOGIC" ) then
+                        
+                        return value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( tree.args.1 );
+                        
+                    fi;
+                    
+                    if tree.type = "EXPR_REF_FVAR" then
+                        
+                        func := SafeUniqueEntry( func_stack, f -> f.id = tree.func_id );
+                        
+                        if SafeUniquePosition( func.nams, tree.name ) > func.narg then
+                            
+                            return value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( CapJitValueOfBinding( func.bindings, tree.name ) );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                end;
+                
+                is_shorter_than := function ( domain1, domain2 )
+                  local last, minuend;
+                    
+                    domain1 := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1 );
+                    domain2 := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain2 );
+                    
+                    if CapJitIsEqualForEnhancedSyntaxTrees( domain1, domain2 ) then
+                        
+                        return true;
+                        
+                    fi;
+                    
+                    # `[ 0 .. Length( list ) - 1 ]` is as long as `list`
+                    if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 0 then
+                        
+                        last := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.last );
+                        
+                        if CapJitIsCallToGlobalFunction( last, "-" ) and last.args.2.type = "EXPR_INT" and last.args.2.value = 1 then
+                            
+                            minuend := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( last.args.1 );
+                            
+                            if CapJitIsCallToGlobalFunction( minuend, "Length" ) then
+                                
+                                return is_shorter_than( minuend.args.1, domain2 );
+                                
+                            fi;
+                            
+                        fi;
+                        
+                    fi;
+                    
+                    # `[ 1 .. Length( list ) ]` is as long as `list`
+                    if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 1 then
+                        
+                        last := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.last );
+                        
+                        if CapJitIsCallToGlobalFunction( last, "Length" ) then
+                            
+                            return is_shorter_than( last.args.1, domain2 );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                    # `Filtered( list, func )` is shorter than `list`
+                    if CapJitIsCallToGlobalFunction( domain1, "Filtered" ) and CapJitIsEqualForEnhancedSyntaxTrees( value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.args.1 ), domain2 ) then
+                        
+                        return true;
+                        
+                    fi;
+                    
+                    return fail;
+                    
+                end;
+                
+                # simplify nested CAP_JIT_INCOMPLETE_LOGIC
+                while CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INCOMPLETE_LOGIC" ) and CapJitIsCallToGlobalFunction( value_of_binding_iterated( tree.args.1 ), "CAP_JIT_INCOMPLETE_LOGIC" ) do
+                    
+                    tree := tree.args.1;
+                    
+                od;
+                
+                if CapJitIsCallToGlobalFunction( tree, "[]" ) then
+                    
+                    list_call := tree.args.1;
+                    
+                    if list_call.type = "EXPR_REF_FVAR" and StartsWith( list_call.name, "deduped_" ) then
+                        
+                        # list call has been deduplicated -> do nothing
+                        return tree;
+                        
+                    fi;
+                    
+                    list_call := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( list_call );
+                    
+                    if CapJitIsCallToGlobalFunction( list_call, "List" ) and list_call.args.length = 2 then
+                        
+                        domain := list_call.args.1;
+                        
+                        simplify := false;
+                        
+                        # If domain is hoisted and wrapped in `CAP_JIT_INCOMPLETE_LOGIC`, `CAP_JIT_INCOMPLETE_LOGIC` is also hoisted,
+                        # so to distinguish between the hoisted and non-hoisted case, we do not have to take `CAP_JIT_INCOMPLETE_LOGIC` into account.
+                        
+                        # case: no enclosing domain, i.e. not hoisted
+                        if tree.args.1.type <> "EXPR_REF_FVAR" then
+                            
+                            simplify := true;
+                            
+                        # case: a single enclosing domain
+                        elif tree.args.1.type = "EXPR_REF_FVAR" and Length( func_stack ) >= 2 and tree.args.1.func_id = func_stack[Length( func_stack ) - 1].id and IsBound( domains.(Last( func_stack ).id) ) then
+                            
+                            enclosing_domain := domains.(Last( func_stack ).id);
+                            
+                            if is_shorter_than( enclosing_domain, domain ) = true then
+                                
+                                simplify := true;
+                                
+                            fi;
+                            
+                        fi;
+                        
+                        if simplify then
+                            
+                            changed := true;
+                            
+                            # List( domain, func )[index] => func( domain[index] )
+                            # This might open up opportunities for more optimizations: e.g. `domain[index]` could be simplified further,
+                            # or the return value of `func` could be used for simplifications in the surrounding context.
+                            # However, we do not apply logic anymore (see comment above).
+                            # To make the user aware of this, we wrap `func( domain[index] )` and `domain[index]` in calls to `CAP_JIT_INCOMPLETE_LOGIC`.
+                            
+                            index := tree.args.2;
+                            
+                            resolved_domain := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain );
+                            resolved_index := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( index );
+                            
+                            # [ 1 .. last ][x] => x
+                            if resolved_domain.type = "EXPR_RANGE" and resolved_domain.first.type = "EXPR_INT" and resolved_domain.first.value = 1 then
+                                
+                                element := index;
+                                
+                            # [ 0 .. last ][1 + x] => x
+                            elif resolved_domain.type = "EXPR_RANGE" and resolved_domain.first.type = "EXPR_INT" and resolved_domain.first.value = 0 and CapJitIsCallToGlobalFunction( resolved_index, "+" ) and resolved_index.args.1.type = "EXPR_INT" and resolved_index.args.1.value = 1 then
+                                
+                                element := resolved_index.args.2;
+                                
+                            else
+                                
+                                # domain[index]
+                                element := rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := "[]",
+                                    ),
+                                    args := AsSyntaxTreeList( [
+                                        CapJitCopyWithNewFunctionIDs( domain ), # domain
+                                        index, # index
+                                    ] ),
+                                );
+                                
+                                if IsBound( domain.data_type ) and IsBound( index.data_type ) then
+                                    
+                                    element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "[]", [ domain.data_type, index.data_type ] );
+                                    
+                                    if element_type = fail then
+                                        
+                                        #Error( "could not determine element_type" );
+                                        
+                                    elif IsFunction( element_type ) then
+                                        
+                                        #Error( "cannot infer parametric output type by arguments types only" );
+                                        
+                                    # COVERAGE_IGNORE_NEXT_LINE
+                                    else
+                                        
+                                        element.data_type := element_type;
+                                        
+                                        element.funcref.data_type := rec(
+                                            filter := IsFunction,
+                                            signature := Pair(
+                                                [
+                                                    domain.data_type,
+                                                    index.data_type
+                                                ],
+                                                element_type
+                                            )
+                                        );
+                                        
+                                    fi;
+                                    
+                                fi;
+                                
+                            fi;
+                            
+                            return rec(
+                                type := "EXPR_FUNCCALL",
+                                funcref := rec(
+                                    type := "EXPR_REF_GVAR",
+                                    gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
+                                ),
+                                args := AsSyntaxTreeList( [
+                                    rec(
+                                        type := "EXPR_FUNCCALL",
+                                        funcref := CapJitCopyWithNewFunctionIDs( list_call.args.2 ), # func
+                                        args := AsSyntaxTreeList( [
+                                            rec(
+                                                type := "EXPR_FUNCCALL",
+                                                funcref := rec(
+                                                    type := "EXPR_REF_GVAR",
+                                                    gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
+                                                ),
+                                                args := AsSyntaxTreeList( [
+                                                    element,
+                                                ] ),
+                                            ),
+                                        ] ),
+                                    ),
+                                ] ),
+                            );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                fi;
+                
+                return tree;
+                
+            end;
+            
+            additional_arguments_func := function ( tree, key, func_stack )
+                
+                if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in CAP_JIT_INTERNAL_NAMES_OF_LOOP_FUNCTIONS ) and tree.args.length = 2 and tree.args.2.type = "EXPR_DECLARATIVE_FUNC" then
+                    
+                    domains.(tree.args.2.id) := tree.args.1;
+                    
+                fi;
+                
+                if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                    
+                    func_stack := Concatenation( func_stack, [ tree ] );
+                    
+                fi;
+                
+                return func_stack;
+                
+            end;
             
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "#### Continue post-processing of\n" );
                 Print( "# ", tree.name, "\n" );
-                Print( "# apply CapJitExtractedExpensiveOperationsFromLoops\n" );
+                Print( "# apply generalized loop fusion\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
             fi;
             
-            tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
+            tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
+            
+            if not changed then
+                
+                if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+                    
+                    # COVERAGE_IGNORE_BLOCK_START
+                    Print( "# no change\n\n" );
+                    # COVERAGE_IGNORE_BLOCK_END
+                    
+                fi;
+                
+                break;
+                
+            fi;
             
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 Print( "# result:\n" );
                 Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-                Print( "\n" );
+                Print( "# clean up\n" );
                 # COVERAGE_IGNORE_BLOCK_END
                 
             fi;
             
-            # CapJitHoistedExpressions
-            
-            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                
-                # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue post-processing of\n" );
-                Print( "# ", tree.name, "\n" );
-                Print( "# apply CapJitHoistedExpressions\n" );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
-            
+            tree := CapJitInlinedArguments( tree );
+            tree := CapJitInlinedSimpleFunctionCalls( tree );
+            tree := CapJitInlinedFunctionCalls( tree );
+            tree := CapJitInlinedBindingsFully( tree );
+            # simplifying `List( list, x -> false )[1]` might lead to edge cases which can be dropped
+            tree := CapJitDroppedHandledEdgeCases( tree );
+            # CapJitExtractedExpensiveOperationsFromLoops cannot handle ListWithKeys yet, so it cannot be executed more than once.
+            #tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
+            # CapJitInlinedBindingsFully drops unused bindings and the output of CapJitDroppedHandledEdgeCases is still fully inlined -> no new bindings
             tree := CapJitHoistedExpressions( tree );
-            
-            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                
-                # COVERAGE_IGNORE_BLOCK_START
-                Print( "# result:\n" );
-                Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-                Print( "\n" );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
-            
-            # CapJitDeduplicatedExpressions
-            
-            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                
-                # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue post-processing of\n" );
-                Print( "# ", tree.name, "\n" );
-                Print( "# apply CapJitDeduplicatedExpressions\n" );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
-            
             tree := CapJitDeduplicatedExpressions( tree );
-            
-            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                
-                # COVERAGE_IGNORE_BLOCK_START
-                Print( "# result:\n" );
-                Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-                Print( "\n" );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
-            
-            # CapJitCleanedUpHoistedAndDeduplicatedExpressions
-            
-            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                
-                # COVERAGE_IGNORE_BLOCK_START
-                Print( "#### Continue post-processing of\n" );
-                Print( "# ", tree.name, "\n" );
-                Print( "# apply CapJitCleanedUpHoistedAndDeduplicatedExpressions\n" );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
-            
             tree := CapJitCleanedUpHoistedAndDeduplicatedExpressions( tree );
             
             if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
@@ -609,401 +981,29 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, ca
                 
             fi;
             
-            # Generalized loop fusion: Simplify `List( list, func )[index]` to `func( list[index] )`
-            # We do not want to do this during compilation because of the following situation:
-            # expr1 := List( [ 1 .. var1 ], x -> very_expensive_operation( x ) ); expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> expr1[x][y] ) );
-            # If we inline and transform this to
-            # expr2 := List( [ 1 .. var2 ], y -> List( [ 1 .. var1 ], x -> very_expensive_operation( x )[y] ) );
-            # we cannot simply hoist `very_expensive_operation( x )`.
-            # One solution is "generalized hoisting" (see CapJitExtractedExpensiveOperationsFromLoops): We can detect that the subexpression
-            # `very_expensive_operation( x )` and its domain `[ 1 .. var1 ]` are independent of `y` and thus extract `expr1` from `expr2` again.
-            # However, this only improves the runtime if looping over `[ 1 .. var1 ]` is less expensive than the additional computations of `very_expensive_operation( x )`
-            # in the inlined expression. This information has to be passed to CompilerForCAP explicitly via CAP_JIT_EXPENSIVE_FUNCTION_NAMES.
-            # The general case is the following:
-            # hoisted_expr := List( domain, func ); result := List( enclosing_domain_1, x -> List( enclosing_domain_2, y -> hoisted_expr[i] ) );
-            # where of course there can be more or fewer enclosing domains. It makes sense to transform this into
-            # result := List( enclosing_domain_1, x -> List( enclosing_domain_2, y -> func( domain[i] ) ) );
-            # if and only if looping over `domain` is more expensive than looping over the cartesian product of the enclosing domains (assuming that `hoisted_expr` was
-            # not deduplicated, i.e. is not used multiple times. If it is, the argument is not correct).
-            # In particular, this depends on the level to which `hoisted_expr` can be hoisted. However, the function levels on which `hoisted_expr` depends can
-            # change during the compilation due to cancellation. So we can only do this optimization here at the end.
-            # This might lead to new instances of `List( list, func )[index]`, so we repeat the process until no occurrences of `List( list, func )[index]` remain
-            # In principle, we should rerun the whole rule phase, but this could rewrite `func( list[index] )` to `List( list, func )[index]` again,
-            # so we only run a subset of functions of the rule phase. As a consequence, one cannot apply logic to the result of this simplification.
-            # For now, we only consider two special cases below: The cases of no or a single enclosing domain.
-            # This simplifies checking if looping over `domain` is more expensive than looping over the cartesian product of the enclosing domains:
-            # If there is no domain, this is true trivially. If there is a single enclosing domain, we only have to compare that to `domain`, see `is_shorter_than`.
-            # The implementation of `is_shorter_than` only covers special cases.
-            # In the case with a single enclosing domain we do not check if `hoisted_expr` was deduplicated, i.e. is used multiple times, yet.
-            # However, in this case we might not want to apply the simplification.
-            # Note: In the case of a single enclosing domain which is equal to the domain, this would more or less correspond to the traditional concept of loop fusion.
-            # That is why we call it "generalized loop fusion".
-            while true do
-                
-                changed := false;
-                
-                # fuse loops with the same domain
-                domains := rec( );
-                
-                pre_func := function ( tree, func_stack )
-                  local value_of_binding_iterated, value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated, is_shorter_than, list_call, domain, simplify, enclosing_domain, index, resolved_domain, resolved_index, element, element_type;
-                    
-                    value_of_binding_iterated := function ( tree )
-                      local func;
-                        
-                        if tree.type = "EXPR_REF_FVAR" then
-                            
-                            func := SafeUniqueEntry( func_stack, f -> f.id = tree.func_id );
-                            
-                            if SafeUniquePosition( func.nams, tree.name ) > func.narg then
-                                
-                                return value_of_binding_iterated( CapJitValueOfBinding( func.bindings, tree.name ) );
-                                
-                            fi;
-                            
-                        fi;
-                        
-                        return tree;
-                        
-                    end;
-                    
-                    value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated := function ( tree )
-                      local func;
-                        
-                        if CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INCOMPLETE_LOGIC" ) then
-                            
-                            return value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( tree.args.1 );
-                            
-                        fi;
-                        
-                        if tree.type = "EXPR_REF_FVAR" then
-                            
-                            func := SafeUniqueEntry( func_stack, f -> f.id = tree.func_id );
-                            
-                            if SafeUniquePosition( func.nams, tree.name ) > func.narg then
-                                
-                                return value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( CapJitValueOfBinding( func.bindings, tree.name ) );
-                                
-                            fi;
-                            
-                        fi;
-                        
-                        return tree;
-                        
-                    end;
-                    
-                    is_shorter_than := function ( domain1, domain2 )
-                      local last, minuend;
-                        
-                        domain1 := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1 );
-                        domain2 := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain2 );
-                        
-                        if CapJitIsEqualForEnhancedSyntaxTrees( domain1, domain2 ) then
-                            
-                            return true;
-                            
-                        fi;
-                        
-                        # `[ 0 .. Length( list ) - 1 ]` is as long as `list`
-                        if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 0 then
-                            
-                            last := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.last );
-                            
-                            if CapJitIsCallToGlobalFunction( last, "-" ) and last.args.2.type = "EXPR_INT" and last.args.2.value = 1 then
-                                
-                                minuend := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( last.args.1 );
-                                
-                                if CapJitIsCallToGlobalFunction( minuend, "Length" ) then
-                                    
-                                    return is_shorter_than( minuend.args.1, domain2 );
-                                    
-                                fi;
-                                
-                            fi;
-                            
-                        fi;
-                        
-                        # `[ 1 .. Length( list ) ]` is as long as `list`
-                        if domain1.type = "EXPR_RANGE" and domain1.first.type = "EXPR_INT" and domain1.first.value = 1 then
-                            
-                            last := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.last );
-                            
-                            if CapJitIsCallToGlobalFunction( last, "Length" ) then
-                                
-                                return is_shorter_than( last.args.1, domain2 );
-                                
-                            fi;
-                            
-                        fi;
-                        
-                        # `Filtered( list, func )` is shorter than `list`
-                        if CapJitIsCallToGlobalFunction( domain1, "Filtered" ) and CapJitIsEqualForEnhancedSyntaxTrees( value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain1.args.1 ), domain2 ) then
-                            
-                            return true;
-                            
-                        fi;
-                        
-                        return fail;
-                        
-                    end;
-                    
-                    # simplify nested CAP_JIT_INCOMPLETE_LOGIC
-                    while CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INCOMPLETE_LOGIC" ) and CapJitIsCallToGlobalFunction( value_of_binding_iterated( tree.args.1 ), "CAP_JIT_INCOMPLETE_LOGIC" ) do
-                        
-                        tree := tree.args.1;
-                        
-                    od;
-                    
-                    if CapJitIsCallToGlobalFunction( tree, "[]" ) then
-                        
-                        list_call := tree.args.1;
-                        
-                        if list_call.type = "EXPR_REF_FVAR" and StartsWith( list_call.name, "deduped_" ) then
-                            
-                            # list call has been deduplicated -> do nothing
-                            return tree;
-                            
-                        fi;
-                        
-                        list_call := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( list_call );
-                        
-                        if CapJitIsCallToGlobalFunction( list_call, "List" ) and list_call.args.length = 2 then
-                            
-                            domain := list_call.args.1;
-                            
-                            simplify := false;
-                            
-                            # If domain is hoisted and wrapped in `CAP_JIT_INCOMPLETE_LOGIC`, `CAP_JIT_INCOMPLETE_LOGIC` is also hoisted,
-                            # so to distinguish between the hoisted and non-hoisted case, we do not have to take `CAP_JIT_INCOMPLETE_LOGIC` into account.
-                            
-                            # case: no enclosing domain, i.e. not hoisted
-                            if tree.args.1.type <> "EXPR_REF_FVAR" then
-                                
-                                simplify := true;
-                                
-                            # case: a single enclosing domain
-                            elif tree.args.1.type = "EXPR_REF_FVAR" and Length( func_stack ) >= 2 and tree.args.1.func_id = func_stack[Length( func_stack ) - 1].id and IsBound( domains.(Last( func_stack ).id) ) then
-                                
-                                enclosing_domain := domains.(Last( func_stack ).id);
-                                
-                                if is_shorter_than( enclosing_domain, domain ) = true then
-                                    
-                                    simplify := true;
-                                    
-                                fi;
-                                
-                            fi;
-                            
-                            if simplify then
-                                
-                                changed := true;
-                                
-                                # List( domain, func )[index] => func( domain[index] )
-                                # This might open up opportunities for more optimizations: e.g. `domain[index]` could be simplified further,
-                                # or the return value of `func` could be used for simplifications in the surrounding context.
-                                # However, we do not apply logic anymore (see comment above).
-                                # To make the user aware of this, we wrap `func( domain[index] )` and `domain[index]` in calls to `CAP_JIT_INCOMPLETE_LOGIC`.
-                                
-                                index := tree.args.2;
-                                
-                                resolved_domain := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( domain );
-                                resolved_index := value_of_binding_and_CAP_JIT_INCOMPLETE_LOGIC_iterated( index );
-                                
-                                # [ 1 .. last ][x] => x
-                                if resolved_domain.type = "EXPR_RANGE" and resolved_domain.first.type = "EXPR_INT" and resolved_domain.first.value = 1 then
-                                    
-                                    element := index;
-                                    
-                                # [ 0 .. last ][1 + x] => x
-                                elif resolved_domain.type = "EXPR_RANGE" and resolved_domain.first.type = "EXPR_INT" and resolved_domain.first.value = 0 and CapJitIsCallToGlobalFunction( resolved_index, "+" ) and resolved_index.args.1.type = "EXPR_INT" and resolved_index.args.1.value = 1 then
-                                    
-                                    element := resolved_index.args.2;
-                                    
-                                else
-                                    
-                                    # domain[index]
-                                    element := rec(
-                                        type := "EXPR_FUNCCALL",
-                                        funcref := rec(
-                                            type := "EXPR_REF_GVAR",
-                                            gvar := "[]",
-                                        ),
-                                        args := AsSyntaxTreeList( [
-                                            CapJitCopyWithNewFunctionIDs( domain ), # domain
-                                            index, # index
-                                        ] ),
-                                    );
-                                    
-                                    if IsBound( domain.data_type ) and IsBound( index.data_type ) then
-                                        
-                                        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "[]", [ domain.data_type, index.data_type ] );
-                                        
-                                        if element_type = fail then
-                                            
-                                            #Error( "could not determine element_type" );
-                                            
-                                        elif IsFunction( element_type ) then
-                                            
-                                            #Error( "cannot infer parametric output type by arguments types only" );
-                                            
-                                        # COVERAGE_IGNORE_NEXT_LINE
-                                        else
-                                            
-                                            element.data_type := element_type;
-                                            
-                                            element.funcref.data_type := rec(
-                                                filter := IsFunction,
-                                                signature := Pair(
-                                                    [
-                                                        domain.data_type,
-                                                        index.data_type
-                                                    ],
-                                                    element_type
-                                                )
-                                            );
-                                            
-                                        fi;
-                                        
-                                    fi;
-                                    
-                                fi;
-                                
-                                return rec(
-                                    type := "EXPR_FUNCCALL",
-                                    funcref := rec(
-                                        type := "EXPR_REF_GVAR",
-                                        gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
-                                    ),
-                                    args := AsSyntaxTreeList( [
-                                        rec(
-                                            type := "EXPR_FUNCCALL",
-                                            funcref := CapJitCopyWithNewFunctionIDs( list_call.args.2 ), # func
-                                            args := AsSyntaxTreeList( [
-                                                rec(
-                                                    type := "EXPR_FUNCCALL",
-                                                    funcref := rec(
-                                                        type := "EXPR_REF_GVAR",
-                                                        gvar := "CAP_JIT_INCOMPLETE_LOGIC", # CAP_JIT_INCOMPLETE_LOGIC
-                                                    ),
-                                                    args := AsSyntaxTreeList( [
-                                                        element,
-                                                    ] ),
-                                                ),
-                                            ] ),
-                                        ),
-                                    ] ),
-                                );
-                                
-                            fi;
-                            
-                        fi;
-                        
-                    fi;
-                    
-                    return tree;
-                    
-                end;
-                
-                additional_arguments_func := function ( tree, key, func_stack )
-                    
-                    if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in CAP_JIT_INTERNAL_NAMES_OF_LOOP_FUNCTIONS ) and tree.args.length = 2 and tree.args.2.type = "EXPR_DECLARATIVE_FUNC" then
-                        
-                        domains.(tree.args.2.id) := tree.args.1;
-                        
-                    fi;
-                    
-                    if tree.type = "EXPR_DECLARATIVE_FUNC" then
-                        
-                        func_stack := Concatenation( func_stack, [ tree ] );
-                        
-                    fi;
-                    
-                    return func_stack;
-                    
-                end;
-                
-                if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                    
-                    # COVERAGE_IGNORE_BLOCK_START
-                    Print( "#### Continue post-processing of\n" );
-                    Print( "# ", tree.name, "\n" );
-                    Print( "# apply generalized loop fusion\n" );
-                    # COVERAGE_IGNORE_BLOCK_END
-                    
-                fi;
-                
-                tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
-                
-                if not changed then
-                    
-                    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                        
-                        # COVERAGE_IGNORE_BLOCK_START
-                        Print( "# no change\n\n" );
-                        # COVERAGE_IGNORE_BLOCK_END
-                        
-                    fi;
-                    
-                    break;
-                    
-                fi;
-                
-                if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                    
-                    # COVERAGE_IGNORE_BLOCK_START
-                    Print( "# result:\n" );
-                    Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-                    Print( "# clean up\n" );
-                    # COVERAGE_IGNORE_BLOCK_END
-                    
-                fi;
-                
-                tree := CapJitInlinedArguments( tree );
-                tree := CapJitInlinedSimpleFunctionCalls( tree );
-                tree := CapJitInlinedFunctionCalls( tree );
-                tree := CapJitInlinedBindingsFully( tree );
-                # simplifying `List( list, x -> false )[1]` might lead to edge cases which can be dropped
-                tree := CapJitDroppedHandledEdgeCases( tree );
-                # CapJitExtractedExpensiveOperationsFromLoops cannot handle ListWithKeys yet, so it cannot be executed more than once.
-                #tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
-                # CapJitInlinedBindingsFully drops unused bindings and the output of CapJitDroppedHandledEdgeCases is still fully inlined -> no new bindings
-                tree := CapJitHoistedExpressions( tree );
-                tree := CapJitDeduplicatedExpressions( tree );
-                tree := CapJitCleanedUpHoistedAndDeduplicatedExpressions( tree );
-                
-                if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
-                    
-                    # COVERAGE_IGNORE_BLOCK_START
-                    Print( "# result:\n" );
-                    Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-                    Print( "\n" );
-                    # COVERAGE_IGNORE_BLOCK_END
-                    
-                fi;
-                
-            od;
-            
-        fi;
+        od;
         
-        if CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
-            
-            # the post-processing steps might not set data types, but in proof assistant mode having data types is important
-            tree := CapJitInferredDataTypes( tree );
-            
-        fi;
+    fi;
+    
+    if CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
         
-        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
-            
-            # COVERAGE_IGNORE_BLOCK_START
-            Print( "######## Finished post-processing of\n" );
-            Print( "# ", tree.name, "\n" );
-            Print( "# result:\n" );
-            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-            Print( "\n" );
-            # COVERAGE_IGNORE_BLOCK_END
-            
-        fi;
+        # the post-processing steps might not set data types, but in proof assistant mode having data types is important
+        tree := CapJitInferredDataTypes( tree );
         
-        return tree;
+    fi;
+    
+    if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
         
+        # COVERAGE_IGNORE_BLOCK_START
+        Print( "######## Finished post-processing of\n" );
+        Print( "# ", tree.name, "\n" );
+        Print( "# result:\n" );
+        Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+        Print( "\n" );
+        # COVERAGE_IGNORE_BLOCK_END
+        
+    fi;
+    
+    return tree;
+    
 end );
