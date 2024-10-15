@@ -199,14 +199,14 @@
         statements as well as nested if/else statements are not supported.[133X
   
   [30X    [33X[0;6Y[10XEXPR_FUNC[110Xs are coded as [10XEXPR_DECLARATIVE_FUNC[110Xs: The latter has not key
-        [10Xnloc[110X and no key [10Xname[110X. Additionally, instead of [10Xstats[110X, the latter has a
-        key   [10Xbindings[110X  of  type  [10XFVAR_BINDING_SEQ[110X.  A  syntax  tree  of  type
-        [10XFVAR_BINDING_SEQ[110X  describes  a  set(!)  of bindings (= assignments) of
-        local  variables. It has a key [10Xnames[110X, a list of bound names. Values of
-        bindings   can   be   added/obtained/unbound   via   [10XCapJitAddBinding[110X,
-        [10XCapJitValueOfBinding[110X,   and  [10XCapJitUnbindBinding[110X.  When  the  tree  is
-        converted  to  a function again, the set of bindings is endowed with a
-        order which respects the relation "uses".[133X
+        [10Xnloc[110X. Additionally, instead of [10Xstats[110X, the latter has a key [10Xbindings[110X of
+        type   [10XFVAR_BINDING_SEQ[110X.   A  syntax  tree  of  type  [10XFVAR_BINDING_SEQ[110X
+        describes  a set(!) of bindings (= assignments) of local variables. It
+        has  a  key  [10Xnames[110X,  a  list of bound names. Values of bindings can be
+        added/obtained/unbound via [10XCapJitAddBinding[110X, [10XCapJitValueOfBinding[110X, and
+        [10XCapJitUnbindBinding[110X.  When  the tree is converted to a function again,
+        the  set  of  bindings  is  endowed  with  a  order which respects the
+        relation "uses".[133X
   
   [30X    [33X[0;6YLocal  variables  must  not  be assigned more than once (this includes
         function  arguments, which are assigned at least once, namely when the
