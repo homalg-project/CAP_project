@@ -244,12 +244,10 @@
   
   [1X1.5-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree[101X
   
-  [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X, [3Xpost_processing_enabled[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X ) [32X function[133X
   
   [33X[0;0YA  special  version  of  [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.5-3[114X)
-  compiling  the  operation  given  by  [3Xoperation_name[103X  in  [3Xcat[103X.  The  boolean
-  [3Xpost_processing_enabled[103X   decides   whether   the   tree   before  or  after
-  post-processing should be returned.[133X
+  compiling the operation given by [3Xoperation_name[103X in [3Xcat[103X.[133X
   
   [1X1.5-2 CapJitCompiledFunction[101X
   
@@ -271,18 +269,20 @@
   
   [1X1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
   
-  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X, [3Xpost_processing[103X[, [3Xtype_signature[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X, [3Xcategory[103X[, [3Xtype_signature[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YLike  [2XCapJitCompiledFunction[102X ([14X1.5-2[114X), but returns an enhanced syntax tree of
-  the  compiled  function.  [3Xfunc[103X must not be an operation or a kernel function
-  because   those   cannot   properly   be   represented  as  a  syntax  tree.
-  [3Xpost_processing[103X can be one of the following strings:[133X
+  [33X[0;0YSimilar to [2XCapJitCompiledFunction[102X ([14X1.5-2[114X) with the following differences:[133X
   
-  [30X    [33X[0;6Y[10X"with_post_processing"[110X: The post-processing step, e.g. the application
-        of compiler hints, is executed.[133X
+  [30X    [33X[0;6Yan enhanced syntax tree is returned instead of a function,[133X
   
-  [30X    [33X[0;6Y[10X"without_post_processing"[110X: The post-processing step is not executed.[133X
+  [30X    [33X[0;6Y[3Xfunc[103X  must  not  be  an  operation  or a kernel function because those
+        cannot properly be represented as a syntax tree,[133X
+  
+  [30X    [33X[0;6Ythe second argument must always be a CAP category or [10Xfail[110X,[133X
+  
+  [30X    [33X[0;6Ythe  post-processing  step, e.g. the application of compiler hints, is
+        *not* executed.[133X
   
   
   [1X1.6 [33X[0;0YGiving hints to the compiler[133X[101X

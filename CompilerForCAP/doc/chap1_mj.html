@@ -274,8 +274,8 @@
 
 <h5>1.5-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledCAPOperationAsEnhancedSyntaxTree</code>( <var class="Arg">cat</var>, <var class="Arg">operation_name</var>, <var class="Arg">post_processing_enabled</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>A special version of <code class="func">CapJitCompiledFunctionAsEnhancedSyntaxTree</code> (<a href="chap1_mj.html#X7B1445EE85D8CA0A"><span class="RefLink">1.5-3</span></a>) compiling the operation given by <var class="Arg">operation_name</var> in <var class="Arg">cat</var>. The boolean <var class="Arg">post_processing_enabled</var> decides whether the tree before or after post-processing should be returned.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledCAPOperationAsEnhancedSyntaxTree</code>( <var class="Arg">cat</var>, <var class="Arg">operation_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>A special version of <code class="func">CapJitCompiledFunctionAsEnhancedSyntaxTree</code> (<a href="chap1_mj.html#X7B1445EE85D8CA0A"><span class="RefLink">1.5-3</span></a>) compiling the operation given by <var class="Arg">operation_name</var> in <var class="Arg">cat</var>.</p>
 
 <p><a id="X86F1D06C81670DC8" name="X86F1D06C81670DC8"></a></p>
 
@@ -290,17 +290,23 @@
 
 <h5>1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunctionAsEnhancedSyntaxTree</code>( <var class="Arg">func</var>, <var class="Arg">post_processing</var>[, <var class="Arg">type_signature</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunctionAsEnhancedSyntaxTree</code>( <var class="Arg">func</var>, <var class="Arg">category</var>[, <var class="Arg">type_signature</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Like <code class="func">CapJitCompiledFunction</code> (<a href="chap1_mj.html#X86F1D06C81670DC8"><span class="RefLink">1.5-2</span></a>), but returns an enhanced syntax tree of the compiled function. <var class="Arg">func</var> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree. <var class="Arg">post_processing</var> can be one of the following strings:</p>
+<p>Similar to <code class="func">CapJitCompiledFunction</code> (<a href="chap1_mj.html#X86F1D06C81670DC8"><span class="RefLink">1.5-2</span></a>) with the following differences:</p>
 
 
 <ul>
-<li><p><code class="code">"with_post_processing"</code>: The post-processing step, e.g. the application of compiler hints, is executed.</p>
+<li><p>an enhanced syntax tree is returned instead of a function,</p>
 
 </li>
-<li><p><code class="code">"without_post_processing"</code>: The post-processing step is not executed.</p>
+<li><p><var class="Arg">func</var> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree,</p>
+
+</li>
+<li><p>the second argument must always be a CAP category or <code class="code">fail</code>,</p>
+
+</li>
+<li><p>the post-processing step, e.g. the application of compiler hints, is *not* executed.</p>
 
 </li>
 </ul>
