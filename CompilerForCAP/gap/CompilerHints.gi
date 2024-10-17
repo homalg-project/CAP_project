@@ -4,9 +4,13 @@
 # Implementations
 #
 
-InstallGlobalFunction( CapJitAppliedCompilerHints, function ( tree, category )
+InstallGlobalFunction( CapJitAppliedCompilerHints, function ( tree, category, apply_irreversible_optimizations )
     
-    tree := CapJitReplacedSourceAndRangeAttributes( tree, category );
+    if apply_irreversible_optimizations then
+        
+        tree := CapJitReplacedSourceAndRangeAttributes( tree, category );
+        
+    fi;
     
     # call this at the end because previous functions might want to access the global variables
     tree := CapJitReplacedGlobalVariablesByCategoryAttributes( tree, category );

@@ -906,6 +906,19 @@ end
     , 100 );
     
     ##
+    cat!.cached_precompiled_functions.SomeReductionBySplitEpiSummand :=
+        
+########
+function ( cat_1, alpha_1 )
+    local deduped_1_1;
+    deduped_1_1 := RankOfObject( Range( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 0 ), CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, deduped_1_1 ), UnderlyingMatrix, HomalgZeroMatrix( 0, deduped_1_1, UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    ;
+    
+    ##
     AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( cat,
         
 ########
@@ -931,6 +944,20 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.SomeReductionBySplitEpiSummand_MorphismToInputRange :=
+        
+########
+function ( cat_1, alpha_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
+    deduped_1_1 := NumberColumns( deduped_2_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, deduped_1_1 ), Range( alpha_1 ), UnderlyingMatrix, SafeRightDivide( HomalgIdentityMatrix( deduped_1_1, UnderlyingRing( cat_1 ) ), deduped_2_1 ) );
+end
+########
+        
+    ;
     
     ##
     AddSumOfMorphisms( cat,
