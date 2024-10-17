@@ -97,18 +97,17 @@ gap> func( cat );
 #
 gap> Display( CapJitCompiledFunction( func, cat ) );
 function ( cat_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
+    local deduped_1_1;
+    deduped_1_1 := CapFixpoint( function ( x_2, y_2 )
             return IsZero( y_2 );
         end, function ( x_2 )
             return x_2 - x_2;
         end, HomalgIdentityMatrix( 1, UnderlyingRing( cat_1 ) ) );
     return CreateCapCategoryMorphismWithAttributes( cat_1, 
        CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 
-         NumberRows( morphism_attr_1_1 ) ), 
-       CreateCapCategoryObjectWithAttributes( cat_1, RankOfObject, 
-         NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, 
-       morphism_attr_1_1 );
+         NumberRows( deduped_1_1 ) ), CreateCapCategoryObjectWithAttributes( 
+         cat_1, RankOfObject, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix
+        , deduped_1_1 );
 end
 
 # Iterated with literal list

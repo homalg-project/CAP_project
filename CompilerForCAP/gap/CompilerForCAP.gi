@@ -462,8 +462,20 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
     
 end );
     
-InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, category )
-  local changed, pre_func, domains, additional_arguments_func;
+InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, category, args... )
+  local apply_irreversible_optimizations, changed, pre_func, domains, additional_arguments_func;
+    
+    Assert( 0, Length( args ) in [ 0, 1 ] );
+    
+    if Length( args ) = 0 then
+        
+        apply_irreversible_optimizations := true;
+        
+    else
+        
+        apply_irreversible_optimizations := args[1];
+        
+    fi;
     
     if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 1 then
         
@@ -509,7 +521,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, ca
             
         fi;
         
-        tree := CapJitAppliedCompilerHints( tree, category );
+        tree := CapJitAppliedCompilerHints( tree, category, apply_irreversible_optimizations );
         
         if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
             
@@ -526,27 +538,31 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, ca
     # do not hoist/deduplicate expressions in proof assistant mode
     if not CAP_JIT_PROOF_ASSISTANT_MODE_ENABLED then
         
-        # CapJitExtractedExpensiveOperationsFromLoops
-        
-        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+        if apply_irreversible_optimizations then
             
-            # COVERAGE_IGNORE_BLOCK_START
-            Print( "#### Continue post-processing of\n" );
-            Print( "# ", tree.name, "\n" );
-            Print( "# apply CapJitExtractedExpensiveOperationsFromLoops\n" );
-            # COVERAGE_IGNORE_BLOCK_END
+            # CapJitExtractedExpensiveOperationsFromLoops
             
-        fi;
-        
-        tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
-        
-        if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+                
+                # COVERAGE_IGNORE_BLOCK_START
+                Print( "#### Continue post-processing of\n" );
+                Print( "# ", tree.name, "\n" );
+                Print( "# apply CapJitExtractedExpensiveOperationsFromLoops\n" );
+                # COVERAGE_IGNORE_BLOCK_END
+                
+            fi;
             
-            # COVERAGE_IGNORE_BLOCK_START
-            Print( "# result:\n" );
-            Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
-            Print( "\n" );
-            # COVERAGE_IGNORE_BLOCK_END
+            tree := CapJitExtractedExpensiveOperationsFromLoops( tree );
+            
+            if CAP_JIT_INTERNAL_DEBUG_LEVEL >= 2 then
+                
+                # COVERAGE_IGNORE_BLOCK_START
+                Print( "# result:\n" );
+                Display( CapJitPrettyPrintFunction( ENHANCED_SYNTAX_TREE_CODE( tree ) ) );
+                Print( "\n" );
+                # COVERAGE_IGNORE_BLOCK_END
+                
+            fi;
             
         fi;
         
@@ -651,7 +667,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_POST_PROCESSED_TREE, function ( tree, ca
         # However, in this case we might not want to apply the simplification.
         # Note: In the case of a single enclosing domain which is equal to the domain, this would more or less correspond to the traditional concept of loop fusion.
         # That is why we call it "generalized loop fusion".
-        while true do
+        while true and apply_irreversible_optimizations do
             
             changed := false;
             

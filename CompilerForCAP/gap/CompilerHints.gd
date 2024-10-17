@@ -8,9 +8,10 @@
 #! @Section Compilation steps
 
 #! @Description
-#!   Applies all compiler hints (see <Ref Sect="Section_CompilerHints" />) to <A>tree</A>.
+#!   Applies compiler hints (see <Ref Sect="Section_CompilerHints" />) to <A>tree</A>.
+#!   Depending on <A>apply_irreversible_optimizations</A>, only reversible optimizations or all optimizations are applied.
 #! @Returns a record
-#! @Arguments tree, category
+#! @Arguments tree, category, apply_irreversible_optimizations
 DeclareGlobalFunction( "CapJitAppliedCompilerHints" );
 
 #! @Description

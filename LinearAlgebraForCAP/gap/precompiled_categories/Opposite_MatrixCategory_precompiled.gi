@@ -191,12 +191,12 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := Opposite( alpha_1 );
     deduped_3_1 := OppositeCategory( cat_1 );
     deduped_2_1 := SyzygiesOfRows( AsHomalgMatrix( deduped_4_1 ) );
-    morphism_attr_1_1 := deduped_2_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Opposite, AsCapCategoryObject( deduped_3_1, NumberRows( deduped_2_1 ) ) ), Opposite, AsCapCategoryMorphism( deduped_3_1, AsCapCategoryObject( deduped_3_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, Source( deduped_4_1 ) ) );
+    deduped_1_1 := AsCapCategoryObject( deduped_3_1, NumberRows( deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Opposite, deduped_1_1 ), Opposite, AsCapCategoryMorphism( deduped_3_1, deduped_1_1, deduped_2_1, Source( deduped_4_1 ) ) );
 end
 ########
         
@@ -249,6 +249,23 @@ end
     , 100 );
     
     ##
+    cat!.cached_precompiled_functions.ComponentOfMorphismFromDirectSum :=
+        
+########
+function ( cat_1, alpha_1, S_1, i_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := Opposite( alpha_1 );
+    deduped_2_1 := List( S_1, function ( x_2 )
+            return AsInteger( Opposite( x_2 ) );
+        end );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1[i_1], Range( alpha_1 ), Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Source( deduped_3_1 ), CertainColumns( AsHomalgMatrix( deduped_3_1 ), [ deduped_1_1 + 1 .. deduped_1_1 + deduped_2_1[i_1] ] ), List( S_1, Opposite )[i_1] ) );
+end
+########
+        
+    ;
+    
+    ##
     AddComponentOfMorphismIntoDirectSum( cat,
         
 ########
@@ -265,6 +282,23 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.ComponentOfMorphismIntoDirectSum :=
+        
+########
+function ( cat_1, alpha_1, S_1, i_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := Opposite( alpha_1 );
+    deduped_2_1 := List( S_1, function ( x_2 )
+            return AsInteger( Opposite( x_2 ) );
+        end );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), S_1[i_1], Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), List( S_1, Opposite )[i_1], CertainRows( AsHomalgMatrix( deduped_3_1 ), [ deduped_1_1 + 1 .. deduped_1_1 + deduped_2_1[i_1] ] ), Range( deduped_3_1 ) ) );
+end
+########
+        
+    ;
     
     ##
     AddDirectSum( cat,
@@ -425,6 +459,23 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.InjectionOfCofactorOfDirectSumWithGivenDirectSum :=
+        
+########
+function ( cat_1, objects_1, k_1, P_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_2_1 := List( objects_1, function ( x_2 )
+            return AsInteger( Opposite( x_2 ) );
+        end );
+    deduped_1_1 := deduped_2_1[k_1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( P_1 ), UnionOfRows( deduped_3_1, deduped_1_1, [ HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ] ), List( objects_1, Opposite )[k_1] ) );
+end
+########
+        
+    ;
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
@@ -598,12 +649,12 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := Opposite( alpha_1 );
     deduped_3_1 := OppositeCategory( cat_1 );
     deduped_2_1 := SyzygiesOfColumns( AsHomalgMatrix( deduped_4_1 ) );
-    morphism_attr_1_1 := deduped_2_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Opposite, AsCapCategoryObject( deduped_3_1, NumberColumns( deduped_2_1 ) ) ), Source( alpha_1 ), Opposite, AsCapCategoryMorphism( deduped_3_1, Range( deduped_4_1 ), morphism_attr_1_1, AsCapCategoryObject( deduped_3_1, NumberColumns( morphism_attr_1_1 ) ) ) );
+    deduped_1_1 := AsCapCategoryObject( deduped_3_1, NumberColumns( deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Opposite, deduped_1_1 ), Source( alpha_1 ), Opposite, AsCapCategoryMorphism( deduped_3_1, Range( deduped_4_1 ), deduped_2_1, deduped_1_1 ) );
 end
 ########
         
@@ -777,6 +828,23 @@ end
 ########
         
     , 100 );
+    
+    ##
+    cat!.cached_precompiled_functions.ProjectionInFactorOfDirectSumWithGivenDirectSum :=
+        
+########
+function ( cat_1, objects_1, k_1, P_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_2_1 := List( objects_1, function ( x_2 )
+            return AsInteger( Opposite( x_2 ) );
+        end );
+    deduped_1_1 := deduped_2_1[k_1];
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, objects_1[k_1], Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), List( objects_1, Opposite )[k_1], UnionOfColumns( deduped_3_1, deduped_1_1, [ HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_3_1 ) ] ), Opposite( P_1 ) ) );
+end
+########
+        
+    ;
     
     ##
     AddSimplifyRange( cat,

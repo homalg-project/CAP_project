@@ -137,6 +137,13 @@ InstallMethod( AddCapOperation,
     
     Add( category!.added_functions.( function_name ), func_to_install );
     
+    # if a function for which a cached precompiled function exists is overwritten, drop the cached precompiled function
+    if IsBound( category!.cached_precompiled_functions.( function_name ) ) then
+        
+        Unbind( category!.cached_precompiled_functions.( function_name ) );
+        
+    fi;
+    
     replaced_filter_list := CAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS( record.filter_list, category );
     
     ## Nr arguments sanity check

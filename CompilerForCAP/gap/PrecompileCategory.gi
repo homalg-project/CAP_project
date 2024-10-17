@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, transitively_needed_other_packages, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters, current_string, compiled_tree, compiled_func, function_string, number_of_occurrences_in_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
+  local cat1, cat2, cat, transitively_needed_other_packages, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters, current_string, compiled_tree, reversibly_compiled_tree, reversibly_compiled_func, reversibly_compiled_func_string, fully_compiled_tree, fully_compiled_func, fully_compiled_func_string, number_of_occurrences_in_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -143,23 +143,38 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         compiled_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( cat, function_name );
         
-        compiled_tree := CAP_JIT_INTERNAL_POST_PROCESSED_TREE( compiled_tree, cat );
+        # post-processing only reversible optimizations
+        reversibly_compiled_tree := CAP_JIT_INTERNAL_POST_PROCESSED_TREE( compiled_tree, cat, false );
         
         # change names of arguments
-        compiled_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID(
-            compiled_tree,
-            compiled_tree.id,
-            Concatenation( current_rec.input_arguments_names, compiled_tree.nams{[ compiled_tree.narg + 1 .. Length( compiled_tree.nams ) ]} )
+        reversibly_compiled_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID(
+            reversibly_compiled_tree,
+            reversibly_compiled_tree.id,
+            Concatenation( current_rec.input_arguments_names, reversibly_compiled_tree.nams{[ reversibly_compiled_tree.narg + 1 .. Length( reversibly_compiled_tree.nams ) ]} )
         );
         
-        compiled_func := ENHANCED_SYNTAX_TREE_CODE( compiled_tree );
+        reversibly_compiled_func := ENHANCED_SYNTAX_TREE_CODE( reversibly_compiled_tree );
         
-        function_string := CapJitPrettyPrintFunction( compiled_func );
+        reversibly_compiled_func_string := CapJitPrettyPrintFunction( reversibly_compiled_func );
         
-        if PositionSublist( function_string, "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_" ) <> fail then
+        # post-processing with irreversible optimizations
+        fully_compiled_tree := CAP_JIT_INTERNAL_POST_PROCESSED_TREE( compiled_tree, cat, true );
+        
+        # change names of arguments
+        fully_compiled_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID(
+            fully_compiled_tree,
+            fully_compiled_tree.id,
+            Concatenation( current_rec.input_arguments_names, fully_compiled_tree.nams{[ fully_compiled_tree.narg + 1 .. Length( fully_compiled_tree.nams ) ]} )
+        );
+        
+        fully_compiled_func := ENHANCED_SYNTAX_TREE_CODE( fully_compiled_tree );
+        
+        fully_compiled_func_string := CapJitPrettyPrintFunction( fully_compiled_func );
+        
+        if PositionSublist( fully_compiled_func_string, "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_" ) <> fail then
             
             # COVERAGE_IGNORE_NEXT_LINE
-            Error( "Could not get rid of all global variables, see <function_string>. You should use compiler_hints.category_attribute_names." );
+            Error( "Could not get rid of all global variables, see <fully_compiled_func_string>. You should use compiler_hints.category_attribute_names." );
             
         fi;
         
@@ -168,7 +183,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
             if not IsEmpty(
                     CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
-                        compiled_func,
+                        fully_compiled_func,
                         RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ),
                         2,
                         CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS,
@@ -194,14 +209,14 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "bool" then
             
-            if number_of_occurrences_in_string( function_string, "CreateCapCategoryObjectWithAttributes" ) + number_of_occurrences_in_string( function_string, "AsCapCategoryObject" ) > 0 then
+            if number_of_occurrences_in_string( fully_compiled_func_string, "CreateCapCategoryObjectWithAttributes" ) + number_of_occurrences_in_string( fully_compiled_func_string, "AsCapCategoryObject" ) > 0 then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
                 Display( Concatenation( "WARNING: Could not eliminate `CreateCapCategoryObjectWithAttributes` or `AsCapCategoryObject` while precompiling ", function_name, "." ) );
                 
             fi;
             
-            if number_of_occurrences_in_string( function_string, "CreateCapCategoryMorphismWithAttributes" ) + number_of_occurrences_in_string( function_string, "AsCapCategoryMorphism" ) > 0 then
+            if number_of_occurrences_in_string( fully_compiled_func_string, "CreateCapCategoryMorphismWithAttributes" ) + number_of_occurrences_in_string( fully_compiled_func_string, "AsCapCategoryMorphism" ) > 0 then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
                 Display( Concatenation( "WARNING: Could not eliminate `CreateCapCategoryMorphismWithAttributes` or `AsCapCategoryMorphism` while precompiling ", function_name, "." ) );
@@ -212,7 +227,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "object" and ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "CreateCapCategoryObjectWithAttributes" ) + number_of_occurrences_in_string( function_string, "AsCapCategoryObject" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) then
+            if number_of_occurrences_in_string( fully_compiled_func_string, "CreateCapCategoryObjectWithAttributes" ) + number_of_occurrences_in_string( fully_compiled_func_string, "AsCapCategoryObject" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_object" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
                 Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryObjectWithAttributes` or `AsCapCategoryObject` while precompiling ", function_name, "." ) );
@@ -223,7 +238,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "object" and ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "CreateCapCategoryMorphismWithAttributes" ) + number_of_occurrences_in_string( function_string, "AsCapCategoryMorphism" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) then
+            if number_of_occurrences_in_string( fully_compiled_func_string, "CreateCapCategoryMorphismWithAttributes" ) + number_of_occurrences_in_string( fully_compiled_func_string, "AsCapCategoryMorphism" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_object" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
                 Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryMorphismWithAttributes` or `AsCapCategoryMorphism` while precompiling ", function_name, "." ) );
@@ -234,7 +249,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "morphism" and ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "CreateCapCategoryObjectWithAttributes" ) + number_of_occurrences_in_string( function_string, "AsCapCategoryObject" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) then
+            if number_of_occurrences_in_string( fully_compiled_func_string, "CreateCapCategoryObjectWithAttributes" ) + number_of_occurrences_in_string( fully_compiled_func_string, "AsCapCategoryObject" ) > ValueOption( "number_of_objectified_objects_in_data_structure_of_morphism" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
                 Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryObjectWithAttributes` or `AsCapCategoryObject` while precompiling ", function_name, "." ) );
@@ -245,7 +260,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if current_rec.return_type = "morphism" and ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) <> fail then
             
-            if number_of_occurrences_in_string( function_string, "CreateCapCategoryMorphismWithAttributes" ) + number_of_occurrences_in_string( function_string, "AsCapCategoryMorphism" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) then
+            if number_of_occurrences_in_string( fully_compiled_func_string, "CreateCapCategoryMorphismWithAttributes" ) + number_of_occurrences_in_string( fully_compiled_func_string, "AsCapCategoryMorphism" ) > ValueOption( "number_of_objectified_morphisms_in_data_structure_of_morphism" ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
                 Display( Concatenation( "WARNING: Found more than the expected number of occurrences of `CreateCapCategoryMorphismWithAttributes` or `AsCapCategoryMorphism` while precompiling ", function_name, "." ) );
@@ -281,12 +296,29 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             "    Add", function_name, "( cat,\n",
             "        \n",
             "########\n",
-            function_string, "\n",
+            fully_compiled_func_string, "\n",
             "########\n",
             "        \n",
             "    , ", String( weight ), IsPrecompiledDerivation_string, " );\n"
         );
         output_string := Concatenation( output_string, current_string );
+        
+        if fully_compiled_func_string <> reversibly_compiled_func_string then
+            
+            current_string := Concatenation(
+                "    \n",
+                "    ##\n",
+                "    cat!.cached_precompiled_functions.", function_name, " :=\n",
+                "        \n",
+                "########\n",
+                reversibly_compiled_func_string, "\n",
+                "########\n",
+                "        \n",
+                "    ;\n"
+            );
+            output_string := Concatenation( output_string, current_string );
+            
+        fi;
         
     od;
     
