@@ -34,7 +34,7 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name);
         
-        cat!.compiled_functions_trees.(operation_name) := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, "without_post_processing", cat, info.filter_list, info.return_type );
+        cat!.compiled_functions_trees.(operation_name) := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, cat, info.filter_list, info.return_type );
         
     fi;
     

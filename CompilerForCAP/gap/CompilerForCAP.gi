@@ -75,6 +75,7 @@ InstallGlobalFunction( CapJitSetDebugLevel, function ( level )
 end );
 
 InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
+  local category, compiled_tree, type_signature;
     
     if IsOperation( func ) or IsKernelFunction( func ) then
         
@@ -83,39 +84,19 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
         
     fi;
     
-    return ENHANCED_SYNTAX_TREE_CODE( CallFuncList( CapJitCompiledFunctionAsEnhancedSyntaxTree, Concatenation( [ func, "with_post_processing" ], args ) ) );
-    
-end );
-
-CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
-
-BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
-
-InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, with_or_without_post_processing, args... )
-  local category, type_signature, filter_list, arguments_data_types, return_data_type, tree;
-    
-    Add( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK, func );
-    
-    if IsOperation( func ) or IsKernelFunction( func ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<func> is a operation or kernel function, this is not supported yet." );
-        
-    fi;
-    
-    category := fail;
-    
     if Length( args ) = 0 then
         
-        type_signature := fail;
+        category := fail;
+        
+        compiled_tree := CapJitCompiledFunctionAsEnhancedSyntaxTree( func, category );
         
     elif Length( args ) = 1 then
         
         if IsCapCategory( args[1] ) then
             
-            type_signature := fail;
-            
             category := args[1];
+            
+            compiled_tree := CapJitCompiledFunctionAsEnhancedSyntaxTree( func, category );
             
         elif IsList( args[1] ) and Length( args[1] ) = 2 and IsList( args[1][1] ) and Length( args[1][1] ) = NumberArgumentsFunction( func ) then
             
@@ -125,7 +106,13 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 
                 category := type_signature[1][1].category;
                 
+            else
+                
+                category := fail;
+                
             fi;
+            
+            compiled_tree := CapJitCompiledFunctionAsEnhancedSyntaxTree( func, category, type_signature );
             
         else
             
@@ -136,11 +123,50 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
     elif Length( args ) = 3 then
         
-        if IsCapCategory( args[1] ) and IsList( args[2] ) and Length( args[2] ) = NumberArgumentsFunction( func ) then
+        category := args[1];
+        
+        compiled_tree := CapJitCompiledFunctionAsEnhancedSyntaxTree( func, category, args[2], args[3] );
+        
+    else
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "CapJitCompiledFunction must be called with one, two, or four arguments" );
+        
+    fi;
+    
+    return ENHANCED_SYNTAX_TREE_CODE( CAP_JIT_INTERNAL_POST_PROCESSED_TREE( compiled_tree, category ) );
+    
+end );
+
+CAP_JIT_INTERNAL_COMPILATION_IN_PROGRESS := false;
+
+BindGlobal( "CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK", [ ] );
+
+InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, category, args... )
+  local type_signature, filter_list, arguments_data_types, return_data_type, tree;
+    
+    Add( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK, func );
+    
+    if IsOperation( func ) or IsKernelFunction( func ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<func> is a operation or kernel function, this is not supported yet." );
+        
+    fi;
+    
+    if Length( args ) = 0 then
+        
+        type_signature := fail;
+        
+    elif Length( args ) = 1 then
+        
+        type_signature := args[1];
+        
+    elif Length( args ) = 2 then
+        
+        if IsCapCategory( category ) and IsList( args[1] ) and Length( args[1] ) = NumberArgumentsFunction( func ) then
             
-            category := args[1];
-            
-            filter_list := args[2];
+            filter_list := args[1];
             
             if filter_list[1] <> "category" then
                 
@@ -151,7 +177,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             
             arguments_data_types := CAP_INTERNAL_GET_DATA_TYPES_FROM_STRINGS( filter_list, category );
             
-            return_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( args[3], category );
+            return_data_type := CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( args[2], category );
             
             if fail in arguments_data_types then
                 
@@ -173,7 +199,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     else
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "CapJitCompiledFunction(AsEnhancedSyntaxTree) must be called with one, two, or four arguments" );
+        Error( "CapJitCompiledFunctionAsEnhancedSyntaxTree must be called with two, three, or four arguments" );
         
     fi;
     
@@ -202,20 +228,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     Remove( CAP_JIT_INTERNAL_COMPILED_FUNCTIONS_STACK );
     
-    if with_or_without_post_processing = "without_post_processing" then
-        
-        return tree;
-        
-    elif with_or_without_post_processing = "with_post_processing" then
-        
-        return CAP_JIT_INTERNAL_POST_PROCESSED_TREE( tree, category );
-        
-    else
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "with_or_without_post_processing must be either \"without_post_processing\" or \"with_post_processing\" but is ", with_or_without_post_processing );
-        
-    fi;
+    return tree;
     
 end );
     

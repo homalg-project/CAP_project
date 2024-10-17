@@ -89,11 +89,11 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_POST_PROCESSED_TREE" );
 DeclareGlobalFunction( "CapJitCompiledFunction" );
 
 #! @Description
-#!   Like <Ref Func="CapJitCompiledFunction" />, but returns an enhanced syntax tree of the compiled function.
-#!   <A>func</A> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree.
-#!   <A>post_processing</A> can be one of the following strings:
-#!   * `"with_post_processing"`: The post-processing step, e.g. the application of compiler hints, is executed.
-#!   * `"without_post_processing"`: The post-processing step is not executed.
+#!   Similar to <Ref Func="CapJitCompiledFunction" /> with the following differences:
+#!   * an enhanced syntax tree is returned instead of a function,
+#!   * <A>func</A> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree,
+#!   * the second argument must always be a CAP category or `fail`,
+#!   * the post-processing step, e.g. the application of compiler hints, is *not* executed.
 #! @Returns a record
-#! @Arguments func, post_processing[, type_signature]
+#! @Arguments func, category[, type_signature]
 DeclareGlobalFunction( "CapJitCompiledFunctionAsEnhancedSyntaxTree" );
