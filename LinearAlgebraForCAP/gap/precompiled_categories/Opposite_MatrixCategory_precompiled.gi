@@ -191,12 +191,12 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := Opposite( alpha_1 );
     deduped_3_1 := OppositeCategory( cat_1 );
     deduped_2_1 := SyzygiesOfRows( AsHomalgMatrix( deduped_4_1 ) );
-    morphism_attr_1_1 := deduped_2_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Opposite, AsCapCategoryObject( deduped_3_1, NumberRows( deduped_2_1 ) ) ), Opposite, AsCapCategoryMorphism( deduped_3_1, AsCapCategoryObject( deduped_3_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, Source( deduped_4_1 ) ) );
+    deduped_1_1 := AsCapCategoryObject( deduped_3_1, NumberRows( deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), CreateCapCategoryObjectWithAttributes( cat_1, Opposite, deduped_1_1 ), Opposite, AsCapCategoryMorphism( deduped_3_1, deduped_1_1, deduped_2_1, Source( deduped_4_1 ) ) );
 end
 ########
         
@@ -598,12 +598,12 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := Opposite( alpha_1 );
     deduped_3_1 := OppositeCategory( cat_1 );
     deduped_2_1 := SyzygiesOfColumns( AsHomalgMatrix( deduped_4_1 ) );
-    morphism_attr_1_1 := deduped_2_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Opposite, AsCapCategoryObject( deduped_3_1, NumberColumns( deduped_2_1 ) ) ), Source( alpha_1 ), Opposite, AsCapCategoryMorphism( deduped_3_1, Range( deduped_4_1 ), morphism_attr_1_1, AsCapCategoryObject( deduped_3_1, NumberColumns( morphism_attr_1_1 ) ) ) );
+    deduped_1_1 := AsCapCategoryObject( deduped_3_1, NumberColumns( deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, Opposite, deduped_1_1 ), Source( alpha_1 ), Opposite, AsCapCategoryMorphism( deduped_3_1, Range( deduped_4_1 ), deduped_2_1, deduped_1_1 ) );
 end
 ########
         

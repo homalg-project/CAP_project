@@ -57,12 +57,12 @@ Display( ENHANCED_SYNTAX_TREE_CODE( CAP_JIT_INTERNAL_POST_PROCESSED_TREE(
     vec
 ) ) );
 #! function ( cat_1, alpha_1 )
-#!     local morphism_attr_1_1;
-#!     morphism_attr_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
+#!     local deduped_1_1;
+#!     deduped_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
 #!     return 
 #!      AsCapCategoryMorphism( cat_1, 
-#!        AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), 
-#!        morphism_attr_1_1, Source( alpha_1 ) );
+#!        AsCapCategoryObject( cat_1, NumberRows( deduped_1_1 ) ), deduped_1_1, 
+#!        Source( alpha_1 ) );
 #! end
 
 #! @EndExample

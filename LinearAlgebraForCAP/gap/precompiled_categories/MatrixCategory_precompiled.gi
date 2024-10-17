@@ -564,18 +564,17 @@ end
         
 ########
 function ( cat_1, a_1 )
-    local morphism_attr_1_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := AsInteger( a_1 );
-    deduped_5_1 := AsCapCategoryObject( cat_1, 1 );
-    deduped_4_1 := deduped_6_1 * deduped_6_1;
-    deduped_3_1 := HomalgIdentityMatrix( deduped_6_1, deduped_7_1 );
-    morphism_attr_1_1 := ConvertMatrixToRow( deduped_3_1 ) * (CertainRows( HomalgIdentityMatrix( deduped_4_1, deduped_7_1 ), List( [ 1 .. deduped_4_1 ], function ( i_2 )
-                  local deduped_1_2;
-                  deduped_1_2 := (i_2 - 1);
-                  return (REM_INT( deduped_1_2, deduped_6_1 ) * deduped_6_1 + QUO_INT( deduped_1_2, deduped_6_1 ) + 1);
-              end ) ) * ConvertMatrixToColumn( deduped_3_1 ));
-    return AsCapCategoryMorphism( cat_1, deduped_5_1, morphism_attr_1_1, deduped_5_1 );
+    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := UnderlyingRing( cat_1 );
+    deduped_5_1 := AsInteger( a_1 );
+    deduped_4_1 := AsCapCategoryObject( cat_1, 1 );
+    deduped_3_1 := deduped_5_1 * deduped_5_1;
+    deduped_2_1 := HomalgIdentityMatrix( deduped_5_1, deduped_6_1 );
+    return AsCapCategoryMorphism( cat_1, deduped_4_1, ConvertMatrixToRow( deduped_2_1 ) * (CertainRows( HomalgIdentityMatrix( deduped_3_1, deduped_6_1 ), List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                    local deduped_1_2;
+                    deduped_1_2 := (i_2 - 1);
+                    return (REM_INT( deduped_1_2, deduped_5_1 ) * deduped_5_1 + QUO_INT( deduped_1_2, deduped_5_1 ) + 1);
+                end ) ) * ConvertMatrixToColumn( deduped_2_1 )), deduped_4_1 );
 end
 ########
         
@@ -586,18 +585,17 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := AsCapCategoryObject( cat_1, 1 );
-    deduped_5_1 := AsInteger( Range( alpha_1 ) );
-    deduped_4_1 := deduped_5_1 * deduped_5_1;
-    deduped_3_1 := HomalgIdentityMatrix( deduped_5_1, deduped_7_1 );
-    morphism_attr_1_1 := ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Source( alpha_1 ) ), deduped_7_1 ) ) * (KroneckerMat( deduped_3_1, AsHomalgMatrix( alpha_1 ) ) * (CertainRows( HomalgIdentityMatrix( deduped_4_1, deduped_7_1 ), List( [ 1 .. deduped_4_1 ], function ( i_2 )
-                    local deduped_1_2;
-                    deduped_1_2 := (i_2 - 1);
-                    return (REM_INT( deduped_1_2, deduped_5_1 ) * deduped_5_1 + QUO_INT( deduped_1_2, deduped_5_1 ) + 1);
-                end ) ) * ConvertMatrixToColumn( deduped_3_1 )));
-    return AsCapCategoryMorphism( cat_1, deduped_6_1, morphism_attr_1_1, deduped_6_1 );
+    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := UnderlyingRing( cat_1 );
+    deduped_5_1 := AsCapCategoryObject( cat_1, 1 );
+    deduped_4_1 := AsInteger( Range( alpha_1 ) );
+    deduped_3_1 := deduped_4_1 * deduped_4_1;
+    deduped_2_1 := HomalgIdentityMatrix( deduped_4_1, deduped_6_1 );
+    return AsCapCategoryMorphism( cat_1, deduped_5_1, ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Source( alpha_1 ) ), deduped_6_1 ) ) * (KroneckerMat( deduped_2_1, AsHomalgMatrix( alpha_1 ) ) * (CertainRows( HomalgIdentityMatrix( deduped_3_1, deduped_6_1 ), List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                      local deduped_1_2;
+                      deduped_1_2 := (i_2 - 1);
+                      return (REM_INT( deduped_1_2, deduped_4_1 ) * deduped_4_1 + QUO_INT( deduped_1_2, deduped_4_1 ) + 1);
+                  end ) ) * ConvertMatrixToColumn( deduped_2_1 ))), deduped_5_1 );
 end
 ########
         
@@ -1112,9 +1110,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( AsHomalgMatrix( alpha_1 ) );
-    return AsCapCategoryMorphism( cat_1, Range( alpha_1 ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
+    local deduped_1_1;
+    deduped_1_1 := SyzygiesOfColumns( AsHomalgMatrix( alpha_1 ) );
+    return AsCapCategoryMorphism( cat_1, Range( alpha_1 ), deduped_1_1, AsCapCategoryObject( cat_1, NumberColumns( deduped_1_1 ) ) );
 end
 ########
         
@@ -1125,9 +1123,9 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( AsHomalgMatrix( alpha_1 ) );
-    return AsCapCategoryMorphism( cat_1, Range( alpha_1 ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
+    local deduped_1_1;
+    deduped_1_1 := SyzygiesOfColumns( AsHomalgMatrix( alpha_1 ) );
+    return AsCapCategoryMorphism( cat_1, Range( alpha_1 ), deduped_1_1, AsCapCategoryObject( cat_1, NumberColumns( deduped_1_1 ) ) );
 end
 ########
         
@@ -1776,10 +1774,9 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := AsCapCategoryObject( cat_1, 0 );
-    morphism_attr_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, deduped_2_1, morphism_attr_1_1, deduped_2_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsCapCategoryObject( cat_1, 0 );
+    return AsCapCategoryMorphism( cat_1, deduped_1_1, HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) ), deduped_1_1 );
 end
 ########
         
@@ -3292,10 +3289,9 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := AsCapCategoryObject( cat_1, 0 );
-    morphism_attr_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, deduped_2_1, morphism_attr_1_1, deduped_2_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsCapCategoryObject( cat_1, 0 );
+    return AsCapCategoryMorphism( cat_1, deduped_1_1, HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) ), deduped_1_1 );
 end
 ########
         
@@ -3537,10 +3533,9 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := AsCapCategoryObject( cat_1, 0 );
-    morphism_attr_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, deduped_2_1, morphism_attr_1_1, deduped_2_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsCapCategoryObject( cat_1, 0 );
+    return AsCapCategoryMorphism( cat_1, deduped_1_1, HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) ), deduped_1_1 );
 end
 ########
         
@@ -3551,10 +3546,9 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := AsCapCategoryObject( cat_1, 0 );
-    morphism_attr_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, deduped_2_1, morphism_attr_1_1, deduped_2_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsCapCategoryObject( cat_1, 0 );
+    return AsCapCategoryMorphism( cat_1, deduped_1_1, HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) ), deduped_1_1 );
 end
 ########
         
@@ -3565,10 +3559,9 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := AsCapCategoryObject( cat_1, 0 );
-    morphism_attr_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, deduped_2_1, morphism_attr_1_1, deduped_2_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsCapCategoryObject( cat_1, 0 );
+    return AsCapCategoryMorphism( cat_1, deduped_1_1, HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) ), deduped_1_1 );
 end
 ########
         
@@ -3613,9 +3606,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, Source( alpha_1 ) );
+    local deduped_1_1;
+    deduped_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( deduped_1_1 ) ), deduped_1_1, Source( alpha_1 ) );
 end
 ########
         
@@ -3626,9 +3619,9 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, Source( alpha_1 ) );
+    local deduped_1_1;
+    deduped_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( deduped_1_1 ) ), deduped_1_1, Source( alpha_1 ) );
 end
 ########
         
@@ -5231,18 +5224,17 @@ end
         
 ########
 function ( cat_1, a_1 )
-    local morphism_attr_1_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := AsInteger( a_1 );
-    deduped_5_1 := AsCapCategoryObject( cat_1, 1 );
-    deduped_4_1 := deduped_6_1 * deduped_6_1;
-    deduped_3_1 := HomalgIdentityMatrix( deduped_6_1, deduped_7_1 );
-    morphism_attr_1_1 := ConvertMatrixToRow( deduped_3_1 ) * CertainRows( HomalgIdentityMatrix( deduped_4_1, deduped_7_1 ), List( [ 1 .. deduped_4_1 ], function ( i_2 )
-                  local deduped_1_2;
-                  deduped_1_2 := (i_2 - 1);
-                  return (REM_INT( deduped_1_2, deduped_6_1 ) * deduped_6_1 + QUO_INT( deduped_1_2, deduped_6_1 ) + 1);
-              end ) ) * ConvertMatrixToColumn( deduped_3_1 );
-    return AsCapCategoryMorphism( cat_1, deduped_5_1, morphism_attr_1_1, deduped_5_1 );
+    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := UnderlyingRing( cat_1 );
+    deduped_5_1 := AsInteger( a_1 );
+    deduped_4_1 := AsCapCategoryObject( cat_1, 1 );
+    deduped_3_1 := deduped_5_1 * deduped_5_1;
+    deduped_2_1 := HomalgIdentityMatrix( deduped_5_1, deduped_6_1 );
+    return AsCapCategoryMorphism( cat_1, deduped_4_1, ConvertMatrixToRow( deduped_2_1 ) * CertainRows( HomalgIdentityMatrix( deduped_3_1, deduped_6_1 ), List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                    local deduped_1_2;
+                    deduped_1_2 := (i_2 - 1);
+                    return (REM_INT( deduped_1_2, deduped_5_1 ) * deduped_5_1 + QUO_INT( deduped_1_2, deduped_5_1 ) + 1);
+                end ) ) * ConvertMatrixToColumn( deduped_2_1 ), deduped_4_1 );
 end
 ########
         
@@ -5609,9 +5601,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, AsInteger( Range( alpha_1 ) ) - RowRankOfMatrix( AsHomalgMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, 0 ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
+    local deduped_1_1;
+    deduped_1_1 := HomalgZeroMatrix( 0, AsInteger( Range( alpha_1 ) ) - RowRankOfMatrix( AsHomalgMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, 0 ), deduped_1_1, AsCapCategoryObject( cat_1, NumberColumns( deduped_1_1 ) ) );
 end
 ########
         
@@ -5622,9 +5614,9 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := SyzygiesOfColumns( AsHomalgMatrix( alpha_1 ) );
-    return AsCapCategoryMorphism( cat_1, Range( alpha_1 ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
+    local deduped_1_1;
+    deduped_1_1 := SyzygiesOfColumns( AsHomalgMatrix( alpha_1 ) );
+    return AsCapCategoryMorphism( cat_1, Range( alpha_1 ), deduped_1_1, AsCapCategoryObject( cat_1, NumberColumns( deduped_1_1 ) ) );
 end
 ########
         
@@ -5635,10 +5627,10 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1;
+    local deduped_1_1, deduped_2_1;
     deduped_2_1 := SyzygiesOfColumns( AsHomalgMatrix( alpha_1 ) );
-    morphism_attr_1_1 := SafeRightDivide( HomalgIdentityMatrix( NumberColumns( deduped_2_1 ), UnderlyingRing( cat_1 ) ), deduped_2_1 );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, Range( alpha_1 ) );
+    deduped_1_1 := SafeRightDivide( HomalgIdentityMatrix( NumberColumns( deduped_2_1 ), UnderlyingRing( cat_1 ) ), deduped_2_1 );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( deduped_1_1 ) ), deduped_1_1, Range( alpha_1 ) );
 end
 ########
         
@@ -6367,10 +6359,9 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := AsCapCategoryObject( cat_1, 0 );
-    morphism_attr_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, deduped_2_1, morphism_attr_1_1, deduped_2_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsCapCategoryObject( cat_1, 0 );
+    return AsCapCategoryMorphism( cat_1, deduped_1_1, HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) ), deduped_1_1 );
 end
 ########
         
@@ -6392,18 +6383,17 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := UnderlyingRing( cat_1 );
-    deduped_6_1 := AsCapCategoryObject( cat_1, 1 );
-    deduped_5_1 := AsInteger( Source( alpha_1 ) );
-    deduped_4_1 := deduped_5_1 * deduped_5_1;
-    deduped_3_1 := HomalgIdentityMatrix( deduped_5_1, deduped_7_1 );
-    morphism_attr_1_1 := ConvertMatrixToRow( deduped_3_1 ) * CertainRows( HomalgIdentityMatrix( deduped_4_1, deduped_7_1 ), List( [ 1 .. deduped_4_1 ], function ( i_2 )
-                    local deduped_1_2;
-                    deduped_1_2 := (i_2 - 1);
-                    return (REM_INT( deduped_1_2, deduped_5_1 ) * deduped_5_1 + QUO_INT( deduped_1_2, deduped_5_1 ) + 1);
-                end ) ) * KroneckerMat( deduped_3_1, AsHomalgMatrix( alpha_1 ) ) * ConvertMatrixToColumn( deduped_3_1 );
-    return AsCapCategoryMorphism( cat_1, deduped_6_1, morphism_attr_1_1, deduped_6_1 );
+    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := UnderlyingRing( cat_1 );
+    deduped_5_1 := AsCapCategoryObject( cat_1, 1 );
+    deduped_4_1 := AsInteger( Source( alpha_1 ) );
+    deduped_3_1 := deduped_4_1 * deduped_4_1;
+    deduped_2_1 := HomalgIdentityMatrix( deduped_4_1, deduped_6_1 );
+    return AsCapCategoryMorphism( cat_1, deduped_5_1, ConvertMatrixToRow( deduped_2_1 ) * CertainRows( HomalgIdentityMatrix( deduped_3_1, deduped_6_1 ), List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                      local deduped_1_2;
+                      deduped_1_2 := (i_2 - 1);
+                      return (REM_INT( deduped_1_2, deduped_4_1 ) * deduped_4_1 + QUO_INT( deduped_1_2, deduped_4_1 ) + 1);
+                  end ) ) * KroneckerMat( deduped_2_1, AsHomalgMatrix( alpha_1 ) ) * ConvertMatrixToColumn( deduped_2_1 ), deduped_5_1 );
 end
 ########
         
@@ -6525,9 +6515,7 @@ end
         
 ########
 function ( cat_1, T_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, AsInteger( T_1 ), UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, 0 ), morphism_attr_1_1, T_1 );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, 0 ), HomalgZeroMatrix( 0, AsInteger( T_1 ), UnderlyingRing( cat_1 ) ), T_1 );
 end
 ########
         
@@ -6597,9 +6585,7 @@ end
         
 ########
 function ( cat_1, T_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, AsInteger( T_1 ), UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, 0 ), morphism_attr_1_1, T_1 );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, 0 ), HomalgZeroMatrix( 0, AsInteger( T_1 ), UnderlyingRing( cat_1 ) ), T_1 );
 end
 ########
         
@@ -6780,9 +6766,7 @@ end
         
 ########
 function ( cat_1, T_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgZeroMatrix( AsInteger( T_1 ), 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, T_1, morphism_attr_1_1, AsCapCategoryObject( cat_1, 0 ) );
+    return AsCapCategoryMorphism( cat_1, T_1, HomalgZeroMatrix( AsInteger( T_1 ), 0, UnderlyingRing( cat_1 ) ), AsCapCategoryObject( cat_1, 0 ) );
 end
 ########
         
@@ -6804,9 +6788,7 @@ end
         
 ########
 function ( cat_1, T_1 )
-    local morphism_attr_1_1;
-    morphism_attr_1_1 := HomalgZeroMatrix( AsInteger( T_1 ), 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, T_1, morphism_attr_1_1, AsCapCategoryObject( cat_1, 0 ) );
+    return AsCapCategoryMorphism( cat_1, T_1, HomalgZeroMatrix( AsInteger( T_1 ), 0, UnderlyingRing( cat_1 ) ), AsCapCategoryObject( cat_1, 0 ) );
 end
 ########
         
@@ -6904,10 +6886,9 @@ end
         
 ########
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := AsCapCategoryObject( cat_1, 0 );
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
-    return AsCapCategoryMorphism( cat_1, deduped_2_1, morphism_attr_1_1, deduped_2_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsCapCategoryObject( cat_1, 0 );
+    return AsCapCategoryMorphism( cat_1, deduped_1_1, HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) ), deduped_1_1 );
 end
 ########
         
