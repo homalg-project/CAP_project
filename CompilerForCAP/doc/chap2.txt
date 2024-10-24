@@ -542,10 +542,12 @@
   
   [1X2.5-2 CapJitAppliedCompilerHints[101X
   
-  [33X[1;0Y[29X[2XCapJitAppliedCompilerHints[102X( [3Xtree[103X, [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitAppliedCompilerHints[102X( [3Xtree[103X, [3Xcategory[103X, [3Xapply_irreversible_optimizations[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YApplies all compiler hints (see [14X1.6[114X) to [3Xtree[103X.[133X
+  [33X[0;0YApplies    compiler    hints    (see    [14X1.6[114X)    to    [3Xtree[103X.   Depending   on
+  [3Xapply_irreversible_optimizations[103X,   only  reversible  optimizations  or  all
+  optimizations are applied.[133X
   
   [1X2.5-3 CapJitReplacedGlobalVariablesByCategoryAttributes[101X
   

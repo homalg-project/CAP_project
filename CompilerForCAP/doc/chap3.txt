@@ -53,12 +53,12 @@
     [4X[25X>[125X [27X    vec[127X[104X
     [4X[25X>[125X [27X) ) );[127X[104X
     [4X[28Xfunction ( cat_1, alpha_1 )[128X[104X
-    [4X[28X    local morphism_attr_1_1;[128X[104X
-    [4X[28X    morphism_attr_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );[128X[104X
+    [4X[28X    local deduped_1_1;[128X[104X
+    [4X[28X    deduped_1_1 := SyzygiesOfRows( AsHomalgMatrix( alpha_1 ) );[128X[104X
     [4X[28X    return [128X[104X
     [4X[28X     AsCapCategoryMorphism( cat_1, [128X[104X
-    [4X[28X       AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), [128X[104X
-    [4X[28X       morphism_attr_1_1, Source( alpha_1 ) );[128X[104X
+    [4X[28X       AsCapCategoryObject( cat_1, NumberRows( deduped_1_1 ) ), deduped_1_1, [128X[104X
+    [4X[28X       Source( alpha_1 ) );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
