@@ -26,12 +26,12 @@ gap> ContinueCompilationAtCategory( vec );
 #
 gap> Display( CapJitCompiledFunction( func, vec ) );
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
+    local deduped_1_1;
+    deduped_1_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
        RankOfObject, 0 );
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
-       deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_1_1, 
+       deduped_1_1, UnderlyingMatrix, 
+       HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) ) );
 end
 
 #
@@ -54,12 +54,12 @@ gap> ContinueCompilationAtPrimitivelyInstalledOperationsOfCategory( vec );
 #
 gap> Display( CapJitCompiledFunction( func, vec ) );
 function ( cat_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
+    local deduped_1_1;
+    deduped_1_1 := CreateCapCategoryObjectWithAttributes( cat_1, 
        RankOfObject, 0 );
-    morphism_attr_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_2_1, 
-       deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_1_1, 
+       deduped_1_1, UnderlyingMatrix, 
+       HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) ) );
 end
 
 #
