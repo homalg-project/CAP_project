@@ -3,33 +3,10 @@
 #! @Section Terminal category
 
 #! @Example
-LoadPackage( "MonoidalCategories", ">= 2024.06-02", false );
+LoadPackage( "CAP", false );
 #! true
 T := TerminalCategoryWithSingleObject( );
 #! TerminalCategoryWithSingleObject( )
-Display( T );
-#! A CAP category with name TerminalCategoryWithSingleObject( ):
-#! 
-#! 80 primitive operations were used to derive 388 operations for this category \
-#! which algorithmically
-#! * IsCategoryWithDecidableColifts
-#! * IsCategoryWithDecidableLifts
-#! * IsEquippedWithHomomorphismStructure
-#! * IsLinearCategoryOverCommutativeRing
-#! * IsLeftClosedMonoidalCategory
-#! * IsLeftCoclosedMonoidalCategory
-#! * IsRigidSymmetricClosedMonoidalCategory
-#! * IsRigidSymmetricCoclosedMonoidalCategory
-#! * IsAbelianCategoryWithEnoughInjectives
-#! * IsAbelianCategoryWithEnoughProjectives
-#! and not yet algorithmically
-#! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
-#! and furthermore mathematically
-#! * IsLocallyOfFiniteInjectiveDimension
-#! * IsLocallyOfFiniteProjectiveDimension
-#! * IsSkeletalCategory
-#! * IsStrictMonoidalCategory
-#! * IsTerminalCategory
 i := InitialObject( T );
 #! <A zero object in TerminalCategoryWithSingleObject( )>
 t := TerminalObject( T );
