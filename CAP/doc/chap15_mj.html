@@ -231,31 +231,10 @@ Adding precompiled operations for Constructor2
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "MonoidalCategories", "&gt;= 2024.06-02", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithMultipleObjects( );</span>
 TerminalCategoryWithMultipleObjects( )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
-A CAP category with name TerminalCategoryWithMultipleObjects( ):
-
-86 primitive operations were used to derive 388 operations for this category \
-which algorithmically
-* IsCategoryWithDecidableColifts
-* IsCategoryWithDecidableLifts
-* IsEquippedWithHomomorphismStructure
-* IsLinearCategoryOverCommutativeRing
-* IsLeftClosedMonoidalCategory
-* IsLeftCoclosedMonoidalCategory
-* IsRigidSymmetricClosedMonoidalCategory
-* IsRigidSymmetricCoclosedMonoidalCategory
-* IsAbelianCategoryWithEnoughInjectives
-* IsAbelianCategoryWithEnoughProjectives
-and not yet algorithmically
-* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
-and furthermore mathematically
-* IsLocallyOfFiniteInjectiveDimension
-* IsLocallyOfFiniteProjectiveDimension
-* IsTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
 &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
@@ -329,14 +308,6 @@ b
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( mor_ab );</span>
 &lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorProduct( a, b );</span>
-&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
-TensorProductOnObjects
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = t;</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProduct( a, a ) = t;</span>
-true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := MorphismConstructor( a, "m", b );</span>
 &lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( m );</span>
@@ -417,33 +388,10 @@ b
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "MonoidalCategories", "&gt;= 2024.06-02", false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithSingleObject( );</span>
 TerminalCategoryWithSingleObject( )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
-A CAP category with name TerminalCategoryWithSingleObject( ):
-
-80 primitive operations were used to derive 388 operations for this category \
-which algorithmically
-* IsCategoryWithDecidableColifts
-* IsCategoryWithDecidableLifts
-* IsEquippedWithHomomorphismStructure
-* IsLinearCategoryOverCommutativeRing
-* IsLeftClosedMonoidalCategory
-* IsLeftCoclosedMonoidalCategory
-* IsRigidSymmetricClosedMonoidalCategory
-* IsRigidSymmetricCoclosedMonoidalCategory
-* IsAbelianCategoryWithEnoughInjectives
-* IsAbelianCategoryWithEnoughProjectives
-and not yet algorithmically
-* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
-and furthermore mathematically
-* IsLocallyOfFiniteInjectiveDimension
-* IsLocallyOfFiniteProjectiveDimension
-* IsSkeletalCategory
-* IsStrictMonoidalCategory
-* IsTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
 &lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
