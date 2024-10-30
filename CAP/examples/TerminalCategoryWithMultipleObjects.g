@@ -3,31 +3,10 @@
 #! @Section Terminal category
 
 #! @Example
-LoadPackage( "MonoidalCategories", ">= 2024.06-02", false );
+LoadPackage( "CAP", false );
 #! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
-Display( T );
-#! A CAP category with name TerminalCategoryWithMultipleObjects( ):
-#! 
-#! 86 primitive operations were used to derive 388 operations for this category \
-#! which algorithmically
-#! * IsCategoryWithDecidableColifts
-#! * IsCategoryWithDecidableLifts
-#! * IsEquippedWithHomomorphismStructure
-#! * IsLinearCategoryOverCommutativeRing
-#! * IsLeftClosedMonoidalCategory
-#! * IsLeftCoclosedMonoidalCategory
-#! * IsRigidSymmetricClosedMonoidalCategory
-#! * IsRigidSymmetricCoclosedMonoidalCategory
-#! * IsAbelianCategoryWithEnoughInjectives
-#! * IsAbelianCategoryWithEnoughProjectives
-#! and not yet algorithmically
-#! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
-#! and furthermore mathematically
-#! * IsLocallyOfFiniteInjectiveDimension
-#! * IsLocallyOfFiniteProjectiveDimension
-#! * IsTerminalCategory
 i := InitialObject( T );
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 t := TerminalObject( T );
@@ -101,14 +80,6 @@ Hom_ab[1] = mor_ab;
 #! true
 HomStructure( mor_ab );
 #! <A zero, identity morphism in TerminalCategoryWithSingleObject( )>
-t := TensorProduct( a, b );
-#! <A zero object in TerminalCategoryWithMultipleObjects( )>
-Display( t );
-#! TensorProductOnObjects
-a = t;
-#! false
-TensorProduct( a, a ) = t;
-#! true
 m := MorphismConstructor( a, "m", b );
 #! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
 Display( m );
