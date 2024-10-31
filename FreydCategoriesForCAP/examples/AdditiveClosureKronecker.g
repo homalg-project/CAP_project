@@ -30,4 +30,10 @@ Display( T );
 #! [1,2]: <4>
 #! [1,3]: <6>
 #! [1,4]: <8>
+Display( Range( T ) );
+#! A formal direct sum consisting of 4 objects.
+#! *
+#! *
+#! *
+#! *
 #! @EndExample
