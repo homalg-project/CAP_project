@@ -14,13 +14,13 @@ B := "B" / T;
 AT := AdditiveClosure( T );
 #! AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
 ABAA := [ A, B, A, A ] / AT;
-#! <An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by 4 underlying objects>
 BAB := [ B, A, B ] / AT;
-#! <An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by 3 underlying objects>
 AB := [ A, B ] / AT;
-#! <An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by 2 underlying objects>
 mor_AB := MorphismConstructor( A, "A -> B", B );
 #! <A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
@@ -36,51 +36,52 @@ alpha := MorphismConstructor( ABAA,
     [ mor_AB, id_A, mor_AB ],
     [ mor_AB, id_A, mor_AB ] ],
     BAB );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 4 x 3 matrix of underlying morphisms>
 IsWellDefined( alpha );
 #! true
 alpha2 := TensorProduct( alpha, alpha );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 16 x 9 matrix of underlying morphisms>
 IsWellDefined( alpha2 );
 #! true
 IsIsomorphism( alpha2 );
 #! true
 left := LeftUnitor( ABAA );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 4 x 4 matrix of underlying morphisms>
 IsWellDefined( left );
 #! true
 left_inv := LeftUnitorInverse( ABAA );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 4 x 4 matrix of underlying morphisms>
-IsOne( PreCompose( left, left_inv ) );
+PreCompose( left, left_inv ) = IdentityMorphism( Source( left ) );
 #! true
-IsOne( PreCompose( left_inv, left ) );
+PreCompose( left_inv, left ) = IdentityMorphism( Range( left ) );
 #! true
 right := RightUnitor( BAB );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 3 x 3 matrix of underlying morphisms>
 IsWellDefined( right );
 #! true
 right_inv := RightUnitorInverse( BAB );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 3 x 3 matrix of underlying morphisms>
-IsOne( PreCompose( right, right_inv ) );
+PreCompose( right, right_inv ) = IdentityMorphism( Source( right ) );
 #! true
-IsOne( PreCompose( right_inv, right ) );
+PreCompose( right_inv, right ) = IdentityMorphism( Range( right ) );
 #! true
 aslr := AssociatorLeftToRight( AB, BAB, AB );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 12 x 12 matrix of underlying morphisms>
 IsWellDefined( aslr );
 #! true
 asrl := AssociatorRightToLeft( AB, BAB, AB );
-#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+#! <A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
 #!  defined by a 12 x 12 matrix of underlying morphisms>
-IsOne( PreCompose( aslr, asrl ) );
+PreCompose( aslr, asrl ) = IdentityMorphism( Source( aslr ) );
 #! true
-IsOne( PreCompose( asrl, aslr ) );
+PreCompose( asrl, aslr ) = IdentityMorphism( Range( aslr ) );
 #! true
 #! @EndExample
+
