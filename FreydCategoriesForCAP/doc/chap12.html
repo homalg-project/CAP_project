@@ -103,23 +103,22 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();</span>
-Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingAsCategory( Q );</span>
 RingAsCategory( Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AdditiveClosure( R );</span>
 AdditiveClosure( RingAsCategory( Q ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := TensorUnit( A );</span>
-&lt;An object in AdditiveClosure( RingAsCategory( Q ) )
+&lt;An object in AdditiveClosure( RingAsCategory( Q ) )\
  defined by 1 underlying objects&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := [ [ 1 / R, 2 / R ] ] / A;</span>
-&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )
+&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )\
  defined by a 1 x 2 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor2 := [ [ 3 / R, 4 / R ] ] / A;</span>
-&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )
+&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )\
  defined by a 1 x 2 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TensorProduct( mor1, mor2 );</span>
-&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )
+&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )\
  defined by a 1 x 4 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A 1 x 4 matrix with entries in RingAsCategory( Q )
@@ -149,13 +148,13 @@ TerminalCategoryWithMultipleObjects( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AT := AdditiveClosure( T );</span>
 AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ABAA := [ A, B, A, A ] / AT;</span>
-&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by 4 underlying objects&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BAB := [ B, A, B ] / AT;</span>
-&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by 3 underlying objects&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AB := [ A, B ] / AT;</span>
-&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by 2 underlying objects&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor_AB := MorphismConstructor( A, "A -&gt; B", B );</span>
 &lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
@@ -171,52 +170,52 @@ AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ mor_AB, id_A, mor_AB ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ mor_AB, id_A, mor_AB ] ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    BAB );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 4 x 3 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha2 := TensorProduct( alpha, alpha );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 16 x 9 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha2 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( alpha2 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">left := LeftUnitor( ABAA );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 4 x 4 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( left );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">left_inv := LeftUnitorInverse( ABAA );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 4 x 4 matrix of underlying morphisms&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( left, left_inv ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( left, left_inv ) = IdentityMorphism( Source( left ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( left_inv, left ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( left_inv, left ) = IdentityMorphism( Range( left ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right := RightUnitor( BAB );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 3 x 3 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( right );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_inv := RightUnitorInverse( BAB );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 3 x 3 matrix of underlying morphisms&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( right, right_inv ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( right, right_inv ) = IdentityMorphism( Source( right ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( right_inv, right ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( right_inv, right ) = IdentityMorphism( Range( right ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aslr := AssociatorLeftToRight( AB, BAB, AB );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 12 x 12 matrix of underlying morphisms&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( aslr );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">asrl := AssociatorRightToLeft( AB, BAB, AB );</span>
-&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
  defined by a 12 x 12 matrix of underlying morphisms&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( aslr, asrl ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( aslr, asrl ) = IdentityMorphism( Source( aslr ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( asrl, aslr ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( asrl, aslr ) = IdentityMorphism( Range( aslr ) );</span>
 true
 </pre></div>
 

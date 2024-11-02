@@ -7,23 +7,22 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
-    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27XR := RingAsCategory( Q );[127X[104X
     [4X[28XRingAsCategory( Q )[128X[104X
     [4X[25Xgap>[125X [27XA := AdditiveClosure( R );[127X[104X
     [4X[28XAdditiveClosure( RingAsCategory( Q ) )[128X[104X
     [4X[25Xgap>[125X [27Xu := TensorUnit( A );[127X[104X
-    [4X[28X<An object in AdditiveClosure( RingAsCategory( Q ) )[128X[104X
+    [4X[28X<An object in AdditiveClosure( RingAsCategory( Q ) )\[128X[104X
     [4X[28X defined by 1 underlying objects>[128X[104X
     [4X[25Xgap>[125X [27Xmor1 := [ [ 1 / R, 2 / R ] ] / A;[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( RingAsCategory( Q ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( RingAsCategory( Q ) )\[128X[104X
     [4X[28X defined by a 1 x 2 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27Xmor2 := [ [ 3 / R, 4 / R ] ] / A;[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( RingAsCategory( Q ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( RingAsCategory( Q ) )\[128X[104X
     [4X[28X defined by a 1 x 2 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XT := TensorProduct( mor1, mor2 );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( RingAsCategory( Q ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( RingAsCategory( Q ) )\[128X[104X
     [4X[28X defined by a 1 x 4 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA 1 x 4 matrix with entries in RingAsCategory( Q )[128X[104X
@@ -52,13 +51,13 @@
     [4X[25Xgap>[125X [27XAT := AdditiveClosure( T );[127X[104X
     [4X[28XAdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
     [4X[25Xgap>[125X [27XABAA := [ A, B, A, A ] / AT;[127X[104X
-    [4X[28X<An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by 4 underlying objects>[128X[104X
     [4X[25Xgap>[125X [27XBAB := [ B, A, B ] / AT;[127X[104X
-    [4X[28X<An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by 3 underlying objects>[128X[104X
     [4X[25Xgap>[125X [27XAB := [ A, B ] / AT;[127X[104X
-    [4X[28X<An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by 2 underlying objects>[128X[104X
     [4X[25Xgap>[125X [27Xmor_AB := MorphismConstructor( A, "A -> B", B );[127X[104X
     [4X[28X<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>[128X[104X
@@ -74,52 +73,52 @@
     [4X[25X>[125X [27X    [ mor_AB, id_A, mor_AB ],[127X[104X
     [4X[25X>[125X [27X    [ mor_AB, id_A, mor_AB ] ],[127X[104X
     [4X[25X>[125X [27X    BAB );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 4 x 3 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( alpha );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha2 := TensorProduct( alpha, alpha );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 16 x 9 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( alpha2 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsIsomorphism( alpha2 );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xleft := LeftUnitor( ABAA );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 4 x 4 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( left );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xleft_inv := LeftUnitorInverse( ABAA );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 4 x 4 matrix of underlying morphisms>[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( left, left_inv ) );[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( left, left_inv ) = IdentityMorphism( Source( left ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( left_inv, left ) );[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( left_inv, left ) = IdentityMorphism( Range( left ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xright := RightUnitor( BAB );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 3 x 3 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( right );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xright_inv := RightUnitorInverse( BAB );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 3 x 3 matrix of underlying morphisms>[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( right, right_inv ) );[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( right, right_inv ) = IdentityMorphism( Source( right ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( right_inv, right ) );[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( right_inv, right ) = IdentityMorphism( Range( right ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xaslr := AssociatorLeftToRight( AB, BAB, AB );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 12 x 12 matrix of underlying morphisms>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( aslr );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xasrl := AssociatorRightToLeft( AB, BAB, AB );[127X[104X
-    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[28X<A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\[128X[104X
     [4X[28X defined by a 12 x 12 matrix of underlying morphisms>[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( aslr, asrl ) );[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( aslr, asrl ) = IdentityMorphism( Source( aslr ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( asrl, aslr ) );[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( asrl, aslr ) = IdentityMorphism( Range( aslr ) );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
