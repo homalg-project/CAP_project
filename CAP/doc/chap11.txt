@@ -54,9 +54,6 @@
   [30X    [33X[0;6Y[10Xlist_of_operations_to_install[110X  (mandatory):  a  list  of  names of [5XCAP[105X
         operations which should be installed for the category[133X
   
-  [30X    [33X[0;6Y[10Xoperation_weights[110X   (optional):   a   record   mapping  operations  in
-        [10Xlist_of_operations_to_install[110X to their weights[133X
-  
   [30X    [33X[0;6Y[10Xis_computable[110X    (optional):   whether   the   category   can   decide
         [10XIsCongruentForMorphisms[110X[133X
   
@@ -64,6 +61,8 @@
         lists in inputs to operations of limits and colimits[133X
   
   [30X    [33X[0;6Y[10Xunderlying_category_getter_string[110X (optional): see below[133X
+  
+  [30X    [33X[0;6Y[10Xunderlying_category[110X (optional): see below[133X
   
   [30X    [33X[0;6Y[10Xunderlying_object_getter_string[110X (optional): see below[133X
   
@@ -89,10 +88,12 @@
   or  functions  which  accept the category and the name of a [5XCAP[105X operation of
   the   corresponding  [10Xreturn_type[110X.  Values  for  return  types  occuring  for
   operations  in  [10Xlist_of_operations_to_install[110X  are  mandatory. The functions
-  must return strings, which (after some replacements described below) will be
-  evaluated and added as an installation of the corresponding operation to the
-  category.  The  value  [10X"default"[110X  chooses a suitable default string, see the
-  implementation  for  details.  The following placeholders may be used in the
+  must  return either strings or pairs of a string and an integer: The strings
+  (after  some  replacements  described  below) will be evaluated and added as
+  installations  of  the corresponding operations to the category with weights
+  given  by  the integer (if provided). The value [10X"default"[110X chooses a suitable
+  default  string  (see  the  implementation for details) and gets the weights
+  from  [10Xunderlying_category[110X.  The  following  placeholders  may be used in the
   strings and are replaced automatically:[133X
   
   [30X    [33X[0;6Y[10Xoperation_name[110X will be replaced by the name of the operation[133X
