@@ -967,6 +967,14 @@ CapJitAddTypeSignature( "Concatenation", "any", function ( input_types )
     
 end );
 
+CapJitAddTypeSignature( "Union2", [ IsList, IsList ], function ( input_types )
+    
+    Assert( 0, input_types[1] = input_types[2] );
+    
+    return input_types[1];
+    
+end );
+
 CapJitAddTypeSignature( "Difference", [ IsList, IsList ], function ( input_types )
     
     Assert( 0, input_types[1] = input_types[2] );
