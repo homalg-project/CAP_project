@@ -100,20 +100,20 @@ gap> d := "d" / T;;
 gap> u := InitialObject( T );;
 
 #
-gap> a_product_b := Coproduct( a, b );;
-gap> c_product_d := Coproduct( c, d );;
+gap> a_coproduct_b := Coproduct( a, b );;
+gap> c_coproduct_d := Coproduct( c, d );;
 
 #
-gap> hom_ab := CoexponentialOnObjects( a, b );;
-gap> hom_cd := CoexponentialOnObjects( c, d );;
+gap> cohom_ab := CoexponentialOnObjects( a, b );;
+gap> cohom_cd := CoexponentialOnObjects( c, d );;
 
 #
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
-gap> gamma := MorphismConstructor( a_product_b, "f_abu", u );;
-gap> delta := MorphismConstructor( c_product_d, "f_cdu", u );;
-gap> epsilon := MorphismConstructor( u, "f_uhomab", hom_ab );;
-gap> zeta := MorphismConstructor( u, "f_uhomcd", hom_cd );;
+gap> gamma := MorphismConstructor( u, "f_abu", a_coproduct_b );;
+gap> delta := MorphismConstructor( u, "f_cdu", c_coproduct_d );;
+gap> epsilon := MorphismConstructor( cohom_ab, "f_uhomab", u );;
+gap> zeta := MorphismConstructor( cohom_cd, "f_uhomcd", u );;
 
 #
 gap> CocartesianCoclosedCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
@@ -123,20 +123,20 @@ gap> CocartesianCoclosedCategoriesTest( T, opposite_primitive, a, b, c, d, alpha
 gap> z := ZeroObject( T );;
 
 #
-gap> z_product_a := Coproduct( z, a );;
-gap> a_product_z := Coproduct( a, z );;
+gap> z_coproduct_a := Coproduct( z, a );;
+gap> a_coproduct_z := Coproduct( a, z );;
 
 #
-gap> hom_za := CoexponentialOnObjects( z, a );;
-gap> hom_az := CoexponentialOnObjects( a, z );;
+gap> cohom_za := CoexponentialOnObjects( z, a );;
+gap> cohom_az := CoexponentialOnObjects( a, z );;
 
 #
 gap> alpha := MorphismConstructor( z, "f_za", a );;
 gap> beta := MorphismConstructor( a, "f_az", z );;
-gap> gamma := MorphismConstructor( z_product_a, "f_zau", u );;
-gap> delta := MorphismConstructor( a_product_z, "f_azu", u );;
-gap> epsilon := MorphismConstructor( u, "f_uhomza", hom_za );;
-gap> zeta := MorphismConstructor( u, "f_uhomaz", hom_az );;
+gap> gamma := MorphismConstructor( u, "f_zau", z_coproduct_a );;
+gap> delta := MorphismConstructor( u, "f_azu", a_coproduct_z );;
+gap> epsilon := MorphismConstructor( cohom_za, "f_uhomza", u );;
+gap> zeta := MorphismConstructor( cohom_az, "f_uhomaz", u );;
 
 #
 gap> CocartesianCoclosedCategoriesTest( T, opposite, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
