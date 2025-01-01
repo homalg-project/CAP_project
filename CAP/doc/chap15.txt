@@ -186,11 +186,11 @@
     [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
     [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
-    [4X[28XInitialObject[128X[104X
+    [4X[28XInitialObject(  )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
-    [4X[28XTerminalObject[128X[104X
+    [4X[28XTerminalObject(  )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
-    [4X[28XZeroObject[128X[104X
+    [4X[28XZeroObject(  )[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
@@ -283,7 +283,7 @@
     [4X[25Xgap>[125X [27XDisplay( id );[127X[104X
     [4X[28Xa[128X[104X
     [4X[28X|[128X[104X
-    [4X[28X| IdentityMorphism[128X[104X
+    [4X[28X| IdentityMorphism( a )[128X[104X
     [4X[28Xv[128X[104X
     [4X[28Xa[128X[104X
     [4X[25Xgap>[125X [27Xm = id;[127X[104X
@@ -295,7 +295,7 @@
     [4X[25Xgap>[125X [27XDisplay( zero );[127X[104X
     [4X[28Xa[128X[104X
     [4X[28X|[128X[104X
-    [4X[28X| ZeroMorphism[128X[104X
+    [4X[28X| ZeroMorphism( a, a )[128X[104X
     [4X[28Xv[128X[104X
     [4X[28Xa[128X[104X
     [4X[25Xgap>[125X [27Xid = zero;[127X[104X
@@ -307,7 +307,7 @@
     [4X[25Xgap>[125X [27XDisplay( lift );[127X[104X
     [4X[28Xa[128X[104X
     [4X[28X|[128X[104X
-    [4X[28X| Lift[128X[104X
+    [4X[28X| Lift( m, n )[128X[104X
     [4X[28Xv[128X[104X
     [4X[28Xa[128X[104X
     [4X[25Xgap>[125X [27XIsColiftable( m, n );[127X[104X
@@ -317,7 +317,7 @@
     [4X[25Xgap>[125X [27XDisplay( colift );[127X[104X
     [4X[28Xb[128X[104X
     [4X[28X|[128X[104X
-    [4X[28X| Colift[128X[104X
+    [4X[28X| Colift( m, n )[128X[104X
     [4X[28Xv[128X[104X
     [4X[28Xb[128X[104X
     [4X[25Xgap>[125X [27XDirectProduct( T, [ ] );[127X[104X

@@ -239,11 +239,11 @@ TerminalCategoryWithMultipleObjects( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
 &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
-InitialObject
+InitialObject(  )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
-TerminalObject
+TerminalObject(  )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
-ZeroObject
+ZeroObject(  )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
@@ -336,7 +336,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( id );</span>
 a
 |
-| IdentityMorphism
+| IdentityMorphism( a )
 v
 a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m = id;</span>
@@ -348,7 +348,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( zero );</span>
 a
 |
-| ZeroMorphism
+| ZeroMorphism( a, a )
 v
 a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id = zero;</span>
@@ -360,7 +360,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( lift );</span>
 a
 |
-| Lift
+| Lift( m, n )
 v
 a
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( m, n );</span>
@@ -370,7 +370,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( colift );</span>
 b
 |
-| Colift
+| Colift( m, n )
 v
 b
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( T, [ ] );</span>
