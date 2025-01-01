@@ -14,11 +14,11 @@ t := TerminalObject( T );
 z := ZeroObject( T );
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( i );
-#! InitialObject
+#! InitialObject(  )
 Display( t );
-#! TerminalObject
+#! TerminalObject(  )
 Display( z );
-#! ZeroObject
+#! ZeroObject(  )
 IsIdenticalObj( i, z );
 #! false
 IsIdenticalObj( t, z );
@@ -111,7 +111,7 @@ id := IdentityMorphism( a );
 Display( id );
 #! a
 #! |
-#! | IdentityMorphism
+#! | IdentityMorphism( a )
 #! v
 #! a
 m = id;
@@ -123,7 +123,7 @@ zero := ZeroMorphism( a, a );
 Display( zero );
 #! a
 #! |
-#! | ZeroMorphism
+#! | ZeroMorphism( a, a )
 #! v
 #! a
 id = zero;
@@ -135,7 +135,7 @@ lift := Lift( m, n );
 Display( lift );
 #! a
 #! |
-#! | Lift
+#! | Lift( m, n )
 #! v
 #! a
 IsColiftable( m, n );
@@ -145,7 +145,7 @@ colift := Colift( m, n );
 Display( colift );
 #! b
 #! |
-#! | Colift
+#! | Colift( m, n )
 #! v
 #! b
 DirectProduct( T, [ ] );
