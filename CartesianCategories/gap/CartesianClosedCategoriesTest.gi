@@ -784,8 +784,8 @@ InstallGlobalFunction( "CartesianClosedCategoriesTest",
             coev_ab := CartesianLeftCoevaluationMorphism( a, b );
             coev_ba := CartesianLeftCoevaluationMorphism( b, a );
             
-            id_a_tensor_b := IdentityMorphism( DirectProduct( a, b ) );
-            id_b_tensor_a := IdentityMorphism( DirectProduct( b, a ) );
+            id_a_tensor_b := IdentityMorphism( BinaryDirectProduct( cat, a, b ) );
+            id_b_tensor_a := IdentityMorphism( BinaryDirectProduct( cat, b, a ) );
             
             # Adjoint( a × b → a × b )  ==  a → Exp( b, a × b )
             tensor_to_exp_adjunction_on_id_a_tensor_b := DirectProductToExponentialLeftAdjunctMorphism( a, b, id_a_tensor_b );
