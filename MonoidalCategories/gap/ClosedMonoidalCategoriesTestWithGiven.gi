@@ -62,8 +62,8 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTestWithGiven",
             hom_bc_x_a := TensorProductOnObjects( hom_bc, a );
             hom_da_x_c := TensorProductOnObjects( hom_da, c );
             
-            cohom_ad := InternalHomOnObjects( a_op, d_op );
-            cohom_cb := InternalHomOnObjects( c_op, b_op );
+            cohom_ad := InternalCoHomOnObjects( a_op, d_op );
+            cohom_cb := InternalCoHomOnObjects( c_op, b_op );
             
             cohom_ad_x_c := TensorProductOnObjects( cohom_ad, c_op );
             cohom_cb_x_a := TensorProductOnObjects( cohom_cb, a_op );

@@ -56,8 +56,8 @@ InstallGlobalFunction( "LeftCoclosedMonoidalCategoriesTestWithGiven",
             #
             ##################################################
             
-            cohom_bc := LeftInternalHomOnObjects( b, c );
-            cohom_da := LeftInternalHomOnObjects( d, a );
+            cohom_bc := LeftInternalCoHomOnObjects( b, c );
+            cohom_da := LeftInternalCoHomOnObjects( d, a );
             
             cohom_bc_x_d := TensorProductOnObjects( cohom_bc, d );
             cohom_da_x_b := TensorProductOnObjects( cohom_da, b );
