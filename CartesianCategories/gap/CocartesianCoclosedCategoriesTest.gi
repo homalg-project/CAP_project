@@ -716,8 +716,8 @@ InstallGlobalFunction( "CocartesianCoclosedCategoriesTest",
             coca_coev_ab := CocartesianLeftCoevaluationMorphism( a, b );
             coca_coev_ba := CocartesianLeftCoevaluationMorphism( b, a );
             
-            id_a_tensor_b := IdentityMorphism( Coproduct( a, b ) );
-            id_b_tensor_a := IdentityMorphism( Coproduct( b, a ) );
+            id_a_tensor_b := IdentityMorphism( BinaryCoproduct( cat, a, b ) );
+            id_b_tensor_a := IdentityMorphism( BinaryCoproduct( cat, b, a ) );
             
             # Adjoint( a ⊔ b → a ⊔ b )  ==  Coexp( a ⊔ b, b ) → a
             tensor_to_coexp_adjunction_on_id_a_tensor_b := CoproductToCoexponentialLeftAdjunctMorphism( a, b, id_a_tensor_b );

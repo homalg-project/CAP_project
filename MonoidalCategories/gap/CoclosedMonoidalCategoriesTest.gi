@@ -713,8 +713,8 @@ InstallGlobalFunction( "CoclosedMonoidalCategoriesTest",
             cocl_coev_ab := CoclosedMonoidalLeftCoevaluationMorphism( a, b );
             cocl_coev_ba := CoclosedMonoidalLeftCoevaluationMorphism( b, a );
             
-            id_a_tensor_b := IdentityMorphism( TensorProductOnObjects( a, b ) );
-            id_b_tensor_a := IdentityMorphism( TensorProductOnObjects( b, a ) );
+            id_a_tensor_b := IdentityMorphism( TensorProductOnObjects( cat, a, b ) );
+            id_b_tensor_a := IdentityMorphism( TensorProductOnObjects( cat, b, a ) );
             
             # Adjoint( a ⊗ b → a ⊗ b )  ==  Cohom( a ⊗ b, b ) → a
             tensor_to_cohom_adjunction_on_id_a_tensor_b := TensorProductToInternalCoHomLeftAdjunctMorphism( a, b, id_a_tensor_b );

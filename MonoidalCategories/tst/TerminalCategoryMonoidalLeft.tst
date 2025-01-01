@@ -200,7 +200,7 @@ gap> beta := MorphismConstructor( c, "f_cd", d );;
 gap> gamma := MorphismConstructor( u, "f_uab", a_product_b );;
 gap> delta := MorphismConstructor( u, "f_ucd", c_product_d );;
 gap> epsilon := MorphismConstructor( cohom_ab, "f_cohomabu", u );;
-gap> zeta := MorphismConstructor( cohom_cd, "f_cohomcdu", u);;
+gap> zeta := MorphismConstructor( cohom_cd, "f_cohomcdu", u );;
 
 #
 gap> LeftCoclosedMonoidalCategoriesTest( T, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
