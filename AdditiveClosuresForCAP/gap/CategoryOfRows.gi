@@ -311,9 +311,13 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
   
   function( category )
-    local ring, is_defined_over_field;
+    local ring, is_defined_over_bezout_domain, is_defined_over_field;
     
     ring := UnderlyingRing( category );
+    
+    is_defined_over_bezout_domain :=
+      HasIsBezoutRing( ring ) and IsBezoutRing( ring ) and
+      HasIsIntegralDomain( ring ) and IsIntegralDomain( ring );
     
     is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
     
@@ -735,29 +739,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
-    ## Abelian case
+    ## Pre-Abelian case
     
-    if is_defined_over_field then
-      
-      ## enough projectives & injectives
-      
-      ##
-      AddSomeProjectiveObject( category, { cat, obj } -> obj );
-      
-      ##
-      AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
-      
-      ##
-      AddIsProjective( category, { cat, obj } -> true, 1 );
-      
-      ##
-      AddSomeInjectiveObject( category, { cat, obj } -> obj );
-      
-      ##
-      AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
-      
-      ##
-      AddIsInjective( category, { cat, obj } -> true, 1 );
+    if is_defined_over_bezout_domain then
       
       ##
       AddKernelObject( category,
@@ -801,6 +785,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
       end );
       
+    fi;
+    
+    ## Abelian case
+    
+    if is_defined_over_field then
+      
       ##
       AddImageObject( category,
         function( cat, morphism )
@@ -839,6 +829,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
       end );
         
+      ## enough projectives & injectives
+      
+      ##
+      AddSomeProjectiveObject( category, { cat, obj } -> obj );
+      
+      ##
+      AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
+      
+      ##
+      AddIsProjective( category, { cat, obj } -> true, 1 );
+      
+      ##
+      AddSomeInjectiveObject( category, { cat, obj } -> obj );
+      
+      ##
+      AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
+      
+      ##
+      AddIsInjective( category, { cat, obj } -> true, 1 );
+      
       ##
       AddSomeReductionBySplitEpiSummand( category,
         function( cat, alpha )
