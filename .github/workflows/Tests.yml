@@ -50,6 +50,7 @@ jobs:
           cp ./CAP_project/dev/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 -vv https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
+          git clone --depth 1 -vv https://github.com/homalg-project/ToricVarieties.git
       - name: Build documentation of packages which we might want to reference
         run: |
           # keep this in sync with `dev/.release`
