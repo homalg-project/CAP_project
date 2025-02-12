@@ -217,8 +217,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia: MonoidalPreComposeMorphism is very slow because multiplication of matrices of Rationals{BigInt} is very slow, see https://github.com/homalg-project/MatricesForHomalg.jl/issues/48[127X[104X
-    [4X[25X>[125X [27Xpre_compose := MonoidalPreComposeMorphism( a, b, c );[127X[104X
+    [4X[25Xgap>[125X [27Xpre_compose := MonoidalPreComposeMorphism( a, b, c );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xpost_compose := MonoidalPostComposeMorphism( a, b, c );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
