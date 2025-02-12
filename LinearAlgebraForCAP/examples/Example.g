@@ -215,7 +215,6 @@ d := MatrixCategoryObject( vec, 1 );
 #! @EndExample
 
 #! @Example
-# @drop_example_in_Julia: MonoidalPreComposeMorphism is very slow because multiplication of matrices of Rationals{BigInt} is very slow, see https://github.com/homalg-project/MatricesForHomalg.jl/issues/48
 pre_compose := MonoidalPreComposeMorphism( a, b, c );
 #! <A morphism in Category of matrices over Q>
 post_compose := MonoidalPostComposeMorphism( a, b, c );
