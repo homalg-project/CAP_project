@@ -4,6 +4,8 @@
 
 #! @Example
 
+#! #@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
+
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 LoadPackage( "RingsForHomalg", false );
@@ -43,5 +45,6 @@ ReadPackage(
 );;
 Opposite_MatrixCategory_precompiled( homalg_field );
 #! Opposite( Category of matrices over Dummy homalg field 1 )
+#! #@fi
 
 #! @EndExample
