@@ -4,6 +4,8 @@
 
 #! @Example
 
+#! #@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
+
 LoadPackage( "FreydCategoriesForCAP", false );
 #! true
 
@@ -65,5 +67,6 @@ CapJitPrecompileCategoryAndCompareResult(
 
 CoFreydCategory( dummy )!.precompiled_functions_added;
 #! true
+#! #@fi
 
 #! @EndExample
