@@ -92,8 +92,7 @@ InstallMethod( AddCapOperation,
         if category!.operations.( function_name ).type = "primitive_installation" then
             
             # Display a warning when overwriting primitive operations with derivations.
-            # There are some derivations of weight 1 for thin categories which overwrite methods installed by CategoryConstructor with weight 100.
-            if type <> "primitive_installation" and weight <> 1 then
+            if type <> "primitive_installation" then
                 
                 Print( "WARNING: Overwriting a function for ", function_name, " primitively added to \"", category_name, "\" with a derivation." );
                 
