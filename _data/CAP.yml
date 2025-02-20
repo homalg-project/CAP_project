@@ -1,7 +1,7 @@
 name: CAP
-version: "2025.02-01"
+version: "2025.02-02"
 license: "GPL-2.0-or-later"
-date: 2025-02-17
+date: 2025-02-20
 description: |
     Categories, Algorithms, Programming
 
@@ -46,11 +46,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2025.02-01/CAP-2025.02-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2025.02-02/CAP-2025.02-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2025.02-01/CAP-2025.02-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2025.02-02/CAP-2025.02-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2025.02-01/CAP-2025.02-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2025.02-02/CAP-2025.02-02-manual.pdf
 
 abstract: |
     <span class="pkgname">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.
@@ -62,10 +62,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GPSZ17</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S., Skartsæterhagen, Ø. and Zickgraf, F.</b>,
+    [<span class='BibKey'>GPSZ20</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S., Skartsæterhagen, Ø. and Zickgraf, F.</b>,
      <i class='BibTitle'>CAP, Categories, Algorithms, Programming,
-             Version 2025.02-01</i>
-     (<span class='BibYear'>2-17</span>)<br />
+             Version 2025.02-02</i>
+     (<span class='BibYear'>2-20</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CAP">https://homalg-project.github.io/pkg/CAP</a></span>.
     </p>
@@ -76,13 +76,13 @@ bibtex: |
       author =           {Gutsche,  S.  and  Posur,  S. and Skarts{\ae}terhagen,
                           {\O}. and Zickgraf, F.},
       title =            {{CAP},    {Categories,    Algorithms,    Programming},
-                          {V}ersion 2025.02\texttt{\symbol{45}}01},
+                          {V}ersion 2025.02\texttt{\symbol{45}}02},
       month =            {5\texttt{\symbol{45}}},
-      year =             {2\texttt{\symbol{45}}17},
+      year =             {2\texttt{\symbol{45}}20},
       note =             {GAP package},
       howpublished =     {\href       {https://homalg-project.github.io/pkg/CAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary {}{}{}\texttt{CAP}}},
-      printedkey =       {GPSZ17}
+      printedkey =       {GPSZ20}
     }
 
