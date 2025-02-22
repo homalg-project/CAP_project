@@ -991,6 +991,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     if is_possible_to_install( "Lift, Colift",
                                [ "SolveLinearSystemInAbCategory" ] ) then
         
+        SetIsCategoryWithDecidableLifts( category, true );
+        SetIsCategoryWithDecidableColifts( category, true );
+        
         ##
         AddLift( category,
                  
