@@ -4,7 +4,7 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "ToricSheaves", "gap/ToricSheaves.gd");
+ReadPackage( "ToricSheaves", "gap/ToricSheaves.gd" );
 
 ReadPackage( "ToricSheaves", "gap/GlobalSectionFunctors.gd" );
 

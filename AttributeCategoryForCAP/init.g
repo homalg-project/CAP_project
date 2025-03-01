@@ -4,4 +4,4 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "AttributeCategoryForCAP", "gap/AttributeCategory.gd");
+ReadPackage( "AttributeCategoryForCAP", "gap/AttributeCategory.gd" );
