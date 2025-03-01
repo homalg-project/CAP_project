@@ -6,10 +6,10 @@
     [1X Implementation of complexes, cocomplexes and filtered objects for CAP [101X
   
   
-                                   2024.09-01
+                                   2025.02-01
   
   
-                                 4 October 2024
+                                  1 March 2025
   
   
                                 Sebastian Posur
