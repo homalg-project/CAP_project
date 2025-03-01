@@ -5,7 +5,7 @@
 #
 ReadPackage( "ToricSheaves", "gap/ZeroPartOfModule.gi" );
 
-ReadPackage( "ToricSheaves", "gap/ToricSheaves.gi");
+ReadPackage( "ToricSheaves", "gap/ToricSheaves.gi" );
 
 ReadPackage( "ToricSheaves", "gap/GlobalSectionFunctors.gi" );
 

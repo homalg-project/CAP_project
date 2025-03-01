@@ -1,3 +1,3 @@
 
-ReadPackage( "HomologicalAlgebraForCAP", "gap/HomologicalAlgebraAlgorithms.gd");
+ReadPackage( "HomologicalAlgebraForCAP", "gap/HomologicalAlgebraAlgorithms.gd" );
 

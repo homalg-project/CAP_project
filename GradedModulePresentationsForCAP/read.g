@@ -3,12 +3,12 @@
 #
 # Reading the implementation part of the package.
 #
-ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentations.gi");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentations.gi" );
 
-ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentationObjects.gi");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentationObjects.gi" );
 
-ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentationMorphism.gi");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModulePresentationMorphism.gi" );
 
-ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModuleFunctors.gi");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/GradedModuleFunctors.gi" );
 
-ReadPackage( "GradedModulePresentationsForCAP", "gap/LiftPresentationTransformation.gi");
+ReadPackage( "GradedModulePresentationsForCAP", "gap/LiftPresentationTransformation.gi" );

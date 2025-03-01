@@ -4,8 +4,8 @@
 # Reading the implementation part of the package.
 #
 
-ReadPackage( "ComplexesAndFilteredObjectsForCAP", "gap/ZFunctors.gi");
+ReadPackage( "ComplexesAndFilteredObjectsForCAP", "gap/ZFunctors.gi" );
 
-ReadPackage( "ComplexesAndFilteredObjectsForCAP", "gap/CocomplexCategory.gi");
+ReadPackage( "ComplexesAndFilteredObjectsForCAP", "gap/CocomplexCategory.gi" );
 
-ReadPackage( "ComplexesAndFilteredObjectsForCAP", "gap/FilteredObjects.gi");
+ReadPackage( "ComplexesAndFilteredObjectsForCAP", "gap/FilteredObjects.gi" );
