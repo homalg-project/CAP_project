@@ -1,7 +1,7 @@
 name: ToricSheaves
-version: "2024.04-01"
+version: "2025.02-01"
 license: "GPL-2.0-or-later"
-date: 2024-04-04
+date: 2025-03-01
 description: |
     Toric sheaves as Serre quotients
 
@@ -43,11 +43,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ToricSheaves/PackageIn
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2024.04-01/ToricSheaves-2024.04-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2025.02-01/ToricSheaves-2025.02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2024.04-01/ToricSheaves-2024.04-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2025.02-01/ToricSheaves-2025.02-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2024.04-01/ToricSheaves-2024.04-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2025.02-01/ToricSheaves-2025.02-01-manual.pdf
 
 abstract: |
 
@@ -56,10 +56,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Gut04</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
+    [<span class='BibKey'>Gut01</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
      <i class='BibTitle'>ToricSheaves, Toric sheaves as Serre quotients,
-             Version 2024.04-01</i>
-     (<span class='BibYear'>4-04</span>)<br />
+             Version 2025.02-01</i>
+     (<span class='BibYear'>3-01</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ToricSheaves">https://homalg-project.github.io/pkg/ToricSheaves</a></span>.
     </p>
@@ -68,16 +68,16 @@ citeas: |
 bibtex: |
     @misc{ ToricSheaves,
       author =           {Gutsche, S.},
-      title =            {{ToricSheaves},  Toric  sheaves  as  Serre  quotients,
-                          {V}ersion 2024.04\texttt{\symbol{45}}01},
-      month =            {4\texttt{\symbol{45}}},
-      year =             {4\texttt{\symbol{45}}04},
+      title =            {{ToricSheaves},  {Toric  sheaves  as Serre quotients},
+                          {V}ersion 2025.02\texttt{\symbol{45}}01},
+      month =            {5\texttt{\symbol{45}}},
+      year =             {3\texttt{\symbol{45}}01},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ToricSheaves}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ToricSheaves}}},
-      printedkey =       {Gut04}
+      printedkey =       {Gut01}
     }
 

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ToricSheaves",
 Subtitle := "Toric sheaves as Serre quotients",
-Version := "2024.04-01",
-Date := "2024-04-04",
+Version := "2025.02-01",
+Date := "2025-03-01",
 License := "GPL-2.0-or-later",
 
 Persons := [
