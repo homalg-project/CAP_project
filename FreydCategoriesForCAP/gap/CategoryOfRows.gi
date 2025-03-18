@@ -1430,6 +1430,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
 ##
 ####################################
 
+#= comment for Julia
 ##
 InstallMethod( Display,
                [ IsCategoryOfRowsMorphism ],
@@ -1453,6 +1454,7 @@ InstallMethod( Display,
     Display( StringMutable( category_of_rows_morphism ) );
     
 end );
+# =#
 
 ##
 InstallMethod( String,
@@ -1465,6 +1467,7 @@ InstallMethod( String,
                           " of rank ", String( RankOfObject( category_of_rows_object ) ) );
     
 end );
+
 ##
 InstallMethod( ViewString,
                [ IsCategoryOfRowsObject ],
@@ -1485,6 +1488,7 @@ InstallMethod( DisplayString,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsCategoryOfRowsObject ],
@@ -1495,7 +1499,6 @@ InstallMethod( LaTeXOutput,
     
 end );
 
-#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsCategoryOfRowsMorphism ],
