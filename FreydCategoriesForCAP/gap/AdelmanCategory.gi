@@ -1375,6 +1375,7 @@ end );
 ##
 ####################################
 
+#= comment for Julia
 ##
 InstallMethod( Display,
                [ IsAdelmanCategoryMorphism ],
@@ -1386,7 +1387,6 @@ InstallMethod( Display,
     Display( UnderlyingMorphism( morphism ) );
     
 end );
-
 
 ##
 InstallMethod( Display,
@@ -1406,7 +1406,6 @@ InstallMethod( Display,
     
 end );
 
-#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsAdelmanCategoryObject ],
