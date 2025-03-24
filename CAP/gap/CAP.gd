@@ -204,6 +204,20 @@ DeclareProperty( "IsCategoryWithZeroObject", IsCapCategory );
 AddCategoricalProperty( [ "IsCategoryWithZeroObject", "IsCategoryWithZeroObject" ] );
 
 #! @Description
+#!  The property of the category <A>C</A> having all equalizers.
+#! @Arguments C
+DeclareProperty( "IsCategoryWithEqualizers", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCategoryWithEqualizers", "IsCategoryWithCoequalizers" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> having all coequalizers.
+#! @Arguments C
+DeclareProperty( "IsCategoryWithCoequalizers", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCategoryWithCoequalizers", "IsCategoryWithEqualizers" ] );
+
+#! @Description
 #!  The property of the category <A>C</A> being enriched over a commutative regular semigroup.
 #! @Arguments C
 DeclareProperty( "IsEnrichedOverCommutativeRegularSemigroup", IsCapCategory );

@@ -66,6 +66,24 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithZeroObject := Concaten
     ]
 );
 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithEqualizers := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    [
+        "Equalizer",
+        "EmbeddingOfEqualizerWithGivenEqualizer",
+        "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+    ]
+);
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithCoequalizers := Concatenation(
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    [
+        "Coequalizer",
+        "ProjectionOntoCoequalizerWithGivenCoequalizer",
+        "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+    ]
+);
+
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEnrichedOverCommutativeRegularSemigroup := Concatenation(
     CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
     [
