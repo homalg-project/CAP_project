@@ -42,10 +42,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory :=
   DuplicateFreeList(
           Concatenation(
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory,
-                  [ "Equalizer",
-                    "EmbeddingOfEqualizerWithGivenEqualizer",
-                    "UniversalMorphismIntoEqualizerWithGivenEqualizer",
-                    ] ) );
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithEqualizers ) );
 
 #! @Description
 #!  The property of the category <A>C</A> being finite cocomplete.
@@ -58,10 +55,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory :=
   DuplicateFreeList(
           Concatenation(
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory,
-                  [ "Coequalizer",
-                    "ProjectionOntoCoequalizerWithGivenCoequalizer",
-                    "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                    ] ) );
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithCoequalizers ) );
 
 #! @Description
 #!  The property of the category <A>C</A> being finite bicomplete.
