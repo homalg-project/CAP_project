@@ -58,6 +58,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X860EB7977F78EE3F">1.2-19 IsAbelianCategoryWithEnoughInjectives</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87AA6D6282FD1C02">1.2-20 IsLocallyOfFiniteProjectiveDimension</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7EDD2B4386ABE96E">1.2-21 IsLocallyOfFiniteInjectiveDimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87434CEF86BC38D4">1.2-22 ListOfDefiningOperations</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7ABF649E831D4D8E">1.3 <span class="Heading">Constructor</span></a>
 </span>
@@ -101,7 +102,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X851D0435816DDB40">1.6-1 CanCompute</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X820DD63180AE4BAB">1.6-2 OperationWeight</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78A3DEF28359DF73">1.6-3 MissingOperationsForConstructivenessOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AA6C5857FB663EB">1.6-3 MissingOperationsForConstructivenessOfCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DB3D2BD8792ABBC">1.7 <span class="Heading">Well-Definedness of Cells</span></a>
 </span>
@@ -432,6 +433,15 @@
 
 <p>The property of the category <var class="Arg">C</var> being locally of finite injective dimension.</p>
 
+<p><a id="X87434CEF86BC38D4" name="X87434CEF86BC38D4"></a></p>
+
+<h5>1.2-22 ListOfDefiningOperations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfDefiningOperations</code>( <var class="Arg">categorical_property</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The input <var class="Arg">categorical_property</var> is the name of a valid categorical property. The output is the list of names of the CAP operations needed to make this categorical property constructive.</p>
+
 <p><a id="X7ABF649E831D4D8E" name="X7ABF649E831D4D8E"></a></p>
 
 <h4>1.3 <span class="Heading">Constructor</span></h4>
@@ -678,7 +688,7 @@
 
 <p>Returns the weight of the operation currently installed as <var class="Arg">op_name</var> in <var class="Arg">cat</var>.</p>
 
-<p><a id="X78A3DEF28359DF73" name="X78A3DEF28359DF73"></a></p>
+<p><a id="X7AA6C5857FB663EB" name="X7AA6C5857FB663EB"></a></p>
 
 <h5>1.6-3 MissingOperationsForConstructivenessOfCategory</h5>
 

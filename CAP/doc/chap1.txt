@@ -271,6 +271,15 @@
   
   [33X[0;0YThe property of the category [3XC[103X being locally of finite injective dimension.[133X
   
+  [1X1.2-22 ListOfDefiningOperations[101X
+  
+  [33X[1;0Y[29X[2XListOfDefiningOperations[102X( [3Xcategorical_property[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  input [3Xcategorical_property[103X is the name of a valid categorical property.
+  The  output  is  the list of names of the CAP operations needed to make this
+  categorical property constructive.[133X
+  
   
   [1X1.3 [33X[0;0YConstructor[133X[101X
   

@@ -977,11 +977,12 @@
   [2XLiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-6 
   [2XLinearCombinationOfMorphisms[102X, for IsCapCategoryObject, IsList, IsList, IsCapCategoryObject 3.10-9 
   [2XListCAPPrepareFunctions[102X 7.5-3 
+  [2XListOfDefiningOperations[102X 1.2-22 
   [2XListWithKeys[102X 9.2-46 
   [2XMakeDerivationGraph[102X, for IsDenseList 8.3-2 
   [2XMakeOperationWeightList[102X, for IsCapCategory, IsDerivedMethodGraph 8.4-2 
   [2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-10 
-  [2XMissingOperationsForConstructivenessOfCategory[102X, for IsCapCategory, IsString 1.6-3 
+  [2XMissingOperationsForConstructivenessOfCategory[102X, for IsCapCategory, IsStringRep 1.6-3 
   [2XModelingCategory[102X, for IsCapCategory 12.5-1 
   [2XModelingMorphism[102X, for IsCapCategory, IsCapCategoryMorphism 12.6-5 
   [2XModelingObject[102X, for IsCapCategory, IsCapCategoryObject 12.6-3 
