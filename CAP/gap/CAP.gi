@@ -693,24 +693,24 @@ end );
 
 ##
 InstallMethod( MissingOperationsForConstructivenessOfCategory,
-               [ IsCapCategory, IsString ],
+               [ IsCapCategory, IsStringRep ],
                
-  function( category, string )
-    local category_property, result_list;
+  function( category, categorical_property )
+    local defining_operation, result_list;
     
-    if not IsBound( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(string) ) then
+    if not IsBound( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(categorical_property) ) then
       
-      Error( "the given string is not a property of a category" );
+      Error( "there is no valid categorical property with the name \"", categorical_property, "\", maybe it is defined in an unloaded package\n" );
     
     fi;
     
     result_list := [];
     
-    for category_property in CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(string) do
+    for defining_operation in ListOfDefiningOperations( categorical_property ) do
       
-      if not CanCompute( category, category_property ) then
+      if not CanCompute( category, defining_operation ) then
         
-        Add( result_list, category_property );
+        Add( result_list, defining_operation );
         
       fi;
       

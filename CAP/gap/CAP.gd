@@ -625,7 +625,7 @@ DeclareGlobalFunction( "ListPrimitivelyInstalledOperationsOfCategory" );
 #! @Returns a list
 #! @Arguments C,s
 DeclareOperation( "MissingOperationsForConstructivenessOfCategory",
-                  [ IsCapCategory, IsString ] );
+                  [ IsCapCategory, IsStringRep ] );
 
 #############################################
 ##
