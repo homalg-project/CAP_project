@@ -11,7 +11,8 @@ op := Opposite( vec );;
 Display( ListKnownCategoricalProperties( op ) );
 #! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",\
 #!  "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\
-#!  "IsBraidedMonoidalCategory", "IsCategoryWithInitialObject",\
+#!  "IsBraidedMonoidalCategory", "IsCategoryWithCoequalizers", \
+#!  "IsCategoryWithEqualizers", "IsCategoryWithInitialObject", \
 #!  "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",\
 #!  "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",\
 #!  "IsEnrichedOverCommutativeRegularSemigroup",\

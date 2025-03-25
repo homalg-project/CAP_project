@@ -41,6 +41,10 @@ InstallTrueMethod( IsAbCategory, IsAdditiveCategory );
 
 InstallTrueMethod( IsAdditiveCategory, IsPreAbelianCategory );
 
+InstallTrueMethod( IsCategoryWithEqualizers, IsPreAbelianCategory );
+
+InstallTrueMethod( IsCategoryWithCoequalizers, IsPreAbelianCategory );
+
 InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
 
 InstallTrueMethod( IsAbelianCategory, IsAbelianCategoryWithEnoughProjectives );
