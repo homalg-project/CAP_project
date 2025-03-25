@@ -44,7 +44,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     list_of_maximal_algorithmic_properties := MaximalPropertiesWithRegardToImplication( list_of_algorithmic_properties );
     
-    StableSortBy( list_of_maximal_algorithmic_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
+    StableSortBy( list_of_maximal_algorithmic_properties, p -> Length( ListOfDefiningOperations( p ) ) );
     
     if not IsEmpty( list_of_maximal_algorithmic_properties ) then
         
@@ -62,7 +62,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     list_of_maximal_not_yet_algorithmic_properties := MaximalPropertiesWithRegardToImplication( list_of_not_yet_algorithmic_properties );
     
-    StableSortBy( list_of_maximal_not_yet_algorithmic_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
+    StableSortBy( list_of_maximal_not_yet_algorithmic_properties, p -> Length( ListOfDefiningOperations( p ) ) );
     
     if not IsEmpty( list_of_maximal_not_yet_algorithmic_properties ) then
         

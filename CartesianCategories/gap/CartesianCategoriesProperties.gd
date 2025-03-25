@@ -21,7 +21,7 @@ AddCategoricalProperty( [ "IsStrictCartesianCategory", "IsStrictCocartesianCateg
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithTerminalObject,
+                  ListOfDefiningOperations( "IsCategoryWithTerminalObject" ),
                   [ "DirectProduct",
                     "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                     "UniversalMorphismIntoDirectProductWithGivenDirectProduct",

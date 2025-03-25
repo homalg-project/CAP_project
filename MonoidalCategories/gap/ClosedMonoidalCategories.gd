@@ -16,7 +16,7 @@ DeclareGlobalVariable( "CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory :=
   Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory,
+          ListOfDefiningOperations( "IsMonoidalCategory" ),
           [ "InternalHomOnObjects",
             "InternalHomOnMorphismsWithGivenInternalHoms",
             "ClosedMonoidalRightEvaluationMorphismWithGivenSource",

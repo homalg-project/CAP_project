@@ -305,6 +305,13 @@ AddCategoricalProperty( [ "IsLocallyOfFiniteInjectiveDimension", "IsLocallyOfFin
 DeclareAttribute( "TheoremRecord",
                   IsCapCategory, "mutable" );
 
+#! @Description
+#! The input <A>categorical_property</A> is the name of a valid categorical property.
+#! The output is the list of names of the CAP operations needed to make this categorical property constructive.
+#! @Returns a list
+#! @Arguments categorical_property
+DeclareGlobalFunction( "ListOfDefiningOperations" );
+
 ###################################
 ##
 #! @Section Constructor

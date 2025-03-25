@@ -16,7 +16,7 @@ DeclareGlobalVariable( "LEFT_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLeftCoclosedMonoidalCategory :=
   Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory,
+          ListOfDefiningOperations( "IsMonoidalCategory" ),
           [ "LeftInternalCoHomOnObjects",
             "LeftInternalCoHomOnMorphismsWithGivenLeftInternalCoHoms",
             "LeftCoclosedMonoidalEvaluationMorphismWithGivenRange",

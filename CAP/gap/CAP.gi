@@ -388,6 +388,14 @@ InstallMethod( TheoremRecord,
     
 end );
 
+##
+InstallGlobalFunction( ListOfDefiningOperations,
+  function( categorical_property )
+    
+    return DuplicateFreeList( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(categorical_property) );
+    
+end );
+
 #######################################
 ##
 ## Caching

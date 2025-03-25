@@ -6,7 +6,7 @@
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory  :=
   Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
+          ListOfDefiningOperations( "IsCapCategory" ),
           [ "TensorProductOnObjects",
             "TensorProductOnMorphismsWithGivenTensorProducts",
             "TensorUnit",

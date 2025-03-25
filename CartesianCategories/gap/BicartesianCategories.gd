@@ -16,20 +16,20 @@ AddCategoricalProperty( [ "IsBicartesianCategory", "IsBicartesianCategory" ] );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+                  ListOfDefiningOperations( "IsCartesianCategory" ),
+                  ListOfDefiningOperations( "IsCocartesianCategory" ) ) );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianClosedCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+                  ListOfDefiningOperations( "IsCartesianClosedCategory" ),
+                  ListOfDefiningOperations( "IsCocartesianCategory" ) ) );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianCoclosedCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory ) );
+                  ListOfDefiningOperations( "IsCocartesianCoclosedCategory" ),
+                  ListOfDefiningOperations( "IsCartesianCategory" ) ) );
 
 #! @Description
 #!  The property of the category <A>C</A> being finite complete.
@@ -41,8 +41,8 @@ AddCategoricalProperty( [ "IsFiniteCompleteCategory", "IsFiniteCocompleteCategor
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithEqualizers ) );
+                  ListOfDefiningOperations( "IsCartesianCategory" ),
+                  ListOfDefiningOperations( "IsCategoryWithEqualizers" ) ) );
 
 #! @Description
 #!  The property of the category <A>C</A> being finite cocomplete.
@@ -54,8 +54,8 @@ AddCategoricalProperty( [ "IsFiniteCocompleteCategory", "IsFiniteCompleteCategor
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithCoequalizers ) );
+                  ListOfDefiningOperations( "IsCocartesianCategory" ),
+                  ListOfDefiningOperations( "IsCategoryWithCoequalizers" ) ) );
 
 #! @Description
 #!  The property of the category <A>C</A> being finite bicomplete.
@@ -67,5 +67,5 @@ AddCategoricalProperty( [ "IsFiniteBicompleteCategory", "IsFiniteBicompleteCateg
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteBicompleteCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory ) );
+                  ListOfDefiningOperations( "IsFiniteCompleteCategory" ),
+                  ListOfDefiningOperations( "IsFiniteCocompleteCategory" ) ) );

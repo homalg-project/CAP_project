@@ -6,7 +6,7 @@
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory :=
   Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory,
+          ListOfDefiningOperations( "IsMonoidalCategory" ),
           [ "BraidingWithGivenTensorProducts",
             "BraidingInverseWithGivenTensorProducts"
             ] );

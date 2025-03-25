@@ -7,8 +7,8 @@
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
+                  ListOfDefiningOperations( "IsSymmetricMonoidalCategory" ),
+                  ListOfDefiningOperations( "IsCoclosedMonoidalCategory" ) ) );
 
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalCategory );
 
