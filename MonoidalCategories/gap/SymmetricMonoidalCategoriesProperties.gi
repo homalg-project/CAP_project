@@ -4,8 +4,7 @@
 # Implementations
 #
 
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory :=
-  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory;
+  ListOfDefiningOperations( "IsBraidedMonoidalCategory" );
 
 InstallTrueMethod( IsBraidedMonoidalCategory, IsSymmetricMonoidalCategory );

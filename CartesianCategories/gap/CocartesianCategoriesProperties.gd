@@ -21,7 +21,7 @@ AddCategoricalProperty( [ "IsStrictCocartesianCategory", "IsStrictCartesianCateg
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithInitialObject,
+                  ListOfDefiningOperations( "IsCategoryWithInitialObject" ),
                   [ "Coproduct",
                     "InjectionOfCofactorOfCoproductWithGivenCoproduct",
                     "UniversalMorphismFromCoproductWithGivenCoproduct",

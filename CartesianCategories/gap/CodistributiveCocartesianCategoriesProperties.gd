@@ -13,9 +13,11 @@ AddCategoricalProperty( [ "IsCodistributiveCategory", "IsDistributiveCategory" ]
 
 InstallTrueMethod( IsCartesianCategory, IsCodistributiveCategory );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCategory  := Concatenation( [
-"LeftCocartesianCodistributivityFactoringWithGivenObjects",
-"RightCocartesianCodistributivityFactoringWithGivenObjects",
-],
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory,
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory );
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCategory :=
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsCocartesianCategory" ),
+                  ListOfDefiningOperations( "IsCartesianCategory" ),
+                  [ "LeftCocartesianCodistributivityFactoringWithGivenObjects",
+                    "RightCocartesianCodistributivityFactoringWithGivenObjects",
+                    ] ) );

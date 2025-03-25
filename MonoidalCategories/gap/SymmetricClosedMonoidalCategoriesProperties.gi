@@ -7,8 +7,8 @@
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory :=
   DuplicateFreeList(
           Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory ) );
+                  ListOfDefiningOperations( "IsSymmetricMonoidalCategory" ),
+                  ListOfDefiningOperations( "IsClosedMonoidalCategory" ) ) );
 
 InstallTrueMethod( IsClosedMonoidalCategory, IsSymmetricClosedMonoidalCategory );
 

@@ -19,7 +19,7 @@ DeclareGlobalVariable( "CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD" );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory :=
   Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory,
+          ListOfDefiningOperations( "IsCartesianCategory" ),
           [ "ExponentialOnObjects",
             "ExponentialOnMorphismsWithGivenExponentials",
             "CartesianRightEvaluationMorphismWithGivenSource",

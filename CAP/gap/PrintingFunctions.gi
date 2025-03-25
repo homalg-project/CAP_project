@@ -35,8 +35,8 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     list_of_potential_algorithmic_properties := SortedList( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ) );
     
-    # check that all potential algorithmic properties except "EveryCategory" are potential categorical properties
-    Assert( 0, Difference( list_of_potential_algorithmic_properties, list_of_potential_categorical_properties ) = [ "EveryCategory" ] );
+    # check that all potential algorithmic properties except "IsCapCategory" are potential categorical properties
+    Assert( 0, Difference( list_of_potential_algorithmic_properties, list_of_potential_categorical_properties ) = [ "IsCapCategory" ] );
     
     list_of_algorithmic_and_not_yet_algorithmic_properties := Intersection( list_of_mathematical_properties, list_of_potential_algorithmic_properties );
     
@@ -44,7 +44,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     list_of_maximal_algorithmic_properties := MaximalPropertiesWithRegardToImplication( list_of_algorithmic_properties );
     
-    StableSortBy( list_of_maximal_algorithmic_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
+    StableSortBy( list_of_maximal_algorithmic_properties, p -> Length( ListOfDefiningOperations( p ) ) );
     
     if not IsEmpty( list_of_maximal_algorithmic_properties ) then
         
@@ -62,7 +62,7 @@ InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
     
     list_of_maximal_not_yet_algorithmic_properties := MaximalPropertiesWithRegardToImplication( list_of_not_yet_algorithmic_properties );
     
-    StableSortBy( list_of_maximal_not_yet_algorithmic_properties, p -> Length( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.( p ) ) );
+    StableSortBy( list_of_maximal_not_yet_algorithmic_properties, p -> Length( ListOfDefiningOperations( p ) ) );
     
     if not IsEmpty( list_of_maximal_not_yet_algorithmic_properties ) then
         

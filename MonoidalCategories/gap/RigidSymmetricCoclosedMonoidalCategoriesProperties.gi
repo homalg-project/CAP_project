@@ -6,7 +6,7 @@
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsRigidSymmetricCoclosedMonoidalCategory :=
   Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalCategory,
+          ListOfDefiningOperations( "IsSymmetricCoclosedMonoidalCategory" ),
           [ "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
             "MorphismToCoBidualWithGivenCoBidual"
             ] );
