@@ -5,7 +5,7 @@
 #
 InstallValue( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD, rec( ) );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory := [
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory := [
     "PreCompose",
     "IdentityMorphism",
     "IsEqualForObjects",
@@ -15,7 +15,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory := [
 
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEquippedWithHomomorphismStructure := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "DistinguishedObjectOfHomomorphismStructure",
         "HomomorphismStructureOnObjects",
@@ -26,7 +26,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEquippedWithHomomorphismStructure 
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithDecidableLifts := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "IsLiftable",
         "Lift",
@@ -34,7 +34,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithDecidableLifts := Conc
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithDecidableColifts := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "IsColiftable",
         "Colift",
@@ -42,7 +42,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithDecidableColifts := Co
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithInitialObject := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "InitialObject",
         "UniversalMorphismFromInitialObject",
@@ -50,7 +50,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithInitialObject := Conca
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithTerminalObject := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "TerminalObject",
         "UniversalMorphismIntoTerminalObject",
@@ -58,7 +58,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithTerminalObject := Conc
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithZeroObject := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "ZeroObject",
         "UniversalMorphismFromZeroObject",
@@ -67,7 +67,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithZeroObject := Concaten
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithEqualizers := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "Equalizer",
         "EmbeddingOfEqualizerWithGivenEqualizer",
@@ -76,7 +76,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithEqualizers := Concaten
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithCoequalizers := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "Coequalizer",
         "ProjectionOntoCoequalizerWithGivenCoequalizer",
@@ -85,7 +85,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithCoequalizers := Concat
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEnrichedOverCommutativeRegularSemigroup := Concatenation(
-    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory,
+    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory,
     [
         "AdditionForMorphisms",
     ]
