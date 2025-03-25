@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CartesianCategories",
 Subtitle := "Cartesian and cocartesian categories and various subdoctrines",
-Version := "2025.03-02",
+Version := "2025.03-03",
 Date := "2025-03-25",
 Date := "2025-03-25",
 License := "GPL-2.0-or-later",
@@ -98,17 +98,17 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [
-                [ "CAP", ">= 2025.03-02" ],
+                [ "CAP", ">= 2025.03-04" ],
                 ],
   SuggestedOtherPackages := [
-                [ "MonoidalCategories", ">= 2025.01-01" ],
+                [ "MonoidalCategories", ">= 2025.03-02" ],
                 ],
   ExternalConditions := [ ],
 ),
 
 Extensions := [
   rec(
-    needed := [ [ "MonoidalCategories", ">= 2025.01-01" ] ],
+    needed := [ [ "MonoidalCategories", ">= 2025.03-02" ] ],
     filename := "gap/Tools.gi",
   ),
 ],
