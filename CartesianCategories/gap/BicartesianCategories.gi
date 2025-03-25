@@ -31,6 +31,9 @@ InstallTrueMethod( IsCodistributiveCategory, IsBicartesianCoclosedCategory );
 InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
 InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 
+InstallTrueMethod( IsCategoryWithEqualizers, IsFiniteCompleteCategory );
+InstallTrueMethod( IsCategoryWithCoequalizers, IsFiniteCocompleteCategory );
+
 InstallTrueMethod( IsBicartesianCategory, IsAdditiveCategory );
 
 #= comment for Julia
