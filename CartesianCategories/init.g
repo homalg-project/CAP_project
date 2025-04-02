@@ -25,15 +25,6 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesProperties.gd" );
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecordDeclarations.autogen.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecordDeclarations.autogen.gd" );
 
-ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.gd" );
-ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.gd" );
-
-ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesProperties.gd" );
-ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesProperties.gd" );
-
-ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecordDeclarations.autogen.gd" );
-ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecordDeclarations.autogen.gd" );
-
 ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategories.gd" );
 ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategories.gd" );
 
@@ -51,9 +42,18 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gd" );
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesMethodRecordDeclarations.autogen.gd" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesMethodRecordDeclarations.autogen.gd" );
 
-## Bicartesian and finite (co)complete categories
+## Bicartesian, distributive, and codistributive categories
 
 ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gd" );
+
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.gd" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.gd" );
+
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesProperties.gd" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesProperties.gd" );
+
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecordDeclarations.autogen.gd" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecordDeclarations.autogen.gd" );
 
 ## Synonyms
 
