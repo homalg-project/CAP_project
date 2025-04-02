@@ -16,8 +16,7 @@ InstallTrueMethod( IsCocartesianCategory, IsDistributiveCategory );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory :=
   DuplicateFreeList(
           Concatenation(
-                  ListOfDefiningOperations( "IsCartesianCategory" ),
-                  ListOfDefiningOperations( "IsCocartesianCategory" ),
+                  ListOfDefiningOperations( "IsBicartesianCategory" ),
                   [ "LeftCartesianDistributivityExpandingWithGivenObjects",
                     "RightCartesianDistributivityExpandingWithGivenObjects",
                     ] ) );

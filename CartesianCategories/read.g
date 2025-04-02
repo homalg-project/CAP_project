@@ -22,12 +22,6 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecordInstal
 ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecord.gi" );
 
-ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.gi" );
-ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.gi" );
-
-ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecordInstallations.autogen.gi" );
-ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecordInstallations.autogen.gi" );
-
 ReadPackage( "CartesianCategories", "gap/BraidedCartesianCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesMethodRecord.gi" );
 
@@ -51,6 +45,16 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesMethodRecordInstallations.autogen.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCoclosedCategoriesMethodRecordInstallations.autogen.gi" );
 
+## Bicartesian, distributive, and codistributive categories
+
+ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gi" );
+
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategories.gi" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategories.gi" );
+
+ReadPackage( "CartesianCategories", "gap/DistributiveCartesianCategoriesMethodRecordInstallations.autogen.gi" );
+ReadPackage( "CartesianCategories", "gap/CodistributiveCocartesianCategoriesMethodRecordInstallations.autogen.gi" );
+
 ## Derived methods
 
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesDerivedMethods.gi" );
@@ -71,10 +75,6 @@ ReadPackage( "CartesianCategories", "gap/SymmetricCocartesianCoclosedCategoriesD
 
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesDerivedMethods_extra.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesDerivedMethods_extra.gi" );
-
-## Bicartesian and finite (co)complete categories
-
-ReadPackage( "CartesianCategories", "gap/BicartesianCategories.gi" );
 
 ## Synonyms
 
