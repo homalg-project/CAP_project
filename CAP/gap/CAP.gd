@@ -254,6 +254,20 @@ DeclareProperty( "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeEx
 AddCategoricalProperty( [ "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms", "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" ] );
 
 #! @Description
+#!  The property of the category <A>C</A> having all kernels.
+#! @Arguments C
+DeclareProperty( "IsCategoryWithKernels", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCategoryWithKernels", "IsCategoryWithCokernels" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> having all cokernels.
+#! @Arguments C
+DeclareProperty( "IsCategoryWithCokernels", IsCapCategory );
+
+AddCategoricalProperty( [ "IsCategoryWithCokernels", "IsCategoryWithKernels" ] );
+
+#! @Description
 #!  The property of the category <A>C</A> being additive.
 #! @Arguments C
 DeclareProperty( "IsAdditiveCategory", IsCapCategory );

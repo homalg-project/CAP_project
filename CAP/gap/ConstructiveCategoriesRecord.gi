@@ -116,6 +116,24 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRingW
     ]
 );
 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithKernels := Concatenation(
+    ListOfDefiningOperations( "IsCapCategory" ),
+    [
+        "KernelObject",
+        "KernelEmbedding",
+        "KernelLift",
+    ]
+);
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithCokernels := Concatenation(
+    ListOfDefiningOperations( "IsCapCategory" ),
+    [
+        "CokernelObject",
+        "CokernelProjection",
+        "CokernelColift",
+    ]
+);
+
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAdditiveCategory := Concatenation(
     ListOfDefiningOperations( "IsAbCategory" ),
     ListOfDefiningOperations( "IsCategoryWithZeroObject" ),
@@ -130,14 +148,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAdditiveCategory := Concatenation(
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPreAbelianCategory := Concatenation(
     ListOfDefiningOperations( "IsAdditiveCategory" ),
-    [
-        "KernelObject",
-        "KernelEmbedding",
-        "KernelLift",
-        "CokernelObject",
-        "CokernelProjection",
-        "CokernelColift",
-    ]
+    ListOfDefiningOperations( "IsCategoryWithKernels" ),
+    ListOfDefiningOperations( "IsCategoryWithCokernels" )
 );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbelianCategory := Concatenation(

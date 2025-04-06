@@ -50,6 +50,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
     );
     
     SetIsAdditiveCategory( freyd_category, true );
+    SetIsCategoryWithCokernels( freyd_category, true );
     
     SetUnderlyingCategory( freyd_category, underlying_category );
     
