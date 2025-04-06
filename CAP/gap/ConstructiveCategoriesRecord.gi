@@ -70,8 +70,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithEqualizers := Concaten
     ListOfDefiningOperations( "IsCapCategory" ),
     [
         "Equalizer",
-        "EmbeddingOfEqualizerWithGivenEqualizer",
-        "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+        "EmbeddingOfEqualizer",
+        "UniversalMorphismIntoEqualizer",
     ]
 );
 
@@ -79,8 +79,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithCoequalizers := Concat
     ListOfDefiningOperations( "IsCapCategory" ),
     [
         "Coequalizer",
-        "ProjectionOntoCoequalizerWithGivenCoequalizer",
-        "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+        "ProjectionOntoCoequalizer",
+        "UniversalMorphismFromCoequalizer",
     ]
 );
 
