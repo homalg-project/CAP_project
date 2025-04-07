@@ -358,7 +358,7 @@ InstallGlobalFunction( ApplyFunctor,
             fi;
 
             for i in [ 1 .. Length( input_signature ) ] do
-                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], {} -> Concatenation( "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], {} -> Concatenation( "the ", String(i), ". argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
             od;
         fi;
         
@@ -382,7 +382,7 @@ InstallGlobalFunction( ApplyFunctor,
             fi;
 
             for i in [ 1 .. Length( input_signature ) ] do
-                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], {} -> Concatenation( "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], {} -> Concatenation( "the ", String(i), ". argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
             od;
         fi;
         
@@ -520,7 +520,7 @@ AddProjectionInFactorOfDirectProductWithGivenDirectProduct( category,
     local projection_functor;
     
     projection_functor := CapFunctor( 
-      Concatenation( "Projection into ", String( projection_number ),"-th factor of ", Name( AsCapCategory( direct_product ) ) ), 
+      Concatenation( "Projection into ", String( projection_number ),". factor of ", Name( AsCapCategory( direct_product ) ) ),
       direct_product, 
       object_product_list[ projection_number ]
     );
