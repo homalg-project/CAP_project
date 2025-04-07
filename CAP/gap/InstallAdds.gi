@@ -153,7 +153,7 @@ InstallMethod( AddCapOperation,
     fi;
     
     # prepare input sanity check
-    input_human_readable_identifier_getter := { i, function_name, category_name } -> Concatenation( "the ", String( i ), "-th argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
+    input_human_readable_identifier_getter := { i, function_name, category_name } -> Concatenation( "the ", String( i ), ". argument of the function \033[1m", function_name, "\033[0m of the category named \033[1m", category_name, "\033[0m" );
     
     input_sanity_check_functions := [ ];
     

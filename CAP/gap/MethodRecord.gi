@@ -3355,7 +3355,7 @@ MorphismBetweenDirectSums := rec(
           
           if Length( listlist[i] ) <> Length( range_diagram ) then
               
-              return [ false, Concatenation( "the ", String(i), "-th row has not the same length as the range diagram" ) ];
+              return [ false, Concatenation( "the ", String(i), ". row has not the same length as the range diagram" ) ];
               
           fi;
           
@@ -3363,13 +3363,13 @@ MorphismBetweenDirectSums := rec(
               
               if not IsEqualForObjects( cat, source_diagram[i], Source( listlist[i][j] ) ) then
                   
-                  return [ false, Concatenation( "the sources of the morphisms in the ", String(i), "-th row must be equal to the ", String(i), "-th entry of the source diagram" ) ];
+                  return [ false, Concatenation( "the sources of the morphisms in the ", String(i), ". row must be equal to the ", String(i), ". entry of the source diagram" ) ];
                   
               fi;
               
               if not IsEqualForObjects( cat, range_diagram[j], Range( listlist[i][j] ) ) then
                   
-                  return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), "-th column must be equal to the ", String(j), "-th entry of the range diagram" ) ];
+                  return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), ". column must be equal to the ", String(j), ". entry of the range diagram" ) ];
                   
               fi;
               

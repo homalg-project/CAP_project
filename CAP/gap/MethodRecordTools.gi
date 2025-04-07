@@ -2112,7 +2112,7 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             
             if not IsSubset( ListInstalledOperationsOfCategory( category ), previous_operations ) then
                 
-                Error( "the operations of the ", i - 1, "-th category are not a subset of the operations of the ", i, "-th category" );
+                Error( "the operations of the ", i - 1, ". category are not a subset of the operations of the ", i, ". category" );
                 
             fi;
             

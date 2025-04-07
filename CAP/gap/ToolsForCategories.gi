@@ -420,7 +420,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
         
     elif IsSpecializationOfFilter( IsList, filter ) then
         
-        assert_value_is_of_element_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type.element_type, { i, outer_args } -> Concatenation( "the ", String( i ), "-th entry of ", CallFuncList( human_readable_identifier_getter, outer_args ) ) );
+        assert_value_is_of_element_type := CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type.element_type, { i, outer_args } -> Concatenation( "the ", String( i ), ". entry of ", CallFuncList( human_readable_identifier_getter, outer_args ) ) );
         
         return function( value, args... )
           local i;
@@ -437,7 +437,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
                 # Julia does not have non-dense lists
                 if not IsBound( value[i] ) then
                     
-                    Error( "the ", i, "-th entry of ", CallFuncList( human_readable_identifier_getter, args ), " is not bound.", generic_help_string );
+                    Error( "the ", i, ". entry of ", CallFuncList( human_readable_identifier_getter, args ), " is not bound.", generic_help_string );
                     
                 fi;
                 # =#
@@ -450,7 +450,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
         
     elif IsSpecializationOfFilter( IsNTuple, filter ) then
         
-        asserts_value_is_of_element_type := List( [ 1 .. Length( data_type.element_types ) ], i -> CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type.element_types[i], { outer_args } -> Concatenation( "the ", String( i ), "-th entry of ", CallFuncList( human_readable_identifier_getter, outer_args ) ) ) );
+        asserts_value_is_of_element_type := List( [ 1 .. Length( data_type.element_types ) ], i -> CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER( data_type.element_types[i], { outer_args } -> Concatenation( "the ", String( i ), ". entry of ", CallFuncList( human_readable_identifier_getter, outer_args ) ) ) );
         
         return function( value, args... )
           local i;
