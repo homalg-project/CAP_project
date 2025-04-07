@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2025.03-05
+                                   2025.04-01
   
   
-                                 25 March 2025
+                                  7 April 2025
   
   
                                Sebastian Gutsche
@@ -87,14 +87,16 @@
       1.2-12 IsAbCategory
       1.2-13 IsLinearCategoryOverCommutativeRing
       1.2-14 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
-      1.2-15 IsAdditiveCategory
-      1.2-16 IsPreAbelianCategory
-      1.2-17 IsAbelianCategory
-      1.2-18 IsAbelianCategoryWithEnoughProjectives
-      1.2-19 IsAbelianCategoryWithEnoughInjectives
-      1.2-20 IsLocallyOfFiniteProjectiveDimension
-      1.2-21 IsLocallyOfFiniteInjectiveDimension
-      1.2-22 ListOfDefiningOperations
+      1.2-15 IsCategoryWithKernels
+      1.2-16 IsCategoryWithCokernels
+      1.2-17 IsAdditiveCategory
+      1.2-18 IsPreAbelianCategory
+      1.2-19 IsAbelianCategory
+      1.2-20 IsAbelianCategoryWithEnoughProjectives
+      1.2-21 IsAbelianCategoryWithEnoughInjectives
+      1.2-22 IsLocallyOfFiniteProjectiveDimension
+      1.2-23 IsLocallyOfFiniteInjectiveDimension
+      1.2-24 ListOfDefiningOperations
     1.3 [33X[0;0YConstructor[133X
       1.3-1 CreateCapCategory
       1.3-2 CreateCapCategory
