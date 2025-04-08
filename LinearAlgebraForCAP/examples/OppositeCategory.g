@@ -10,9 +10,10 @@ vec := MatrixCategory( QQ );;
 op := Opposite( vec );;
 Display( ListKnownCategoricalProperties( op ) );
 #! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",\
-#!  "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\
+#!   "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\
 #!  "IsBraidedMonoidalCategory", "IsCategoryWithCoequalizers",\
-#!  "IsCategoryWithEqualizers", "IsCategoryWithInitialObject",\
+#!  "IsCategoryWithCokernels", "IsCategoryWithEqualizers",\
+#!  "IsCategoryWithInitialObject", "IsCategoryWithKernels",\
 #!  "IsCategoryWithTerminalObject", "IsCategoryWithZeroObject",\
 #!  "IsClosedMonoidalCategory", "IsCoclosedMonoidalCategory",\
 #!  "IsEnrichedOverCommutativeRegularSemigroup",\
