@@ -1972,6 +1972,7 @@ end );
 ##
 ####################################
 
+#= comment for Julia
 ##
 InstallMethod( Display,
                [ IsFreydCategoryMorphism ],
@@ -2045,7 +2046,6 @@ InstallMethod( LaTeXOutput,
     
 end );
 
-#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsFreydCategoryMorphism ],

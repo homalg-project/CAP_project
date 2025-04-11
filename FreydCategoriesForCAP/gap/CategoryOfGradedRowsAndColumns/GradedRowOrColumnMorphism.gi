@@ -163,6 +163,8 @@ end );
 ##
 ####################################
 
+#= comment for Julia
+##
 InstallMethod( Display,
                [ IsGradedRowOrColumnMorphism ], 
   function( graded_row_or_column_morphism )
@@ -184,7 +186,7 @@ InstallMethod( Display,
     Print( StringMutable( graded_row_or_column_morphism ) );
     
 end );
-
+# =#
 
 
 ####################################

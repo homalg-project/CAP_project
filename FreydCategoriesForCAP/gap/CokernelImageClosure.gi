@@ -729,6 +729,7 @@ end );
 ##
 ####################################
 
+#= comment for Julia
 ##
 InstallMethod( Display,
                [ IsCokernelImageClosureObject ],
@@ -757,6 +758,7 @@ InstallMethod( Display,
     Display( MorphismDatum( cokernel_image_closure_morphism ) );
     
 end );
+# =#
 
 ####################################
 ##

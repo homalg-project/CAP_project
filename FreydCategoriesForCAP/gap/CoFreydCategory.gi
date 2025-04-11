@@ -143,6 +143,7 @@ end );
 ##
 ####################################
 
+#= comment for Julia
 ##
 InstallMethod( Display,
                [ IsCoFreydCategoryObject ],
@@ -188,3 +189,4 @@ InstallMethod( Display,
     Print( Concatenation( StringMutable( co_freyd_category_morphism ), "\n\n" ) );
     
 end );
+# =#
