@@ -10,6 +10,9 @@ ReadPackage( "CartesianCategories", "gap/InitialCategory.gi" );
 
 ## Cartesian and Cocartesian
 
+ReadPackage( "CartesianCategories", "gap/CartesianCategoriesProperties.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesProperties.gi" );
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecord.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecord.gi" );
 
