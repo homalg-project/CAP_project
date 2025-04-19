@@ -28,3 +28,11 @@ DeclareOperation( "CocartesianCodiagonal",
 #! @Arguments a, n, b
 DeclareOperation( "CocartesianCodiagonalWithGivenCocartesianMultiple",
                   [ IsCapCategoryObject, IsInt, IsCapCategoryObject ] );
+
+#! @Description
+#!  The argument $C$ is a cocartesian category.
+#!  The operation equips $C$ with the symmetric monodial structure defined by the coproduct.
+#! @Returns nothing
+#! @Arguments C
+DeclareOperation( "SetTensorProductToCoproduct",
+                  [ IsCapCategory ] );
