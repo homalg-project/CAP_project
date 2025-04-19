@@ -7,6 +7,10 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! @Example
 CR := RingAsCategory( Integers );;
 u := RingAsCategoryUniqueObject( CR );;
+IsObjectFiniteCategory( CR );
+#! true
+SetOfObjectsOfCategory( CR ) = [ u ];
+#! true
 alpha := 2 / CR;
 #! <2>
 IsOne( alpha );
