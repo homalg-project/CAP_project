@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2025.04-01
+                                   2025.04-03
   
   
-                                  2 April 2025
+                                 20 April 2025
   
   
                                 Mohamed Barakat
@@ -72,14 +72,15 @@
       1.1-18 CartesianRightUnitorInverseWithGivenDirectProduct
       1.1-19 CartesianDiagonal
       1.1-20 CartesianDiagonalWithGivenCartesianPower
-      1.1-21 LeftCartesianDistributivityExpanding
-      1.1-22 LeftCartesianDistributivityExpandingWithGivenObjects
-      1.1-23 LeftCartesianDistributivityFactoring
-      1.1-24 LeftCartesianDistributivityFactoringWithGivenObjects
-      1.1-25 RightCartesianDistributivityExpanding
-      1.1-26 RightCartesianDistributivityExpandingWithGivenObjects
-      1.1-27 RightCartesianDistributivityFactoring
-      1.1-28 RightCartesianDistributivityFactoringWithGivenObjects
+      1.1-21 SetTensorProductToDirectProduct
+      1.1-22 LeftCartesianDistributivityExpanding
+      1.1-23 LeftCartesianDistributivityExpandingWithGivenObjects
+      1.1-24 LeftCartesianDistributivityFactoring
+      1.1-25 LeftCartesianDistributivityFactoringWithGivenObjects
+      1.1-26 RightCartesianDistributivityExpanding
+      1.1-27 RightCartesianDistributivityExpandingWithGivenObjects
+      1.1-28 RightCartesianDistributivityFactoring
+      1.1-29 RightCartesianDistributivityFactoringWithGivenObjects
     1.2 [33X[0;0YCartesian Closed Categories[133X
       1.2-1 ExponentialOnObjects
       1.2-2 ExponentialOnMorphisms
@@ -240,14 +241,15 @@
       2.1-18 CocartesianRightUnitorInverseWithGivenCoproduct
       2.1-19 CocartesianCodiagonal
       2.1-20 CocartesianCodiagonalWithGivenCocartesianMultiple
-      2.1-21 LeftCocartesianCodistributivityExpanding
-      2.1-22 LeftCocartesianCodistributivityExpandingWithGivenObjects
-      2.1-23 LeftCocartesianCodistributivityFactoring
-      2.1-24 LeftCocartesianCodistributivityFactoringWithGivenObjects
-      2.1-25 RightCocartesianCodistributivityExpanding
-      2.1-26 RightCocartesianCodistributivityExpandingWithGivenObjects
-      2.1-27 RightCocartesianCodistributivityFactoring
-      2.1-28 RightCocartesianCodistributivityFactoringWithGivenObjects
+      2.1-21 SetTensorProductToCoproduct
+      2.1-22 LeftCocartesianCodistributivityExpanding
+      2.1-23 LeftCocartesianCodistributivityExpandingWithGivenObjects
+      2.1-24 LeftCocartesianCodistributivityFactoring
+      2.1-25 LeftCocartesianCodistributivityFactoringWithGivenObjects
+      2.1-26 RightCocartesianCodistributivityExpanding
+      2.1-27 RightCocartesianCodistributivityExpandingWithGivenObjects
+      2.1-28 RightCocartesianCodistributivityFactoring
+      2.1-29 RightCocartesianCodistributivityFactoringWithGivenObjects
     2.2 [33X[0;0YCocartesian Coclosed Categories[133X
       2.2-1 CoexponentialOnObjects
       2.2-2 CoexponentialOnMorphisms

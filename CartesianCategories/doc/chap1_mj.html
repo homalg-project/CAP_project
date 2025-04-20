@@ -48,14 +48,15 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8342E7EF85991C6D">1.1-18 CartesianRightUnitorInverseWithGivenDirectProduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DEDC81082995204">1.1-19 CartesianDiagonal</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E0548CF83DED2E2">1.1-20 CartesianDiagonalWithGivenCartesianPower</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CCD61CD7ECFA673">1.1-21 LeftCartesianDistributivityExpanding</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80B01ED183E5A16C">1.1-22 LeftCartesianDistributivityExpandingWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E0165BD7D4424A3">1.1-23 LeftCartesianDistributivityFactoring</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X845C1B6F806E23BC">1.1-24 LeftCartesianDistributivityFactoringWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DD0061583C919C9">1.1-25 RightCartesianDistributivityExpanding</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BCCBA9B7E1E88AC">1.1-26 RightCartesianDistributivityExpandingWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F1C0265845759C1">1.1-27 RightCartesianDistributivityFactoring</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F20BF257980C8A4">1.1-28 RightCartesianDistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7927B9E484FAB30C">1.1-21 SetTensorProductToDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CCD61CD7ECFA673">1.1-22 LeftCartesianDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80B01ED183E5A16C">1.1-23 LeftCartesianDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E0165BD7D4424A3">1.1-24 LeftCartesianDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X845C1B6F806E23BC">1.1-25 LeftCartesianDistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DD0061583C919C9">1.1-26 RightCartesianDistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BCCBA9B7E1E88AC">1.1-27 RightCartesianDistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F1C0265845759C1">1.1-28 RightCartesianDistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F20BF257980C8A4">1.1-29 RightCartesianDistributivityFactoringWithGivenObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X84CA5A90790E1CBB">1.2 <span class="Heading">Cartesian Closed Categories</span></a>
 </span>
@@ -435,9 +436,18 @@
 
 <p>The arguments are an object <span class="SimpleMath">\(a\)</span>, an integer <span class="SimpleMath">\(n\)</span>, and an object <span class="SimpleMath">\(b\)</span> equal to the <span class="SimpleMath">\(n\)</span>-fold cartesian power <span class="SimpleMath">\(a^{\times n}\)</span> of <span class="SimpleMath">\(a\)</span>. The output is the diagonal morphism from <span class="SimpleMath">\(a\)</span> to <span class="SimpleMath">\(b\)</span>.</p>
 
+<p><a id="X7927B9E484FAB30C" name="X7927B9E484FAB30C"></a></p>
+
+<h5>1.1-21 SetTensorProductToDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetTensorProductToDirectProduct</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The argument <span class="SimpleMath">\(C\)</span> is a cartesian category. The operation equips <span class="SimpleMath">\(C\)</span> with the symmetric monodial structure defined by the direct product.</p>
+
 <p><a id="X7CCD61CD7ECFA673" name="X7CCD61CD7ECFA673"></a></p>
 
-<h5>1.1-21 LeftCartesianDistributivityExpanding</h5>
+<h5>1.1-22 LeftCartesianDistributivityExpanding</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityExpanding</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a \times (b_1 \sqcup \dots \sqcup b_n), (a \times b_1) \sqcup \dots \sqcup (a \times b_n) )\)</span></p>
@@ -446,7 +456,7 @@
 
 <p><a id="X80B01ED183E5A16C" name="X80B01ED183E5A16C"></a></p>
 
-<h5>1.1-22 LeftCartesianDistributivityExpandingWithGivenObjects</h5>
+<h5>1.1-23 LeftCartesianDistributivityExpandingWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
@@ -455,7 +465,7 @@
 
 <p><a id="X7E0165BD7D4424A3" name="X7E0165BD7D4424A3"></a></p>
 
-<h5>1.1-23 LeftCartesianDistributivityFactoring</h5>
+<h5>1.1-24 LeftCartesianDistributivityFactoring</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityFactoring</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (a \times b_1) \sqcup \dots \sqcup (a \times b_n), a \times (b_1 \sqcup \dots \sqcup b_n) )\)</span></p>
@@ -464,7 +474,7 @@
 
 <p><a id="X845C1B6F806E23BC" name="X845C1B6F806E23BC"></a></p>
 
-<h5>1.1-24 LeftCartesianDistributivityFactoringWithGivenObjects</h5>
+<h5>1.1-25 LeftCartesianDistributivityFactoringWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCartesianDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
@@ -473,7 +483,7 @@
 
 <p><a id="X7DD0061583C919C9" name="X7DD0061583C919C9"></a></p>
 
-<h5>1.1-25 RightCartesianDistributivityExpanding</h5>
+<h5>1.1-26 RightCartesianDistributivityExpanding</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityExpanding</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (b_1 \sqcup \dots \sqcup b_n) \times a, (b_1 \times a) \sqcup \dots \sqcup (b_n \times a) )\)</span></p>
@@ -482,7 +492,7 @@
 
 <p><a id="X7BCCBA9B7E1E88AC" name="X7BCCBA9B7E1E88AC"></a></p>
 
-<h5>1.1-26 RightCartesianDistributivityExpandingWithGivenObjects</h5>
+<h5>1.1-27 RightCartesianDistributivityExpandingWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>
@@ -491,7 +501,7 @@
 
 <p><a id="X7F1C0265845759C1" name="X7F1C0265845759C1"></a></p>
 
-<h5>1.1-27 RightCartesianDistributivityFactoring</h5>
+<h5>1.1-28 RightCartesianDistributivityFactoring</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityFactoring</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( (b_1 \times a) \sqcup \dots \sqcup (b_n \times a), (b_1 \sqcup \dots \sqcup b_n) \times a)\)</span></p>
@@ -500,7 +510,7 @@
 
 <p><a id="X7F20BF257980C8A4" name="X7F20BF257980C8A4"></a></p>
 
-<h5>1.1-28 RightCartesianDistributivityFactoringWithGivenObjects</h5>
+<h5>1.1-29 RightCartesianDistributivityFactoringWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCartesianDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( s, r )\)</span></p>

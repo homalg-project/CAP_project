@@ -45,14 +45,15 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C0F9FBB7EB2A224">2.1-18 CocartesianRightUnitorInverseWithGivenCoproduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86927200831B53C3">2.1-19 CocartesianCodiagonal</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AA364ED7E7D8F69">2.1-20 CocartesianCodiagonalWithGivenCocartesianMultiple</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86FBEFB381C1680F">2.1-21 LeftCocartesianCodistributivityExpanding</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85FB3FA27B125FC4">2.1-22 LeftCocartesianCodistributivityExpandingWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8437EBC38559586E">2.1-23 LeftCocartesianCodistributivityFactoring</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81173A1C7F8A6FA5">2.1-24 LeftCocartesianCodistributivityFactoringWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79364D638492578F">2.1-25 RightCocartesianCodistributivityExpanding</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F5CAA1A7ABC2347">2.1-26 RightCocartesianCodistributivityExpandingWithGivenObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BFA49137CABF7E3">2.1-27 RightCocartesianCodistributivityFactoring</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BB0AFA48285832B">2.1-28 RightCocartesianCodistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AF3D457803D92B9">2.1-21 SetTensorProductToCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86FBEFB381C1680F">2.1-22 LeftCocartesianCodistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85FB3FA27B125FC4">2.1-23 LeftCocartesianCodistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8437EBC38559586E">2.1-24 LeftCocartesianCodistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81173A1C7F8A6FA5">2.1-25 LeftCocartesianCodistributivityFactoringWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79364D638492578F">2.1-26 RightCocartesianCodistributivityExpanding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F5CAA1A7ABC2347">2.1-27 RightCocartesianCodistributivityExpandingWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BFA49137CABF7E3">2.1-28 RightCocartesianCodistributivityFactoring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BB0AFA48285832B">2.1-29 RightCocartesianCodistributivityFactoringWithGivenObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8401194B83355921">2.2 <span class="Heading">Cocartesian Coclosed Categories</span></a>
 </span>
@@ -416,9 +417,18 @@
 
 <p>The arguments are an object <span class="Math">a</span>, an integer <span class="Math">n</span>, and an object <span class="Math">b</span> equal to the <span class="Math">n</span>-fold cocartesian multiple <span class="Math">\sqcup_{i=1}^n a</span> of <span class="Math">a</span>. The output is the codiagonal morphism from <span class="Math">b</span> to <span class="Math">a</span>.</p>
 
+<p><a id="X7AF3D457803D92B9" name="X7AF3D457803D92B9"></a></p>
+
+<h5>2.1-21 SetTensorProductToCoproduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetTensorProductToCoproduct</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The argument <span class="Math">C</span> is a cocartesian category. The operation equips <span class="Math">C</span> with the symmetric monodial structure defined by the coproduct.</p>
+
 <p><a id="X86FBEFB381C1680F" name="X86FBEFB381C1680F"></a></p>
 
-<h5>2.1-21 LeftCocartesianCodistributivityExpanding</h5>
+<h5>2.1-22 LeftCocartesianCodistributivityExpanding</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityExpanding</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \sqcup (b_1 \times \dots \times b_n), (a \sqcup b_1) \times \dots \times (a \sqcup b_n) )</span></p>
@@ -427,7 +437,7 @@
 
 <p><a id="X85FB3FA27B125FC4" name="X85FB3FA27B125FC4"></a></p>
 
-<h5>2.1-22 LeftCocartesianCodistributivityExpandingWithGivenObjects</h5>
+<h5>2.1-23 LeftCocartesianCodistributivityExpandingWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
@@ -436,7 +446,7 @@
 
 <p><a id="X8437EBC38559586E" name="X8437EBC38559586E"></a></p>
 
-<h5>2.1-23 LeftCocartesianCodistributivityFactoring</h5>
+<h5>2.1-24 LeftCocartesianCodistributivityFactoring</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityFactoring</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \sqcup b_1) \times \dots \times (a \sqcup b_n), a \sqcup (b_1 \times \dots \times b_n) )</span></p>
@@ -445,7 +455,7 @@
 
 <p><a id="X81173A1C7F8A6FA5" name="X81173A1C7F8A6FA5"></a></p>
 
-<h5>2.1-24 LeftCocartesianCodistributivityFactoringWithGivenObjects</h5>
+<h5>2.1-25 LeftCocartesianCodistributivityFactoringWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftCocartesianCodistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
@@ -454,7 +464,7 @@
 
 <p><a id="X79364D638492578F" name="X79364D638492578F"></a></p>
 
-<h5>2.1-25 RightCocartesianCodistributivityExpanding</h5>
+<h5>2.1-26 RightCocartesianCodistributivityExpanding</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityExpanding</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (b_1 \times \dots \times b_n) \sqcup a, (b_1 \sqcup a) \times \dots \times (b_n \sqcup a) )</span></p>
@@ -463,7 +473,7 @@
 
 <p><a id="X7F5CAA1A7ABC2347" name="X7F5CAA1A7ABC2347"></a></p>
 
-<h5>2.1-26 RightCocartesianCodistributivityExpandingWithGivenObjects</h5>
+<h5>2.1-27 RightCocartesianCodistributivityExpandingWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
@@ -472,7 +482,7 @@
 
 <p><a id="X7BFA49137CABF7E3" name="X7BFA49137CABF7E3"></a></p>
 
-<h5>2.1-27 RightCocartesianCodistributivityFactoring</h5>
+<h5>2.1-28 RightCocartesianCodistributivityFactoring</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityFactoring</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (b_1 \sqcup a) \times \dots \times (b_n \sqcup a), (b_1 \times \dots \times b_n) \sqcup a)</span></p>
@@ -481,7 +491,7 @@
 
 <p><a id="X7BB0AFA48285832B" name="X7BB0AFA48285832B"></a></p>
 
-<h5>2.1-28 RightCocartesianCodistributivityFactoringWithGivenObjects</h5>
+<h5>2.1-29 RightCocartesianCodistributivityFactoringWithGivenObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCocartesianCodistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
