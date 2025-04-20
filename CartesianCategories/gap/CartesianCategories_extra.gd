@@ -28,3 +28,11 @@ DeclareOperation( "CartesianDiagonal",
 #! @Arguments a, n, b
 DeclareOperation( "CartesianDiagonalWithGivenCartesianPower",
                   [ IsCapCategoryObject, IsInt, IsCapCategoryObject ] );
+
+#! @Description
+#!  The argument $C$ is a cartesian category.
+#!  The operation equips $C$ with the symmetric monodial structure defined by the direct product.
+#! @Returns nothing
+#! @Arguments C
+DeclareOperation( "SetTensorProductToDirectProduct",
+                  [ IsCapCategory ] );

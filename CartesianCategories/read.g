@@ -19,6 +19,9 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecord.gi" )
 ReadPackage( "CartesianCategories", "gap/CartesianCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategories.gi" );
 
+ReadPackage( "CartesianCategories", "gap/CartesianCategories_extra.gi" );
+ReadPackage( "CartesianCategories", "gap/CocartesianCategories_extra.gi" );
+
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecordInstallations.autogen.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecordInstallations.autogen.gi" );
 
