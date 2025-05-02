@@ -6,9 +6,11 @@
 
 ##
 InstallMethod( SetTensorProductToDirectProduct,
-        [ IsCapCategory and IsCartesianCategory ],
+        [ IsCapCategory ],
         
   function( cat )
+    
+    Assert( 0, IsCartesianCategory( cat ) );
     
     Assert( 0, not IsFinalized( cat ) );
     
