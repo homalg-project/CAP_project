@@ -529,7 +529,7 @@
     [4X[25Xgap>[125X [27Xop := Opposite( vec );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ListKnownCategoricalProperties( op ) );[127X[104X
     [4X[28X[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",\[128X[104X
-    [4X[28X  "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\[128X[104X
+    [4X[28X "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\[128X[104X
     [4X[28X "IsBraidedMonoidalCategory", "IsCategoryWithCoequalizers",\[128X[104X
     [4X[28X "IsCategoryWithCokernels", "IsCategoryWithEqualizers",\[128X[104X
     [4X[28X "IsCategoryWithInitialObject", "IsCategoryWithKernels",\[128X[104X
