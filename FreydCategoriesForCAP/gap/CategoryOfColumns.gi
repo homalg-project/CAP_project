@@ -223,6 +223,7 @@ end );
 ##
 ####################################
 
+#= comment for Julia
 ##
 InstallMethod( Display,
                [ IsCategoryOfColumnsMorphism ],
@@ -246,6 +247,7 @@ InstallMethod( Display,
     Display( StringMutable( category_of_columns_morphism ) );
     
 end );
+# =#
 
 ##
 InstallMethod( String,

@@ -243,6 +243,8 @@ end );
 ##
 ####################################
 
+#= comment for Julia
+##
 InstallMethod( Display,
                [ IsGradedRowOrColumn ], 
   function( graded_row_or_column )
@@ -272,7 +274,7 @@ InstallMethod( Display,
     fi;
 
 end );
-
+# =#
 
 
 ####################################
