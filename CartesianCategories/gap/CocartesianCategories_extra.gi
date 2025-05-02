@@ -6,9 +6,11 @@
 
 ##
 InstallMethod( SetTensorProductToCoproduct,
-        [ IsCapCategory and IsCocartesianCategory ],
+        [ IsCapCategory ],
         
   function( cat )
+    
+    Assert( 0, IsCocartesianCategory( cat ) );
     
     Assert( 0, not IsFinalized( cat ) );
     
