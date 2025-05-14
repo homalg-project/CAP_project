@@ -22,7 +22,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return InitialObject( cat );
         
-    end );
+    end, OperationWeight( cat, "InitialObject" ) );
     
     ##
     AddTensorProductOnObjects( cat,
@@ -30,7 +30,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return Coproduct( cat, [ a, b ] );
         
-    end );
+    end, OperationWeight( cat, "Coproduct" ) );
     
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
@@ -38,7 +38,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CoproductOnMorphismsWithGivenCoproducts( cat, source, mor1, mor2, target );
         
-    end );
+    end, OperationWeight( cat, "CoproductOnMorphismsWithGivenCoproducts" ) );
     
     ##
     AddLeftUnitorWithGivenTensorProduct( cat,
@@ -46,7 +46,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianLeftUnitorWithGivenCoproduct( cat, a, source );
         
-    end );
+    end, OperationWeight( cat, "CocartesianLeftUnitorWithGivenCoproduct" ) );
     
     ##
     AddLeftUnitorInverseWithGivenTensorProduct( cat,
@@ -54,7 +54,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianLeftUnitorInverseWithGivenCoproduct( cat, a, target );
         
-    end );
+    end, OperationWeight( cat, "CocartesianLeftUnitorInverseWithGivenCoproduct" ) );
     
     ##
     AddRightUnitorWithGivenTensorProduct( cat,
@@ -62,7 +62,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianRightUnitorWithGivenCoproduct( cat, a, source );
         
-    end );
+    end, OperationWeight( cat, "CocartesianRightUnitorWithGivenCoproduct" ) );
     
     ##
     AddRightUnitorInverseWithGivenTensorProduct( cat,
@@ -70,7 +70,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianRightUnitorInverseWithGivenCoproduct( cat, a, target );
         
-    end );
+    end, OperationWeight( cat, "CocartesianRightUnitorInverseWithGivenCoproduct" ) );
     
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( cat,
@@ -78,7 +78,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianAssociatorLeftToRightWithGivenCoproducts( cat, source, a, b, c, target );
         
-    end );
+    end, OperationWeight( cat, "CocartesianAssociatorLeftToRightWithGivenCoproducts" ) );
     
     ##
     AddAssociatorRightToLeftWithGivenTensorProducts( cat,
@@ -86,7 +86,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianAssociatorRightToLeftWithGivenCoproducts( cat, source, a, b, c, target );
         
-    end );
+    end, OperationWeight( cat, "CocartesianAssociatorRightToLeftWithGivenCoproducts" ) );
     
     ##
     AddBraidingWithGivenTensorProducts( cat,
@@ -94,7 +94,7 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianBraidingWithGivenCoproducts( cat, source, a, b, target );
         
-    end );
+    end, OperationWeight( cat, "CocartesianBraidingWithGivenCoproducts" ) );
     
     ##
     AddBraidingInverseWithGivenTensorProducts( cat,
@@ -102,6 +102,6 @@ InstallMethod( SetTensorProductToCoproduct,
         
         return CocartesianBraidingInverseWithGivenCoproducts( cat, source, a, b, target );
         
-    end );
+    end, OperationWeight( cat, "CocartesianBraidingInverseWithGivenCoproducts" ) );
     
 end );
