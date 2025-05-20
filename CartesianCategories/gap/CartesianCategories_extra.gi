@@ -22,7 +22,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return TerminalObject( cat );
         
-    end );
+    end, OperationWeight( cat, "TerminalObject" ) );
     
     ##
     AddTensorProductOnObjects( cat,
@@ -30,7 +30,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return DirectProduct( cat, [ a, b ] );
         
-    end );
+    end, OperationWeight( cat, "DirectProduct" ) );
     
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
@@ -38,7 +38,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return DirectProductOnMorphismsWithGivenDirectProducts( cat, source, mor1, mor2, target );
         
-    end );
+    end, OperationWeight( cat, "DirectProductOnMorphismsWithGivenDirectProducts" ) );
     
     ##
     AddLeftUnitorWithGivenTensorProduct( cat,
@@ -46,7 +46,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianLeftUnitorWithGivenDirectProduct( cat, a, source );
         
-    end );
+    end, OperationWeight( cat, "CartesianLeftUnitorWithGivenDirectProduct" ) );
     
     ##
     AddLeftUnitorInverseWithGivenTensorProduct( cat,
@@ -54,7 +54,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianLeftUnitorInverseWithGivenDirectProduct( cat, a, target );
         
-    end );
+    end, OperationWeight( cat, "CartesianLeftUnitorInverseWithGivenDirectProduct" ) );
     
     ##
     AddRightUnitorWithGivenTensorProduct( cat,
@@ -62,7 +62,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianRightUnitorWithGivenDirectProduct( cat, a, source );
         
-    end );
+    end, OperationWeight( cat, "CartesianRightUnitorWithGivenDirectProduct" ) );
     
     ##
     AddRightUnitorInverseWithGivenTensorProduct( cat,
@@ -70,7 +70,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianRightUnitorInverseWithGivenDirectProduct( cat, a, target );
         
-    end );
+    end, OperationWeight( cat, "CartesianRightUnitorInverseWithGivenDirectProduct" ) );
     
     ##
     AddAssociatorLeftToRightWithGivenTensorProducts( cat,
@@ -78,7 +78,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianAssociatorLeftToRightWithGivenDirectProducts( cat, source, a, b, c, target );
         
-    end );
+    end, OperationWeight( cat, "CartesianAssociatorLeftToRightWithGivenDirectProducts" ) );
     
     ##
     AddAssociatorRightToLeftWithGivenTensorProducts( cat,
@@ -86,7 +86,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianAssociatorRightToLeftWithGivenDirectProducts( cat, source, a, b, c, target );
         
-    end );
+    end, OperationWeight( cat, "CartesianAssociatorRightToLeftWithGivenDirectProducts" ) );
     
     ##
     AddBraidingWithGivenTensorProducts( cat,
@@ -94,7 +94,7 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianBraidingWithGivenDirectProducts( cat, source, a, b, target );
         
-    end );
+    end, OperationWeight( cat, "CartesianBraidingWithGivenDirectProducts" ) );
     
     ##
     AddBraidingInverseWithGivenTensorProducts( cat,
@@ -102,6 +102,6 @@ InstallMethod( SetTensorProductToDirectProduct,
         
         return CartesianBraidingInverseWithGivenDirectProducts( cat, source, a, b, target );
         
-    end );
+    end, OperationWeight( cat, "CartesianBraidingInverseWithGivenDirectProducts" ) );
     
 end );
