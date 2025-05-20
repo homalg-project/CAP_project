@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2025.05-01
+                                   2025.05-02
   
   
-                                   2 May 2025
+                                  20 May 2025
   
   
                                 Mohamed Barakat
