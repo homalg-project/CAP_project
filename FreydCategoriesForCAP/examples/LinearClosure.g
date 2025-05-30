@@ -15,6 +15,8 @@ u := GroupAsCategoryUniqueObject( CG );;
 g := GroupAsCategoryMorphism( (1,2,3), CG );;
 h := GroupAsCategoryMorphism( (1,2), CG );;
 v := LinearClosureObject( ZCG, u );;
+SetOfObjectsOfCategory( ZCG ) = [ v ];
+#! true
 elem1 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v );;
 elem2 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ h, g, h, g, h, g ], v );;
 # for i in [ 1 .. 10^6 ] do LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v ); od;
