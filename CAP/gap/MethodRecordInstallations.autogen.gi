@@ -6372,6 +6372,56 @@ InstallMethod( AddRandomObjectByList,
     )
 );
 
+## SetOfMorphismsOfFiniteCategory
+InstallMethod( AddSetOfMorphismsOfFiniteCategory,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "SetOfMorphismsOfFiniteCategory", category, func, -1 );
+    
+end );
+
+InstallMethod( AddSetOfMorphismsOfFiniteCategory,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "SetOfMorphismsOfFiniteCategory", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## SetOfObjectsOfCategory
+InstallMethod( AddSetOfObjectsOfCategory,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "SetOfObjectsOfCategory", category, func, -1 );
+    
+end );
+
+InstallMethod( AddSetOfObjectsOfCategory,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "SetOfObjectsOfCategory", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
 ## SimplifyEndo
 InstallMethod( AddSimplifyEndo,
                [ IsCapCategory, IsFunction ],

@@ -417,6 +417,16 @@ InstallMethod( PostCompose,
 end );
 
 ##
+InstallMethod( SetOfMorphisms,
+        [ IsCapCategory ],
+        
+  function( cat )
+    
+    return SetOfMorphismsOfFiniteCategory( cat );
+    
+end );
+
+##
 InstallMethod( HomStructure,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                

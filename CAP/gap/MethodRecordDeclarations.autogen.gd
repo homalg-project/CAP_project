@@ -4098,6 +4098,44 @@ DeclareOperation( "AddRandomObjectByList",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `SetOfMorphismsOfFiniteCategory`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: (  ) \mapsto \mathtt{SetOfMorphismsOfFiniteCategory}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSetOfMorphismsOfFiniteCategory",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddSetOfMorphismsOfFiniteCategory",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `SetOfObjectsOfCategory`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: (  ) \mapsto \mathtt{SetOfObjectsOfCategory}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSetOfObjectsOfCategory",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddSetOfObjectsOfCategory",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `SimplifyEndo`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).

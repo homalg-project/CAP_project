@@ -27,6 +27,18 @@ MorphismDatum := rec(
   compatible_with_congruence_of_morphisms := false,
 ),
 
+SetOfObjectsOfCategory := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_objects",
+  dual_operation := "SetOfObjectsOfCategory",
+),
+
+SetOfMorphismsOfFiniteCategory := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_morphisms",
+  dual_operation := "SetOfMorphismsOfFiniteCategory",
+),
+
 LiftAlongMonomorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   input_arguments_names := [ "cat", "iota", "tau" ],

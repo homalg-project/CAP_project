@@ -127,6 +127,22 @@ InstallOtherMethod( IsEqualForCacheForObjects,
   { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
 
 ##
+InstallMethod( SetOfObjectsAsUnresolvableAttribute,
+        [ IsCapCategory ],
+        
+  SetOfObjectsOfCategory );
+
+##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        [ IsCapCategory and HasOppositeCategory ],
+        
+  function( cat_op )
+    
+    return List( SetOfObjects( OppositeCategory( cat_op ) ), obj -> ObjectConstructor( cat_op, obj ) );
+    
+end );
+
+##
 InstallMethod( RandomObject, [ IsCapCategory, IsInt ], RandomObjectByInteger );
 
 ##

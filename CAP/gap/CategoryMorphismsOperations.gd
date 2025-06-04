@@ -910,6 +910,26 @@ DeclareOperation( "IsHomSetInhabited",
 
 ###################################
 ##
+#! @Section SetOfMorphisms
+##
+###################################
+
+#! @Description
+#!  Return a duplicate free list of morphisms of the finite category <A>C</A>.
+#! @Arguments C
+#! @Returns a list of a &CAP; category morphisms
+DeclareAttribute( "SetOfMorphismsOfFiniteCategory",
+        IsCapCategory );
+
+#! @Description
+#!  Return a duplicate free list of morphisms of the finite category <A>C</A>.
+#!  The corresponding &CAP; operation is <C>SetOfMorphismsOfFiniteCategory</C>.
+#! @Arguments C
+#! @Returns a list of &CAP; category objects
+DeclareAttribute( "SetOfMorphisms", IsCapCategory );
+
+###################################
+##
 #! @Section Homomorphism structures
 ##
 ###################################
