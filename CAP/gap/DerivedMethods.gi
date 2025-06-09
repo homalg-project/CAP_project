@@ -23,6 +23,55 @@ end : CategoryFilter := IsTerminalCategory );
 
 ###########################
 ##
+## In a finite category
+##
+###########################
+
+##
+AddDerivationToCAP( SetOfMorphismsOfFiniteCategory,
+        "SetOfMorphismsOfFiniteCategory using SetOfObjectsOfCategory and MorphismsOfExternalHom",
+        [ [ SetOfObjectsOfCategory, 1 ],
+          [ MorphismsOfExternalHom, 4 ] ],
+        
+  function( C )
+    local objs;
+    
+    objs := SetOfObjectsOfCategory( C );
+    
+    ## varying the target (column-index) before varying the source ("row"-index)
+    ## in the for-loops below is enforced by SetOfMorphismsOfFiniteCategory for IsCategoryFromNerveData,
+    ## which in turn is enforced by our convention for ProjectionInFactorOfDirectProduct in SkeletalFinSets,
+    ## which is the "double-reverse" convention of the GAP command Cartesian:
+    
+    # gap> A := FinSet( 3 );
+    # |3|
+    # gap> B := FinSet( 4 );
+    # |4|
+    # gap> data := List( [ A, B ], AsList );
+    # [ [ 0 .. 2 ], [ 0 .. 3 ] ]
+    # gap> pi1 := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
+    # |12| → |3|
+    # gap> pi2 := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
+    # |12| → |4|
+    # gap> List( [ 0 .. 11 ], i -> [ pi1(i), pi2(i) ] );
+    # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
+    # gap> List( Cartesian( Reversed( data ) ), Reversed );
+    # [ [ 0, 0 ], [ 1, 0 ], [ 2, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 0, 2 ], [ 1, 2 ], [ 2, 2 ], [ 0, 3 ], [ 1, 3 ], [ 2, 3 ] ]
+    # gap> L1 = L2;
+    # true
+    # gap> Cartesian( data );
+    # [ [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ], [ 1, 0 ], [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ]
+    # gap> L1 = L3;
+    # false
+    
+    return Concatenation( List( objs, t ->
+                   Concatenation( List( objs, s ->
+                           MorphismsOfExternalHom( C, s, t ) ) ) ) );
+    
+end : CategoryFilter := cat -> HasIsFiniteCategory( cat ) and IsFiniteCategory( cat ) );
+
+###########################
+##
 ## WithGiven pairs
 ##
 ###########################

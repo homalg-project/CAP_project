@@ -13,6 +13,25 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCapCategory := [
     "IsCongruentForMorphisms",
 ];
 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsObjectFiniteCategory :=
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsCapCategory" ),
+                  [ "SetOfObjectsOfCategory" ] ) );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCategory :=
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsObjectFiniteCategory" ),
+                  [ "SetOfMorphismsOfFiniteCategory" ] ) );
+
+#! @Description
+#!  The property of <A>C</A> being equivalent to a finite category.
+#! @Arguments C
+DeclareProperty( "IsEquivalentToFiniteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsEquivalentToFiniteCategory", "IsEquivalentToFiniteCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEquippedWithHomomorphismStructure := Concatenation(
     ListOfDefiningOperations( "IsCapCategory" ),

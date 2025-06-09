@@ -218,6 +218,43 @@ DeclareAttribute( "ObjectDatum",
 DeclareOperation( "IsWellDefinedForObjects",
                   [ IsCapCategoryObject ] );
 
+###################################
+##
+#! @Section SetOfObjects
+##
+###################################
+
+#! @Description
+#!  Return a duplicate free list of objects of the category <A>C</A>.
+#!  The ordering of the returned list must always be the same.
+#! @Arguments C
+#! @Returns a list of &CAP; category objects
+DeclareAttribute( "SetOfObjectsOfCategory",
+        IsCapCategory );
+
+#! @Description
+#!  Return a duplicate free list of objects of the category <A>C</A>.
+#!  The ordering of the returned list must always be the same.
+#!  The corresponding &CAP; operation is <C>SetOfObjectsOfCategory</C>.
+#! @Arguments C
+#! @Returns a list of &CAP; category objects
+DeclareAttribute( "SetOfObjects", IsCapCategory );
+
+CapJitAddTypeSignature( "SetOfObjects", [ IsCapCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
+
+DeclareAttribute( "SetOfObjectsAsUnresolvableAttribute", IsCapCategory );
+
+CapJitAddTypeSignature( "SetOfObjectsAsUnresolvableAttribute", [ IsCapCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
 
 ###################################
 ##

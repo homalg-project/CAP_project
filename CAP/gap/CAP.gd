@@ -121,7 +121,6 @@ DeclareCategory( "IsCapCategoryTwoCell",
 ##
 ###################################
 
-
 #! @Description
 #!  Adds a categorical property to the list of CAP
 #!  categorical properties. <A>list</A> must be a list
@@ -160,6 +159,30 @@ InstallGlobalFunction( AddCategoricalProperty,
     fi;
     
 end );
+
+#! @Description
+#!  The (evil) property of <A>C</A> being a category with finitely many objects.
+#! @Arguments C
+DeclareProperty( "IsObjectFiniteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsObjectFiniteCategory", "IsObjectFiniteCategory" ] );
+
+#! @Description
+#!  The (evil) property of <A>C</A> being a finite category.
+#! @Arguments C
+DeclareProperty( "IsFiniteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsFiniteCategory", "IsFiniteCategory" ] );
+
+#! @Description
+#!  The property of <A>C</A> being equivalent to a finite category.
+#! @Arguments C
+DeclareProperty( "IsEquivalentToFiniteCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsEquivalentToFiniteCategory", "IsEquivalentToFiniteCategory" ] );
 
 #! @Description
 #!  The property of the category <A>C</A> being equipped with a homomorphism structure.
