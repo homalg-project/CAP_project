@@ -238,6 +238,22 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
     end, 1 );
     
     ##
+    AddSetOfObjectsOfCategory( T,
+      function( T )
+        
+        return [ TerminalCategoryWithSingleObjectUniqueObject( T ) ];
+        
+    end );
+    
+    ##
+    AddSetOfMorphismsOfFiniteCategory( T,
+      function( T )
+        
+        return [ TerminalCategoryWithSingleObjectUniqueMorphism( T ) ];
+        
+    end );
+    
+    ##
     AddMorphismsOfExternalHom( T,
       function( T, object_1, object_2 )
         

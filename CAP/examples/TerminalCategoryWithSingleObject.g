@@ -25,6 +25,8 @@ IsIdenticalObj( t, z );
 #! false
 IsWellDefined( z );
 #! true
+Length( SetOfObjectsOfCategory( T ) );
+#! 1
 id_z := IdentityMorphism( z );
 #! <A zero, identity morphism in TerminalCategoryWithSingleObject( )>
 fn_z := ZeroObjectFunctorial( T );
@@ -35,6 +37,8 @@ IsEqualForMorphisms( id_z, fn_z );
 #! true
 IsCongruentForMorphisms( id_z, fn_z );
 #! true
+Length( SetOfMorphismsOfFiniteCategory( T ) );
+#! 1
 IsLiftable( id_z, fn_z );
 #! true
 Lift( id_z, fn_z );
