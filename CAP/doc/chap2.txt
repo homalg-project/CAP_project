@@ -267,13 +267,33 @@
   otherwise the output is [10Xfalse[110X.[133X
   
   
-  [1X2.9 [33X[0;0YProjectives[133X[101X
+  [1X2.9 [33X[0;0YSetOfObjects[133X[101X
+  
+  [1X2.9-1 SetOfObjectsOfCategory[101X
+  
+  [33X[1;0Y[29X[2XSetOfObjectsOfCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
+  
+  [33X[0;0YReturn  a  duplicate free list of objects of the category [3XC[103X. The ordering of
+  the returned list must always be the same.[133X
+  
+  [1X2.9-2 SetOfObjects[101X
+  
+  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
+  
+  [33X[0;0YReturn  a  duplicate free list of objects of the category [3XC[103X. The ordering of
+  the  returned  list must always be the same. The corresponding [5XCAP[105X operation
+  is [10XSetOfObjectsOfCategory[110X.[133X
+  
+  
+  [1X2.10 [33X[0;0YProjectives[133X[101X
   
   [33X[0;0YFor  a  given object [23XA[123X in an abelian category having enough projectives, the
   following  commands  allow  us  to compute some projective object [23XP[123X together
   with an epimorphism [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X2.9-1 SomeProjectiveObject[101X
+  [1X2.10-1 SomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XSomeProjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -281,7 +301,7 @@
   [33X[0;0YThe  argument  is  an  object  [23XA[123X. The output is some projective object [23XP[123X for
   which there exists an epimorphism [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X2.9-2 EpimorphismFromSomeProjectiveObject[101X
+  [1X2.10-2 EpimorphismFromSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,A)[123X[133X
@@ -290,7 +310,7 @@
   A[123X    with    [23XP[123X   a   projective   object   that   equals   the   output   of
   [23X\mathrm{SomeProjectiveObject}(A)[123X.[133X
   
-  [1X2.9-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
+  [1X2.10-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X( [3XA[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,A)[123X[133X
@@ -299,7 +319,7 @@
   output  of  [23X\mathrm{SomeProjectiveObject}(A)[123X.  The  output is an epimorphism
   [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X2.9-4 ProjectiveLift[101X
+  [1X2.10-4 ProjectiveLift[101X
   
   [33X[1;0Y[29X[2XProjectiveLift[102X( [3Xpi[103X, [3Xepsilon[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,B)[123X[133X
@@ -309,13 +329,13 @@
   P \rightarrow B[123X such that [23X\epsilon \circ \lambda = \pi[123X.[133X
   
   
-  [1X2.10 [33X[0;0YInjectives[133X[101X
+  [1X2.11 [33X[0;0YInjectives[133X[101X
   
   [33X[0;0YFor  a  given  object [23XA[123X in an abelian category having enough injectives, the
   following commands allow us to compute some injective object [23XI[123X together with
   a monomorphism [23X\iota: A \rightarrow I[123X.[133X
   
-  [1X2.10-1 SomeInjectiveObject[101X
+  [1X2.11-1 SomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XSomeInjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -323,7 +343,7 @@
   [33X[0;0YThe argument is an object [23XA[123X. The output is some injective object [23XI[123X for which
   there exists a monomorphism [23X\iota: A \rightarrow I[123X.[133X
   
-  [1X2.10-2 MonomorphismIntoSomeInjectiveObject[101X
+  [1X2.11-2 MonomorphismIntoSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoSomeInjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,A)[123X[133X
@@ -332,7 +352,7 @@
   \rightarrow  I[123X  with  [23XI[123X  an  injective  object  that  equals  the  output of
   [23X\mathrm{SomeInjectiveObject}(A)[123X.[133X
   
-  [1X2.10-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
+  [1X2.11-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X( [3XA[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,A)[123X[133X
@@ -341,7 +361,7 @@
   output  of  [23X\mathrm{SomeInjectiveObject}(A)[123X.  The  output  is a monomorphism
   [23X\iota: A \rightarrow I[123X.[133X
   
-  [1X2.10-4 InjectiveColift[101X
+  [1X2.11-4 InjectiveColift[101X
   
   [33X[1;0Y[29X[2XInjectiveColift[102X( [3Xiota[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,I)[123X[133X
@@ -351,7 +371,7 @@
   morphism [23X\lambda: A \rightarrow I[123X such that [23X\lambda \circ \iota = \beta[123X.[133X
   
   
-  [1X2.11 [33X[0;0YSimplified Objects[133X[101X
+  [1X2.12 [33X[0;0YSimplified Objects[133X[101X
   
   [33X[0;0YLet  [23Xi[123X  be  a  positive  integer  or  [23X\infty[123X.  For a given object [23XA[123X, an [23Xi[123X-th
   simplified object of [23XA[123X consists of[133X
@@ -363,14 +383,14 @@
   [33X[0;0YThe  idea  is  that the greater the [23Xi[123X, the "simpler" the [23XA_i[123X (but this could
   mean the harder the computation) with [23X\infty[123X as a possible value.[133X
   
-  [1X2.11-1 Simplify[101X
+  [1X2.12-1 Simplify[101X
   
   [33X[1;0Y[29X[2XSimplify[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is an object [23XA[123X. The output is a simplified object [23XA_{\infty}[123X.[133X
   
-  [1X2.11-2 SimplifyObject[101X
+  [1X2.12-2 SimplifyObject[101X
   
   [33X[1;0Y[29X[2XSimplifyObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -378,7 +398,7 @@
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X and a positive integer [23Xi[123X or [10Xinfinity[110X. The
   output is a simplified object [23XA_i[123X.[133X
   
-  [1X2.11-3 SimplifyObject_IsoFromInputObject[101X
+  [1X2.12-3 SimplifyObject_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XSimplifyObject_IsoFromInputObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,A_i)[123X[133X
@@ -387,7 +407,7 @@
   output  is  an  isomorphism  to a simplified object [23X\iota_A^i: A \rightarrow
   A_i[123X.[133X
   
-  [1X2.11-4 SimplifyObject_IsoToInputObject[101X
+  [1X2.12-4 SimplifyObject_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XSimplifyObject_IsoToInputObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A_i,A)[123X[133X
@@ -398,16 +418,16 @@
   [10XSimplifyObject_IsoFromInputObject[110X.[133X
   
   
-  [1X2.12 [33X[0;0YDimensions[133X[101X
+  [1X2.13 [33X[0;0YDimensions[133X[101X
   
-  [1X2.12-1 ProjectiveDimension[101X
+  [1X2.13-1 ProjectiveDimension[101X
   
   [33X[1;0Y[29X[2XProjectiveDimension[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya nonnegative integer or infinity[133X
   
   [33X[0;0YThe argument is an object [23XA[123X. The output is a the projective dimension of [23XA[123X.[133X
   
-  [1X2.12-2 InjectiveDimension[101X
+  [1X2.13-2 InjectiveDimension[101X
   
   [33X[1;0Y[29X[2XInjectiveDimension[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya nonnegative integer or infinity[133X
