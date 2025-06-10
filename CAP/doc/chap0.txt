@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2025.06-01
+                                   2025.06-02
   
   
-                                  9 June 2025
+                                  10 June 2025
   
   
                                Sebastian Gutsche
@@ -76,30 +76,31 @@
       1.2-1 AddCategoricalProperty
       1.2-2 IsObjectFiniteCategory
       1.2-3 IsFiniteCategory
-      1.2-4 IsEquivalentToFiniteCategory
-      1.2-5 IsEquippedWithHomomorphismStructure
-      1.2-6 IsCategoryWithDecidableLifts
-      1.2-7 IsCategoryWithDecidableColifts
-      1.2-8 IsCategoryWithInitialObject
-      1.2-9 IsCategoryWithTerminalObject
-      1.2-10 IsCategoryWithZeroObject
-      1.2-11 IsCategoryWithEqualizers
-      1.2-12 IsCategoryWithCoequalizers
-      1.2-13 IsEnrichedOverCommutativeRegularSemigroup
-      1.2-14 IsSkeletalCategory
-      1.2-15 IsAbCategory
-      1.2-16 IsLinearCategoryOverCommutativeRing
-      1.2-17 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
-      1.2-18 IsCategoryWithKernels
-      1.2-19 IsCategoryWithCokernels
-      1.2-20 IsAdditiveCategory
-      1.2-21 IsPreAbelianCategory
-      1.2-22 IsAbelianCategory
-      1.2-23 IsAbelianCategoryWithEnoughProjectives
-      1.2-24 IsAbelianCategoryWithEnoughInjectives
-      1.2-25 IsLocallyOfFiniteProjectiveDimension
-      1.2-26 IsLocallyOfFiniteInjectiveDimension
-      1.2-27 ListOfDefiningOperations
+      1.2-4 IsFinite
+      1.2-5 IsEquivalentToFiniteCategory
+      1.2-6 IsEquippedWithHomomorphismStructure
+      1.2-7 IsCategoryWithDecidableLifts
+      1.2-8 IsCategoryWithDecidableColifts
+      1.2-9 IsCategoryWithInitialObject
+      1.2-10 IsCategoryWithTerminalObject
+      1.2-11 IsCategoryWithZeroObject
+      1.2-12 IsCategoryWithEqualizers
+      1.2-13 IsCategoryWithCoequalizers
+      1.2-14 IsEnrichedOverCommutativeRegularSemigroup
+      1.2-15 IsSkeletalCategory
+      1.2-16 IsAbCategory
+      1.2-17 IsLinearCategoryOverCommutativeRing
+      1.2-18 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
+      1.2-19 IsCategoryWithKernels
+      1.2-20 IsCategoryWithCokernels
+      1.2-21 IsAdditiveCategory
+      1.2-22 IsPreAbelianCategory
+      1.2-23 IsAbelianCategory
+      1.2-24 IsAbelianCategoryWithEnoughProjectives
+      1.2-25 IsAbelianCategoryWithEnoughInjectives
+      1.2-26 IsLocallyOfFiniteProjectiveDimension
+      1.2-27 IsLocallyOfFiniteInjectiveDimension
+      1.2-28 ListOfDefiningOperations
     1.3 [33X[0;0YConstructor[133X
       1.3-1 CreateCapCategory
       1.3-2 CreateCapCategory
