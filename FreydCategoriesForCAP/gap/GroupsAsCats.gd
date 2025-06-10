@@ -40,21 +40,20 @@ DeclareOperation( "GroupAsCategoryMorphism",
 
 KeyDependentOperation( "GroupAsCategoryMorphism", IsGroupAsCategory, IsObject, ReturnTrue );
 
-
 ####################################
 ##
 #! @Section Attributes
 ##
 ####################################
 
-DeclareAttribute( "UnderlyingGroupElement",
-                  IsGroupAsCategoryMorphism );
-
 DeclareAttribute( "UnderlyingGroup",
                   IsGroupAsCategory );
 
 DeclareAttribute( "ElementsOfUnderlyingGroup",
                   IsGroupAsCategory );
+
+DeclareAttribute( "UnderlyingGroupElement",
+                  IsGroupAsCategoryMorphism );
 
 DeclareAttribute( "PositionWithinElements",
                   IsGroupAsCategoryMorphism );
