@@ -407,6 +407,8 @@ false
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( z );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjectsOfCategory( T ) );</span>
+1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
 &lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
@@ -417,6 +419,8 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfMorphismsOfFiniteCategory( T ) );</span>
+1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( id_z, fn_z );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( id_z, fn_z );</span>

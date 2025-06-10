@@ -353,6 +353,8 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfObjectsOfCategory( T ) );[127X[104X
+    [4X[28X1[128X[104X
     [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
     [4X[28X<A zero, identity morphism in TerminalCategoryWithSingleObject( )>[128X[104X
     [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
@@ -363,6 +365,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( id_z, fn_z );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfMorphismsOfFiniteCategory( T ) );[127X[104X
+    [4X[28X1[128X[104X
     [4X[25Xgap>[125X [27XIsLiftable( id_z, fn_z );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLift( id_z, fn_z );[127X[104X
