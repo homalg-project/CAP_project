@@ -132,6 +132,7 @@ InstallMethod( SetOfObjectsAsUnresolvableAttribute,
         
   SetOfObjectsOfCategory );
 
+#= comment for Julia
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
         [ IsCapCategory and HasOppositeCategory ],
@@ -141,6 +142,7 @@ InstallMethodForCompilerForCAP( SetOfObjects,
     return List( SetOfObjects( OppositeCategory( cat_op ) ), obj -> ObjectConstructor( cat_op, obj ) );
     
 end );
+# =#
 
 ##
 InstallMethod( RandomObject, [ IsCapCategory, IsInt ], RandomObjectByInteger );
