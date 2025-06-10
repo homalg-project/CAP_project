@@ -27,10 +27,13 @@ InstallMethod( GroupAsCategory,
     
     SetUnderlyingGroup( category, group );
     
+    SetIsObjectFiniteCategory( category, true );
+    
     is_finite := HasIsFinite( group ) and IsFinite( group );
     
     if is_finite then
         
+        SetIsFiniteCategory( category, true );
         SetRangeCategoryOfHomomorphismStructure( category, FREYD_CATEGORIES_SkeletalFinSets );
         SetIsEquippedWithHomomorphismStructure( category, true );
         
@@ -63,13 +66,10 @@ InstallMethod( GroupAsCategoryMorphismOp,
     
     unique_object := GroupAsCategoryUniqueObject( category );
     
-    ## this is a "compiled" version of ObjectifyMorphismForCAPWithAttributes
-    return ObjectifyWithAttributes( rec( ), category!.morphism_type,
-                                    Source, unique_object,
-                                    Range, unique_object,
-                                    UnderlyingGroupElement, element,
-                                    CapCategory, category
-    );
+    return CreateCapCategoryMorphismWithAttributes( category,
+                                                    unique_object,
+                                                    unique_object,
+                                                    UnderlyingGroupElement, element );
     
 end );
 
@@ -237,8 +237,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         );
     end );
     
-    ## Warning: the hom structure is costly for big finite groups.
-    ## TODO: Only do a preprocessing for small groups
+    ##
+    AddSetOfObjectsOfCategory( category,
+      function( cat )
+        
+        return [ GroupAsCategoryUniqueObject( cat ) ];
+        
+    end );
+        
     if is_finite then
         
         sets := RangeCategoryOfHomomorphismStructure( category );
@@ -251,7 +257,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         RG := FinSet( FREYD_CATEGORIES_SkeletalFinSets, size );
         
+        ##
+        AddSetOfMorphismsOfFiniteCategory( category,
+          function( cat )
+            
+            return List( elements, el -> GroupAsCategoryMorphism( category, el ) );
+            
+        end );
+        
         ## Homomorphism structure
+        ##
+        ## Warning: the hom structure is costly for big finite groups.
+        ## TODO: Only do a preprocessing for small groups
         AddHomomorphismStructureOnObjects( category,
           function( cat, a, b )
             

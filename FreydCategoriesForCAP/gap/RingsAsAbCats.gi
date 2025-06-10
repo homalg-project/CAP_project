@@ -40,6 +40,8 @@ InstallMethod( RING_AS_CATEGORY,
     
     SetIsAbCategory( category, true );
     
+    SetIsObjectFiniteCategory( category, true );
+    
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
         SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
@@ -201,6 +203,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             category,
             One( UnderlyingRing( cat ) )
         );
+        
+    end );
+    
+    ##
+    AddSetOfObjectsOfCategory( category,
+      function( cat )
+        
+        return [ RingAsCategoryUniqueObject( cat ) ];
         
     end );
     

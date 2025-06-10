@@ -9,6 +9,10 @@ LoadPackage( "FreydCategoriesForCAP" );;
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
 u := GroupAsCategoryUniqueObject( CG );;
+SetOfObjectsOfCategory( CG ) = [ u ];
+#! true
+Length( SetOfMorphismsOfFiniteCategory( CG ) ) = Size( G );
+#! true
 alpha := GroupAsCategoryMorphism( (1,2,3), CG );;
 alpha * Inverse( alpha ) = IdentityMorphism( u );
 #! true
