@@ -956,6 +956,10 @@
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27Xu := GroupAsCategoryUniqueObject( CG );;[127X[104X
+    [4X[25Xgap>[125X [27XSetOfObjectsOfCategory( CG ) = [ u ];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfMorphismsOfFiniteCategory( CG ) ) = Size( G );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha := GroupAsCategoryMorphism( (1,2,3), CG );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha * Inverse( alpha ) = IdentityMorphism( u );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -1103,6 +1107,8 @@
     [4X[25Xgap>[125X [27Xg := GroupAsCategoryMorphism( (1,2,3), CG );;[127X[104X
     [4X[25Xgap>[125X [27Xh := GroupAsCategoryMorphism( (1,2), CG );;[127X[104X
     [4X[25Xgap>[125X [27Xv := LinearClosureObject( ZCG, u );;[127X[104X
+    [4X[25Xgap>[125X [27XSetOfObjectsOfCategory( ZCG ) = [ v ];[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xelem1 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v );;[127X[104X
     [4X[25Xgap>[125X [27Xelem2 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ h, g, h, g, h, g ], v );;[127X[104X
     [4X[25Xgap>[125X [27X# for i in [ 1 .. 10^6 ] do LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v ); od;[127X[104X
@@ -1474,6 +1480,10 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XCR := RingAsCategory( Integers );;[127X[104X
     [4X[25Xgap>[125X [27Xu := RingAsCategoryUniqueObject( CR );;[127X[104X
+    [4X[25Xgap>[125X [27XIsObjectFiniteCategory( CR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjectsOfCategory( CR ) = [ u ];[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha := 2 / CR;[127X[104X
     [4X[28X<2>[128X[104X
     [4X[25Xgap>[125X [27XIsOne( alpha );[127X[104X
