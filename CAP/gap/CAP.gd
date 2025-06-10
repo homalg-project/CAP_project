@@ -174,6 +174,12 @@ AddCategoricalProperty( [ "IsObjectFiniteCategory", "IsObjectFiniteCategory" ] )
 DeclareProperty( "IsFiniteCategory",
         IsCapCategory );
 
+#! @Description
+#!  Synonym for <C>IsFiniteCategory</C>.
+#! @Arguments C
+DeclareProperty( "IsFinite",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsFiniteCategory", "IsFiniteCategory" ] );
 
 #! @Description
