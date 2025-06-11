@@ -14,10 +14,10 @@ R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;
 
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES(
     [
-        [ CategoryOfRows( R ), "CategoryOfRows of an arbitrary ring" ],
-        [ CategoryOfRows( EQQxy ), "CategoryOfRows of an exterior algebra over a field" ],
-        [ CategoryOfRows( QQxy ), "CategoryOfRows of a commutative ring" ],
-        [ CategoryOfRows( QQ ), "CategoryOfRows of a field" ],
+        [ CategoryOfRows( R ), "CategoryOfRows of an arbitrary ring", 0 ],
+        [ CategoryOfRows( EQQxy ), "CategoryOfRows of an exterior algebra over a field", 1 ],
+        [ CategoryOfRows( QQxy ), "CategoryOfRows of a commutative ring", 1 ],
+        [ CategoryOfRows( QQ ), "CategoryOfRows of a field", 3 ],
     ],
     "FreydCategoriesForCAP",
     "CategoryOfRows.autogen.gd",

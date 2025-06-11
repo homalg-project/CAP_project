@@ -1042,6 +1042,70 @@ DeclareOperation( "MereExistenceOfSolutionOfLinearSystemInAbCategory",
                    [ IsList, IsList, IsList ] );
 
 #! @Description
+#! Like <C>SolveLinearSystemInAbCategory</C>,
+#! but the output is simply <C>true</C> if a unique solution exists,
+#! and <C>false</C> otherwise.
+#! @Returns a boolean
+#! @Arguments alpha, beta, gamma
+DeclareOperation( "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
+                   [ IsList, IsList, IsList ] );
+
+#! @Description
+#! Like <C>SolveLinearSystemInAbCategory</C>
+#! but the output is <C>true</C> if the homogeneous system has only the trivial zero solution,
+#! and <C>false</C> otherwise.
+#! @Returns a boolean
+#! @Arguments alpha, beta
+DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
+                   [ IsList, IsList ] );
+
+#! @Description
+#! The arguments are two lists of lists $\alpha$ and $\beta$ of morphisms in a linear category over a commutative ring $k$.
+#! The first list $\alpha$ (the left coefficients) is a list of list of morphisms $\alpha_{ij}: A_i \rightarrow B_j$,
+#! where $i = 1, \dots, m$ and $j = 1, \dots, n$ for integers $m,n \geq 1$.
+#! The second list $\beta$ (the right coefficients) is a list of list of morphisms $\beta_{ij}: C_j \rightarrow D_i$,
+#! where $i = 1, \dots, m$ and $j = 1, \dots, n$.
+#! The output is a generating set $[X^1,\dots,X^t]$ for the solutions of the homogeneous linear system:
+#! $\sum_{j = 1}^n \alpha_{ij}\cdot X_{j} \cdot \beta_{ij} = 0, ~i = 1, \dots, m$.
+#! Particularly, each $X^k$ is a list (of length $n$) of morphisms $X^k_j:B_j \to C_j, j=1,\dots,n$.
+#! @Returns a list of lists of morphisms $[X^1, \dots, X^t]$
+#! @Arguments alpha, beta
+DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
+                   [ IsList, IsList ] );
+
+#! @Description
+#! The arguments are four lists of lists $\alpha$, $\beta$, $\gamma$, $\delta$ of morphisms in some linear category over commutative ring.
+#! Each of $\alpha$ and $\gamma$ is a list of list of morphisms $\alpha_{ij}, \gamma_{ij}: A_i \rightarrow B_j$,
+#! where $i = 1, \dots, m$ and $j = 1, \dots, n$ for integers $m,n \geq 1$.
+#! Each of $\beta$ and $\delta$ is also a list of list of morphisms $\beta_{ij}, \delta_{ij}: C_j \rightarrow D_i$,
+#! where $i = 1, \dots, m$ and $j = 1, \dots, n$.
+#! The output is a generating set $[X^1,\dots,X^t]$ for the solutions of the homogeneous linear system
+#! defined by $\alpha$, $\beta$, $\gamma$ and $\delta$, i.e.,
+#! $\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}$
+#! for all $i = 1, \dots, m$ and all $k = 1, \dots, t$.
+#! @Returns a list of lists of morphisms $[X^1, \dots, X^t]$
+#! @Arguments alpha, beta, gamma, delta
+DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
+                   [ IsList, IsList, IsList, IsList ] );
+
+#! @Description
+#! The arguments are two lists of lists $\alpha$, $\delta$ morphisms in some linear category
+#! over commutative ring.
+#! $\alpha$ is a list of list of morphisms $\alpha_{ij}:A_i \rightarrow B_j$ and
+#! $\delta$ is a list of list of morphisms $\delta_{ij}:C_j \rightarrow D_i$,
+#! where $i = 1, \dots, m$ and $j = 1, \dots, n$ for integers $m,n \geq 1$.
+#! The method delegates to <C>BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</C> applied on $\alpha$, $\beta$, $\gamma$, $\delta$ where
+#! * $\beta_{ij}$ equals <C>IdentityMorphism</C>(<C>Source</C>($\delta_{ij}$)) if $\delta_{ij}$ is an endomorphism,
+#!   and <C>ZeroMorphism</C>(<C>Source</C>($\delta_{ij}$), <C>Range</C>($\delta_{ij}$)) otherwise,
+#! * $\gamma_{ij}$ equals <C>IdentityMorphism</C>(<C>Source</C>($\alpha_{ij}$)) if $\alpha_{ij}$ is an endomorphism,
+#!    and <C>ZeroMorphism</C>(<C>Source</C>($\alpha_{ij}$), <C>Range</C>($\alpha_{ij}$)) otherwise;
+#! for all $i = 1, \dots, m$ and $j = 1, \dots, n$.
+#! @Returns a list of lists of morphisms $[X^1, \dots, X^t]$
+#! @Arguments alpha, delta
+DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
+                   [ IsList, IsList ] );
+
+#! @Description
 #! This is a convenience method.
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$ in $C$.
 #! The output is <C>HomomorphismStructureOnMorphisms</C> called on $\alpha$, $\beta$.

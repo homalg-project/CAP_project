@@ -751,3 +751,83 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
         SolveLinearSystemInAbCategoryOrFail := [ [ "MereExistenceOfSolutionOfLinearSystemInAbCategory", 1 ], [ "SolveLinearSystemInAbCategory", 1 ] ],
     )
 );
+
+##
+InstallMethod( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory,
+        "for two lists",
+        [ IsList, IsList ],
+        
+  function( left_coeffs, right_coeffs )
+    
+    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory( CapCategory( right_coeffs[1,1] ), left_coeffs, right_coeffs );
+    
+end );
+
+##
+InstallMethod( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
+        "for two lists",
+        [ IsList, IsList ],
+        
+  function( left_coeffs, right_coeffs )
+    
+    return BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory( CapCategory( right_coeffs[1, 1] ), left_coeffs, right_coeffs );
+    
+end );
+
+##
+InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
+        "for four lists",
+        [ IsList, IsList, IsList, IsList ],
+        
+  function( alpha, beta, gamma, delta )
+    
+    return BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory(
+                    CapCategory( delta[1, 1] ), alpha, beta, gamma, delta );
+    
+end );
+
+##
+InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
+        "for two lists",
+        [ IsList, IsList ],
+
+  function( alpha, delta )
+    local cat, beta, gamma, i;
+    
+    cat := CapCategory( alpha[1][1] );
+    
+    beta := List( [ 1 .. Length( alpha ) ],
+                i ->  List( [ 1 .. Length( delta[i] ) ],
+                      function ( j )
+                        local alpha_ij, delta_ij;
+
+                        alpha_ij := alpha[i][j];
+                        delta_ij := delta[i][j];
+
+                        if IsEndomorphism( cat, delta_ij ) and not IsEqualToZeroMorphism( cat, alpha_ij ) then
+                            return IdentityMorphism( cat, Source( delta_ij ) );
+                        else
+                            return ZeroMorphism( cat, Source( delta_ij ), Target( delta_ij ) );
+                        fi;
+
+                      end ) );
+    
+    gamma := List( [ 1 .. Length( alpha ) ],
+                i ->  List( [ 1 .. Length( alpha[i] ) ],
+                      function ( j )
+                        local alpha_ij, delta_ij;
+
+                        alpha_ij := alpha[i][j];
+                        delta_ij := delta[i][j];
+
+                        if IsEndomorphism( cat, alpha_ij ) and not IsEqualToZeroMorphism( cat, delta_ij ) then
+                            return IdentityMorphism( cat, Source( alpha_ij ) );
+                        else
+                            return ZeroMorphism( cat, Source( alpha_ij ), Target( alpha_ij ) );
+                        fi;
+
+                      end ) );
+    
+    return BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory( cat, alpha, beta, gamma, delta );
+    
+end );
