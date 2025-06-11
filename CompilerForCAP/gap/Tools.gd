@@ -106,7 +106,7 @@ DeclareGlobalFunction( "CapJitAddBinding" );
 DeclareGlobalFunction( "CapJitValueOfBinding" );
 
 #! @Description
-#!   Unbinds the the binding named <A>name</A> from a syntax tree <A>bindings</A> of type `FVAR_BINDING_SEQ`.
+#!   Unbinds the binding named <A>name</A> from a syntax tree <A>bindings</A> of type `FVAR_BINDING_SEQ`.
 #! @Arguments bindings, name
 DeclareGlobalFunction( "CapJitUnbindBinding" );
 

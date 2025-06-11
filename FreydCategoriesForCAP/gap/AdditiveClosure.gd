@@ -194,7 +194,7 @@ CapJitAddTypeSignature( "MorphismMatrix", [ IsAdditiveClosureMorphism ], functio
 end );
 
 #! @Description
-#! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the the source.
+#! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the source.
 #! @Arguments alpha
 #! @Returns a non-negative integer
 DeclareAttribute( "NumberRows",
@@ -202,7 +202,7 @@ DeclareAttribute( "NumberRows",
 CapJitAddTypeSignature( "NumberRows", [ IsAdditiveClosureMorphism ], IsInt );
 
 #! @Description
-#! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the the range.
+#! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the range.
 #! @Arguments alpha
 #! @Returns a non-negative integer
 DeclareAttribute( "NumberColumns",
