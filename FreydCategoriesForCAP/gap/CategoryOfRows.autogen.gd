@@ -187,7 +187,7 @@
 
 #! @Subsection CategoryOfRows of an exterior algebra over a field
 
-#! The following additional CAP operations are supported:
+#! Additional to the operations listed in “CategoryOfRows of an arbitrary ring” the following operations are supported:
 #! * <Ref BookName="CAP" Func="BasisOfExternalHom" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoefficientsOfMorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="DistinguishedObjectOfHomomorphismStructure" Label="for Is" />
@@ -204,7 +204,7 @@
 
 #! @Subsection CategoryOfRows of a commutative ring
 
-#! The following additional CAP operations are supported:
+#! Additional to the operations listed in “CategoryOfRows of an exterior algebra over a field” the following operations are supported:
 #! * <Ref BookName="MonoidalCategories" Func="AssociatorLeftToRight" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="AssociatorLeftToRightWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="AssociatorRightToLeft" Label="for Is" />
@@ -360,7 +360,7 @@
 
 #! @Subsection CategoryOfRows of a field
 
-#! The following additional CAP operations are supported:
+#! Additional to the operations listed in “CategoryOfRows of a commutative ring” the following operations are supported:
 #! * <Ref BookName="CAP" Func="AstrictionToCoimage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="AstrictionToCoimageWithGivenCoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImage" Label="for Is" />
