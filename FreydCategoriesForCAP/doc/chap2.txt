@@ -155,7 +155,7 @@
   [6XReturns:[106X  [33X[0;10Ya non-negative integer[133X
   
   [33X[0;0YThe  argument  is  a  morphism [23X\alpha:A\to B[123X between formal direct sums. The
-  output is the number of summands of the the source.[133X
+  output is the number of summands of the source.[133X
   
   [1X2.3-5 NumberColumns[101X
   
@@ -163,7 +163,7 @@
   [6XReturns:[106X  [33X[0;10Ya non-negative integer[133X
   
   [33X[0;0YThe  argument  is  a  morphism [23X\alpha:A\to B[123X between formal direct sums. The
-  output is the number of summands of the the range.[133X
+  output is the number of summands of the range.[133X
   
   
   [1X2.4 [33X[0;0YOperators[133X[101X
