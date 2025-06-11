@@ -2046,7 +2046,7 @@ end );
 ##
 InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES,
   function ( subsections, package_name, filename, chapter_name, section_name )
-    local output_string, package_info, current_string, transitively_needed_other_packages, previous_operations, subsection, category, subsection_title, operations, bookname, info, label, match, nr, res, test_string, test_string_legacy, output_path, i, name;
+    local output_string, package_info, current_string, transitively_needed_other_packages, parent_index, subsection, category, subsection_title, operations, bookname, info, label, match, nr, res, test_string, test_string_legacy, output_path, i, name;
     
     output_string := "";
     
@@ -2084,21 +2084,26 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
     # We do not want to include operations from optional dependencies because those might not be available.
     transitively_needed_other_packages := TransitivelyNeededOtherPackages( package_name );
     
-    previous_operations := [ ];
-    
     for i in [ 1 .. Length( subsections ) ] do
         
         subsection := subsections[i];
         
-        Assert( 0, IsList( subsection ) and Length( subsection ) = 2 );
+        Assert( 0, IsList( subsection ) and Length( subsection ) in [ 2, 3 ] );
         
         category := subsection[1];
         subsection_title := subsection[2];
+        
+        if Length( subsection ) <> 3 then
+            subsection[3] := i - 1;
+        fi;
+        
+        parent_index := subsection[3];
         
         Assert( 0, IsCapCategory( category ) );
         Assert( 0, IsString( subsection_title ) );
         
         # the space between # and ! prevents AutoDoc from parsing these strings and is removed below
+        
         current_string := Concatenation( "\n# ! @Subsection ", subsection_title );
         output_string := Concatenation( output_string, current_string );
         
@@ -2106,19 +2111,25 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             
             operations := AsSortedList( ListInstalledOperationsOfCategory( category ) );
             
+            Add( subsection, operations );
+            
             current_string := "\n\n# ! The following CAP operations are supported:";
             
         else
             
-            if not IsSubset( ListInstalledOperationsOfCategory( category ), previous_operations ) then
+            operations := ListInstalledOperationsOfCategory( category );
+            
+            if not IsSubset( operations, subsections[parent_index][4] ) then
                 
-                Error( "the operations of the ", i - 1, ". category are not a subset of the operations of the ", i, ". category" );
+                Error( "the operations of the category", Name( subsections[i - 1][1] ), " are not a subset of the operations of the category ", Name( subsections[i][1] ) );
                 
             fi;
             
-            operations := AsSortedList( Difference( ListInstalledOperationsOfCategory( category ), previous_operations ) );
+            Add( subsection, operations );
             
-            current_string := "\n\n# ! The following additional CAP operations are supported:";
+            operations := AsSortedList( Difference( operations, subsections[parent_index][4] ) );
+            
+            current_string := Concatenation( "\n\n# ! Additional to the operations listed in “", subsections[parent_index][2], "” the following operations are supported:" );
             
         fi;
         
@@ -2215,8 +2226,6 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
                 )
             );
             output_string := Concatenation( output_string, current_string );
-            
-            Add( previous_operations, name );
             
         od;
         
