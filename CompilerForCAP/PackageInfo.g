@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up and verify categorical algorithms",
-Version := "2025.02-01",
-Date := "2025-02-14",
+Version := "2025.06-01",
+Date := "2025-06-11",
 License := "GPL-2.0-or-later",
 
 Persons := [

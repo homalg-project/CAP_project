@@ -460,7 +460,7 @@
   
   [33X[1;0Y[29X[2XCapJitUnbindBinding[102X( [3Xbindings[103X, [3Xname[103X ) [32X function[133X
   
-  [33X[0;0YUnbinds  the  the  binding  named  [3Xname[103X  from a syntax tree [3Xbindings[103X of type
+  [33X[0;0YUnbinds  the  binding  named  [3Xname[103X  from  a  syntax  tree  [3Xbindings[103X  of type
   [10XFVAR_BINDING_SEQ[110X.[133X
   
   [1X2.4-16 CapJitReplacedEXPR_REF_FVARByValue[101X
