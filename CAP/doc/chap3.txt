@@ -948,7 +948,79 @@
   [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  the  output  is  simply [10Xtrue[110X if a
   solution exists, [10Xfalse[110X otherwise.[133X
   
-  [1X3.17-11 HomStructure[101X
+  [1X3.17-11 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[101X
+  
+  [33X[1;0Y[29X[2XMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  the  output  is  simply [10Xtrue[110X if a
+  unique solution exists, and [10Xfalse[110X otherwise.[133X
+  
+  [1X3.17-12 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[101X
+  
+  [33X[1;0Y[29X[2XMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YLike [10XSolveLinearSystemInAbCategory[110X but the output is [10Xtrue[110X if the homogeneous
+  system has only the trivial zero solution, and [10Xfalse[110X otherwise.[133X
+  
+  [1X3.17-13 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of morphisms [23X[X^1, \dots, X^t][123X[133X
+  
+  [33X[0;0YThe  arguments  are  two  lists  of lists [23X\alpha[123X and [23X\beta[123X of morphisms in a
+  linear  category  over a commutative ring [23Xk[123X. The first list [23X\alpha[123X (the left
+  coefficients)  is  a  list of list of morphisms [23X\alpha_{ij}: A_i \rightarrow
+  B_j[123X,  where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X for integers [23Xm,n \geq 1[123X. The
+  second  list  [23X\beta[123X  (the right coefficients) is a list of list of morphisms
+  [23X\beta_{ij}:  C_j \rightarrow D_i[123X, where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X.
+  The  output  is  a  generating  set [23X[X^1,\dots,X^t][123X for the solutions of the
+  homogeneous  linear  system:  [23X\sum_{j  =  1}^n  \alpha_{ij}\cdot X_{j} \cdot
+  \beta_{ij}  =  0,  ~i  =  1,  \dots, m[123X. Particularly, each [23XX^k[123X is a list (of
+  length [23Xn[123X) of morphisms [23XX^k_j:B_j \to C_j, j=1,\dots,n[123X.[133X
+  
+  [1X3.17-14 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of morphisms [23X[X^1, \dots, X^t][123X[133X
+  
+  [33X[0;0YThe  arguments  are  four  lists  of  lists [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X, [23X\delta[123X of
+  morphisms  in some linear category over commutative ring. Each of [23X\alpha[123X and
+  [23X\gamma[123X  is  a  list  of  list  of  morphisms  [23X\alpha_{ij},  \gamma_{ij}: A_i
+  \rightarrow  B_j[123X, where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X for integers [23Xm,n
+  \geq  1[123X.  Each  of  [23X\beta[123X  and  [23X\delta[123X  is  also a list of list of morphisms
+  [23X\beta_{ij},  \delta_{ij}: C_j \rightarrow D_i[123X, where [23Xi = 1, \dots, m[123X and [23Xj =
+  1,  \dots,  n[123X.  The  output  is  a  generating  set  [23X[X^1,\dots,X^t][123X for the
+  solutions  of the homogeneous linear system defined by [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X
+  and [23X\delta[123X, i.e., [23X\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij}
+  = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}[123X for all [23Xi = 1,
+  \dots, m[123X and all [23Xk = 1, \dots, t[123X.[133X
+  
+  [1X3.17-15 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[102X( [3Xalpha[103X, [3Xdelta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of morphisms [23X[X^1, \dots, X^t][123X[133X
+  
+  [33X[0;0YThe arguments are two lists of lists [23X\alpha[123X, [23X\delta[123X morphisms in some linear
+  category  over  commutative  ring.  [23X\alpha[123X  is  a  list of list of morphisms
+  [23X\alpha_{ij}:A_i  \rightarrow  B_j[123X  and [23X\delta[123X is a list of list of morphisms
+  [23X\delta_{ij}:C_j  \rightarrow  D_i[123X, where [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X
+  for     integers     [23Xm,n     \geq     1[123X.    The    method    delegates    to
+  [10XBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory[110X  applied  on
+  [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X, [23X\delta[123X where[133X
+  
+  [30X    [33X[0;6Y[23X\beta_{ij}[123X equals [10XIdentityMorphism[110X([10XSource[110X([23X\delta_{ij}[123X)) if [23X\delta_{ij}[123X
+        is     an    endomorphism,    and    [10XZeroMorphism[110X([10XSource[110X([23X\delta_{ij}[123X),
+        [10XRange[110X([23X\delta_{ij}[123X)) otherwise,[133X
+  
+  [30X    [33X[0;6Y[23X\gamma_{ij}[123X     equals     [10XIdentityMorphism[110X([10XSource[110X([23X\alpha_{ij}[123X))    if
+        [23X\alpha_{ij}[123X  is an endomorphism, and [10XZeroMorphism[110X([10XSource[110X([23X\alpha_{ij}[123X),
+        [10XRange[110X([23X\alpha_{ij}[123X)) otherwise;[133X
+  
+  [33X[0;0Yfor all [23Xi = 1, \dots, m[123X and [23Xj = 1, \dots, n[123X.[133X
+  
+  [1X3.17-16 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a',b), H(a,b'))[123X[133X
@@ -957,7 +1029,7 @@
   \rightarrow   a',   \beta:   b   \rightarrow   b'[123X   in   [23XC[123X.  The  output  is
   [10XHomomorphismStructureOnMorphisms[110X called on [23X\alpha[123X, [23X\beta[123X.[133X
   
-  [1X3.17-12 HomStructure[101X
+  [1X3.17-17 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xalpha[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a',b), H(a,b))[123X[133X
@@ -966,7 +1038,7 @@
   \rightarrow    a'[123X    and    an    object    [23Xb[123X    in   [23XC[123X.   The   output   is
   [10XHomomorphismStructureOnMorphisms[110X called on [23X\alpha[123X, [23X\mathrm{id}_b[123X.[133X
   
-  [1X3.17-13 HomStructure[101X
+  [1X3.17-18 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xa[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a,b), H(a,b'))[123X[133X
@@ -975,7 +1047,7 @@
   [23X\beta: b \rightarrow b'[123X in [23XC[123X. The output is [10XHomomorphismStructureOnMorphisms[110X
   called on [23X\mathrm{id}_a[123X, [23X\beta[123X.[133X
   
-  [1X3.17-14 HomStructure[101X
+  [1X3.17-19 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -983,27 +1055,27 @@
   [33X[0;0YThis  is  a  convenience method. The arguments are two objects [23Xa[123X and [23Xb[123X in [23XC[123X.
   The output is [10XHomomorphismStructureOnObjects[110X called on [23Xa,b[123X.[133X
   
-  [1X3.17-15 HomStructure[101X
+  [1X3.17-20 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis          is          a          convenience          method         for
   [10XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[110X.[133X
   
-  [1X3.17-16 HomStructure[101X
+  [1X3.17-21 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
   [33X[0;0YThis          is          a          convenience          method         for
   [10XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[110X.[133X
   
-  [1X3.17-17 HomStructure[101X
+  [1X3.17-22 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis is a convenience method for [10XDistinguishedObjectOfHomomorphismStructure[110X.[133X
   
-  [1X3.17-18 ExtendRangeOfHomomorphismStructureByFullEmbedding[101X
+  [1X3.17-23 ExtendRangeOfHomomorphismStructureByFullEmbedding[101X
   
   [33X[1;0Y[29X[2XExtendRangeOfHomomorphismStructureByFullEmbedding[102X( [3XC[103X, [3XE[103X, [3Xobject_function[103X, [3Xmorphism_function[103X, [3Xobject_function_inverse[103X, [3Xmorphism_function_inverse[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XHomomorphismStructureOnObjectsExtendedByFullEmbedding[102X( [3XC[103X, [3XE[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
@@ -1044,17 +1116,17 @@
   [10Xobject_function_inverse[110X  and [10Xmorphism_function_inverse[110X define the inverse of
   the embedding on its image.[133X
   
-  [1X3.17-19 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding[101X
+  [1X3.17-24 ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding[101X
   
   [33X[1;0Y[29X[2XExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding[102X( [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YChooses    the    identity    on    [23XD[123X    as    the    full    embedding   in
-  [2XExtendRangeOfHomomorphismStructureByFullEmbedding[102X  ([14X3.17-18[114X). This is useful
+  [2XExtendRangeOfHomomorphismStructureByFullEmbedding[102X  ([14X3.17-23[114X). This is useful
   to      handle     this     case     as     a     degenerate     case     of
-  [2XExtendRangeOfHomomorphismStructureByFullEmbedding[102X ([14X3.17-18[114X).[133X
+  [2XExtendRangeOfHomomorphismStructureByFullEmbedding[102X ([14X3.17-23[114X).[133X
   
-  [1X3.17-20 MorphismsOfExternalHom[101X
+  [1X3.17-25 MorphismsOfExternalHom[101X
   
   [33X[1;0Y[29X[2XMorphismsOfExternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}( a, b )[123X[133X
@@ -1062,7 +1134,7 @@
   [33X[0;0YThe  argument  are  two  objects [3Xa[103X, [3Xb[103X. The output is a list of all morphisms
   from [3Xa[103X to [3Xb[103X.[133X
   
-  [1X3.17-21 BasisOfExternalHom[101X
+  [1X3.17-26 BasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XBasisOfExternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}_{C}(a,b)[123X[133X
@@ -1072,7 +1144,7 @@
   any  given  morphism  [23X\alpha:  a  \to  b[123X can uniquely be written as a linear
   combination of [23XL[123X with the coefficients in [10XCoefficientsOfMorphism[110X([23X\alpha[123X).[133X
   
-  [1X3.17-22 CoefficientsOfMorphism[101X
+  [1X3.17-27 CoefficientsOfMorphism[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X
