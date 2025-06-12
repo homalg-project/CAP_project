@@ -6,10 +6,10 @@
                   [1X Category of Matrices over a Field for CAP [101X
   
   
-                                   2025.05-01
+                                   2025.06-01
   
   
-                                   2 May 2025
+                                  12 June 2025
   
   
                                Sebastian Gutsche
@@ -72,16 +72,17 @@
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YBasic Commands[133X
     2.2 [33X[0;0YFunctors[133X
-    2.3 [33X[0;0YHomology object[133X
-    2.4 [33X[0;0YLiftable[133X
-    2.5 [33X[0;0YMonoidal structure[133X
-    2.6 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
-    2.7 [33X[0;0YOpposite category[133X
-    2.8 [33X[0;0YPreComposeList and PostComposeList[133X
-    2.9 [33X[0;0YSplit epi summand[133X
-    2.10 [33X[0;0YKernel[133X
-    2.11 [33X[0;0YFiberProduct[133X
-    2.12 [33X[0;0YWrapperCategory[133X
+    2.3 [33X[0;0YSolving (Homogeneous) Linear Systems[133X
+    2.4 [33X[0;0YHomology object[133X
+    2.5 [33X[0;0YLiftable[133X
+    2.6 [33X[0;0YMonoidal structure[133X
+    2.7 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
+    2.8 [33X[0;0YOpposite category[133X
+    2.9 [33X[0;0YPreComposeList and PostComposeList[133X
+    2.10 [33X[0;0YSplit epi summand[133X
+    2.11 [33X[0;0YKernel[133X
+    2.12 [33X[0;0YFiberProduct[133X
+    2.13 [33X[0;0YWrapperCategory[133X
   
   
   [32X

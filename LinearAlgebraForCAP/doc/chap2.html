@@ -28,34 +28,37 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X78D1062D78BE08C1">2.2 <span class="Heading">Functors</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X852F59737EC57965">2.3 <span class="Heading">Homology object</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X85B1F5077BE75340">2.3 <span class="Heading">Solving (Homogeneous) Linear Systems</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7CDB7FF27D734D2D">2.4 <span class="Heading">Liftable</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X852F59737EC57965">2.4 <span class="Heading">Homology object</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X797080CE873BB56D">2.5 <span class="Heading">Monoidal structure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7CDB7FF27D734D2D">2.5 <span class="Heading">Liftable</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8218390A785F1EDB">2.6 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X797080CE873BB56D">2.6 <span class="Heading">Monoidal structure</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X84410C637B3C1D0E">2.7 <span class="Heading">Opposite category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8218390A785F1EDB">2.7 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7F34E29281DF3FCE">2.8 <span class="Heading">PreComposeList and PostComposeList</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X84410C637B3C1D0E">2.8 <span class="Heading">Opposite category</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.9 <span class="Heading">Split epi summand</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7F34E29281DF3FCE">2.9 <span class="Heading">PreComposeList and PostComposeList</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.10 <span class="Heading">Kernel</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87F5609A7B33C58C">2.10 <span class="Heading">Split epi summand</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.11 <span class="Heading">FiberProduct</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DCD99628504B810">2.11 <span class="Heading">Kernel</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8245BF297DF9A3E7">2.12 <span class="Heading">WrapperCategory</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE20941803BFBD9">2.12 <span class="Heading">FiberProduct</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8245BF297DF9A3E7">2.13 <span class="Heading">WrapperCategory</span></a>
 </span>
 </div>
 </div>
@@ -379,9 +382,88 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2OnMorphisms( input );;</span>
 </pre></div>
 
+<p><a id="X85B1F5077BE75340" name="X85B1F5077BE75340"></a></p>
+
+<h4>2.3 <span class="Heading">Solving (Homogeneous) Linear Systems</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ_mat := MatrixCategory( QQ );</span>
+Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorUnit( QQ_mat );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_t := IdentityMorphism( t );</span>
+&lt;An identity morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1*(11)*7 + 2*(12)*8 + 3*(13)*9;</span>
+620
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">4*(11)*3 + 5*(12)*4 + 6*(13)*1;</span>
+450
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha :=  [ [ 1/QQ * id_t, 2/QQ * id_t, 3/QQ * id_t ], [ 4/QQ * id_t, 5/QQ * id_t, 6/QQ * id_t ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := [ [ 7/QQ * id_t, 8/QQ * id_t, 9/QQ * id_t ], [ 3/QQ * id_t, 4/QQ * id_t, 1/QQ * id_t ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := [ 620/QQ * id_t, 450/QQ * id_t ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfSolutionOfLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta, gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta, gamma );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := SolveLinearSystemInAbCategory( QQ_mat, alpha, beta, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(1*7)/QQ * x[1] + (2*8)/QQ * x[2] + (3*9)/QQ * x[3] = gamma[1];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(4*3)/QQ * x[1] + (5*4)/QQ * x[2] + (6*1)/QQ * x[3] = gamma[2];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( B );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(1*7)/QQ * B[1][1] + (2*8)/QQ * B[1][2] + (3*9)/QQ * B[1][3] = 0/QQ * id_t;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(4*3)/QQ * B[1][1] + (5*4)/QQ * B[1][2] + (6*1)/QQ * B[1][3] = 0/QQ * id_t;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2*(11)*5 + 3*(12)*7 + 9*(13)*2;</span>
+596
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( alpha, [ 2/QQ * id_t, 3/QQ * id_t, 9/QQ * id_t ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( beta, [ 5/QQ * id_t, 7/QQ * id_t, 2/QQ * id_t ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( gamma, 596/QQ * id_t );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfSolutionOfLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta, gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta, gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := SolveLinearSystemInAbCategory( QQ_mat, alpha, beta, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(1*7)/QQ * x[1] + (2*8)/QQ * x[2] + (3*9)/QQ * x[3] = gamma[1];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(4*3)/QQ * x[1] + (5*4)/QQ * x[2] + (6*1)/QQ * x[3] = gamma[2];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(2*5)/QQ * x[1] + (3*7)/QQ * x[2] + (9*2)/QQ * x[3] = gamma[3];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                  QQ_mat, alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( B );</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := [ [ 2/QQ * id_t, 3/QQ * id_t ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := [ [ 3/QQ * id_t, 3/QQ * id_t ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory( alpha, delta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( B );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( alpha[1][1], B[1][1] ) + PreCompose( alpha[1][2], B[1][2] )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  = PreCompose( B[1][1], delta[1][1] ) + PreCompose( B[1][2], delta[1][2] );</span>
+true
+</pre></div>
+
 <p><a id="X852F59737EC57965" name="X852F59737EC57965"></a></p>
 
-<h4>2.3 <span class="Heading">Homology object</span></h4>
+<h4>2.4 <span class="Heading">Homology object</span></h4>
 
 
 <div class="example"><pre>
@@ -459,7 +541,7 @@ true
 
 <p><a id="X7CDB7FF27D734D2D" name="X7CDB7FF27D734D2D"></a></p>
 
-<h4>2.4 <span class="Heading">Liftable</span></h4>
+<h4>2.5 <span class="Heading">Liftable</span></h4>
 
 
 <div class="example"><pre>
@@ -490,7 +572,7 @@ true
 
 <p><a id="X797080CE873BB56D" name="X797080CE873BB56D"></a></p>
 
-<h4>2.5 <span class="Heading">Monoidal structure</span></h4>
+<h4>2.6 <span class="Heading">Monoidal structure</span></h4>
 
 
 <div class="example"><pre>
@@ -550,7 +632,7 @@ true
 
 <p><a id="X8218390A785F1EDB" name="X8218390A785F1EDB"></a></p>
 
-<h4>2.6 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
+<h4>2.7 <span class="Heading">MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></h4>
 
 
 <div class="example"><pre>
@@ -598,7 +680,7 @@ true
 
 <p><a id="X84410C637B3C1D0E" name="X84410C637B3C1D0E"></a></p>
 
-<h4>2.7 <span class="Heading">Opposite category</span></h4>
+<h4>2.8 <span class="Heading">Opposite category</span></h4>
 
 
 <div class="example"><pre>
@@ -656,7 +738,7 @@ true
 
 <p><a id="X7F34E29281DF3FCE" name="X7F34E29281DF3FCE"></a></p>
 
-<h4>2.8 <span class="Heading">PreComposeList and PostComposeList</span></h4>
+<h4>2.9 <span class="Heading">PreComposeList and PostComposeList</span></h4>
 
 
 <div class="example"><pre>
@@ -685,7 +767,7 @@ true
 
 <p><a id="X87F5609A7B33C58C" name="X87F5609A7B33C58C"></a></p>
 
-<h4>2.9 <span class="Heading">Split epi summand</span></h4>
+<h4>2.10 <span class="Heading">Split epi summand</span></h4>
 
 
 <div class="example"><pre>
@@ -721,7 +803,7 @@ true
 
 <p><a id="X7DCD99628504B810" name="X7DCD99628504B810"></a></p>
 
-<h4>2.10 <span class="Heading">Kernel</span></h4>
+<h4>2.11 <span class="Heading">Kernel</span></h4>
 
 
 <div class="example"><pre>
@@ -799,7 +881,7 @@ true
 
 <p><a id="X7DE20941803BFBD9" name="X7DE20941803BFBD9"></a></p>
 
-<h4>2.11 <span class="Heading">FiberProduct</span></h4>
+<h4>2.12 <span class="Heading">FiberProduct</span></h4>
 
 
 <div class="example"><pre>
@@ -825,7 +907,7 @@ true
 
 <p><a id="X8245BF297DF9A3E7" name="X8245BF297DF9A3E7"></a></p>
 
-<h4>2.12 <span class="Heading">WrapperCategory</span></h4>
+<h4>2.13 <span class="Heading">WrapperCategory</span></h4>
 
 
 <div class="example"><pre>
