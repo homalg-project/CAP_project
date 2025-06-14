@@ -21,73 +21,80 @@ curl -O https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
 gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
 shasum -a 256 -c codecov.SHA256SUM
 
+# read the token
+if [ -z "$CODECOV_TOKEN" ]; then
+  echo -e "\033[0;33mCODECOV_TOKEN is not set. Proceeding without token.\033[0m"
+else
+  echo -e "\033[0;32mUsing CODECOV_TOKEN from environment variable.\033[0m"
+fi
+
 # execute
 chmod +x codecov
-while ! ./codecov -Z -v -s ../ -F CAP; do
+while ! ./codecov -Z -v -s ../ -F CAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ActionsForCAP; do
+while ! ./codecov -Z -v -s ../ -F ActionsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F AttributeCategoryForCAP; do
+while ! ./codecov -Z -v -s ../ -F AttributeCategoryForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F CartesianCategories; do
+while ! ./codecov -Z -v -s ../ -F CartesianCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F CompilerForCAP; do
+while ! ./codecov -Z -v -s ../ -F CompilerForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP; do
+while ! ./codecov -Z -v -s ../ -F ComplexesAndFilteredObjectsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F FreydCategoriesForCAP; do
+while ! ./codecov -Z -v -s ../ -F FreydCategoriesForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP; do
+while ! ./codecov -Z -v -s ../ -F GeneralizedMorphismsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP; do
+while ! ./codecov -Z -v -s ../ -F GradedModulePresentationsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP; do
+while ! ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP; do
+while ! ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP; do
+while ! ./codecov -Z -v -s ../ -F InternalExteriorAlgebraForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F LinearAlgebraForCAP; do
+while ! ./codecov -Z -v -s ../ -F LinearAlgebraForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ModulePresentationsForCAP; do
+while ! ./codecov -Z -v -s ../ -F ModulePresentationsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP; do
+while ! ./codecov -Z -v -s ../ -F ModulesOverLocalRingsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F MonoidalCategories; do
+while ! ./codecov -Z -v -s ../ -F MonoidalCategories -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
-while ! ./codecov -Z -v -s ../ -F ToricSheaves; do
+while ! ./codecov -Z -v -s ../ -F ToricSheaves -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done

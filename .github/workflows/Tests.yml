@@ -84,6 +84,8 @@ jobs:
           fi
       - name: Upload code coverage
         if: github.event_name != 'schedule' && matrix.image == 'ghcr.io/homalg-project/gap-docker:latest'
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
           cd CAP_project
           ./dev/upload_codecov.sh
