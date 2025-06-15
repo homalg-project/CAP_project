@@ -62,8 +62,11 @@ gap> delta := [ [ 3/QQ * id_t, 3/QQ * id_t ] ];;
 gap> B := QQ_mat!.cached_precompiled_functions.BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory( QQ_mat, alpha, beta, gamma, delta );;
 gap> Length( B );
 1
-gap> PreCompose( alpha[1][1], B[1][1] ) + PreCompose( alpha[1][2], B[1][2] )
->   = PreCompose( B[1][1], delta[1][1] ) + PreCompose( B[1][2], delta[1][2] );
+gap> mor1 := PreCompose( alpha[1][1], B[1][1] ) + PreCompose( alpha[1][2], B[1][2] );
+<A morphism in Category of matrices over Q>
+gap> mor2 := PreCompose( B[1][1], delta[1][1] ) + PreCompose( B[1][2], delta[1][2] );
+<A morphism in Category of matrices over Q>
+gap> mor1 = mor2;
 true
 #@fi
 gap> STOP_TEST("HomogeneousLinearSystems.tst", 1);

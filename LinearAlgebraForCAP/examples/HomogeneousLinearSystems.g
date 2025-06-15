@@ -71,7 +71,10 @@ delta := [ [ 3/QQ * id_t, 3/QQ * id_t ] ];;
 B := BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory( alpha, delta );;
 Length( B );
 #! 1
-PreCompose( alpha[1][1], B[1][1] ) + PreCompose( alpha[1][2], B[1][2] )
-  = PreCompose( B[1][1], delta[1][1] ) + PreCompose( B[1][2], delta[1][2] );
+mor1 := PreCompose( alpha[1][1], B[1][1] ) + PreCompose( alpha[1][2], B[1][2] );
+#! <A morphism in Category of matrices over Q>
+mor2 := PreCompose( B[1][1], delta[1][1] ) + PreCompose( B[1][2], delta[1][2] );
+#! <A morphism in Category of matrices over Q>
+mor1 = mor2;
 #! true
 #! @EndExample
