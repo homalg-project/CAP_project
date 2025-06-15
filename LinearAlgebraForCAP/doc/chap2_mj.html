@@ -459,8 +459,11 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory( alpha, delta );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( B );</span>
 1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( alpha[1][1], B[1][1] ) + PreCompose( alpha[1][2], B[1][2] )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  = PreCompose( B[1][1], delta[1][1] ) + PreCompose( B[1][2], delta[1][2] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := PreCompose( alpha[1][1], B[1][1] ) + PreCompose( alpha[1][2], B[1][2] );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor2 := PreCompose( B[1][1], delta[1][1] ) + PreCompose( B[1][2], delta[1][2] );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 = mor2;</span>
 true
 </pre></div>
 
