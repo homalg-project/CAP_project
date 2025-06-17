@@ -318,6 +318,11 @@ InstallMethod( \=,
         return false;
         
     fi;
+    if IsEqualForMorphisms( morphism_1, morphism_2 ) then
+        
+        return true;
+        
+    fi;
     
     return IsCongruentForMorphisms( morphism_1, morphism_2 );
     
