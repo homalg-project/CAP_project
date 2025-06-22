@@ -249,8 +249,8 @@ CapJitAddTypeSignature( "ModelingMorphism", [ IsCapCategory, IsCapCategoryMorphi
 end );
 
 #! @Description
-#!  Returns the reinterpretation in `R` with given source and range of a morphism <A>mor</A> in `ModelingCategory`(<A>R</A>).
-#! @Arguments R, source, obj, range
+#!  Returns the reinterpretation in `R` with given source and range in `R` of a morphism <A>mor</A> in `ModelingCategory`(<A>R</A>).
+#! @Arguments R, source, mor, range
 #! @Returns a CAP category morphism
 DeclareOperation( "ReinterpretationOfMorphism", [ IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
