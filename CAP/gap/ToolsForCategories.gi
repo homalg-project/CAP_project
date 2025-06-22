@@ -486,7 +486,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ASSERT_VALUE_IS_OF_TYPE_GETTER",
                 
             fi;
             
-            if not IsIdenticalObj( value, data_type.category ) then
+            if IsBound( data_type.category ) and not IsIdenticalObj( data_type.category, false ) and not IsIdenticalObj( value, data_type.category ) then
                 
                 Error( CallFuncList( human_readable_identifier_getter, args ), " is not the expected category although it lies in the category filter of the expected category. This should never happen, please report this using the CAP_project's issue tracker.", generic_help_string );
                 
