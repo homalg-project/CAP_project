@@ -253,9 +253,9 @@
   
   [1X12.6-6 ReinterpretationOfMorphism[101X
   
-  [33X[1;0Y[29X[2XReinterpretationOfMorphism[102X( [3XR[103X, [3Xsource[103X, [3Xobj[103X, [3Xrange[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XReinterpretationOfMorphism[102X( [3XR[103X, [3Xsource[103X, [3Xmor[103X, [3Xrange[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   
-  [33X[0;0YReturns  the reinterpretation in [10XR[110X with given source and range of a morphism
-  [3Xmor[103X in [10XModelingCategory[110X([3XR[103X).[133X
+  [33X[0;0YReturns  the  reinterpretation  in  [10XR[110X  with given source and range in [10XR[110X of a
+  morphism [3Xmor[103X in [10XModelingCategory[110X([3XR[103X).[133X
   
