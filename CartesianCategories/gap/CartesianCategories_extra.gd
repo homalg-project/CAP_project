@@ -13,6 +13,13 @@
 ####################################
 
 #! @Description
+#!  The property of the category <A>C</A> being symmetric monoidal by its cartesian structure.
+#! @Arguments C
+DeclareProperty( "IsSymmetricMonoidalCategoryStructureGivenByDirectProduct", IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricMonoidalCategoryStructureGivenByDirectProduct", "IsSymmetricMonoidalCategoryStructureGivenByCoproduct" ] );
+
+#! @Description
 #!  The arguments are an object $a$ and an integer $n \geq 0$.
 #!  The output is the diagonal morphism from $a$ to the $n$-fold cartesian power $a^{\times n}$.
 #!  If the category does not support empty limits, $n$ must be not be 0.
