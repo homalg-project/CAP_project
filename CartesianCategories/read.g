@@ -19,9 +19,6 @@ ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecord.gi" )
 ReadPackage( "CartesianCategories", "gap/CartesianCategories.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategories.gi" );
 
-ReadPackage( "CartesianCategories", "gap/CartesianCategories_extra.gi" );
-ReadPackage( "CartesianCategories", "gap/CocartesianCategories_extra.gi" );
-
 ReadPackage( "CartesianCategories", "gap/CartesianCategoriesMethodRecordInstallations.autogen.gi" );
 ReadPackage( "CartesianCategories", "gap/CocartesianCategoriesMethodRecordInstallations.autogen.gi" );
 
@@ -71,6 +68,11 @@ ReadPackage( "CartesianCategories", "gap/BraidedCocartesianCategoriesDerivedMeth
 
 ReadPackage( "CartesianCategories", "gap/SymmetricCartesianCategoriesDerivedMethods.gi" );
 ReadPackage( "CartesianCategories", "gap/SymmetricCocartesianCategoriesDerivedMethods.gi" );
+
+ReadPackage( "CartesianCategories", "gap/SymmetricCartesianCategoriesDerivedMethods_extra.gi" );
+ReadPackage( "CartesianCategories", "gap/SymmetricCocartesianCategoriesDerivedMethods_extra.gi" );
+
+
 
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesDerivedMethods.gi" );
 ReadPackage( "CartesianCategories", "gap/CartesianClosedCategoriesDerivedMethods_extra.gi" );

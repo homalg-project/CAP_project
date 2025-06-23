@@ -13,6 +13,13 @@
 ####################################
 
 #! @Description
+#!  The property of the category <A>C</A> being symmetric monoidal by its cocartesian structure.
+#! @Arguments C
+DeclareProperty( "IsSymmetricMonoidalCategoryStructureGivenByCoproduct", IsCapCategory );
+
+AddCategoricalProperty( [ "IsSymmetricMonoidalCategoryStructureGivenByCoproduct", "IsSymmetricMonoidalCategoryStructureGivenByDirectProduct" ] );
+
+#! @Description
 #!  The arguments are an object $a$ and an integer $n \geq 0$.
 #!  The output is the codiagonal morphism from the $n$-fold cocartesian multiple $\sqcup_{i=1}^n a$ to $a$.
 #!  If the category does not support empty limits, $n$ must be not be 0.
