@@ -187,7 +187,15 @@
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xr = a \sqcup 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \sqcup 1[123X.[133X
   
-  [1X2.1-19 CocartesianCodiagonal[101X
+  [1X2.1-19 IsSymmetricMonoidalCategoryStructureGivenByCoproduct[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricMonoidalCategoryStructureGivenByCoproduct[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of the category [3XC[103X being symmetric monoidal by its cocartesian
+  structure.[133X
+  
+  [1X2.1-20 CocartesianCodiagonal[101X
   
   [33X[1;0Y[29X[2XCocartesianCodiagonal[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\sqcup_{i=1}^n a, a)[123X.[133X
@@ -196,7 +204,7 @@
   codiagonal morphism from the [23Xn[123X-fold cocartesian multiple [23X\sqcup_{i=1}^n a[123X to
   [23Xa[123X. If the category does not support empty limits, [23Xn[123X must be not be 0.[133X
   
-  [1X2.1-20 CocartesianCodiagonalWithGivenCocartesianMultiple[101X
+  [1X2.1-21 CocartesianCodiagonalWithGivenCocartesianMultiple[101X
   
   [33X[1;0Y[29X[2XCocartesianCodiagonalWithGivenCocartesianMultiple[102X( [3Xa[103X, [3Xn[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b, a)[123X[133X
@@ -205,7 +213,7 @@
   [23Xn[123X-fold  cocartesian  multiple  [23X\sqcup_{i=1}^n  a[123X  of  [23Xa[123X.  The  output is the
   codiagonal morphism from [23Xb[123X to [23Xa[123X.[133X
   
-  [1X2.1-21 SetTensorProductToCoproduct[101X
+  [1X2.1-22 SetTensorProductToCoproduct[101X
   
   [33X[1;0Y[29X[2XSetTensorProductToCoproduct[102X( [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -213,7 +221,7 @@
   [33X[0;0YThe  argument  [23XC[123X  is a cocartesian category. The operation equips [23XC[123X with the
   symmetric monodial structure defined by the coproduct.[133X
   
-  [1X2.1-22 LeftCocartesianCodistributivityExpanding[101X
+  [1X2.1-23 LeftCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityExpanding[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a  \sqcup (b_1 \times \dots \times
@@ -223,7 +231,7 @@
   The  output  is  the left distributivity morphism [23Xa \sqcup (b_1 \times \dots
   \times b_n) \rightarrow (a \sqcup b_1) \times \dots \times (a \sqcup b_n)[123X.[133X
   
-  [1X2.1-23 LeftCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.1-24 LeftCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -233,7 +241,7 @@
   \sqcup  b_1)  \times  \dots  \times  (a  \sqcup b_n)[123X. The output is the left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-24 LeftCocartesianCodistributivityFactoring[101X
+  [1X2.1-25 LeftCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityFactoring[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \sqcup b_1) \times \dots \times (a
@@ -243,7 +251,7 @@
   The  output  is the left distributivity morphism [23X(a \sqcup b_1) \times \dots
   \times (a \sqcup b_n) \rightarrow a \sqcup (b_1 \times \dots \times b_n)[123X.[133X
   
-  [1X2.1-25 LeftCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.1-26 LeftCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -253,7 +261,7 @@
   =  a  \sqcup  (b_1  \times  \dots  \times  b_n)[123X.  The  output  is  the  left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-26 RightCocartesianCodistributivityExpanding[101X
+  [1X2.1-27 RightCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityExpanding[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( (b_1 \times \dots \times b_n) \sqcup
@@ -263,7 +271,7 @@
   The  output  is  the  right distributivity morphism [23X(b_1 \times \dots \times
   b_n) \sqcup a \rightarrow (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)[123X.[133X
   
-  [1X2.1-27 RightCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.1-28 RightCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -273,7 +281,7 @@
   \sqcup  a)  \times  \dots  \times  (b_n  \sqcup  a)[123X. The output is the right
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-28 RightCocartesianCodistributivityFactoring[101X
+  [1X2.1-29 RightCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityFactoring[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  (b_1 \sqcup a) \times \dots \times
@@ -283,7 +291,7 @@
   The  output is the right distributivity morphism [23X(b_1 \sqcup a) \times \dots
   \times (b_n \sqcup a) \rightarrow (b_1 \times \dots \times b_n) \sqcup a [123X.[133X
   
-  [1X2.1-29 RightCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.1-30 RightCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X

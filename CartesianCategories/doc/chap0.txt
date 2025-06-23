@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2025.05-02
+                                   2025.06-01
   
   
-                                  20 May 2025
+                                  23 June 2025
   
   
                                 Mohamed Barakat
@@ -70,17 +70,18 @@
       1.1-16 CartesianRightUnitorWithGivenDirectProduct
       1.1-17 CartesianRightUnitorInverse
       1.1-18 CartesianRightUnitorInverseWithGivenDirectProduct
-      1.1-19 CartesianDiagonal
-      1.1-20 CartesianDiagonalWithGivenCartesianPower
-      1.1-21 SetTensorProductToDirectProduct
-      1.1-22 LeftCartesianDistributivityExpanding
-      1.1-23 LeftCartesianDistributivityExpandingWithGivenObjects
-      1.1-24 LeftCartesianDistributivityFactoring
-      1.1-25 LeftCartesianDistributivityFactoringWithGivenObjects
-      1.1-26 RightCartesianDistributivityExpanding
-      1.1-27 RightCartesianDistributivityExpandingWithGivenObjects
-      1.1-28 RightCartesianDistributivityFactoring
-      1.1-29 RightCartesianDistributivityFactoringWithGivenObjects
+      1.1-19 IsSymmetricMonoidalCategoryStructureGivenByDirectProduct
+      1.1-20 CartesianDiagonal
+      1.1-21 CartesianDiagonalWithGivenCartesianPower
+      1.1-22 SetTensorProductToDirectProduct
+      1.1-23 LeftCartesianDistributivityExpanding
+      1.1-24 LeftCartesianDistributivityExpandingWithGivenObjects
+      1.1-25 LeftCartesianDistributivityFactoring
+      1.1-26 LeftCartesianDistributivityFactoringWithGivenObjects
+      1.1-27 RightCartesianDistributivityExpanding
+      1.1-28 RightCartesianDistributivityExpandingWithGivenObjects
+      1.1-29 RightCartesianDistributivityFactoring
+      1.1-30 RightCartesianDistributivityFactoringWithGivenObjects
     1.2 [33X[0;0YCartesian Closed Categories[133X
       1.2-1 ExponentialOnObjects
       1.2-2 ExponentialOnMorphisms
@@ -239,17 +240,18 @@
       2.1-16 CocartesianRightUnitorWithGivenCoproduct
       2.1-17 CocartesianRightUnitorInverse
       2.1-18 CocartesianRightUnitorInverseWithGivenCoproduct
-      2.1-19 CocartesianCodiagonal
-      2.1-20 CocartesianCodiagonalWithGivenCocartesianMultiple
-      2.1-21 SetTensorProductToCoproduct
-      2.1-22 LeftCocartesianCodistributivityExpanding
-      2.1-23 LeftCocartesianCodistributivityExpandingWithGivenObjects
-      2.1-24 LeftCocartesianCodistributivityFactoring
-      2.1-25 LeftCocartesianCodistributivityFactoringWithGivenObjects
-      2.1-26 RightCocartesianCodistributivityExpanding
-      2.1-27 RightCocartesianCodistributivityExpandingWithGivenObjects
-      2.1-28 RightCocartesianCodistributivityFactoring
-      2.1-29 RightCocartesianCodistributivityFactoringWithGivenObjects
+      2.1-19 IsSymmetricMonoidalCategoryStructureGivenByCoproduct
+      2.1-20 CocartesianCodiagonal
+      2.1-21 CocartesianCodiagonalWithGivenCocartesianMultiple
+      2.1-22 SetTensorProductToCoproduct
+      2.1-23 LeftCocartesianCodistributivityExpanding
+      2.1-24 LeftCocartesianCodistributivityExpandingWithGivenObjects
+      2.1-25 LeftCocartesianCodistributivityFactoring
+      2.1-26 LeftCocartesianCodistributivityFactoringWithGivenObjects
+      2.1-27 RightCocartesianCodistributivityExpanding
+      2.1-28 RightCocartesianCodistributivityExpandingWithGivenObjects
+      2.1-29 RightCocartesianCodistributivityFactoring
+      2.1-30 RightCocartesianCodistributivityFactoringWithGivenObjects
     2.2 [33X[0;0YCocartesian Coclosed Categories[133X
       2.2-1 CoexponentialOnObjects
       2.2-2 CoexponentialOnMorphisms

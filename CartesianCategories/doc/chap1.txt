@@ -187,7 +187,15 @@
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xr = a \times 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \times 1[123X.[133X
   
-  [1X1.1-19 CartesianDiagonal[101X
+  [1X1.1-19 IsSymmetricMonoidalCategoryStructureGivenByDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricMonoidalCategoryStructureGivenByDirectProduct[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of  the  category [3XC[103X being symmetric monoidal by its cartesian
+  structure.[133X
+  
+  [1X1.1-20 CartesianDiagonal[101X
   
   [33X[1;0Y[29X[2XCartesianDiagonal[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a^{\times n})[123X.[133X
@@ -196,7 +204,7 @@
   diagonal  morphism from [23Xa[123X to the [23Xn[123X-fold cartesian power [23Xa^{\times n}[123X. If the
   category does not support empty limits, [23Xn[123X must be not be 0.[133X
   
-  [1X1.1-20 CartesianDiagonalWithGivenCartesianPower[101X
+  [1X1.1-21 CartesianDiagonalWithGivenCartesianPower[101X
   
   [33X[1;0Y[29X[2XCartesianDiagonalWithGivenCartesianPower[102X( [3Xa[103X, [3Xn[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, b)[123X[133X
@@ -205,7 +213,7 @@
   [23Xn[123X-fold  cartesian  power  [23Xa^{\times  n}[123X  of  [23Xa[123X.  The  output is the diagonal
   morphism from [23Xa[123X to [23Xb[123X.[133X
   
-  [1X1.1-21 SetTensorProductToDirectProduct[101X
+  [1X1.1-22 SetTensorProductToDirectProduct[101X
   
   [33X[1;0Y[29X[2XSetTensorProductToDirectProduct[102X( [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -213,7 +221,7 @@
   [33X[0;0YThe  argument  [23XC[123X  is  a  cartesian category. The operation equips [23XC[123X with the
   symmetric monodial structure defined by the direct product.[133X
   
-  [1X1.1-22 LeftCartesianDistributivityExpanding[101X
+  [1X1.1-23 LeftCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityExpanding[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a  \times (b_1 \sqcup \dots \sqcup
@@ -223,7 +231,7 @@
   The  output  is  the left distributivity morphism [23Xa \times (b_1 \sqcup \dots
   \sqcup b_n) \rightarrow (a \times b_1) \sqcup \dots \sqcup (a \times b_n)[123X.[133X
   
-  [1X1.1-23 LeftCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.1-24 LeftCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -233,7 +241,7 @@
   \times  b_1)  \sqcup  \dots  \sqcup  (a  \times b_n)[123X. The output is the left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X1.1-24 LeftCartesianDistributivityFactoring[101X
+  [1X1.1-25 LeftCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityFactoring[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \times b_1) \sqcup \dots \sqcup (a
@@ -243,7 +251,7 @@
   The  output  is the left distributivity morphism [23X(a \times b_1) \sqcup \dots
   \sqcup (a \times b_n) \rightarrow a \times (b_1 \sqcup \dots \sqcup b_n)[123X.[133X
   
-  [1X1.1-25 LeftCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.1-26 LeftCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCartesianDistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -253,7 +261,7 @@
   =  a  \times  (b_1  \sqcup  \dots  \sqcup  b_n)[123X.  The  output  is  the  left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X1.1-26 RightCartesianDistributivityExpanding[101X
+  [1X1.1-27 RightCartesianDistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityExpanding[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( (b_1 \sqcup \dots \sqcup b_n) \times
@@ -263,7 +271,7 @@
   The  output  is  the  right distributivity morphism [23X(b_1 \sqcup \dots \sqcup
   b_n) \times a \rightarrow (b_1 \times a) \sqcup \dots \sqcup (b_n \times a)[123X.[133X
   
-  [1X1.1-27 RightCartesianDistributivityExpandingWithGivenObjects[101X
+  [1X1.1-28 RightCartesianDistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -273,7 +281,7 @@
   \times  a)  \sqcup  \dots  \sqcup  (b_n  \times  a)[123X. The output is the right
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X1.1-28 RightCartesianDistributivityFactoring[101X
+  [1X1.1-29 RightCartesianDistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityFactoring[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  (b_1 \times a) \sqcup \dots \sqcup
@@ -283,7 +291,7 @@
   The  output is the right distributivity morphism [23X(b_1 \times a) \sqcup \dots
   \sqcup (b_n \times a) \rightarrow (b_1 \sqcup \dots \sqcup b_n) \times a [123X.[133X
   
-  [1X1.1-29 RightCartesianDistributivityFactoringWithGivenObjects[101X
+  [1X1.1-30 RightCartesianDistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCartesianDistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
