@@ -54,6 +54,13 @@ echo "Simulate release of GroupRepresentationsForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/GroupRepresentationsForCAP" --webdir "$PWD/gh-pages/GroupRepresentationsForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 echo ""
 
+# GroupsAsCategoriesForCAP
+echo "Simulate release of GroupsAsCategoriesForCAP"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/GroupsAsCategoriesForCAP" --webdir "$PWD/gh-pages/GroupsAsCategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
+# creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
+#git subtree split --prefix=GroupsAsCategoriesForCAP -b GroupsAsCategoriesForCAP-split
+echo ""
+
 # HomologicalAlgebraForCAP
 echo "Simulate release of HomologicalAlgebraForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/HomologicalAlgebraForCAP" --webdir "$PWD/gh-pages/HomologicalAlgebraForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball

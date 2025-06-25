@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 17
+  after_n_builds: 18
 flags:
   CAP:
     paths:
@@ -34,6 +34,9 @@ flags:
   GroupRepresentationsForCAP:
     paths:
       - "GroupRepresentationsForCAP/"
+  GroupsAsCategoriesForCAP:
+    paths:
+      - "GroupsAsCategoriesForCAP/"
   HomologicalAlgebraForCAP:
     paths:
       - "HomologicalAlgebraForCAP/"

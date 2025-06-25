@@ -54,6 +54,13 @@ echo "Release GroupRepresentationsForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/GroupRepresentationsForCAP" --webdir "$PWD/gh-pages/GroupRepresentationsForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
 echo ""
 
+# GroupsAsCategoriesForCAP
+echo "Release GroupsAsCategoriesForCAP"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/GroupsAsCategoriesForCAP" --webdir "$PWD/gh-pages/GroupsAsCategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=GroupsAsCategoriesForCAP -b GroupsAsCategoriesForCAP-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/GroupsAsCategoriesForCAP GroupsAsCategoriesForCAP-split:master
+echo ""
+
 # HomologicalAlgebraForCAP
 echo "Release HomologicalAlgebraForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/HomologicalAlgebraForCAP" --webdir "$PWD/gh-pages/HomologicalAlgebraForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"

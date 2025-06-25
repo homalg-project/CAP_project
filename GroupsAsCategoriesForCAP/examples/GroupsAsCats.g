@@ -1,8 +1,6 @@
 #! @Chapter Examples and Tests
 
-#! @Section Groups as categories
-
-LoadPackage( "FreydCategoriesForCAP" );;
+LoadPackage( "GroupsAsCategoriesForCAP" );;
 
 #! @Example
 #! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
