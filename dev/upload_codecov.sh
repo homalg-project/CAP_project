@@ -70,6 +70,10 @@ while ! ./codecov -Z -v -s ../ -F GroupRepresentationsForCAP -t $CODECOV_TOKEN; 
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
+while ! ./codecov -Z -v -s ../ -F GroupsAsCategoriesForCAP -t $CODECOV_TOKEN; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
 while ! ./codecov -Z -v -s ../ -F HomologicalAlgebraForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60

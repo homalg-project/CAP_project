@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+# GroupsAsCategoriesForCAP: Groups as categories on one object
 #
 # Implementations
 #
@@ -17,7 +17,12 @@ InstallMethod( GroupAsCategory,
   function( group )
     local category, is_finite;
     
-    category := CreateCapCategory( Concatenation( "Group as category( ", String( group )," )" ), IsGroupAsCategory, IsGroupAsCategoryObject, IsGroupAsCategoryMorphism, IsCapCategoryTwoCell : overhead := false );
+    category := CreateCapCategory( Concatenation( "Group as category( ", String( group )," )" ),
+                                   IsGroupAsCategory,
+                                   IsGroupAsCategoryObject,
+                                   IsGroupAsCategoryMorphism,
+                                   IsCapCategoryTwoCell
+                                   : overhead := false );
     
     category!.compiler_hints := rec(
         category_attribute_names := [
@@ -34,8 +39,12 @@ InstallMethod( GroupAsCategory,
     if is_finite then
         
         SetIsFiniteCategory( category, true );
-        SetRangeCategoryOfHomomorphismStructure( category, FREYD_CATEGORIES_SkeletalFinSets );
-        SetIsEquippedWithHomomorphismStructure( category, true );
+        
+        if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
+            
+            SET_HOMOMORPHISM_STRUCTURE_ATTRIBUTES_FOR_GROUP_AS_CATEGORY( category );
+            
+        fi;
         
     fi;
     
@@ -247,15 +256,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
     if is_finite then
         
-        sets := RangeCategoryOfHomomorphismStructure( category );
-        
-        t_obj := TerminalObject( sets );
-        
         elements := ElementsOfUnderlyingGroup( category );
-        
-        size := Length( elements );
-        
-        RG := FinSet( FREYD_CATEGORIES_SkeletalFinSets, size );
         
         ##
         AddSetOfMorphismsOfFiniteCategory( category,
@@ -265,93 +266,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
             
         end );
         
-        ## Homomorphism structure
-        ##
-        ## Warning: the hom structure is costly for big finite groups.
-        ## TODO: Only do a preprocessing for small groups
-        AddHomomorphismStructureOnObjects( category,
-          function( cat, a, b )
+        if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
             
-            return RG;
-            
-        end );
-        
-        ## Precomputatation of the multiplication maps
-        ## [g,h] -> List encoding the multiplication map (x -> G[g] * x * G[h])
-        
-        ## take Size( SymmetricGroup( 5 ) ) as a first guess
-        if size <= 120 then
-            
-            ## heavy precomputation, only do for reasonable sizes
-            
-            HOM_PERMUTATION_ARRAY :=
-                List( [ 1 .. size ], g ->
-                    List( [ 1 .. size ], h ->
-                        List( elements, x -> -1 + Position( elements, elements[g] * x * elements[h] ) )
-                    )
-                );
-            
-            ## Should this function have a cache?
-            ##
-            AddHomomorphismStructureOnMorphisms( category,
-            function( cat, alpha, beta )
-                
-                return MapOfFinSets(
-                        FREYD_CATEGORIES_SkeletalFinSets,
-                        RG,
-                        HOM_PERMUTATION_ARRAY[ PositionWithinElements( alpha ) ][ PositionWithinElements( beta ) ],
-                        RG
-                );
-            
-            end );
-            
-        else
-            
-            ## Should this function have a cache?
-            ##
-            AddHomomorphismStructureOnMorphisms( category,
-            function( cat, alpha, beta )
-                
-                return MapOfFinSets(
-                        FREYD_CATEGORIES_SkeletalFinSets,
-                        RG,
-                        List( elements, x -> -1 + Position( elements, elements[PositionWithinElements( alpha )] * x * elements[PositionWithinElements( beta )] ) ),
-                        RG
-                );
-                
-            end );
+            INSTALL_HOMOMORPHISM_STRUCTURE_FOR_GROUP_AS_CATEGORY( category );
             
         fi;
-        
-        
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( category,
-          function( cat )
-            
-            return t_obj;
-            
-        end );
-        
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( cat, alpha )
-            return MapOfFinSets(
-                FREYD_CATEGORIES_SkeletalFinSets,
-                t_obj,
-                [ -1 + PositionWithinElements( alpha ) ],
-                RG
-            );
-        end );
-        
-        ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( cat, a, b, mor )
-            return GroupAsCategoryMorphism(
-                category,
-                elements[ 1 + AsList( mor )[1] ]
-            );
-        end );
         
     fi;
     

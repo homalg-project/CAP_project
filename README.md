@@ -31,6 +31,7 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 | [GeneralizedMorphismsForCAP](GeneralizedMorphismsForCAP#readme) | Implementations of generalized morphisms for the CAP project | [![HTML stable documentation][html-GeneralizedMorphismsForCAP-img]][html-GeneralizedMorphismsForCAP-url] [![PDF stable documentation][pdf-GeneralizedMorphismsForCAP-img]][pdf-GeneralizedMorphismsForCAP-url] |
 | [GradedModulePresentationsForCAP](GradedModulePresentationsForCAP#readme) | Presentations for graded modules | [![HTML stable documentation][html-GradedModulePresentationsForCAP-img]][html-GradedModulePresentationsForCAP-url] [![PDF stable documentation][pdf-GradedModulePresentationsForCAP-img]][pdf-GradedModulePresentationsForCAP-url] |
 | [GroupRepresentationsForCAP](GroupRepresentationsForCAP#readme) | Skeletal category of group representations for CAP | [![HTML stable documentation][html-GroupRepresentationsForCAP-img]][html-GroupRepresentationsForCAP-url] [![PDF stable documentation][pdf-GroupRepresentationsForCAP-img]][pdf-GroupRepresentationsForCAP-url] |
+| [GroupsAsCategoriesForCAP](GroupsAsCategoriesForCAP#readme) | Groups as categories on one object | [![HTML stable documentation][html-GroupsAsCategoriesForCAP-img]][html-GroupsAsCategoriesForCAP-url] [![PDF stable documentation][pdf-GroupsAsCategoriesForCAP-img]][pdf-GroupsAsCategoriesForCAP-url] |
 | [HomologicalAlgebraForCAP](HomologicalAlgebraForCAP#readme) | Homological algebra algorithms for CAP | [![HTML stable documentation][html-HomologicalAlgebraForCAP-img]][html-HomologicalAlgebraForCAP-url] [![PDF stable documentation][pdf-HomologicalAlgebraForCAP-img]][pdf-HomologicalAlgebraForCAP-url] |
 | [InternalExteriorAlgebraForCAP](InternalExteriorAlgebraForCAP#readme) | Constructions for Modules over the Internal Exterior Algebra for CAP | [![HTML stable documentation][html-InternalExteriorAlgebraForCAP-img]][html-InternalExteriorAlgebraForCAP-url] [![PDF stable documentation][pdf-InternalExteriorAlgebraForCAP-img]][pdf-InternalExteriorAlgebraForCAP-url] |
 | [LinearAlgebraForCAP](LinearAlgebraForCAP#readme) | Category of Matrices over a Field for CAP | [![HTML stable documentation][html-LinearAlgebraForCAP-img]][html-LinearAlgebraForCAP-url] [![PDF stable documentation][pdf-LinearAlgebraForCAP-img]][pdf-LinearAlgebraForCAP-url] |
@@ -107,6 +108,13 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 
 [pdf-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-GroupRepresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/download_pdf.html
+
+
+[html-GroupsAsCategoriesForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-GroupsAsCategoriesForCAP-url]: https://homalg-project.github.io/CAP_project/GroupsAsCategoriesForCAP/doc/chap0_mj.html
+
+[pdf-GroupsAsCategoriesForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-GroupsAsCategoriesForCAP-url]: https://homalg-project.github.io/CAP_project/GroupsAsCategoriesForCAP/download_pdf.html
 
 
 [html-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

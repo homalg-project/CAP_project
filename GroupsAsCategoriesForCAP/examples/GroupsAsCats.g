@@ -1,17 +1,18 @@
 #! @Chapter Examples and Tests
 
-#! @Section Groups as categories
-
-LoadPackage( "FreydCategoriesForCAP" );;
+LoadPackage( "GroupsAsCategoriesForCAP" );;
 
 #! @Example
-#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
 u := GroupAsCategoryUniqueObject( CG );;
 SetOfObjectsOfCategory( CG ) = [ u ];
 #! true
 Length( SetOfMorphismsOfFiniteCategory( CG ) ) = Size( G );
+#! true
+x := (2,3)/CG;;
+id := ()/CG;;
+IsIdenticalObj( x * x, id );
 #! true
 alpha := GroupAsCategoryMorphism( (1,2,3), CG );;
 alpha * Inverse( alpha ) = IdentityMorphism( u );
@@ -26,6 +27,7 @@ Lift( alpha, gamma ) * gamma = alpha;
 #! true
 alpha * Colift( alpha, gamma ) = gamma;
 #! true
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
 Length( HomomorphismStructureOnObjects( u, u ) ) = Size( G );
 #! true
 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
@@ -36,10 +38,6 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
 )
 =
 gamma * alpha * Inverse( gamma );
-#! true
-x := (2,3)/CG;;
-id := ()/CG;;
-IsIdenticalObj( x * x, id );
 #! true
 #! #@fi
 #! @EndExample
