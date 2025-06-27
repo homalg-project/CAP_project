@@ -5,3 +5,5 @@
 #
 
 ReadPackage( "GroupsAsCategoriesForCAP", "gap/GroupsAsCats.gd" );
+
+ReadPackage( "GroupsAsCategoriesForCAP", "gap/HomomorphismStructure.gd" );
