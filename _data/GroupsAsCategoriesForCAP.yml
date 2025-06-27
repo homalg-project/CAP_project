@@ -1,0 +1,74 @@
+name: GroupsAsCategoriesForCAP
+version: "2025.06-02"
+license: "GPL-2.0-or-later"
+date: 2025-06-27
+description: |
+    Groups as categories on one object
+
+authors:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
+
+maintainers:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
+
+GAP: ">= 4.13.0"
+
+needed-pkgs:
+    - name: "CAP"
+      version: ">= 2025.06-05"
+      url: "https://homalg-project.github.io/pkg/CAP"
+
+suggested-pkgs:
+    - name: "FinSetsForCAP"
+      version: ">= 2023.07-03"
+
+www: https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP
+readme: README.md
+packageinfo: https://homalg-project.github.io/CAP_project/GroupsAsCategoriesForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.06-02/GroupsAsCategoriesForCAP-2025.06-02.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.06-02/GroupsAsCategoriesForCAP-2025.06-02.zip
+
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.06-02/GroupsAsCategoriesForCAP-2025.06-02-manual.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>PZ27</span>]   <b class='BibAuthor'>Posur, S. and Zickgraf, F.</b>,
+     <i class='BibTitle'>GroupsAsCategoriesForCAP, Groups as categories on one object,
+             Version 2025.06-02</i>
+     (<span class='BibYear'>6-27</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP">https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ GroupsAsCategoriesForCAP,
+      author =           {Posur, S. and Zickgraf, F.},
+      title =            {{GroupsAsCategoriesForCAP},  {Groups  as categories on
+                          one object}, {V}ersion 2025.06\texttt{\symbol{45}}02},
+      month =            {5\texttt{\symbol{45}}},
+      year =             {6\texttt{\symbol{45}}27},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP}
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{GroupsAsCategoriesForCAP}}},
+      printedkey =       {PZ27}
+    }
+
