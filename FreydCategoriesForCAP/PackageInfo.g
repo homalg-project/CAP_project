@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
-Version := "2025.06-07",
+Version := "2025.06-08",
 Date := "2025-06-28",
 License := "GPL-2.0-or-later",
 
@@ -118,6 +118,9 @@ Extensions := [
   rec(
     needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
     filename := "gap/LinearClosure.gi",
+  ),
+  rec(
+    needed := [ [ "FinSetsForCAP", ">= 2023.07-03" ] ],
     filename := "gap/ProSetsAsCats.gi",
   ),
   rec(
