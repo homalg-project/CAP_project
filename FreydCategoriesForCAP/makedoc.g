@@ -12,7 +12,7 @@ fi;
 AutoDoc( rec(
     autodoc := rec(
         files := [ "doc/Doc.autodoc" ],
-        scan_dirs := [ "doc", "gap", "examples", "examples/doc", "gap/CategoryOfGradedRowsAndColumns", "gap/GradedModulePresentationsByFreyd" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc", "gap/GradedModulePresentationsByFreyd" ],
     ),
     extract_examples := rec(
         units := "Single",

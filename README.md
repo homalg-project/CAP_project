@@ -23,6 +23,7 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 | ---- | ----------- | ------------- |
 | [CAP](CAP#readme) | Categories, Algorithms, Programming | [![HTML stable documentation][html-CAP-img]][html-CAP-url] [![PDF stable documentation][pdf-CAP-img]][pdf-CAP-url] |
 | [ActionsForCAP](ActionsForCAP#readme) | Actions and Coactions for CAP | [![HTML stable documentation][html-ActionsForCAP-img]][html-ActionsForCAP-url] [![PDF stable documentation][pdf-ActionsForCAP-img]][pdf-ActionsForCAP-url] |
+| [AdditiveClosuresForCAP](AdditiveClosuresForCAP#readme) | Additive closures for pre-abelian categories | [![HTML stable documentation][html-AdditiveClosuresForCAP-img]][html-AdditiveClosuresForCAP-url] [![PDF stable documentation][pdf-AdditiveClosuresForCAP-img]][pdf-AdditiveClosuresForCAP-url] |
 | [AttributeCategoryForCAP](AttributeCategoryForCAP#readme) | Automatic enhancement with attributes of a CAP category | [![HTML stable documentation][html-AttributeCategoryForCAP-img]][html-AttributeCategoryForCAP-url] [![PDF stable documentation][pdf-AttributeCategoryForCAP-img]][pdf-AttributeCategoryForCAP-url] |
 | [CartesianCategories](CartesianCategories#readme) | Cartesian and cocartesian categories and various subdoctrines | [![HTML stable documentation][html-CartesianCategories-img]][html-CartesianCategories-url] [![PDF stable documentation][pdf-CartesianCategories-img]][pdf-CartesianCategories-url] |
 | [CompilerForCAP](CompilerForCAP#readme) | Speed up and verify categorical algorithms | [![HTML stable documentation][html-CompilerForCAP-img]][html-CompilerForCAP-url] [![PDF stable documentation][pdf-CompilerForCAP-img]][pdf-CompilerForCAP-url] |
@@ -52,6 +53,13 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 
 [pdf-ActionsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ActionsForCAP-url]: https://homalg-project.github.io/CAP_project/ActionsForCAP/download_pdf.html
+
+
+[html-AdditiveClosuresForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-AdditiveClosuresForCAP-url]: https://homalg-project.github.io/CAP_project/AdditiveClosuresForCAP/doc/chap0_mj.html
+
+[pdf-AdditiveClosuresForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-AdditiveClosuresForCAP-url]: https://homalg-project.github.io/CAP_project/AdditiveClosuresForCAP/download_pdf.html
 
 
 [html-AttributeCategoryForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

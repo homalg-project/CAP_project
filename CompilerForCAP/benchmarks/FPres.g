@@ -1,3 +1,4 @@
+LoadPackage( "AdditiveClosuresForCAP", false );
 LoadPackage( "FreydCategoriesForCAP", false );
 LoadPackage( "ModulePresentationsForCAP", false );
 

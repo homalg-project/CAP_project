@@ -14,7 +14,7 @@ sed "s;Date := .*;Date := \"$(date -I)\",;" PackageInfo.g > PackageInfo.g.bak
 mv PackageInfo.g.bak PackageInfo.g
 
 # replace links to packages which are possibly referenced in the documentation, keep this in sync with `Tests.yml.j2`
-for package in CAP_project/CAP CAP_project/CompilerForCAP CAP_project/MonoidalCategories CAP_project/CartesianCategories CAP_project/FreydCategoriesForCAP HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra homalg_project/homalg homalg_project/Modules CategoricalTowers/ToolsForCategoricalTowers CategoricalTowers/Toposes; do
+for package in CAP_project/CAP CAP_project/CompilerForCAP CAP_project/MonoidalCategories CAP_project/CartesianCategories CAP_project/AdditiveClosuresForCAP CAP_project/FreydCategoriesForCAP HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra homalg_project/homalg homalg_project/Modules CategoricalTowers/ToolsForCategoricalTowers CategoricalTowers/Toposes; do
     
     # adjust links to other manuals
     # Note that we cannot use sed's `-i` option for in-place editing, as

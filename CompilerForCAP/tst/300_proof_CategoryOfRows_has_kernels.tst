@@ -5,7 +5,7 @@ gap> old_screen_width := SizeScreen( )[1];;
 gap> SizeScreen( [ 4096 ] );;
 
 #
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 
 #

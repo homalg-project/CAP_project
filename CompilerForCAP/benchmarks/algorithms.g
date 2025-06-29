@@ -1,5 +1,5 @@
 LoadPackage( "CompilerForCAP", false );
-LoadPackage( "FreydCategoriesForCAP", false );
+LoadPackage( "AdditiveClosuresForCAP", false );
 
 star := RingAsCategoryUniqueObject( RingAsCategory( Integers ) );
 

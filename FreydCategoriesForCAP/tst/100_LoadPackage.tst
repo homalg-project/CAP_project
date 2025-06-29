@@ -13,6 +13,8 @@ gap> LoadPackage( "RingsForHomalg", false );
 true
 gap> LoadPackage( "GaussForHomalg", false );
 true
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
+true
 gap> LoadPackage( "GeneralizedMorphismsForCAP", false );
 true
 gap> LoadPackage( "FreydCategoriesForCAP", false );
@@ -23,6 +25,8 @@ true
 gap> LoadPackage( "RingsForHomalg" );
 true
 gap> LoadPackage( "GaussForHomalg" );
+true
+gap> LoadPackage( "AdditiveClosuresForCAP" );
 true
 gap> LoadPackage( "GeneralizedMorphismsForCAP" );
 true

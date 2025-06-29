@@ -55,7 +55,7 @@
 #! We reinterpret `Opposite( CategoryOfRows( R ) )` as `CategoryOfColumns( R )` using
 #! <Ref Oper="ReinterpretationOfCategory" Label="for IsCapCategory, IsRecord" />
 #! with the options described in the following (see `CategoryOfColumns_as_Opposite_CategoryOfRows.gi` in
-#! `FreydCategoriesForCAP` for a full implementation).
+#! `AdditiveClosuresForCAP` for a full implementation).
 #! <Enum>
 #! <Item>
 #!     Set the options `category_filter`, `category_object_filter`, and `category_morphism_filter`

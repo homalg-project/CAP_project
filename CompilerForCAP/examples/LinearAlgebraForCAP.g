@@ -4,7 +4,7 @@
 
 #! @Example
 
-LoadPackage( "FreydCategoriesForCAP", false );
+LoadPackage( "AdditiveClosuresForCAP", false );
 #! true
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true

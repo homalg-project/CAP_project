@@ -1,7 +1,7 @@
 gap> START_TEST( "StopCompilationAtCategory" );
 
 #
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 
 #

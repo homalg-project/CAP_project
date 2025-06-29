@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
-Version := "2025.06-01",
+Version := "2025.06-02",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -112,7 +112,9 @@ Dependencies := rec(
 
 Extensions := [
   rec(
-    needed := [ [ "FreydCategoriesForCAP", ">= 2024.01-03" ] ],
+    needed := [ [ "FreydCategoriesForCAP", ">= 2024.01-03" ],
+                [ "AdditiveClosuresForCAP", ">= 2025.06-01" ]
+              ],
     filename := "gap/ModulePresentations_as_FreydCategory_CategoryOfRowsOrColumns.gi",
   ),
 ],

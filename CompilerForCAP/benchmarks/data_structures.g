@@ -1,5 +1,5 @@
 LoadPackage( "CompilerForCAP", false );
-LoadPackage( "FreydCategoriesForCAP", false );
+LoadPackage( "AdditiveClosuresForCAP", false );
 
 # simplification of data structures
 R := HomalgRingOfIntegers( );
