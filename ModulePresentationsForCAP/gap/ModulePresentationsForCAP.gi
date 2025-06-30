@@ -1093,15 +1093,6 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     N := UnderlyingMatrix( Range(  morphism_1 ) );
     
-    # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(P)=0, hence morphism_1 is zero, and the zero morphism can always be lifted. 
-    if NrColumns( N ) = 0 or s = 0 then
-        return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); 
-    fi;
-    
-    # if NrColumns(M)=0 then M is zero, hence lift exists iff morphism_1 is zero.
-    if NrColumns( M ) = 0 and IsZeroForMorphisms( morphism_1 ) then
-        return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) );
-    fi;
     A := UnderlyingMatrix( morphism_1 );
     
     B := UnderlyingMatrix( morphism_2 );
@@ -1124,15 +1115,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     mat := UnionOfRows( mat1, mat2 );
     
-    if NrColumns( A ) <= 1 then
-       
-       vec_A := A;
-       
-    else
-       
-       vec_A := UnionOfRows( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A, [ i ] ) ) );
-       
-    fi;
+    vec_A := ConvertMatrixToColumn( A );
     
     vec_zero := HomalgZeroMatrix( NrRows( P ) * NrColumns( M ), NrColumns( vec_A ), homalg_ring );
     
@@ -1155,11 +1138,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     sol := CallFuncList( LeftDivide, lift_via_compiled_linear_system_func( morphism_1, morphism_2 ) );
     
-    if v <= 1 then
-        XX := CertainRows( sol, [ 1.. s ] );
-    else
-        XX := UnionOfColumns( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ) );
-    fi;
+    XX := ConvertColumnToMatrix( CertainRows( sol, [ 1 .. s * v ] ), s, v );
     
     return PresentationMorphism( cat, Source( morphism_1 ), XX, Source( morphism_2 ) );
     
@@ -1200,16 +1179,6 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     N := UnderlyingMatrix( Source( morphism_1 ) );
     
-    # NrColumns( N ) = 0 implies coker(N)=0 and  s = 0 implies coker(I)=0, hence morphism_2 is zero, and the zero morphism can always be colifted.
-    if NrColumns( N ) = 0 or s = 0 then
-        return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
-    fi;
-
-    # if NrColumns(M)=0 then M is zero, hence colift exists iff morphism_2 is zero.
-    if NrColumns( M ) = 0 and IsZeroForMorphisms( morphism_2 ) then
-        return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
-    fi;
-
     B := UnderlyingMatrix( morphism_1 );
     
     A := UnderlyingMatrix( morphism_2 );
@@ -1226,12 +1195,8 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     A_over_zero := UnionOfRows( A, zero_mat );
     
-    if NrColumns( A ) <= 1 then
-        vec := A_over_zero;
-    else
-        vec := UnionOfRows( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A_over_zero, [ i ] ) ) );
-    fi;
-
+    vec := ConvertMatrixToColumn( A_over_zero );
+    
     return [ mat, vec ];
     
   end;
@@ -1249,15 +1214,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     sol := CallFuncList( LeftDivide, colift_via_compiled_linear_system_func( morphism_1, morphism_2 ) );
     
-    v := NrColumns( M );
-    
-    s := NrColumns( I );
-    
-    if s <= 1 then
-        XX := CertainRows( sol, [ 1.. v ] );
-    else
-        XX := UnionOfColumns( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ) );
-    fi;
+    XX := ConvertColumnToMatrix( CertainRows( sol, [ 1 .. v * s ] ), v, s );
     
     return PresentationMorphism( cat, Range( morphism_1 ), XX, Range( morphism_2 ) );
     
@@ -1314,14 +1271,6 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     Nt := TransposedMatrix( UnderlyingMatrix( Range(  morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 or s = 0 then
-        return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); 
-    fi;
-
-    if NrRows( Mt ) = 0 and IsZeroForMorphisms( morphism_1 ) then
-        return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) );
-    fi;
-
     At := TransposedMatrix( UnderlyingMatrix( morphism_1 ) );
     
     Bt := TransposedMatrix( UnderlyingMatrix( morphism_2 ) );
@@ -1344,15 +1293,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     mat := UnionOfRows( mat1, mat2 );
     
-    if NrColumns( At ) <= 1 then
-       
-       vec_A := At;
-       
-    else
-       
-       vec_A := UnionOfRows( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( At, [ i ] ) ) );
-       
-    fi;
+    vec_A := ConvertMatrixToColumn( At );
     
     vec_zero := HomalgZeroMatrix( NrRows( Pt ) * NrColumns( Mt ), NrColumns( vec_A ), homalg_ring );
     
@@ -1363,7 +1304,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
   end;
   
   AddLift( category, function( cat, morphism_1, morphism_2 )
-    local Pt, Mt, v, s, sol, XX;
+    local Pt, Mt, v, s, sol, XX_tr;
     
     Pt := TransposedMatrix( UnderlyingMatrix( Source( morphism_1 ) ) );
     Mt := TransposedMatrix( UnderlyingMatrix( Source( morphism_2 ) ) );
@@ -1374,13 +1315,9 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     sol := CallFuncList( LeftDivide, lift_via_compiled_linear_system_func( morphism_1, morphism_2 ) );
     
-    if v <= 1 then
-        XX := TransposedMatrix( CertainRows( sol, [ 1.. s ] ) );
-    else
-        XX := TransposedMatrix( UnionOfColumns( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ) ) );
-    fi;
+    XX_tr := ConvertColumnToMatrix( CertainRows( sol, [ 1 .. s * v ] ), s, v );
     
-    return PresentationMorphism( cat, Source( morphism_1 ), XX, Source( morphism_2 ) );
+    return PresentationMorphism( cat, Source( morphism_1 ), TransposedMatrix( XX_tr ), Source( morphism_2 ) );
     
   end );
   
@@ -1398,19 +1335,11 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     Mt := TransposedMatrix( UnderlyingMatrix( Range( morphism_1 ) ) );
     
     v := NrColumns( Mt );
-       
+    
     s := NrColumns( It );
-        
+    
     Nt := TransposedMatrix( UnderlyingMatrix( Source( morphism_1 ) ) );
     
-    if NrRows( Nt ) = 0 or s = 0 then
-        return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
-    fi;
-    
-    if NrRows( Mt ) = 0 and IsZeroForMorphisms( morphism_2 ) then
-        return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
-    fi;
-
     Bt := TransposedMatrix( UnderlyingMatrix( morphism_1 ) );
     
     At := TransposedMatrix( UnderlyingMatrix( morphism_2 ) );
@@ -1427,18 +1356,14 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     A_over_zero := UnionOfRows( At, zero_mat );
     
-    if NrColumns( At ) <= 1 then
-        vec := A_over_zero;
-    else
-        vec := UnionOfRows( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( A_over_zero, [ i ] ) ) );
-    fi;
-
+    vec := ConvertMatrixToColumn( A_over_zero );
+    
     return [ mat, vec ];
     
   end;
   
   AddColift( category, function( cat, morphism_1, morphism_2 )
-    local It, Mt, v, s, sol, XX;
+    local It, Mt, v, s, sol, XX_tr;
     
     It := TransposedMatrix( UnderlyingMatrix( Range( morphism_2 ) ) );
     
@@ -1450,17 +1375,9 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     sol := CallFuncList( LeftDivide, colift_via_compiled_linear_system_func( morphism_1, morphism_2 ) );
     
-    v := NrColumns( Mt );
+    XX_tr := ConvertColumnToMatrix( CertainRows( sol, [ 1 .. v * s ] ), v, s );
     
-    s := NrColumns( It );
-    
-    if s <= 1 then
-        XX := TransposedMatrix( CertainRows( sol, [ 1.. v ] ) );
-    else
-        XX := TransposedMatrix( UnionOfColumns( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ) ) );
-    fi;
-    
-    return PresentationMorphism( cat, Range( morphism_1 ), XX, Range( morphism_2 ) );
+    return PresentationMorphism( cat, Range( morphism_1 ), TransposedMatrix( XX_tr ), Range( morphism_2 ) );
     
   end, 1000 );
   
