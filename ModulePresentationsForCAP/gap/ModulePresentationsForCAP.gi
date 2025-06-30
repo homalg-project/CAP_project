@@ -1057,7 +1057,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
     
 end );
 
-InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT, 
+InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
 
   function( category )
   local homalg_ring, lift_via_compiled_linear_system_func, colift_via_compiled_linear_system_func;
@@ -1088,7 +1088,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     M := UnderlyingMatrix( Source( morphism_2 ) );
     
     v := NrColumns( M );
-       
+    
     s := NrColumns( P );
     
     N := UnderlyingMatrix( Range(  morphism_1 ) );
@@ -1110,15 +1110,15 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     N_tr_I := KroneckerMat( TransposedMatrix( N ), HomalgIdentityMatrix( NrColumns( P ) ,homalg_ring ) );
     
-    zero_1  := HomalgZeroMatrix( NrRows( A )*NrColumns( A ), NrRows( P )*NrRows( M ), homalg_ring );
+    zero_1  := HomalgZeroMatrix( NrRows( A ) * NrColumns( A ), NrRows( P ) * NrRows( M ), homalg_ring );
     
     mat1 := UnionOfColumns( B_tr_I, N_tr_I, zero_1 );
     
     I_P := KroneckerMat( HomalgIdentityMatrix( NrColumns( M ) ,homalg_ring ), P );
     
-    zero_2 := HomalgZeroMatrix( NrRows( P )*NrColumns( M ), NrRows( A )*NrRows( N ), homalg_ring );
+    zero_2 := HomalgZeroMatrix( NrRows( P ) * NrColumns( M ), NrRows( A ) * NrRows( N ), homalg_ring );
     
-    M_tr_I := KroneckerMat( TransposedMatrix( M ), HomalgIdentityMatrix( NrRows( P ) ,homalg_ring ) );
+    M_tr_I := KroneckerMat( TransposedMatrix( M ), HomalgIdentityMatrix( NrRows( P ), homalg_ring ) );
     
     mat2 := UnionOfColumns( I_P, zero_2, M_tr_I );
     
@@ -1134,7 +1134,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     fi;
     
-    vec_zero := HomalgZeroMatrix( NrRows( P )*NrColumns( M ), 1, homalg_ring );
+    vec_zero := HomalgZeroMatrix( NrRows( P ) * NrColumns( M ), NrColumns( vec_A ), homalg_ring );
     
     vec := UnionOfRows( vec_A, vec_zero );
     
@@ -1195,7 +1195,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     M := UnderlyingMatrix( Range( morphism_1 ) );
     
     v := NrColumns( M );
-       
+    
     s := NrColumns( I );
     
     N := UnderlyingMatrix( Source( morphism_1 ) );
@@ -1272,7 +1272,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
 end );
 
 ##
-InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT, 
+InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
 
   function( category )
   local homalg_ring, lift_via_compiled_linear_system_func, colift_via_compiled_linear_system_func;
@@ -1280,13 +1280,13 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
   homalg_ring := category!.ring_for_representation_category;
   
   lift_via_compiled_linear_system_func := function( morphism_1, morphism_2 )
-    local Pt, Nt, Mt, At, Bt, B_tr_I, N_tr_I, zero_1, 
+    local Pt, Nt, Mt, At, Bt, B_tr_I, N_tr_I, zero_1,
           mat1, mat2, I_P, zero_2, M_tr_I, mat, vec_A, vec_zero, vec, v, s;
     #                 rxs
     #                P
     #                |
-    #         uxr    | mxr 
-    #        X      (A) 
+    #         uxr    | mxr
+    #        X      (A)
     #                |
     #                V
     #    uxv    mxu   mxn
@@ -1296,10 +1296,10 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     #   We need to solve the system
     #       B*X = A mod N
     #       X*P + M*Y = 0
-    #   I.e., looking for X, Y, Z such that 
+    #   I.e., looking for X, Y, Z such that
     #       B*X + N*Y = A
     #       X*P + M*Z = 0
-    #   which is equivalent to 
+    #   which is equivalent to
     #       XX*B^t + YY*N^t = A^t
     #       P^t*XX + ZZ*M^t = 0
     #   which can be solved exactly as Lift in left presentations case.
@@ -1328,17 +1328,17 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     B_tr_I := KroneckerMat( TransposedMatrix( Bt ), HomalgIdentityMatrix( NrColumns( Pt ), homalg_ring ) );
     
-    N_tr_I := KroneckerMat( TransposedMatrix( Nt ), HomalgIdentityMatrix( NrColumns( Pt ) ,homalg_ring ) );
+    N_tr_I := KroneckerMat( TransposedMatrix( Nt ), HomalgIdentityMatrix( NrColumns( Pt ), homalg_ring ) );
     
-    zero_1  := HomalgZeroMatrix( NrRows( At )*NrColumns( At ), NrRows( Pt )*NrRows( Mt ), homalg_ring );
+    zero_1  := HomalgZeroMatrix( NrRows( At ) * NrColumns( At ), NrRows( Pt ) * NrRows( Mt ), homalg_ring );
     
     mat1 := UnionOfColumns( B_tr_I, N_tr_I, zero_1 );
     
-    I_P := KroneckerMat( HomalgIdentityMatrix( NrColumns( Mt ) ,homalg_ring ), Pt );
+    I_P := KroneckerMat( HomalgIdentityMatrix( NrColumns( Mt ), homalg_ring ), Pt );
     
-    zero_2 := HomalgZeroMatrix( NrRows( Pt )*NrColumns( Mt ), NrRows( At )*NrRows( Nt ), homalg_ring );
+    zero_2 := HomalgZeroMatrix( NrRows( Pt ) * NrColumns( Mt ), NrRows( At ) * NrRows( Nt ), homalg_ring );
     
-    M_tr_I := KroneckerMat( TransposedMatrix( Mt ), HomalgIdentityMatrix( NrRows( Pt ) ,homalg_ring ) );
+    M_tr_I := KroneckerMat( TransposedMatrix( Mt ), HomalgIdentityMatrix( NrRows( Pt ), homalg_ring ) );
     
     mat2 := UnionOfColumns( I_P, zero_2, M_tr_I );
     
@@ -1354,7 +1354,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
        
     fi;
     
-    vec_zero := HomalgZeroMatrix( NrRows( Pt )*NrColumns( Mt ), 1, homalg_ring );
+    vec_zero := HomalgZeroMatrix( NrRows( Pt ) * NrColumns( Mt ), NrColumns( vec_A ), homalg_ring );
     
     vec := UnionOfRows( vec_A, vec_zero );
     
