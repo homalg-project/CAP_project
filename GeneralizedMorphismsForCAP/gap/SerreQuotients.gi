@@ -4,11 +4,6 @@
 # Implementations
 #
 
-InstallMethod( \/,
-               [ IsCapCategory, IsFunction ],
-               
-  SerreQuotientCategory );
-
 InstallMethod( LiftCovariantEndoFunctorToSerreQuotientCategory,
                [ IsCapCategory, IsCapFunctor ],
                
