@@ -1,7 +1,7 @@
 name: GeneralizedMorphismsForCAP
-version: "2025.02-01"
+version: "2025.06-01"
 license: "GPL-2.0-or-later"
-date: 2025-03-01
+date: 2025-06-30
 description: |
     Implementations of generalized morphisms for the CAP project
 
@@ -36,11 +36,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsFo
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2025.02-01/GeneralizedMorphismsForCAP-2025.02-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2025.06-01/GeneralizedMorphismsForCAP-2025.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2025.02-01/GeneralizedMorphismsForCAP-2025.02-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2025.06-01/GeneralizedMorphismsForCAP-2025.06-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2025.02-01/GeneralizedMorphismsForCAP-2025.02-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2025.06-01/GeneralizedMorphismsForCAP-2025.06-01-manual.pdf
 
 abstract: |
     <span class="pkgname">GeneralizedMorphismsForCAP</span> provides the category of generalized morphisms associated to an abelian category.
@@ -50,10 +50,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GP01</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>GP30</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>GeneralizedMorphismsForCAP, Implementations of generalized morphisms for the CAP project,
-             Version 2025.02-01</i>
-     (<span class='BibYear'>3-01</span>)<br />
+             Version 2025.06-01</i>
+     (<span class='BibYear'>6-30</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP">https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP</a></span>.
     </p>
@@ -64,15 +64,15 @@ bibtex: |
       author =           {Gutsche, S. and Posur, S.},
       title =            {{GeneralizedMorphismsForCAP},    {Implementations   of
                           generalized  morphisms for the CAP project}, {V}ersion
-                          2025.02\texttt{\symbol{45}}01},
+                          2025.06\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {3\texttt{\symbol{45}}01},
+      year =             {6\texttt{\symbol{45}}30},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GeneralizedMorphismsForCAP}}},
-      printedkey =       {GP01}
+      printedkey =       {GP30}
     }
 
