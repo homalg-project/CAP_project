@@ -17,7 +17,7 @@
 #! The output is the matrix category over $F$,
 #! constructed internally as a wrapper category of
 #! the `CategoryOfRows` of $F$.
-#! Only available if the package `FreydCategoriesForCAP` is available.
+#! Only available if the package `AdditiveClosuresForCAP` is available.
 #! @Returns a category
 #! @Arguments F
 DeclareOperation( "MatrixCategory_as_CategoryOfRows",

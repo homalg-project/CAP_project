@@ -3,7 +3,7 @@ gap> START_TEST( "CapJitCompiledFunction" );
 #
 gap> LoadPackage( "CompilerForCAP", false );
 true
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 
 #

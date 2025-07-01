@@ -3,7 +3,7 @@ gap> START_TEST( "CAP_JIT_INTERNAL_TELESCOPED_ITERATION" );
 #
 gap> LoadPackage( "CompilerForCAP", false );
 true
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 gap> LoadPackage( "LinearAlgebraForCAP", false );
 true

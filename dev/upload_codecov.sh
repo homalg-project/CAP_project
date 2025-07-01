@@ -38,6 +38,10 @@ while ! ./codecov -Z -v -s ../ -F ActionsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
+while ! ./codecov -Z -v -s ../ -F AdditiveClosuresForCAP -t $CODECOV_TOKEN; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
 while ! ./codecov -Z -v -s ../ -F AttributeCategoryForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60

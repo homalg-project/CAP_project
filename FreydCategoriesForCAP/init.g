@@ -8,26 +8,9 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/MethodRecordDeclarations.autogen.gd" );
 
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory.gd" );
-
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gd" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns_as_Opposite_CategoryOfRows.gd" );
-
-# include the packages for graded rows and columns
-#= comment for Julia
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gd" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumnMorphism.gd" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/CategoryOfGradedRows.gd" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/CategoryOfGradedColumns.gd" );
-ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/Tools.gd" );
-# =#
-
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategory.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategory.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CoFreydCategory_as_Opposite_FreydCategory_Opposite.gd" );
-
-ReadPackage( "FreydCategoriesForCAP", "gap/AdditiveClosure.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gd" );
 
@@ -38,8 +21,6 @@ ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/Grad
 ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/ProSetsAsCats.gd" );
-
-ReadPackage( "FreydCategoriesForCAP", "gap/RingsAsAbCats.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gd" );
 

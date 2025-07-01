@@ -1,7 +1,7 @@
 gap> START_TEST( "proof_assistant" );
 
 #
-gap> LoadPackage( "FreydCategoriesForCAP", false );
+gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 
 #

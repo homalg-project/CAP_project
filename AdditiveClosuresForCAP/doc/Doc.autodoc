@@ -1,0 +1,53 @@
+@Chapter Rings as categories
+
+@Section GAP Categories
+@Section Constructors
+@Section Attributes
+@Section Operations
+@Section Random methods
+
+@Chapter Additive closure
+@Section Constructors
+@Section Attributes
+@Section Operators
+@Section Global functions
+@Section Random methods for additive closure category
+@Section GAP Categories
+
+@Chapter Example on additive closure
+
+@Chapter Category of rows
+@Section Constructors
+@Section Attributes
+@Section Global functions
+@Section Random Methods in Category of Rows
+@Section GAP Categories
+@Section Supported CAP operations
+@Subsection CategoryOfRows of an arbitrary ring
+@Subsection CategoryOfRows of an exterior algebra over a field
+@Subsection CategoryOfRows of a commutative ring
+@Subsection CategoryOfRows of a field
+
+@Chapter Example on category of rows
+
+@Chapter Category of columns
+@Section Constructors
+@Section Attributes
+@Section GAP Categories
+
+@Chapter Example on category of columns
+
+@Chapter Category of rows and columns over a field
+@Section Abelian operations
+
+@Chapter Category of graded rows and category of graded columns
+@Section Constructors
+@Section Attributes
+
+@Chapter Examples on graded rows and columns
+
+@Chapter Basic operations
+
+@Chapter Examples and Tests
+
+@Chapter Add Functions

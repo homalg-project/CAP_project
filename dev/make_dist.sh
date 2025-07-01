@@ -12,6 +12,11 @@ echo "Release ActionsForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ActionsForCAP" --webdir "$PWD/gh-pages/ActionsForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
 echo ""
 
+# AdditiveClosuresForCAP
+echo "Release AdditiveClosuresForCAP"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/AdditiveClosuresForCAP" --webdir "$PWD/gh-pages/AdditiveClosuresForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+echo ""
+
 # AttributeCategoryForCAP
 echo "Release AttributeCategoryForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/AttributeCategoryForCAP" --webdir "$PWD/gh-pages/AttributeCategoryForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"

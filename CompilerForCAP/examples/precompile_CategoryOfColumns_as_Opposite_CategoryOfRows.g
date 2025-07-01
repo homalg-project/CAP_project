@@ -6,9 +6,9 @@
 
 #! #@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
 
-LoadPackage( "FreydCategoriesForCAP", false );
+LoadPackage( "AdditiveClosuresForCAP", false );
 #! true
-ReadPackage( "FreydCategoriesForCAP",
+ReadPackage( "AdditiveClosuresForCAP",
     "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi");
 #! true
 
@@ -27,7 +27,7 @@ precompile_CategoryOfColumns := function( homalg_ring, name )
             homalg_ring
         ),
         [ homalg_ring ],
-        "FreydCategoriesForCAP",
+        "AdditiveClosuresForCAP",
         Concatenation(
             "CategoryOfColumns_as_Opposite_CategoryOfRows_",
             name,
