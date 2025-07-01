@@ -28,7 +28,7 @@ As an example, consider the category
 	<img src="img/example_category.svg" height="24" align="top"> = <code>FreydCategory( AdditiveClosure( RingAsCategory( R ) ) )</code>.
 </p>
 
-built from a ring using category constructors available in [FreydCategoriesForCAP](/FreydCategoriesForCAP).
+built from a ring using category constructors available in [AdditiveClosuresForCAP](/AdditiveClosuresForCAP) and [FreydCategoriesForCAP](/FreydCategoriesForCAP).
 
 We can visualize a computation in this category consisting of three operations as follows:
 

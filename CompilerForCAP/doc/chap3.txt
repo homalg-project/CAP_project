@@ -5,7 +5,7 @@
   [1X3.1 [33X[0;0YExamples[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -64,7 +64,7 @@
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -98,9 +98,9 @@
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP",[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "AdditiveClosuresForCAP",[127X[104X
     [4X[25X>[125X [27X    "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi");[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xhomalg_field := DummyHomalgField( );;[127X[104X
@@ -116,7 +116,7 @@
     [4X[25X>[125X [27X            homalg_ring[127X[104X
     [4X[25X>[125X [27X        ),[127X[104X
     [4X[25X>[125X [27X        [ homalg_ring ],[127X[104X
-    [4X[25X>[125X [27X        "FreydCategoriesForCAP",[127X[104X
+    [4X[25X>[125X [27X        "AdditiveClosuresForCAP",[127X[104X
     [4X[25X>[125X [27X        Concatenation([127X[104X
     [4X[25X>[125X [27X            "CategoryOfColumns_as_Opposite_CategoryOfRows_",[127X[104X
     [4X[25X>[125X [27X            name,[127X[104X
@@ -145,9 +145,9 @@
   
   [4X[32X  Example  [32X[104X
     [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP",[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "AdditiveClosuresForCAP",[127X[104X
     [4X[25X>[125X [27X    "gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory_CompilerLogic.gi");[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xhomalg_field := DummyHomalgField( );;[127X[104X
@@ -163,7 +163,7 @@
     [4X[25X>[125X [27X            homalg_ring[127X[104X
     [4X[25X>[125X [27X        ),[127X[104X
     [4X[25X>[125X [27X        [ homalg_ring ],[127X[104X
-    [4X[25X>[125X [27X        "FreydCategoriesForCAP",[127X[104X
+    [4X[25X>[125X [27X        "AdditiveClosuresForCAP",[127X[104X
     [4X[25X>[125X [27X        Concatenation([127X[104X
     [4X[25X>[125X [27X            "CategoryOfRows_as_AdditiveClosure_RingAsCategory_",[127X[104X
     [4X[25X>[125X [27X            name,[127X[104X
@@ -257,6 +257,8 @@
     [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );[127X[104X
     [4X[28Xtrue[128X[104X
