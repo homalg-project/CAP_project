@@ -48,7 +48,7 @@
   
   [33X[0;0YThe  argument is a homalg field [23XF[123X. The output is the matrix category over [23XF[123X,
   constructed  internally  as  a  wrapper category of the [10XCategoryOfRows[110X of [23XF[123X.
-  Only available if the package [10XFreydCategoriesForCAP[110X is available.[133X
+  Only available if the package [10XAdditiveClosuresForCAP[110X is available.[133X
   
   
   [1X1.2 [33X[0;0YAttributes[133X[101X
