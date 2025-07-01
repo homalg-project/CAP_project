@@ -18,105 +18,22 @@
 <body class="chap3"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chap18_mj.html">18</a>  <a href="chap19_mj.html">19</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap3.html">[MathJax off]</a></p>
 <p><a id="X7ACB868E7C4A1D32" name="X7ACB868E7C4A1D32"></a></p>
 <div class="ChapSects"><a href="chap3_mj.html#X7ACB868E7C4A1D32">3 <span class="Heading">Example on additive closure</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X845F81E07A23BEF8">3.1 <span class="Heading">Using matrix data structures</span></a>
-</span>
-</div>
 </div>
 
 <h3>3 <span class="Heading">Example on additive closure</span></h3>
-
-<p><a id="X845F81E07A23BEF8" name="X845F81E07A23BEF8"></a></p>
-
-<h4>3.1 <span class="Heading">Using matrix data structures</span></h4>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := QQ * "x,y,z";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows_as_AdditiveClosure_RingAsCategory( R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := HomalgMatrix( "[[x^2,4*y]]", 1, 2, R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := HomalgMatrix( "[[1,3*x], [2*y^3,5*y]]", 2, 2, R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := M * N;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := CategoryOfRowsObject( rows, 1 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := o;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := DirectSum( o, o );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfRowsMorphism( rows, A, M, B );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfRowsMorphism( rows, B, N, B );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( beta );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := PreCompose( alpha, beta );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( gamma );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingMatrix( gamma ) = P;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compute Lift( gamma, beta ) via SolveLinearSystemInAbCategory for coverage of hom structure:</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">delta := SolveLinearSystemInAbCategory( [ [ IdentityMorphism( A ) ] ], [ [ beta ] ], [ gamma ] )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ ], B ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroMorphism( A, B )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># E and EE are both occupied by GAP</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows_as_AdditiveClosure_RingAsCategory( EEE );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := HomalgMatrix( "[[e0*e1,3*e0]]", 1, 2, EEE );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := HomalgMatrix( "[[1,e0*e2], [2*e0*e1*e2,5*e2]]", 2, 2, EEE );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := M * N;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := CategoryOfRowsObject( rows, 1 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := o;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := DirectSum( o, o );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfRowsMorphism( rows, A, M, B );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfRowsMorphism( rows, B, N, B );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( beta );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := PreCompose( alpha, beta );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( gamma );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingMatrix( gamma ) = P;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compute Lift( gamma, beta ) via SolveLinearSystemInAbCategory for coverage of hom structure:</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">delta := SolveLinearSystemInAbCategory( [ [ IdentityMorphism( A ) ] ], [ [ beta ] ], [ gamma ] )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ alpha, alpha, alpha ], B ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ ], B ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroMorphism( A, B )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
-true
-</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chap18_mj.html">18</a>  <a href="chap19_mj.html">19</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

@@ -4,265 +4,71 @@
   
   [2X*[102X, for IsFreydCategoryMorphism, IsFreydCategoryMorphism 11.3-3 
       for IsFreydCategoryObject, IsFreydCategoryObject 11.3-1 
-  [2X/[102X, for IsCapCategoryCell, IsAdditiveClosureCategory 2.4-4 
-      for IsCapCategoryMorphism, IsAdelmanCategory 4.2-7 
+  [2X/[102X, for IsCapCategoryMorphism, IsAdelmanCategory 4.2-7 
       for IsCapCategoryObject, IsAdelmanCategory 4.2-6 
-      for IsList, IsAdditiveClosureCategory 2.4-3 
-  [2X[[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
-  [2X[][102X, for IsAdditiveClosureObject, IsInt 2.4-1 
   [2X^[102X, for IsFreydCategoryMorphism, IsInt 11.3-4 
       for IsFreydCategoryObject, IsInt 11.3-2 
-  [2XAddBiasedWeakFiberProduct[102X, for IsCapCategory, IsFunction 14.1-1 
+  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-1 
       for IsCapCategory, IsFunction, IsInt 14.1-1 
-  [2XAddBiasedWeakPushout[102X, for IsCapCategory, IsFunction 14.1-2 
+  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-2 
       for IsCapCategory, IsFunction, IsInt 14.1-2 
-  [2XAddDirectSumMorphismToWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-3 
+  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-3 
       for IsCapCategory, IsFunction, IsInt 14.1-3 
-  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-4 
+  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-4 
       for IsCapCategory, IsFunction, IsInt 14.1-4 
-  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-5 
+  [2XAddSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-5 
       for IsCapCategory, IsFunction, IsInt 14.1-5 
-  [2XAddInjectionOfBiasedWeakPushout[102X, for IsCapCategory, IsFunction 14.1-6 
+  [2XAddSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-6 
       for IsCapCategory, IsFunction, IsInt 14.1-6 
-  [2XAddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout[102X, for IsCapCategory, IsFunction 14.1-7 
-      for IsCapCategory, IsFunction, IsInt 14.1-7 
-  [2XAddInjectionOfFirstCofactorOfWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-8 
-      for IsCapCategory, IsFunction, IsInt 14.1-8 
-  [2XAddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-9 
-      for IsCapCategory, IsFunction, IsInt 14.1-9 
-  [2XAddInjectionOfSecondCofactorOfWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-10 
-      for IsCapCategory, IsFunction, IsInt 14.1-10 
-  [2XAddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-11 
-      for IsCapCategory, IsFunction, IsInt 14.1-11 
-  [2XADDITIVE_CLOSURE[102X, for IsCapCategory 2.2-2 
-  [2XAdditiveClosure[102X, for IsCapCategory 2.2-1 
-  [2XAdditiveClosureMorphism[102X, for IsAdditiveClosureObject, IsList, IsAdditiveClosureObject 2.2-5 
-  [2XAdditiveClosureObject[102X, for IsList, IsAdditiveClosureCategory 2.2-3 
-  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-12 
-      for IsCapCategory, IsFunction, IsInt 14.1-12 
-  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-13 
-      for IsCapCategory, IsFunction, IsInt 14.1-13 
-  [2XAddProjectionInFirstFactorOfWeakBiFiberProduct[102X, for IsCapCategory, IsFunction 14.1-14 
-      for IsCapCategory, IsFunction, IsInt 14.1-14 
-  [2XAddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategory, IsFunction 14.1-15 
-      for IsCapCategory, IsFunction, IsInt 14.1-15 
-  [2XAddProjectionInSecondFactorOfWeakBiFiberProduct[102X, for IsCapCategory, IsFunction 14.1-16 
-      for IsCapCategory, IsFunction, IsInt 14.1-16 
-  [2XAddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategory, IsFunction 14.1-17 
-      for IsCapCategory, IsFunction, IsInt 14.1-17 
-  [2XAddProjectionOfBiasedWeakFiberProduct[102X, for IsCapCategory, IsFunction 14.1-18 
-      for IsCapCategory, IsFunction, IsInt 14.1-18 
-  [2XAddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X, for IsCapCategory, IsFunction 14.1-19 
-      for IsCapCategory, IsFunction, IsInt 14.1-19 
-  [2XAddSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-20 
-      for IsCapCategory, IsFunction, IsInt 14.1-20 
-  [2XAddSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-21 
-      for IsCapCategory, IsFunction, IsInt 14.1-21 
-  [2XAddUniversalMorphismFromBiasedWeakPushout[102X, for IsCapCategory, IsFunction 14.1-22 
-      for IsCapCategory, IsFunction, IsInt 14.1-22 
-  [2XAddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[102X, for IsCapCategory, IsFunction 14.1-23 
-      for IsCapCategory, IsFunction, IsInt 14.1-23 
-  [2XAddUniversalMorphismFromWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-24 
-      for IsCapCategory, IsFunction, IsInt 14.1-24 
-  [2XAddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-25 
-      for IsCapCategory, IsFunction, IsInt 14.1-25 
-  [2XAddUniversalMorphismIntoBiasedWeakFiberProduct[102X, for IsCapCategory, IsFunction 14.1-26 
-      for IsCapCategory, IsFunction, IsInt 14.1-26 
-  [2XAddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X, for IsCapCategory, IsFunction 14.1-27 
-      for IsCapCategory, IsFunction, IsInt 14.1-27 
-  [2XAddUniversalMorphismIntoWeakBiFiberProduct[102X, for IsCapCategory, IsFunction 14.1-28 
-      for IsCapCategory, IsFunction, IsInt 14.1-28 
-  [2XAddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategory, IsFunction 14.1-29 
-      for IsCapCategory, IsFunction, IsInt 14.1-29 
-  [2XAddWeakBiFiberProduct[102X, for IsCapCategory, IsFunction 14.1-30 
-      for IsCapCategory, IsFunction, IsInt 14.1-30 
-  [2XAddWeakBiFiberProductMorphismToDirectSum[102X, for IsCapCategory, IsFunction 14.1-31 
-      for IsCapCategory, IsFunction, IsInt 14.1-31 
-  [2XAddWeakBiPushout[102X, for IsCapCategory, IsFunction 14.1-32 
-      for IsCapCategory, IsFunction, IsInt 14.1-32 
-  [2XAddWeakCokernelColift[102X, for IsCapCategory, IsFunction 14.1-33 
-      for IsCapCategory, IsFunction, IsInt 14.1-33 
-  [2XAddWeakCokernelColiftWithGivenWeakCokernelObject[102X, for IsCapCategory, IsFunction 14.1-34 
-      for IsCapCategory, IsFunction, IsInt 14.1-34 
-  [2XAddWeakCokernelObject[102X, for IsCapCategory, IsFunction 14.1-35 
-      for IsCapCategory, IsFunction, IsInt 14.1-35 
-  [2XAddWeakCokernelProjection[102X, for IsCapCategory, IsFunction 14.1-36 
-      for IsCapCategory, IsFunction, IsInt 14.1-36 
-  [2XAddWeakCokernelProjectionWithGivenWeakCokernelObject[102X, for IsCapCategory, IsFunction 14.1-37 
-      for IsCapCategory, IsFunction, IsInt 14.1-37 
-  [2XAddWeakKernelEmbedding[102X, for IsCapCategory, IsFunction 14.1-38 
-      for IsCapCategory, IsFunction, IsInt 14.1-38 
-  [2XAddWeakKernelEmbeddingWithGivenWeakKernelObject[102X, for IsCapCategory, IsFunction 14.1-39 
-      for IsCapCategory, IsFunction, IsInt 14.1-39 
-  [2XAddWeakKernelLift[102X, for IsCapCategory, IsFunction 14.1-40 
-      for IsCapCategory, IsFunction, IsInt 14.1-40 
-  [2XAddWeakKernelLiftWithGivenWeakKernelObject[102X, for IsCapCategory, IsFunction 14.1-41 
-      for IsCapCategory, IsFunction, IsInt 14.1-41 
-  [2XAddWeakKernelObject[102X, for IsCapCategory, IsFunction 14.1-42 
-      for IsCapCategory, IsFunction, IsInt 14.1-42 
   [2XAdelmanCategory[102X, for IsCapCategory 4.2-1 
   [2XAdelmanCategoryMorphism[102X, for IsAdelmanCategoryObject, IsCapCategoryMorphism, IsAdelmanCategoryObject 4.2-3 
   [2XAdelmanCategoryObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 4.2-2 
-  [2XAsAdditiveClosureMorphism[102X, for IsCapCategoryMorphism 2.2-6 
-  [2XAsAdditiveClosureObject[102X, for IsCapCategoryObject 2.2-4 
   [2XAsAdelmanCategoryMorphism[102X, for IsCapCategoryMorphism 4.2-5 
   [2XAsAdelmanCategoryObject[102X, for IsCapCategoryObject 4.2-4 
-  [2XBiasedWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.4-1 
-  [2XBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-1 
-  [2XCategoryOfGradedColumns[102X, for IsHomalgGradedRing 9.1-1 
-  [2XCategoryOfGradedRows[102X, for IsHomalgGradedRing 9.1-2 
   [2XCorelationMorphism[102X, for IsAdelmanCategoryObject 4.3-3 
   [2XCorelationWitness[102X, for IsAdelmanCategoryMorphism 4.3-6 
-  [2XDeduceMapFromMatrixAndRangeForGradedCols[102X, for IsHomalgMatrix, IsGradedColumn 9.4-5 
-  [2XDeduceMapFromMatrixAndRangeForGradedRows[102X, for IsHomalgMatrix, IsGradedRow 9.4-1 
-  [2XDeduceMapFromMatrixAndSourceForGradedCols[102X, for IsHomalgMatrix, IsGradedColumn 9.4-7 
-  [2XDeduceMapFromMatrixAndSourceForGradedRows[102X, for IsHomalgMatrix, IsGradedRow 9.4-3 
-  [2XDeduceSomeMapFromMatrixAndRangeForGradedCols[102X, for IsHomalgMatrix, IsGradedColumn 9.4-6 
-  [2XDeduceSomeMapFromMatrixAndRangeForGradedRows[102X, for IsHomalgMatrix, IsGradedRow 9.4-2 
-  [2XDeduceSomeMapFromMatrixAndSourceForGradedCols[102X, for IsHomalgMatrix, IsGradedColumn 9.4-8 
-  [2XDeduceSomeMapFromMatrixAndSourceForGradedRows[102X, for IsHomalgMatrix, IsGradedRow 9.4-4 
-  [2XDegreeList[102X, for IsGradedRowOrColumn 9.2-2 
-  [2XDirectSumMorphismToWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-8 
-  [2XEpimorphismFromSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism 1.7-2 
-  [2XEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.7-3 
-  [2XExtendFunctorToAdditiveClosureOfSource[102X, for IsCapFunctor 2.2-10 
-  [2XExtendFunctorToAdditiveClosures[102X, for IsCapFunctor 2.2-8 
+  [2XEpimorphismFromSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism 1.1-2 
+  [2XEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.1-3 
   [2XExtendFunctorToLinearClosureOfSource[102X, for IsCapFunctor, IsLinearClosure 13.1-2 
       for IsCapFunctor, IsLinearClosure, IsFunction 13.1-1 
-  [2XExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[102X, for IsCapFunctor 2.2-9 
-  [2XExtendNaturalTransformationToAdditiveClosureOfSource[102X, for IsCapNaturalTransformation 2.2-11 
-  [2XFpGradedLeftModules[102X, for IsHomalgGradedRing 19.1-1 
-  [2XFpGradedRightModules[102X, for IsHomalgGradedRing 19.1-2 
-  [2XGradedColumn[102X, for IsList, IsHomalgGradedRing 9.1-5 
-      for IsList, IsHomalgGradedRing, IsBool 9.1-6 
-  [2XGradedRow[102X, for IsList, IsHomalgGradedRing 9.1-3 
-      for IsList, IsHomalgGradedRing, IsBool 9.1-4 
-  [2XGradedRowOrColumnMorphism[102X, for IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn 9.1-7 
-      for IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn, IsBool 9.1-8 
-  [2XInclusionFunctorInAdditiveClosure[102X, for IsCapCategory 2.2-7 
-  [2XInjectionOfBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-2 
-  [2XInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.6-3 
-  [2XInjectionOfFirstCofactorOfWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-2 
-  [2XInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.5-4 
-  [2XInjectionOfSecondCofactorOfWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-3 
-  [2XInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.5-5 
+  [2XFpGradedLeftModules[102X, for IsHomalgGradedRing 17.1-1 
+  [2XFpGradedRightModules[102X, for IsHomalgGradedRing 17.1-2 
   [2XINTERNAL_HOM_EMBEDDING[102X, for IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject 11.2-1 
-  [2XIsAdditiveClosureCategory[102X, for IsCapCategory 2.1-1 
-  [2XIsAdditiveClosureMorphism[102X, for IsCapCategoryMorphism 2.1-3 
-  [2XIsAdditiveClosureObject[102X, for IsCapCategoryObject 2.1-2 
   [2XIsAdelmanCategory[102X, for IsCapCategory 4.1-3 
   [2XIsAdelmanCategoryMorphism[102X, for IsCapCategoryMorphism 4.1-2 
   [2XIsAdelmanCategoryObject[102X, for IsCapCategoryObject 4.1-1 
-  [2XIsCategoryOfColumnsObject[102X, for IsCapCategoryObject 7.1-1 
-  [2XIsCategoryOfRowsObject[102X, for IsCapCategoryObject 5.2-1 
   [2XIsEpiPreserving[102X, for IsAdelmanCategoryObject 4.4-5 
   [2XIsExact[102X, for IsAdelmanCategoryObject 4.4-1 
-  [2XIsFpGradedLeftModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 19.3-2 
-  [2XIsFpGradedLeftModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 19.2-2 
-  [2XIsFpGradedLeftOrRightModulesMorphism[102X, for IsFreydCategoryMorphism 19.3-1 
-  [2XIsFpGradedLeftOrRightModulesObject[102X, for IsFreydCategoryObject 19.2-1 
-  [2XIsFpGradedRightModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 19.3-3 
-  [2XIsFpGradedRightModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 19.2-3 
-  [2XIsGradedColumn[102X, for IsGradedRowOrColumn 9.3-3 
-  [2XIsGradedColumnMorphism[102X, for IsGradedRowOrColumnMorphism 9.3-6 
-  [2XIsGradedRow[102X, for IsGradedRowOrColumn 9.3-2 
-  [2XIsGradedRowMorphism[102X, for IsGradedRowOrColumnMorphism 9.3-5 
-  [2XIsGradedRowOrColumn[102X, for IsCapCategoryObject 9.3-1 
-  [2XIsGradedRowOrColumnMorphism[102X, for IsCapCategoryMorphism 9.3-4 
+  [2XIsFpGradedLeftModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 17.3-2 
+  [2XIsFpGradedLeftModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 17.2-2 
+  [2XIsFpGradedLeftOrRightModulesMorphism[102X, for IsFreydCategoryMorphism 17.3-1 
+  [2XIsFpGradedLeftOrRightModulesObject[102X, for IsFreydCategoryObject 17.2-1 
+  [2XIsFpGradedRightModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 17.3-3 
+  [2XIsFpGradedRightModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 17.2-3 
   [2XIsImagePreserving[102X, for IsAdelmanCategoryObject 4.4-6 
   [2XIsLeftExact[102X, for IsAdelmanCategoryObject 4.4-2 
   [2XIsMonoPreserving[102X, for IsAdelmanCategoryObject 4.4-4 
   [2XIsRightExact[102X, for IsAdelmanCategoryObject 4.4-3 
   [2XIsSequenceAsAdelmanCategoryObject[102X, for IsAdelmanCategoryObject 4.3-9 
   [2XMereExistenceOfWitnessPairForBeingCongruentToZero[102X, for IsAdelmanCategoryMorphism 4.3-8 
-  [2XMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.7-5 
-  [2XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.7-6 
-  [2XMorphismMatrix[102X, for IsAdditiveClosureMorphism 2.3-3 
-  [2XNullMatImmutable[102X 2.6-1 
-  [2XNumberColumns[102X, for IsAdditiveClosureMorphism 2.3-5 
-  [2XNumberRows[102X, for IsAdditiveClosureMorphism 2.3-4 
-  [2XObjectList[102X, for IsAdditiveClosureObject 2.3-2 
-  [2XProjectionInFirstFactorOfWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-2 
-  [2XProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.3-3 
-  [2XProjectionInSecondFactorOfWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-4 
-  [2XProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.3-5 
-  [2XProjectionOfBiasedWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.4-2 
-  [2XProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.4-3 
-  [2XRandomMorphismByInteger[102X, for IsAdditiveClosureCategory, IsInt 2.5-10 
-      for IsCategoryOfRows, IsInt 5.3-10 
-      for IsFreydCategory, IsInt 11.1-10 
-      for IsRingAsCategory, IsInt 15.1-10 
-  [2XRandomMorphismByList[102X, for IsAdditiveClosureCategory, IsList 2.5-9 
-      for IsCategoryOfRows, IsList 5.3-9 
-      for IsFreydCategory, IsList 11.1-9 
-      for IsRingAsCategory, IsList 15.1-9 
-  [2XRandomMorphismWithFixedRangeByInteger[102X, for IsAdditiveClosureObject, IsInt 2.5-8 
-      for IsCategoryOfRowsObject, IsInt 5.3-8 
-      for IsFreydCategoryObject, IsInt 11.1-8 
-      for IsRingAsCategoryObject, IsInt 15.1-8 
-  [2XRandomMorphismWithFixedRangeByList[102X, for IsAdditiveClosureObject, IsList 2.5-7 
-      for IsCategoryOfRowsObject, IsList 5.3-7 
-      for IsFreydCategoryObject, IsList 11.1-7 
-      for IsRingAsCategoryObject, IsList 15.1-7 
-  [2XRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsAdditiveClosureObject, IsAdditiveClosureObject, IsInt 2.5-4 
-      for IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsInt 5.3-4 
-      for IsFreydCategoryObject, IsFreydCategoryObject, IsInt 11.1-4 
-      for IsRingAsCategoryObject, IsRingAsCategoryObject, IsInt 15.1-4 
-  [2XRandomMorphismWithFixedSourceAndRangeByList[102X, for IsAdditiveClosureObject, IsAdditiveClosureObject, IsList 2.5-3 
-      for IsCategoryOfRowsObject, IsCategoryOfRowsObject, IsList 5.3-3 
-      for IsFreydCategoryObject, IsFreydCategoryObject, IsList 11.1-3 
-      for IsRingAsCategoryObject, IsRingAsCategoryObject, IsList 15.1-3 
-  [2XRandomMorphismWithFixedSourceByInteger[102X, for IsAdditiveClosureObject, IsInt 2.5-6 
-      for IsCategoryOfRowsObject, IsInt 5.3-6 
-      for IsFreydCategoryObject, IsInt 11.1-6 
-      for IsRingAsCategoryObject, IsInt 15.1-6 
-  [2XRandomMorphismWithFixedSourceByList[102X, for IsAdditiveClosureObject, IsList 2.5-5 
-      for IsCategoryOfRowsObject, IsList 5.3-5 
-      for IsFreydCategoryObject, IsList 11.1-5 
-      for IsRingAsCategoryObject, IsList 15.1-5 
-  [2XRandomObjectByInteger[102X, for IsAdditiveClosureCategory, IsInt 2.5-2 
-      for IsCategoryOfRows, IsInt 5.3-2 
-      for IsFreydCategory, IsInt 11.1-2 
-      for IsRingAsCategory, IsInt 15.1-2 
-  [2XRandomObjectByList[102X, for IsAdditiveClosureCategory, IsList 2.5-1 
-      for IsCategoryOfRows, IsList 5.3-1 
-      for IsFreydCategory, IsList 11.1-1 
-      for IsRingAsCategory, IsList 15.1-1 
-  [2XRankOfObject[102X, for IsGradedRowOrColumn 9.2-3 
+  [2XMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.1-5 
+  [2XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.1-6 
+  [2XRandomMorphismByInteger[102X, for IsFreydCategory, IsInt 11.1-10 
+  [2XRandomMorphismByList[102X, for IsFreydCategory, IsList 11.1-9 
+  [2XRandomMorphismWithFixedRangeByInteger[102X, for IsFreydCategoryObject, IsInt 11.1-8 
+  [2XRandomMorphismWithFixedRangeByList[102X, for IsFreydCategoryObject, IsList 11.1-7 
+  [2XRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsFreydCategoryObject, IsFreydCategoryObject, IsInt 11.1-4 
+  [2XRandomMorphismWithFixedSourceAndRangeByList[102X, for IsFreydCategoryObject, IsFreydCategoryObject, IsList 11.1-3 
+  [2XRandomMorphismWithFixedSourceByInteger[102X, for IsFreydCategoryObject, IsInt 11.1-6 
+  [2XRandomMorphismWithFixedSourceByList[102X, for IsFreydCategoryObject, IsList 11.1-5 
+  [2XRandomObjectByInteger[102X, for IsFreydCategory, IsInt 11.1-2 
+  [2XRandomObjectByList[102X, for IsFreydCategory, IsList 11.1-1 
   [2XRelationMorphism[102X, for IsAdelmanCategoryObject 4.3-2 
   [2XRelationWitness[102X, for IsAdelmanCategoryMorphism 4.3-5 
-  [2XSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.7-4 
-  [2XSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism 1.7-1 
-  [2XUnderlyingCategory[102X, for IsAdditiveClosureCategory 2.3-1 
-      for IsAdelmanCategory 4.3-1 
-  [2XUnderlyingHomalgGradedRing[102X, for IsGradedRowOrColumn 9.2-1 
-      for IsGradedRowOrColumnMorphism 9.2-4 
-  [2XUnderlyingHomalgMatrix[102X, for IsGradedRowOrColumnMorphism 9.2-5 
+  [2XSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.1-4 
+  [2XSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism 1.1-1 
+  [2XUnderlyingCategory[102X, for IsAdelmanCategory 4.3-1 
   [2XUnderlyingMorphism[102X, for IsAdelmanCategoryMorphism 4.3-4 
-  [2XUnionOfColumnsListList[102X 2.6-3 
-  [2XUnionOfRowsListList[102X 2.6-2 
-  [2XUniversalMorphismFromBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-4 
-  [2XUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.6-5 
-  [2XUniversalMorphismFromWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-6 
-  [2XUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.5-7 
-  [2XUniversalMorphismIntoBiasedWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.4-4 
-  [2XUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.4-5 
-  [2XUniversalMorphismIntoWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-6 
-  [2XUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.3-7 
-  [2XUnzipDegreeList[102X, for IsGradedRowOrColumn 9.4-9 
-  [2XWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-1 
-  [2XWeakBiFiberProductMorphismToDirectSum[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-8 
-  [2XWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-1 
-  [2XWeakCokernelColift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.2-4 
-  [2XWeakCokernelColiftWithGivenWeakCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.2-5 
-  [2XWeakCokernelObject[102X, for IsCapCategoryMorphism 1.2-1 
-  [2XWeakCokernelProjection[102X, for IsCapCategoryMorphism 1.2-2 
-  [2XWeakCokernelProjectionWithGivenWeakCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.2-3 
-  [2XWeakKernelEmbedding[102X, for IsCapCategoryMorphism 1.1-2 
-  [2XWeakKernelEmbeddingWithGivenWeakKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.1-3 
-  [2XWeakKernelLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.1-4 
-  [2XWeakKernelLiftWithGivenWeakKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.1-5 
-  [2XWeakKernelObject[102X, for IsCapCategoryMorphism 1.1-1 
   [2XWitnessPairForBeingCongruentToZero[102X, for IsAdelmanCategoryMorphism 4.3-7 
   
   

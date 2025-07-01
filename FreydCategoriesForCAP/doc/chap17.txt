@@ -1,146 +1,75 @@
   
-  [1X17 [33X[0;0YCategory of rows and columns over a field[133X[101X
+  [1X17  [33X[0;0YThe  CAP category of graded module presentations for CAP by use of Freyd[101X
+  [1Xcategories[133X[101X
   
   
-  [1X17.1 [33X[0;0YAbelian operations for rows[133X[101X
+  [1X17.1 [33X[0;0YCAP categories[133X[101X
   
-  [33X[0;0YCategory of rows over a field[133X
+  [1X17.1-1 FpGradedLeftModules[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XRowsQ := CategoryOfRows( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := 3/RowsQ;;[127X[104X
-    [4X[25Xgap>[125X [27Xb := 4/RowsQ;;[127X[104X
-    [4X[25Xgap>[125X [27XIsProjective( a );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xalpha := homalg_matrix/RowsQ;;[127X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 1, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xbeta := homalg_matrix/RowsQ;;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CokernelObject( alpha ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xc := CokernelProjection( alpha );;[127X[104X
-    [4X[25Xgap>[125X [27Xgamma := UniversalMorphismIntoDirectSum( [ c, c ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xcolift := CokernelColift( alpha, gamma );;[127X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( PreCompose( c, colift ), gamma );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XFiberProduct( alpha, beta );;[127X[104X
-    [4X[25Xgap>[125X [27XF := FiberProduct( alpha, beta );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( F );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( ProjectionInFactorOfFiberProduct( [ alpha, beta ], 1 ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( Pushout( alpha, beta ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xi1 := InjectionOfCofactorOfPushout( [ alpha, beta ], 1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xi2 := InjectionOfCofactorOfPushout( [ alpha, beta ], 2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xu := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;[127X[104X
-    [4X[25Xgap>[125X [27XKernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/RowsQ );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ),[127X[104X
-    [4X[25X>[125X [27X    IdentityMorphism( FiberProduct( [ u, u ] ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ),[127X[104X
-    [4X[25X>[125X [27X    IdentityMorphism( Pushout( [ u, u ] ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( ((1/2) / Q) * alpha, alpha * ((1/2) / Q) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRankOfObject( HomomorphismStructureOnObjects( a, b ) ) = RankOfObject( a ) * RankOfObject( b );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    PreCompose( [ u, DualOnMorphisms( i1 ), DualOnMorphisms( alpha ) ] ),[127X[104X
-    [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( u ), Source( alpha ),[127X[104X
-    [4X[25X>[125X [27X         PreCompose([127X[104X
-    [4X[25X>[125X [27X             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),[127X[104X
-    [4X[25X>[125X [27X             HomomorphismStructureOnMorphisms( u, DualOnMorphisms( alpha ) )[127X[104X
-    [4X[25X>[125X [27X         )[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XFpGradedLeftModules[102X( [3XS[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CapCategory[133X
   
-  [33X[0;0YCategory of columns over a field[133X
+  [33X[0;0YGiven  a  graded  ring  [3XS[103X, one can consider the category of f.p. graded left
+  [23XS[123X-modules, which is captured by this attribute.[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XColsQ := CategoryOfColumns( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := 3/ColsQ;;[127X[104X
-    [4X[25Xgap>[125X [27Xb := 4/ColsQ;;[127X[104X
-    [4X[25Xgap>[125X [27XIsProjective( a );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := TransposedMatrix( homalg_matrix );;[127X[104X
-    [4X[25Xgap>[125X [27Xalpha := homalg_matrix/ColsQ;;[127X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 1, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := TransposedMatrix( homalg_matrix );;[127X[104X
-    [4X[25Xgap>[125X [27Xbeta := homalg_matrix/ColsQ;;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( CokernelObject( alpha ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xc := CokernelProjection( alpha );;[127X[104X
-    [4X[25Xgap>[125X [27Xgamma := UniversalMorphismIntoDirectSum( [ c, c ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xcolift := CokernelColift( alpha, gamma );;[127X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( PreCompose( c, colift ), gamma );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XFiberProduct( alpha, beta );;[127X[104X
-    [4X[25Xgap>[125X [27XF := FiberProduct( alpha, beta );;[127X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( F );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( ProjectionInFactorOfFiberProduct( [ alpha, beta ], 1 ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( Pushout( alpha, beta ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xi1 := InjectionOfCofactorOfPushout( [ alpha, beta ], 1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xi2 := InjectionOfCofactorOfPushout( [ alpha, beta ], 2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xu := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );;[127X[104X
-    [4X[25Xgap>[125X [27XKernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( 3/ColsQ );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZeroForMorphisms( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ),[127X[104X
-    [4X[25X>[125X [27X    IdentityMorphism( FiberProduct( [ u, u ] ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ),[127X[104X
-    [4X[25X>[125X [27X    IdentityMorphism( Pushout( [ u, u ] ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( ((1/2) / Q) * alpha, alpha * ((1/2) / Q) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XRankOfObject( HomomorphismStructureOnObjects( a, b ) ) = RankOfObject( a ) * RankOfObject( b );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    PreCompose( [ u, DualOnMorphisms( i1 ), DualOnMorphisms( alpha ) ] ),[127X[104X
-    [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( u ), Source( alpha ),[127X[104X
-    [4X[25X>[125X [27X         PreCompose([127X[104X
-    [4X[25X>[125X [27X             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),[127X[104X
-    [4X[25X>[125X [27X             HomomorphismStructureOnMorphisms( u, DualOnMorphisms( alpha ) )[127X[104X
-    [4X[25X>[125X [27X         )[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
+  [1X17.1-2 FpGradedRightModules[101X
+  
+  [33X[1;0Y[29X[2XFpGradedRightModules[102X( [3XS[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CapCategory[133X
+  
+  [33X[0;0YGiven  a  graded  ring [3XS[103X, one can consider the category of f.p. graded right
+  [23XS[123X-modules, which is captured by this attribute.[133X
+  
+  
+  [1X17.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X[101X
+  
+  [1X17.2-1 IsFpGradedLeftOrRightModulesObject[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesObject[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of graded left and right module presentations.[133X
+  
+  [1X17.2-2 IsFpGradedLeftModulesObject[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedLeftModulesObject[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  GAP  category of objects in the presentation category over the category
+  of projective graded left modules.[133X
+  
+  [1X17.2-3 IsFpGradedRightModulesObject[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedRightModulesObject[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  GAP  category of objects in the presentation category over the category
+  of projective graded right modules.[133X
+  
+  
+  [1X17.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X[101X
+  
+  [1X17.3-1 IsFpGradedLeftOrRightModulesMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of left or right module presentation morphisms[133X
+  
+  [1X17.3-2 IsFpGradedLeftModulesMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedLeftModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the presentation category over the category
+  of projective graded left modules.[133X
+  
+  [1X17.3-3 IsFpGradedRightModulesMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedRightModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the presentation category over the category
+  of projective graded right modules.[133X
   

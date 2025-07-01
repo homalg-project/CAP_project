@@ -1,98 +1,773 @@
   
-  [1X15 [33X[0;0YRings as categories[133X[101X
+  [1X15 [33X[0;0YExamples on graded rows and columns[133X[101X
   
   
-  [1X15.1 [33X[0;0YRandom methods[133X[101X
+  [1X15.1 [33X[0;0YFreyd category of graded rows[133X[101X
   
-  [1X15.1-1 RandomObjectByList[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();;[127X[104X
+    [4X[25Xgap>[125X [27XS := GradedRing( Q * "x_1, x_2" );;[127X[104X
+    [4X[25Xgap>[125X [27XSetWeightsOfIndeterminates( S, [[1],[1]] );;[127X[104X
+    [4X[25Xgap>[125X [27XModule := AsFreydCategoryObject( GradedRow( [[[1],1]], S ) );[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsFpGradedLeftOrRightModulesObject( Module );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xmor := AsFreydCategoryMorphism( IdentityMorphism( GradedRow( [[[1],1]], S ) ) );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsFpGradedLeftOrRightModulesMorphism( mor );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XS := GradedRing( Q * "x_1, x_2, x_3, x_4" );[127X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(weights: yet unset)[128X[104X
+    [4X[25Xgap>[125X [27XSetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );[127X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xcat := CategoryOfGradedRows( S );[127X[104X
+    [4X[28XCategory of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[25Xgap>[125X [27Xobj1 := GradedRow( [ [[1,1],1] ], S );[127X[104X
+    [4X[28X<A graded row of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27Xobj2 := GradedRow( [ [[1,1],2] ], S );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := GradedRowOrColumnMorphism( obj2, [127X[104X
+    [4X[25X>[125X [27X                       HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xfreyd := FreydCategory( cat );[127X[104X
+    [4X[28XCategory of f.p. graded left modules over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[25Xgap>[125X [27XIsAbelianCategory( freyd );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xobj_gamma := FreydCategoryObject( gamma );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsFpGradedLeftOrRightModulesObject( obj_gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xf := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsFpGradedLeftOrRightModulesMorphism( f );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xwitness := MorphismWitness( f );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe  arguments  are  a  ring  as  category  [3XC[103X and a list [3XL[103X consisting of one
-  integer.    The    output    is    the    unique    object   of   [3XC[103X,   i.e.,
-  [10XRingAsCategoryUniqueObject[110X([3XC[103X).[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( witness );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2,0,[128X[104X
+    [4X[28X2,0[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+  [4X[32X[104X
   
-  [1X15.1-2 RandomObjectByInteger[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xg := FreydCategoryMorphism( obj_gamma, [127X[104X
+    [4X[25X>[125X [27X                                   ZeroMorphism( obj2, obj2 ), obj_gamma );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( f, g );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc := PreCompose( f, f );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( c );[127X[104X
+    [4X[28XA morphism in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,1,[128X[104X
+    [4X[28X1,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMorphism datum:[128X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2,2,[128X[104X
+    [4X[28X2,2 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA morphism in Category of graded row over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,1,[128X[104X
+    [4X[28X1,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe  arguments  are a ring as category [3XC[103X and an integer [3Xn[103X. The output is the
-  unique object of [3XC[103X, i.e., [10XRingAsCategoryUniqueObject[110X([3XC[103X).[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xs := g + g;[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xa := GradedRowOrColumnMorphism( obj1, [127X[104X
+    [4X[25X>[125X [27X                                 HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [1X15.1-3 RandomMorphismWithFixedSourceAndRangeByList[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( a );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3XS[103X, [3XR[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZ2 := FreydCategoryObject( a );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe  arguments  are two objects [3XS[103X, [3XR[103X and a list [3XL[103X consisting of one integer.
-  The  output  is  a morphism from [3XS[103X to [3XR[103X whose underlying element is a sum of
-  [3XL[103X[1] random elements in the underlying ring.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( Z2 );[127X[104X
+    [4X[28XAn object in Freyd( Category of graded rows over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRelation morphism:[128X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+  [4X[32X[104X
   
-  [1X15.1-4 RandomMorphismWithFixedSourceAndRangeByInteger[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( Z2 );[127X[104X
+    [4X[28X<An identity morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xz := id + id + id;[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xd := DirectSumFunctorial( [ z, z, z ] );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xpr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xpr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xuni := UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xinj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xinj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xuni2 := UniversalMorphismFromDirectSum( [ inj2, inj1 ] );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XZFree := AsFreydCategoryObject( obj1 );[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded left modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3XS[103X, [3XR[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( ZFree );[127X[104X
+    [4X[28XA projective object in Freyd( Category of graded rows over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRelation morphism:[128X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 0 and degrees:[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe  arguments  are  two  objects  [3XS[103X,  [3XR[103X  and  an integer [3Xn[103X. The output is a
-  morphism  from [3XS[103X to [3XR[103X whose underlying element is a sum of [3Xn[103X random elements
-  in the underlying ring.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( ZFree );[127X[104X
+    [4X[28X<An identity morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xz := id + id;[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xcoker_proj := CokernelProjection( z );[127X[104X
+    [4X[28X<An epimorphism in Category of f.p. graded left modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xcokernel_colift := CokernelColift( z, CokernelProjection( z ) );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xa := ZFree;[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xb := obj_gamma;[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xc := TensorProductOnObjects( ZFree, obj_gamma );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XKaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( KaxbKxc, ZeroObject( freyd ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xtensor_product_morphism := TensorProductOnMorphisms( cokernel_colift, coker_proj );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( tensor_product_morphism );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( Source( tensor_product_morphism ), Range( tensor_product_morphism ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xunit := TensorUnit( freyd );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( TensorProductOnObjects( a, unit ), a );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XaxKbxcK := TensorProductOnObjects( a, TensorProductOnObjects( b, c ) );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xass_left_to_right := AssociatorLeftToRightWithGivenTensorProducts( KaxbKxc, a, b, c, axKbxcK );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( ass_left_to_right );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xass_right_to_left := AssociatorLeftToRightWithGivenTensorProducts( axKbxcK, a, b, c, KaxbKxc );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( ass_right_to_left );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( ass_right_to_left );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLeftUnitor( a );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XLeftUnitorInverse( axKbxcK );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XRightUnitor( b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XRightUnitorInverse( TensorProductOnObjects( axKbxcK, axKbxcK ) );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XBraiding( axKbxcK, KaxbKxc );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xbraiding := Braiding( a, b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( braiding );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xhom := InternalHomOnObjects( axKbxcK, axKbxcK );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( hom );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xfree_mod1 := AsFreydCategoryObject( GradedRow( [ [[0,0],1] ], S ) );[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xfree_mod2 := AsFreydCategoryObject( GradedRow( [ [[1,1],1] ], S ) );[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xhom2 := InternalHomOnObjects( free_mod1, free_mod2 );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( hom2 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( Source( RelationMorphism( hom2 ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRank( Range( RelationMorphism( hom2 ) ) );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27Xhom3 := InternalHomOnObjects( free_mod2, free_mod1 );[127X[104X
+    [4X[28X<An object in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( hom3 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XInternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xeval := ClosedMonoidalLeftEvaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( eval );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( eval );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoeval := ClosedMonoidalLeftCoevaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded left modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( coeval );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( coeval );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
-  [1X15.1-5 RandomMorphismWithFixedSourceByList[101X
   
-  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3XS[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  [1X15.2 [33X[0;0YFreyd category of graded columns[133X[101X
   
-  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in  a  ring  as  category [3XC[103X and a list [3XL[103X
-  consisting  of  one  integer.  The  output  is  an  endomorphism  of [3XS[103X whose
-  underlying  element  is  a  sum  of  [23X1[123X+[10XLog2Int[110X([3XL[103X[1])  random elements in the
-  underlying ring.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XS := GradedRing( Q * "x_1, x_2, x_3, x_4" );[127X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(weights: yet unset)[128X[104X
+    [4X[25Xgap>[125X [27XSetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );[127X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xcat := CategoryOfGradedColumns( S );[127X[104X
+    [4X[28XCategory of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[25Xgap>[125X [27Xobj1 := GradedColumn( [ [[1,1],1] ], S );[127X[104X
+    [4X[28X<A graded column of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27Xobj2 := GradedColumn( [ [[1,1],2] ], S );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := GradedRowOrColumnMorphism( obj2, [127X[104X
+    [4X[25X>[125X [27X                       HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xfreyd := FreydCategory( cat );[127X[104X
+    [4X[28XCategory of f.p. graded right modules over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[25Xgap>[125X [27XIsAbelianCategory( freyd );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xobj_gamma := FreydCategoryObject( gamma );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xf := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xwitness := MorphismWitness( f );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [1X15.1-6 RandomMorphismWithFixedSourceByInteger[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( witness );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2,2,[128X[104X
+    [4X[28X0,0 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3XS[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xg := FreydCategoryMorphism( obj_gamma, [127X[104X
+    [4X[25X>[125X [27X                                   ZeroMorphism( obj2, obj2 ), obj_gamma );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( f, g );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc := PreCompose( f, f );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe  arguments are an object [3XS[103X in a ring as category [3XC[103X and an integer [3Xn[103X. The
-  output  is  an  endomorphism  of  [3XS[103X  whose  underlying  element  is a sum of
-  [23X1[123X+[10XLog2Int[110X([3Xn[103X) random elements in the underlying ring.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( c );[127X[104X
+    [4X[28XA morphism in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,1,[128X[104X
+    [4X[28X1,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMorphism datum:[128X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2,2,[128X[104X
+    [4X[28X2,2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,1,[128X[104X
+    [4X[28X1,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28Xof rank 2 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28X--------------------------------[128X[104X
+  [4X[32X[104X
   
-  [1X15.1-7 RandomMorphismWithFixedRangeByList[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xs := g + g;[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xa := GradedRowOrColumnMorphism( obj1, [127X[104X
+    [4X[25X>[125X [27X                                 HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3XR[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( a );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe  arguments  are  an  object  [3XR[103X  in  a  ring  as  category [3XC[103X and a list [3XL[103X
-  consisting  of  one  integer.  The  output  is  an  endomorphism  of [3XR[103X whose
-  underlying  element  is  a  sum  of  [23X1[123X+[10XLog2Int[110X([3XL[103X[1])  random elements in the
-  underlying ring.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZ2 := FreydCategoryObject( a );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [1X15.1-8 RandomMorphismWithFixedRangeByInteger[101X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( Z2 );[127X[104X
+    [4X[28XAn object in Freyd( Category of graded columns over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRelation morphism:[128X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+  [4X[32X[104X
   
-  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3XR[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( Z2 );[127X[104X
+    [4X[28X<An identity morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xz := id + id + id;[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xd := DirectSumFunctorial( [ z, z, z ] );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xpr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xpr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xuni := UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xinj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xinj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xuni2 := UniversalMorphismFromDirectSum( [ inj2, inj1 ] );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XZFree := AsFreydCategoryObject( obj1 );[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe  arguments are an object [3XR[103X in a ring as category [3XC[103X and an integer [3Xn[103X. The
-  output  is  an  endomorphism  of  [3XR[103X  whose  underlying  element  is a sum of
-  [23X1[123X+[10XLog2Int[110X([3Xn[103X) random elements in the underlying ring.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( ZFree );[127X[104X
+    [4X[28XA projective object in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRelation morphism:[128X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 0 and degrees:[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X(an empty 1 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights[128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:[128X[104X
+    [4X[28X[ [ ( 1, 1 ), 1 ] ][128X[104X
+  [4X[32X[104X
   
-  [1X15.1-9 RandomMorphismByList[101X
-  
-  [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
-  
-  [33X[0;0YThe  arguments  are  a  ring  as  category  [3XC[103X and a list [3XL[103X consisting of one
-  integer.  The  output  is  an  endomorphism  of the unique object of [3XC[103X whose
-  underlying  element  is  a  sum  of  [23X1[123X+[10XLog2Int[110X([3XL[103X[1])  random elements in the
-  underlying ring.[133X
-  
-  [1X15.1-10 RandomMorphismByInteger[101X
-  
-  [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
-  
-  [33X[0;0YThe  arguments  are  a ring as category [3XC[103X and an integer [3Xn[103X. The output is an
-  endomorphism  of the unique object of [3XC[103X whose underlying element is a sum of
-  [23X1[123X+[10XLog2Int[110X([3Xn[103X) random elements in the underlying ring.[133X
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( ZFree );[127X[104X
+    [4X[28X<An identity morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xz := id + id;[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xcoker_proj := CokernelProjection( z );[127X[104X
+    [4X[28X<An epimorphism in Category of f.p. graded right modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xcokernel_colift := CokernelColift( z, CokernelProjection( z ) );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xa := ZFree;[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xb := obj_gamma;[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xc := TensorProductOnObjects( a, b );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XKaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( KaxbKxc, ZeroObject( freyd ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xtensor_product_morphism := TensorProductOnMorphisms( cokernel_colift, coker_proj );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( tensor_product_morphism );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( Source( tensor_product_morphism ), Range( tensor_product_morphism ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xunit := TensorUnit( freyd );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( TensorProductOnObjects( a, unit ), a );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XaxKbxcK := TensorProductOnObjects( a, TensorProductOnObjects( b, c ) );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xass_left_to_right := AssociatorLeftToRightWithGivenTensorProducts( KaxbKxc, a, b, c, axKbxcK );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( ass_left_to_right );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xass_right_to_left := AssociatorLeftToRightWithGivenTensorProducts( axKbxcK, a, b, c, KaxbKxc );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( ass_right_to_left );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( ass_right_to_left );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLeftUnitor( a );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XLeftUnitorInverse( axKbxcK );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XRightUnitor( b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XRightUnitorInverse( TensorProductOnObjects( axKbxcK, axKbxcK ) );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XBraiding( axKbxcK, KaxbKxc );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xbraiding := Braiding( a, b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( braiding );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xhom := InternalHomOnObjects( axKbxcK, axKbxcK );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( hom );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xfree_mod1 := AsFreydCategoryObject( GradedColumn( [ [[0,0],1] ], S ) );[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xfree_mod2 := AsFreydCategoryObject( GradedColumn( [ [[1,1],1] ], S ) );[127X[104X
+    [4X[28X<A projective object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xhom2 := InternalHomOnObjects( free_mod1, free_mod2 );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( hom2 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( Source( RelationMorphism( hom2 ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRank( Range( RelationMorphism( hom2 ) ) );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27Xhom3 := InternalHomOnObjects( free_mod2, free_mod1 );[127X[104X
+    [4X[28X<An object in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( hom3 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XInternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27Xeval := ClosedMonoidalLeftEvaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( eval );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( eval );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoeval := ClosedMonoidalLeftCoevaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of f.p. graded right modules over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( coeval );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( coeval );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   

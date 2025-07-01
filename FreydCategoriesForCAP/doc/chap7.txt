@@ -1,13 +1,3 @@
   
   [1X7 [33X[0;0YCategory of columns[133X[101X
   
-  
-  [1X7.1 [33X[0;0YGAP Categories[133X[101X
-  
-  [1X7.1-1 IsCategoryOfColumnsObject[101X
-  
-  [33X[1;0Y[29X[2XIsCategoryOfColumnsObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe GAP category of objects in the category of columns over a ring [23XR[123X.[133X
-  
