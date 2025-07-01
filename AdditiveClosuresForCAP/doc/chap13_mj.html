@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (AdditiveClosuresForCAP) - Chapter 13: Add Functions</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap13"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap13.html">[MathJax off]</a></p>
+<p><a id="X87A9DB228112DF45" name="X87A9DB228112DF45"></a></p>
+<div class="ChapSects"><a href="chap13_mj.html#X87A9DB228112DF45">13 <span class="Heading">Add Functions</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X829CEC0B8319A503">13.1 <span class="Heading">Available Add functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D92A3FE7B81DFFA">13.1-1 AddBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X78F34269796D4E00">13.1-2 AddBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D3FCA407B0EEA34">13.1-3 AddDirectSumMorphismToWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X837B79157B936198">13.1-4 AddInjectionOfBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X83B48FA17BE7D9DF">13.1-5 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7AA1766180C1C5F3">13.1-6 AddInjectionOfFirstCofactorOfWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7FF32F327CD17D1A">13.1-7 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7977D827795061EC">13.1-8 AddInjectionOfSecondCofactorOfWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D8DDAD1862A5421">13.1-9 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7FB6940A8465C21C">13.1-10 AddProjectionInFirstFactorOfWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7ECB9B6782886062">13.1-11 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8436659A7B564358">13.1-12 AddProjectionInSecondFactorOfWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D59577278B64987">13.1-13 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7DC16B4085579F9D">13.1-14 AddProjectionOfBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X83CF4A2085D0AB35">13.1-15 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C0D11027FAD37B6">13.1-16 AddUniversalMorphismFromBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X826EE1E6864AF54F">13.1-17 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7FF5CC5F7DCE77D6">13.1-18 AddUniversalMorphismFromWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7CB1AD3C7CC84268">13.1-19 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8607A9DF78804D56">13.1-20 AddUniversalMorphismIntoBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C8C57F77CB7CF58">13.1-21 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7804747C8685F8F0">13.1-22 AddUniversalMorphismIntoWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X78E67E4082322A0D">13.1-23 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X816775867D3478A1">13.1-24 AddWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X812836837F550A1A">13.1-25 AddWeakBiFiberProductMorphismToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X87A278B37EF322FC">13.1-26 AddWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8388C0AC7FD35E25">13.1-27 AddWeakCokernelColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X83572B2B83696CC6">13.1-28 AddWeakCokernelColiftWithGivenWeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8227265B78D96EE7">13.1-29 AddWeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X867B541C83A7FD53">13.1-30 AddWeakCokernelProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7F3167AD80C13FDE">13.1-31 AddWeakCokernelProjectionWithGivenWeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8557E27387DC7C2D">13.1-32 AddWeakKernelEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7E32A1338309D579">13.1-33 AddWeakKernelEmbeddingWithGivenWeakKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7F4B8851877882A4">13.1-34 AddWeakKernelLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X84D4E8B082F59108">13.1-35 AddWeakKernelLiftWithGivenWeakKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X803818457E497317">13.1-36 AddWeakKernelObject</a></span>
+</div></div>
+</div>
+
+<h3>13 <span class="Heading">Add Functions</span></h3>
+
+<p><a id="X829CEC0B8319A503" name="X829CEC0B8319A503"></a></p>
+
+<h4>13.1 <span class="Heading">Available Add functions</span></h4>
+
+<p><a id="X7D92A3FE7B81DFFA" name="X7D92A3FE7B81DFFA"></a></p>
+
+<h5>13.1-1 AddBiasedWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">BiasedWeakFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{BiasedWeakFiberProduct}(arg2, arg3)\)</span>.</p>
+
+<p><a id="X78F34269796D4E00" name="X78F34269796D4E00"></a></p>
+
+<h5>13.1-2 AddBiasedWeakPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">BiasedWeakPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{BiasedWeakPushout}(arg2, arg3)\)</span>.</p>
+
+<p><a id="X7D3FCA407B0EEA34" name="X7D3FCA407B0EEA34"></a></p>
+
+<h5>13.1-3 AddDirectSumMorphismToWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectSumMorphismToWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDirectSumMorphismToWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DirectSumMorphismToWeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, beta ) \mapsto \mathtt{DirectSumMorphismToWeakBiPushout}(alpha, beta)\)</span>.</p>
+
+<p><a id="X837B79157B936198" name="X837B79157B936198"></a></p>
+
+<h5>13.1-4 AddInjectionOfBiasedWeakPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfBiasedWeakPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{InjectionOfBiasedWeakPushout}(a, b)\)</span>.</p>
+
+<p><a id="X83B48FA17BE7D9DF" name="X83B48FA17BE7D9DF"></a></p>
+
+<h5>13.1-5 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, P ) \mapsto \mathtt{InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout}(a, b, P)\)</span>.</p>
+
+<p><a id="X7AA1766180C1C5F3" name="X7AA1766180C1C5F3"></a></p>
+
+<h5>13.1-6 AddInjectionOfFirstCofactorOfWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfFirstCofactorOfWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfFirstCofactorOfWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfFirstCofactorOfWeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{InjectionOfFirstCofactorOfWeakBiPushout}(a, b)\)</span>.</p>
+
+<p><a id="X7FF32F327CD17D1A" name="X7FF32F327CD17D1A"></a></p>
+
+<h5>13.1-7 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, P ) \mapsto \mathtt{InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout}(a, b, P)\)</span>.</p>
+
+<p><a id="X7977D827795061EC" name="X7977D827795061EC"></a></p>
+
+<h5>13.1-8 AddInjectionOfSecondCofactorOfWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfSecondCofactorOfWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfSecondCofactorOfWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfSecondCofactorOfWeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{InjectionOfSecondCofactorOfWeakBiPushout}(a, b)\)</span>.</p>
+
+<p><a id="X7D8DDAD1862A5421" name="X7D8DDAD1862A5421"></a></p>
+
+<h5>13.1-9 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, P ) \mapsto \mathtt{InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout}(a, b, P)\)</span>.</p>
+
+<p><a id="X7FB6940A8465C21C" name="X7FB6940A8465C21C"></a></p>
+
+<h5>13.1-10 AddProjectionInFirstFactorOfWeakBiFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFirstFactorOfWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFirstFactorOfWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInFirstFactorOfWeakBiFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{ProjectionInFirstFactorOfWeakBiFiberProduct}(a, b)\)</span>.</p>
+
+<p><a id="X7ECB9B6782886062" name="X7ECB9B6782886062"></a></p>
+
+<h5>13.1-11 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, P ) \mapsto \mathtt{ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct}(a, b, P)\)</span>.</p>
+
+<p><a id="X8436659A7B564358" name="X8436659A7B564358"></a></p>
+
+<h5>13.1-12 AddProjectionInSecondFactorOfWeakBiFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInSecondFactorOfWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInSecondFactorOfWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInSecondFactorOfWeakBiFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{ProjectionInSecondFactorOfWeakBiFiberProduct}(a, b)\)</span>.</p>
+
+<p><a id="X7D59577278B64987" name="X7D59577278B64987"></a></p>
+
+<h5>13.1-13 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, P ) \mapsto \mathtt{ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct}(a, b, P)\)</span>.</p>
+
+<p><a id="X7DC16B4085579F9D" name="X7DC16B4085579F9D"></a></p>
+
+<h5>13.1-14 AddProjectionOfBiasedWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOfBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOfBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionOfBiasedWeakFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{ProjectionOfBiasedWeakFiberProduct}(a, b)\)</span>.</p>
+
+<p><a id="X83CF4A2085D0AB35" name="X83CF4A2085D0AB35"></a></p>
+
+<h5>13.1-15 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, P ) \mapsto \mathtt{ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct}(a, b, P)\)</span>.</p>
+
+<p><a id="X7C0D11027FAD37B6" name="X7C0D11027FAD37B6"></a></p>
+
+<h5>13.1-16 AddUniversalMorphismFromBiasedWeakPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismFromBiasedWeakPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t ) \mapsto \mathtt{UniversalMorphismFromBiasedWeakPushout}(a, b, t)\)</span>.</p>
+
+<p><a id="X826EE1E6864AF54F" name="X826EE1E6864AF54F"></a></p>
+
+<h5>13.1-17 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t, P ) \mapsto \mathtt{UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout}(a, b, t, P)\)</span>.</p>
+
+<p><a id="X7FF5CC5F7DCE77D6" name="X7FF5CC5F7DCE77D6"></a></p>
+
+<h5>13.1-18 AddUniversalMorphismFromWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismFromWeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t, s ) \mapsto \mathtt{UniversalMorphismFromWeakBiPushout}(a, b, t, s)\)</span>.</p>
+
+<p><a id="X7CB1AD3C7CC84268" name="X7CB1AD3C7CC84268"></a></p>
+
+<h5>13.1-19 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t, s, P ) \mapsto \mathtt{UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout}(a, b, t, s, P)\)</span>.</p>
+
+<p><a id="X8607A9DF78804D56" name="X8607A9DF78804D56"></a></p>
+
+<h5>13.1-20 AddUniversalMorphismIntoBiasedWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoBiasedWeakFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t ) \mapsto \mathtt{UniversalMorphismIntoBiasedWeakFiberProduct}(a, b, t)\)</span>.</p>
+
+<p><a id="X7C8C57F77CB7CF58" name="X7C8C57F77CB7CF58"></a></p>
+
+<h5>13.1-21 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t, P ) \mapsto \mathtt{UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct}(a, b, t, P)\)</span>.</p>
+
+<p><a id="X7804747C8685F8F0" name="X7804747C8685F8F0"></a></p>
+
+<h5>13.1-22 AddUniversalMorphismIntoWeakBiFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoWeakBiFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t, s ) \mapsto \mathtt{UniversalMorphismIntoWeakBiFiberProduct}(a, b, t, s)\)</span>.</p>
+
+<p><a id="X78E67E4082322A0D" name="X78E67E4082322A0D"></a></p>
+
+<h5>13.1-23 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( a, b, t, s, P ) \mapsto \mathtt{UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct}(a, b, t, s, P)\)</span>.</p>
+
+<p><a id="X816775867D3478A1" name="X816775867D3478A1"></a></p>
+
+<h5>13.1-24 AddWeakBiFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakBiFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakBiFiberProduct</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{WeakBiFiberProduct}(arg2, arg3)\)</span>.</p>
+
+<p><a id="X812836837F550A1A" name="X812836837F550A1A"></a></p>
+
+<h5>13.1-25 AddWeakBiFiberProductMorphismToDirectSum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakBiFiberProductMorphismToDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakBiFiberProductMorphismToDirectSum</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakBiFiberProductMorphismToDirectSum</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, beta ) \mapsto \mathtt{WeakBiFiberProductMorphismToDirectSum}(alpha, beta)\)</span>.</p>
+
+<p><a id="X87A278B37EF322FC" name="X87A278B37EF322FC"></a></p>
+
+<h5>13.1-26 AddWeakBiPushout</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakBiPushout</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakBiPushout</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{WeakBiPushout}(arg2, arg3)\)</span>.</p>
+
+<p><a id="X8388C0AC7FD35E25" name="X8388C0AC7FD35E25"></a></p>
+
+<h5>13.1-27 AddWeakCokernelColift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelColift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelColift</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakCokernelColift</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, tau ) \mapsto \mathtt{WeakCokernelColift}(alpha, tau)\)</span>.</p>
+
+<p><a id="X83572B2B83696CC6" name="X83572B2B83696CC6"></a></p>
+
+<h5>13.1-28 AddWeakCokernelColiftWithGivenWeakCokernelObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelColiftWithGivenWeakCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelColiftWithGivenWeakCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakCokernelColiftWithGivenWeakCokernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, tau, K ) \mapsto \mathtt{WeakCokernelColiftWithGivenWeakCokernelObject}(alpha, tau, K)\)</span>.</p>
+
+<p><a id="X8227265B78D96EE7" name="X8227265B78D96EE7"></a></p>
+
+<h5>13.1-29 AddWeakCokernelObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakCokernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{WeakCokernelObject}(arg2)\)</span>.</p>
+
+<p><a id="X867B541C83A7FD53" name="X867B541C83A7FD53"></a></p>
+
+<h5>13.1-30 AddWeakCokernelProjection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelProjection</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelProjection</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakCokernelProjection</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{WeakCokernelProjection}(alpha)\)</span>.</p>
+
+<p><a id="X7F3167AD80C13FDE" name="X7F3167AD80C13FDE"></a></p>
+
+<h5>13.1-31 AddWeakCokernelProjectionWithGivenWeakCokernelObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelProjectionWithGivenWeakCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakCokernelProjectionWithGivenWeakCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakCokernelProjectionWithGivenWeakCokernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, K ) \mapsto \mathtt{WeakCokernelProjectionWithGivenWeakCokernelObject}(alpha, K)\)</span>.</p>
+
+<p><a id="X8557E27387DC7C2D" name="X8557E27387DC7C2D"></a></p>
+
+<h5>13.1-32 AddWeakKernelEmbedding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelEmbedding</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakKernelEmbedding</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{WeakKernelEmbedding}(alpha)\)</span>.</p>
+
+<p><a id="X7E32A1338309D579" name="X7E32A1338309D579"></a></p>
+
+<h5>13.1-33 AddWeakKernelEmbeddingWithGivenWeakKernelObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelEmbeddingWithGivenWeakKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelEmbeddingWithGivenWeakKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakKernelEmbeddingWithGivenWeakKernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, K ) \mapsto \mathtt{WeakKernelEmbeddingWithGivenWeakKernelObject}(alpha, K)\)</span>.</p>
+
+<p><a id="X7F4B8851877882A4" name="X7F4B8851877882A4"></a></p>
+
+<h5>13.1-34 AddWeakKernelLift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakKernelLift</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, tau ) \mapsto \mathtt{WeakKernelLift}(alpha, tau)\)</span>.</p>
+
+<p><a id="X84D4E8B082F59108" name="X84D4E8B082F59108"></a></p>
+
+<h5>13.1-35 AddWeakKernelLiftWithGivenWeakKernelObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelLiftWithGivenWeakKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelLiftWithGivenWeakKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakKernelLiftWithGivenWeakKernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( alpha, tau, K ) \mapsto \mathtt{WeakKernelLiftWithGivenWeakKernelObject}(alpha, tau, K)\)</span>.</p>
+
+<p><a id="X803818457E497317" name="X803818457E497317"></a></p>
+
+<h5>13.1-36 AddWeakKernelObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddWeakKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">WeakKernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{WeakKernelObject}(arg2)\)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

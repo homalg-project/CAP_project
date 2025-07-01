@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (AdditiveClosuresForCAP) - Contents</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap0"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap0.html">[MathJax off]</a></p>
+<p><a id="X7D2C85EC87DD46E5" name="X7D2C85EC87DD46E5"></a></p>
+<div class="pcenter">
+
+<h1>AdditiveClosuresForCAP</h1>
+
+
+<h2>Additive closures for pre-abelian categories</h2>
+
+<p>
+    2025.06-01</p>
+
+<p>
+    1 July 2025
+  </p>
+
+</div>
+<p><b>
+    Sebastian Posur
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:sebastian.posur@uni-siegen.de">sebastian.posur@uni-siegen.de</a></span>
+<br />Homepage: <span class="URL"><a href="https://sebastianpos.github.io">https://sebastianpos.github.io</a></span>
+<br />Address: <br />Department Mathematik<br /> Universität Siegen<br /> Walter-Flex-Straße 3<br /> 57068 Siegen<br /> Germany<br />
+</p><p><b>
+    Martin Bies
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:martin.bies@alumni.uni-heidelberg.de">martin.bies@alumni.uni-heidelberg.de</a></span>
+<br />Homepage: <span class="URL"><a href="https://www.ulb.ac.be/sciences/ptm/pmif/people.html">https://www.ulb.ac.be/sciences/ptm/pmif/people.html</a></span>
+<br />Address: <br />Physique Théorique et Mathématique <br /> Université Libre de Bruxelles <br /> Campus Plaine - CP 231 <br /> Building NO - Level 6 - Office O.6.111 <br /> 1050 Brussels <br /> Belgium<br />
+</p><p><b>
+    Mohamed Barakat
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:mohamed.barakat@uni-siegen.de">mohamed.barakat@uni-siegen.de</a></span>
+<br />Homepage: <span class="URL"><a href="https://mohamed-barakat.github.io">https://mohamed-barakat.github.io</a></span>
+<br />Address: <br />Walter-Flex-Str. 3<br /> 57068 Siegen<br /> Germany<br />
+</p><p><b>
+    Kamal Saleh
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:kamal.saleh@uni-siegen.de">kamal.saleh@uni-siegen.de</a></span>
+<br />Homepage: <span class="URL"><a href="https://github.com/kamalsaleh">https://github.com/kamalsaleh</a></span>
+<br />Address: <br />Department Mathematik<br /> Universität Siegen<br /> Walter-Flex-Straße 3<br /> 57072 Siegen<br /> Germany<br />
+</p><p><b>
+    Fabian Zickgraf
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:fabian.zickgraf@uni-siegen.de">fabian.zickgraf@uni-siegen.de</a></span>
+<br />Homepage: <span class="URL"><a href="https://github.com/zickgraf/">https://github.com/zickgraf/</a></span>
+<br />Address: <br />Walter-Flex-Str. 3<br /> 57068 Siegen<br /> Germany<br />
+</p>
+
+<p><a id="X8537FEB07AF2BEC8" name="X8537FEB07AF2BEC8"></a></p>
+
+<div class="contents">
+<h3>Contents<a id="contents" name="contents"></a></h3>
+
+<div class="ContChap"><a href="chap1_mj.html#X8209A2FF7E87DD36">1 <span class="Heading">Rings as categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D7DE68778F94CA9">1.1 <span class="Heading">Random methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79B0CB7B81FB507A">1.1-1 RandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78284A208314C766">1.1-2 RandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A55F8DD87C991E2">1.1-3 RandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F3915C279852DC3">1.1-4 RandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79AAB754846C8F79">1.1-5 RandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X842FA22B83AEDB52">1.1-6 RandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X782C639F87FE301A">1.1-7 RandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86CFBE797864E036">1.1-8 RandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A7488FC7F546A30">1.1-9 RandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8290C1027E351F39">1.1-10 RandomMorphismByInteger</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap2_mj.html#X7E8203B485CE08F7">2 <span class="Heading">Additive closure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86EC0F0A78ECBC10">2.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83CEE62E7F65193B">2.1-1 AdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X782F119178F61C5A">2.1-2 ADDITIVE_CLOSURE</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79F5D5987C402AA8">2.1-3 AdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BFEDC957BDFD922">2.1-4 AsAdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X825AFED37B96E8E3">2.1-5 AdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E68504F7906F9BA">2.1-6 AsAdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83052556783E9F72">2.1-7 InclusionFunctorInAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CB9D74B81E8657F">2.1-8 ExtendFunctorToAdditiveClosures</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X800F55F17A280DE5">2.1-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80D324A184629A28">2.1-10 ExtendFunctorToAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82EE592782202D2E">2.1-11 ExtendNaturalTransformationToAdditiveClosureOfSource</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7C701DBF7BAE649A">2.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78941FF180271D5D">2.2-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X806F515A8225F3D5">2.2-2 ObjectList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X801FFB8B7A9200B7">2.2-3 MorphismMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FC1128578287E61">2.2-4 NumberRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B92D388873C4F45">2.2-5 NumberColumns</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7AD6F77E7D95C996">2.3 <span class="Heading">Operators</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D349F847E6043A8">2.3-1 []</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85700E97870211FE">2.3-2 [</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D3C3DCE87667A7C">2.3-3 /</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X790ACC3182D77147">2.3-4 /</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8126317783DFCEFE">2.4 <span class="Heading">Global functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79AE0EC6800C806D">2.4-1 NullMatImmutable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7ADECA9C79646A06">2.4-2 UnionOfRowsListList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84727BA37E3A813C">2.4-3 UnionOfColumnsListList</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8654AEE67FA2EBE2">2.5 <span class="Heading">Random methods for additive closure category</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8198535085A2B2E3">2.5-1 RandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84791D7278CE0E93">2.5-2 RandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84BE5BFC86A56E44">2.5-3 RandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8176BCDF7F10B6FB">2.5-4 RandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FB04031821E567F">2.5-5 RandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87BFC8E082FD4145">2.5-6 RandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84ECCA1678F39AF3">2.5-7 RandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D9B5FEB865C2323">2.5-8 RandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79AC6DBB86A00BBE">2.5-9 RandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79991C1E81277CE7">2.5-10 RandomMorphismByInteger</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D03633A7D98026B">2.6 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X837A08B880122AA8">2.6-1 IsAdditiveClosureCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X842C79EF7B3261A1">2.6-2 IsAdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X801C787279EB4139">2.6-3 IsAdditiveClosureMorphism</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap3_mj.html#X7ACB868E7C4A1D32">3 <span class="Heading">Example on additive closure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X845F81E07A23BEF8">3.1 <span class="Heading">Using matrix data structures</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap4_mj.html#X7EC154737E26D4EE">4 <span class="Heading">Category of rows</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7B22238E7CE73E87">4.1 <span class="Heading">Random Methods in Category of Rows</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D78F7DA813CD637">4.1-1 RandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8685EE527E483BC2">4.1-2 RandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C0DCA8F7FA3ACAA">4.1-3 RandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C06DBA77D8B0724">4.1-4 RandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X79BBBBB17CB0BA13">4.1-5 RandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X789457CF8030AD0A">4.1-6 RandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X783D6F7A7B4B85CB">4.1-7 RandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7A744B9D862984C8">4.1-8 RandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7EBCB45D85ACD0A2">4.1-9 RandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C3D65707DD373CB">4.1-10 RandomMorphismByInteger</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7D03633A7D98026B">4.2 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X79953322787123F5">4.2-1 IsCategoryOfRowsObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7DA5FC5379955E0E">4.3 <span class="Heading">Supported CAP operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X857355B083E27880">4.3-1 <span class="Heading">CategoryOfRows of an arbitrary ring</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E413D9F840A5FA0">4.3-2 <span class="Heading">CategoryOfRows of an exterior algebra over a field</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X78F8B2517F91E7F8">4.3-3 <span class="Heading">CategoryOfRows of a commutative ring</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E6976E586BA41F7">4.3-4 <span class="Heading">CategoryOfRows of a field</span></a>
+</span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap5_mj.html#X7A88D14981F23BBA">5 <span class="Heading">Example on category of rows</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X791E8F5C7A872B06">5.1 <span class="Heading">Constructors of objects</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7A9CA0C983ECE36B">5.2 <span class="Heading">Constructors of morphisms</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7AE073947AEA9EB7">5.3 <span class="Heading">A few categorical constructions for category of rows</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7BC526FF7EA28AC1">5.4 <span class="Heading">Simplifications</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap6_mj.html#X8754736E7A0A917E">6 <span class="Heading">Category of columns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7D03633A7D98026B">6.1 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6_mj.html#X7D1F6FC77B0DBE77">6.1-1 IsCategoryOfColumnsObject</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap7_mj.html#X7C37D7E284D53E7F">7 <span class="Heading">Example on category of columns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X791E8F5C7A872B06">7.1 <span class="Heading">Constructors of objects</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X7A9CA0C983ECE36B">7.2 <span class="Heading">Constructors of morphisms</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7_mj.html#X86C6240482ACBBFC">7.3 <span class="Heading">A few categorical constructions for category of columns</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap8_mj.html#X7A0D02687F4DEB79">8 <span class="Heading">Category of rows and columns over a field</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8_mj.html#X86CCB2BD7F33F5C3">8.1 <span class="Heading">Abelian operations</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap9_mj.html#X817D631B8751CE1C">9 <span class="Heading">Category of graded rows and category of graded columns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X86EC0F0A78ECBC10">9.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X81267C067EAE2E17">9.1-1 CategoryOfGradedColumns</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F05C0DE85E1732E">9.1-2 CategoryOfGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A4EFBF77F512211">9.1-3 GradedRow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7B1C79F5799707F0">9.1-4 GradedRow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7DE3BDC67BEDF584">9.1-5 GradedColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X870B19C58257D8BF">9.1-6 GradedColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X850092A67E41FFA3">9.1-7 GradedRowOrColumnMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A2BD26C7A06A19E">9.1-8 GradedRowOrColumnMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7C701DBF7BAE649A">9.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7BB0C797822261D4">9.2-1 UnderlyingHomalgGradedRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7C921F647BCB74ED">9.2-2 DegreeList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X82B94BDD7A8F10A7">9.2-3 RankOfObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X853183C280F9F00C">9.2-4 UnderlyingHomalgGradedRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8496B344851CA199">9.2-5 UnderlyingHomalgMatrix</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7D03633A7D98026B">9.3 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8022BC8678DC3999">9.3-1 IsGradedRowOrColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X85BEB0C678FBE108">9.3-2 IsGradedRow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8421A33181503B7D">9.3-3 IsGradedColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X857BFC00847FAC9C">9.3-4 IsGradedRowOrColumnMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X870FE58A8327E1B4">9.3-5 IsGradedRowMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A3A7F1F7F4E4A90">9.3-6 IsGradedColumnMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7AC3561D81C1E9C9">9.4 <span class="Heading">Tools to simplify code</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X80F977CE78AA72F8">9.4-1 DeduceMapFromMatrixAndRangeForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X793C3D527B483AEF">9.4-2 DeduceSomeMapFromMatrixAndRangeForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X83478C59786CB0A0">9.4-3 DeduceMapFromMatrixAndSourceForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A6361FA828C0631">9.4-4 DeduceSomeMapFromMatrixAndSourceForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7E0DAE5A81E38AFE">9.4-5 DeduceMapFromMatrixAndRangeForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X86BAC1857C5224B7">9.4-6 DeduceSomeMapFromMatrixAndRangeForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7BDCC883825E395F">9.4-7 DeduceMapFromMatrixAndSourceForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X87090F857C50941D">9.4-8 DeduceSomeMapFromMatrixAndSourceForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8011DAD37C894DA8">9.4-9 UnzipDegreeList</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap10_mj.html#X87E337DD810FE4CA">10 <span class="Heading">Examples on graded rows and columns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X783430D884689E27">10.1 <span class="Heading">Constructors of objects and reduction of degree lists</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7A9CA0C983ECE36B">10.2 <span class="Heading">Constructors of morphisms</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X827E565A7F15C748">10.3 <span class="Heading">The GAP categories</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7A34A184800E1DD6">10.4 <span class="Heading">A few categorical constructions for graded rows</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7E3CC2FB7DD5B4F8">10.5 <span class="Heading">A few categorical constructions for graded columns</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X7D4C656384F41D31">10.6 <span class="Heading">Additional examples on monoidal structure for graded rows</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X83218D197FAD5A73">10.7 <span class="Heading">Additional examples on monoidal structure for graded columns</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10_mj.html#X78BBD81679376CA5">10.8 <span class="Heading">Examples to test Tools methods in graded rows/cols</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap11_mj.html#X82EB5BE77F9F686A">11 <span class="Heading">Basic operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7B84B41E7A3D9FC9">11.1 <span class="Heading">Weak kernel</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X79E994747B8592EE">11.1-1 WeakKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X83F59A01848A453C">11.1-2 WeakKernelEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X806F77C3782F3905">11.1-3 WeakKernelEmbeddingWithGivenWeakKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7C2C92CC86D2A301">11.1-4 WeakKernelLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8308E8F28404A2C9">11.1-5 WeakKernelLiftWithGivenWeakKernelObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X80A09CC07860C15F">11.2 <span class="Heading">Weak cokernel</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7AB2AE1087F50E60">11.2-1 WeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X806D163A7880451F">11.2-2 WeakCokernelProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7DF9B3477B5A1D67">11.2-3 WeakCokernelProjectionWithGivenWeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8620586083B3AE47">11.2-4 WeakCokernelColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85A9E11C7919653E">11.2-5 WeakCokernelColiftWithGivenWeakCokernelObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7DB23CEE876CF4DA">11.3 <span class="Heading">Weak bi-fiber product</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X78718E5782F3720E">11.3-1 WeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7AB5D7717E47EBAA">11.3-2 ProjectionInFirstFactorOfWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81A44E0378CCA38C">11.3-3 ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7B1D4A348122C2E4">11.3-4 ProjectionInSecondFactorOfWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8220190C7B1F89AB">11.3-5 ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D26BC9A7CCD1C4B">11.3-6 UniversalMorphismIntoWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X810F526178E2DB8C">11.3-7 UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7B79748686524A91">11.3-8 WeakBiFiberProductMorphismToDirectSum</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7C1CFD8D7ECDDA6E">11.4 <span class="Heading">Biased weak fiber product</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X80C509F582A13FBE">11.4-1 BiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81EE20F38513FA49">11.4-2 ProjectionOfBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X84D705708422CFAD">11.4-3 ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7833716B83FCE291">11.4-4 UniversalMorphismIntoBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D54F6007FA31C19">11.4-5 UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X85E883B37D8B4F9D">11.5 <span class="Heading">Weak bi-pushout</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X87390E608145CE89">11.5-1 WeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X859D48648330DDFA">11.5-2 InjectionOfFirstCofactorOfWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X82BCEF3179CDACB2">11.5-3 InjectionOfSecondCofactorOfWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X801E5B217AC3D643">11.5-4 InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81A0DEDE86291E0E">11.5-5 InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8647B1F787E7A634">11.5-6 UniversalMorphismFromWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X797E6E3B79DA17DD">11.5-7 UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7A7B32688119E5B2">11.5-8 DirectSumMorphismToWeakBiPushout</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X84C1321C78FCE8E5">11.6 <span class="Heading">Biased weak pushout</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X84109D6383E9340C">11.6-1 BiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8446E6F07D760DB6">11.6-2 InjectionOfBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D42CD317E769BF8">11.6-3 InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F2F3FAD87205D0A">11.6-4 UniversalMorphismFromBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81047F4D7B007D05">11.6-5 UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap12_mj.html#X7967FE8E7BBDF485">12 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8005CEE3800C4F61">12.1 <span class="Heading">Monoidal structure of AdditiveClosure</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X800F00FC80F05442">12.2 <span class="Heading">Basics based on category of rows</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X825D413F7D891B06">12.3 <span class="Heading">Basics based on category of columns</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X86A2AE6E7C297595">12.4 <span class="Heading">Homomorphism structure</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8598E8828771FA9D">12.5 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7A810CDA83F2897F">12.6 <span class="Heading">Tests</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8001962586A4466B">12.7 <span class="Heading">Rings as Ab-categories</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap13_mj.html#X87A9DB228112DF45">13 <span class="Heading">Add Functions</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap13_mj.html#X829CEC0B8319A503">13.1 <span class="Heading">Available Add functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D92A3FE7B81DFFA">13.1-1 AddBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X78F34269796D4E00">13.1-2 AddBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D3FCA407B0EEA34">13.1-3 AddDirectSumMorphismToWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X837B79157B936198">13.1-4 AddInjectionOfBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X83B48FA17BE7D9DF">13.1-5 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7AA1766180C1C5F3">13.1-6 AddInjectionOfFirstCofactorOfWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7FF32F327CD17D1A">13.1-7 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7977D827795061EC">13.1-8 AddInjectionOfSecondCofactorOfWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D8DDAD1862A5421">13.1-9 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7FB6940A8465C21C">13.1-10 AddProjectionInFirstFactorOfWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7ECB9B6782886062">13.1-11 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8436659A7B564358">13.1-12 AddProjectionInSecondFactorOfWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7D59577278B64987">13.1-13 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7DC16B4085579F9D">13.1-14 AddProjectionOfBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X83CF4A2085D0AB35">13.1-15 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C0D11027FAD37B6">13.1-16 AddUniversalMorphismFromBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X826EE1E6864AF54F">13.1-17 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7FF5CC5F7DCE77D6">13.1-18 AddUniversalMorphismFromWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7CB1AD3C7CC84268">13.1-19 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8607A9DF78804D56">13.1-20 AddUniversalMorphismIntoBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7C8C57F77CB7CF58">13.1-21 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7804747C8685F8F0">13.1-22 AddUniversalMorphismIntoWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X78E67E4082322A0D">13.1-23 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X816775867D3478A1">13.1-24 AddWeakBiFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X812836837F550A1A">13.1-25 AddWeakBiFiberProductMorphismToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X87A278B37EF322FC">13.1-26 AddWeakBiPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8388C0AC7FD35E25">13.1-27 AddWeakCokernelColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X83572B2B83696CC6">13.1-28 AddWeakCokernelColiftWithGivenWeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8227265B78D96EE7">13.1-29 AddWeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X867B541C83A7FD53">13.1-30 AddWeakCokernelProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7F3167AD80C13FDE">13.1-31 AddWeakCokernelProjectionWithGivenWeakCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X8557E27387DC7C2D">13.1-32 AddWeakKernelEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7E32A1338309D579">13.1-33 AddWeakKernelEmbeddingWithGivenWeakKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X7F4B8851877882A4">13.1-34 AddWeakKernelLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X84D4E8B082F59108">13.1-35 AddWeakKernelLiftWithGivenWeakKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap13_mj.html#X803818457E497317">13.1-36 AddWeakKernelObject</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chapInd_mj.html"><span class="Heading">Index</span></a></div>
+<br />
+</div>
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

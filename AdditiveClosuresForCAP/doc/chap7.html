@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (AdditiveClosuresForCAP) - Chapter 7: Example on category of columns</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap7"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap7_mj.html">[MathJax on]</a></p>
+<p><a id="X7C37D7E284D53E7F" name="X7C37D7E284D53E7F"></a></p>
+<div class="ChapSects"><a href="chap7.html#X7C37D7E284D53E7F">7 <span class="Heading">Example on category of columns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X791E8F5C7A872B06">7.1 <span class="Heading">Constructors of objects</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7A9CA0C983ECE36B">7.2 <span class="Heading">Constructors of morphisms</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X86C6240482ACBBFC">7.3 <span class="Heading">A few categorical constructions for category of columns</span></a>
+</span>
+</div>
+</div>
+
+<h3>7 <span class="Heading">Example on category of columns</span></h3>
+
+<p><a id="X791E8F5C7A872B06" name="X791E8F5C7A872B06"></a></p>
+
+<h4>7.1 <span class="Heading">Constructors of objects</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cols := CategoryOfColumns( S );</span>
+Columns( Z )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfColumnsObject( 2, cols );</span>
+&lt;A column module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := CategoryOfColumnsObject( 8, cols );</span>
+&lt;A column module over Z of rank 8&gt;
+</pre></div>
+
+<p><a id="X7A9CA0C983ECE36B" name="X7A9CA0C983ECE36B"></a></p>
+
+<h4>7.2 <span class="Heading">Constructors of morphisms</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj3 := CategoryOfColumnsObject( 1, cols );</span>
+&lt;A column module over Z of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( obj1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj4 := CategoryOfColumnsObject( 2, cols );</span>
+&lt;A column module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], 2, 1, S ), obj4 );</span>
+&lt;A morphism in Columns( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( mor ) );</span>
+A column module over Z of rank 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( mor ) );</span>
+A column module over Z of rank 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( mor ) );</span>
+[ [  1 ],
+  [  2 ] ]
+</pre></div>
+
+<p><a id="X86C6240482ACBBFC" name="X86C6240482ACBBFC"></a></p>
+
+<h4>7.3 <span class="Heading">A few categorical constructions for category of columns</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( cols );</span>
+&lt;A column module over Z of rank 0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj5 := CategoryOfColumnsObject( 2, cols );</span>
+&lt;A column module over Z of rank 2&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ZeroMorphism( ZeroObject( cols ), obj5 ) );</span>
+A zero, split monomorphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 0
+
+Matrix: 
+(an empty 2 x 0 matrix)
+
+Range: 
+A column module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj6 := CategoryOfColumnsObject( 1, cols );</span>
+&lt;A column module over Z of rank 1&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IdentityMorphism( obj6 ) );</span>
+An identity morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 1
+
+Matrix: 
+[ [  1 ] ]
+
+Range: 
+A column module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">directSum := DirectSum( [ obj5, obj6 ] );</span>
+&lt;A column module over Z of rank 3&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( directSum );</span>
+A column module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i1 );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 2
+
+Matrix: 
+[ [  1,  0 ],
+  [  0,  1 ],
+  [  0,  0 ] ]
+
+Range: 
+A column module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i2 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 2 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i2 );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 1
+
+Matrix: 
+[ [  0 ],
+  [  0 ],
+  [  1 ] ]
+
+Range: 
+A column module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj1 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 1 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( proj1 );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 3
+
+Matrix: 
+[ [  1,  0,  0 ],
+  [  0,  1,  0 ] ]
+
+Range: 
+A column module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj2 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 2 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( proj2 );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 3
+
+Matrix: 
+[ [  0,  0,  1 ] ]
+
+Range: 
+A column module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := WeakKernelEmbedding( proj1 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( k );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 1
+
+Matrix: 
+[ [  0 ],
+  [  0 ],
+  [  1 ] ]
+
+Range: 
+A column module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ck := WeakCokernelProjection( k );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ck );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 3
+
+Matrix: 
+[ [   0,   1,   0 ],
+  [  -1,   0,   0 ] ]
+
+Range: 
+A column module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( k );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( k );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( ck );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( ck );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], 1, 2, S ), obj6 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mor1 );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 2
+
+Matrix: 
+[ [  1,  2 ] ]
+
+Range: 
+A column module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor2 := IdentityMorphism( obj6 );</span>
+&lt;An identity morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mor2 );</span>
+An identity morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 1
+
+Matrix: 
+[ [  1 ] ]
+
+Range: 
+A column module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift := Lift( mor1, mor2 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( lift );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 2
+
+Matrix: 
+[ [  1,  2 ] ]
+
+Range: 
+A column module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source := CategoryOfColumnsObject( 1, cols );</span>
+&lt;A column module over Z of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">range := CategoryOfColumnsObject( 2, cols );</span>
+&lt;A column module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], 2, 1, S ), range );</span>
+&lt;A morphism in Columns( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colift := Colift( mor2, mor );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( colift );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 1
+
+Matrix: 
+[ [  2 ],
+  [  3 ] ]
+
+Range: 
+A column module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fp := WeakBiFiberProduct( mor1, mor2 );</span>
+&lt;A column module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( fp_proj );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 2
+
+Matrix: 
+[ [  -2,  -1 ],
+  [   1,   0 ] ]
+
+Range: 
+A column module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">po := WeakBiPushout( mor, mor2 );</span>
+&lt;A column module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );</span>
+&lt;A morphism in Columns( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( inj_push );</span>
+A morphism in Columns( Z )
+
+Source: 
+A column module over Z of rank 2
+
+Matrix: 
+[ [  -3,   2 ],
+  [   1,  -1 ] ]
+
+Range: 
+A column module over Z of rank 2
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

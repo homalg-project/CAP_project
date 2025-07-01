@@ -1,0 +1,98 @@
+  
+  [1X1 [33X[0;0YRings as categories[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YRandom methods[133X[101X
+  
+  [1X1.1-1 RandomObjectByList[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  
+  [33X[0;0YThe  arguments  are  a  ring  as  category  [3XC[103X and a list [3XL[103X consisting of one
+  integer.    The    output    is    the    unique    object   of   [3XC[103X,   i.e.,
+  [10XRingAsCategoryUniqueObject[110X([3XC[103X).[133X
+  
+  [1X1.1-2 RandomObjectByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  
+  [33X[0;0YThe  arguments  are a ring as category [3XC[103X and an integer [3Xn[103X. The output is the
+  unique object of [3XC[103X, i.e., [10XRingAsCategoryUniqueObject[110X([3XC[103X).[133X
+  
+  [1X1.1-3 RandomMorphismWithFixedSourceAndRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3XS[103X, [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are two objects [3XS[103X, [3XR[103X and a list [3XL[103X consisting of one integer.
+  The  output  is  a morphism from [3XS[103X to [3XR[103X whose underlying element is a sum of
+  [3XL[103X[1] random elements in the underlying ring.[133X
+  
+  [1X1.1-4 RandomMorphismWithFixedSourceAndRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3XS[103X, [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [3XS[103X,  [3XR[103X  and  an integer [3Xn[103X. The output is a
+  morphism  from [3XS[103X to [3XR[103X whose underlying element is a sum of [3Xn[103X random elements
+  in the underlying ring.[133X
+  
+  [1X1.1-5 RandomMorphismWithFixedSourceByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3XS[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in  a  ring  as  category [3XC[103X and a list [3XL[103X
+  consisting  of  one  integer.  The  output  is  an  endomorphism  of [3XS[103X whose
+  underlying  element  is  a  sum  of  [23X1[123X+[10XLog2Int[110X([3XL[103X[1])  random elements in the
+  underlying ring.[133X
+  
+  [1X1.1-6 RandomMorphismWithFixedSourceByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3XS[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments are an object [3XS[103X in a ring as category [3XC[103X and an integer [3Xn[103X. The
+  output  is  an  endomorphism  of  [3XS[103X  whose  underlying  element  is a sum of
+  [23X1[123X+[10XLog2Int[110X([3Xn[103X) random elements in the underlying ring.[133X
+  
+  [1X1.1-7 RandomMorphismWithFixedRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XR[103X  in  a  ring  as  category [3XC[103X and a list [3XL[103X
+  consisting  of  one  integer.  The  output  is  an  endomorphism  of [3XR[103X whose
+  underlying  element  is  a  sum  of  [23X1[123X+[10XLog2Int[110X([3XL[103X[1])  random elements in the
+  underlying ring.[133X
+  
+  [1X1.1-8 RandomMorphismWithFixedRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments are an object [3XR[103X in a ring as category [3XC[103X and an integer [3Xn[103X. The
+  output  is  an  endomorphism  of  [3XR[103X  whose  underlying  element  is a sum of
+  [23X1[123X+[10XLog2Int[110X([3Xn[103X) random elements in the underlying ring.[133X
+  
+  [1X1.1-9 RandomMorphismByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  a  ring  as  category  [3XC[103X and a list [3XL[103X consisting of one
+  integer.  The  output  is  an  endomorphism  of the unique object of [3XC[103X whose
+  underlying  element  is  a  sum  of  [23X1[123X+[10XLog2Int[110X([3XL[103X[1])  random elements in the
+  underlying ring.[133X
+  
+  [1X1.1-10 RandomMorphismByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  a ring as category [3XC[103X and an integer [3Xn[103X. The output is an
+  endomorphism  of the unique object of [3XC[103X whose underlying element is a sum of
+  [23X1[123X+[10XLog2Int[110X([3Xn[103X) random elements in the underlying ring.[133X
+  

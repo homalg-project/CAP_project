@@ -1,0 +1,90 @@
+name: AdditiveClosuresForCAP
+version: "2025.06-01"
+license: "GPL-2.0-or-later"
+date: 2025-07-01
+description: |
+    Additive closures for pre-abelian categories
+
+authors:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Martin Bies
+      url: https://www.ulb.ac.be/sciences/ptm/pmif/people.html
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Kamal Saleh
+      url: https://github.com/kamalsaleh
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
+
+maintainers:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Martin Bies
+      url: https://www.ulb.ac.be/sciences/ptm/pmif/people.html
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Kamal Saleh
+      url: https://github.com/kamalsaleh
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
+
+GAP: ">= 4.13.0"
+
+needed-pkgs:
+    - name: "CAP"
+      version: ">= 2025.06-05"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "GradedRingForHomalg"
+      version: ">=2019.08.07"
+      url: "https://homalg-project.github.io/pkg/GradedRingForHomalg"
+    - name: "MonoidalCategories"
+      version: ">= 2024.09-02"
+      url: "https://homalg-project.github.io/pkg/MonoidalCategories"
+
+www: https://homalg-project.github.io/pkg/AdditiveClosuresForCAP
+readme: README.md
+packageinfo: https://homalg-project.github.io/CAP_project/AdditiveClosuresForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.06-01/AdditiveClosuresForCAP-2025.06-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.06-01/AdditiveClosuresForCAP-2025.06-01.zip
+
+pdf: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.06-01/AdditiveClosuresForCAP-2025.06-01-manual.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>PBBSZ01</span>]   <b class='BibAuthor'>Posur, S., Bies, M., Barakat, M., Saleh, K. and Zickgraf, F.</b>,
+     <i class='BibTitle'>AdditiveClosuresForCAP, Additive closures for pre-abelian categories,
+             Version 2025.06-01</i>
+     (<span class='BibYear'>7-01</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/AdditiveClosuresForCAP">https://homalg-project.github.io/pkg/AdditiveClosuresForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ AdditiveClosuresForCAP,
+      author =           {Posur,  S.  and Bies, M. and Barakat, M. and Saleh, K.
+                          and Zickgraf, F.},
+      title =            {{AdditiveClosuresForCAP},   {Additive   closures   for
+                          pre\texttt{\symbol{45}}abelian  categories}, {V}ersion
+                          2025.06\texttt{\symbol{45}}01},
+      month =            {5\texttt{\symbol{45}}},
+      year =             {7\texttt{\symbol{45}}01},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/AdditiveClosuresForCAP}
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{AdditiveClosuresForCAP}}},
+      printedkey =       {PBBSZ01}
+    }
+

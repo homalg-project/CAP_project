@@ -1,0 +1,274 @@
+  
+  [1X9 [33X[0;0YCategory of graded rows and category of graded columns[133X[101X
+  
+  
+  [1X9.1 [33X[0;0YConstructors[133X[101X
+  
+  [1X9.1-1 CategoryOfGradedColumns[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfGradedColumns[102X( [3XR[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe argument is a homalg graded ring [23XR[123X. The output is the category of graded
+  columns over [23XR[123X.[133X
+  
+  [1X9.1-2 CategoryOfGradedRows[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfGradedRows[102X( [3XR[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe argument is a homalg graded ring [23XR[123X. The output is the category of graded
+  rows over [23XR[123X.[133X
+  
+  [1X9.1-3 GradedRow[101X
+  
+  [33X[1;0Y[29X[2XGradedRow[102X( [3Xdegree_list[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments are a list of degrees and a homalg graded ring [23XR[123X. The list of
+  degrees  must  be  of the form [ [ [23Xd_1[123X, [23Xn_1[123X ], [ [23Xd_2[123X, [23Xn_2[123X ], ... ] where [23Xd_i[123X
+  are  degrees,  i.e.  elements  in  the  degree  group  of  [23XR[123X and the [23Xn_i[123X are
+  non-negative integers. Currently there are two formats that are supported to
+  enter the degrees. Either one can enter them as lists of integers, say [23Xd_1 =
+  [  1,1,0,2 ][123X, or they can be entered as Homalg_Module_Elements of the degree
+  group  of  [23XR[123X. In either case, the result is the graded row associated to the
+  degrees [23Xd_i[123X and their multiplicities [23Xn_i[123X.[133X
+  
+  [1X9.1-4 GradedRow[101X
+  
+  [33X[1;0Y[29X[2XGradedRow[102X( [3Xdegree_list[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YAs  'GradedRow',  but  the  boolean  (= third argument) allows to switch off
+  checks  on  the  input  data. If this boolean is set to true, then the input
+  checks  are  performed  and otherwise they are not. Calling this constructor
+  with 'false' is therefore suited for high performance applications.[133X
+  
+  [1X9.1-5 GradedColumn[101X
+  
+  [33X[1;0Y[29X[2XGradedColumn[102X( [3Xdegree_list[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments are a list of degrees and a homalg graded ring [23XR[123X. The list of
+  degrees  must  be  of the form [ [ [23Xd_1[123X, [23Xn_1[123X ], [ [23Xd_2[123X, [23Xn_2[123X ], ... ] where [23Xd_i[123X
+  are  degrees,  i.e.  elements  in  the  degree  group  of  [23XR[123X and the [23Xn_i[123X are
+  non-negative integers. Currently there are two formats that are supported to
+  enter the degrees. Either one can enter them as lists of integers, say [23Xd_1 =
+  [  1,1,0,2 ][123X, or they can be entered as Homalg_Module_Elements of the degree
+  group  of  [23XR[123X.  In either case, the result is the graded column associated to
+  the degrees [23Xd_i[123X and their multiplicities [23Xn_i[123X.[133X
+  
+  [1X9.1-6 GradedColumn[101X
+  
+  [33X[1;0Y[29X[2XGradedColumn[102X( [3Xdegree_list[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YAs  'GradedColumn',  but the boolean (= third argument) allows to switch off
+  checks  on  the  input  data. If this boolean is set to true, then the input
+  checks  are  performed  and otherwise they are not. Calling this constructor
+  with 'false' is therefore suited for high performance applications.[133X
+  
+  [1X9.1-7 GradedRowOrColumnMorphism[101X
+  
+  [33X[1;0Y[29X[2XGradedRowOrColumnMorphism[102X( [3XS[103X, [3XM[103X, [3XT[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(S,T)[123X[133X
+  
+  [33X[0;0YThe arguments are an object [23XS[123X in the category of graded rows or columns over
+  a  homalg  graded ring [23XR[123X, a homalg matrix [23XM[123X over [23XR[123X and another graded row or
+  column  [23XT[123X over [23XR[123X. The output is the morphism [23XS \rightarrow T[123X in the category
+  of graded rows and columns over [23XR[123X, whose underlying matrix is given by [23XM[123X.[133X
+  
+  [1X9.1-8 GradedRowOrColumnMorphism[101X
+  
+  [33X[1;0Y[29X[2XGradedRowOrColumnMorphism[102X( [3XS[103X, [3XM[103X, [3XT[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(S,T)[123X[133X
+  
+  [33X[0;0YAs  'GradedRowOrColumnMorphism',  but  carries  a fourth input parameter. If
+  this  boolean is set to false, then no checks on the input a performed. That
+  option is therefore better suited for high performance applications.[133X
+  
+  
+  [1X9.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X9.2-1 UnderlyingHomalgGradedRing[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingHomalgGradedRing[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg graded ring[133X
+  
+  [33X[0;0YThe  argument  is  a graded row or column [23XA[123X over a homalg graded ring [23XR[123X. The
+  output is then the graded ring [23XR[123X.[133X
+  
+  [1X9.2-2 DegreeList[101X
+  
+  [33X[1;0Y[29X[2XDegreeList[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is  a graded row or column [23XA[123X over a homalg graded ring [23XR[123X. The
+  output  is  the  degree_list  of  this  object.  To handle degree_lists most
+  easily,  degree_lists  are  redcued  whenever  an  object  is  added  to the
+  category.  E.g.  the  input  degree_list  [ [ [23Xd_1[123X, 1 ], [ [23Xd_1[123X, 1 ] ] will be
+  turned into [ [ [23Xd_1[123X, 2 ] ].[133X
+  
+  [1X9.2-3 RankOfObject[101X
+  
+  [33X[1;0Y[29X[2XRankOfObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  argument  is  a  graded  row or column over a homalg graded ring [23XR[123X. The
+  output is the rank of this module.[133X
+  
+  [1X9.2-4 UnderlyingHomalgGradedRing[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingHomalgGradedRing[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg graded ring[133X
+  
+  [33X[0;0YThe  argument is a morphism [23X\alpha[123X in the category of graded rows or columns
+  over a homalg graded ring [23XR[123X. The output is the homalg graded ring [23XR[123X.[133X
+  
+  [1X9.2-5 UnderlyingHomalgMatrix[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingHomalgMatrix[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya matrix over a homalg graded ring[133X
+  
+  [33X[0;0YThe  argument is a morphism [23X\alpha[123X in the category of graded rows or columns
+  over a homalg graded ring [23XR[123X. The output is the underlying homalg matrix over
+  [23XR[123X.[133X
+  
+  
+  [1X9.3 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X9.3-1 IsGradedRowOrColumn[101X
+  
+  [33X[1;0Y[29X[2XIsGradedRowOrColumn[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of graded rows and columns over a graded ring [23XR[123X.[133X
+  
+  [1X9.3-2 IsGradedRow[101X
+  
+  [33X[1;0Y[29X[2XIsGradedRow[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of graded rows over a graded ring [23XR[123X.[133X
+  
+  [1X9.3-3 IsGradedColumn[101X
+  
+  [33X[1;0Y[29X[2XIsGradedColumn[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of graded columns over a graded ring [23XR[123X.[133X
+  
+  [1X9.3-4 IsGradedRowOrColumnMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsGradedRowOrColumnMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  GAP category of morphisms of graded rows and columns over a graded ring
+  [23XR[123X.[133X
+  
+  [1X9.3-5 IsGradedRowMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsGradedRowMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of morphisms of graded rows over a graded ring [23XR[123X.[133X
+  
+  [1X9.3-6 IsGradedColumnMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsGradedColumnMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of morphisms of graded columns over a graded ring [23XR[123X.[133X
+  
+  
+  [1X9.4 [33X[0;0YTools to simplify code[133X[101X
+  
+  [1X9.4-1 DeduceMapFromMatrixAndRangeForGradedRows[101X
+  
+  [33X[1;0Y[29X[2XDeduceMapFromMatrixAndRangeForGradedRows[102X( [3Xm[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is a homalg_matrix [3Xm[103X and a graded row [3XR[103X. We then consider the
+  module  map  induced  from  [3Xm[103X  with range [3XR[103X. This operation then deduces the
+  source of this map and returns the map in the category of graded rows if the
+  degrees of the source are uniquely determined.[133X
+  
+  [1X9.4-2 DeduceSomeMapFromMatrixAndRangeForGradedRows[101X
+  
+  [33X[1;0Y[29X[2XDeduceSomeMapFromMatrixAndRangeForGradedRows[102X( [3Xm[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe argument is a homalg_matrix [3Xm[103X and a graded row [3XR[103X. This operation deduces
+  the  source of some map with matrix [3Xm[103X and range [3XR[103X and returns the map in the
+  category of graded rows.[133X
+  
+  [1X9.4-3 DeduceMapFromMatrixAndSourceForGradedRows[101X
+  
+  [33X[1;0Y[29X[2XDeduceMapFromMatrixAndSourceForGradedRows[102X( [3Xm[103X, [3XS[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is a homalg_matrix [3Xm[103X and a graded row [3XS[103X. We then consider the
+  module  map  induced  from  [3Xm[103X with source [3XS[103X. This operation then deduces the
+  range  of this map and returns the map in the category of graded rows if the
+  degrees of the range are uniquely determined.[133X
+  
+  [1X9.4-4 DeduceSomeMapFromMatrixAndSourceForGradedRows[101X
+  
+  [33X[1;0Y[29X[2XDeduceSomeMapFromMatrixAndSourceForGradedRows[102X( [3Xm[103X, [3XS[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe argument is a homalg_matrix [3Xm[103X and a graded row [3XS[103X. This operation deduces
+  the  range of some map with matrix [3Xm[103X and source [3XS[103X and returns the map in the
+  category of graded rows.[133X
+  
+  [1X9.4-5 DeduceMapFromMatrixAndRangeForGradedCols[101X
+  
+  [33X[1;0Y[29X[2XDeduceMapFromMatrixAndRangeForGradedCols[102X( [3Xm[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is  a homalg_matrix [3Xm[103X and a graded column [3XR[103X. We then consider
+  the  module map induced from [3Xm[103X with range [3XR[103X. This operation then deduces the
+  source  of this map and returns the map in the category of graded columns if
+  the degrees of the source are uniquely determined.[133X
+  
+  [1X9.4-6 DeduceSomeMapFromMatrixAndRangeForGradedCols[101X
+  
+  [33X[1;0Y[29X[2XDeduceSomeMapFromMatrixAndRangeForGradedCols[102X( [3Xm[103X, [3XR[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is  a  homalg_matrix  [3Xm[103X and a graded column [3XR[103X. This operation
+  deduces the source of some map with matrix [3Xm[103X and range [3XR[103X and returns the map
+  in the category of graded columns.[133X
+  
+  [1X9.4-7 DeduceMapFromMatrixAndSourceForGradedCols[101X
+  
+  [33X[1;0Y[29X[2XDeduceMapFromMatrixAndSourceForGradedCols[102X( [3Xm[103X, [3XS[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is  a homalg_matrix [3Xm[103X and a graded column [3XS[103X. We then consider
+  the module map induced from [3Xm[103X with source [3XS[103X. This operation then deduces the
+  range  of  this map and returns the map in the category of graded columns if
+  the degrees of the range are uniquely determined.[133X
+  
+  [1X9.4-8 DeduceSomeMapFromMatrixAndSourceForGradedCols[101X
+  
+  [33X[1;0Y[29X[2XDeduceSomeMapFromMatrixAndSourceForGradedCols[102X( [3Xm[103X, [3XS[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  argument  is  a  homalg_matrix  [3Xm[103X and a graded column [3XS[103X. This operation
+  deduces the range of some map with matrix [3Xm[103X and source [3XS[103X and returns the map
+  in the category of graded columns.[133X
+  
+  [1X9.4-9 UnzipDegreeList[101X
+  
+  [33X[1;0Y[29X[2XUnzipDegreeList[102X( [3XS[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YGiven  a graded row or column [3XS[103X, the degrees are stored in compact form. For
+  example, the degrees [ 1, 1, 1, 1 ] #! is stored internally as [ 1, 4 ]. The
+  second  argument  is thus the multipicity with which three degree 1 appears.
+  Still,  it can be useful at times to also go in the opposite direction, i.e.
+  to  take  the compact form [ #! 1, 4 ] and turn it into [ 1, 1, 1, 1 ]. This
+  is  performed  by this operation and the obtained extended degree #! list is
+  returned.[133X
+  

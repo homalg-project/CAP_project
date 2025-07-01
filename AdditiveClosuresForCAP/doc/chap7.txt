@@ -1,0 +1,352 @@
+  
+  [1X7 [33X[0;0YExample on category of columns[133X[101X
+  
+  
+  [1X7.1 [33X[0;0YConstructors of objects[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XS := HomalgRingOfIntegers();;[127X[104X
+    [4X[25Xgap>[125X [27Xcols := CategoryOfColumns( S );[127X[104X
+    [4X[28XColumns( Z )[128X[104X
+    [4X[25Xgap>[125X [27Xobj1 := CategoryOfColumnsObject( 2, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xobj2 := CategoryOfColumnsObject( 8, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 8>[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X7.2 [33X[0;0YConstructors of morphisms[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xobj3 := CategoryOfColumnsObject( 1, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( obj1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xobj4 := CategoryOfColumnsObject( 2, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xmor := CategoryOfColumnsMorphism( obj3, HomalgMatrix( [[1],[2]], 2, 1, S ), obj4 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( mor );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( mor ) );[127X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Range( mor ) );[127X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( mor ) );[127X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X7.3 [33X[0;0YA few categorical constructions for category of columns[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZeroObject( cols );[127X[104X
+    [4X[28X<A column module over Z of rank 0>[128X[104X
+    [4X[25Xgap>[125X [27Xobj5 := CategoryOfColumnsObject( 2, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 2>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( ZeroMorphism( ZeroObject( cols ), obj5 ) );[127X[104X
+    [4X[28XA zero, split monomorphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X(an empty 2 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xobj6 := CategoryOfColumnsObject( 1, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 1>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( IdentityMorphism( obj6 ) );[127X[104X
+    [4X[28XAn identity morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XdirectSum := DirectSum( [ obj5, obj6 ] );[127X[104X
+    [4X[28X<A column module over Z of rank 3>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( directSum );[127X[104X
+    [4X[28XA column module over Z of rank 3[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xi1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( i1 );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 3[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xi2 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 2 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( i2 );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  0 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 3[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xproj1 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 1 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( proj1 );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xproj2 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 2 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( proj2 );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  0,  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xk := WeakKernelEmbedding( proj1 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( k );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  0 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 3[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xck := WeakCokernelProjection( k );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( ck );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [   0,   1,   0 ],[128X[104X
+    [4X[28X  [  -1,   0,   0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( k );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( k );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( ck );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( ck );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xmor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], 1, 2, S ), obj6 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( mor1 );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  1,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xmor2 := IdentityMorphism( obj6 );[127X[104X
+    [4X[28X<An identity morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( mor2 );[127X[104X
+    [4X[28XAn identity morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xlift := Lift( mor1, mor2 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( lift );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  1,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xsource := CategoryOfColumnsObject( 1, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27Xrange := CategoryOfColumnsObject( 2, cols );[127X[104X
+    [4X[28X<A column module over Z of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xmor := CategoryOfColumnsMorphism( source, HomalgMatrix( [[ 2 ], [ 3 ]], 2, 1, S ), range );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+    [4X[25Xgap>[125X [27Xcolift := Colift( mor2, mor );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( colift );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  2 ],[128X[104X
+    [4X[28X  [  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfp := WeakBiFiberProduct( mor1, mor2 );[127X[104X
+    [4X[28X<A column module over Z of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xfp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( fp_proj );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  -2,  -1 ],[128X[104X
+    [4X[28X  [   1,   0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xpo := WeakBiPushout( mor, mor2 );[127X[104X
+    [4X[28X<A column module over Z of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xinj_push := InjectionOfBiasedWeakPushout( mor, mor2 );[127X[104X
+    [4X[28X<A morphism in Columns( Z )>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( inj_push );[127X[104X
+    [4X[28XA morphism in Columns( Z )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix: [128X[104X
+    [4X[28X[ [  -3,   2 ],[128X[104X
+    [4X[28X  [   1,  -1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange: [128X[104X
+    [4X[28XA column module over Z of rank 2[128X[104X
+  [4X[32X[104X
+  

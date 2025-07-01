@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (AdditiveClosuresForCAP) - Chapter 12: Examples and Tests</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap12"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap12.html">[MathJax off]</a></p>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<div class="ChapSects"><a href="chap12_mj.html#X7967FE8E7BBDF485">12 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8005CEE3800C4F61">12.1 <span class="Heading">Monoidal structure of AdditiveClosure</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X800F00FC80F05442">12.2 <span class="Heading">Basics based on category of rows</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X825D413F7D891B06">12.3 <span class="Heading">Basics based on category of columns</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X86A2AE6E7C297595">12.4 <span class="Heading">Homomorphism structure</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8598E8828771FA9D">12.5 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7A810CDA83F2897F">12.6 <span class="Heading">Tests</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X8001962586A4466B">12.7 <span class="Heading">Rings as Ab-categories</span></a>
+</span>
+</div>
+</div>
+
+<h3>12 <span class="Heading">Examples and Tests</span></h3>
+
+<p><a id="X8005CEE3800C4F61" name="X8005CEE3800C4F61"></a></p>
+
+<h4>12.1 <span class="Heading">Monoidal structure of AdditiveClosure</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingAsCategory( Q );</span>
+RingAsCategory( Q )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AdditiveClosure( R );</span>
+AdditiveClosure( RingAsCategory( Q ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := TensorUnit( A );</span>
+&lt;An object in AdditiveClosure( RingAsCategory( Q ) )\
+ defined by 1 underlying objects&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := [ [ 1 / R, 2 / R ] ] / A;</span>
+&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )\
+ defined by a 1 x 2 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor2 := [ [ 3 / R, 4 / R ] ] / A;</span>
+&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )\
+ defined by a 1 x 2 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TensorProduct( mor1, mor2 );</span>
+&lt;A morphism in AdditiveClosure( RingAsCategory( Q ) )\
+ defined by a 1 x 4 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
+A 1 x 4 matrix with entries in RingAsCategory( Q )
+
+[1,1]: &lt;3&gt;
+[1,2]: &lt;4&gt;
+[1,3]: &lt;6&gt;
+[1,4]: &lt;8&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( T ) );</span>
+A formal direct sum consisting of 4 objects.
+*
+*
+*
+*
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithMultipleObjects( );</span>
+TerminalCategoryWithMultipleObjects( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := "A" / T;</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := "B" / T;</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AT := AdditiveClosure( T );</span>
+AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ABAA := [ A, B, A, A ] / AT;</span>
+&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by 4 underlying objects&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BAB := [ B, A, B ] / AT;</span>
+&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by 3 underlying objects&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AB := [ A, B ] / AT;</span>
+&lt;An object in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by 2 underlying objects&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor_AB := MorphismConstructor( A, "A -&gt; B", B );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor_BA := MorphismConstructor( B, "B -&gt; A", A );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_A := IdentityMorphism( A );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_B := IdentityMorphism( B );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := MorphismConstructor( ABAA,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [ [ mor_AB, id_A, mor_AB ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ id_B, mor_BA, id_B ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ mor_AB, id_A, mor_AB ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ mor_AB, id_A, mor_AB ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    BAB );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 4 x 3 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha2 := TensorProduct( alpha, alpha );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 16 x 9 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( alpha2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( alpha2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">left := LeftUnitor( ABAA );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 4 x 4 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( left );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">left_inv := LeftUnitorInverse( ABAA );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 4 x 4 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( left, left_inv ) = IdentityMorphism( Source( left ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( left_inv, left ) = IdentityMorphism( Range( left ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right := RightUnitor( BAB );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 3 x 3 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( right );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_inv := RightUnitorInverse( BAB );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 3 x 3 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( right, right_inv ) = IdentityMorphism( Source( right ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( right_inv, right ) = IdentityMorphism( Range( right ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aslr := AssociatorLeftToRight( AB, BAB, AB );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 12 x 12 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( aslr );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">asrl := AssociatorRightToLeft( AB, BAB, AB );</span>
+&lt;A morphism in AdditiveClosure( TerminalCategoryWithMultipleObjects( ) )\
+ defined by a 12 x 12 matrix of underlying morphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( aslr, asrl ) = IdentityMorphism( Source( aslr ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( asrl, aslr ) = IdentityMorphism( Range( aslr ) );</span>
+true
+</pre></div>
+
+<p><a id="X800F00FC80F05442" name="X800F00FC80F05442"></a></p>
+
+<h4>12.2 <span class="Heading">Basics based on category of rows</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "RingsForHomalg", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfRows( R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfRowsObject( 1, cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := CategoryOfRowsObject( 2, cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( obj1, obj2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( obj2, obj2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SomeIsomorphismBetweenObjects( obj2, obj2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfRowsMorphism( obj1, HomalgMatrix( [ [ 1, 2 ] ], 1, 2, R ), obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comp := PreCompose( alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( comp );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( obj1, obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( zero );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoZeroObject( obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObject( obj1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( obj1, [ alpha, alpha, alpha ], obj2 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    AdditionForMorphisms( alpha, AdditionForMorphisms( alpha, alpha ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( obj1, [ ], obj2 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroMorphism( obj1, obj2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( obj1, obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSumFunctorial( [ alpha, beta, id ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromCoproduct( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectProduct( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( gamma, beta );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, ZeroMorphism( Range( gamma ), Range( gamma ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift_arg_1 := PreCompose( ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma + gamma ), gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift_arg_2 := gamma + gamma;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( lift_arg_1, lift_arg_2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( lift_arg_1, lift_arg_2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInSecondFactorOfWeakBiFiberProduct( alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( pi1, alpha ), PreCompose( pi2, beta ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj1 := InjectionOfFirstCofactorOfWeakBiPushout( gamma + gamma, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj2 := InjectionOfSecondCofactorOfWeakBiPushout( gamma + gamma, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( gamma + gamma, inj1 ), PreCompose( gamma, inj2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">WeakKernelLift( WeakCokernelProjection( gamma ), gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := InjectionOfFirstCofactorOfWeakBiPushout( alpha, alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := InjectionOfSecondCofactorOfWeakBiPushout( alpha, alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromWeakBiPushout( alpha, alpha, pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := HomalgFieldOfRationalsInSingular() * "x,y,z";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Rows_S := CategoryOfRows( S );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S3 := CategoryOfRowsObject( 3, Rows_S );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S1 := CategoryOfRowsObject( 1, Rows_S );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,y,z]", 3, 1, S ), S1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">biased_w := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,0,0,0,x,0,0,0,x]", 3, 3, S ), S3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">biased_h := CategoryOfRowsMorphism( S3, HomalgMatrix( "[x*y, x*z, y^2]", 3, 3, S ), S3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BiasedWeakFiberProduct( biased_h, biased_w );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">   PreCompose( UniversalMorphismIntoBiasedWeakFiberProduct( biased_h, biased_w, biased_h ), ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">   biased_h</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  PreCompose( InjectionOfBiasedWeakPushout( biased_h, biased_w ), UniversalMorphismFromBiasedWeakPushout( biased_h, biased_w, biased_h )),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  biased_h</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Homomorphism structures</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := ZeroObjectFunctorial( cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;</span>
+</pre></div>
+
+<p><a id="X825D413F7D891B06" name="X825D413F7D891B06"></a></p>
+
+<h4>12.3 <span class="Heading">Basics based on category of columns</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfColumns( R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfColumnsObject( 1, cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := CategoryOfColumnsObject( 2, cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CategoryOfColumnsMorphism( obj1, HomalgMatrix( [ [ 1 ], [ 2 ] ], 1, 2, R ), obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, R ), obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comp := PreCompose( alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( comp );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( obj1, obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( zero );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoZeroObject( obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObject( obj1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( obj1, obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSumFunctorial( [ alpha, beta, id ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( gamma, beta );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, ZeroMorphism( Range( gamma ), Range( gamma ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift_arg_1 := PreCompose( ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma + gamma ), gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift_arg_2 := gamma + gamma;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( lift_arg_1, lift_arg_2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( lift_arg_1, lift_arg_2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFirstFactorOfWeakBiFiberProduct( alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInSecondFactorOfWeakBiFiberProduct( alpha, beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( pi1, alpha ), PreCompose( pi2, beta ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj1 := InjectionOfFirstCofactorOfWeakBiPushout( gamma + gamma, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj2 := InjectionOfSecondCofactorOfWeakBiPushout( gamma + gamma, gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( gamma + gamma, inj1 ), PreCompose( gamma, inj2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">WeakKernelLift( WeakCokernelProjection( gamma ), gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := InjectionOfFirstCofactorOfWeakBiPushout( alpha, alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := InjectionOfSecondCofactorOfWeakBiPushout( alpha, alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromWeakBiPushout( alpha, alpha, pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := HomalgFieldOfRationalsInSingular() * "x,y,z";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Cols_S := CategoryOfColumns( S );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S3 := CategoryOfColumnsObject( 3, Cols_S );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S1 := CategoryOfColumnsObject( 1, Cols_S );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfColumnsMorphism( S3, HomalgMatrix( "[x,y,z]", 1, 3, S ), S1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">biased_w := CategoryOfColumnsMorphism( S3, HomalgMatrix( "[x,0,0,0,x,0,0,0,x]", 3, 3, S ), S3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">biased_h := CategoryOfColumnsMorphism( S3, HomalgMatrix( "[x*y, x*z, y^2]", 3, 3, S ), S3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BiasedWeakFiberProduct( biased_h, biased_w );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">   PreCompose( UniversalMorphismIntoBiasedWeakFiberProduct( biased_h, biased_w, biased_h ), ProjectionOfBiasedWeakFiberProduct( biased_h, biased_w ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">   biased_h</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  PreCompose( InjectionOfBiasedWeakPushout( biased_h, biased_w ), UniversalMorphismFromBiasedWeakPushout( biased_h, biased_w, biased_h )),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  biased_h</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Homomorphism structures</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( gamma );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := ZeroObjectFunctorial( cat );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;</span>
+</pre></div>
+
+<p><a id="X86A2AE6E7C297595" name="X86A2AE6E7C297595"></a></p>
+
+<h4>12.4 <span class="Heading">Homomorphism structure</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "RingsForHomalg", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Eoid := RingAsCategory( EEE );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := RingAsCategoryMorphism( Eoid, 1/2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := RingAsCategoryMorphism( Eoid, -2/3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RingAsCategoryUniqueObject( Eoid );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( a,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        u,u,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            a</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = HomStructure( u, u, HomStructure( a ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( HomStructure( Eoid ), DistinguishedObjectOfHomomorphismStructure( Eoid ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := RingAsCategoryMorphism( Eoid, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := RingAsCategoryMorphism( Eoid, 0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">left_coeffs := [ [ a, b ], [ c, d ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_side := [ a, b ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coeffs, right_coeffs, right_side );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">solution := </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SolveLinearSystemInAbCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    left_coeffs,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    right_coeffs,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    right_side</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( [ 1, 2 ], i -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Sum( List( [ 1, 2 ], j -&gt; PreCompose( [ left_coeffs[i][j], solution[j], right_coeffs[i][j] ] ) ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        right_side[i]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( c, d );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LiftOrFail( c, d );</span>
+fail
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( d, c );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LiftOrFail( d, c );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( d, c );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( c, d );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColiftOrFail( c, d );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( c, d );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( d, c );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColiftOrFail( d, c );</span>
+fail
+</pre></div>
+
+<p><a id="X8598E8828771FA9D" name="X8598E8828771FA9D"></a></p>
+
+<h4>12.5 <span class="Heading">Opposite( CategoryOfRow ) as CategoryOfColumns</span></h4>
+
+<p>Assume that we have the constructors <code class="code">CategoryOfRows</code> and <code class="code">CategoryOfColumns</code> but no constructor <code class="code">Opposite</code>. Then we can still model <code class="code">Opposite( CategoryOfRows )</code> as <code class="code">CategoryOfColumns</code> using <code class="code">ReinterpretationOfCategory</code>. This can be achieved up to minor modifications by swapping <code class="code">object_constructor</code> and <code class="code">modeling_tower_object_constructor</code> and so on in <code class="code">CategoryOfColums_as_Opposite_CategoryOfRows</code>. With this, objects and morphisms indeed have the attribute <code class="code">Opposite</code> as desired. Getting <code class="code">ObjectDatum</code> and <code class="code">MorphismDatum</code> to return this attribute would also be possible, but would require more effort than simply swapping <code class="code">object_constructor</code> and <code class="code">modeling_tower_object_constructor</code> and so.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cols := CategoryOfColumns( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; CreateCapCategoryObjectWithAttributes( cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                                            Opposite, CategoryOfRowsObject( Opposite( cat ), rank )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_object_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, rank } -&gt; CreateCapCategoryObjectWithAttributes( ModelingCategory( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                                            RankOfObject, rank</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_datum := { cat, obj } -&gt; RankOfObject( Opposite( obj ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_object_datum := { cat, obj } -&gt; RankOfObject( obj );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, source, underlying_matrix, range } -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        CreateCapCategoryMorphismWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            cat,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            source, range,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Opposite, CategoryOfRowsMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                Opposite( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                Opposite( range ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                underlying_matrix,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                Opposite( source )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_morphism_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, source, underlying_matrix, range } -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        CreateCapCategoryMorphismWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ModelingCategory( cat ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            source, range,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            UnderlyingMatrix, underlying_matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_datum := { cat, mor } -&gt; UnderlyingMatrix( Opposite( mor ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">modeling_tower_morphism_datum := { cat, mor } -&gt; UnderlyingMatrix( mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := ReinterpretationOfCategory( cols, rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    name := Concatenation( "Opposite( ", Name( rows )," )" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_filter := WasCreatedAsOppositeCategory,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_object_filter := IsCapCategoryOppositeObject,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_morphism_filter := IsCapCategoryOppositeMorphism,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    object_constructor := object_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    object_datum := object_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    morphism_constructor := morphism_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    morphism_datum := morphism_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_object_constructor := modeling_tower_object_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_object_datum := modeling_tower_object_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    modeling_tower_morphism_datum := modeling_tower_morphism_datum,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    only_primitive_operations := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );</span>
+Opposite( Rows( Q ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOpposite( op, rows );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source := ObjectConstructor( op, 1 );</span>
+&lt;An object in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">range := ObjectConstructor( op, 2 );</span>
+&lt;An object in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( source, range );</span>
+&lt;A zero morphism in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sum := AdditionForMorphisms( zero, zero );</span>
+&lt;A morphism in Opposite( Rows( Q ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># notice that source and range are indeed swapped compared to the above</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( Source( Opposite( sum ) ) );</span>
+A row module over Q of rank 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( Opposite( sum ) ) );</span>
+A row module over Q of rank 1
+</pre></div>
+
+<p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
+
+<h4>12.6 <span class="Heading">Tests</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers( ) ;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfColumns( R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := RandomObjectByInteger( cat, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := RandomObjectByInteger( cat, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := RandomMorphismByInteger( cat, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor2 := RandomMorphismWithFixedSourceByInteger( cat, CategoryOfColumnsObject( cat, 3 ), 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor3 := RandomMorphismWithFixedRangeByInteger( cat, CategoryOfColumnsObject( cat, 3 ), 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor4 := RandomMorphismWithFixedSourceAndRangeByInteger( cat, CategoryOfColumnsObject( cat, 3 ), CategoryOfColumnsObject( cat, 4 ), 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Source( mor2 ) ) = 3;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Range( mor3 ) ) = 3;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Source( mor4 ) ) = 3;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Range( mor4 ) ) = 4;</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EQQxy := KoszulDualRing( QQxy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := KoszulDualRing( HomalgRingOfIntegersInSingular( ) * "x,y" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( R ), "CategoryOfRows of an arbitrary ring", 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( EQQxy ), "CategoryOfRows of an exterior algebra over a field", 1 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( QQxy ), "CategoryOfRows of a commutative ring", 1 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( QQ ), "CategoryOfRows of a field", 3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "AdditiveClosuresForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "CategoryOfRows.autogen.gd",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "Category of rows",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "Supported CAP operations"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+</pre></div>
+
+<p><a id="X8001962586A4466B" name="X8001962586A4466B"></a></p>
+
+<h4>12.7 <span class="Heading">Rings as Ab-categories</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CR := RingAsCategory( Integers );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RingAsCategoryUniqueObject( CR );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsObjectFiniteCategory( CR );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjectsOfCategory( CR ) = [ u ];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := 2 / CR;</span>
+&lt;2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( alpha );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha * alpha;</span>
+&lt;4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">-alpha;</span>
+&lt;-2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha + AdditiveInverse( alpha ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := RingAsCategoryMorphism( 1/2, CR );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( beta );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := IdentityMorphism( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( u, u );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * alpha;</span>
+&lt;4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( alpha * alpha, alpha );</span>
+&lt;2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( alpha, alpha * alpha );</span>
+&lt;2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( u, u );</span>
+[ &lt;1&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfMorphism( alpha );</span>
+[ 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, CoefficientsOfMorphism( alpha ), BasisOfExternalHom( u, u ), u ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorUnit( CR );</span>
+*
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorUnit( CR ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnObjects( u, u );</span>
+*
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnObjects( u, u ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProductOnMorphisms( alpha, beta );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( u, u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DualOnObjects( u ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DualOnMorphisms( alpha ) = alpha;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EvaluationForDual( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoevaluationForDual( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoDualOnObjects( u ) = u;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoDualOnMorphisms( beta ) = beta;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoclosedEvaluationForCoDual( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoclosedCoevaluationForCoDual( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( HomalgFieldOfRationalsInSingular( ) * "x,y" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CE := RingAsCategory( EEE );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RingAsCategoryUniqueObject( CE );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ("2 + 3 * e0 + 4 * e1 + 5 * e0*e1" / EEE) / CE;</span>
+&lt;5*e0*e1+3*e0+4*e1+2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha * alpha;</span>
+&lt;20*e0*e1+12*e0+16*e1+4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">-alpha;</span>
+&lt;-5*e0*e1-3*e0-4*e1-2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( alpha + AdditiveInverse( alpha ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := IdentityMorphism( u );</span>
+&lt;1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( u, u );</span>
+&lt;0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * alpha;</span>
+&lt;10*e0*e1+6*e0+8*e1+4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( alpha * alpha, alpha );</span>
+&lt;5*e0*e1+3*e0+4*e1+2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( alpha, alpha * alpha );</span>
+&lt;5*e0*e1+3*e0+4*e1+2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">basis := BasisOfExternalHom( u, u );</span>
+[ &lt;1&gt;, &lt;e0&gt;, &lt;e1&gt;, &lt;e0*e1&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeffs := CoefficientsOfMorphism( alpha );</span>
+[ 2, 3, 4, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha, LinearCombinationOfMorphisms( u, coeffs, basis, u ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u_op := Opposite( u );</span>
+&lt;An object in Opposite( RingAsCategory( Q{e0,e1} ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha_op := Opposite( alpha );</span>
+&lt;A morphism in Opposite( RingAsCategory( Q{e0,e1} ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">basis := BasisOfExternalHom( u_op, u_op );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeffs := CoefficientsOfMorphism( alpha_op );</span>
+[ 2, 3, 4, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( alpha_op, LinearCombinationOfMorphisms( u_op, coeffs, basis, u_op ) );</span>
+true
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

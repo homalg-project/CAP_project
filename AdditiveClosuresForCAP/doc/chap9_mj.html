@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (AdditiveClosuresForCAP) - Chapter 9: Category of graded rows and category of graded columns</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap9"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap9.html">[MathJax off]</a></p>
+<p><a id="X817D631B8751CE1C" name="X817D631B8751CE1C"></a></p>
+<div class="ChapSects"><a href="chap9_mj.html#X817D631B8751CE1C">9 <span class="Heading">Category of graded rows and category of graded columns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X86EC0F0A78ECBC10">9.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X81267C067EAE2E17">9.1-1 CategoryOfGradedColumns</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F05C0DE85E1732E">9.1-2 CategoryOfGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A4EFBF77F512211">9.1-3 GradedRow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7B1C79F5799707F0">9.1-4 GradedRow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7DE3BDC67BEDF584">9.1-5 GradedColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X870B19C58257D8BF">9.1-6 GradedColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X850092A67E41FFA3">9.1-7 GradedRowOrColumnMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A2BD26C7A06A19E">9.1-8 GradedRowOrColumnMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7C701DBF7BAE649A">9.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7BB0C797822261D4">9.2-1 UnderlyingHomalgGradedRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7C921F647BCB74ED">9.2-2 DegreeList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X82B94BDD7A8F10A7">9.2-3 RankOfObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X853183C280F9F00C">9.2-4 UnderlyingHomalgGradedRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8496B344851CA199">9.2-5 UnderlyingHomalgMatrix</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7D03633A7D98026B">9.3 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8022BC8678DC3999">9.3-1 IsGradedRowOrColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X85BEB0C678FBE108">9.3-2 IsGradedRow</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8421A33181503B7D">9.3-3 IsGradedColumn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X857BFC00847FAC9C">9.3-4 IsGradedRowOrColumnMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X870FE58A8327E1B4">9.3-5 IsGradedRowMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A3A7F1F7F4E4A90">9.3-6 IsGradedColumnMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7AC3561D81C1E9C9">9.4 <span class="Heading">Tools to simplify code</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X80F977CE78AA72F8">9.4-1 DeduceMapFromMatrixAndRangeForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X793C3D527B483AEF">9.4-2 DeduceSomeMapFromMatrixAndRangeForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X83478C59786CB0A0">9.4-3 DeduceMapFromMatrixAndSourceForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A6361FA828C0631">9.4-4 DeduceSomeMapFromMatrixAndSourceForGradedRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7E0DAE5A81E38AFE">9.4-5 DeduceMapFromMatrixAndRangeForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X86BAC1857C5224B7">9.4-6 DeduceSomeMapFromMatrixAndRangeForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7BDCC883825E395F">9.4-7 DeduceMapFromMatrixAndSourceForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X87090F857C50941D">9.4-8 DeduceSomeMapFromMatrixAndSourceForGradedCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8011DAD37C894DA8">9.4-9 UnzipDegreeList</a></span>
+</div></div>
+</div>
+
+<h3>9 <span class="Heading">Category of graded rows and category of graded columns</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>9.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X81267C067EAE2E17" name="X81267C067EAE2E17"></a></p>
+
+<h5>9.1-1 CategoryOfGradedColumns</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfGradedColumns</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a homalg graded ring <span class="SimpleMath">\(R\)</span>. The output is the category of graded columns over <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X7F05C0DE85E1732E" name="X7F05C0DE85E1732E"></a></p>
+
+<h5>9.1-2 CategoryOfGradedRows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfGradedRows</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a homalg graded ring <span class="SimpleMath">\(R\)</span>. The output is the category of graded rows over <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X7A4EFBF77F512211" name="X7A4EFBF77F512211"></a></p>
+
+<h5>9.1-3 GradedRow</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GradedRow</code>( <var class="Arg">degree_list</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are a list of degrees and a homalg graded ring <span class="SimpleMath">\(R\)</span>. The list of degrees must be of the form [ [ <span class="SimpleMath">\(d_1\)</span>, <span class="SimpleMath">\(n_1\)</span> ], [ <span class="SimpleMath">\(d_2\)</span>, <span class="SimpleMath">\(n_2\)</span> ], ... ] where <span class="SimpleMath">\(d_i\)</span> are degrees, i.e. elements in the degree group of <span class="SimpleMath">\(R\)</span> and the <span class="SimpleMath">\(n_i\)</span> are non-negative integers. Currently there are two formats that are supported to enter the degrees. Either one can enter them as lists of integers, say <span class="SimpleMath">\(d_1 = [ 1,1,0,2 ]\)</span>, or they can be entered as Homalg_Module_Elements of the degree group of <span class="SimpleMath">\(R\)</span>. In either case, the result is the graded row associated to the degrees <span class="SimpleMath">\(d_i\)</span> and their multiplicities <span class="SimpleMath">\(n_i\)</span>.</p>
+
+<p><a id="X7B1C79F5799707F0" name="X7B1C79F5799707F0"></a></p>
+
+<h5>9.1-4 GradedRow</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GradedRow</code>( <var class="Arg">degree_list</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>As 'GradedRow', but the boolean (= third argument) allows to switch off checks on the input data. If this boolean is set to true, then the input checks are performed and otherwise they are not. Calling this constructor with 'false' is therefore suited for high performance applications.</p>
+
+<p><a id="X7DE3BDC67BEDF584" name="X7DE3BDC67BEDF584"></a></p>
+
+<h5>9.1-5 GradedColumn</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GradedColumn</code>( <var class="Arg">degree_list</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are a list of degrees and a homalg graded ring <span class="SimpleMath">\(R\)</span>. The list of degrees must be of the form [ [ <span class="SimpleMath">\(d_1\)</span>, <span class="SimpleMath">\(n_1\)</span> ], [ <span class="SimpleMath">\(d_2\)</span>, <span class="SimpleMath">\(n_2\)</span> ], ... ] where <span class="SimpleMath">\(d_i\)</span> are degrees, i.e. elements in the degree group of <span class="SimpleMath">\(R\)</span> and the <span class="SimpleMath">\(n_i\)</span> are non-negative integers. Currently there are two formats that are supported to enter the degrees. Either one can enter them as lists of integers, say <span class="SimpleMath">\(d_1 = [ 1,1,0,2 ]\)</span>, or they can be entered as Homalg_Module_Elements of the degree group of <span class="SimpleMath">\(R\)</span>. In either case, the result is the graded column associated to the degrees <span class="SimpleMath">\(d_i\)</span> and their multiplicities <span class="SimpleMath">\(n_i\)</span>.</p>
+
+<p><a id="X870B19C58257D8BF" name="X870B19C58257D8BF"></a></p>
+
+<h5>9.1-6 GradedColumn</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GradedColumn</code>( <var class="Arg">degree_list</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>As 'GradedColumn', but the boolean (= third argument) allows to switch off checks on the input data. If this boolean is set to true, then the input checks are performed and otherwise they are not. Calling this constructor with 'false' is therefore suited for high performance applications.</p>
+
+<p><a id="X850092A67E41FFA3" name="X850092A67E41FFA3"></a></p>
+
+<h5>9.1-7 GradedRowOrColumnMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GradedRowOrColumnMorphism</code>( <var class="Arg">S</var>, <var class="Arg">M</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(S,T)\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(S\)</span> in the category of graded rows or columns over a homalg graded ring <span class="SimpleMath">\(R\)</span>, a homalg matrix <span class="SimpleMath">\(M\)</span> over <span class="SimpleMath">\(R\)</span> and another graded row or column <span class="SimpleMath">\(T\)</span> over <span class="SimpleMath">\(R\)</span>. The output is the morphism <span class="SimpleMath">\(S \rightarrow T\)</span> in the category of graded rows and columns over <span class="SimpleMath">\(R\)</span>, whose underlying matrix is given by <span class="SimpleMath">\(M\)</span>.</p>
+
+<p><a id="X7A2BD26C7A06A19E" name="X7A2BD26C7A06A19E"></a></p>
+
+<h5>9.1-8 GradedRowOrColumnMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GradedRowOrColumnMorphism</code>( <var class="Arg">S</var>, <var class="Arg">M</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(S,T)\)</span></p>
+
+<p>As 'GradedRowOrColumnMorphism', but carries a fourth input parameter. If this boolean is set to false, then no checks on the input a performed. That option is therefore better suited for high performance applications.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>9.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7BB0C797822261D4" name="X7BB0C797822261D4"></a></p>
+
+<h5>9.2-1 UnderlyingHomalgGradedRing</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingHomalgGradedRing</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a homalg graded ring</p>
+
+<p>The argument is a graded row or column <span class="SimpleMath">\(A\)</span> over a homalg graded ring <span class="SimpleMath">\(R\)</span>. The output is then the graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X7C921F647BCB74ED" name="X7C921F647BCB74ED"></a></p>
+
+<h5>9.2-2 DegreeList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DegreeList</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is a graded row or column <span class="SimpleMath">\(A\)</span> over a homalg graded ring <span class="SimpleMath">\(R\)</span>. The output is the degree_list of this object. To handle degree_lists most easily, degree_lists are redcued whenever an object is added to the category. E.g. the input degree_list [ [ <span class="SimpleMath">\(d_1\)</span>, 1 ], [ <span class="SimpleMath">\(d_1\)</span>, 1 ] ] will be turned into [ [ <span class="SimpleMath">\(d_1\)</span>, 2 ] ].</p>
+
+<p><a id="X82B94BDD7A8F10A7" name="X82B94BDD7A8F10A7"></a></p>
+
+<h5>9.2-3 RankOfObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RankOfObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is a graded row or column over a homalg graded ring <span class="SimpleMath">\(R\)</span>. The output is the rank of this module.</p>
+
+<p><a id="X853183C280F9F00C" name="X853183C280F9F00C"></a></p>
+
+<h5>9.2-4 UnderlyingHomalgGradedRing</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingHomalgGradedRing</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a homalg graded ring</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span> in the category of graded rows or columns over a homalg graded ring <span class="SimpleMath">\(R\)</span>. The output is the homalg graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X8496B344851CA199" name="X8496B344851CA199"></a></p>
+
+<h5>9.2-5 UnderlyingHomalgMatrix</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingHomalgMatrix</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a matrix over a homalg graded ring</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span> in the category of graded rows or columns over a homalg graded ring <span class="SimpleMath">\(R\)</span>. The output is the underlying homalg matrix over <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>9.3 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X8022BC8678DC3999" name="X8022BC8678DC3999"></a></p>
+
+<h5>9.3-1 IsGradedRowOrColumn</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGradedRowOrColumn</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The GAP category of graded rows and columns over a graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X85BEB0C678FBE108" name="X85BEB0C678FBE108"></a></p>
+
+<h5>9.3-2 IsGradedRow</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGradedRow</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The GAP category of graded rows over a graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X8421A33181503B7D" name="X8421A33181503B7D"></a></p>
+
+<h5>9.3-3 IsGradedColumn</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGradedColumn</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The GAP category of graded columns over a graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X857BFC00847FAC9C" name="X857BFC00847FAC9C"></a></p>
+
+<h5>9.3-4 IsGradedRowOrColumnMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGradedRowOrColumnMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The GAP category of morphisms of graded rows and columns over a graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X870FE58A8327E1B4" name="X870FE58A8327E1B4"></a></p>
+
+<h5>9.3-5 IsGradedRowMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGradedRowMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The GAP category of morphisms of graded rows over a graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X7A3A7F1F7F4E4A90" name="X7A3A7F1F7F4E4A90"></a></p>
+
+<h5>9.3-6 IsGradedColumnMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGradedColumnMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The GAP category of morphisms of graded columns over a graded ring <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><a id="X7AC3561D81C1E9C9" name="X7AC3561D81C1E9C9"></a></p>
+
+<h4>9.4 <span class="Heading">Tools to simplify code</span></h4>
+
+<p><a id="X80F977CE78AA72F8" name="X80F977CE78AA72F8"></a></p>
+
+<h5>9.4-1 DeduceMapFromMatrixAndRangeForGradedRows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceMapFromMatrixAndRangeForGradedRows</code>( <var class="Arg">m</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded row <var class="Arg">R</var>. We then consider the module map induced from <var class="Arg">m</var> with range <var class="Arg">R</var>. This operation then deduces the source of this map and returns the map in the category of graded rows if the degrees of the source are uniquely determined.</p>
+
+<p><a id="X793C3D527B483AEF" name="X793C3D527B483AEF"></a></p>
+
+<h5>9.4-2 DeduceSomeMapFromMatrixAndRangeForGradedRows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceSomeMapFromMatrixAndRangeForGradedRows</code>( <var class="Arg">m</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded row <var class="Arg">R</var>. This operation deduces the source of some map with matrix <var class="Arg">m</var> and range <var class="Arg">R</var> and returns the map in the category of graded rows.</p>
+
+<p><a id="X83478C59786CB0A0" name="X83478C59786CB0A0"></a></p>
+
+<h5>9.4-3 DeduceMapFromMatrixAndSourceForGradedRows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceMapFromMatrixAndSourceForGradedRows</code>( <var class="Arg">m</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded row <var class="Arg">S</var>. We then consider the module map induced from <var class="Arg">m</var> with source <var class="Arg">S</var>. This operation then deduces the range of this map and returns the map in the category of graded rows if the degrees of the range are uniquely determined.</p>
+
+<p><a id="X7A6361FA828C0631" name="X7A6361FA828C0631"></a></p>
+
+<h5>9.4-4 DeduceSomeMapFromMatrixAndSourceForGradedRows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceSomeMapFromMatrixAndSourceForGradedRows</code>( <var class="Arg">m</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded row <var class="Arg">S</var>. This operation deduces the range of some map with matrix <var class="Arg">m</var> and source <var class="Arg">S</var> and returns the map in the category of graded rows.</p>
+
+<p><a id="X7E0DAE5A81E38AFE" name="X7E0DAE5A81E38AFE"></a></p>
+
+<h5>9.4-5 DeduceMapFromMatrixAndRangeForGradedCols</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceMapFromMatrixAndRangeForGradedCols</code>( <var class="Arg">m</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded column <var class="Arg">R</var>. We then consider the module map induced from <var class="Arg">m</var> with range <var class="Arg">R</var>. This operation then deduces the source of this map and returns the map in the category of graded columns if the degrees of the source are uniquely determined.</p>
+
+<p><a id="X86BAC1857C5224B7" name="X86BAC1857C5224B7"></a></p>
+
+<h5>9.4-6 DeduceSomeMapFromMatrixAndRangeForGradedCols</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceSomeMapFromMatrixAndRangeForGradedCols</code>( <var class="Arg">m</var>, <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded column <var class="Arg">R</var>. This operation deduces the source of some map with matrix <var class="Arg">m</var> and range <var class="Arg">R</var> and returns the map in the category of graded columns.</p>
+
+<p><a id="X7BDCC883825E395F" name="X7BDCC883825E395F"></a></p>
+
+<h5>9.4-7 DeduceMapFromMatrixAndSourceForGradedCols</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceMapFromMatrixAndSourceForGradedCols</code>( <var class="Arg">m</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded column <var class="Arg">S</var>. We then consider the module map induced from <var class="Arg">m</var> with source <var class="Arg">S</var>. This operation then deduces the range of this map and returns the map in the category of graded columns if the degrees of the range are uniquely determined.</p>
+
+<p><a id="X87090F857C50941D" name="X87090F857C50941D"></a></p>
+
+<h5>9.4-8 DeduceSomeMapFromMatrixAndSourceForGradedCols</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeduceSomeMapFromMatrixAndSourceForGradedCols</code>( <var class="Arg">m</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The argument is a homalg_matrix <var class="Arg">m</var> and a graded column <var class="Arg">S</var>. This operation deduces the range of some map with matrix <var class="Arg">m</var> and source <var class="Arg">S</var> and returns the map in the category of graded columns.</p>
+
+<p><a id="X8011DAD37C894DA8" name="X8011DAD37C894DA8"></a></p>
+
+<h5>9.4-9 UnzipDegreeList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnzipDegreeList</code>( <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Given a graded row or column <var class="Arg">S</var>, the degrees are stored in compact form. For example, the degrees [ 1, 1, 1, 1 ] #! is stored internally as [ 1, 4 ]. The second argument is thus the multipicity with which three degree 1 appears. Still, it can be useful at times to also go in the opposite direction, i.e. to take the compact form [ #! 1, 4 ] and turn it into [ 1, 1, 1, 1 ]. This is performed by this operation and the obtained extended degree #! list is returned.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

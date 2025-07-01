@@ -1,0 +1,303 @@
+  
+  
+                            [1X AdditiveClosuresForCAP [101X
+  
+  
+                 [1X Additive closures for pre-abelian categories [101X
+  
+  
+                                   2025.06-01
+  
+  
+                                  1 July 2025
+  
+  
+                                Sebastian Posur
+  
+                                  Martin Bies
+  
+                                Mohamed Barakat
+  
+                                  Kamal Saleh
+  
+                                Fabian Zickgraf
+  
+  
+  
+  Sebastian Posur
+      Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
+      Homepage: [7Xhttps://sebastianpos.github.io[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Martin Bies
+      Email:    [7Xmailto:martin.bies@alumni.uni-heidelberg.de[107X
+      Homepage: [7Xhttps://www.ulb.ac.be/sciences/ptm/pmif/people.html[107X
+      Address:  [33X[0;14YPhysique Théorique et Mathématique[133X
+                [33X[0;14YUniversité Libre de Bruxelles[133X
+                [33X[0;14YCampus Plaine - CP 231[133X
+                [33X[0;14YBuilding NO - Level 6 - Office O.6.111[133X
+                [33X[0;14Y1050 Brussels[133X
+                [33X[0;14YBelgium[133X
+  
+  
+  Mohamed Barakat
+      Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
+      Homepage: [7Xhttps://mohamed-barakat.github.io[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Kamal Saleh
+      Email:    [7Xmailto:kamal.saleh@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/kamalsaleh[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57072 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Fabian Zickgraf
+      Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/zickgraf/[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (AdditiveClosuresForCAP)[101X
+  
+  1 [33X[0;0YRings as categories[133X
+    1.1 [33X[0;0YRandom methods[133X
+      1.1-1 RandomObjectByList
+      1.1-2 RandomObjectByInteger
+      1.1-3 RandomMorphismWithFixedSourceAndRangeByList
+      1.1-4 RandomMorphismWithFixedSourceAndRangeByInteger
+      1.1-5 RandomMorphismWithFixedSourceByList
+      1.1-6 RandomMorphismWithFixedSourceByInteger
+      1.1-7 RandomMorphismWithFixedRangeByList
+      1.1-8 RandomMorphismWithFixedRangeByInteger
+      1.1-9 RandomMorphismByList
+      1.1-10 RandomMorphismByInteger
+  2 [33X[0;0YAdditive closure[133X
+    2.1 [33X[0;0YConstructors[133X
+      2.1-1 AdditiveClosure
+      2.1-2 ADDITIVE_CLOSURE
+      2.1-3 AdditiveClosureObject
+      2.1-4 AsAdditiveClosureObject
+      2.1-5 AdditiveClosureMorphism
+      2.1-6 AsAdditiveClosureMorphism
+      2.1-7 InclusionFunctorInAdditiveClosure
+      2.1-8 ExtendFunctorToAdditiveClosures
+      2.1-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource
+      2.1-10 ExtendFunctorToAdditiveClosureOfSource
+      2.1-11 ExtendNaturalTransformationToAdditiveClosureOfSource
+    2.2 [33X[0;0YAttributes[133X
+      2.2-1 UnderlyingCategory
+      2.2-2 ObjectList
+      2.2-3 MorphismMatrix
+      2.2-4 NumberRows
+      2.2-5 NumberColumns
+    2.3 [33X[0;0YOperators[133X
+      2.3-1 []
+      2.3-2 [
+      2.3-3 /
+      2.3-4 /
+    2.4 [33X[0;0YGlobal functions[133X
+      2.4-1 NullMatImmutable
+      2.4-2 UnionOfRowsListList
+      2.4-3 UnionOfColumnsListList
+    2.5 [33X[0;0YRandom methods for additive closure category[133X
+      2.5-1 RandomObjectByList
+      2.5-2 RandomObjectByInteger
+      2.5-3 RandomMorphismWithFixedSourceAndRangeByList
+      2.5-4 RandomMorphismWithFixedSourceAndRangeByInteger
+      2.5-5 RandomMorphismWithFixedSourceByList
+      2.5-6 RandomMorphismWithFixedSourceByInteger
+      2.5-7 RandomMorphismWithFixedRangeByList
+      2.5-8 RandomMorphismWithFixedRangeByInteger
+      2.5-9 RandomMorphismByList
+      2.5-10 RandomMorphismByInteger
+    2.6 [33X[0;0YGAP Categories[133X
+      2.6-1 IsAdditiveClosureCategory
+      2.6-2 IsAdditiveClosureObject
+      2.6-3 IsAdditiveClosureMorphism
+  3 [33X[0;0YExample on additive closure[133X
+    3.1 [33X[0;0YUsing matrix data structures[133X
+  4 [33X[0;0YCategory of rows[133X
+    4.1 [33X[0;0YRandom Methods in Category of Rows[133X
+      4.1-1 RandomObjectByList
+      4.1-2 RandomObjectByInteger
+      4.1-3 RandomMorphismWithFixedSourceAndRangeByList
+      4.1-4 RandomMorphismWithFixedSourceAndRangeByInteger
+      4.1-5 RandomMorphismWithFixedSourceByList
+      4.1-6 RandomMorphismWithFixedSourceByInteger
+      4.1-7 RandomMorphismWithFixedRangeByList
+      4.1-8 RandomMorphismWithFixedRangeByInteger
+      4.1-9 RandomMorphismByList
+      4.1-10 RandomMorphismByInteger
+    4.2 [33X[0;0YGAP Categories[133X
+      4.2-1 IsCategoryOfRowsObject
+    4.3 [33X[0;0YSupported CAP operations[133X
+      4.3-1 [33X[0;0YCategoryOfRows of an arbitrary ring[133X
+      4.3-2 [33X[0;0YCategoryOfRows of an exterior algebra over a field[133X
+      4.3-3 [33X[0;0YCategoryOfRows of a commutative ring[133X
+      4.3-4 [33X[0;0YCategoryOfRows of a field[133X
+  5 [33X[0;0YExample on category of rows[133X
+    5.1 [33X[0;0YConstructors of objects[133X
+    5.2 [33X[0;0YConstructors of morphisms[133X
+    5.3 [33X[0;0YA few categorical constructions for category of rows[133X
+    5.4 [33X[0;0YSimplifications[133X
+  6 [33X[0;0YCategory of columns[133X
+    6.1 [33X[0;0YGAP Categories[133X
+      6.1-1 IsCategoryOfColumnsObject
+  7 [33X[0;0YExample on category of columns[133X
+    7.1 [33X[0;0YConstructors of objects[133X
+    7.2 [33X[0;0YConstructors of morphisms[133X
+    7.3 [33X[0;0YA few categorical constructions for category of columns[133X
+  8 [33X[0;0YCategory of rows and columns over a field[133X
+    8.1 [33X[0;0YAbelian operations[133X
+  9 [33X[0;0YCategory of graded rows and category of graded columns[133X
+    9.1 [33X[0;0YConstructors[133X
+      9.1-1 CategoryOfGradedColumns
+      9.1-2 CategoryOfGradedRows
+      9.1-3 GradedRow
+      9.1-4 GradedRow
+      9.1-5 GradedColumn
+      9.1-6 GradedColumn
+      9.1-7 GradedRowOrColumnMorphism
+      9.1-8 GradedRowOrColumnMorphism
+    9.2 [33X[0;0YAttributes[133X
+      9.2-1 UnderlyingHomalgGradedRing
+      9.2-2 DegreeList
+      9.2-3 RankOfObject
+      9.2-4 UnderlyingHomalgGradedRing
+      9.2-5 UnderlyingHomalgMatrix
+    9.3 [33X[0;0YGAP Categories[133X
+      9.3-1 IsGradedRowOrColumn
+      9.3-2 IsGradedRow
+      9.3-3 IsGradedColumn
+      9.3-4 IsGradedRowOrColumnMorphism
+      9.3-5 IsGradedRowMorphism
+      9.3-6 IsGradedColumnMorphism
+    9.4 [33X[0;0YTools to simplify code[133X
+      9.4-1 DeduceMapFromMatrixAndRangeForGradedRows
+      9.4-2 DeduceSomeMapFromMatrixAndRangeForGradedRows
+      9.4-3 DeduceMapFromMatrixAndSourceForGradedRows
+      9.4-4 DeduceSomeMapFromMatrixAndSourceForGradedRows
+      9.4-5 DeduceMapFromMatrixAndRangeForGradedCols
+      9.4-6 DeduceSomeMapFromMatrixAndRangeForGradedCols
+      9.4-7 DeduceMapFromMatrixAndSourceForGradedCols
+      9.4-8 DeduceSomeMapFromMatrixAndSourceForGradedCols
+      9.4-9 UnzipDegreeList
+  10 [33X[0;0YExamples on graded rows and columns[133X
+    10.1 [33X[0;0YConstructors of objects and reduction of degree lists[133X
+    10.2 [33X[0;0YConstructors of morphisms[133X
+    10.3 [33X[0;0YThe GAP categories[133X
+    10.4 [33X[0;0YA few categorical constructions for graded rows[133X
+    10.5 [33X[0;0YA few categorical constructions for graded columns[133X
+    10.6 [33X[0;0YAdditional examples on monoidal structure for graded rows[133X
+    10.7 [33X[0;0YAdditional examples on monoidal structure for graded columns[133X
+    10.8 [33X[0;0YExamples to test Tools methods in graded rows/cols[133X
+  11 [33X[0;0YBasic operations[133X
+    11.1 [33X[0;0YWeak kernel[133X
+      11.1-1 WeakKernelObject
+      11.1-2 WeakKernelEmbedding
+      11.1-3 WeakKernelEmbeddingWithGivenWeakKernelObject
+      11.1-4 WeakKernelLift
+      11.1-5 WeakKernelLiftWithGivenWeakKernelObject
+    11.2 [33X[0;0YWeak cokernel[133X
+      11.2-1 WeakCokernelObject
+      11.2-2 WeakCokernelProjection
+      11.2-3 WeakCokernelProjectionWithGivenWeakCokernelObject
+      11.2-4 WeakCokernelColift
+      11.2-5 WeakCokernelColiftWithGivenWeakCokernelObject
+    11.3 [33X[0;0YWeak bi-fiber product[133X
+      11.3-1 WeakBiFiberProduct
+      11.3-2 ProjectionInFirstFactorOfWeakBiFiberProduct
+      11.3-3 ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      11.3-4 ProjectionInSecondFactorOfWeakBiFiberProduct
+      11.3-5 ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      11.3-6 UniversalMorphismIntoWeakBiFiberProduct
+      11.3-7 UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
+      11.3-8 WeakBiFiberProductMorphismToDirectSum
+    11.4 [33X[0;0YBiased weak fiber product[133X
+      11.4-1 BiasedWeakFiberProduct
+      11.4-2 ProjectionOfBiasedWeakFiberProduct
+      11.4-3 ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      11.4-4 UniversalMorphismIntoBiasedWeakFiberProduct
+      11.4-5 UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+    11.5 [33X[0;0YWeak bi-pushout[133X
+      11.5-1 WeakBiPushout
+      11.5-2 InjectionOfFirstCofactorOfWeakBiPushout
+      11.5-3 InjectionOfSecondCofactorOfWeakBiPushout
+      11.5-4 InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      11.5-5 InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      11.5-6 UniversalMorphismFromWeakBiPushout
+      11.5-7 UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
+      11.5-8 DirectSumMorphismToWeakBiPushout
+    11.6 [33X[0;0YBiased weak pushout[133X
+      11.6-1 BiasedWeakPushout
+      11.6-2 InjectionOfBiasedWeakPushout
+      11.6-3 InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
+      11.6-4 UniversalMorphismFromBiasedWeakPushout
+      11.6-5 UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
+  12 [33X[0;0YExamples and Tests[133X
+    12.1 [33X[0;0YMonoidal structure of AdditiveClosure[133X
+    12.2 [33X[0;0YBasics based on category of rows[133X
+    12.3 [33X[0;0YBasics based on category of columns[133X
+    12.4 [33X[0;0YHomomorphism structure[133X
+    12.5 [33X[0;0YOpposite( CategoryOfRow ) as CategoryOfColumns[133X
+    12.6 [33X[0;0YTests[133X
+    12.7 [33X[0;0YRings as Ab-categories[133X
+  13 [33X[0;0YAdd Functions[133X
+    13.1 [33X[0;0YAvailable Add functions[133X
+      13.1-1 AddBiasedWeakFiberProduct
+      13.1-2 AddBiasedWeakPushout
+      13.1-3 AddDirectSumMorphismToWeakBiPushout
+      13.1-4 AddInjectionOfBiasedWeakPushout
+      13.1-5 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
+      13.1-6 AddInjectionOfFirstCofactorOfWeakBiPushout
+      13.1-7 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      13.1-8 AddInjectionOfSecondCofactorOfWeakBiPushout
+      13.1-9 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      13.1-10 AddProjectionInFirstFactorOfWeakBiFiberProduct
+      13.1-11 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      13.1-12 AddProjectionInSecondFactorOfWeakBiFiberProduct
+      13.1-13 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      13.1-14 AddProjectionOfBiasedWeakFiberProduct
+      13.1-15 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      13.1-16 AddUniversalMorphismFromBiasedWeakPushout
+      13.1-17 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
+      13.1-18 AddUniversalMorphismFromWeakBiPushout
+      13.1-19 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
+      13.1-20 AddUniversalMorphismIntoBiasedWeakFiberProduct
+      13.1-21 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      13.1-22 AddUniversalMorphismIntoWeakBiFiberProduct
+      13.1-23 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
+      13.1-24 AddWeakBiFiberProduct
+      13.1-25 AddWeakBiFiberProductMorphismToDirectSum
+      13.1-26 AddWeakBiPushout
+      13.1-27 AddWeakCokernelColift
+      13.1-28 AddWeakCokernelColiftWithGivenWeakCokernelObject
+      13.1-29 AddWeakCokernelObject
+      13.1-30 AddWeakCokernelProjection
+      13.1-31 AddWeakCokernelProjectionWithGivenWeakCokernelObject
+      13.1-32 AddWeakKernelEmbedding
+      13.1-33 AddWeakKernelEmbeddingWithGivenWeakKernelObject
+      13.1-34 AddWeakKernelLift
+      13.1-35 AddWeakKernelLiftWithGivenWeakKernelObject
+      13.1-36 AddWeakKernelObject
+  
+  
+  [32X

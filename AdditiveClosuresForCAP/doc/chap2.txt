@@ -1,0 +1,327 @@
+  
+  [1X2 [33X[0;0YAdditive closure[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YConstructors[133X[101X
+  
+  [1X2.1-1 AdditiveClosure[101X
+  
+  [33X[1;0Y[29X[2XAdditiveClosure[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe category [23XC^\oplus[123X[133X
+  
+  [33X[0;0YThe  argument  is  an  Ab-category  [23XC[123X.  The  output  is its additive closure
+  [23XC^\oplus[123X.[133X
+  
+  [1X2.1-2 ADDITIVE_CLOSURE[101X
+  
+  [33X[1;0Y[29X[2XADDITIVE_CLOSURE[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe category [23XC^\oplus[123X[133X
+  
+  [33X[0;0YSame  as  [2XAdditiveClosure[102X  ([14X2.1-1[114X),  but  as  an  operation  instead  of  an
+  attribute.[133X
+  
+  [1X2.1-3 AdditiveClosureObject[101X
+  
+  [33X[1;0Y[29X[2XAdditiveClosureObject[102X( [3XL[103X, [3XC^\oplus[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in [23XC^\oplus[123X[133X
+  
+  [33X[0;0YThe argument is a list of objects [23XL=[A_1,\dots,A_n][123X in an Ab-category [23XC[123X. The
+  output  is  the  formal  direct sum [23XA_1\oplus\dots\oplus A_n[123X in the additive
+  closure [23XC^\oplus[123X.[133X
+  
+  [1X2.1-4 AsAdditiveClosureObject[101X
+  
+  [33X[1;0Y[29X[2XAsAdditiveClosureObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object in [23XC^\oplus[123X[133X
+  
+  [33X[0;0YThe  argument is an object [23XA[123X in an Ab-category [23XC[123X. The output is the image of
+  [23XA[123X under the inclusion functor [23X\iota:C\to C^\oplus[123X.[133X
+  
+  [1X2.1-5 AdditiveClosureMorphism[101X
+  
+  [33X[1;0Y[29X[2XAdditiveClosureMorphism[102X( [3XA[103X, [3XM[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{C^\oplus}(A,B)[123X[133X
+  
+  [33X[0;0YThe   arguments   are   formal   direct   sums  [23XA=A_1\oplus\dots\oplus  A_m[123X,
+  [23XB=B_1\oplus\dots\oplus B_n[123X in some additive category [23XC^\oplus[123X and an [23Xm\times
+  n[123X  matrix [23XM :=(\alpha_{ij}:A_i\to B_j)_{ij}[123X for [23Xi=1,\dots,m,j=1,\dots,n[123X. The
+  output is the formal morphism between [23XA[123X and [23XB[123X that is defined by [23XM[123X.[133X
+  
+  [1X2.1-6 AsAdditiveClosureMorphism[101X
+  
+  [33X[1;0Y[29X[2XAsAdditiveClosureMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23XC^\oplus[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism [23X\alpha[123X in an Ab-category [23XC[123X. The output is the
+  image of [23X\alpha[123X under the inclusion functor [23X\iota:C\to C^\oplus[123X.[133X
+  
+  [1X2.1-7 InclusionFunctorInAdditiveClosure[101X
+  
+  [33X[1;0Y[29X[2XInclusionFunctorInAdditiveClosure[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor [23XC\to C^\oplus[123X[133X
+  
+  [33X[0;0YThe  argument  is  an  Ab-category  [23XC[123X.  The  output is the inclusion functor
+  [23X\iota:C\to C^\oplus[123X.[133X
+  
+  [1X2.1-8 ExtendFunctorToAdditiveClosures[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorToAdditiveClosures[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor [23XC^\oplus \to D^\oplus[123X[133X
+  
+  [33X[0;0YThe  argument is a functor [23XF:C\to D[123X, and the output is the extension functor
+  [23XF^\oplus:C^\oplus \to D^\oplus[123X.[133X
+  
+  [1X2.1-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor [23XC^\oplus \to D[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  functor [23XF:C\to D[123X, where [23XD[123X is an additive category. The
+  output is the extension functor [23XF^\oplus:C^\oplus \to D[123X.[133X
+  
+  [1X2.1-10 ExtendFunctorToAdditiveClosureOfSource[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorToAdditiveClosureOfSource[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor [23XC^\oplus \to D^\oplus[123X or [23XC^\oplus \to D[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  functor  [23XF:C\to D[123X. If [23XD[123X is not known to be an additive
+  category,  then  return [10XExtendFunctorToAdditiveClosures[110X([3XF[103X), otherwise return
+  [10XExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[110X([3XF[103X).[133X
+  
+  [1X2.1-11 ExtendNaturalTransformationToAdditiveClosureOfSource[101X
+  
+  [33X[1;0Y[29X[2XExtendNaturalTransformationToAdditiveClosureOfSource[102X( [3Xeta[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya natural transformation from [23XF^\oplus[123X to [23XG^\oplus[123X[133X
+  
+  [33X[0;0YThe  argument is a natural transformation [23X\eta:(F:C\to D)\Rightarrow (G:C\to
+  D)[123X  where  [23XD[123X  is  an  additive  category. The ouput is the extension natural
+  transformation  [23X\eta^\oplus:(F^\oplus:C^\oplus\to D)\to(G^\oplus:C^\oplus\to
+  D)[123X.[133X
+  
+  
+  [1X2.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X2.2-1 UnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ythe category [23XC[123X[133X
+  
+  [33X[0;0YThe argument is some additive closure category [23XA:=C^\oplus[123X. The output is [23XC[123X.[133X
+  
+  [1X2.2-2 ObjectList[101X
+  
+  [33X[1;0Y[29X[2XObjectList[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of the objects in [23XC[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  formal  direct sum [23XA:=A_1\oplus\dots\oplus A_m[123X in some
+  additive closure category [23XC^\oplus[123X. The output is the list [23X[A_1,\dots,A_m][123X.[133X
+  
+  [1X2.2-3 MorphismMatrix[101X
+  
+  [33X[1;0Y[29X[2XMorphismMatrix[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists the morphisms in [23XC[123X[133X
+  
+  [33X[0;0YThe  argument is a morphism [23X\alpha:A\to B[123X between formal direct sums in some
+  additive  closure  category  [23XC^\oplus[123X.  The output is the defining matrix of
+  [23X\alpha[123X.[133X
+  
+  [1X2.2-4 NumberRows[101X
+  
+  [33X[1;0Y[29X[2XNumberRows[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya non-negative integer[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism [23X\alpha:A\to B[123X between formal direct sums. The
+  output is the number of summands of the source.[133X
+  
+  [1X2.2-5 NumberColumns[101X
+  
+  [33X[1;0Y[29X[2XNumberColumns[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya non-negative integer[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism [23X\alpha:A\to B[123X between formal direct sums. The
+  output is the number of summands of the range.[133X
+  
+  
+  [1X2.3 [33X[0;0YOperators[133X[101X
+  
+  [1X2.3-1 [][101X
+  
+  [33X[1;0Y[29X[2X[][102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in [23XC[123X[133X
+  
+  [33X[0;0YThe  arguments  are a formal direct sum [23XA[123X in some additive category [23XC^\oplus[123X
+  and an integers [23Xi[123X. The output is the [23Xi[123X'th entry in [10XObjectList[110X([23XA[123X).[133X
+  
+  [1X2.3-2 [[101X
+  
+  [33X[1;0Y[29X[2X[[102X( [3Xalpha[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism [23XC[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  morphism [23X\alpha:A\to B[123X between formal direct sums in
+  some  additive  category  [23XC^\oplus[123X  and  two integers [23Xi,j[123X. The output is the
+  [23X(i,j)[123X'th entry in [10XMorphismMatrix[110X([23X\alpha[123X).[133X
+  
+  [1X2.3-3 /[101X
+  
+  [33X[1;0Y[29X[2X/[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [33X[0;0YThe  input  is  either  a list of objects or list of lists of morphisms. The
+  method delegates to either [10XAdditiveClosureObject[110X or [10XAdditiveClosureMorphism[110X.[133X
+  
+  [1X2.3-4 /[101X
+  
+  [33X[1;0Y[29X[2X/[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [33X[0;0YThis    is    a   convenience   method   for   [10XAsAdditiveClosureObject[110X   and
+  [10XAsAdditiveClosureMorphism[110X.[133X
+  
+  
+  [1X2.4 [33X[0;0YGlobal functions[133X[101X
+  
+  [1X2.4-1 NullMatImmutable[101X
+  
+  [33X[1;0Y[29X[2XNullMatImmutable[102X( [3Xarg[103X ) [32X function[133X
+  
+  [33X[0;0YA (faster) version of [10XNullMat[110X returning an immutable matrix.[133X
+  
+  [1X2.4-2 UnionOfRowsListList[101X
+  
+  [33X[1;0Y[29X[2XUnionOfRowsListList[102X( [3Xnr_cols[103X, [3XL[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YStacks  the  matrices (lists of lists) in the list [3XL[103X. The matrices must have
+  [10Xnr_cols[110X columns.[133X
+  
+  [1X2.4-3 UnionOfColumnsListList[101X
+  
+  [33X[1;0Y[29X[2XUnionOfColumnsListList[102X( [3Xnr_rows[103X, [3XL[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YAugments the matrices (lists of lists) in the list [3XL[103X. The matrices must have
+  [10Xnr_rows[110X rows.[133X
+  
+  
+  [1X2.5 [33X[0;0YRandom methods for additive closure category[133X[101X
+  
+  [1X2.5-1 RandomObjectByList[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  
+  [33X[0;0YThe  arguments are an additive closure category [3XC[103X of a category [3XU[103X and a list
+  [3XL[103X  whose first entry is a non-empty list of non-negative integers and second
+  entry  is  a list. The output is an object in [3XC[103X which is a formal direct sum
+  of [10XRandom[110X([3XL[103X[1]) objects in [3XU[103X each computed via [10XRandomObjectByList[110X([3XU[103X,[3XL[103X[2]).[133X
+  
+  [1X2.5-2 RandomObjectByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  additive  closure  category [3XC[103X of a category [3XU[103X and a
+  non-negative  integer  [3Xn[103X.  The  output  is  an object in [3XC[103X which is a formal
+  direct   sum   of   at   most   [3Xn[103X   objects   in   [3XU[103X   each   computed   via
+  [10XRandomObjectByInteger[110X([3XU[103X,[3Xn[103X).[133X
+  
+  [1X2.5-3 RandomMorphismWithFixedSourceAndRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByList[102X( [3XS[103X, [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  two objects [3XS[103X, [3XR[103X and a list [3XL[103X. The output is a morphism
+  from   [3XS[103X   to   [3XR[103X   whose   matrix  entry  at  index  [23Xi,j[123X  is  computed  via
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([3XS[103X[[23Xi[123X],[3XR[103X[[23Xj[123X],[3XL[103X).[133X
+  
+  [1X2.5-4 RandomMorphismWithFixedSourceAndRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceAndRangeByInteger[102X( [3XS[103X, [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [3XS[103X,  [3XR[103X  and  an integer [3Xn[103X. The output is a
+  morphism  from  [3XS[103X  to  [3XR[103X  whose  matrix  entry  at index [23Xi,j[123X is computed via
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([3XS[103X[[23Xi[123X],[3XR[103X[[23Xj[123X],[3Xn[103X).[133X
+  
+  [1X2.5-5 RandomMorphismWithFixedSourceByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByList[102X( [3XS[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe arguments are an object [3XS[103X in an additive closure category [3XC[103X and a list [3XL[103X
+  consisting        of        two       lists.       The       output       is
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([3XS[103X,[23XR[123X,[3XL[103X[2])  where  [23XR[123X  is computed
+  via [10XRandomObjectByList[110X([3XC[103X,[3XL[103X[1]).[133X
+  
+  [1X2.5-6 RandomMorphismWithFixedSourceByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedSourceByInteger[102X( [3XS[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in an additive closure category [3XC[103X and an
+  integer              [3Xn[103X.              The              output              is
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([3XS[103X,[23XR[123X,[23X1[123X+[10XLog2Int[110X([3Xn[103X))  where [23XR[123X is
+  computed via [10XRandomObjectByInteger[110X([3XC[103X,[3Xn[103X).[133X
+  
+  [1X2.5-7 RandomMorphismWithFixedRangeByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByList[102X( [3XR[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a category of rows[133X
+  
+  [33X[0;0YThe arguments are an object [3XR[103X in an additive closure category [3XC[103X and a list [3XL[103X
+  consisting        of        two       lists.       The       output       is
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([3XS[103X,[23XR[123X,[3XL[103X[2])  where  [23XS[123X  is computed
+  via [10XRandomObjectByList[110X([3XC[103X,[3XL[103X[1]).[133X
+  
+  [1X2.5-8 RandomMorphismWithFixedRangeByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismWithFixedRangeByInteger[102X( [3XR[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [3XS[103X  in an additive closure category [3XC[103X and an
+  integer              [3Xn[103X.              The              output              is
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([3XS[103X,[23XR[123X,[23X1[123X+[10XLog2Int[110X([3Xn[103X))  where [23XS[123X is
+  computed via [10XRandomObjectByInteger[110X([3XC[103X,[3Xn[103X).[133X
+  
+  [1X2.5-9 RandomMorphismByList[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe arguments are an additive closure category [3XC[103X and a list [3XL[103X consisiting of
+  three              lists.              The             output             is
+  [10XRandomMorphismWithFixedSourceAndRangeByList[110X([23XS[123X,[23XR[123X,[3XL[103X[3]))  where  [23XS[123X  and  [23XR[123X are
+  computed via [10XRandomObjectByList[110X([3XC[103X,[3XL[103X[i]) for [23Xi=1,2[123X respectively.[133X
+  
+  [1X2.5-10 RandomMorphismByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomMorphismByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in C[133X
+  
+  [33X[0;0YThe  arguments are an additive closure category [3XC[103X and a non-negative integer
+  [3Xn[103X.                     The                     output                     is
+  [10XRandomMorphismWithFixedSourceAndRangeByInteger[110X([23XS[123X,[23XR[123X,[23X1[123X+[10XLog2Int[110X([3Xn[103X)))   where  [23XS[123X
+  and [23XR[123X are computed via [10XRandomObjectByInteger[110X([3XC[103X,[3Xn[103X).[133X
+  
+  
+  [1X2.6 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X2.6-1 IsAdditiveClosureCategory[101X
+  
+  [33X[1;0Y[29X[2XIsAdditiveClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YThe GAP category of additive closures of Ab-categories.[133X
+  
+  [1X2.6-2 IsAdditiveClosureObject[101X
+  
+  [33X[1;0Y[29X[2XIsAdditiveClosureObject[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YThe GAP category of objects in additive closures of Ab-categories.[133X
+  
+  [1X2.6-3 IsAdditiveClosureMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsAdditiveClosureMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YThe GAP category of morphisms in additive closures of Ab-categories.[133X
+  
