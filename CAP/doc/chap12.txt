@@ -49,8 +49,8 @@
   example:    We    reinterpret   [10XOpposite(   CategoryOfRows(   R   )   )[110X   as
   [10XCategoryOfColumns(  R  )[110X  using [2XReinterpretationOfCategory[102X ([14X12.6-1[114X) with the
   options         described         in        the        following        (see
-  [10XCategoryOfColumns_as_Opposite_CategoryOfRows.gi[110X in [10XFreydCategoriesForCAP[110X for
-  a full implementation).[133X
+  [10XCategoryOfColumns_as_Opposite_CategoryOfRows.gi[110X   in  [10XAdditiveClosuresForCAP[110X
+  for a full implementation).[133X
   
   [31X1[131X   [33X[0;6YSet   the   options   [10Xcategory_filter[110X,   [10Xcategory_object_filter[110X,   and
         [10Xcategory_morphism_filter[110X  to  the  filters  corresponding  to the data
