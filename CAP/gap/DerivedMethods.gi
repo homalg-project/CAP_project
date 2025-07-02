@@ -500,7 +500,7 @@ AddDerivationToCAP( ImageEmbedding,
     return PreCompose( cat, IsomorphismFromImageObjectToKernelOfCokernel( cat, mor ),
                        image_embedding );
   
-  end : CategoryFilter := IsAbelianCategory ); ##FIXME: PreAbelian?
+  end : CategoryFilter := IsPreAbelianCategory );
 
 ##
 AddDerivationToCAP( CoastrictionToImage,
@@ -2935,7 +2935,7 @@ AddFinalDerivationBundle( "IsomorphismFromImageObjectToKernelOfCokernel as the i
     return IdentityMorphism( cat, kernel_of_cokernel );
     
   end,
-] : CategoryFilter := IsAbelianCategory );
+] : CategoryFilter := IsPreAbelianCategory );
 
 ##
 AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
@@ -3012,7 +3012,7 @@ AddFinalDerivationBundle( "IsomorphismFromCoimageToCokernelOfKernel as the ident
     return IdentityMorphism( cat, cokernel_of_kernel );
     
   end,
-] : CategoryFilter := IsAbelianCategory );
+] : CategoryFilter := IsPreAbelianCategory );
 
 ## Final methods for initial object
 
