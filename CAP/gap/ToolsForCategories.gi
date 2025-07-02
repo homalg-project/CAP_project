@@ -1184,6 +1184,54 @@ InstallGlobalFunction( CapJitDataTypeOfNTupleOf, function ( n, element_types... 
     
 end );
 
+#= comment for Julia
+##
+InstallGlobalFunction( CapJitDataTypeOfGroup, function ( group )
+  local type;
+    
+    if IsIdenticalObj( group, false ) then
+        
+        type := rec(
+            filter := IsGroup,
+        );
+        
+    else
+        
+        type := rec(
+            filter := IsGroup,
+            group := group,
+        );
+        
+    fi;
+    
+    return type;
+    
+end );
+
+##
+InstallGlobalFunction( CapJitDataTypeOfElementOfGroup, function ( group )
+  local type;
+    
+    if IsIdenticalObj( group, false ) then
+        
+        type := rec(
+            filter := IsMultiplicativeElementWithInverse,
+        );
+        
+    else
+        
+        type := rec(
+            filter := IsMultiplicativeElementWithInverse,
+            group := group,
+        );
+        
+    fi;
+    
+    return type;
+    
+end );
+# =#
+
 ##
 InstallGlobalFunction( CapJitDataTypeOfRing, function ( ring )
   local type;
@@ -1229,6 +1277,7 @@ InstallGlobalFunction( CapJitDataTypeOfElementOfRing, function ( ring )
     return type;
     
 end );
+
 ##
 InstallGlobalFunction( CapJitDataTypeOfCategory, function ( cat )
   local type;

@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "GroupsAsCategoriesForCAP",
 Subtitle := "Groups as categories on one object",
-Version := "2025.06-03",
+Version := "2025.07-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -84,7 +84,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.13.0",
-  NeededOtherPackages := [ [ "CAP", ">= 2025.06-05" ],
+  NeededOtherPackages := [ [ "CAP", ">= 2025.07-02" ],
                          ],
   SuggestedOtherPackages := [ [ "FinSetsForCAP", ">= 2023.07-03" ],
                               [ "AdditiveClosuresForCAP", ">= 2025.06-01" ],

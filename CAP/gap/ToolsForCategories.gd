@@ -208,6 +208,15 @@ DeclareGlobalFunction( "CapJitDataTypeOfNTupleOf" );
 
 #! @BeginGroup
 #! @Description
+#!   (experimental) Returns the data type of the group (or elements of the group) <A>group</A>.
+#! @Arguments group
+DeclareGlobalFunction( "CapJitDataTypeOfGroup" );
+#! @Arguments group
+DeclareGlobalFunction( "CapJitDataTypeOfElementOfGroup" );
+#! @EndGroup
+
+#! @BeginGroup
+#! @Description
 #!   (experimental) Returns the data type of the ring (or elements of the ring) <A>ring</A>.
 #! @Arguments ring
 DeclareGlobalFunction( "CapJitDataTypeOfRing" );

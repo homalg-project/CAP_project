@@ -15,14 +15,27 @@ InstallMethod( GroupAsCategory,
                [ IsGroup ],
                
   function( group )
-    local category, is_finite;
+    local group_name, category, is_finite;
     
-    category := CreateCapCategory( Concatenation( "Group as category( ", String( group )," )" ),
-                                   IsGroupAsCategory,
-                                   IsGroupAsCategoryObject,
-                                   IsGroupAsCategoryMorphism,
-                                   IsCapCategoryTwoCell
-                                   : overhead := false );
+    if HasName( group ) then
+        group_name := Name( group );
+    elif HasStructureDescription( group ) then
+        group_name := StructureDescription( group );
+    else
+        group_name := String( group );
+    fi;
+    
+    category :=
+      CreateCapCategoryWithDataTypes(
+              Concatenation( "GroupAsCategory( ", group_name," )" ),
+              IsGroupAsCategory,
+              IsGroupAsCategoryObject,
+              IsGroupAsCategoryMorphism,
+              IsCapCategoryTwoCell,
+              fail,
+              CapJitDataTypeOfElementOfGroup( group ),
+              fail
+              : overhead := false );
     
     category!.compiler_hints := rec(
         category_attribute_names := [

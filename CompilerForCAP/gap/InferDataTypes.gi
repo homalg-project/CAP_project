@@ -79,7 +79,12 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( val
     elif IsRing( value ) then
         
         return CapJitDataTypeOfRing( value );
+
+    #= comment for Julia
+    elif IsGroup( value ) then
         
+        return CapJitDataTypeOfGroup( value );
+    # =#
     elif IsFunction( value ) then
         
         # signature has to be set from somewhere else
