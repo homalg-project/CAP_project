@@ -25,6 +25,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X845F81E07A23BEF8">3.1 <span class="Heading">Using matrix data structures</span></a>
 </span>
 </div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7FFA8E0D873242E0">3.2 <span class="Heading">The category of rows over a Bézout domain is pre-abelian.</span></a>
+</span>
+</div>
 </div>
 
 <h3>3 <span class="Heading">Example on additive closure</span></h3>
@@ -106,6 +109,60 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    SumOfMorphisms( A, [ ], B ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroMorphism( A, B )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+</pre></div>
+
+<p><a id="X7FFA8E0D873242E0" name="X7FFA8E0D873242E0"></a></p>
+
+<h4>3.2 <span class="Heading">The category of rows over a Bézout domain is pre-abelian.</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegers( );</span>
+Z
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Zmat := CategoryOfRows( zz );</span>
+Rows( Z )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Zmat );</span>
+A CAP category with name Rows( Z ):
+
+83 primitive operations were used to derive 425 operations for this category \
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
+* IsPreAbelianCategory
+* IsRigidSymmetricClosedMonoidalCategory
+* IsRigidSymmetricCoclosedMonoidalCategory
+and furthermore mathematically
+* IsSkeletalCategory
+* IsStrictMonoidalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := HomalgMatrix(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [  -36,   18,  -80,  -54,   28 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [   90,  -45,  140,   45,  -40 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [  -24,   12,  -32,   -4,    8 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [   -6,    3,   -4,    5,    0 ] ], zz );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := mat / Zmat;</span>
+&lt;A morphism in Rows( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">split_epi := CoimageProjection( mor );</span>
+&lt;An epimorphism in Rows( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( split_epi );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">split_mono := ImageEmbedding( mor );</span>
+&lt;A monomorphism in Rows( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitMonomorphism( split_mono );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">epimono := MorphismFromCoimageToImage( mor );</span>
+&lt;A morphism in Rows( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( epimono );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( epimono );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LiftAlongMonomorphism( split_mono, AstrictionToCoimage( mor ) ) = epimono;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColiftAlongEpimorphism( split_epi, CoastrictionToImage( mor ) ) = epimono;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( [ split_epi, epimono, split_mono ] ) = mor;</span>
 true
 </pre></div>
 

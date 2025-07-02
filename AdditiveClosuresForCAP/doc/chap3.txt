@@ -79,3 +79,55 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
+  
+  [1X3.2 [33X[0;0YThe category of rows over a Bézout domain is pre-abelian.[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XZmat := CategoryOfRows( zz );[127X[104X
+    [4X[28XRows( Z )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Zmat );[127X[104X
+    [4X[28XA CAP category with name Rows( Z ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X83 primitive operations were used to derive 425 operations for this category \[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
+    [4X[28X* IsPreAbelianCategory[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictMonoidalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xmat := HomalgMatrix([127X[104X
+    [4X[25X>[125X [27X               [ [  -36,   18,  -80,  -54,   28 ],[127X[104X
+    [4X[25X>[125X [27X                 [   90,  -45,  140,   45,  -40 ],[127X[104X
+    [4X[25X>[125X [27X                 [  -24,   12,  -32,   -4,    8 ],[127X[104X
+    [4X[25X>[125X [27X                 [   -6,    3,   -4,    5,    0 ] ], zz );;[127X[104X
+    [4X[25Xgap>[125X [27Xmor := mat / Zmat;[127X[104X
+    [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27Xsplit_epi := CoimageProjection( mor );[127X[104X
+    [4X[28X<An epimorphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitEpimorphism( split_epi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsplit_mono := ImageEmbedding( mor );[127X[104X
+    [4X[28X<A monomorphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitMonomorphism( split_mono );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xepimono := MorphismFromCoimageToImage( mor );[127X[104X
+    [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( epimono );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( epimono );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLiftAlongMonomorphism( split_mono, AstrictionToCoimage( mor ) ) = epimono;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XColiftAlongEpimorphism( split_epi, CoastrictionToImage( mor ) ) = epimono;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( [ split_epi, epimono, split_mono ] ) = mor;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  

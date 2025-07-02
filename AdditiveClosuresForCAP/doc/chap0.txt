@@ -6,10 +6,10 @@
                  [1X Additive closures for pre-abelian categories [101X
   
   
-                                   2025.06-01
+                                   2025.07-01
   
   
-                                  1 July 2025
+                                  2 July 2025
   
   
                                 Sebastian Posur
@@ -134,6 +134,7 @@
       2.6-3 IsAdditiveClosureMorphism
   3 [33X[0;0YExample on additive closure[133X
     3.1 [33X[0;0YUsing matrix data structures[133X
+    3.2 [33X[0;0YThe category of rows over a Bézout domain is pre-abelian.[133X
   4 [33X[0;0YCategory of rows[133X
     4.1 [33X[0;0YRandom Methods in Category of Rows[133X
       4.1-1 RandomObjectByList
