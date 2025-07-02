@@ -1014,7 +1014,7 @@ InstallMethod( AdelmanCategoryFunctorInducedByUniversalProperty,
   function( functor ) 
     local source, range, induced_functor;
     
-    range := AsCapCategory( Range( functor ) );
+    range := RangeOfFunctor( functor );
     
     if not ( HasIsAbelianCategory( range ) and IsAbelianCategory( range ) ) then
         
@@ -1028,7 +1028,7 @@ InstallMethod( AdelmanCategoryFunctorInducedByUniversalProperty,
         
     fi;
     
-    source := AdelmanCategory( AsCapCategory( Source( functor ) ) );
+    source := AdelmanCategory( SourceOfFunctor( functor ) );
     
     induced_functor :=
         CapFunctor( 
