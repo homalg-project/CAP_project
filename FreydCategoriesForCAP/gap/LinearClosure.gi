@@ -879,9 +879,9 @@ InstallMethodWithCache( ExtendFunctorToLinearClosureOfSource,
   function( F, linear_closure_source, ring_map )
     local source_cat, range_cat, name, G;
     
-    source_cat := AsCapCategory( Source( F ) );
+    source_cat := SourceOfFunctor( F );
     
-    range_cat := AsCapCategory( Range( F ) );
+    range_cat := RangeOfFunctor( F );
     
     if not IsIdenticalObj( source_cat, UnderlyingCategory( linear_closure_source ) ) then
       

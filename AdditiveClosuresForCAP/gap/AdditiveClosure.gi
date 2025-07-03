@@ -352,9 +352,9 @@ InstallMethod( ExtendFunctorToAdditiveClosures,
   function( F )
     local source_cat, range_cat, additive_closure_source, additive_closure_range, name, G;
     
-    source_cat := AsCapCategory( Source( F ) );
+    source_cat := SourceOfFunctor( F );
     
-    range_cat := AsCapCategory( Range( F ) );
+    range_cat := RangeOfFunctor( F );
     
     additive_closure_source := AdditiveClosure( source_cat );
     
@@ -396,9 +396,9 @@ InstallMethod( ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSourc
   function( F )
     local source_cat, range_cat, additive_closure_source, name, G;
     
-    source_cat := AsCapCategory( Source( F ) );
+    source_cat := SourceOfFunctor( F );
     
-    range_cat := AsCapCategory( Range( F ) );
+    range_cat := RangeOfFunctor( F );
     
     if not ( HasIsAdditiveCategory( range_cat ) and IsAdditiveCategory( range_cat ) ) then
       
@@ -455,7 +455,7 @@ InstallMethod( ExtendFunctorToAdditiveClosureOfSource,
   function( F )
     local range_cat;
     
-    range_cat := AsCapCategory( Range( F ) );
+    range_cat := RangeOfFunctor( F );
     
     if not ( HasIsAdditiveCategory( range_cat ) and IsAdditiveCategory( range_cat ) ) then
       
@@ -477,7 +477,7 @@ InstallMethod( ExtendNaturalTransformationToAdditiveClosureOfSource,
     
     G := Range( eta );
     
-    range := AsCapCategory( Range( F ) ); # = Range( G )
+    range := RangeOfFunctor( F ); # = Range( G )
     
     if not ( HasIsAdditiveCategory( range ) and IsAdditiveCategory( range ) ) then
         

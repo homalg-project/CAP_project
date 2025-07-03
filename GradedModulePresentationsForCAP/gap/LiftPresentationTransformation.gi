@@ -28,7 +28,7 @@ BindGlobal( "CAP_INTERNAL_LiftNaturalTransformationToGradedModuleFunctor",
     
     range_functor := Range( natural_transformation );
     
-    underlying_category := AsCapCategory( Source( source_functor ) );
+    underlying_category := SourceOfFunctor( source_functor );
     
     ring := underlying_category!.ring_for_representation_category;
     
@@ -90,7 +90,7 @@ BindGlobal( "CAP_INTERNAL_LiftNaturalTransformationToGradedModuleNatTrans",
     
     range_func := CAP_INTERNAL_LiftNaturalTransformationToGradedModuleFunctor( nat_trans, left );
     
-    underlying_category := AsCapCategory( Source( range_func ) );
+    underlying_category := SourceOfFunctor( range_func );
     
     ring := underlying_category!.ring_for_representation_category;
     
