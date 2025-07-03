@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GroupsAsCategoriesForCAP",
 Subtitle := "Groups as categories on one object",
-Version := "2025.06-03",
-Date := "2025-07-01",
+Version := "2025.07-01",
+Date := "2025-07-03",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -84,7 +84,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.13.0",
-  NeededOtherPackages := [ [ "CAP", ">= 2025.06-05" ],
+  NeededOtherPackages := [ [ "CAP", ">= 2025.07-02" ],
                          ],
   SuggestedOtherPackages := [ [ "FinSetsForCAP", ">= 2023.07-03" ],
                               [ "AdditiveClosuresForCAP", ">= 2025.06-01" ],
