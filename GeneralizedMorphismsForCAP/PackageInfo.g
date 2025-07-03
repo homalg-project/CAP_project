@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
-Version := "2025.06-01",
-Date := "2025-06-30",
+Version := "2025.07-01",
+Date := "2025-07-03",
 License := "GPL-2.0-or-later",
 
 Persons := [
