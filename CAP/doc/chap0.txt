@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2025.07-01
+                                   2025.07-02
   
   
                                   3 July 2025
@@ -960,37 +960,38 @@
       9.2-22 CapJitAddTypeSignature
       9.2-23 CapJitDataTypeOfListOf
       9.2-24 CapJitDataTypeOfNTupleOf
-      9.2-25 CapJitDataTypeOfRing
-      9.2-26 CapJitDataTypeOfCategory
-      9.2-27 CapJitTypedExpression
-      9.2-28 CapFixpoint
-      9.2-29 Iterated
+      9.2-25 CapJitDataTypeOfGroup
+      9.2-26 CapJitDataTypeOfRing
+      9.2-27 CapJitDataTypeOfCategory
+      9.2-28 CapJitTypedExpression
+      9.2-29 CapFixpoint
       9.2-30 Iterated
-      9.2-31 TransitivelyNeededOtherPackages
-      9.2-32 PackageOfCAPOperation
-      9.2-33 SafePosition
-      9.2-34 SafeUniquePosition
-      9.2-35 SafePositionProperty
-      9.2-36 SafeUniquePositionProperty
-      9.2-37 SafeFirst
-      9.2-38 SafeUniqueEntry
-      9.2-39 NTuple
-      9.2-40 Pair
-      9.2-41 Triple
-      9.2-42 TransposedMatWithGivenDimensions
-      9.2-43 HandlePrecompiledTowers
-      9.2-44 CAP_JIT_INCOMPLETE_LOGIC
-      9.2-45 CAP_JIT_EXPR_CASE_WRAPPER
-      9.2-46 ListWithKeys
-      9.2-47 SumWithKeys
-      9.2-48 ProductWithKeys
-      9.2-49 ForAllWithKeys
-      9.2-50 ForAnyWithKeys
-      9.2-51 NumberWithKeys
-      9.2-52 FilteredWithKeys
-      9.2-53 FirstWithKeys
-      9.2-54 LastWithKeys
-      9.2-55 CreateGapObjectWithAttributes
+      9.2-31 Iterated
+      9.2-32 TransitivelyNeededOtherPackages
+      9.2-33 PackageOfCAPOperation
+      9.2-34 SafePosition
+      9.2-35 SafeUniquePosition
+      9.2-36 SafePositionProperty
+      9.2-37 SafeUniquePositionProperty
+      9.2-38 SafeFirst
+      9.2-39 SafeUniqueEntry
+      9.2-40 NTuple
+      9.2-41 Pair
+      9.2-42 Triple
+      9.2-43 TransposedMatWithGivenDimensions
+      9.2-44 HandlePrecompiledTowers
+      9.2-45 CAP_JIT_INCOMPLETE_LOGIC
+      9.2-46 CAP_JIT_EXPR_CASE_WRAPPER
+      9.2-47 ListWithKeys
+      9.2-48 SumWithKeys
+      9.2-49 ProductWithKeys
+      9.2-50 ForAllWithKeys
+      9.2-51 ForAnyWithKeys
+      9.2-52 NumberWithKeys
+      9.2-53 FilteredWithKeys
+      9.2-54 FirstWithKeys
+      9.2-55 LastWithKeys
+      9.2-56 CreateGapObjectWithAttributes
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
