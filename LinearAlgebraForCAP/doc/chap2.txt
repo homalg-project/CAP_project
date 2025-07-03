@@ -283,7 +283,7 @@
     [4X[25Xgap>[125X [27Xpi1 := ProjectionInFactorOfDirectSum( [ V1, V1 ], 1 );;[127X[104X
     [4X[25Xgap>[125X [27Xpi2 := ProjectionInFactorOfDirectSum( [ V3, V1 ], 1 );;[127X[104X
     [4X[25Xgap>[125X [27Xvalue1 := ApplyFunctor( F, pi1, pi2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xinput := ProductCategoryMorphism( AsCapCategory( Source( F ) ), [ pi1, Opposite( pi2 ) ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xinput := ProductCategoryMorphism( SourceOfFunctor( F ), [ pi1, Opposite( pi2 ) ] );;[127X[104X
     [4X[25Xgap>[125X [27Xvalue2 := ApplyFunctor( F, input );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( value1, value2 );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -291,13 +291,13 @@
     [4X[25Xgap>[125X [27XF_installation( pi1, pi2 );;[127X[104X
     [4X[25Xgap>[125X [27XF_installation( input );;[127X[104X
     [4X[25Xgap>[125X [27XF_installationOnObjects( V1, V1 );;[127X[104X
-    [4X[25Xgap>[125X [27XF_installationOnObjects( ProductCategoryObject( AsCapCategory( Source( F ) ), [ V1, Opposite( V1 ) ] ) );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installationOnObjects( ProductCategoryObject( SourceOfFunctor( F ), [ V1, Opposite( V1 ) ] ) );;[127X[104X
     [4X[25Xgap>[125X [27XF_installationOnMorphisms( pi1, pi2 );;[127X[104X
     [4X[25Xgap>[125X [27XF_installationOnMorphisms( input );;[127X[104X
     [4X[25Xgap>[125X [27XF2 := CapFunctor( "CohomForVec2", ProductCategory( [ vec, Opposite( vec ) ] ), vec );;[127X[104X
     [4X[25Xgap>[125X [27XAddObjectFunction( F2, a -> obj_func( a[1], Opposite( a[2] ) ) );;[127X[104X
     [4X[25Xgap>[125X [27XAddMorphismFunction( F2, function( source, datum, range ) return mor_func( source, datum[1], Opposite( datum[2] ), range ); end );;[127X[104X
-    [4X[25Xgap>[125X [27Xinput := ProductCategoryMorphism( AsCapCategory( Source( F2 ) ), [ pi1, Opposite( pi2 ) ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xinput := ProductCategoryMorphism( SourceOfFunctor( F2 ), [ pi1, Opposite( pi2 ) ] );;[127X[104X
     [4X[25Xgap>[125X [27Xvalue3 := ApplyFunctor( F2, input );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( value1, value3 );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -305,7 +305,7 @@
     [4X[28X[ [ Product of: Category of matrices over Q, Opposite( Category of matrices over Q ), false ] ][128X[104X
     [4X[25Xgap>[125X [27XInstallFunctor( F2, "F_installation2" );;[127X[104X
     [4X[25Xgap>[125X [27XF_installation2( input );;[127X[104X
-    [4X[25Xgap>[125X [27XF_installation2OnObjects( ProductCategoryObject( AsCapCategory( Source( F2 ) ), [ V1, Opposite( V1 ) ] ) );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installation2OnObjects( ProductCategoryObject( SourceOfFunctor( F2 ), [ V1, Opposite( V1 ) ] ) );;[127X[104X
     [4X[25Xgap>[125X [27XF_installation2OnMorphisms( input );;[127X[104X
   [4X[32X[104X
   
