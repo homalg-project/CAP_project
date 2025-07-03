@@ -1,7 +1,7 @@
 name: FreydCategoriesForCAP
-version: "2025.06-09"
+version: "2025.07-01"
 license: "GPL-2.0-or-later"
-date: 2025-07-01
+date: 2025-07-03
 description: |
     Freyd categories - Formal (co)kernels for additive categories
 
@@ -56,11 +56,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2025.06-09/FreydCategoriesForCAP-2025.06-09.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2025.07-01/FreydCategoriesForCAP-2025.07-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2025.06-09/FreydCategoriesForCAP-2025.06-09.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2025.07-01/FreydCategoriesForCAP-2025.07-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2025.06-09/FreydCategoriesForCAP-2025.06-09-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2025.07-01/FreydCategoriesForCAP-2025.07-01-manual.pdf
 
 abstract: |
 
@@ -69,10 +69,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PBZ01</span>]   <b class='BibAuthor'>Posur, S., Bies, M. and Zickgraf, F.</b>,
+    [<span class='BibKey'>PBZ03</span>]   <b class='BibAuthor'>Posur, S., Bies, M. and Zickgraf, F.</b>,
      <i class='BibTitle'>FreydCategoriesForCAP, Freyd categories - Formal (co)kernels for additive categories,
-             Version 2025.06-09</i>
-     (<span class='BibYear'>7-01</span>)<br />
+             Version 2025.07-01</i>
+     (<span class='BibYear'>7-03</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FreydCategoriesForCAP">https://homalg-project.github.io/pkg/FreydCategoriesForCAP</a></span>.
     </p>
@@ -83,15 +83,15 @@ bibtex: |
       author =           {Posur, S. and Bies, M. and Zickgraf, F.},
       title =            {{FreydCategoriesForCAP},       {Freyd       categories
                           \texttt{\symbol{45}}  Formal  (co)kernels for additive
-                          categories}, {V}ersion 2025.06\texttt{\symbol{45}}09},
+                          categories}, {V}ersion 2025.07\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {7\texttt{\symbol{45}}01},
+      year =             {7\texttt{\symbol{45}}03},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FreydCategoriesForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{FreydCategoriesForCAP}}},
-      printedkey =       {PBZ01}
+      printedkey =       {PBZ03}
     }
 
