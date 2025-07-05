@@ -79,6 +79,11 @@ echo "Release LinearAlgebraForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/LinearAlgebraForCAP" --webdir "$PWD/gh-pages/LinearAlgebraForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
 echo ""
 
+# LinearClosuresForCAP
+echo "Release LinearClosuresForCAP"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/LinearClosuresForCAP" --webdir "$PWD/gh-pages/LinearClosuresForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+echo ""
+
 # ModulePresentationsForCAP
 echo "Release ModulePresentationsForCAP"
 GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ModulePresentationsForCAP" --webdir "$PWD/gh-pages/ModulePresentationsForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"

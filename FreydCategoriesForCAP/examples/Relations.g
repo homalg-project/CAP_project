@@ -5,7 +5,7 @@
 LoadPackage( "RingsForHomalg" );;
 LoadPackage( "LinearAlgebraForCAP" );;
 LoadPackage( "FreydCategoriesForCAP" );;
-LoadPackage( "GeneralizedM" );
+LoadPackage( "GeneralizedMorphismsForCAP" );
 
 #! @Example
 F := HomalgRingOfIntegers( 3 );;

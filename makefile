@@ -4,7 +4,7 @@ ci-test: ci-test_all_packages
 
 # BEGIN PACKAGE JANITOR
 ################################
-doc: doc_CAP doc_ActionsForCAP doc_AdditiveClosuresForCAP doc_AttributeCategoryForCAP doc_CartesianCategories doc_CompilerForCAP doc_ComplexesAndFilteredObjectsForCAP doc_FreydCategoriesForCAP doc_GeneralizedMorphismsForCAP doc_GradedModulePresentationsForCAP doc_GroupRepresentationsForCAP doc_GroupsAsCategoriesForCAP doc_HomologicalAlgebraForCAP doc_InternalExteriorAlgebraForCAP doc_LinearAlgebraForCAP doc_ModulePresentationsForCAP doc_ModulesOverLocalRingsForCAP doc_MonoidalCategories doc_ToricSheaves
+doc: doc_CAP doc_ActionsForCAP doc_AdditiveClosuresForCAP doc_AttributeCategoryForCAP doc_CartesianCategories doc_CompilerForCAP doc_ComplexesAndFilteredObjectsForCAP doc_FreydCategoriesForCAP doc_GeneralizedMorphismsForCAP doc_GradedModulePresentationsForCAP doc_GroupRepresentationsForCAP doc_GroupsAsCategoriesForCAP doc_HomologicalAlgebraForCAP doc_InternalExteriorAlgebraForCAP doc_LinearAlgebraForCAP doc_LinearClosuresForCAP doc_ModulePresentationsForCAP doc_ModulesOverLocalRingsForCAP doc_MonoidalCategories doc_ToricSheaves
 
 doc_CAP:
 	$(MAKE) -C CAP doc
@@ -51,6 +51,9 @@ doc_InternalExteriorAlgebraForCAP:
 doc_LinearAlgebraForCAP:
 	$(MAKE) -C LinearAlgebraForCAP doc
 
+doc_LinearClosuresForCAP:
+	$(MAKE) -C LinearClosuresForCAP doc
+
 doc_ModulePresentationsForCAP:
 	$(MAKE) -C ModulePresentationsForCAP doc
 
@@ -64,7 +67,7 @@ doc_ToricSheaves:
 	$(MAKE) -C ToricSheaves doc
 
 ################################
-test: doc test_CAP test_ActionsForCAP test_AdditiveClosuresForCAP test_AttributeCategoryForCAP test_CartesianCategories test_CompilerForCAP test_ComplexesAndFilteredObjectsForCAP test_FreydCategoriesForCAP test_GeneralizedMorphismsForCAP test_GradedModulePresentationsForCAP test_GroupRepresentationsForCAP test_GroupsAsCategoriesForCAP test_HomologicalAlgebraForCAP test_InternalExteriorAlgebraForCAP test_LinearAlgebraForCAP test_ModulePresentationsForCAP test_ModulesOverLocalRingsForCAP test_MonoidalCategories test_ToricSheaves
+test: doc test_CAP test_ActionsForCAP test_AdditiveClosuresForCAP test_AttributeCategoryForCAP test_CartesianCategories test_CompilerForCAP test_ComplexesAndFilteredObjectsForCAP test_FreydCategoriesForCAP test_GeneralizedMorphismsForCAP test_GradedModulePresentationsForCAP test_GroupRepresentationsForCAP test_GroupsAsCategoriesForCAP test_HomologicalAlgebraForCAP test_InternalExteriorAlgebraForCAP test_LinearAlgebraForCAP test_LinearClosuresForCAP test_ModulePresentationsForCAP test_ModulesOverLocalRingsForCAP test_MonoidalCategories test_ToricSheaves
 
 test_CAP:
 	$(MAKE) -C CAP test
@@ -111,6 +114,9 @@ test_InternalExteriorAlgebraForCAP:
 test_LinearAlgebraForCAP:
 	$(MAKE) -C LinearAlgebraForCAP test
 
+test_LinearClosuresForCAP:
+	$(MAKE) -C LinearClosuresForCAP test
+
 test_ModulePresentationsForCAP:
 	$(MAKE) -C ModulePresentationsForCAP test
 
@@ -124,7 +130,7 @@ test_ToricSheaves:
 	$(MAKE) -C ToricSheaves test
 
 ################################
-ci-test_all_packages: ci-test_CAP ci-test_ActionsForCAP ci-test_AdditiveClosuresForCAP ci-test_AttributeCategoryForCAP ci-test_CartesianCategories ci-test_CompilerForCAP ci-test_ComplexesAndFilteredObjectsForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_GroupsAsCategoriesForCAP ci-test_HomologicalAlgebraForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP ci-test_ModulesOverLocalRingsForCAP ci-test_MonoidalCategories ci-test_ToricSheaves
+ci-test_all_packages: ci-test_CAP ci-test_ActionsForCAP ci-test_AdditiveClosuresForCAP ci-test_AttributeCategoryForCAP ci-test_CartesianCategories ci-test_CompilerForCAP ci-test_ComplexesAndFilteredObjectsForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_GroupsAsCategoriesForCAP ci-test_HomologicalAlgebraForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_LinearClosuresForCAP ci-test_ModulePresentationsForCAP ci-test_ModulesOverLocalRingsForCAP ci-test_MonoidalCategories ci-test_ToricSheaves
 
 ci-test_CAP:
 	$(MAKE) -C CAP ci-test
@@ -170,6 +176,9 @@ ci-test_InternalExteriorAlgebraForCAP:
 
 ci-test_LinearAlgebraForCAP:
 	$(MAKE) -C LinearAlgebraForCAP ci-test
+
+ci-test_LinearClosuresForCAP:
+	$(MAKE) -C LinearClosuresForCAP ci-test
 
 ci-test_ModulePresentationsForCAP:
 	$(MAKE) -C ModulePresentationsForCAP ci-test
