@@ -1,0 +1,25 @@
+  
+  [1X3 [33X[0;0YLinear closure of a category[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YFunctors[133X[101X
+  
+  [1X3.1-1 ExtendFunctorToLinearClosureOfSource[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorToLinearClosureOfSource[102X( [3XF[103X, [3Xlinear_closure[103X, [3Xring_map[103X ) [32X operation[133X
+  
+  [33X[0;0YThe  arguments are a functor [3XF[103X[23X:C\to D[123X, some linear closure [3Xlinear_closure[103X of
+  [23XC[123X  over some commutative ring [23XS[123X and a function [3Xring_map[103X; where [23XD[123X is a linear
+  category  over  some  commutative  ring  [23XR[123X.  The [3Xring_map[103X is a function that
+  converts  an element [23Xs[123X in [23XS[123X to an element in [23XR[123X, such that [3Xring_map[103X defines a
+  ring  homomorphism.  The  output  is  the linear extension functor of [3XF[103X from
+  [3Xlinear_closure[103X to [23XD[123X.[133X
+  
+  [1X3.1-2 ExtendFunctorToLinearClosureOfSource[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorToLinearClosureOfSource[102X( [3XF[103X, [3Xlinear_closure[103X ) [32X operation[133X
+  
+  [33X[0;0YThe  arguments are a functor [3XF[103X[23X:C\to D[123X, some linear closure [3Xlinear_closure[103X of
+  [23XC[123X  over  some  commutative  ring [23XS[123X; where [23XD[123X is a linear category over [23XS[123X. The
+  output is the linear extension functor of [3XF[103X from [3Xlinear_closure[103X to [23XD[123X.[133X
+  

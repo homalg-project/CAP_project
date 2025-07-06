@@ -1,0 +1,84 @@
+name: LinearClosuresForCAP
+version: "2025.07-01"
+license: "GPL-2.0-or-later"
+date: 2025-07-06
+description: |
+    Linear closures
+
+authors:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
+
+maintainers:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Fabian Zickgraf
+      url: https://github.com/zickgraf/
+
+GAP: ">= 4.13.0"
+
+needed-pkgs:
+    - name: "CAP"
+      version: ">= 2025.06-05"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "GroupsAsCategoriesForCAP"
+      version: ">= 2025.07-01"
+      url: "https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP"
+    - name: "AdditiveClosuresForCAP"
+      version: ">= 2025.07-03"
+      url: "https://homalg-project.github.io/pkg/AdditiveClosuresForCAP"
+
+suggested-pkgs:
+    - name: "FinSetsForCAP"
+      version: ">= 2023.07-03"
+
+www: https://homalg-project.github.io/pkg/LinearClosuresForCAP
+readme: README.md
+packageinfo: https://homalg-project.github.io/CAP_project/LinearClosuresForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.07-01/LinearClosuresForCAP-2025.07-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.07-01/LinearClosuresForCAP-2025.07-01.zip
+
+pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.07-01/LinearClosuresForCAP-2025.07-01-manual.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>PBZ06</span>]   <b class='BibAuthor'>Posur, S., Barakat, M. and Zickgraf, F.</b>,
+     <i class='BibTitle'>LinearClosuresForCAP, Linear closures,
+             Version 2025.07-01</i>
+     (<span class='BibYear'>7-06</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LinearClosuresForCAP">https://homalg-project.github.io/pkg/LinearClosuresForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ LinearClosuresForCAP,
+      author =           {Posur, S. and Barakat, M. and Zickgraf, F.},
+      title =            {{LinearClosuresForCAP},  {Linear  closures}, {V}ersion
+                          2025.07\texttt{\symbol{45}}01},
+      month =            {5\texttt{\symbol{45}}},
+      year =             {7\texttt{\symbol{45}}06},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/LinearClosuresForCAP}
+                          {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{LinearClosuresForCAP}}},
+      printedkey =       {PBZ06}
+    }
+

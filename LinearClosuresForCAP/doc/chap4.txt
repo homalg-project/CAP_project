@@ -1,0 +1,90 @@
+  
+  [1X4 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YLinear closure of categories[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
+    [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers();;[127X[104X
+    [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZZ, CG, compare_func );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := GroupAsCategoryUniqueObject( CG );;[127X[104X
+    [4X[25Xgap>[125X [27Xg := GroupAsCategoryMorphism( (1,2,3), CG );;[127X[104X
+    [4X[25Xgap>[125X [27Xh := GroupAsCategoryMorphism( (1,2), CG );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := LinearClosureObject( ZCG, u );;[127X[104X
+    [4X[25Xgap>[125X [27XSetOfObjectsOfCategory( ZCG ) = [ v ];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xelem1 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v );;[127X[104X
+    [4X[25Xgap>[125X [27Xelem2 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ h, g, h, g, h, g ], v );;[127X[104X
+    [4X[25Xgap>[125X [27X# for i in [ 1 .. 10^6 ] do LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v ); od;[127X[104X
+    [4X[25Xgap>[125X [27Xelem := LinearClosureMorphism( v, [ 0, 0, 0, 0, 0, 0 ], [ g, h, g, h, g, h ], v );;[127X[104X
+    [4X[25Xgap>[125X [27Xa := (1,2)/CG/ZCG;;[127X[104X
+    [4X[25Xgap>[125X [27Xb := (2,3)/CG/ZCG;;[127X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( a + b );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XLift( a + b, a ) * a = a + b;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftable( a + b, -2*a ); ## over Q this is liftable[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.2 [33X[0;0YMatrices over ZG[133X[101X
+  
+  [33X[0;0YConstruction of a tower of categories[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
+    [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
+    [4X[25Xgap>[125X [27XZZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZZ, CG );;[127X[104X
+    [4X[25Xgap>[125X [27XRowsG := AdditiveClosure( ZCG );;[127X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YConstruction of elements[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
+    [4X[25Xgap>[125X [27Xa := (1,2)/CG/ZCG;;[127X[104X
+    [4X[25Xgap>[125X [27Xb := (2,3)/CG/ZCG;;[127X[104X
+    [4X[25Xgap>[125X [27Xe := ()/CG/ZCG;;[127X[104X
+    [4X[25Xgap>[125X [27Xomega := [ [ a - e ], [ b - e ] ]/RowsG;;[127X[104X
+    [4X[25Xgap>[125X [27Xu := GroupAsCategoryUniqueObject( CG );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := LinearClosureObject( ZCG, u );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := AsAdditiveClosureObject( v );;[127X[104X
+    [4X[25Xgap>[125X [27XHomStructure( u, omega );;[127X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA random lifting problem over ZG[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )[128X[104X
+    [4X[25Xgap>[125X [27Xelem := Elements( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xelem := List( elem, x -> x/CG/ZCG );;[127X[104X
+    [4X[25Xgap>[125X [27Xrand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZZ ) * elem[i] ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xmat10_11 := List( [ 1 .. 10 ], i ->[127X[104X
+    [4X[25X>[125X [27X        List( [ 1 .. 11 ], j ->[127X[104X
+    [4X[25X>[125X [27X            rand_elem()[127X[104X
+    [4X[25X>[125X [27X        )[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27Xmat11_12 := List( [ 1 .. 11 ], i ->[127X[104X
+    [4X[25X>[125X [27X        List( [ 1 .. 12 ], j ->[127X[104X
+    [4X[25X>[125X [27X            rand_elem()[127X[104X
+    [4X[25X>[125X [27X        )[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := mat10_11/RowsG;;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := mat11_12/RowsG;;[127X[104X
+    [4X[25Xgap>[125X [27Xgamma := PreCompose( alpha, beta );;[127X[104X
+    [4X[25Xgap>[125X [27Xlift := Lift( gamma, beta );;[127X[104X
+    [4X[25Xgap>[125X [27XPreCompose( lift, beta ) = gamma;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
+  [4X[32X[104X
+  
