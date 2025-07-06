@@ -2,7 +2,7 @@
 
 #! @Section Linear closure of categories
 
-LoadPackage( "FreydCategoriesForCAP" );;
+LoadPackage( "LinearClosuresForCAP" );;
 
 #! @Example
 #! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )

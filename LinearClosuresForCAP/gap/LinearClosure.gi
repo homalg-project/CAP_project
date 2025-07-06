@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+# LinearClosuresForCAP: Linear closures
 #
 # Implementations
 #
@@ -96,6 +96,16 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     if HasIsObjectFiniteCategory( underlying_category ) and IsObjectFiniteCategory( underlying_category ) then
         
         SetIsObjectFiniteCategory( category, true );
+        
+    fi;
+    
+    if with_nf and
+       HasIsEquippedWithHomomorphismStructure( underlying_category ) and
+       IsEquippedWithHomomorphismStructure( underlying_category ) and
+       IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+    then
+        
+        SET_HOMOMORPHISM_STRUCTURE_ATTRIBUTES_FOR_LINEAR_CLOSURE( category, rows );
         
     fi;
     
@@ -717,154 +727,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ## Homomorphism structure
     
-    if ForAll(
-        [ "DistinguishedObjectOfHomomorphismStructure",
-         "HomomorphismStructureOnObjects",
-         "HomomorphismStructureOnMorphismsWithGivenObjects",
-         "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-         "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
-         f -> CanCompute( underlying_category, f ) ) and
-              IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( underlying_category ) ) and
-              with_nf
-         then
-            
-        finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
+    if with_nf and
+       HasIsEquippedWithHomomorphismStructure( underlying_category ) and
+       IsEquippedWithHomomorphismStructure( underlying_category ) and
+       IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+    then
         
-        SetRangeCategoryOfHomomorphismStructure( category, rows );
-        SetIsEquippedWithHomomorphismStructure( category, true );
-        
-        if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( rows ) and
-           IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( rows ) then
-            SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
-        fi;
-        
-        t_obj := CategoryOfRowsObject( rows, 1 );
-        
-        t_finsets := TerminalObject( finsets );
-        
-        FunctorObj := function( set )
-            #% CAP_JIT_RESOLVE_FUNCTION
-            return CategoryOfRowsObject( rows, Length( set ) );
-        end;
-        
-        FunctorMor := function( mor )
-            local range, id;
-            #% CAP_JIT_RESOLVE_FUNCTION
-            
-            range := Range( mor );
-            
-            id := HomalgIdentityMatrix( Length( range ), ring );
-            
-            return CategoryOfRowsMorphism( rows,
-                FunctorObj( Source( mor ) ),
-                CertainRows( id, 1 + AsList( mor ) ),
-                FunctorObj( range )
-            );
-            
-        end;
-        
-        ##
-        AddDistinguishedObjectOfHomomorphismStructure( category,
-        function( cat )
-            
-            return t_obj;
-            
-        end );
-        
-        ##
-        AddHomomorphismStructureOnObjects( category,
-          function( cat, a, b )
-            
-            return FunctorObj( HomomorphismStructureOnObjects( UnderlyingCategory( cat ), UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
-            
-        end );
-        
-        ##
-        AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-          function( cat, source, alpha, beta, range )
-            local coeffs_a, size_a, coeffs_b, size_b, supp_a, supp_b;
-            
-            coeffs_a := CoefficientsList( alpha );
-            
-            size_a := Length( coeffs_a );
-            
-            coeffs_b := CoefficientsList( beta );
-            
-            size_b := Length( coeffs_b );
-            
-            if size_a = 0 or size_b = 0 then
-                
-                return ZeroMorphism( rows, source, range );
-                
-            fi;
-            
-            supp_a := SupportMorphisms( alpha );
-            
-            supp_b := SupportMorphisms( beta );
-            
-            return Iterated(
-                    List(
-                        [ 1 .. size_a ],
-                        i -> Iterated(
-                            List(
-                                [ 1 .. size_b ],
-                                j ->  MultiplyWithElementOfCommutativeRingForMorphisms( rows, coeffs_a[i] * coeffs_b[j], FunctorMor( HomomorphismStructureOnMorphisms( UnderlyingCategory( cat ),  supp_a[i], supp_b[j] ) ) )
-                            ),
-                            { mor1, mor2 } -> AdditionForMorphisms( rows, mor1, mor2 )
-                        )
-                    ),
-                    { mor1, mor2 } -> AdditionForMorphisms( rows, mor1, mor2 )
-                );
-            
-        end );
-        
-        ##
-        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-            function( cat, alpha )
-                local coeffs, supp;
-                
-                coeffs := CoefficientsList( alpha );
-                
-                if IsEmpty( coeffs ) then
-                    
-                    return ZeroMorphism( t_obj, HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
-                    
-                fi;
-                
-                supp := SupportMorphisms( alpha );
-                
-                return Sum( List( [ 1 .. Length( coeffs ) ],
-                    i -> coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
-                
-        end );
-        
-        ##
-        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( cat, a, b, mor )
-            local size, a_und, b_und, range_finset;
-            
-            size := RankOfObject( Range( mor ) );
-            
-            a_und := UnderlyingOriginalObject( a );
-            
-            b_und := UnderlyingOriginalObject( b );
-            
-            range_finset := FinSet( finsets, size );
-            
-            return LinearClosureMorphism(
-                    a,
-                    EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
-                    List( [ 0 .. size - 1 ], i ->
-                        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
-                            a_und, b_und, MapOfFinSets( t_finsets, [ i ], range_finset )
-                        )
-                    ),
-                    b
-                );
-            
-        end );
+        INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE( category, rows );
         
     fi;
+    
 end );
 
 ####################################

@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 19
+  after_n_builds: 20
 flags:
   CAP:
     paths:
@@ -49,6 +49,9 @@ flags:
   LinearAlgebraForCAP:
     paths:
       - "LinearAlgebraForCAP/"
+  LinearClosuresForCAP:
+    paths:
+      - "LinearClosuresForCAP/"
   ModulePresentationsForCAP:
     paths:
       - "ModulePresentationsForCAP/"

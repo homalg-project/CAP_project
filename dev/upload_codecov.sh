@@ -90,6 +90,10 @@ while ! ./codecov -Z -v -s ../ -F LinearAlgebraForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60
 done
+while ! ./codecov -Z -v -s ../ -F LinearClosuresForCAP -t $CODECOV_TOKEN; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
 while ! ./codecov -Z -v -s ../ -F ModulePresentationsForCAP -t $CODECOV_TOKEN; do
     echo "Codecov upload failed, retrying in 60s"
     sleep 60

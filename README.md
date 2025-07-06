@@ -36,6 +36,7 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 | [HomologicalAlgebraForCAP](HomologicalAlgebraForCAP#readme) | Homological algebra algorithms for CAP | [![HTML stable documentation][html-HomologicalAlgebraForCAP-img]][html-HomologicalAlgebraForCAP-url] [![PDF stable documentation][pdf-HomologicalAlgebraForCAP-img]][pdf-HomologicalAlgebraForCAP-url] |
 | [InternalExteriorAlgebraForCAP](InternalExteriorAlgebraForCAP#readme) | Constructions for Modules over the Internal Exterior Algebra for CAP | [![HTML stable documentation][html-InternalExteriorAlgebraForCAP-img]][html-InternalExteriorAlgebraForCAP-url] [![PDF stable documentation][pdf-InternalExteriorAlgebraForCAP-img]][pdf-InternalExteriorAlgebraForCAP-url] |
 | [LinearAlgebraForCAP](LinearAlgebraForCAP#readme) | Category of Matrices over a Field for CAP | [![HTML stable documentation][html-LinearAlgebraForCAP-img]][html-LinearAlgebraForCAP-url] [![PDF stable documentation][pdf-LinearAlgebraForCAP-img]][pdf-LinearAlgebraForCAP-url] |
+| [LinearClosuresForCAP](LinearClosuresForCAP#readme) | Linear closures | [![HTML stable documentation][html-LinearClosuresForCAP-img]][html-LinearClosuresForCAP-url] [![PDF stable documentation][pdf-LinearClosuresForCAP-img]][pdf-LinearClosuresForCAP-url] |
 | [ModulePresentationsForCAP](ModulePresentationsForCAP#readme) | Category R-pres for CAP | [![HTML stable documentation][html-ModulePresentationsForCAP-img]][html-ModulePresentationsForCAP-url] [![PDF stable documentation][pdf-ModulePresentationsForCAP-img]][pdf-ModulePresentationsForCAP-url] |
 | [ModulesOverLocalRingsForCAP](ModulesOverLocalRingsForCAP#readme) | Category of modules over a local ring modeled by Serre quotients for CAP | [![HTML stable documentation][html-ModulesOverLocalRingsForCAP-img]][html-ModulesOverLocalRingsForCAP-url] [![PDF stable documentation][pdf-ModulesOverLocalRingsForCAP-img]][pdf-ModulesOverLocalRingsForCAP-url] |
 | [MonoidalCategories](MonoidalCategories#readme) | Monoidal and monoidal (co)closed categories | [![HTML stable documentation][html-MonoidalCategories-img]][html-MonoidalCategories-url] [![PDF stable documentation][pdf-MonoidalCategories-img]][pdf-MonoidalCategories-url] |
@@ -144,6 +145,13 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 
 [pdf-LinearAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/download_pdf.html
+
+
+[html-LinearClosuresForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-LinearClosuresForCAP-url]: https://homalg-project.github.io/CAP_project/LinearClosuresForCAP/doc/chap0_mj.html
+
+[pdf-LinearClosuresForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-LinearClosuresForCAP-url]: https://homalg-project.github.io/CAP_project/LinearClosuresForCAP/download_pdf.html
 
 
 [html-ModulePresentationsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

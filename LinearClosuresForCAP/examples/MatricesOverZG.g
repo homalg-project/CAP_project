@@ -2,7 +2,7 @@
 
 #! @Section Matrices over ZG
 
-LoadPackage( "FreydCategoriesForCAP" );;
+LoadPackage( "LinearClosuresForCAP" );;
 
 #! Construction of a tower of categories
 
