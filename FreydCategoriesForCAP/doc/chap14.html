@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FreydCategoriesForCAP) - Chapter 14: Add Functions</title>
+<title>GAP (FreydCategoriesForCAP) - Chapter 14: Examples on graded rows and columns</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,96 +15,823 @@
 <body class="chap14"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chap17.html">17</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap13.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap15.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap14_mj.html">[MathJax on]</a></p>
-<p><a id="X87A9DB228112DF45" name="X87A9DB228112DF45"></a></p>
-<div class="ChapSects"><a href="chap14.html#X87A9DB228112DF45">14 <span class="Heading">Add Functions</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X829CEC0B8319A503">14.1 <span class="Heading">Available Add functions</span></a>
+<p><a id="X87E337DD810FE4CA" name="X87E337DD810FE4CA"></a></p>
+<div class="ChapSects"><a href="chap14.html#X87E337DD810FE4CA">14 <span class="Heading">Examples on graded rows and columns</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7B1E187B81C3D9CE">14.1 <span class="Heading">Freyd category of graded rows</span></a>
 </span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X85C0925E7FB55992">14.1-1 AddEpimorphismFromSomeProjectiveObjectForKernelObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X7FBF95737EC5CC28">14.1-2 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X827482FD7C0F6284">14.1-3 AddMonomorphismToSomeInjectiveObjectForCokernelObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X819A04B97C22F708">14.1-4 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X86D8F96785429530">14.1-5 AddSomeInjectiveObjectForCokernelObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14.html#X814022DB798C25B6">14.1-6 AddSomeProjectiveObjectForKernelObject</a></span>
-</div></div>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14.html#X7EFC6E1778B1A18D">14.2 <span class="Heading">Freyd category of graded columns</span></a>
+</span>
+</div>
 </div>
 
-<h3>14 <span class="Heading">Add Functions</span></h3>
+<h3>14 <span class="Heading">Examples on graded rows and columns</span></h3>
 
-<p><a id="X829CEC0B8319A503" name="X829CEC0B8319A503"></a></p>
+<p><a id="X7B1E187B81C3D9CE" name="X7B1E187B81C3D9CE"></a></p>
 
-<h4>14.1 <span class="Heading">Available Add functions</span></h4>
+<h4>14.1 <span class="Heading">Freyd category of graded rows</span></h4>
 
-<p><a id="X85C0925E7FB55992" name="X85C0925E7FB55992"></a></p>
 
-<h5>14.1-1 AddEpimorphismFromSomeProjectiveObjectForKernelObject</h5>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := GradedRing( Q * "x_1, x_2" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetWeightsOfIndeterminates( S, [[1],[1]] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Module := AsFreydCategoryObject( GradedRow( [[[1],1]], S ) );</span>
+&lt;A projective object in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesObject( Module );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := AsFreydCategoryMorphism( IdentityMorphism( GradedRow( [[[1],1]], S ) ) );</span>
+&lt;A morphism in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesMorphism( mor );</span>
+true
+</pre></div>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObjectForKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObjectForKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EpimorphismFromSomeProjectiveObjectForKernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( alpha ) \mapsto \mathtt{EpimorphismFromSomeProjectiveObjectForKernelObject}(alpha)</span>.</p>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := GradedRing( Q * "x_1, x_2, x_3, x_4" );</span>
+Q[x_1,x_2,x_3,x_4]
+(weights: yet unset)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );</span>
 
-<p><a id="X7FBF95737EC5CC28" name="X7FBF95737EC5CC28"></a></p>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfGradedRows( S );</span>
+Category of graded rows over Q[x_1,x_2,x_3,x_4] 
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := GradedRow( [ [[1,1],1] ], S );</span>
+&lt;A graded row of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := GradedRow( [ [[1,1],2] ], S );</span>
+&lt;A graded row of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := GradedRowOrColumnMorphism( obj2, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );</span>
+&lt;A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">freyd := FreydCategory( cat );</span>
+Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAbelianCategory( freyd );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_gamma := FreydCategoryObject( gamma );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesObject( obj_gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesMorphism( f );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">witness := MorphismWitness( f );</span>
+&lt;A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
 
-<h5>14.1-2 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( witness );</span>
+A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( alpha, source ) \mapsto \mathtt{EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject}(alpha, source)</span>.</p>
+Source:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
 
-<p><a id="X827482FD7C0F6284" name="X827482FD7C0F6284"></a></p>
+Matrix:
+2,0,
+2,0
+(over a graded ring)
 
-<h5>14.1-3 AddMonomorphismToSomeInjectiveObjectForCokernelObject</h5>
+Range:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+</pre></div>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismToSomeInjectiveObjectForCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismToSomeInjectiveObjectForCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MonomorphismToSomeInjectiveObjectForCokernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( alpha ) \mapsto \mathtt{MonomorphismToSomeInjectiveObjectForCokernelObject}(alpha)</span>.</p>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := FreydCategoryMorphism( obj_gamma, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                   ZeroMorphism( obj2, obj2 ), obj_gamma );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( f, g );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := PreCompose( f, f );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
 
-<p><a id="X819A04B97C22F708" name="X819A04B97C22F708"></a></p>
 
-<h5>14.1-4 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject</h5>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( c );</span>
+A morphism in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
+--------------------------------
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( alpha, range ) \mapsto \mathtt{MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject}(alpha, range)</span>.</p>
+Source:
+A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 
-<p><a id="X86D8F96785429530" name="X86D8F96785429530"></a></p>
+Source:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
 
-<h5>14.1-5 AddSomeInjectiveObjectForCokernelObject</h5>
+Matrix:
+1,1,
+1,1
+(over a graded ring)
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeInjectiveObjectForCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeInjectiveObjectForCokernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
+Range:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SomeInjectiveObjectForCokernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( arg2 ) \mapsto \mathtt{SomeInjectiveObjectForCokernelObject}(arg2)</span>.</p>
+--------------------------------
 
-<p><a id="X814022DB798C25B6" name="X814022DB798C25B6"></a></p>
+Morphism datum:
+A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 
-<h5>14.1-6 AddSomeProjectiveObjectForKernelObject</h5>
+Source:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeProjectiveObjectForKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeProjectiveObjectForKernelObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
+Matrix:
+2,2,
+2,2 
+(over a graded ring)
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SomeProjectiveObjectForKernelObject</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="Math">F: ( arg2 ) \mapsto \mathtt{SomeProjectiveObjectForKernelObject}(arg2)</span>.</p>
+Range:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+--------------------------------
+
+Range:
+A morphism in Category of graded row over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+Matrix:
+1,1,
+1,1
+(over a graded ring)
+
+Range:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+--------------------------------
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := g + g;</span>
+&lt;A morphism in Category of f.p. graded left modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := GradedRowOrColumnMorphism( obj1, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                 HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );</span>
+&lt;A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( a );</span>
+A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+
+Matrix:
+2
+(over a graded ring)
+
+Range:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Z2 := FreydCategoryObject( a );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Z2 );</span>
+An object in Freyd( Category of graded rows over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+
+Relation morphism:
+A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+
+Matrix:
+2
+(over a graded ring)
+
+Range:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( Z2 );</span>
+&lt;An identity morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := id + id + id;</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := DirectSumFunctorial( [ z, z, z ] );</span>
+&lt;A morphism in Category of f.p. graded left modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">uni := UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );</span>
+&lt;A morphism in Category of f.p. graded left modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">uni2 := UniversalMorphismFromDirectSum( [ inj2, inj1 ] );</span>
+&lt;A morphism in Category of f.p. graded left modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZFree := AsFreydCategoryObject( obj1 );</span>
+&lt;A projective object in Category of f.p. graded left modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ZFree );</span>
+A projective object in Freyd( Category of graded rows over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+
+Relation morphism:
+A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 0 and degrees:
+[  ]
+
+Matrix:
+(an empty 0 x 1 matrix)
+
+Range:
+A graded row over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( ZFree );</span>
+&lt;An identity morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := id + id;</span>
+&lt;A morphism in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coker_proj := CokernelProjection( z );</span>
+&lt;An epimorphism in Category of f.p. graded left modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cokernel_colift := CokernelColift( z, CokernelProjection( z ) );</span>
+&lt;A morphism in Category of f.p. graded left modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := ZFree;</span>
+&lt;A projective object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := obj_gamma;</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := TensorProductOnObjects( ZFree, obj_gamma );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( KaxbKxc, ZeroObject( freyd ) );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_product_morphism := TensorProductOnMorphisms( cokernel_colift, coker_proj );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( tensor_product_morphism );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( Source( tensor_product_morphism ), Range( tensor_product_morphism ) );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit := TensorUnit( freyd );</span>
+&lt;An object in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4] 
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( TensorProductOnObjects( a, unit ), a );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axKbxcK := TensorProductOnObjects( a, TensorProductOnObjects( b, c ) );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ass_left_to_right := AssociatorLeftToRightWithGivenTensorProducts( KaxbKxc, a, b, c, axKbxcK );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( ass_left_to_right );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ass_right_to_left := AssociatorLeftToRightWithGivenTensorProducts( axKbxcK, a, b, c, KaxbKxc );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( ass_right_to_left );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( ass_right_to_left );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftUnitor( a );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftUnitorInverse( axKbxcK );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightUnitor( b );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightUnitorInverse( TensorProductOnObjects( axKbxcK, axKbxcK ) );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( axKbxcK, KaxbKxc );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">braiding := Braiding( a, b );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( braiding );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := InternalHomOnObjects( axKbxcK, axKbxcK );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( hom );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_mod1 := AsFreydCategoryObject( GradedRow( [ [[0,0],1] ], S ) );</span>
+&lt;A projective object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_mod2 := AsFreydCategoryObject( GradedRow( [ [[1,1],1] ], S ) );</span>
+&lt;A projective object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom2 := InternalHomOnObjects( free_mod1, free_mod2 );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( hom2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( Source( RelationMorphism( hom2 ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Rank( Range( RelationMorphism( hom2 ) ) );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom3 := InternalHomOnObjects( free_mod2, free_mod1 );</span>
+&lt;An object in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( hom3 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eval := ClosedMonoidalLeftEvaluationMorphism( a, b );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( eval );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( eval );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeval := ClosedMonoidalLeftCoevaluationMorphism( a, b );</span>
+&lt;A morphism in Category of f.p. graded left modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( coeval );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( coeval );</span>
+true
+</pre></div>
+
+<p><a id="X7EFC6E1778B1A18D" name="X7EFC6E1778B1A18D"></a></p>
+
+<h4>14.2 <span class="Heading">Freyd category of graded columns</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := GradedRing( Q * "x_1, x_2, x_3, x_4" );</span>
+Q[x_1,x_2,x_3,x_4]
+(weights: yet unset)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );</span>
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := CategoryOfGradedColumns( S );</span>
+Category of graded columns over Q[x_1,x_2,x_3,x_4] 
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := GradedColumn( [ [[1,1],1] ], S );</span>
+&lt;A graded column of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := GradedColumn( [ [[1,1],2] ], S );</span>
+&lt;A graded column of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := GradedRowOrColumnMorphism( obj2, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );</span>
+&lt;A morphism in Category of graded columns over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">freyd := FreydCategory( cat );</span>
+Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAbelianCategory( freyd );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_gamma := FreydCategoryObject( gamma );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">witness := MorphismWitness( f );</span>
+&lt;A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( witness );</span>
+A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+Matrix:
+2,2,
+0,0 
+(over a graded ring)
+
+Range:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := FreydCategoryMorphism( obj_gamma, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                   ZeroMorphism( obj2, obj2 ), obj_gamma );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( f, g );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := PreCompose( f, f );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( c );</span>
+A morphism in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+
+--------------------------------
+
+Source:
+A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+Matrix:
+1,1,
+1,1
+(over a graded ring)
+
+Range:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+--------------------------------
+
+Morphism datum:
+A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+Matrix:
+2,2,
+2,2
+(over a graded ring)
+
+Range:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+--------------------------------
+
+Range:
+A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+Matrix:
+1,1,
+1,1
+(over a graded ring)
+
+Range:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+of rank 2 and degrees:
+[ [ ( 1, 1 ), 2 ] ]
+
+--------------------------------
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := g + g;</span>
+&lt;A morphism in Category of f.p. graded right modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := GradedRowOrColumnMorphism( obj1, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                 HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );</span>
+&lt;A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( a );</span>
+A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+
+Matrix:
+2
+(over a graded ring)
+
+Range:
+A graded column over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Z2 := FreydCategoryObject( a );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Z2 );</span>
+An object in Freyd( Category of graded columns over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+
+Relation morphism:
+A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+
+Matrix:
+2
+(over a graded ring)
+
+Range:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( Z2 );</span>
+&lt;An identity morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := id + id + id;</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := DirectSumFunctorial( [ z, z, z ] );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">uni := UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );</span>
+&lt;A morphism in Category of f.p. graded right modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">uni2 := UniversalMorphismFromDirectSum( [ inj2, inj1 ] );</span>
+&lt;A morphism in Category of f.p. graded right modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZFree := AsFreydCategoryObject( obj1 );</span>
+&lt;A projective object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ZFree );</span>
+A projective object in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+
+Relation morphism:
+A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+
+Source:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 0 and degrees:
+[  ]
+
+Matrix:
+(an empty 1 x 0 matrix)
+
+Range:
+A graded column over Q[x_1,x_2,x_3,x_4] (with weights
+[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
+[ [ ( 1, 1 ), 1 ] ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( ZFree );</span>
+&lt;An identity morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := id + id;</span>
+&lt;A morphism in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coker_proj := CokernelProjection( z );</span>
+&lt;An epimorphism in Category of f.p. graded right modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cokernel_colift := CokernelColift( z, CokernelProjection( z ) );</span>
+&lt;A morphism in Category of f.p. graded right modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := ZFree;</span>
+&lt;A projective object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := obj_gamma;</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := TensorProductOnObjects( a, b );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( KaxbKxc, ZeroObject( freyd ) );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensor_product_morphism := TensorProductOnMorphisms( cokernel_colift, coker_proj );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( tensor_product_morphism );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( Source( tensor_product_morphism ), Range( tensor_product_morphism ) );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">unit := TensorUnit( freyd );</span>
+&lt;An object in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4] 
+(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( TensorProductOnObjects( a, unit ), a );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">axKbxcK := TensorProductOnObjects( a, TensorProductOnObjects( b, c ) );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ass_left_to_right := AssociatorLeftToRightWithGivenTensorProducts( KaxbKxc, a, b, c, axKbxcK );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( ass_left_to_right );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ass_right_to_left := AssociatorLeftToRightWithGivenTensorProducts( axKbxcK, a, b, c, KaxbKxc );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( ass_right_to_left );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( ass_right_to_left );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftUnitor( a );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LeftUnitorInverse( axKbxcK );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightUnitor( b );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RightUnitorInverse( TensorProductOnObjects( axKbxcK, axKbxcK ) );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Braiding( axKbxcK, KaxbKxc );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">braiding := Braiding( a, b );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( braiding );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := InternalHomOnObjects( axKbxcK, axKbxcK );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( hom );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_mod1 := AsFreydCategoryObject( GradedColumn( [ [[0,0],1] ], S ) );</span>
+&lt;A projective object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">free_mod2 := AsFreydCategoryObject( GradedColumn( [ [[1,1],1] ], S ) );</span>
+&lt;A projective object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom2 := InternalHomOnObjects( free_mod1, free_mod2 );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( hom2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( Source( RelationMorphism( hom2 ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Rank( Range( RelationMorphism( hom2 ) ) );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom3 := InternalHomOnObjects( free_mod2, free_mod1 );</span>
+&lt;An object in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( hom3 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eval := ClosedMonoidalLeftEvaluationMorphism( a, b );</span>
+&lt;A morphism in Category of f.p. graded right modules over 
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( eval );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( eval );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coeval := ClosedMonoidalLeftCoevaluationMorphism( a, b );</span>
+&lt;A morphism in Category of f.p. graded right modules over
+Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( coeval );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( coeval );</span>
+true
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap13.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap15.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chap17.html">17</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

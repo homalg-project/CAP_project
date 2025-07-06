@@ -8,18 +8,18 @@
       for IsCapCategoryObject, IsAdelmanCategory 4.2-6 
   [2X^[102X, for IsFreydCategoryMorphism, IsInt 11.3-4 
       for IsFreydCategoryObject, IsInt 11.3-2 
-  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-1 
-      for IsCapCategory, IsFunction, IsInt 14.1-1 
-  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-2 
-      for IsCapCategory, IsFunction, IsInt 14.1-2 
-  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-3 
-      for IsCapCategory, IsFunction, IsInt 14.1-3 
-  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-4 
-      for IsCapCategory, IsFunction, IsInt 14.1-4 
-  [2XAddSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 14.1-5 
-      for IsCapCategory, IsFunction, IsInt 14.1-5 
-  [2XAddSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 14.1-6 
-      for IsCapCategory, IsFunction, IsInt 14.1-6 
+  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 13.1-1 
+      for IsCapCategory, IsFunction, IsInt 13.1-1 
+  [2XAddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 13.1-2 
+      for IsCapCategory, IsFunction, IsInt 13.1-2 
+  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 13.1-3 
+      for IsCapCategory, IsFunction, IsInt 13.1-3 
+  [2XAddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 13.1-4 
+      for IsCapCategory, IsFunction, IsInt 13.1-4 
+  [2XAddSomeInjectiveObjectForCokernelObject[102X, for IsCapCategory, IsFunction 13.1-5 
+      for IsCapCategory, IsFunction, IsInt 13.1-5 
+  [2XAddSomeProjectiveObjectForKernelObject[102X, for IsCapCategory, IsFunction 13.1-6 
+      for IsCapCategory, IsFunction, IsInt 13.1-6 
   [2XAdelmanCategory[102X, for IsCapCategory 4.2-1 
   [2XAdelmanCategoryMorphism[102X, for IsAdelmanCategoryObject, IsCapCategoryMorphism, IsAdelmanCategoryObject 4.2-3 
   [2XAdelmanCategoryObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 4.2-2 
@@ -29,22 +29,20 @@
   [2XCorelationWitness[102X, for IsAdelmanCategoryMorphism 4.3-6 
   [2XEpimorphismFromSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism 1.1-2 
   [2XEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.1-3 
-  [2XExtendFunctorToLinearClosureOfSource[102X, for IsCapFunctor, IsLinearClosure 13.1-2 
-      for IsCapFunctor, IsLinearClosure, IsFunction 13.1-1 
-  [2XFpGradedLeftModules[102X, for IsHomalgGradedRing 17.1-1 
-  [2XFpGradedRightModules[102X, for IsHomalgGradedRing 17.1-2 
+  [2XFpGradedLeftModules[102X, for IsHomalgGradedRing 16.1-1 
+  [2XFpGradedRightModules[102X, for IsHomalgGradedRing 16.1-2 
   [2XINTERNAL_HOM_EMBEDDING[102X, for IsFreydCategory, IsFreydCategoryObject, IsFreydCategoryObject 11.2-1 
   [2XIsAdelmanCategory[102X, for IsCapCategory 4.1-3 
   [2XIsAdelmanCategoryMorphism[102X, for IsCapCategoryMorphism 4.1-2 
   [2XIsAdelmanCategoryObject[102X, for IsCapCategoryObject 4.1-1 
   [2XIsEpiPreserving[102X, for IsAdelmanCategoryObject 4.4-5 
   [2XIsExact[102X, for IsAdelmanCategoryObject 4.4-1 
-  [2XIsFpGradedLeftModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 17.3-2 
-  [2XIsFpGradedLeftModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 17.2-2 
-  [2XIsFpGradedLeftOrRightModulesMorphism[102X, for IsFreydCategoryMorphism 17.3-1 
-  [2XIsFpGradedLeftOrRightModulesObject[102X, for IsFreydCategoryObject 17.2-1 
-  [2XIsFpGradedRightModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 17.3-3 
-  [2XIsFpGradedRightModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 17.2-3 
+  [2XIsFpGradedLeftModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 16.3-2 
+  [2XIsFpGradedLeftModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 16.2-2 
+  [2XIsFpGradedLeftOrRightModulesMorphism[102X, for IsFreydCategoryMorphism 16.3-1 
+  [2XIsFpGradedLeftOrRightModulesObject[102X, for IsFreydCategoryObject 16.2-1 
+  [2XIsFpGradedRightModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 16.3-3 
+  [2XIsFpGradedRightModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 16.2-3 
   [2XIsImagePreserving[102X, for IsAdelmanCategoryObject 4.4-6 
   [2XIsLeftExact[102X, for IsAdelmanCategoryObject 4.4-2 
   [2XIsMonoPreserving[102X, for IsAdelmanCategoryObject 4.4-4 

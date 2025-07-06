@@ -15,7 +15,7 @@
 <body class="chap12"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chap17.html">17</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -55,22 +55,16 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X87D4D7857F0B6568">12.11 <span class="Heading">Homomorphisms between f.p. functors based on category of columns</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X84C669D87B0599DB">12.12 <span class="Heading">Linear closure of categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X81E7031D85FD2569">12.12 <span class="Heading">Matrices over ZP K</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X81E7031D85FD2569">12.13 <span class="Heading">Matrices over ZP K</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X820CD9B28165BF9F">12.13 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7F1E3F5A7EC538B6">12.14 <span class="Heading">Matrices over ZG</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7AFC8F247C00D608">12.14 <span class="Heading">Prosets</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X820CD9B28165BF9F">12.15 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></a>
-</span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7AFC8F247C00D608">12.16 <span class="Heading">Prosets</span></a>
-</span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X789E61CF843CF960">12.17 <span class="Heading">Category of relations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X789E61CF843CF960">12.15 <span class="Heading">Category of relations</span></a>
 </span>
 </div>
 </div>
@@ -803,42 +797,9 @@ false
 false
 </pre></div>
 
-<p><a id="X84C669D87B0599DB" name="X84C669D87B0599DB"></a></p>
-
-<h4>12.12 <span class="Heading">Linear closure of categories</span></h4>
-
-
-<div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compare_func := function( g, h ) return UnderlyingGroupElement( g ) &lt; UnderlyingGroupElement( h ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZZ, CG, compare_func );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := GroupAsCategoryMorphism( (1,2,3), CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := GroupAsCategoryMorphism( (1,2), CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := LinearClosureObject( ZCG, u );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjectsOfCategory( ZCG ) = [ v ];</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem1 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem2 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ h, g, h, g, h, g ], v );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for i in [ 1 .. 10^6 ] do LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v ); od;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := LinearClosureMorphism( v, [ 0, 0, 0, 0, 0, 0 ], [ g, h, g, h, g, h ], v );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := (1,2)/CG/ZCG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := (2,3)/CG/ZCG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( a + b );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( a + b, a ) * a = a + b;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( a + b, -2*a ); ## over Q this is liftable</span>
-false
-#@fi
-</pre></div>
-
 <p><a id="X81E7031D85FD2569" name="X81E7031D85FD2569"></a></p>
 
-<h4>12.13 <span class="Heading">Matrices over ZP K</span></h4>
+<h4>12.12 <span class="Heading">Matrices over ZP K</span></h4>
 
 
 <div class="example"><pre>
@@ -883,69 +844,9 @@ true
 #@fi
 </pre></div>
 
-<p><a id="X7F1E3F5A7EC538B6" name="X7F1E3F5A7EC538B6"></a></p>
-
-<h4>12.14 <span class="Heading">Matrices over ZG</span></h4>
-
-<p>Construction of a tower of categories</p>
-
-
-<div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZZ, CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RowsG := AdditiveClosure( ZCG );;</span>
-#@fi
-</pre></div>
-
-<p>Construction of elements</p>
-
-
-<div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := (1,2)/CG/ZCG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := (2,3)/CG/ZCG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := ()/CG/ZCG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := [ [ a - e ], [ b - e ] ]/RowsG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := LinearClosureObject( ZCG, u );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := AsAdditiveClosureObject( v );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( u, omega );;</span>
-#@fi
-</pre></div>
-
-<p>A random lifting problem over ZG</p>
-
-
-<div class="example"><pre>
-#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2023.07-03" )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := Elements( G );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := List( elem, x -&gt; x/CG/ZCG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) * One( ZZZ ) * elem[i] ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat10_11 := List( [ 1 .. 10 ], i -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        List( [ 1 .. 11 ], j -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            rand_elem()</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat11_12 := List( [ 1 .. 11 ], i -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        List( [ 1 .. 12 ], j -&gt;</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            rand_elem()</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := mat10_11/RowsG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := mat11_12/RowsG;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := PreCompose( alpha, beta );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift := Lift( gamma, beta );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( lift, beta ) = gamma;</span>
-true
-#@fi
-</pre></div>
-
 <p><a id="X820CD9B28165BF9F" name="X820CD9B28165BF9F"></a></p>
 
-<h4>12.15 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></h4>
+<h4>12.13 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></h4>
 
 
 <div class="example"><pre>
@@ -988,7 +889,7 @@ true
 
 <p><a id="X7AFC8F247C00D608" name="X7AFC8F247C00D608"></a></p>
 
-<h4>12.16 <span class="Heading">Prosets</span></h4>
+<h4>12.14 <span class="Heading">Prosets</span></h4>
 
 
 <div class="example"><pre>
@@ -1031,7 +932,7 @@ true
 
 <p><a id="X789E61CF843CF960" name="X789E61CF843CF960"></a></p>
 
-<h4>12.17 <span class="Heading">Category of relations</span></h4>
+<h4>12.15 <span class="Heading">Category of relations</span></h4>
 
 
 <div class="example"><pre>
@@ -1073,7 +974,7 @@ true
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chap17.html">17</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
