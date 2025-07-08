@@ -30,7 +30,26 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-2 BraidedMonoidalCategoriesTest[101X
+  [1X2.1-2 TestBraidingCompatability[101X
+  
+  [33X[1;0Y[29X[2XTestBraidingCompatability[102X( [3Xv_1[103X, [3Xv_2[103X, [3Xv_3[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is  a  debug operation. The arguments are 3 objects [23Xv_1, v_2, v_3[123X in a
+  braided   monoidal   category.   The   output   is   true  if  the  braiding
+  compatabilities with the associator hold, false otherwise.[133X
+  
+  [1X2.1-3 TestBraidingCompatabilityForAllTriplesInList[101X
+  
+  [33X[1;0Y[29X[2XTestBraidingCompatabilityForAllTriplesInList[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The argument is a list [23XL[123X consisting of triples of
+  objects  in  a braided monoidal category. The output is true if the braiding
+  compatabilities  with  the  associator  hold  for  all  those  triples false
+  otherwise.[133X
+  
+  [1X2.1-4 BraidedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XBraidedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X function[133X
   
@@ -54,7 +73,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-3 ClosedMonoidalCategoriesTest[101X
+  [1X2.1-5 ClosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -90,7 +109,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-4 ClosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-6 ClosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XClosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -118,7 +137,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-5 CoclosedMonoidalCategoriesTest[101X
+  [1X2.1-7 CoclosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -154,7 +173,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-6 CoclosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-8 CoclosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -182,7 +201,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-7 LeftClosedMonoidalCategoriesTest[101X
+  [1X2.1-9 LeftClosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XLeftClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -218,7 +237,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-8 LeftClosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-10 LeftClosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XLeftClosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -246,7 +265,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-9 LeftCoclosedMonoidalCategoriesTest[101X
+  [1X2.1-11 LeftCoclosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -282,7 +301,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-10 LeftCoclosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-12 LeftCoclosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -310,7 +329,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-11 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[101X
+  [1X2.1-13 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[101X
   
   [33X[1;0Y[29X[2XMonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X function[133X
   
@@ -334,7 +353,25 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-12 MonoidalCategoriesTest[101X
+  [1X2.1-14 TestMonoidalPentagonIdentity[101X
+  
+  [33X[1;0Y[29X[2XTestMonoidalPentagonIdentity[102X( [3Xv_1[103X, [3Xv_2[103X, [3Xv_3[103X, [3Xv_4[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The arguments are 4 objects [23Xv_1, v_2, v_3, v_4[123X in
+  a  category.  The  output is true if the pentagon identity holds for those 4
+  objects, false otherwise.[133X
+  
+  [1X2.1-15 TestMonoidalPentagonIdentityForAllQuadruplesInList[101X
+  
+  [33X[1;0Y[29X[2XTestMonoidalPentagonIdentityForAllQuadruplesInList[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The argument is a list [23XL[123X consisting of quadruples
+  of  objects  in  a  monoidal  category.  The  output is true if the pentagon
+  identity holds for all those quadruples, false otherwise.[133X
+  
+  [1X2.1-16 MonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -361,7 +398,16 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-13 RigidSymmetricClosedMonoidalCategoriesTest[101X
+  [1X2.1-17 TestZigZagIdentitiesForDual[101X
+  
+  [33X[1;0Y[29X[2XTestZigZagIdentitiesForDual[102X( [3Xv[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is a debug operation. The argument is an object [23Xv[123X in a rigid symmetric
+  monoidal  category.  The  output  is  true if the zig zag identity for duals
+  hold, false otherwise.[133X
+  
+  [1X2.1-18 RigidSymmetricClosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XRigidSymmetricClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X ) [32X function[133X
   
@@ -387,7 +433,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-14 RigidSymmetricCoclosedMonoidalCategoriesTest[101X
+  [1X2.1-19 RigidSymmetricCoclosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X ) [32X function[133X
   

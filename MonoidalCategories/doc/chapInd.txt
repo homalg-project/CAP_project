@@ -455,13 +455,13 @@
   [2XAssociatorLeftToRightWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-6 
   [2XAssociatorRightToLeft[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-3 
   [2XAssociatorRightToLeftWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-4 
-  [2XBraidedMonoidalCategoriesTest[102X 2.1-2 
+  [2XBraidedMonoidalCategoriesTest[102X 2.1-4 
   [2XBraiding[102X, for IsCapCategoryObject, IsCapCategoryObject 1.3-1 
   [2XBraidingInverse[102X, for IsCapCategoryObject, IsCapCategoryObject 1.3-3 
   [2XBraidingInverseWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.3-4 
   [2XBraidingWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.3-2 
-  [2XClosedMonoidalCategoriesTest[102X 2.1-3 
-  [2XClosedMonoidalCategoriesTestWithGiven[102X 2.1-4 
+  [2XClosedMonoidalCategoriesTest[102X 2.1-5 
+  [2XClosedMonoidalCategoriesTestWithGiven[102X 2.1-6 
   [2XClosedMonoidalLeftCoevaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-18 
   [2XClosedMonoidalLeftCoevaluationMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-19 
   [2XClosedMonoidalLeftEvaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-16 
@@ -478,8 +478,8 @@
   [2XCoclosedEvaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-28 
   [2XCoclosedEvaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 5.1-3 
   [2XCoclosedEvaluationMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 5.1-4 
-  [2XCoclosedMonoidalCategoriesTest[102X 2.1-5 
-  [2XCoclosedMonoidalCategoriesTestWithGiven[102X 2.1-6 
+  [2XCoclosedMonoidalCategoriesTest[102X 2.1-7 
+  [2XCoclosedMonoidalCategoriesTestWithGiven[102X 2.1-8 
   [2XCoclosedMonoidalLeftCoevaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.8-14 
   [2XCoclosedMonoidalLeftCoevaluationMorphismWithGivenSource[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-15 
   [2XCoclosedMonoidalLeftEvaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.8-12 
@@ -580,8 +580,8 @@
   [2XIsSymmetricMonoidalCategory[102X, for IsCapCategory 6.1-12 
   [2XLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-49 
   [2XLambdaIntroduction[102X, for IsCapCategoryMorphism 1.6-48 
-  [2XLeftClosedMonoidalCategoriesTest[102X 2.1-7 
-  [2XLeftClosedMonoidalCategoriesTestWithGiven[102X 2.1-8 
+  [2XLeftClosedMonoidalCategoriesTest[102X 2.1-9 
+  [2XLeftClosedMonoidalCategoriesTestWithGiven[102X 2.1-10 
   [2XLeftClosedMonoidalCoevaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-6 
   [2XLeftClosedMonoidalCoevaluationMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-7 
   [2XLeftClosedMonoidalEvaluationForLeftDual[102X, for IsCapCategoryObject 1.5-19 
@@ -594,8 +594,8 @@
   [2XLeftClosedMonoidalPostComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-15 
   [2XLeftClosedMonoidalPreComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-12 
   [2XLeftClosedMonoidalPreComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-13 
-  [2XLeftCoclosedMonoidalCategoriesTest[102X 2.1-9 
-  [2XLeftCoclosedMonoidalCategoriesTestWithGiven[102X 2.1-10 
+  [2XLeftCoclosedMonoidalCategoriesTest[102X 2.1-11 
+  [2XLeftCoclosedMonoidalCategoriesTestWithGiven[102X 2.1-12 
   [2XLeftCoclosedMonoidalCoevaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.7-6 
   [2XLeftCoclosedMonoidalCoevaluationMorphismWithGivenSource[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.7-7 
   [2XLeftCoclosedMonoidalEvaluationForLeftCoDual[102X, for IsCapCategoryObject 1.7-19 
@@ -638,8 +638,8 @@
   [2XLeftUnitorInverse[102X, for IsCapCategoryObject 1.1-9 
   [2XLeftUnitorInverseWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-10 
   [2XLeftUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-8 
-  [2XMonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[102X 2.1-11 
-  [2XMonoidalCategoriesTest[102X 2.1-12 
+  [2XMonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[102X 2.1-13 
+  [2XMonoidalCategoriesTest[102X 2.1-16 
   [2XMonoidalPostCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-22 
   [2XMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-23 
   [2XMonoidalPostComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-30 
@@ -681,8 +681,8 @@
   [2XRightUnitorInverse[102X, for IsCapCategoryObject 1.1-13 
   [2XRightUnitorInverseWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-14 
   [2XRightUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-12 
-  [2XRigidSymmetricClosedMonoidalCategoriesTest[102X 2.1-13 
-  [2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X 2.1-14 
+  [2XRigidSymmetricClosedMonoidalCategoriesTest[102X 2.1-18 
+  [2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X 2.1-19 
   [2XTensorProductDualityCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-41 
   [2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-42 
   [2XTensorProductInternalHomCompatibilityMorphism[102X, for IsList 1.6-39 
@@ -721,6 +721,11 @@
   [2XTensorProductToLeftInternalHomAdjunctMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.5-8 
   [2XTensorProductToLeftInternalHomAdjunctMorphismWithGivenLeftInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.5-9 
   [2XTensorUnit[102X, for IsCapCategory 1.1-16 
+  [2XTestBraidingCompatability[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.1-2 
+  [2XTestBraidingCompatabilityForAllTriplesInList[102X, for IsList 2.1-3 
+  [2XTestMonoidalPentagonIdentity[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.1-14 
+  [2XTestMonoidalPentagonIdentityForAllQuadruplesInList[102X, for IsList 2.1-15 
+  [2XTestZigZagIdentitiesForDual[102X, for IsCapCategoryObject 2.1-17 
   [2XTraceMap[102X, for IsCapCategoryMorphism 1.11-9 
   [2XUniversalPropertyOfCoDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.8-39 
   [2XUniversalPropertyOfDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-47 
