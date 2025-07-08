@@ -73,12 +73,6 @@
   [2XSkeletalFunctorTensorData[102X 1.4-6 
       for IsList 1.4-7 
   [2XSupport[102X, for IsSemisimpleCategoryObject 2.3-10 
-  [2XTestBraidingCompatability[102X, for IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject 2.4-7 
-  [2XTestBraidingCompatabilityForAllTriplesInList[102X, for IsList 2.4-8 
-  [2XTestPentagonIdentity[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.4-5 
-  [2XTestPentagonIdentityForAllQuadruplesInList[102X, for IsList 2.4-6 
-  [2XTestZigZagIdentitiesForDual[102X, for IsSemisimpleCategoryObject 2.4-9 
-  [2XTestZigZagIdentitiesForDualForAllObjectsInList[102X, for IsList 2.4-10 
   [2XUnderlyingCategoryForSemisimpleCategory[102X, for IsSemisimpleCategory 2.3-2 
   [2XUnderlyingCharacter[102X, for IsGIrreducibleObject 3.3-1 
       for IsGZGradedIrreducibleObject 3.3-8 
