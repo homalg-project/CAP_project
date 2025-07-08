@@ -12,6 +12,29 @@
 #! @Section Test functions
 
 #! @Description
+#! This is a debug operation.
+#! The arguments are 4
+#! objects $v_1, v_2, v_3, v_4$
+#! in a category.
+#! The output is true if the pentagon identity holds
+#! for those 4 objects, false otherwise.
+#! @Returns a boolean
+#! @Arguments v_1, v_2, v_3, v_4
+DeclareOperation( "TestCartesianPentagonIdentity",
+              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The argument is a list $L$
+#! consisting of quadruples of objects
+#! in a cartesian category.
+#! The output is true if the pentagon identity holds
+#! for all those quadruples, false otherwise.
+#! @Returns a boolean
+#! @Arguments L
+DeclareOperation( "TestCartesianPentagonIdentityForAllQuadruplesInList", [ IsList ] );
+
+#! @Description
 #! The arguments are
 #! * a CAP category $cat$
 #! * objects $a, b, c$

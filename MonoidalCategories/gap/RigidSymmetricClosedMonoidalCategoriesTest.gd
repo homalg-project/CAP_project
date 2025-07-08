@@ -9,6 +9,16 @@
 #! @Section Test functions
 
 #! @Description
+#! This is a debug operation.
+#! The argument is an object $v$
+#! in a rigid symmetric monoidal category.
+#! The output is true if the zig zag identity for duals hold,
+#! false otherwise.
+#! @Returns a boolean
+#! @Arguments v
+DeclareOperation( "TestZigZagIdentitiesForDual", [ IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are
 #! * a CAP category $cat$
 #! * objects $a, b, c, d$

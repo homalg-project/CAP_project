@@ -4,6 +4,10 @@
 # Reading the implementation part of the package.
 #
 
+#= comment for Julia
+ReadPackage( "CartesianCategories", "gap/Tools.gi" );
+# =#
+
 ## Initial category
 
 ReadPackage( "CartesianCategories", "gap/InitialCategory.gi" );

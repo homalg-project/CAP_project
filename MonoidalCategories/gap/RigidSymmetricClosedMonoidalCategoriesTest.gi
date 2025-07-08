@@ -4,6 +4,44 @@
 # Implementations
 #
 
+##
+InstallMethod( TestZigZagIdentitiesForDual,
+               [ IsCapCategoryObject ],
+               
+  function( object )
+    local id_object, dual_object, id_dual_object, automorphism;
+    
+    id_object := IdentityMorphism( object );
+    
+    dual_object := DualOnObjects( object );
+    
+    id_dual_object := IdentityMorphism( dual_object );
+    
+    automorphism := PreCompose( [
+      LeftUnitorInverse( object ),
+      TensorProductOnMorphisms( CoevaluationForDual( object ), id_object ),
+      AssociatorLeftToRight( object, dual_object, object ),
+      TensorProductOnMorphisms( id_object, EvaluationForDual( object ) ),
+      RightUnitor( object ) ] );
+    
+    if not IsCongruentForMorphisms( automorphism, id_object ) then
+        
+        return false;
+        
+    fi;
+    
+    automorphism := PreCompose( [
+      RightUnitorInverse( dual_object ),
+      TensorProductOnMorphisms( id_dual_object, CoevaluationForDual( object ) ),
+      AssociatorRightToLeft( dual_object, object, dual_object ),
+      TensorProductOnMorphisms( EvaluationForDual( object ), id_dual_object ),
+      LeftUnitor( dual_object ) ] );
+    
+    return IsCongruentForMorphisms( automorphism, id_dual_object );
+    
+end );
+
+##
 InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
 
     function( cat, opposite, a, b, c, d, alpha )
