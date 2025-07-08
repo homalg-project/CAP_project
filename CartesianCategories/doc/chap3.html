@@ -25,14 +25,22 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7862428B781B1F3D">3.1 <span class="Heading">Test functions</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83B0BC037D5E2C95">3.1-1 BraidedCartesianCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X815F4404798F05F3">3.1-2 BraidedCocartesianCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BC67B107EB54EE2">3.1-3 CartesianCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C19A72D81FD3652">3.1-4 CartesianClosedCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8581ECE37E4E8470">3.1-5 CocartesianCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C25BAD3807EE56E">3.1-6 CocartesianCoclosedCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7EA2684984BCCF6B">3.1-7 CodistributiveCocartesianCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78CA53ED85B4FEFF">3.1-8 DistributiveCartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X875898027D2DCBED">3.1-1 TestCartesianBraidingCompatability</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F54CECC7C11450D">3.1-2 TestCartesianBraidingCompatabilityForAllTriplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83B0BC037D5E2C95">3.1-3 BraidedCartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X835664E57AAADAF2">3.1-4 TestCocartesianBraidingCompatability</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F9CD72D7F40442D">3.1-5 TestCocartesianBraidingCompatabilityForAllTriplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X815F4404798F05F3">3.1-6 BraidedCocartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83C40A9378201657">3.1-7 TestCartesianPentagonIdentity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82497AFC877A7845">3.1-8 TestCartesianPentagonIdentityForAllQuadruplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BC67B107EB54EE2">3.1-9 CartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C19A72D81FD3652">3.1-10 CartesianClosedCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B9401D0843F1EFC">3.1-11 TestCocartesianPentagonIdentity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X879869428334E8EA">3.1-12 TestCocartesianPentagonIdentityForAllQuadruplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8581ECE37E4E8470">3.1-13 CocartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C25BAD3807EE56E">3.1-14 CocartesianCoclosedCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7EA2684984BCCF6B">3.1-15 CodistributiveCocartesianCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78CA53ED85B4FEFF">3.1-16 DistributiveCartesianCategoriesTest</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X794F44AE78DD7CAF">3.2 <span class="Heading">InfoOfInstalledOperationsOfCategory</span></a>
 </span>
@@ -45,9 +53,27 @@
 
 <h4>3.1 <span class="Heading">Test functions</span></h4>
 
+<p><a id="X875898027D2DCBED" name="X875898027D2DCBED"></a></p>
+
+<h5>3.1-1 TestCartesianBraidingCompatability</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianBraidingCompatability</code>( <var class="Arg">v_1</var>, <var class="Arg">v_2</var>, <var class="Arg">v_3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The arguments are 3 objects <span class="Math">v_1, v_2, v_3</span> in a braided cartesian category. The output is true if the braiding compatabilities with the associator hold, false otherwise.</p>
+
+<p><a id="X7F54CECC7C11450D" name="X7F54CECC7C11450D"></a></p>
+
+<h5>3.1-2 TestCartesianBraidingCompatabilityForAllTriplesInList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianBraidingCompatabilityForAllTriplesInList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is a list <span class="Math">L</span> consisting of triples of objects in a braided cartesian category. The output is true if the braiding compatabilities with the associator hold for all those triples false otherwise.</p>
+
 <p><a id="X83B0BC037D5E2C95" name="X83B0BC037D5E2C95"></a></p>
 
-<h5>3.1-1 BraidedCartesianCategoriesTest</h5>
+<h5>3.1-3 BraidedCartesianCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidedCartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -72,9 +98,27 @@
 
 </li>
 </ul>
+<p><a id="X835664E57AAADAF2" name="X835664E57AAADAF2"></a></p>
+
+<h5>3.1-4 TestCocartesianBraidingCompatability</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianBraidingCompatability</code>( <var class="Arg">v_1</var>, <var class="Arg">v_2</var>, <var class="Arg">v_3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The arguments are 3 objects <span class="Math">v_1, v_2, v_3</span> in a braided cocartesian category. The output is true if the braiding compatabilities with the associator hold, false otherwise.</p>
+
+<p><a id="X7F9CD72D7F40442D" name="X7F9CD72D7F40442D"></a></p>
+
+<h5>3.1-5 TestCocartesianBraidingCompatabilityForAllTriplesInList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianBraidingCompatabilityForAllTriplesInList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is a list <span class="Math">L</span> consisting of triples of objects in a braided cocartesian category. The output is true if the braiding compatabilities with the associator hold for all those triples false otherwise.</p>
+
 <p><a id="X815F4404798F05F3" name="X815F4404798F05F3"></a></p>
 
-<h5>3.1-2 BraidedCocartesianCategoriesTest</h5>
+<h5>3.1-6 BraidedCocartesianCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidedCocartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -99,9 +143,27 @@
 
 </li>
 </ul>
+<p><a id="X83C40A9378201657" name="X83C40A9378201657"></a></p>
+
+<h5>3.1-7 TestCartesianPentagonIdentity</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianPentagonIdentity</code>( <var class="Arg">v_1</var>, <var class="Arg">v_2</var>, <var class="Arg">v_3</var>, <var class="Arg">v_4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The arguments are 4 objects <span class="Math">v_1, v_2, v_3, v_4</span> in a category. The output is true if the pentagon identity holds for those 4 objects, false otherwise.</p>
+
+<p><a id="X82497AFC877A7845" name="X82497AFC877A7845"></a></p>
+
+<h5>3.1-8 TestCartesianPentagonIdentityForAllQuadruplesInList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianPentagonIdentityForAllQuadruplesInList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is a list <span class="Math">L</span> consisting of quadruples of objects in a cartesian category. The output is true if the pentagon identity holds for all those quadruples, false otherwise.</p>
+
 <p><a id="X7BC67B107EB54EE2" name="X7BC67B107EB54EE2"></a></p>
 
-<h5>3.1-3 CartesianCategoriesTest</h5>
+<h5>3.1-9 CartesianCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -134,7 +196,7 @@
 </ul>
 <p><a id="X7C19A72D81FD3652" name="X7C19A72D81FD3652"></a></p>
 
-<h5>3.1-4 CartesianClosedCategoriesTest</h5>
+<h5>3.1-10 CartesianClosedCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianClosedCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -177,9 +239,27 @@
 
 </li>
 </ul>
+<p><a id="X7B9401D0843F1EFC" name="X7B9401D0843F1EFC"></a></p>
+
+<h5>3.1-11 TestCocartesianPentagonIdentity</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianPentagonIdentity</code>( <var class="Arg">v_1</var>, <var class="Arg">v_2</var>, <var class="Arg">v_3</var>, <var class="Arg">v_4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The arguments are 4 objects <span class="Math">v_1, v_2, v_3, v_4</span> in a category. The output is true if the pentagon identity holds for those 4 objects, false otherwise.</p>
+
+<p><a id="X879869428334E8EA" name="X879869428334E8EA"></a></p>
+
+<h5>3.1-12 TestCocartesianPentagonIdentityForAllQuadruplesInList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianPentagonIdentityForAllQuadruplesInList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is a list <span class="Math">L</span> consisting of quadruples of objects in a cocartesian category. The output is true if the pentagon identity holds for all those quadruples, false otherwise.</p>
+
 <p><a id="X8581ECE37E4E8470" name="X8581ECE37E4E8470"></a></p>
 
-<h5>3.1-5 CocartesianCategoriesTest</h5>
+<h5>3.1-13 CocartesianCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -212,7 +292,7 @@
 </ul>
 <p><a id="X7C25BAD3807EE56E" name="X7C25BAD3807EE56E"></a></p>
 
-<h5>3.1-6 CocartesianCoclosedCategoriesTest</h5>
+<h5>3.1-14 CocartesianCoclosedCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CocartesianCoclosedCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -257,7 +337,7 @@
 </ul>
 <p><a id="X7EA2684984BCCF6B" name="X7EA2684984BCCF6B"></a></p>
 
-<h5>3.1-7 CodistributiveCocartesianCategoriesTest</h5>
+<h5>3.1-15 CodistributiveCocartesianCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CodistributiveCocartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -287,7 +367,7 @@
 </ul>
 <p><a id="X78CA53ED85B4FEFF" name="X78CA53ED85B4FEFF"></a></p>
 
-<h5>3.1-8 DistributiveCartesianCategoriesTest</h5>
+<h5>3.1-16 DistributiveCartesianCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DistributiveCartesianCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
