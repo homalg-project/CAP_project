@@ -7,6 +7,87 @@
 
 
 
+##
+InstallMethod( TestCocartesianBraidingCompatability,
+              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+              
+  function( object_a, object_b, object_c )
+    local morphism_1, morphism_2;
+    
+    morphism_1 := CocartesianBraiding( Coproduct( object_a, object_b ), object_c );
+    
+    morphism_1 := PreCompose( morphism_1, CocartesianAssociatorRightToLeft( object_c, object_a, object_b ) );
+    
+    morphism_1 := PreCompose( morphism_1,
+                    CoproductOnMorphisms( CocartesianBraiding( object_c, object_a ), IdentityMorphism( object_b ) ) );
+    
+    morphism_2 := CocartesianAssociatorLeftToRight( object_a, object_b, object_c );
+    
+    morphism_2 := PreCompose( morphism_2,
+                    CoproductOnMorphisms( IdentityMorphism( object_a ), CocartesianBraiding( object_b, object_c ) ) );
+    
+    morphism_2 := PreCompose( morphism_2, CocartesianAssociatorRightToLeft( object_a, object_c, object_b ) );
+    
+    if not ( morphism_1 = morphism_2 ) then
+        
+        return false;
+        
+    fi;
+    
+    morphism_1 := CocartesianBraiding( object_a, Coproduct( object_b, object_c ) );
+    
+    morphism_1 := PreCompose( morphism_1, CocartesianAssociatorLeftToRight( object_b, object_c, object_a ) );
+    
+    morphism_1 := PreCompose( morphism_1,
+                    CoproductOnMorphisms( IdentityMorphism( object_b ), CocartesianBraiding( object_c, object_a ) ) );
+    
+    morphism_2 := CocartesianAssociatorRightToLeft( object_a, object_b, object_c );
+    
+    morphism_2 := PreCompose( morphism_2,
+                    CoproductOnMorphisms( CocartesianBraiding( object_a, object_b ), IdentityMorphism( object_c ) ) );
+    
+    morphism_2 := PreCompose( morphism_2, CocartesianAssociatorLeftToRight( object_b, object_a, object_c ) );
+    
+    return morphism_1 = morphism_2;
+    
+end );
+
+##
+InstallMethod( TestCocartesianBraidingCompatabilityForAllTriplesInList,
+               [ IsList ],
+               
+  function( object_list )
+    local a, b, c, size, list, test;
+    
+    size := Size( object_list );
+    
+    list := [ 1 .. size ];
+    
+    for a in list do
+        
+        for b in list do
+            
+            for c in list do
+                
+                test := TestCocartesianBraidingCompatability( object_list[a], object_list[b], object_list[c] );
+                
+                if not test then
+                    
+                    Print( "indices of failing triple: ", [ a, b, c ], "\n" );
+                    
+                    return false;
+                    
+                fi;
+                
+            od;
+            
+        od;
+        
+    od;
+    
+end );
+
+##
 InstallGlobalFunction( "BraidedCocartesianCategoriesTest",
     
     function( cat, opposite, a, b )

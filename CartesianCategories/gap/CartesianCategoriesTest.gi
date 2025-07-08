@@ -7,6 +7,76 @@
 
 
 
+##
+InstallMethod( TestCartesianPentagonIdentity,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( object_a, object_b, object_c, object_d )
+    local morphism_1, morphism_2;
+    
+    morphism_1 :=
+      DirectProductOnMorphisms( CartesianAssociatorLeftToRight( object_a, object_b, object_c ), IdentityMorphism( object_d ) );
+    
+    morphism_1 := PreCompose( morphism_1,
+      CartesianAssociatorLeftToRight( object_a, DirectProduct( object_b, object_c ), object_d ) );
+    
+    morphism_1 := PreCompose( morphism_1,
+      DirectProductOnMorphisms( IdentityMorphism( object_a ), CartesianAssociatorLeftToRight( object_b, object_c, object_d ) ) );
+    
+    morphism_2 := CartesianAssociatorLeftToRight( DirectProduct( object_a, object_b ), object_c, object_d );
+    
+    morphism_2 := PreCompose( morphism_2,
+      CartesianAssociatorLeftToRight( object_a, object_b, DirectProduct( object_c, object_d ) ) );
+    
+    return IsCongruentForMorphisms( morphism_1, morphism_2 );
+    
+end );
+
+##
+InstallMethod( TestCartesianPentagonIdentityForAllQuadruplesInList,
+               [ IsList ],
+               
+  function( object_list )
+    local a, b, c, d, size, list, test, all_okay;
+    
+    size := Size( object_list );
+    
+    list := [ 1 .. size ];
+    
+    all_okay := true;
+
+    for a in list do
+        
+        for b in list do
+            
+            for c in list do
+                
+                for d in list do
+                    
+                    test := TestCartesianPentagonIdentity( object_list[a], object_list[b], object_list[c], object_list[d] );
+                    
+                    if not test then
+                        
+                        Print( "indices of failing quadruple: ", [ a, b, c, d ], "\n" );
+                        
+                        return false;
+                        
+                    fi;
+                    
+                od;
+                
+            od;
+            
+            
+        od;
+        
+    od;
+    
+    return all_okay;
+    
+end );
+
+##
 InstallGlobalFunction( "CartesianCategoriesTest",
     
     function( cat, opposite, a, b, c, alpha, beta )
