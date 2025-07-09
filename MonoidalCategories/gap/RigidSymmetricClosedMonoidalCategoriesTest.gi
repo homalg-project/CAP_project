@@ -6,10 +6,13 @@
 
 ##
 InstallMethod( TestZigZagIdentitiesForDual,
-               [ IsCapCategoryObject ],
+               [ IsCapCategory, IsCapCategoryObject ],
                
-  function( object )
+  function( cat, object )
     local id_object, dual_object, id_dual_object, automorphism;
+    
+    Assert( 0, HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object ) ) );
     
     id_object := IdentityMorphism( object );
     
@@ -43,9 +46,7 @@ end );
 
 ##
 InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
-
     function( cat, opposite, a, b, c, d, alpha )
-
         local verbose,
               
               a_op, c_op,
@@ -81,6 +82,18 @@ InstallGlobalFunction( "RigidSymmetricClosedMonoidalCategoriesTest",
         alpha_op := Opposite( opposite, alpha );
         
         verbose := ValueOption( "verbose" ) = true;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsRigidSymmetricClosedMonoidalCategory" ) ) then
+            
+            Assert( 0, ForAll( [ a, b, c, d ], obj -> TestZigZagIdentitiesForDual( cat, obj ) ) );
+            
+        fi;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsRigidSymmetricClosedMonoidalCategory" ) ) then
+            
+            Assert( 0, ForAll( [ a_op, b_op, c_op, d_op ], obj_op -> TestZigZagIdentitiesForDual( opposite, obj_op ) ) );
+            
+        fi;
         
         if CanCompute( cat, "IsomorphismFromTensorProductWithDualObjectToInternalHom" ) then
             

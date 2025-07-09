@@ -49,6 +49,3 @@ DeclareOperation( "BraidingInverse",
 #! @Arguments s,a,b,r
 DeclareOperation( "BraidingInverseWithGivenTensorProducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "CheckBraiding",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );

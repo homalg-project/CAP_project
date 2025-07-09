@@ -10,27 +10,23 @@
 
 #! @Description
 #! This is a debug operation.
-#! The arguments are 3
-#! objects $v_1, v_2, v_3$
-#! in a braided monoidal category.
+#! The arguments are three objects $obj_1, obj_2, obj_3$
+#! in a braided monoidal category $cat$.
 #! The output is true if the braiding compatabilities with the associator hold,
 #! false otherwise.
 #! @Returns a boolean
-#! @Arguments v_1, v_2, v_3
+#! @Arguments cat, obj_1, obj_2, obj_3
 DeclareOperation( "TestBraidingCompatability",
-              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! This is a debug operation.
-#! The argument is a list $L$
-#! consisting of triples of objects
-#! in a braided monoidal category.
+#! The argument is a list $L$ of objects in a braided monoidal category $cat$.
 #! The output is true if the braiding compatabilities with the associator hold
-#! for all those triples
-#! false otherwise.
+#! for all triples of objects in $L$, otherwise false.
 #! @Returns a boolean
-#! @Arguments L
-DeclareOperation( "TestBraidingCompatabilityForAllTriplesInList", [ IsList ] );
+#! @Arguments cat, L
+DeclareOperation( "TestBraidingCompatabilityForAllTriplesInList", [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are

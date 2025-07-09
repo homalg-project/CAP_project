@@ -7,8 +7,12 @@
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsRigidSymmetricCoclosedMonoidalCategory :=
   Concatenation(
           ListOfDefiningOperations( "IsSymmetricCoclosedMonoidalCategory" ),
-          [ "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-            "MorphismToCoBidualWithGivenCoBidual"
+          [ "CoDualOnObjects",
+            "CoDualOnMorphismsWithGivenCoDuals",
+            "CoclosedEvaluationForCoDualWithGivenTensorProduct",
+            "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
+            "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
+            "MorphismToCoBidualWithGivenCoBidual",
             ] );
 
 InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsRigidSymmetricCoclosedMonoidalCategory );

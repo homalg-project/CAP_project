@@ -10,13 +10,13 @@
 
 #! @Description
 #! This is a debug operation.
-#! The argument is an object $v$
-#! in a rigid symmetric monoidal category.
+#! The argument is an object $obj$
+#! in a rigid symmetric monoidal category $cat$.
 #! The output is true if the zig zag identity for duals hold,
 #! false otherwise.
 #! @Returns a boolean
-#! @Arguments v
-DeclareOperation( "TestZigZagIdentitiesForDual", [ IsCapCategoryObject ] );
+#! @Arguments cat, obj
+DeclareOperation( "TestZigZagIdentitiesForDual", [ IsCapCategory, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are

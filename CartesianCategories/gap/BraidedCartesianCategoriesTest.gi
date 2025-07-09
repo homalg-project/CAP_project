@@ -9,57 +9,62 @@
 
 ##
 InstallMethod( TestCartesianBraidingCompatability,
-              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
               
-  function( object_a, object_b, object_c )
-    local morphism_1, morphism_2;
+  function( cat, object_1, object_2, object_3 )
+    local morphism_left, morphism_right;
     
-    morphism_1 := CartesianBraiding( DirectProduct( object_a, object_b ), object_c );
+    Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
     
-    morphism_1 := PreCompose( morphism_1, CartesianAssociatorRightToLeft( object_c, object_a, object_b ) );
+    morphism_left := CartesianBraiding( BinaryDirectProduct( cat, object_1, object_2 ), object_3 );
     
-    morphism_1 := PreCompose( morphism_1,
-                    DirectProductOnMorphisms( CartesianBraiding( object_c, object_a ), IdentityMorphism( object_b ) ) );
+    morphism_left := PreCompose( morphism_left, CartesianAssociatorRightToLeft( object_3, object_1, object_2 ) );
     
-    morphism_2 := CartesianAssociatorLeftToRight( object_a, object_b, object_c );
+    morphism_left := PreCompose( morphism_left,
+                    DirectProductOnMorphisms( CartesianBraiding( object_3, object_1 ), IdentityMorphism( object_2 ) ) );
     
-    morphism_2 := PreCompose( morphism_2,
-                    DirectProductOnMorphisms( IdentityMorphism( object_a ), CartesianBraiding( object_b, object_c ) ) );
+    morphism_right := CartesianAssociatorLeftToRight( object_1, object_2, object_3 );
     
-    morphism_2 := PreCompose( morphism_2, CartesianAssociatorRightToLeft( object_a, object_c, object_b ) );
+    morphism_right := PreCompose( morphism_right,
+                    DirectProductOnMorphisms( IdentityMorphism( object_1 ), CartesianBraiding( object_2, object_3 ) ) );
     
-    if not ( morphism_1 = morphism_2 ) then
+    morphism_right := PreCompose( morphism_right, CartesianAssociatorRightToLeft( object_1, object_3, object_2 ) );
+    
+    if not ( morphism_left = morphism_right ) then
         
         return false;
         
     fi;
     
-    morphism_1 := CartesianBraiding( object_a, DirectProduct( object_b, object_c ) );
+    morphism_left := CartesianBraiding( object_1, BinaryDirectProduct( cat, object_2, object_3 ) );
     
-    morphism_1 := PreCompose( morphism_1, CartesianAssociatorLeftToRight( object_b, object_c, object_a ) );
+    morphism_left := PreCompose( morphism_left, CartesianAssociatorLeftToRight( object_2, object_3, object_1 ) );
     
-    morphism_1 := PreCompose( morphism_1,
-                    DirectProductOnMorphisms( IdentityMorphism( object_b ), CartesianBraiding( object_c, object_a ) ) );
+    morphism_left := PreCompose( morphism_left,
+                    DirectProductOnMorphisms( IdentityMorphism( object_2 ), CartesianBraiding( object_3, object_1 ) ) );
     
-    morphism_2 := CartesianAssociatorRightToLeft( object_a, object_b, object_c );
+    morphism_right := CartesianAssociatorRightToLeft( object_1, object_2, object_3 );
     
-    morphism_2 := PreCompose( morphism_2,
-                    DirectProductOnMorphisms( CartesianBraiding( object_a, object_b ), IdentityMorphism( object_c ) ) );
+    morphism_right := PreCompose( morphism_right,
+                    DirectProductOnMorphisms( CartesianBraiding( object_1, object_2 ), IdentityMorphism( object_3 ) ) );
     
-    morphism_2 := PreCompose( morphism_2, CartesianAssociatorLeftToRight( object_b, object_a, object_c ) );
+    morphism_right := PreCompose( morphism_right, CartesianAssociatorLeftToRight( object_2, object_1, object_3 ) );
     
-    return morphism_1 = morphism_2;
+    return morphism_left = morphism_right;
     
 end );
 
 ##
 InstallMethod( TestCartesianBraidingCompatabilityForAllTriplesInList,
-               [ IsList ],
+               [ IsCapCategory, IsList ],
                
-  function( object_list )
+  function( cat, object_list )
     local a, b, c, size, list, test;
     
-    size := Size( object_list );
+    size := Length( object_list );
     
     list := [ 1 .. size ];
     
@@ -69,7 +74,7 @@ InstallMethod( TestCartesianBraidingCompatabilityForAllTriplesInList,
             
             for c in list do
                 
-                test := TestCartesianBraidingCompatability( object_list[a], object_list[b], object_list[c] );
+                test := TestCartesianBraidingCompatability( cat, object_list[a], object_list[b], object_list[c] );
                 
                 if not test then
                     
@@ -89,9 +94,7 @@ end );
 
 ##
 InstallGlobalFunction( "BraidedCartesianCategoriesTest",
-    
     function( cat, opposite, a, b )
-        
         local verbose,
               
               a_op, braiding_a_b, braiding_a_b_op, braiding_inverse_a_b, braiding_inverse_a_b_op, 
@@ -101,6 +104,18 @@ InstallGlobalFunction( "BraidedCartesianCategoriesTest",
         b_op := Opposite( opposite, b );
         
         verbose := ValueOption( "verbose" ) = true;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsCartesianCategory" ) ) then
+            
+            Assert( 0, TestCartesianBraidingCompatability( cat, a, b, a ) );
+            
+        fi;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsCartesianCategory" ) ) then
+            
+            Assert( 0, TestCartesianBraidingCompatability( opposite, a_op, b_op, a_op ) );
+            
+        fi;
         
         if CanCompute( cat, "CartesianBraiding" ) then
             

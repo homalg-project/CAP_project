@@ -8,43 +8,224 @@
 
 
 ##
-InstallMethod( TestCartesianPentagonIdentity,
-               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+InstallMethod( TestCartesianTriangleIdentity,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
                
-  function( object_a, object_b, object_c, object_d )
-    local morphism_1, morphism_2;
+  function( cat, object_1, object_2 )
+    local morphism_short, morphism_long;
     
-    morphism_1 :=
-      DirectProductOnMorphisms( CartesianAssociatorLeftToRight( object_a, object_b, object_c ), IdentityMorphism( object_d ) );
+    Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
     
-    morphism_1 := PreCompose( morphism_1,
-      CartesianAssociatorLeftToRight( object_a, DirectProduct( object_b, object_c ), object_d ) );
+    morphism_short := DirectProductOnMorphisms( CartesianRightUnitor( object_1 ), IdentityMorphism( object_2 ) );
     
-    morphism_1 := PreCompose( morphism_1,
-      DirectProductOnMorphisms( IdentityMorphism( object_a ), CartesianAssociatorLeftToRight( object_b, object_c, object_d ) ) );
+    morphism_long := DirectProductOnMorphisms( IdentityMorphism( object_1 ), CartesianLeftUnitor( object_2 ) );
     
-    morphism_2 := CartesianAssociatorLeftToRight( DirectProduct( object_a, object_b ), object_c, object_d );
+    morphism_long := PreCompose( CartesianAssociatorLeftToRight( object_1, TerminalObject( cat ), object_2 ), morphism_long );
     
-    morphism_2 := PreCompose( morphism_2,
-      CartesianAssociatorLeftToRight( object_a, object_b, DirectProduct( object_c, object_d ) ) );
+    return IsCongruentForMorphisms( morphism_short, morphism_long );
     
-    return IsCongruentForMorphisms( morphism_1, morphism_2 );
+end );
+
+##
+InstallMethod( TestCartesianTriangleIdentityForAllPairsInList,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, object_list )
+    local a, b, size, list, test, all_okay;
+    
+    size := Length( object_list );
+    
+    list := [ 1 .. size ];
+    
+    all_okay := true;
+    
+    for a in list do
+        
+        for b in list do
+            
+            test := TestCartesianTriangleIdentity( cat, object_list[a], object_list[b] );
+            
+            if not test then
+                
+                Print( "indices of failing pair: ", [ a, b ], "\n" );
+                
+                return false;
+                
+            fi;
+            
+        od;
+        
+    od;
+    
+    return all_okay;
+    
+end );
+
+##
+InstallMethod( TestCartesianPentagonIdentity,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3, object_4 )
+    local morphism_long, morphism_short;
+    
+    morphism_long :=
+      DirectProductOnMorphisms( CartesianAssociatorLeftToRight( object_1, object_2, object_3 ), IdentityMorphism( object_4 ) );
+    
+    morphism_long := PreCompose( morphism_long,
+      CartesianAssociatorLeftToRight( object_1, BinaryDirectProduct( cat, object_2, object_3 ), object_4 ) );
+    
+    morphism_long := PreCompose( morphism_long,
+      DirectProductOnMorphisms( IdentityMorphism( object_1 ), CartesianAssociatorLeftToRight( object_2, object_3, object_4 ) ) );
+    
+    morphism_short := CartesianAssociatorLeftToRight( BinaryDirectProduct( cat, object_1, object_2 ), object_3, object_4 );
+    
+    morphism_short := PreCompose( morphism_short,
+      CartesianAssociatorLeftToRight( object_1, object_2, BinaryDirectProduct( cat, object_3, object_4 ) ) );
+    
+    return IsCongruentForMorphisms( morphism_long, morphism_short );
+    
+end );
+
+##
+InstallMethod( TestCartesianPentagonIdentityUsingWithGivenOperations,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3, object_4 )
+    local t12, t12_3, t12_3_4, t34, t12_34, t2_34, t1_2_34, t23, t1_23, t1_23__4, t23_4, t1__23_4,
+          assoc_12_3_to_1_23, assoc_23_4_to_2_34, assoc_1_23__4_to_1__23_4, assoc_12_3_4_to_12_34, assoc_12_34_to_1_2_34,
+          morphism_long, tensor, morphism_short;
+    
+    Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_4 ) ) );
+    
+    ## o₁ × o₂
+    t12 := BinaryDirectProduct( cat, object_1, object_2 );
+    
+    ## (o₁ × o₂) × o₃
+    t12_3 := BinaryDirectProduct( cat, t12, object_3 );
+    
+    ## ((o₁ × o₂) × o₃) × o₄
+    t12_3_4 := BinaryDirectProduct( cat, t12_3, object_4 );
+    
+    ## o₃ × o₄
+    t34 := BinaryDirectProduct( cat, object_3, object_4 );
+    
+    ## (o₁ × o₂) × (o₃ × o₄)
+    t12_34 := BinaryDirectProduct( cat, t12, t34 );
+    
+    ## o₂ × (o₃ × o₄)
+    t2_34 := BinaryDirectProduct( cat, object_2, t34 );
+    
+    ## o₁ × (o₂ × (o₃ × o₄))
+    t1_2_34 := BinaryDirectProduct( cat, object_1, t2_34 );
+    
+    ## o₂ × o₃
+    t23 := BinaryDirectProduct( cat, object_2, object_3 );
+    
+    ## o₁ × (o₂ × o₃)
+    t1_23 := BinaryDirectProduct( cat, object_1, t23 );
+    
+    ## (o₁ × (o₂ × o₃)) × o₄
+    t1_23__4 := BinaryDirectProduct( cat, t1_23, object_4 );
+    
+    ## (o₂ × o₃) × o₄
+    t23_4 := BinaryDirectProduct( cat, t23, object_4 );
+    
+    ## o₁ × ((o₂ × o₃) × o₄)
+    t1__23_4 := BinaryDirectProduct( cat, object_1, t23_4 );
+    
+    ## (o₁ × o₂) × o₃ → o₁ × (o₂ × o₃)
+    assoc_12_3_to_1_23 := CartesianAssociatorLeftToRightWithGivenDirectProducts(
+                               t12_3,
+                               object_1, object_2, object_3,
+                               t1_23 );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t12_3, assoc_12_3_to_1_23, t1_23 ) );
+    
+    ## (o₂ × o₃) × o₄ → o₂ × (o₃ × o₄)
+    assoc_23_4_to_2_34 := CartesianAssociatorLeftToRightWithGivenDirectProducts(
+                               t23_4,
+                               object_2, object_3, object_4,
+                               t2_34 );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t23_4, assoc_23_4_to_2_34, t2_34 ) );
+    
+    ## (o₁ × (o₂ × o₃)) × o₄ → o₁ × ((o₂ × o₃) × o₄)
+    assoc_1_23__4_to_1__23_4 := CartesianAssociatorLeftToRightWithGivenDirectProducts(
+                                     t1_23__4,
+                                     object_1, t23, object_2,
+                                     t1__23_4 );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t1_23__4, assoc_1_23__4_to_1__23_4, t1__23_4 ) );
+    
+    ## ((o₁ × o₂) × o₃) × o₄ → (o₁ × o₂) × (o₃ × o₄)
+    assoc_12_3_4_to_12_34 := CartesianAssociatorLeftToRightWithGivenDirectProducts(
+                                     t12_3_4,
+                                     t12, object_3, object_4,
+                                     t12_34);
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t12_3_4, assoc_12_3_4_to_12_34, t12_34 ) );
+    
+    ## (o₁ × o₂) × (o₃ × o₄) → o₁ × (o₂ × (o₃ × o₄))
+    assoc_12_34_to_1_2_34 := CartesianAssociatorLeftToRightWithGivenDirectProducts(
+                                  t12_34,
+                                  object_1, object_2, t34,
+                                  t1_2_34 );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t12_34, assoc_12_34_to_1_2_34, t1_2_34 ) );
+    
+    ## ((o₁ × o₂) × o₃) × o₄ → (o₁ × (o₂ × o₃)) × o₄
+    morphism_long := DirectProductOnMorphismsWithGivenDirectProducts(
+                             t12_3_4,
+                             assoc_12_3_to_1_23, IdentityMorphism( object_4 ),
+                             t1_23__4 );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t12_3_4, morphism_long, t1_23__4 ) );
+    
+    ## ((o₁ × o₂) × o₃) × o₄ → o₁ × ((o₂ × o₃) × o₄)
+    morphism_long := PreCompose( morphism_long, assoc_1_23__4_to_1__23_4 );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t12_3_4, morphism_long, t1__23_4 ) );
+    
+    ## o₁ × ((o₂ × o₃) × o₄) → o₁ × (o₂ × (o₃ × o₄))
+    tensor := DirectProductOnMorphismsWithGivenDirectProducts(
+                      t1__23_4,
+                      IdentityMorphism( object_1 ), assoc_23_4_to_2_34,
+                      t1_2_34 );
+    
+    ## ((o₁ × o₂) × o₃) × o₄ → o₁ × (o₂ × (o₃ × o₄))
+    morphism_long := PreCompose( morphism_long, tensor );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t12_3_4, morphism_long, t1_2_34 ) );
+    
+    ##--##
+    
+    morphism_short := PreCompose( assoc_12_3_4_to_12_34, assoc_12_34_to_1_2_34 );
+    
+    Assert( 0, IsWellDefinedForMorphismsWithGivenSourceAndRange( t12_3_4, morphism_short, t1_2_34 ) );
+    
+    return IsCongruentForMorphisms( morphism_long, morphism_short );
     
 end );
 
 ##
 InstallMethod( TestCartesianPentagonIdentityForAllQuadruplesInList,
-               [ IsList ],
+               [ IsCapCategory, IsList ],
                
-  function( object_list )
+  function( cat, object_list )
     local a, b, c, d, size, list, test, all_okay;
     
-    size := Size( object_list );
+    size := Length( object_list );
     
     list := [ 1 .. size ];
     
     all_okay := true;
-
+    
     for a in list do
         
         for b in list do
@@ -53,7 +234,7 @@ InstallMethod( TestCartesianPentagonIdentityForAllQuadruplesInList,
                 
                 for d in list do
                     
-                    test := TestCartesianPentagonIdentity( object_list[a], object_list[b], object_list[c], object_list[d] );
+                    test := TestCartesianPentagonIdentity( cat, object_list[a], object_list[b], object_list[c], object_list[d] );
                     
                     if not test then
                         
@@ -67,7 +248,6 @@ InstallMethod( TestCartesianPentagonIdentityForAllQuadruplesInList,
                 
             od;
             
-            
         od;
         
     od;
@@ -78,9 +258,7 @@ end );
 
 ##
 InstallGlobalFunction( "CartesianCategoriesTest",
-    
     function( cat, opposite, a, b, c, alpha, beta )
-    
         local verbose,
               
               a_op,
@@ -111,6 +289,26 @@ InstallGlobalFunction( "CartesianCategoriesTest",
         beta_op := Opposite( opposite, beta );
         
         verbose := ValueOption( "verbose" ) = true;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsCartesianCategory" ) ) then
+            
+            Assert( 0, TestCartesianTriangleIdentityForAllPairsInList( cat, [ a, b, c ] ) );
+            
+            Assert( 0, TestCartesianPentagonIdentity( cat, a, b, c, b ) );
+            
+            Assert( 0, TestCartesianPentagonIdentityUsingWithGivenOperations( cat, a, b, c, b ) );
+            
+        fi;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsCartesianCategory" ) ) then
+            
+            Assert( 0, TestCartesianTriangleIdentityForAllPairsInList( opposite, [ a_op, b_op, c_op ] ) );
+            
+            Assert( 0, TestCartesianPentagonIdentity( opposite, a_op, b_op, c_op, b_op ) );
+            
+            Assert( 0, TestCartesianPentagonIdentityUsingWithGivenOperations( opposite, a_op, b_op, c_op, b_op ) );
+            
+        fi;
         
         if CanCompute( cat, "DirectProductOnMorphisms" ) then
             

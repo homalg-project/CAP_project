@@ -123,8 +123,8 @@ gap> d := "d" / T;;
 gap> u := TensorUnit( T );;
 
 #
-gap> a_product_b := TensorProduct( a, b );;
-gap> c_product_d := TensorProduct( c, d );;
+gap> a_product_b := TensorProductOnObjects( T, a, b );;
+gap> c_product_d := TensorProductOnObjects( T, c, d );;
 
 #
 gap> hom_ab := InternalHom( a, b );;
@@ -150,8 +150,8 @@ gap> ClosedMonoidalCategoriesTestWithGiven( T, opposite_primitive, a, b, c, d, a
 gap> z := ZeroObject( T );;
 
 #
-gap> z_product_a := TensorProduct( z, a );;
-gap> a_product_z := TensorProduct( a, z );;
+gap> z_product_a := TensorProductOnObjects( T, z, a );;
+gap> a_product_z := TensorProductOnObjects( T, a, z );;
 
 #
 gap> hom_za := InternalHom( z, a );;
@@ -187,8 +187,8 @@ gap> d := "d" / T;;
 gap> u := TensorUnit( T );;
 
 #
-gap> a_product_b := TensorProduct( a, b );;
-gap> c_product_d := TensorProduct( c, d );;
+gap> a_product_b := TensorProductOnObjects( T, a, b );;
+gap> c_product_d := TensorProductOnObjects( T, c, d );;
 
 #
 gap> cohom_ab := InternalCoHom( a, b );;
@@ -214,8 +214,8 @@ gap> CoclosedMonoidalCategoriesTestWithGiven( T, opposite_primitive, a, b, c, d,
 gap> z := ZeroObject( T );;
 
 #
-gap> z_product_a := TensorProduct( z, a );;
-gap> a_product_z := TensorProduct( a, z );;
+gap> z_product_a := TensorProductOnObjects( T, z, a );;
+gap> a_product_z := TensorProductOnObjects( T, a, z );;
 
 #
 gap> cohom_za := InternalCoHom( z, a );;

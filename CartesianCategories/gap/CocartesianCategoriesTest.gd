@@ -13,26 +13,52 @@
 
 #! @Description
 #! This is a debug operation.
-#! The arguments are 4
-#! objects $v_1, v_2, v_3, v_4$
-#! in a category.
+#! The arguments are two objects $obj_1, obj_2$ in a cocartesian category $cat$.
 #! The output is true if the pentagon identity holds
-#! for those 4 objects, false otherwise.
+#! for these 2 objects, false otherwise.
 #! @Returns a boolean
-#! @Arguments v_1, v_2, v_3, v_4
-DeclareOperation( "TestCocartesianPentagonIdentity",
-              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+#! @Arguments cat, obj_1, obj_2
+DeclareOperation( "TestCocartesianTriangleIdentity",
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! This is a debug operation.
-#! The argument is a list $L$
-#! consisting of quadruples of objects
-#! in a cocartesian category.
-#! The output is true if the pentagon identity holds
-#! for all those quadruples, false otherwise.
+#! The argument is a list $L$ of objects in a cocartesian category $cat$.
+#! The output is true if the triangle identity holds
+#! for all pairs of objects in $L$, otherwise false.
 #! @Returns a boolean
-#! @Arguments L
-DeclareOperation( "TestCocartesianPentagonIdentityForAllQuadruplesInList", [ IsList ] );
+#! @Arguments cat, L
+DeclareOperation( "TestCocartesianTriangleIdentityForAllPairsInList", [ IsCapCategory, IsList ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are 4 objects $obj_1, obj_2, obj_3, obj_4$ in a cocartesian category $cat$.
+#! The output is true if the pentagon identity holds
+#! for these 4 objects, false otherwise.
+#! @Returns a boolean
+#! @Arguments cat, obj_1, obj_2, obj_3, obj_4
+DeclareOperation( "TestCocartesianPentagonIdentity",
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are 4 objects $obj_1, obj_2, obj_3, obj_4$ in a cocartesian category $cat$.
+#! The output is true if the pentagon identity holds
+#! for these 4 objects, false otherwise.
+#! This test uses the WithGiven-operations.
+#! @Returns a boolean
+#! @Arguments cat, obj_1, obj_2, obj_3, obj_4
+DeclareOperation( "TestCocartesianPentagonIdentityUsingWithGivenOperations",
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The argument is a list $L$ of objects in a cocartesian category $cat$.
+#! The output is true if the pentagon identity holds
+#! for all quadruples of objects in $L$, otherwise false.
+#! @Returns a boolean
+#! @Arguments cat, L
+DeclareOperation( "TestCocartesianPentagonIdentityForAllQuadruplesInList", [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are
