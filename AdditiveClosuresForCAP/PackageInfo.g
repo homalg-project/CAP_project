@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "AdditiveClosuresForCAP",
 Subtitle := "Additive closures for pre-abelian categories",
-Version := "2025.07-03",
-Date := "2025-07-03",
+Version := "2025.07-04",
+Date := "2025-07-10",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -133,7 +133,7 @@ Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [ [ "CAP", ">= 2025.06-05" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
-                           [ "MonoidalCategories", ">= 2024.09-02" ],
+                           [ "MonoidalCategories", ">= 2025.07-02" ],
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
