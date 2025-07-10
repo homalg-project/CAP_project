@@ -28,11 +28,11 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7862428B781B1F3D">3.1 <span class="Heading">Test functions</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87315C888239376F">3.1-1 TestCartesianBraidingCompatability</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85FDB10B83E4F074">3.1-2 TestCartesianBraidingCompatabilityForAllTriplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82F1B2C882E3C9E1">3.1-1 TestCartesianBraidingCompatibility</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B899936833E0EFA">3.1-2 TestCartesianBraidingCompatibilityForAllTriplesInList</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83B0BC037D5E2C95">3.1-3 BraidedCartesianCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8169128D7AA96304">3.1-4 TestCocartesianBraidingCompatability</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C7F4D647F7D2EF0">3.1-5 TestCocartesianBraidingCompatabilityForAllTriplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84A9FCCD792E02E4">3.1-4 TestCocartesianBraidingCompatibility</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X820B65597CFA4F10">3.1-5 TestCocartesianBraidingCompatibilityForAllTriplesInList</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X815F4404798F05F3">3.1-6 BraidedCocartesianCategoriesTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8423D2E97AA41A7E">3.1-7 TestCartesianTriangleIdentity</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X832AA7E67B322292">3.1-8 TestCartesianTriangleIdentityForAllPairsInList</a></span>
@@ -62,20 +62,20 @@
 
 <h4>3.1 <span class="Heading">Test functions</span></h4>
 
-<p><a id="X87315C888239376F" name="X87315C888239376F"></a></p>
+<p><a id="X82F1B2C882E3C9E1" name="X82F1B2C882E3C9E1"></a></p>
 
-<h5>3.1-1 TestCartesianBraidingCompatability</h5>
+<h5>3.1-1 TestCartesianBraidingCompatibility</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianBraidingCompatability</code>( <var class="Arg">cat</var>, <var class="Arg">obj_1</var>, <var class="Arg">obj_2</var>, <var class="Arg">obj_3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianBraidingCompatibility</code>( <var class="Arg">cat</var>, <var class="Arg">obj_1</var>, <var class="Arg">obj_2</var>, <var class="Arg">obj_3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>This is a debug operation. The arguments are three objects <span class="SimpleMath">\(obj_1, obj_2, obj_3\)</span> in a braided cartesian category <span class="SimpleMath">\(cat\)</span>. The output is true if the braiding compatabilities with the associator hold, false otherwise.</p>
 
-<p><a id="X85FDB10B83E4F074" name="X85FDB10B83E4F074"></a></p>
+<p><a id="X7B899936833E0EFA" name="X7B899936833E0EFA"></a></p>
 
-<h5>3.1-2 TestCartesianBraidingCompatabilityForAllTriplesInList</h5>
+<h5>3.1-2 TestCartesianBraidingCompatibilityForAllTriplesInList</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianBraidingCompatabilityForAllTriplesInList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCartesianBraidingCompatibilityForAllTriplesInList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>This is a debug operation. The argument is a list <span class="SimpleMath">\(L\)</span> of objects in a braided cartesian category <span class="SimpleMath">\(cat\)</span>. The output is true if the braiding compatabilities with the associator hold for all triples of objects in <span class="SimpleMath">\(L\)</span>, otherwise false.</p>
@@ -107,20 +107,20 @@
 
 </li>
 </ul>
-<p><a id="X8169128D7AA96304" name="X8169128D7AA96304"></a></p>
+<p><a id="X84A9FCCD792E02E4" name="X84A9FCCD792E02E4"></a></p>
 
-<h5>3.1-4 TestCocartesianBraidingCompatability</h5>
+<h5>3.1-4 TestCocartesianBraidingCompatibility</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianBraidingCompatability</code>( <var class="Arg">cat</var>, <var class="Arg">obj_1</var>, <var class="Arg">obj_2</var>, <var class="Arg">obj_3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianBraidingCompatibility</code>( <var class="Arg">cat</var>, <var class="Arg">obj_1</var>, <var class="Arg">obj_2</var>, <var class="Arg">obj_3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>This is a debug operation. The arguments are three objects <span class="SimpleMath">\(obj_1, obj_2, obj_3\)</span> in a braided cocartesian category <span class="SimpleMath">\(cat\)</span>. The output is true if the braiding compatabilities with the associator hold, false otherwise.</p>
 
-<p><a id="X7C7F4D647F7D2EF0" name="X7C7F4D647F7D2EF0"></a></p>
+<p><a id="X820B65597CFA4F10" name="X820B65597CFA4F10"></a></p>
 
-<h5>3.1-5 TestCocartesianBraidingCompatabilityForAllTriplesInList</h5>
+<h5>3.1-5 TestCocartesianBraidingCompatibilityForAllTriplesInList</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianBraidingCompatabilityForAllTriplesInList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestCocartesianBraidingCompatibilityForAllTriplesInList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>This is a debug operation. The argument is a list <span class="SimpleMath">\(L\)</span> of objects in a braided cocartesian category <span class="SimpleMath">\(cat\)</span>. The output is true if the braiding compatabilities with the associator hold for all triples of objects in <span class="SimpleMath">\(L\)</span>, otherwise false.</p>

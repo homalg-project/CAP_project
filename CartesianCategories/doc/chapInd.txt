@@ -537,15 +537,15 @@
   [2XRightCocartesianCodistributivityFactoringWithGivenObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryObject 2.1-30 
   [2XSetTensorProductToCoproduct[102X, for IsCapCategory 2.1-22 
   [2XSetTensorProductToDirectProduct[102X, for IsCapCategory 1.1-22 
-  [2XTestCartesianBraidingCompatability[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-1 
-  [2XTestCartesianBraidingCompatabilityForAllTriplesInList[102X, for IsCapCategory, IsList 3.1-2 
+  [2XTestCartesianBraidingCompatibility[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-1 
+  [2XTestCartesianBraidingCompatibilityForAllTriplesInList[102X, for IsCapCategory, IsList 3.1-2 
   [2XTestCartesianPentagonIdentity[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-9 
   [2XTestCartesianPentagonIdentityForAllQuadruplesInList[102X, for IsCapCategory, IsList 3.1-11 
   [2XTestCartesianPentagonIdentityUsingWithGivenOperations[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-10 
   [2XTestCartesianTriangleIdentity[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject 3.1-7 
   [2XTestCartesianTriangleIdentityForAllPairsInList[102X, for IsCapCategory, IsList 3.1-8 
-  [2XTestCocartesianBraidingCompatability[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-4 
-  [2XTestCocartesianBraidingCompatabilityForAllTriplesInList[102X, for IsCapCategory, IsList 3.1-5 
+  [2XTestCocartesianBraidingCompatibility[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-4 
+  [2XTestCocartesianBraidingCompatibilityForAllTriplesInList[102X, for IsCapCategory, IsList 3.1-5 
   [2XTestCocartesianPentagonIdentity[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-16 
   [2XTestCocartesianPentagonIdentityForAllQuadruplesInList[102X, for IsCapCategory, IsList 3.1-18 
   [2XTestCocartesianPentagonIdentityUsingWithGivenOperations[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 3.1-17 

@@ -6,7 +6,7 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2025.07-02
+                                   2025.07-03
   
   
                                   10 July 2025
@@ -376,11 +376,11 @@
       2.4-73 AddRightCocartesianCodistributivityFactoringWithGivenObjects
   3 [33X[0;0YExamples and Tests[133X
     3.1 [33X[0;0YTest functions[133X
-      3.1-1 TestCartesianBraidingCompatability
-      3.1-2 TestCartesianBraidingCompatabilityForAllTriplesInList
+      3.1-1 TestCartesianBraidingCompatibility
+      3.1-2 TestCartesianBraidingCompatibilityForAllTriplesInList
       3.1-3 BraidedCartesianCategoriesTest
-      3.1-4 TestCocartesianBraidingCompatability
-      3.1-5 TestCocartesianBraidingCompatabilityForAllTriplesInList
+      3.1-4 TestCocartesianBraidingCompatibility
+      3.1-5 TestCocartesianBraidingCompatibilityForAllTriplesInList
       3.1-6 BraidedCocartesianCategoriesTest
       3.1-7 TestCartesianTriangleIdentity
       3.1-8 TestCartesianTriangleIdentityForAllPairsInList
