@@ -52,6 +52,3 @@ DeclareOperation( "CartesianBraidingInverse",
 #! @Arguments s,a,b,r
 DeclareOperation( "CartesianBraidingInverseWithGivenDirectProducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-DeclareOperation( "CheckCartesianBraiding",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );

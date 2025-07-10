@@ -6,57 +6,62 @@
 
 ##
 InstallMethod( TestBraidingCompatability,
-              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
               
-  function( object_a, object_b, object_c )
-    local morphism_1, morphism_2;
+  function( cat, object_1, object_2, object_3 )
+    local morphism_left, morphism_right;
     
-    morphism_1 := Braiding( TensorProductOnObjects( object_a, object_b ), object_c );
+    Assert( 0, HasIsBraidedMonoidalCategory( cat ) and IsBraidedMonoidalCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
     
-    morphism_1 := PreCompose( morphism_1, AssociatorRightToLeft( object_c, object_a, object_b ) );
+    morphism_left := Braiding( TensorProductOnObjects( cat, object_1, object_2 ), object_3 );
     
-    morphism_1 := PreCompose( morphism_1,
-                    TensorProductOnMorphisms( Braiding( object_c, object_a ), IdentityMorphism( object_b ) ) );
+    morphism_left := PreCompose( morphism_left, AssociatorRightToLeft( object_3, object_1, object_2 ) );
     
-    morphism_2 := AssociatorLeftToRight( object_a, object_b, object_c );
+    morphism_left := PreCompose( morphism_left,
+                    TensorProductOnMorphisms( Braiding( object_3, object_1 ), IdentityMorphism( object_2 ) ) );
     
-    morphism_2 := PreCompose( morphism_2,
-                    TensorProductOnMorphisms( IdentityMorphism( object_a ), Braiding( object_b, object_c ) ) );
+    morphism_right := AssociatorLeftToRight( object_1, object_2, object_3 );
     
-    morphism_2 := PreCompose( morphism_2, AssociatorRightToLeft( object_a, object_c, object_b ) );
+    morphism_right := PreCompose( morphism_right,
+                    TensorProductOnMorphisms( IdentityMorphism( object_1 ), Braiding( object_2, object_3 ) ) );
     
-    if not ( morphism_1 = morphism_2 ) then
+    morphism_right := PreCompose( morphism_right, AssociatorRightToLeft( object_1, object_3, object_2 ) );
+    
+    if not ( morphism_left = morphism_right ) then
         
         return false;
         
     fi;
     
-    morphism_1 := Braiding( object_a, TensorProductOnObjects( object_b, object_c ) );
+    morphism_left := Braiding( object_1, TensorProductOnObjects( cat, object_2, object_3 ) );
     
-    morphism_1 := PreCompose( morphism_1, AssociatorLeftToRight( object_b, object_c, object_a ) );
+    morphism_left := PreCompose( morphism_left, AssociatorLeftToRight( object_2, object_3, object_1 ) );
     
-    morphism_1 := PreCompose( morphism_1,
-                    TensorProductOnMorphisms( IdentityMorphism( object_b ), Braiding( object_c, object_a ) ) );
+    morphism_left := PreCompose( morphism_left,
+                    TensorProductOnMorphisms( IdentityMorphism( object_2 ), Braiding( object_3, object_1 ) ) );
     
-    morphism_2 := AssociatorRightToLeft( object_a, object_b, object_c );
+    morphism_right := AssociatorRightToLeft( object_1, object_2, object_3 );
     
-    morphism_2 := PreCompose( morphism_2,
-                    TensorProductOnMorphisms( Braiding( object_a, object_b ), IdentityMorphism( object_c ) ) );
+    morphism_right := PreCompose( morphism_right,
+                    TensorProductOnMorphisms( Braiding( object_1, object_2 ), IdentityMorphism( object_3 ) ) );
     
-    morphism_2 := PreCompose( morphism_2, AssociatorLeftToRight( object_b, object_a, object_c ) );
+    morphism_right := PreCompose( morphism_right, AssociatorLeftToRight( object_2, object_1, object_3 ) );
     
-    return morphism_1 = morphism_2;
+    return morphism_left = morphism_right;
     
 end );
 
 ##
 InstallMethod( TestBraidingCompatabilityForAllTriplesInList,
-               [ IsList ],
+               [ IsCapCategory, IsList ],
                
-  function( object_list )
+  function( cat, object_list )
     local a, b, c, size, list, test;
     
-    size := Size( object_list );
+    size := Length( object_list );
     
     list := [ 1 .. size ];
     
@@ -66,7 +71,7 @@ InstallMethod( TestBraidingCompatabilityForAllTriplesInList,
             
             for c in list do
                 
-                test := TestBraidingCompatability( object_list[a], object_list[b], object_list[c] );
+                test := TestBraidingCompatability( cat, object_list[a], object_list[b], object_list[c] );
                 
                 if not test then
                     
@@ -86,9 +91,7 @@ end );
 
 ##
 InstallGlobalFunction( "BraidedMonoidalCategoriesTest",
-    
     function( cat, opposite, a, b )
-        
         local verbose,
               
               a_op, braiding_a_b, braiding_a_b_op, braiding_inverse_a_b, braiding_inverse_a_b_op, 
@@ -98,6 +101,18 @@ InstallGlobalFunction( "BraidedMonoidalCategoriesTest",
         b_op := Opposite( opposite, b );
         
         verbose := ValueOption( "verbose" ) = true;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsBraidedMonoidalCategory" ) ) then
+            
+            Assert( 0, TestBraidingCompatability( cat, a, b, a ) );
+            
+        fi;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsBraidedMonoidalCategory" ) ) then
+            
+            Assert( 0, TestBraidingCompatability( opposite, a_op, b_op, a_op ) );
+            
+        fi;
         
         if CanCompute( cat, "Braiding" ) then
             

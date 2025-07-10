@@ -9,57 +9,62 @@
 
 ##
 InstallMethod( TestCocartesianBraidingCompatability,
-              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
               
-  function( object_a, object_b, object_c )
-    local morphism_1, morphism_2;
+  function( cat, object_1, object_2, object_3 )
+    local morphism_left, morphism_right;
     
-    morphism_1 := CocartesianBraiding( Coproduct( object_a, object_b ), object_c );
+    Assert( 0, HasIsCocartesianCategory( cat ) and IsCocartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
     
-    morphism_1 := PreCompose( morphism_1, CocartesianAssociatorRightToLeft( object_c, object_a, object_b ) );
+    morphism_left := CocartesianBraiding( BinaryCoproduct( cat, object_1, object_2 ), object_3 );
     
-    morphism_1 := PreCompose( morphism_1,
-                    CoproductOnMorphisms( CocartesianBraiding( object_c, object_a ), IdentityMorphism( object_b ) ) );
+    morphism_left := PreCompose( morphism_left, CocartesianAssociatorRightToLeft( object_3, object_1, object_2 ) );
     
-    morphism_2 := CocartesianAssociatorLeftToRight( object_a, object_b, object_c );
+    morphism_left := PreCompose( morphism_left,
+                    CoproductOnMorphisms( CocartesianBraiding( object_3, object_1 ), IdentityMorphism( object_2 ) ) );
     
-    morphism_2 := PreCompose( morphism_2,
-                    CoproductOnMorphisms( IdentityMorphism( object_a ), CocartesianBraiding( object_b, object_c ) ) );
+    morphism_right := CocartesianAssociatorLeftToRight( object_1, object_2, object_3 );
     
-    morphism_2 := PreCompose( morphism_2, CocartesianAssociatorRightToLeft( object_a, object_c, object_b ) );
+    morphism_right := PreCompose( morphism_right,
+                    CoproductOnMorphisms( IdentityMorphism( object_1 ), CocartesianBraiding( object_2, object_3 ) ) );
     
-    if not ( morphism_1 = morphism_2 ) then
+    morphism_right := PreCompose( morphism_right, CocartesianAssociatorRightToLeft( object_1, object_3, object_2 ) );
+    
+    if not ( morphism_left = morphism_right ) then
         
         return false;
         
     fi;
     
-    morphism_1 := CocartesianBraiding( object_a, Coproduct( object_b, object_c ) );
+    morphism_left := CocartesianBraiding( object_1, BinaryCoproduct( cat, object_2, object_3 ) );
     
-    morphism_1 := PreCompose( morphism_1, CocartesianAssociatorLeftToRight( object_b, object_c, object_a ) );
+    morphism_left := PreCompose( morphism_left, CocartesianAssociatorLeftToRight( object_2, object_3, object_1 ) );
     
-    morphism_1 := PreCompose( morphism_1,
-                    CoproductOnMorphisms( IdentityMorphism( object_b ), CocartesianBraiding( object_c, object_a ) ) );
+    morphism_left := PreCompose( morphism_left,
+                    CoproductOnMorphisms( IdentityMorphism( object_2 ), CocartesianBraiding( object_3, object_1 ) ) );
     
-    morphism_2 := CocartesianAssociatorRightToLeft( object_a, object_b, object_c );
+    morphism_right := CocartesianAssociatorRightToLeft( object_1, object_2, object_3 );
     
-    morphism_2 := PreCompose( morphism_2,
-                    CoproductOnMorphisms( CocartesianBraiding( object_a, object_b ), IdentityMorphism( object_c ) ) );
+    morphism_right := PreCompose( morphism_right,
+                    CoproductOnMorphisms( CocartesianBraiding( object_1, object_2 ), IdentityMorphism( object_3 ) ) );
     
-    morphism_2 := PreCompose( morphism_2, CocartesianAssociatorLeftToRight( object_b, object_a, object_c ) );
+    morphism_right := PreCompose( morphism_right, CocartesianAssociatorLeftToRight( object_2, object_1, object_3 ) );
     
-    return morphism_1 = morphism_2;
+    return morphism_left = morphism_right;
     
 end );
 
 ##
 InstallMethod( TestCocartesianBraidingCompatabilityForAllTriplesInList,
-               [ IsList ],
+               [ IsCapCategory, IsList ],
                
-  function( object_list )
+  function( cat, object_list )
     local a, b, c, size, list, test;
     
-    size := Size( object_list );
+    size := Length( object_list );
     
     list := [ 1 .. size ];
     
@@ -69,7 +74,7 @@ InstallMethod( TestCocartesianBraidingCompatabilityForAllTriplesInList,
             
             for c in list do
                 
-                test := TestCocartesianBraidingCompatability( object_list[a], object_list[b], object_list[c] );
+                test := TestCocartesianBraidingCompatability( cat, object_list[a], object_list[b], object_list[c] );
                 
                 if not test then
                     
@@ -89,9 +94,7 @@ end );
 
 ##
 InstallGlobalFunction( "BraidedCocartesianCategoriesTest",
-    
     function( cat, opposite, a, b )
-        
         local verbose,
               
               a_op, braiding_a_b, braiding_a_b_op, braiding_inverse_a_b, braiding_inverse_a_b_op, 
@@ -101,6 +104,18 @@ InstallGlobalFunction( "BraidedCocartesianCategoriesTest",
         b_op := Opposite( opposite, b );
         
         verbose := ValueOption( "verbose" ) = true;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsCocartesianCategory" ) ) then
+            
+            Assert( 0, TestCocartesianBraidingCompatability( cat, a, b, a ) );
+            
+        fi;
+        
+        if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsCocartesianCategory" ) ) then
+            
+            Assert( 0, TestCocartesianBraidingCompatability( opposite, a_op, b_op, a_op ) );
+            
+        fi;
         
         if CanCompute( cat, "CocartesianBraiding" ) then
             

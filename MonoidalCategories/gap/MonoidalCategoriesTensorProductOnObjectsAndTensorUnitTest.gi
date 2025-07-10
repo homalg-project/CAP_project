@@ -46,19 +46,19 @@ InstallGlobalFunction( "MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTes
                 
             fi;
             
-            a_tensor_b := TensorProductOnObjects( a, b );
-            b_tensor_a := TensorProductOnObjects( b, a );
+            a_tensor_b := TensorProductOnObjects( cat, a, b );
+            b_tensor_a := TensorProductOnObjects( cat, b, a );
             
-            a_tensor_b_op := TensorProductOnObjects( a_op, b_op );
-            b_tensor_a_op := TensorProductOnObjects( b_op, a_op );
+            a_tensor_b_op := TensorProductOnObjects( opposite, a_op, b_op );
+            b_tensor_a_op := TensorProductOnObjects( opposite, b_op, a_op );
             
             Assert( 0, IsEqualForObjects( a_tensor_b_op, Opposite( opposite, a_tensor_b ) ) );
             Assert( 0, IsEqualForObjects( b_tensor_a_op, Opposite( opposite, b_tensor_a ) ) );
             
             # Convenience methods in the opposite category
             
-            Assert( 0, IsEqualForObjects( a_tensor_b_op, TensorProduct( a_op, b_op ) ) );
-            Assert( 0, IsEqualForObjects( b_tensor_a_op, TensorProduct( b_op, a_op ) ) );
+            Assert( 0, IsEqualForObjects( a_tensor_b_op, TensorProductOnObjects( opposite, a_op, b_op ) ) );
+            Assert( 0, IsEqualForObjects( b_tensor_a_op, TensorProductOnObjects( opposite, b_op, a_op ) ) );
             
             # Opposite must be self-inverse
             
