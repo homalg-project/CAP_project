@@ -16,7 +16,7 @@
 #! false otherwise.
 #! @Returns a boolean
 #! @Arguments cat, obj_1, obj_2, obj_3
-DeclareOperation( "TestBraidingCompatability",
+DeclareOperation( "TestBraidingCompatibility",
               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -26,7 +26,7 @@ DeclareOperation( "TestBraidingCompatability",
 #! for all triples of objects in $L$, otherwise false.
 #! @Returns a boolean
 #! @Arguments cat, L
-DeclareOperation( "TestBraidingCompatabilityForAllTriplesInList", [ IsCapCategory, IsList ] );
+DeclareOperation( "TestBraidingCompatibilityForAllTriplesInList", [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are

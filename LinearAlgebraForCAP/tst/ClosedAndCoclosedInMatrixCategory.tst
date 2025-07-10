@@ -404,11 +404,11 @@ false
 gap> braiding_c_d = braiding_inverse_c_d;
 false
 
-gap> TestBraidingCompatability( mc, a, b, c );
+gap> TestBraidingCompatibility( mc, a, b, c );
 true
-gap> TestBraidingCompatability( mc, c, b, a );
+gap> TestBraidingCompatibility( mc, c, b, a );
 true
-gap> TestBraidingCompatability( mc, b, a, c );
+gap> TestBraidingCompatibility( mc, b, a, c );
 true
 
 ######################################################
