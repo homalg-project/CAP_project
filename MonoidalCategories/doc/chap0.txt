@@ -6,7 +6,7 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2025.07-02
+                                   2025.07-03
   
   
                                   10 July 2025
@@ -546,8 +546,8 @@
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YTest functions[133X
       2.1-1 AdditiveMonoidalCategoriesTest
-      2.1-2 TestBraidingCompatability
-      2.1-3 TestBraidingCompatabilityForAllTriplesInList
+      2.1-2 TestBraidingCompatibility
+      2.1-3 TestBraidingCompatibilityForAllTriplesInList
       2.1-4 BraidedMonoidalCategoriesTest
       2.1-5 ClosedMonoidalCategoriesTest
       2.1-6 ClosedMonoidalCategoriesTestWithGiven
