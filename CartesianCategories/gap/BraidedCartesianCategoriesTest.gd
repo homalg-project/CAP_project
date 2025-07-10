@@ -19,7 +19,7 @@
 #! false otherwise.
 #! @Returns a boolean
 #! @Arguments cat, obj_1, obj_2, obj_3
-DeclareOperation( "TestCartesianBraidingCompatability",
+DeclareOperation( "TestCartesianBraidingCompatibility",
               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -29,7 +29,7 @@ DeclareOperation( "TestCartesianBraidingCompatability",
 #! for all triples of objects in $L$, otherwise false.
 #! @Returns a boolean
 #! @Arguments cat, L
-DeclareOperation( "TestCartesianBraidingCompatabilityForAllTriplesInList", [ IsCapCategory, IsList ] );
+DeclareOperation( "TestCartesianBraidingCompatibilityForAllTriplesInList", [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are

@@ -8,7 +8,7 @@
 
 
 ##
-InstallMethod( TestCocartesianBraidingCompatability,
+InstallMethod( TestCocartesianBraidingCompatibility,
               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
               
   function( cat, object_1, object_2, object_3 )
@@ -58,7 +58,7 @@ InstallMethod( TestCocartesianBraidingCompatability,
 end );
 
 ##
-InstallMethod( TestCocartesianBraidingCompatabilityForAllTriplesInList,
+InstallMethod( TestCocartesianBraidingCompatibilityForAllTriplesInList,
                [ IsCapCategory, IsList ],
                
   function( cat, object_list )
@@ -74,7 +74,7 @@ InstallMethod( TestCocartesianBraidingCompatabilityForAllTriplesInList,
             
             for c in list do
                 
-                test := TestCocartesianBraidingCompatability( cat, object_list[a], object_list[b], object_list[c] );
+                test := TestCocartesianBraidingCompatibility( cat, object_list[a], object_list[b], object_list[c] );
                 
                 if not test then
                     
@@ -107,13 +107,13 @@ InstallGlobalFunction( "BraidedCocartesianCategoriesTest",
         
         if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsCocartesianCategory" ) ) then
             
-            Assert( 0, TestCocartesianBraidingCompatability( cat, a, b, a ) );
+            Assert( 0, TestCocartesianBraidingCompatibility( cat, a, b, a ) );
             
         fi;
         
         if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsCocartesianCategory" ) ) then
             
-            Assert( 0, TestCocartesianBraidingCompatability( opposite, a_op, b_op, a_op ) );
+            Assert( 0, TestCocartesianBraidingCompatibility( opposite, a_op, b_op, a_op ) );
             
         fi;
         
