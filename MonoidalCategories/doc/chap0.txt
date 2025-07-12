@@ -6,7 +6,7 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2025.07-05
+                                   2025.07-06
   
   
                                   12 July 2025
@@ -560,15 +560,16 @@
       2.1-13 LeftCoclosedMonoidalCategoriesTestWithGiven
       2.1-14 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
       2.1-15 TestMonoidalUnitorsForInvertibility
-      2.1-16 TestMonoidalTriangleIdentity
-      2.1-17 TestMonoidalTriangleIdentityForAllPairsInList
-      2.1-18 TestMonoidalPentagonIdentity
-      2.1-19 TestMonoidalPentagonIdentityUsingWithGivenOperations
-      2.1-20 TestMonoidalPentagonIdentityForAllQuadruplesInList
-      2.1-21 MonoidalCategoriesTest
-      2.1-22 TestZigZagIdentitiesForDual
-      2.1-23 RigidSymmetricClosedMonoidalCategoriesTest
-      2.1-24 RigidSymmetricCoclosedMonoidalCategoriesTest
+      2.1-16 TestAssociatorForInvertibility
+      2.1-17 TestMonoidalTriangleIdentity
+      2.1-18 TestMonoidalTriangleIdentityForAllPairsInList
+      2.1-19 TestMonoidalPentagonIdentity
+      2.1-20 TestMonoidalPentagonIdentityUsingWithGivenOperations
+      2.1-21 TestMonoidalPentagonIdentityForAllQuadruplesInList
+      2.1-22 MonoidalCategoriesTest
+      2.1-23 TestZigZagIdentitiesForDual
+      2.1-24 RigidSymmetricClosedMonoidalCategoriesTest
+      2.1-25 RigidSymmetricCoclosedMonoidalCategoriesTest
   3 [33X[0;0YCode Generation for Monodial Categories[133X
     3.1 [33X[0;0YMonoidal Categories[133X
       3.1-1 WriteFileForMonoidalStructure

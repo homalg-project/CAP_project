@@ -370,16 +370,25 @@
   category  [23Xcat[123X.  The  output  is  true  if  the  left  and  right unitors are
   invertible for [23Xobj[123X.[133X
   
-  [1X2.1-16 TestMonoidalTriangleIdentity[101X
+  [1X2.1-16 TestAssociatorForInvertibility[101X
+  
+  [33X[1;0Y[29X[2XTestAssociatorForInvertibility[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The arguments are two objects [23Xobj_1, obj_2, obj_3[123X
+  in  a  monoidal  category  [23Xcat[123X.  The  output  is  true if the associator are
+  invertible for these 3 objects, false otherwise.[133X
+  
+  [1X2.1-17 TestMonoidalTriangleIdentity[101X
   
   [33X[1;0Y[29X[2XTestMonoidalTriangleIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThis  is  a debug operation. The arguments are two objects [23Xobj_1, obj_2[123X in a
-  monoidal category [23Xcat[123X. The output is true if the pentagon identity holds for
+  monoidal category [23Xcat[123X. The output is true if the triangle identity holds for
   these 2 objects, false otherwise.[133X
   
-  [1X2.1-17 TestMonoidalTriangleIdentityForAllPairsInList[101X
+  [1X2.1-18 TestMonoidalTriangleIdentityForAllPairsInList[101X
   
   [33X[1;0Y[29X[2XTestMonoidalTriangleIdentityForAllPairsInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -388,7 +397,7 @@
   category  [23Xcat[123X.  The  output  is  true if the triangle identity holds for all
   pairs of objects in [23XL[123X, otherwise false.[133X
   
-  [1X2.1-18 TestMonoidalPentagonIdentity[101X
+  [1X2.1-19 TestMonoidalPentagonIdentity[101X
   
   [33X[1;0Y[29X[2XTestMonoidalPentagonIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -397,7 +406,7 @@
   obj_4[123X  in  a  monoidal  category  [23Xcat[123X.  The  output  is true if the pentagon
   identity holds for these 4 objects, false otherwise.[133X
   
-  [1X2.1-19 TestMonoidalPentagonIdentityUsingWithGivenOperations[101X
+  [1X2.1-20 TestMonoidalPentagonIdentityUsingWithGivenOperations[101X
   
   [33X[1;0Y[29X[2XTestMonoidalPentagonIdentityUsingWithGivenOperations[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -407,7 +416,7 @@
   identity  holds  for  these  4  objects, false otherwise. This test uses the
   WithGiven-operations.[133X
   
-  [1X2.1-20 TestMonoidalPentagonIdentityForAllQuadruplesInList[101X
+  [1X2.1-21 TestMonoidalPentagonIdentityForAllQuadruplesInList[101X
   
   [33X[1;0Y[29X[2XTestMonoidalPentagonIdentityForAllQuadruplesInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -416,7 +425,7 @@
   category  [23Xcat[123X.  The  output  is  true if the pentagon identity holds for all
   quadruples of objects in [23XL[123X, otherwise false.[133X
   
-  [1X2.1-21 MonoidalCategoriesTest[101X
+  [1X2.1-22 MonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -443,7 +452,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-22 TestZigZagIdentitiesForDual[101X
+  [1X2.1-23 TestZigZagIdentitiesForDual[101X
   
   [33X[1;0Y[29X[2XTestZigZagIdentitiesForDual[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -452,7 +461,7 @@
   symmetric  monoidal category [23Xcat[123X. The output is true if the zig zag identity
   for duals hold, false otherwise.[133X
   
-  [1X2.1-23 RigidSymmetricClosedMonoidalCategoriesTest[101X
+  [1X2.1-24 RigidSymmetricClosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XRigidSymmetricClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X ) [32X function[133X
   
@@ -478,7 +487,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-24 RigidSymmetricCoclosedMonoidalCategoriesTest[101X
+  [1X2.1-25 RigidSymmetricCoclosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X ) [32X function[133X
   
