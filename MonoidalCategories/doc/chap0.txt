@@ -6,7 +6,7 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2025.07-04
+                                   2025.07-05
   
   
                                   12 July 2025
@@ -546,28 +546,29 @@
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YTest functions[133X
       2.1-1 AdditiveMonoidalCategoriesTest
-      2.1-2 TestBraidingCompatibility
-      2.1-3 TestBraidingCompatibilityForAllTriplesInList
-      2.1-4 BraidedMonoidalCategoriesTest
-      2.1-5 ClosedMonoidalCategoriesTest
-      2.1-6 ClosedMonoidalCategoriesTestWithGiven
-      2.1-7 CoclosedMonoidalCategoriesTest
-      2.1-8 CoclosedMonoidalCategoriesTestWithGiven
-      2.1-9 LeftClosedMonoidalCategoriesTest
-      2.1-10 LeftClosedMonoidalCategoriesTestWithGiven
-      2.1-11 LeftCoclosedMonoidalCategoriesTest
-      2.1-12 LeftCoclosedMonoidalCategoriesTestWithGiven
-      2.1-13 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
-      2.1-14 TestMonoidalUnitorsForInvertibility
-      2.1-15 TestMonoidalTriangleIdentity
-      2.1-16 TestMonoidalTriangleIdentityForAllPairsInList
-      2.1-17 TestMonoidalPentagonIdentity
-      2.1-18 TestMonoidalPentagonIdentityUsingWithGivenOperations
-      2.1-19 TestMonoidalPentagonIdentityForAllQuadruplesInList
-      2.1-20 MonoidalCategoriesTest
-      2.1-21 TestZigZagIdentitiesForDual
-      2.1-22 RigidSymmetricClosedMonoidalCategoriesTest
-      2.1-23 RigidSymmetricCoclosedMonoidalCategoriesTest
+      2.1-2 TestBraidingForInvertibility
+      2.1-3 TestBraidingCompatibility
+      2.1-4 TestBraidingCompatibilityForAllTriplesInList
+      2.1-5 BraidedMonoidalCategoriesTest
+      2.1-6 ClosedMonoidalCategoriesTest
+      2.1-7 ClosedMonoidalCategoriesTestWithGiven
+      2.1-8 CoclosedMonoidalCategoriesTest
+      2.1-9 CoclosedMonoidalCategoriesTestWithGiven
+      2.1-10 LeftClosedMonoidalCategoriesTest
+      2.1-11 LeftClosedMonoidalCategoriesTestWithGiven
+      2.1-12 LeftCoclosedMonoidalCategoriesTest
+      2.1-13 LeftCoclosedMonoidalCategoriesTestWithGiven
+      2.1-14 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest
+      2.1-15 TestMonoidalUnitorsForInvertibility
+      2.1-16 TestMonoidalTriangleIdentity
+      2.1-17 TestMonoidalTriangleIdentityForAllPairsInList
+      2.1-18 TestMonoidalPentagonIdentity
+      2.1-19 TestMonoidalPentagonIdentityUsingWithGivenOperations
+      2.1-20 TestMonoidalPentagonIdentityForAllQuadruplesInList
+      2.1-21 MonoidalCategoriesTest
+      2.1-22 TestZigZagIdentitiesForDual
+      2.1-23 RigidSymmetricClosedMonoidalCategoriesTest
+      2.1-24 RigidSymmetricCoclosedMonoidalCategoriesTest
   3 [33X[0;0YCode Generation for Monodial Categories[133X
     3.1 [33X[0;0YMonoidal Categories[133X
       3.1-1 WriteFileForMonoidalStructure
