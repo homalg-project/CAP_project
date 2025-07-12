@@ -12,14 +12,35 @@ InstallMethod( TestCartesianUnitorsForInvertibility,
                [ IsCapCategory, IsCapCategoryObject ],
                
   function( cat, object )
+    local lu, lui, ru, rui, lului, luilu, rurui, ruiru;
     
     Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object ) ) );
     
-    return IsOne( PreCompose( CartesianLeftUnitor( object ), CartesianLeftUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CartesianLeftUnitorInverse( object ), CartesianLeftUnitor( object ) ) ) and
-           IsOne( PreCompose( CartesianRightUnitor( object ), CartesianRightUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CartesianRightUnitorInverse( object ), CartesianRightUnitor( object ) ) );
+    lu := CartesianLeftUnitor( object );
+    lui := CartesianLeftUnitorInverse( object );
+    ru := CartesianRightUnitor( object );
+    rui := CartesianRightUnitorInverse( object );
+    
+    Assert( 0, IsWellDefined( lu ) );
+    Assert( 0, IsWellDefined( lui ) );
+    Assert( 0, IsWellDefined( ru ) );
+    Assert( 0, IsWellDefined( rui ) );
+    
+    lului := PreCompose( lu, lui );
+    luilu := PreCompose( lui, lu );
+    rurui := PreCompose( lui, lu );
+    ruiru := PreCompose( rui, ru );
+    
+    Assert( 0, IsWellDefined( lului ) );
+    Assert( 0, IsWellDefined( luilu ) );
+    Assert( 0, IsWellDefined( rurui ) );
+    Assert( 0, IsWellDefined( ruiru ) );
+    
+    return IsOne( lului ) and
+           IsOne( luilu ) and
+           IsOne( rurui ) and
+           IsOne( ruiru );
     
 end );
 
@@ -36,9 +57,15 @@ InstallMethod( TestCartesianTriangleIdentity,
     
     morphism_short := DirectProductOnMorphisms( CartesianRightUnitor( object_1 ), IdentityMorphism( object_2 ) );
     
+    Assert( 0, IsWellDefined( morphism_short ) );
+    
     morphism_long := DirectProductOnMorphisms( IdentityMorphism( object_1 ), CartesianLeftUnitor( object_2 ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_long := PreCompose( CartesianAssociatorLeftToRight( object_1, TerminalObject( cat ), object_2 ), morphism_long );
+    
+    Assert( 0, IsWellDefined( morphism_long ) );
     
     return IsCongruentForMorphisms( morphism_short, morphism_long );
     
@@ -89,16 +116,26 @@ InstallMethod( TestCartesianPentagonIdentity,
     morphism_long :=
       DirectProductOnMorphisms( CartesianAssociatorLeftToRight( object_1, object_2, object_3 ), IdentityMorphism( object_4 ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_long := PreCompose( morphism_long,
       CartesianAssociatorLeftToRight( object_1, BinaryDirectProduct( cat, object_2, object_3 ), object_4 ) );
+    
+    Assert( 0, IsWellDefined( morphism_long ) );
     
     morphism_long := PreCompose( morphism_long,
       DirectProductOnMorphisms( IdentityMorphism( object_1 ), CartesianAssociatorLeftToRight( object_2, object_3, object_4 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_short := CartesianAssociatorLeftToRight( BinaryDirectProduct( cat, object_1, object_2 ), object_3, object_4 );
+    
+    Assert( 0, IsWellDefined( morphism_short ) );
     
     morphism_short := PreCompose( morphism_short,
       CartesianAssociatorLeftToRight( object_1, object_2, BinaryDirectProduct( cat, object_3, object_4 ) ) );
+    
+    Assert( 0, IsWellDefined( morphism_short ) );
     
     return IsCongruentForMorphisms( morphism_long, morphism_short );
     

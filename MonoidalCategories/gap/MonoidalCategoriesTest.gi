@@ -9,14 +9,35 @@ InstallMethod( TestMonoidalUnitorsForInvertibility,
                [ IsCapCategory, IsCapCategoryObject ],
                
   function( cat, object )
+    local lu, lui, ru, rui, lului, luilu, rurui, ruiru;
     
     Assert( 0, HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object ) ) );
     
-    return IsOne( PreCompose( LeftUnitor( object ), LeftUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( LeftUnitorInverse( object ), LeftUnitor( object ) ) ) and
-           IsOne( PreCompose( RightUnitor( object ), RightUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( RightUnitorInverse( object ), RightUnitor( object ) ) );
+    lu := LeftUnitor( object );
+    lui := LeftUnitorInverse( object );
+    ru := RightUnitor( object );
+    rui := RightUnitorInverse( object );
+    
+    Assert( 0, IsWellDefined( lu ) );
+    Assert( 0, IsWellDefined( lui ) );
+    Assert( 0, IsWellDefined( ru ) );
+    Assert( 0, IsWellDefined( rui ) );
+    
+    lului := PreCompose( lu, lui );
+    luilu := PreCompose( lui, lu );
+    rurui := PreCompose( lui, lu );
+    ruiru := PreCompose( rui, ru );
+    
+    Assert( 0, IsWellDefined( lului ) );
+    Assert( 0, IsWellDefined( luilu ) );
+    Assert( 0, IsWellDefined( rurui ) );
+    Assert( 0, IsWellDefined( ruiru ) );
+    
+    return IsOne( lului ) and
+           IsOne( luilu ) and
+           IsOne( rurui ) and
+           IsOne( ruiru );
     
 end );
 
@@ -33,9 +54,15 @@ InstallMethod( TestMonoidalTriangleIdentity,
     
     morphism_short := TensorProductOnMorphisms( RightUnitor( object_1 ), IdentityMorphism( object_2 ) );
     
+    Assert( 0, IsWellDefined( morphism_short ) );
+    
     morphism_long := TensorProductOnMorphisms( IdentityMorphism( object_1 ), LeftUnitor( object_2 ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_long := PreCompose( AssociatorLeftToRight( object_1, TensorUnit( cat ), object_2 ), morphism_long );
+    
+    Assert( 0, IsWellDefined( morphism_long ) );
     
     return IsCongruentForMorphisms( morphism_short, morphism_long );
     
@@ -86,16 +113,26 @@ InstallMethod( TestMonoidalPentagonIdentity,
     morphism_long :=
       TensorProductOnMorphisms( AssociatorLeftToRight( object_1, object_2, object_3 ), IdentityMorphism( object_4 ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_long := PreCompose( morphism_long,
       AssociatorLeftToRight( object_1, TensorProductOnObjects( cat, object_2, object_3 ), object_4 ) );
+    
+    Assert( 0, IsWellDefined( morphism_long ) );
     
     morphism_long := PreCompose( morphism_long,
       TensorProductOnMorphisms( IdentityMorphism( object_1 ), AssociatorLeftToRight( object_2, object_3, object_4 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_short := AssociatorLeftToRight( TensorProductOnObjects( cat, object_1, object_2 ), object_3, object_4 );
+    
+    Assert( 0, IsWellDefined( morphism_short ) );
     
     morphism_short := PreCompose( morphism_short,
       AssociatorLeftToRight( object_1, object_2, TensorProductOnObjects( cat, object_3, object_4 ) ) );
+    
+    Assert( 0, IsWellDefined( morphism_short ) );
     
     return IsCongruentForMorphisms( morphism_long, morphism_short );
     
