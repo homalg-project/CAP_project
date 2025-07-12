@@ -5,6 +5,23 @@
 #
 
 ##
+InstallMethod( TestBraidingForInvertibility,
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+              
+  function( cat, object_1, object_2 )
+    
+    Assert( 0, HasIsBraidedMonoidalCategory( cat ) and IsBraidedMonoidalCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    
+    return IsOne( PreCompose( Braiding( object_1, object_2 ), BraidingInverse( object_1, object_2 ) ) ) and
+           IsOne( PreCompose( BraidingInverse( object_1, object_2 ), Braiding( object_1, object_2 ) ) ) and
+           IsOne( PreCompose( Braiding( object_2, object_1 ), BraidingInverse( object_2, object_1 ) ) ) and
+           IsOne( PreCompose( BraidingInverse( object_2, object_1 ), Braiding( object_2, object_1 ) ) );
+    
+end );
+
+##
 InstallMethod( TestBraidingCompatibility,
               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
               
@@ -104,11 +121,15 @@ InstallGlobalFunction( "BraidedMonoidalCategoriesTest",
         
         if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsBraidedMonoidalCategory" ) ) then
             
+            Assert( 0, TestBraidingForInvertibility( cat, a, b ) );
+            
             Assert( 0, TestBraidingCompatibility( cat, a, b, a ) );
             
         fi;
         
         if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsBraidedMonoidalCategory" ) ) then
+            
+            Assert( 0, TestBraidingForInvertibility( opposite, a_op, b_op ) );
             
             Assert( 0, TestBraidingCompatibility( opposite, a_op, b_op, a_op ) );
             

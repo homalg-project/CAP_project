@@ -8,6 +8,23 @@
 
 
 ##
+InstallMethod( TestCocartesianBraidingForInvertibility,
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+              
+  function( cat, object_1, object_2 )
+    
+    Assert( 0, HasIsCocartesianCategory( cat ) and IsCocartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    
+    return IsOne( PreCompose( CocartesianBraiding( object_1, object_2 ), CocartesianBraidingInverse( object_1, object_2 ) ) ) and
+           IsOne( PreCompose( CocartesianBraidingInverse( object_1, object_2 ), CocartesianBraiding( object_1, object_2 ) ) ) and
+           IsOne( PreCompose( CocartesianBraiding( object_2, object_1 ), CocartesianBraidingInverse( object_2, object_1 ) ) ) and
+           IsOne( PreCompose( CocartesianBraidingInverse( object_2, object_1 ), CocartesianBraiding( object_2, object_1 ) ) );
+    
+end );
+
+##
 InstallMethod( TestCocartesianBraidingCompatibility,
               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
               
@@ -107,11 +124,15 @@ InstallGlobalFunction( "BraidedCocartesianCategoriesTest",
         
         if IsEmpty( MissingOperationsForConstructivenessOfCategory( cat, "IsCocartesianCategory" ) ) then
             
+            Assert( 0, TestCocartesianBraidingForInvertibility( cat, a, b ) );
+            
             Assert( 0, TestCocartesianBraidingCompatibility( cat, a, b, a ) );
             
         fi;
         
         if IsEmpty( MissingOperationsForConstructivenessOfCategory( opposite, "IsCocartesianCategory" ) ) then
+            
+            Assert( 0, TestCocartesianBraidingForInvertibility( opposite, a_op, b_op ) );
             
             Assert( 0, TestCocartesianBraidingCompatibility( opposite, a_op, b_op, a_op ) );
             

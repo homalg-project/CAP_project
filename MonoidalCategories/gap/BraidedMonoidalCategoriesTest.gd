@@ -10,6 +10,17 @@
 
 #! @Description
 #! This is a debug operation.
+#! The arguments are three objects $obj_1, obj_2$
+#! in a braided monoidal category $cat$.
+#! The output is true if the braiding is invertible,
+#! false otherwise.
+#! @Returns a boolean
+#! @Arguments cat, obj_1, obj_2
+DeclareOperation( "TestBraidingForInvertibility",
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
 #! The arguments are three objects $obj_1, obj_2, obj_3$
 #! in a braided monoidal category $cat$.
 #! The output is true if the braiding compatabilities with the associator hold,
