@@ -42,6 +42,35 @@ InstallMethod( TestMonoidalUnitorsForInvertibility,
 end );
 
 ##
+InstallMethod( TestAssociatorForInvertibility,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3 )
+    local a, ai, aai, aia;
+    
+    Assert( 0, HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
+    
+    a := AssociatorLeftToRight( object_1, object_2, object_3 );
+    ai := AssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    Assert( 0, IsWellDefined( a ) );
+    Assert( 0, IsWellDefined( ai ) );
+    
+    aai := PreCompose( a, ai );
+    aia := PreCompose( ai, a );
+    
+    Assert( 0, IsWellDefined( aai ) );
+    Assert( 0, IsWellDefined( aia ) );
+    
+    return IsOne( aai ) and
+           IsOne( aia );
+    
+end );
+
+##
 InstallMethod( TestMonoidalTriangleIdentity,
                [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
                
@@ -346,6 +375,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             
             Assert( 0, TestMonoidalTriangleIdentityForAllPairsInList( cat, [ a, b, c ] ) );
             
+            Assert( 0, TestAssociatorForInvertibility( cat, a, b, c ) );
+            
             Assert( 0, TestMonoidalPentagonIdentity( cat, a, b, c, b ) );
             
             Assert( 0, TestMonoidalPentagonIdentityUsingWithGivenOperations( cat, a, b, c, b ) );
@@ -357,6 +388,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             Assert( 0, ForAll( [ a_op, b_op, c_op ], obj -> TestMonoidalUnitorsForInvertibility( opposite, obj ) ) );
             
             Assert( 0, TestMonoidalTriangleIdentityForAllPairsInList( opposite, [ a_op, b_op, c_op ] ) );
+            
+            Assert( 0, TestAssociatorForInvertibility( opposite, a_op, b_op, c_op ) );
             
             Assert( 0, TestMonoidalPentagonIdentity( opposite, a_op, b_op, c_op, b_op ) );
             

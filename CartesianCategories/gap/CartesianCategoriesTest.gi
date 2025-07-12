@@ -45,6 +45,35 @@ InstallMethod( TestCartesianUnitorsForInvertibility,
 end );
 
 ##
+InstallMethod( TestCartesianAssociatorForInvertibility,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3 )
+    local a, ai, aai, aia;
+    
+    Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
+    
+    a := CartesianAssociatorLeftToRight( object_1, object_2, object_3 );
+    ai := CartesianAssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    Assert( 0, IsWellDefined( a ) );
+    Assert( 0, IsWellDefined( ai ) );
+    
+    aai := PreCompose( a, ai );
+    aia := PreCompose( ai, a );
+    
+    Assert( 0, IsWellDefined( aai ) );
+    Assert( 0, IsWellDefined( aia ) );
+    
+    return IsOne( aai ) and
+           IsOne( aia );
+    
+end );
+
+##
 InstallMethod( TestCartesianTriangleIdentity,
                [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
                
@@ -349,6 +378,8 @@ InstallGlobalFunction( "CartesianCategoriesTest",
             
             Assert( 0, TestCartesianTriangleIdentityForAllPairsInList( cat, [ a, b, c ] ) );
             
+            Assert( 0, TestCartesianAssociatorForInvertibility( cat, a, b, c ) );
+            
             Assert( 0, TestCartesianPentagonIdentity( cat, a, b, c, b ) );
             
             Assert( 0, TestCartesianPentagonIdentityUsingWithGivenOperations( cat, a, b, c, b ) );
@@ -360,6 +391,8 @@ InstallGlobalFunction( "CartesianCategoriesTest",
             Assert( 0, ForAll( [ a_op, b_op, c_op ], obj -> TestCartesianUnitorsForInvertibility( opposite, obj ) ) );
             
             Assert( 0, TestCartesianTriangleIdentityForAllPairsInList( opposite, [ a_op, b_op, c_op ] ) );
+            
+            Assert( 0, TestCartesianAssociatorForInvertibility( opposite, a_op, b_op, c_op ) );
             
             Assert( 0, TestCartesianPentagonIdentity( opposite, a_op, b_op, c_op, b_op ) );
             
