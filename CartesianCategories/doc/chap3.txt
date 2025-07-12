@@ -88,7 +88,16 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-7 TestCartesianTriangleIdentity[101X
+  [1X3.1-7 TestCartesianUnitorsForInvertibility[101X
+  
+  [33X[1;0Y[29X[2XTestCartesianUnitorsForInvertibility[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is a debug operation. The arguments are two objects [23Xobj[123X in a cartesian
+  category  [23Xcat[123X.  The  output  is  true  if  the  left  and  right unitors are
+  invertible for [23Xobj[123X.[133X
+  
+  [1X3.1-8 TestCartesianTriangleIdentity[101X
   
   [33X[1;0Y[29X[2XTestCartesianTriangleIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -97,7 +106,7 @@
   cartesian  category  [23Xcat[123X.  The output is true if the pentagon identity holds
   for these 2 objects, false otherwise.[133X
   
-  [1X3.1-8 TestCartesianTriangleIdentityForAllPairsInList[101X
+  [1X3.1-9 TestCartesianTriangleIdentityForAllPairsInList[101X
   
   [33X[1;0Y[29X[2XTestCartesianTriangleIdentityForAllPairsInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -106,7 +115,7 @@
   cartesian  category  [23Xcat[123X.  The output is true if the triangle identity holds
   for all pairs of objects in [23XL[123X, otherwise false.[133X
   
-  [1X3.1-9 TestCartesianPentagonIdentity[101X
+  [1X3.1-10 TestCartesianPentagonIdentity[101X
   
   [33X[1;0Y[29X[2XTestCartesianPentagonIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -115,7 +124,7 @@
   obj_4[123X  in  a  cartesian  category  [23Xcat[123X.  The  output is true if the pentagon
   identity holds for these 4 objects, false otherwise.[133X
   
-  [1X3.1-10 TestCartesianPentagonIdentityUsingWithGivenOperations[101X
+  [1X3.1-11 TestCartesianPentagonIdentityUsingWithGivenOperations[101X
   
   [33X[1;0Y[29X[2XTestCartesianPentagonIdentityUsingWithGivenOperations[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -125,7 +134,7 @@
   identity  holds  for  these  4  objects, false otherwise. This test uses the
   WithGiven-operations.[133X
   
-  [1X3.1-11 TestCartesianPentagonIdentityForAllQuadruplesInList[101X
+  [1X3.1-12 TestCartesianPentagonIdentityForAllQuadruplesInList[101X
   
   [33X[1;0Y[29X[2XTestCartesianPentagonIdentityForAllQuadruplesInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -134,7 +143,7 @@
   cartesian  category  [23Xcat[123X.  The output is true if the pentagon identity holds
   for all quadruples of objects in [23XL[123X, otherwise false.[133X
   
-  [1X3.1-12 CartesianCategoriesTest[101X
+  [1X3.1-13 CartesianCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -161,7 +170,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-13 CartesianClosedCategoriesTest[101X
+  [1X3.1-14 CartesianClosedCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCartesianClosedCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -197,7 +206,16 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-14 TestCocartesianTriangleIdentity[101X
+  [1X3.1-15 TestCocartesianUnitorsForInvertibility[101X
+  
+  [33X[1;0Y[29X[2XTestCocartesianUnitorsForInvertibility[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is  a  debug  operation.  The  arguments  are  two  objects  [23Xobj[123X  in a
+  cocartesian  category  [23Xcat[123X. The output is true if the left and right unitors
+  are invertible for [23Xobj[123X.[133X
+  
+  [1X3.1-16 TestCocartesianTriangleIdentity[101X
   
   [33X[1;0Y[29X[2XTestCocartesianTriangleIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -206,7 +224,7 @@
   cocartesian  category [23Xcat[123X. The output is true if the pentagon identity holds
   for these 2 objects, false otherwise.[133X
   
-  [1X3.1-15 TestCocartesianTriangleIdentityForAllPairsInList[101X
+  [1X3.1-17 TestCocartesianTriangleIdentityForAllPairsInList[101X
   
   [33X[1;0Y[29X[2XTestCocartesianTriangleIdentityForAllPairsInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -215,7 +233,7 @@
   cocartesian  category [23Xcat[123X. The output is true if the triangle identity holds
   for all pairs of objects in [23XL[123X, otherwise false.[133X
   
-  [1X3.1-16 TestCocartesianPentagonIdentity[101X
+  [1X3.1-18 TestCocartesianPentagonIdentity[101X
   
   [33X[1;0Y[29X[2XTestCocartesianPentagonIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -224,7 +242,7 @@
   obj_4[123X  in  a  cocartesian  category  [23Xcat[123X. The output is true if the pentagon
   identity holds for these 4 objects, false otherwise.[133X
   
-  [1X3.1-17 TestCocartesianPentagonIdentityUsingWithGivenOperations[101X
+  [1X3.1-19 TestCocartesianPentagonIdentityUsingWithGivenOperations[101X
   
   [33X[1;0Y[29X[2XTestCocartesianPentagonIdentityUsingWithGivenOperations[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -234,7 +252,7 @@
   identity  holds  for  these  4  objects, false otherwise. This test uses the
   WithGiven-operations.[133X
   
-  [1X3.1-18 TestCocartesianPentagonIdentityForAllQuadruplesInList[101X
+  [1X3.1-20 TestCocartesianPentagonIdentityForAllQuadruplesInList[101X
   
   [33X[1;0Y[29X[2XTestCocartesianPentagonIdentityForAllQuadruplesInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -243,7 +261,7 @@
   cocartesian  category [23Xcat[123X. The output is true if the pentagon identity holds
   for all quadruples of objects in [23XL[123X, otherwise false.[133X
   
-  [1X3.1-19 CocartesianCategoriesTest[101X
+  [1X3.1-21 CocartesianCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCocartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -271,7 +289,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-20 CocartesianCoclosedCategoriesTest[101X
+  [1X3.1-22 CocartesianCoclosedCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCocartesianCoclosedCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -307,7 +325,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-21 CodistributiveCocartesianCategoriesTest[101X
+  [1X3.1-23 CodistributiveCocartesianCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCodistributiveCocartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X ) [32X function[133X
   
@@ -333,7 +351,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-22 DistributiveCartesianCategoriesTest[101X
+  [1X3.1-24 DistributiveCartesianCategoriesTest[101X
   
   [33X[1;0Y[29X[2XDistributiveCartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X ) [32X function[133X
   
