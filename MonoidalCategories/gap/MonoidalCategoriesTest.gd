@@ -10,6 +10,15 @@
 
 #! @Description
 #! This is a debug operation.
+#! The arguments are two objects $obj$ in a monoidal category $cat$.
+#! The output is true if the left and right unitors are invertible for $obj$.
+#! @Returns a boolean
+#! @Arguments cat, obj
+DeclareOperation( "TestMonoidalUnitorsForInvertibility",
+              [ IsCapCategory, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
 #! The arguments are two objects $obj_1, obj_2$ in a monoidal category $cat$.
 #! The output is true if the pentagon identity holds
 #! for these 2 objects, false otherwise.
