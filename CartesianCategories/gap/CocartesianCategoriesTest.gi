@@ -12,14 +12,64 @@ InstallMethod( TestCocartesianUnitorsForInvertibility,
                [ IsCapCategory, IsCapCategoryObject ],
                
   function( cat, object )
+    local lu, lui, ru, rui, lului, luilu, rurui, ruiru;
     
     Assert( 0, HasIsCocartesianCategory( cat ) and IsCocartesianCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object ) ) );
     
-    return IsOne( PreCompose( CocartesianLeftUnitor( object ), CocartesianLeftUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CocartesianLeftUnitorInverse( object ), CocartesianLeftUnitor( object ) ) ) and
-           IsOne( PreCompose( CocartesianRightUnitor( object ), CocartesianRightUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CocartesianRightUnitorInverse( object ), CocartesianRightUnitor( object ) ) );
+    lu := CocartesianLeftUnitor( object );
+    lui := CocartesianLeftUnitorInverse( object );
+    ru := CocartesianRightUnitor( object );
+    rui := CocartesianRightUnitorInverse( object );
+    
+    Assert( 0, IsWellDefined( lu ) );
+    Assert( 0, IsWellDefined( lui ) );
+    Assert( 0, IsWellDefined( ru ) );
+    Assert( 0, IsWellDefined( rui ) );
+    
+    lului := PreCompose( lu, lui );
+    luilu := PreCompose( lui, lu );
+    rurui := PreCompose( lui, lu );
+    ruiru := PreCompose( rui, ru );
+    
+    Assert( 0, IsWellDefined( lului ) );
+    Assert( 0, IsWellDefined( luilu ) );
+    Assert( 0, IsWellDefined( rurui ) );
+    Assert( 0, IsWellDefined( ruiru ) );
+    
+    return IsOne( lului ) and
+           IsOne( luilu ) and
+           IsOne( rurui ) and
+           IsOne( ruiru );
+    
+end );
+
+##
+InstallMethod( TestCocartesianAssociatorForInvertibility,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3 )
+    local a, ai, aai, aia;
+    
+    Assert( 0, HasIsCocartesianCategory( cat ) and IsCocartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
+    
+    a := CocartesianAssociatorLeftToRight( object_1, object_2, object_3 );
+    ai := CocartesianAssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    Assert( 0, IsWellDefined( a ) );
+    Assert( 0, IsWellDefined( ai ) );
+    
+    aai := PreCompose( a, ai );
+    aia := PreCompose( ai, a );
+    
+    Assert( 0, IsWellDefined( aai ) );
+    Assert( 0, IsWellDefined( aia ) );
+    
+    return IsOne( aai ) and
+           IsOne( aia );
     
 end );
 
@@ -36,9 +86,15 @@ InstallMethod( TestCocartesianTriangleIdentity,
     
     morphism_short := CoproductOnMorphisms( CocartesianRightUnitor( object_1 ), IdentityMorphism( object_2 ) );
     
+    Assert( 0, IsWellDefined( morphism_short ) );
+    
     morphism_long := CoproductOnMorphisms( IdentityMorphism( object_1 ), CocartesianLeftUnitor( object_2 ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_long := PreCompose( CocartesianAssociatorLeftToRight( object_1, InitialObject( cat ), object_2 ), morphism_long );
+    
+    Assert( 0, IsWellDefined( morphism_long ) );
     
     return IsCongruentForMorphisms( morphism_short, morphism_long );
     
@@ -89,16 +145,26 @@ InstallMethod( TestCocartesianPentagonIdentity,
     morphism_long :=
       CoproductOnMorphisms( CocartesianAssociatorLeftToRight( object_1, object_2, object_3 ), IdentityMorphism( object_4 ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_long := PreCompose( morphism_long,
       CocartesianAssociatorLeftToRight( object_1, BinaryCoproduct( cat, object_2, object_3 ), object_4 ) );
+    
+    Assert( 0, IsWellDefined( morphism_long ) );
     
     morphism_long := PreCompose( morphism_long,
       CoproductOnMorphisms( IdentityMorphism( object_1 ), CocartesianAssociatorLeftToRight( object_2, object_3, object_4 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_long ) );
+    
     morphism_short := CocartesianAssociatorLeftToRight( BinaryCoproduct( cat, object_1, object_2 ), object_3, object_4 );
+    
+    Assert( 0, IsWellDefined( morphism_short ) );
     
     morphism_short := PreCompose( morphism_short,
       CocartesianAssociatorLeftToRight( object_1, object_2, BinaryCoproduct( cat, object_3, object_4 ) ) );
+    
+    Assert( 0, IsWellDefined( morphism_short ) );
     
     return IsCongruentForMorphisms( morphism_long, morphism_short );
     
@@ -312,6 +378,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             
             Assert( 0, TestCocartesianTriangleIdentityForAllPairsInList( cat, [ a, b, c ] ) );
             
+            Assert( 0, TestCocartesianAssociatorForInvertibility( cat, a, b, c ) );
+            
             Assert( 0, TestCocartesianPentagonIdentity( cat, a, b, c, b ) );
             
             Assert( 0, TestCocartesianPentagonIdentityUsingWithGivenOperations( cat, a, b, c, b ) );
@@ -323,6 +391,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             Assert( 0, ForAll( [ a_op, b_op, c_op ], obj -> TestCocartesianUnitorsForInvertibility( opposite, obj ) ) );
             
             Assert( 0, TestCocartesianTriangleIdentityForAllPairsInList( opposite, [ a_op, b_op, c_op ] ) );
+            
+            Assert( 0, TestCocartesianAssociatorForInvertibility( opposite, a_op, b_op, c_op ) );
             
             Assert( 0, TestCocartesianPentagonIdentity( opposite, a_op, b_op, c_op, b_op ) );
             

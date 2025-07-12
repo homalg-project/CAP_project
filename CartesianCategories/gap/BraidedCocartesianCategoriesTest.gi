@@ -12,15 +12,36 @@ InstallMethod( TestCocartesianBraidingForInvertibility,
               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
               
   function( cat, object_1, object_2 )
+    local b12, bi12, b21, bi21, b12bi12, bi12b12, b21bi21, bi21b21;
     
     Assert( 0, HasIsCocartesianCategory( cat ) and IsCocartesianCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
     
-    return IsOne( PreCompose( CocartesianBraiding( object_1, object_2 ), CocartesianBraidingInverse( object_1, object_2 ) ) ) and
-           IsOne( PreCompose( CocartesianBraidingInverse( object_1, object_2 ), CocartesianBraiding( object_1, object_2 ) ) ) and
-           IsOne( PreCompose( CocartesianBraiding( object_2, object_1 ), CocartesianBraidingInverse( object_2, object_1 ) ) ) and
-           IsOne( PreCompose( CocartesianBraidingInverse( object_2, object_1 ), CocartesianBraiding( object_2, object_1 ) ) );
+    b12 := CocartesianBraiding( object_1, object_2 );
+    bi12 := CocartesianBraidingInverse( object_1, object_2 );
+    b21 := CocartesianBraiding( object_2, object_1 );
+    bi21 := CocartesianBraidingInverse( object_2, object_1 );
+    
+    Assert( 0, IsWellDefined( b12 ) );
+    Assert( 0, IsWellDefined( bi12 ) );
+    Assert( 0, IsWellDefined( b21 ) );
+    Assert( 0, IsWellDefined( bi21 ) );
+    
+    b12bi12 := PreCompose( b12, bi12 );
+    bi12b12 := PreCompose( bi12, b12 );
+    b21bi21 := PreCompose( b21, bi21 );
+    bi21b21 := PreCompose( bi21, b21 );
+    
+    Assert( 0, IsWellDefined( b12bi12 ) );
+    Assert( 0, IsWellDefined( bi12b12 ) );
+    Assert( 0, IsWellDefined( b21bi21 ) );
+    Assert( 0, IsWellDefined( bi21b21 ) );
+    
+    return IsOne( b12bi12 ) and
+           IsOne( bi12b12 ) and
+           IsOne( b21bi21 ) and
+           IsOne( bi21b21 );
     
 end );
 
@@ -38,17 +59,29 @@ InstallMethod( TestCocartesianBraidingCompatibility,
     
     morphism_left := CocartesianBraiding( BinaryCoproduct( cat, object_1, object_2 ), object_3 );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_left := PreCompose( morphism_left, CocartesianAssociatorRightToLeft( object_3, object_1, object_2 ) );
+    
+    Assert( 0, IsWellDefined( morphism_left ) );
     
     morphism_left := PreCompose( morphism_left,
                     CoproductOnMorphisms( CocartesianBraiding( object_3, object_1 ), IdentityMorphism( object_2 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_right := CocartesianAssociatorLeftToRight( object_1, object_2, object_3 );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     morphism_right := PreCompose( morphism_right,
                     CoproductOnMorphisms( IdentityMorphism( object_1 ), CocartesianBraiding( object_2, object_3 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_right ) );
+    
     morphism_right := PreCompose( morphism_right, CocartesianAssociatorRightToLeft( object_1, object_3, object_2 ) );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     if not ( morphism_left = morphism_right ) then
         
@@ -58,17 +91,29 @@ InstallMethod( TestCocartesianBraidingCompatibility,
     
     morphism_left := CocartesianBraiding( object_1, BinaryCoproduct( cat, object_2, object_3 ) );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_left := PreCompose( morphism_left, CocartesianAssociatorLeftToRight( object_2, object_3, object_1 ) );
+    
+    Assert( 0, IsWellDefined( morphism_left ) );
     
     morphism_left := PreCompose( morphism_left,
                     CoproductOnMorphisms( IdentityMorphism( object_2 ), CocartesianBraiding( object_3, object_1 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_right := CocartesianAssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     morphism_right := PreCompose( morphism_right,
                     CoproductOnMorphisms( CocartesianBraiding( object_1, object_2 ), IdentityMorphism( object_3 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_right ) );
+    
     morphism_right := PreCompose( morphism_right, CocartesianAssociatorLeftToRight( object_2, object_1, object_3 ) );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     return morphism_left = morphism_right;
     

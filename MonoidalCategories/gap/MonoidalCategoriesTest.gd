@@ -19,8 +19,18 @@ DeclareOperation( "TestMonoidalUnitorsForInvertibility",
 
 #! @Description
 #! This is a debug operation.
+#! The arguments are two objects $obj_1, obj_2, obj_3$ in a monoidal category $cat$.
+#! The output is true if the associator are invertible
+#! for these 3 objects, false otherwise.
+#! @Returns a boolean
+#! @Arguments cat, obj_1, obj_2, obj_3
+DeclareOperation( "TestAssociatorForInvertibility",
+              [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
 #! The arguments are two objects $obj_1, obj_2$ in a monoidal category $cat$.
-#! The output is true if the pentagon identity holds
+#! The output is true if the triangle identity holds
 #! for these 2 objects, false otherwise.
 #! @Returns a boolean
 #! @Arguments cat, obj_1, obj_2

@@ -12,15 +12,36 @@ InstallMethod( TestCartesianBraidingForInvertibility,
               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
               
   function( cat, object_1, object_2 )
+    local b12, bi12, b21, bi21, b12bi12, bi12b12, b21bi21, bi21b21;
     
     Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
     
-    return IsOne( PreCompose( CartesianBraiding( object_1, object_2 ), CartesianBraidingInverse( object_1, object_2 ) ) ) and
-           IsOne( PreCompose( CartesianBraidingInverse( object_1, object_2 ), CartesianBraiding( object_1, object_2 ) ) ) and
-           IsOne( PreCompose( CartesianBraiding( object_2, object_1 ), CartesianBraidingInverse( object_2, object_1 ) ) ) and
-           IsOne( PreCompose( CartesianBraidingInverse( object_2, object_1 ), CartesianBraiding( object_2, object_1 ) ) );
+    b12 := CartesianBraiding( object_1, object_2 );
+    bi12 := CartesianBraidingInverse( object_1, object_2 );
+    b21 := CartesianBraiding( object_2, object_1 );
+    bi21 := CartesianBraidingInverse( object_2, object_1 );
+    
+    Assert( 0, IsWellDefined( b12 ) );
+    Assert( 0, IsWellDefined( bi12 ) );
+    Assert( 0, IsWellDefined( b21 ) );
+    Assert( 0, IsWellDefined( bi21 ) );
+    
+    b12bi12 := PreCompose( b12, bi12 );
+    bi12b12 := PreCompose( bi12, b12 );
+    b21bi21 := PreCompose( b21, bi21 );
+    bi21b21 := PreCompose( bi21, b21 );
+    
+    Assert( 0, IsWellDefined( b12bi12 ) );
+    Assert( 0, IsWellDefined( bi12b12 ) );
+    Assert( 0, IsWellDefined( b21bi21 ) );
+    Assert( 0, IsWellDefined( bi21b21 ) );
+    
+    return IsOne( b12bi12 ) and
+           IsOne( bi12b12 ) and
+           IsOne( b21bi21 ) and
+           IsOne( bi21b21 );
     
 end );
 
@@ -38,17 +59,29 @@ InstallMethod( TestCartesianBraidingCompatibility,
     
     morphism_left := CartesianBraiding( BinaryDirectProduct( cat, object_1, object_2 ), object_3 );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_left := PreCompose( morphism_left, CartesianAssociatorRightToLeft( object_3, object_1, object_2 ) );
+    
+    Assert( 0, IsWellDefined( morphism_left ) );
     
     morphism_left := PreCompose( morphism_left,
                     DirectProductOnMorphisms( CartesianBraiding( object_3, object_1 ), IdentityMorphism( object_2 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_right := CartesianAssociatorLeftToRight( object_1, object_2, object_3 );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     morphism_right := PreCompose( morphism_right,
                     DirectProductOnMorphisms( IdentityMorphism( object_1 ), CartesianBraiding( object_2, object_3 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_right ) );
+    
     morphism_right := PreCompose( morphism_right, CartesianAssociatorRightToLeft( object_1, object_3, object_2 ) );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     if not ( morphism_left = morphism_right ) then
         
@@ -58,17 +91,29 @@ InstallMethod( TestCartesianBraidingCompatibility,
     
     morphism_left := CartesianBraiding( object_1, BinaryDirectProduct( cat, object_2, object_3 ) );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_left := PreCompose( morphism_left, CartesianAssociatorLeftToRight( object_2, object_3, object_1 ) );
+    
+    Assert( 0, IsWellDefined( morphism_left ) );
     
     morphism_left := PreCompose( morphism_left,
                     DirectProductOnMorphisms( IdentityMorphism( object_2 ), CartesianBraiding( object_3, object_1 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_left ) );
+    
     morphism_right := CartesianAssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     morphism_right := PreCompose( morphism_right,
                     DirectProductOnMorphisms( CartesianBraiding( object_1, object_2 ), IdentityMorphism( object_3 ) ) );
     
+    Assert( 0, IsWellDefined( morphism_right ) );
+    
     morphism_right := PreCompose( morphism_right, CartesianAssociatorLeftToRight( object_2, object_1, object_3 ) );
+    
+    Assert( 0, IsWellDefined( morphism_right ) );
     
     return morphism_left = morphism_right;
     
