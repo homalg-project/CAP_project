@@ -9,14 +9,40 @@ InstallMethod( TestMonoidalUnitorsForInvertibility,
                [ IsCapCategory, IsCapCategoryObject ],
                
   function( cat, object )
+    local lu, lui, ru, rui;
     
     Assert( 0, HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object ) ) );
     
-    return IsOne( PreCompose( LeftUnitor( object ), LeftUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( LeftUnitorInverse( object ), LeftUnitor( object ) ) ) and
-           IsOne( PreCompose( RightUnitor( object ), RightUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( RightUnitorInverse( object ), RightUnitor( object ) ) );
+    lu := LeftUnitor( object );
+    lui := LeftUnitorInverse( object );
+    ru := RightUnitor( object );
+    rui := RightUnitorInverse( object );
+    
+    return IsOne( PreCompose( lu, lui ) ) and
+           IsOne( PreCompose( lui, lu ) ) and
+           IsOne( PreCompose( ru, rui ) ) and
+           IsOne( PreCompose( rui, ru ) );
+    
+end );
+
+##
+InstallMethod( TestAssociatorForInvertibility,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3 )
+    local a, ai;
+    
+    Assert( 0, HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
+    
+    a := AssociatorLeftToRight( object_1, object_2, object_3 );
+    ai := AssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    return IsOne( PreCompose( a, ai ) ) and
+           IsOne( PreCompose( ai, a ) );
     
 end );
 
@@ -309,6 +335,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             
             Assert( 0, TestMonoidalTriangleIdentityForAllPairsInList( cat, [ a, b, c ] ) );
             
+            Assert( 0, TestAssociatorForInvertibility( cat, a, b, c ) );
+            
             Assert( 0, TestMonoidalPentagonIdentity( cat, a, b, c, b ) );
             
             Assert( 0, TestMonoidalPentagonIdentityUsingWithGivenOperations( cat, a, b, c, b ) );
@@ -320,6 +348,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             Assert( 0, ForAll( [ a_op, b_op, c_op ], obj -> TestMonoidalUnitorsForInvertibility( opposite, obj ) ) );
             
             Assert( 0, TestMonoidalTriangleIdentityForAllPairsInList( opposite, [ a_op, b_op, c_op ] ) );
+            
+            Assert( 0, TestAssociatorForInvertibility( opposite, a_op, b_op, c_op ) );
             
             Assert( 0, TestMonoidalPentagonIdentity( opposite, a_op, b_op, c_op, b_op ) );
             

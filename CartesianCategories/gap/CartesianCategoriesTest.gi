@@ -12,14 +12,40 @@ InstallMethod( TestCartesianUnitorsForInvertibility,
                [ IsCapCategory, IsCapCategoryObject ],
                
   function( cat, object )
+    local lu, lui, ru, rui;
     
     Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object ) ) );
     
-    return IsOne( PreCompose( CartesianLeftUnitor( object ), CartesianLeftUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CartesianLeftUnitorInverse( object ), CartesianLeftUnitor( object ) ) ) and
-           IsOne( PreCompose( CartesianRightUnitor( object ), CartesianRightUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CartesianRightUnitorInverse( object ), CartesianRightUnitor( object ) ) );
+    lu := CartesianLeftUnitor( object );
+    lui := CartesianLeftUnitorInverse( object );
+    ru := CartesianRightUnitor( object );
+    rui := CartesianRightUnitorInverse( object );
+    
+    return IsOne( PreCompose( lu, lui ) ) and
+           IsOne( PreCompose( lui, lu ) ) and
+           IsOne( PreCompose( ru, rui ) ) and
+           IsOne( PreCompose( rui, ru ) );
+    
+end );
+
+##
+InstallMethod( TestCartesianAssociatorForInvertibility,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3 )
+    local a, ai;
+    
+    Assert( 0, HasIsCartesianCategory( cat ) and IsCartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
+    
+    a := CartesianAssociatorLeftToRight( object_1, object_2, object_3 );
+    ai := CartesianAssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    return IsOne( PreCompose( a, ai ) ) and
+           IsOne( PreCompose( ai, a ) );
     
 end );
 
@@ -312,6 +338,8 @@ InstallGlobalFunction( "CartesianCategoriesTest",
             
             Assert( 0, TestCartesianTriangleIdentityForAllPairsInList( cat, [ a, b, c ] ) );
             
+            Assert( 0, TestCartesianAssociatorForInvertibility( cat, a, b, c ) );
+            
             Assert( 0, TestCartesianPentagonIdentity( cat, a, b, c, b ) );
             
             Assert( 0, TestCartesianPentagonIdentityUsingWithGivenOperations( cat, a, b, c, b ) );
@@ -323,6 +351,8 @@ InstallGlobalFunction( "CartesianCategoriesTest",
             Assert( 0, ForAll( [ a_op, b_op, c_op ], obj -> TestCartesianUnitorsForInvertibility( opposite, obj ) ) );
             
             Assert( 0, TestCartesianTriangleIdentityForAllPairsInList( opposite, [ a_op, b_op, c_op ] ) );
+            
+            Assert( 0, TestCartesianAssociatorForInvertibility( opposite, a_op, b_op, c_op ) );
             
             Assert( 0, TestCartesianPentagonIdentity( opposite, a_op, b_op, c_op, b_op ) );
             

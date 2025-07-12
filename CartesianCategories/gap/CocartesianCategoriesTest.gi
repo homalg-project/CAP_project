@@ -12,14 +12,40 @@ InstallMethod( TestCocartesianUnitorsForInvertibility,
                [ IsCapCategory, IsCapCategoryObject ],
                
   function( cat, object )
+    local lu, lui, ru, rui;
     
     Assert( 0, HasIsCocartesianCategory( cat ) and IsCocartesianCategory( cat ) );
     Assert( 0, IsIdenticalObj( cat, CapCategory( object ) ) );
     
-    return IsOne( PreCompose( CocartesianLeftUnitor( object ), CocartesianLeftUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CocartesianLeftUnitorInverse( object ), CocartesianLeftUnitor( object ) ) ) and
-           IsOne( PreCompose( CocartesianRightUnitor( object ), CocartesianRightUnitorInverse( object ) ) ) and
-           IsOne( PreCompose( CocartesianRightUnitorInverse( object ), CocartesianRightUnitor( object ) ) );
+    lu := CocartesianLeftUnitor( object );
+    lui := CocartesianLeftUnitorInverse( object );
+    ru := CocartesianRightUnitor( object );
+    rui := CocartesianRightUnitorInverse( object );
+    
+    return IsOne( PreCompose( lu, lui ) ) and
+           IsOne( PreCompose( lui, lu ) ) and
+           IsOne( PreCompose( ru, rui ) ) and
+           IsOne( PreCompose( rui, ru ) );
+    
+end );
+
+##
+InstallMethod( TestCocartesianAssociatorForInvertibility,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, object_1, object_2, object_3 )
+    local a, ai;
+    
+    Assert( 0, HasIsCocartesianCategory( cat ) and IsCocartesianCategory( cat ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_1 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_2 ) ) );
+    Assert( 0, IsIdenticalObj( cat, CapCategory( object_3 ) ) );
+    
+    a := CocartesianAssociatorLeftToRight( object_1, object_2, object_3 );
+    ai := CocartesianAssociatorRightToLeft( object_1, object_2, object_3 );
+    
+    return IsOne( PreCompose( a, ai ) ) and
+           IsOne( PreCompose( ai, a ) );
     
 end );
 
@@ -312,6 +338,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             
             Assert( 0, TestCocartesianTriangleIdentityForAllPairsInList( cat, [ a, b, c ] ) );
             
+            Assert( 0, TestCocartesianAssociatorForInvertibility( cat, a, b, c ) );
+            
             Assert( 0, TestCocartesianPentagonIdentity( cat, a, b, c, b ) );
             
             Assert( 0, TestCocartesianPentagonIdentityUsingWithGivenOperations( cat, a, b, c, b ) );
@@ -323,6 +351,8 @@ InstallGlobalFunction( "CocartesianCategoriesTest",
             Assert( 0, ForAll( [ a_op, b_op, c_op ], obj -> TestCocartesianUnitorsForInvertibility( opposite, obj ) ) );
             
             Assert( 0, TestCocartesianTriangleIdentityForAllPairsInList( opposite, [ a_op, b_op, c_op ] ) );
+            
+            Assert( 0, TestCocartesianAssociatorForInvertibility( opposite, a_op, b_op, c_op ) );
             
             Assert( 0, TestCocartesianPentagonIdentity( opposite, a_op, b_op, c_op, b_op ) );
             
