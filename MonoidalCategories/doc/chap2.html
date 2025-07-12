@@ -38,15 +38,16 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X865E82AA7FB9B0BE">2.1-11 LeftCoclosedMonoidalCategoriesTest</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BF584B6805BB8DA">2.1-12 LeftCoclosedMonoidalCategoriesTestWithGiven</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B05AB7F7BAF2B62">2.1-13 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EB6CE877FDBFAE5">2.1-14 TestMonoidalTriangleIdentity</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B0890C57F20717C">2.1-15 TestMonoidalTriangleIdentityForAllPairsInList</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8786C1FF7F09F124">2.1-16 TestMonoidalPentagonIdentity</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D45BF317D6237DC">2.1-17 TestMonoidalPentagonIdentityUsingWithGivenOperations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E96BEF17CD1B38B">2.1-18 TestMonoidalPentagonIdentityForAllQuadruplesInList</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BCAF88A806E562D">2.1-19 MonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85AB97E9788D543D">2.1-20 TestZigZagIdentitiesForDual</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78CAAAE77DC5CF4F">2.1-21 RigidSymmetricClosedMonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8154BEE7850EFEEA">2.1-22 RigidSymmetricCoclosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FE8E3E581929705">2.1-14 TestMonoidalUnitorsForInvertibility</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EB6CE877FDBFAE5">2.1-15 TestMonoidalTriangleIdentity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B0890C57F20717C">2.1-16 TestMonoidalTriangleIdentityForAllPairsInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8786C1FF7F09F124">2.1-17 TestMonoidalPentagonIdentity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D45BF317D6237DC">2.1-18 TestMonoidalPentagonIdentityUsingWithGivenOperations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E96BEF17CD1B38B">2.1-19 TestMonoidalPentagonIdentityForAllQuadruplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BCAF88A806E562D">2.1-20 MonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85AB97E9788D543D">2.1-21 TestZigZagIdentitiesForDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78CAAAE77DC5CF4F">2.1-22 RigidSymmetricClosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8154BEE7850EFEEA">2.1-23 RigidSymmetricCoclosedMonoidalCategoriesTest</a></span>
 </div></div>
 </div>
 
@@ -470,9 +471,18 @@
 
 </li>
 </ul>
+<p><a id="X7FE8E3E581929705" name="X7FE8E3E581929705"></a></p>
+
+<h5>2.1-14 TestMonoidalUnitorsForInvertibility</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestMonoidalUnitorsForInvertibility</code>( <var class="Arg">cat</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The arguments are two objects <span class="Math">obj</span> in a monoidal category <span class="Math">cat</span>. The output is true if the left and right unitors are invertible for <span class="Math">obj</span>.</p>
+
 <p><a id="X7EB6CE877FDBFAE5" name="X7EB6CE877FDBFAE5"></a></p>
 
-<h5>2.1-14 TestMonoidalTriangleIdentity</h5>
+<h5>2.1-15 TestMonoidalTriangleIdentity</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestMonoidalTriangleIdentity</code>( <var class="Arg">cat</var>, <var class="Arg">obj_1</var>, <var class="Arg">obj_2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -481,7 +491,7 @@
 
 <p><a id="X7B0890C57F20717C" name="X7B0890C57F20717C"></a></p>
 
-<h5>2.1-15 TestMonoidalTriangleIdentityForAllPairsInList</h5>
+<h5>2.1-16 TestMonoidalTriangleIdentityForAllPairsInList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestMonoidalTriangleIdentityForAllPairsInList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -490,7 +500,7 @@
 
 <p><a id="X8786C1FF7F09F124" name="X8786C1FF7F09F124"></a></p>
 
-<h5>2.1-16 TestMonoidalPentagonIdentity</h5>
+<h5>2.1-17 TestMonoidalPentagonIdentity</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestMonoidalPentagonIdentity</code>( <var class="Arg">cat</var>, <var class="Arg">obj_1</var>, <var class="Arg">obj_2</var>, <var class="Arg">obj_3</var>, <var class="Arg">obj_4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -499,7 +509,7 @@
 
 <p><a id="X7D45BF317D6237DC" name="X7D45BF317D6237DC"></a></p>
 
-<h5>2.1-17 TestMonoidalPentagonIdentityUsingWithGivenOperations</h5>
+<h5>2.1-18 TestMonoidalPentagonIdentityUsingWithGivenOperations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestMonoidalPentagonIdentityUsingWithGivenOperations</code>( <var class="Arg">cat</var>, <var class="Arg">obj_1</var>, <var class="Arg">obj_2</var>, <var class="Arg">obj_3</var>, <var class="Arg">obj_4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -508,7 +518,7 @@
 
 <p><a id="X7E96BEF17CD1B38B" name="X7E96BEF17CD1B38B"></a></p>
 
-<h5>2.1-18 TestMonoidalPentagonIdentityForAllQuadruplesInList</h5>
+<h5>2.1-19 TestMonoidalPentagonIdentityForAllQuadruplesInList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestMonoidalPentagonIdentityForAllQuadruplesInList</code>( <var class="Arg">cat</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -517,7 +527,7 @@
 
 <p><a id="X7BCAF88A806E562D" name="X7BCAF88A806E562D"></a></p>
 
-<h5>2.1-19 MonoidalCategoriesTest</h5>
+<h5>2.1-20 MonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -550,7 +560,7 @@
 </ul>
 <p><a id="X85AB97E9788D543D" name="X85AB97E9788D543D"></a></p>
 
-<h5>2.1-20 TestZigZagIdentitiesForDual</h5>
+<h5>2.1-21 TestZigZagIdentitiesForDual</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestZigZagIdentitiesForDual</code>( <var class="Arg">cat</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -559,7 +569,7 @@
 
 <p><a id="X78CAAAE77DC5CF4F" name="X78CAAAE77DC5CF4F"></a></p>
 
-<h5>2.1-21 RigidSymmetricClosedMonoidalCategoriesTest</h5>
+<h5>2.1-22 RigidSymmetricClosedMonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RigidSymmetricClosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -589,7 +599,7 @@
 </ul>
 <p><a id="X8154BEE7850EFEEA" name="X8154BEE7850EFEEA"></a></p>
 
-<h5>2.1-22 RigidSymmetricCoclosedMonoidalCategoriesTest</h5>
+<h5>2.1-23 RigidSymmetricCoclosedMonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RigidSymmetricCoclosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>

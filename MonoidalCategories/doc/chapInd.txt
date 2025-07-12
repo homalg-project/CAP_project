@@ -639,7 +639,7 @@
   [2XLeftUnitorInverseWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-10 
   [2XLeftUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-8 
   [2XMonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[102X 2.1-13 
-  [2XMonoidalCategoriesTest[102X 2.1-19 
+  [2XMonoidalCategoriesTest[102X 2.1-20 
   [2XMonoidalPostCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-22 
   [2XMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.8-23 
   [2XMonoidalPostComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-30 
@@ -681,8 +681,8 @@
   [2XRightUnitorInverse[102X, for IsCapCategoryObject 1.1-13 
   [2XRightUnitorInverseWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-14 
   [2XRightUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-12 
-  [2XRigidSymmetricClosedMonoidalCategoriesTest[102X 2.1-21 
-  [2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X 2.1-22 
+  [2XRigidSymmetricClosedMonoidalCategoriesTest[102X 2.1-22 
+  [2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X 2.1-23 
   [2XTensorProductDualityCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-41 
   [2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-42 
   [2XTensorProductInternalHomCompatibilityMorphism[102X, for IsList 1.6-39 
@@ -723,12 +723,13 @@
   [2XTensorUnit[102X, for IsCapCategory 1.1-16 
   [2XTestBraidingCompatibility[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.1-2 
   [2XTestBraidingCompatibilityForAllTriplesInList[102X, for IsCapCategory, IsList 2.1-3 
-  [2XTestMonoidalPentagonIdentity[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.1-16 
-  [2XTestMonoidalPentagonIdentityForAllQuadruplesInList[102X, for IsCapCategory, IsList 2.1-18 
-  [2XTestMonoidalPentagonIdentityUsingWithGivenOperations[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.1-17 
-  [2XTestMonoidalTriangleIdentity[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject 2.1-14 
-  [2XTestMonoidalTriangleIdentityForAllPairsInList[102X, for IsCapCategory, IsList 2.1-15 
-  [2XTestZigZagIdentitiesForDual[102X, for IsCapCategory, IsCapCategoryObject 2.1-20 
+  [2XTestMonoidalPentagonIdentity[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.1-17 
+  [2XTestMonoidalPentagonIdentityForAllQuadruplesInList[102X, for IsCapCategory, IsList 2.1-19 
+  [2XTestMonoidalPentagonIdentityUsingWithGivenOperations[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.1-18 
+  [2XTestMonoidalTriangleIdentity[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryObject 2.1-15 
+  [2XTestMonoidalTriangleIdentityForAllPairsInList[102X, for IsCapCategory, IsList 2.1-16 
+  [2XTestMonoidalUnitorsForInvertibility[102X, for IsCapCategory, IsCapCategoryObject 2.1-14 
+  [2XTestZigZagIdentitiesForDual[102X, for IsCapCategory, IsCapCategoryObject 2.1-21 
   [2XTraceMap[102X, for IsCapCategoryMorphism 1.11-9 
   [2XUniversalPropertyOfCoDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.8-39 
   [2XUniversalPropertyOfDual[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-47 
