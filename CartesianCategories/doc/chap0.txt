@@ -6,7 +6,7 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2025.07-05
+                                   2025.07-06
   
   
                                   12 July 2025
@@ -385,23 +385,25 @@
       3.1-7 TestCocartesianBraidingCompatibilityForAllTriplesInList
       3.1-8 BraidedCocartesianCategoriesTest
       3.1-9 TestCartesianUnitorsForInvertibility
-      3.1-10 TestCartesianTriangleIdentity
-      3.1-11 TestCartesianTriangleIdentityForAllPairsInList
-      3.1-12 TestCartesianPentagonIdentity
-      3.1-13 TestCartesianPentagonIdentityUsingWithGivenOperations
-      3.1-14 TestCartesianPentagonIdentityForAllQuadruplesInList
-      3.1-15 CartesianCategoriesTest
-      3.1-16 CartesianClosedCategoriesTest
-      3.1-17 TestCocartesianUnitorsForInvertibility
-      3.1-18 TestCocartesianTriangleIdentity
-      3.1-19 TestCocartesianTriangleIdentityForAllPairsInList
-      3.1-20 TestCocartesianPentagonIdentity
-      3.1-21 TestCocartesianPentagonIdentityUsingWithGivenOperations
-      3.1-22 TestCocartesianPentagonIdentityForAllQuadruplesInList
-      3.1-23 CocartesianCategoriesTest
-      3.1-24 CocartesianCoclosedCategoriesTest
-      3.1-25 CodistributiveCocartesianCategoriesTest
-      3.1-26 DistributiveCartesianCategoriesTest
+      3.1-10 TestCartesianAssociatorForInvertibility
+      3.1-11 TestCartesianTriangleIdentity
+      3.1-12 TestCartesianTriangleIdentityForAllPairsInList
+      3.1-13 TestCartesianPentagonIdentity
+      3.1-14 TestCartesianPentagonIdentityUsingWithGivenOperations
+      3.1-15 TestCartesianPentagonIdentityForAllQuadruplesInList
+      3.1-16 CartesianCategoriesTest
+      3.1-17 CartesianClosedCategoriesTest
+      3.1-18 TestCocartesianUnitorsForInvertibility
+      3.1-19 TestCocartesianAssociatorForInvertibility
+      3.1-20 TestCocartesianTriangleIdentity
+      3.1-21 TestCocartesianTriangleIdentityForAllPairsInList
+      3.1-22 TestCocartesianPentagonIdentity
+      3.1-23 TestCocartesianPentagonIdentityUsingWithGivenOperations
+      3.1-24 TestCocartesianPentagonIdentityForAllQuadruplesInList
+      3.1-25 CocartesianCategoriesTest
+      3.1-26 CocartesianCoclosedCategoriesTest
+      3.1-27 CodistributiveCocartesianCategoriesTest
+      3.1-28 DistributiveCartesianCategoriesTest
     3.2 [33X[0;0YInfoOfInstalledOperationsOfCategory[133X
   4 [33X[0;0YThe initial category[133X
     4.1 [33X[0;0YConstructor[133X
