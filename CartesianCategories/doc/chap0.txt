@@ -6,7 +6,7 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2025.07-04
+                                   2025.07-05
   
   
                                   12 July 2025
@@ -376,30 +376,32 @@
       2.4-73 AddRightCocartesianCodistributivityFactoringWithGivenObjects
   3 [33X[0;0YExamples and Tests[133X
     3.1 [33X[0;0YTest functions[133X
-      3.1-1 TestCartesianBraidingCompatibility
-      3.1-2 TestCartesianBraidingCompatibilityForAllTriplesInList
-      3.1-3 BraidedCartesianCategoriesTest
-      3.1-4 TestCocartesianBraidingCompatibility
-      3.1-5 TestCocartesianBraidingCompatibilityForAllTriplesInList
-      3.1-6 BraidedCocartesianCategoriesTest
-      3.1-7 TestCartesianUnitorsForInvertibility
-      3.1-8 TestCartesianTriangleIdentity
-      3.1-9 TestCartesianTriangleIdentityForAllPairsInList
-      3.1-10 TestCartesianPentagonIdentity
-      3.1-11 TestCartesianPentagonIdentityUsingWithGivenOperations
-      3.1-12 TestCartesianPentagonIdentityForAllQuadruplesInList
-      3.1-13 CartesianCategoriesTest
-      3.1-14 CartesianClosedCategoriesTest
-      3.1-15 TestCocartesianUnitorsForInvertibility
-      3.1-16 TestCocartesianTriangleIdentity
-      3.1-17 TestCocartesianTriangleIdentityForAllPairsInList
-      3.1-18 TestCocartesianPentagonIdentity
-      3.1-19 TestCocartesianPentagonIdentityUsingWithGivenOperations
-      3.1-20 TestCocartesianPentagonIdentityForAllQuadruplesInList
-      3.1-21 CocartesianCategoriesTest
-      3.1-22 CocartesianCoclosedCategoriesTest
-      3.1-23 CodistributiveCocartesianCategoriesTest
-      3.1-24 DistributiveCartesianCategoriesTest
+      3.1-1 TestCartesianBraidingForInvertibility
+      3.1-2 TestCartesianBraidingCompatibility
+      3.1-3 TestCartesianBraidingCompatibilityForAllTriplesInList
+      3.1-4 BraidedCartesianCategoriesTest
+      3.1-5 TestCocartesianBraidingForInvertibility
+      3.1-6 TestCocartesianBraidingCompatibility
+      3.1-7 TestCocartesianBraidingCompatibilityForAllTriplesInList
+      3.1-8 BraidedCocartesianCategoriesTest
+      3.1-9 TestCartesianUnitorsForInvertibility
+      3.1-10 TestCartesianTriangleIdentity
+      3.1-11 TestCartesianTriangleIdentityForAllPairsInList
+      3.1-12 TestCartesianPentagonIdentity
+      3.1-13 TestCartesianPentagonIdentityUsingWithGivenOperations
+      3.1-14 TestCartesianPentagonIdentityForAllQuadruplesInList
+      3.1-15 CartesianCategoriesTest
+      3.1-16 CartesianClosedCategoriesTest
+      3.1-17 TestCocartesianUnitorsForInvertibility
+      3.1-18 TestCocartesianTriangleIdentity
+      3.1-19 TestCocartesianTriangleIdentityForAllPairsInList
+      3.1-20 TestCocartesianPentagonIdentity
+      3.1-21 TestCocartesianPentagonIdentityUsingWithGivenOperations
+      3.1-22 TestCocartesianPentagonIdentityForAllQuadruplesInList
+      3.1-23 CocartesianCategoriesTest
+      3.1-24 CocartesianCoclosedCategoriesTest
+      3.1-25 CodistributiveCocartesianCategoriesTest
+      3.1-26 DistributiveCartesianCategoriesTest
     3.2 [33X[0;0YInfoOfInstalledOperationsOfCategory[133X
   4 [33X[0;0YThe initial category[133X
     4.1 [33X[0;0YConstructor[133X
