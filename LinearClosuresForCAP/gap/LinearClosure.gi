@@ -83,19 +83,25 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
     fi;
     
-    SetIsLinearCategoryOverCommutativeRing( category, true );
-    
-    SetIsAbCategory( category, true );
-    
     SetCommutativeRingOfLinearCategory( category, ring );
     
     SetUnderlyingRing( category, ring );
     
     SetUnderlyingCategory( category, underlying_category );
     
+    SetIsLinearCategoryOverCommutativeRing( category, true );
+    
+    SetIsAbCategory( category, true );
+    
     if HasIsObjectFiniteCategory( underlying_category ) and IsObjectFiniteCategory( underlying_category ) then
         
         SetIsObjectFiniteCategory( category, true );
+        
+    fi;
+    
+    if HasIsSkeletalCategory( underlying_category ) and IsSkeletalCategory( underlying_category ) then
+        
+        SetIsSkeletalCategory( category, true );
         
     fi;
     
