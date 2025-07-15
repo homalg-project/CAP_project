@@ -72,6 +72,8 @@ ReadPackage( "CAP", "gap/CategoryConstructor.gi" );
 
 ReadPackage( "CAP", "gap/TerminalCategory.gi" );
 
+ReadPackage( "CAP", "gap/FiniteSkeletalDiscreteCategory.gi" );
+
 ReadPackage( "CAP", "gap/ReinterpretationOfCategory.gi" );
 
 ReadPackage( "CAP", "gap/WrapperCategory.gi" );
