@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (CAP) - Chapter 17: Terminal category</title>
+<title>GAP (CAP) - Chapter 17: Examples and Tests</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,172 +18,487 @@
 <body class="chap17"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chap18_mj.html">18</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
-<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap16_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap16_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap18_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap17.html">[MathJax off]</a></p>
-<p><a id="X7EA29B7D7BA60F42" name="X7EA29B7D7BA60F42"></a></p>
-<div class="ChapSects"><a href="chap17_mj.html#X7EA29B7D7BA60F42">17 <span class="Heading">Terminal category</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X7D03633A7D98026B">17.1 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<div class="ChapSects"><a href="chap17_mj.html#X7967FE8E7BBDF485">17 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X7CA5B46383A5CE09">17.1 <span class="Heading">Dummy implementations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X8665012E7D503742">17.1-1 IsCapTerminalCategoryWithSingleObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X7F48DB947BDA1232">17.1-2 IsObjectInCapTerminalCategoryWithSingleObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X86041A8F851354DB">17.1-3 IsMorphismInCapTerminalCategoryWithSingleObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X85A149A17E45806B">17.1-4 IsCapTerminalCategoryWithMultipleObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X8751E72879CE707D">17.1-5 IsObjectInCapTerminalCategoryWithMultipleObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X7BC47E5D7AD51588">17.1-6 IsMorphismInCapTerminalCategoryWithMultipleObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X8724DDA281946BEB">17.1-7 IsTerminalCategory</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X86EC0F0A78ECBC10">17.2 <span class="Heading">Constructors</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X82A623E78640E822">17.1-1 <span class="Heading">Dummy categories</span></a>
 </span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X7D7044AA82764329">17.2-1 TerminalCategoryWithSingleObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X7CBD1E9B81BBFFC8">17.2-2 TerminalCategoryWithMultipleObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X81FA767C792670A2">17.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X7C701DBF7BAE649A">17.3 <span class="Heading">Attributes</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X7B19E3AE7AB1B31B">17.1-2 <span class="Heading">Dummy rings</span></a>
 </span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X7C2B3F018386B9D4">17.3-1 TerminalCategoryWithSingleObjectUniqueObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X87F66FAD7A1100C7">17.3-2 TerminalCategoryWithSingleObjectUniqueMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17_mj.html#X80813F9A86FCCC24">17.3-3 FunctorFromTerminalCategory</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X7BAE6D0285667B1F">17.2 <span class="Heading">Finite skeletal discrete categories</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X78D1062D78BE08C1">17.3 <span class="Heading">Functors</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X7B339750826300B4">17.4 <span class="Heading">HandlePrecompiledTowers</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17_mj.html#X7EA29B7D7BA60F42">17.5 <span class="Heading">Terminal category</span></a>
+</span>
+</div>
 </div>
 
-<h3>17 <span class="Heading">Terminal category</span></h3>
+<h3>17 <span class="Heading">Examples and Tests</span></h3>
 
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+<p><a id="X7CA5B46383A5CE09" name="X7CA5B46383A5CE09"></a></p>
 
-<h4>17.1 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+<h4>17.1 <span class="Heading">Dummy implementations</span></h4>
 
-<p><a id="X8665012E7D503742" name="X8665012E7D503742"></a></p>
+<p><a id="X82A623E78640E822" name="X82A623E78640E822"></a></p>
 
-<h5>17.1-1 IsCapTerminalCategoryWithSingleObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapTerminalCategoryWithSingleObject</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> type of a terminal category with a single object.</p>
-
-<p><a id="X7F48DB947BDA1232" name="X7F48DB947BDA1232"></a></p>
-
-<h5>17.1-2 IsObjectInCapTerminalCategoryWithSingleObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCapTerminalCategoryWithSingleObject</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> type of an object in a terminal category with a single object.</p>
-
-<p><a id="X86041A8F851354DB" name="X86041A8F851354DB"></a></p>
-
-<h5>17.1-3 IsMorphismInCapTerminalCategoryWithSingleObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCapTerminalCategoryWithSingleObject</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> type of a morphism in a terminal category with a single object.</p>
-
-<p><a id="X85A149A17E45806B" name="X85A149A17E45806B"></a></p>
-
-<h5>17.1-4 IsCapTerminalCategoryWithMultipleObjects</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> type of a terminal category with multiple objects.</p>
-
-<p><a id="X8751E72879CE707D" name="X8751E72879CE707D"></a></p>
-
-<h5>17.1-5 IsObjectInCapTerminalCategoryWithMultipleObjects</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCapTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> type of an object in a terminal category with multiple objects.</p>
-
-<p><a id="X7BC47E5D7AD51588" name="X7BC47E5D7AD51588"></a></p>
-
-<h5>17.1-6 IsMorphismInCapTerminalCategoryWithMultipleObjects</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCapTerminalCategoryWithMultipleObjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> type of a morphism in a terminal category with multiple objects.</p>
-
-<p><a id="X8724DDA281946BEB" name="X8724DDA281946BEB"></a></p>
-
-<h5>17.1-7 IsTerminalCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsTerminalCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The property of the category <var class="Arg">C</var> being terminal.</p>
-
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
-
-<h4>17.2 <span class="Heading">Constructors</span></h4>
-
-<p><a id="X7D7044AA82764329" name="X7D7044AA82764329"></a></p>
-
-<h5>17.2-1 TerminalCategoryWithSingleObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategoryWithSingleObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Construct a terminal category with a single object.</p>
-
-<p><a id="X7CBD1E9B81BBFFC8" name="X7CBD1E9B81BBFFC8"></a></p>
-
-<h5>17.2-2 TerminalCategoryWithMultipleObjects</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategoryWithMultipleObjects</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Construct a terminal category with multiple objects.</p>
-
-<p><a id="X81FA767C792670A2" name="X81FA767C792670A2"></a></p>
-
-<h5>17.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY</code>( <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
-
-<p>This function takes a record of options suited for CategoryConstructor. It makes common adjustments for TerminalCategoryWithSingleObject and TerminalCategoryWithMultipleObjects to the list of operations to install and the categorical properties of the given record, before passing it on to CategoryConstructor.</p>
-
-<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
-
-<h4>17.3 <span class="Heading">Attributes</span></h4>
-
-<p><a id="X7C2B3F018386B9D4" name="X7C2B3F018386B9D4"></a></p>
-
-<h5>17.3-1 TerminalCategoryWithSingleObjectUniqueObject</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategoryWithSingleObjectUniqueObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> object</p>
-
-<p>The unique object in a terminal category with a single object.</p>
-
-<p><a id="X87F66FAD7A1100C7" name="X87F66FAD7A1100C7"></a></p>
-
-<h5>17.3-2 TerminalCategoryWithSingleObjectUniqueMorphism</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerminalCategoryWithSingleObjectUniqueMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
-
-<p>The unique morphism in a terminal category with a single object.</p>
-
-<p><a id="X80813F9A86FCCC24" name="X80813F9A86FCCC24"></a></p>
-
-<h5>17.3-3 FunctorFromTerminalCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorFromTerminalCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
-
-<p>A functor from <code class="code">AsCapCategory( TerminalObject( CapCat ) )</code> mapping the unique object to <var class="Arg">object</var>.</p>
+<h5>17.1-1 <span class="Heading">Dummy categories</span></h5>
 
 
-<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap16_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">list_of_operations_to_install := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "ObjectConstructor",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "MorphismConstructor",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "ObjectDatum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "MorphismDatum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "IsCongruentForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "PreCompose",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "IdentityMorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "DirectSum",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy := DummyCategory( rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    list_of_operations_to_install := list_of_operations_to_install,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    properties := [ "IsAdditiveCategory" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ForAll( list_of_operations_to_install, o -&gt; CanCompute( dummy, o ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdditiveCategory( dummy );</span>
+true
+</pre></div>
+
+<p><a id="X7B19E3AE7AB1B31B" name="X7B19E3AE7AB1B31B"></a></p>
+
+<h5>17.1-2 <span class="Heading">Dummy rings</span></h5>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyRing( );</span>
+Dummy ring 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyRing( );</span>
+Dummy ring 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRing( DummyRing( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyCommutativeRing( );</span>
+Dummy commutative ring 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyCommutativeRing( );</span>
+Dummy commutative ring 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRing( DummyCommutativeRing( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCommutative( DummyCommutativeRing( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyField( );</span>
+Dummy field 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyField( );</span>
+Dummy field 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRing( DummyField( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsField( DummyField( ) );</span>
+true
+</pre></div>
+
+<p><a id="X7BAE6D0285667B1F" name="X7BAE6D0285667B1F"></a></p>
+
+<h4>17.2 <span class="Heading">Finite skeletal discrete categories</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gap_objects := [ 1 .. 5 ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := FiniteSkeletalDiscreteCategory( gap_objects );</span>
+FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := ObjectConstructor( D, 1 );</span>
+&lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefinedForObjects( one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectDatum( one ) = 1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( one );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( one, one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( D, one );</span>
+&lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefinedForMorphisms( id_one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( id_one ) = fail;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( id_one );</span>
+1
+|
+| A morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )
+v
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( id_one, id_one ), id_one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">objs := SetOfObjectsOfCategory( D );</span>
+[ &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mors := SetOfMorphismsOfFiniteCategory( D );</span>
+[ &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
+  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt; ]
+</pre></div>
+
+<p><a id="X78D1062D78BE08C1" name="X78D1062D78BE08C1"></a></p>
+
+<h4>17.3 <span class="Heading">Functors</span></h4>
+
+<p>We create a binary functor <span class="SimpleMath">\(F\)</span> with one covariant and one contravariant component in two ways. Here is the first way to model a binary functor:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ring := HomalgRingOfIntegers( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := LeftPresentations( ring );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := CapFunctor( "CohomForVec", [ vec, [ vec, true ] ], vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_func := function( A, B ) return TensorProductOnObjects( A, DualOnObjects( B ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor_func := function( source, alpha, beta, range ) return TensorProductOnMorphismsWithGivenTensorProducts( source, alpha, DualOnMorphisms( beta ), range ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddObjectFunction( F, obj_func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddMorphismFunction( F, mor_func );;</span>
+</pre></div>
+
+<p>CAP regards <span class="SimpleMath">\(F\)</span> as a binary functor on a technical level, as we can see by looking at its input signature:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InputSignature( F );</span>
+[ [ Category of left presentations of Z, false ], [ Category of left presentations of Z, true ] ]
+</pre></div>
+
+<p>We can see that <code class="code">ApplyFunctor</code> works both on two arguments and on one argument (in the product category).</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 := TensorUnit( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V3 := DirectSum( V1, V1, V1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfDirectSum( [ V1, V1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInFactorOfDirectSum( [ V3, V1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">value1 := ApplyFunctor( F, pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">input := Product( pi1, Opposite( pi2 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">value2 := ApplyFunctor( F, input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( value1, value2 );</span>
+true
+</pre></div>
+
+<p>Here is the second way to model a binary functor:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := CapFunctor( "CohomForVec2", Product( vec, Opposite( vec ) ), vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddObjectFunction( F2, a -&gt; obj_func( a[1], Opposite( a[2] ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddMorphismFunction( F2, function( source, datum, range ) return mor_func( source, datum[1], Opposite( datum[2] ), range ); end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">value3 := ApplyFunctor( F2,input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( value1, value3 );</span>
+true
+</pre></div>
+
+<p>CAP regards <span class="SimpleMath">\(F2\)</span> as a unary functor on a technical level, as we can see by looking at its input signature:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InputSignature( F2 );</span>
+[ [ Product of: Category of left presentations of Z, Opposite( Category of left presentations of Z ), false ] ]
+</pre></div>
+
+<p>Installation of the first functor as a GAP-operation. It will be installed both as a unary and binary version.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallFunctor( F, "F_installation" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation( pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation( input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnObjects( V1, V1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnObjects( Product( V1, Opposite( V1 ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnMorphisms( pi1, pi2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installationOnMorphisms( input );;</span>
+</pre></div>
+
+<p>Installation of the second functor as a GAP-operation. It will be installed only as a unary version.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallFunctor( F2, "F_installation2" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2( input );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2OnObjects( Product( V1, Opposite( V1 ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_installation2OnMorphisms( input );;</span>
+</pre></div>
+
+<p><a id="X7B339750826300B4" name="X7B339750826300B4"></a></p>
+
+<h4>17.4 <span class="Heading">HandlePrecompiledTowers</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1 := CreateCapCategory( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy2 := CreateCapCategory( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy3 := CreateCapCategory( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PrintAndReturn := function ( string )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Print( string, "\n" ); return string; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1!.compiler_hints := rec( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dummy1!.compiler_hints.precompiled_towers := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    remaining_constructors_in_tower := [ "Constructor1" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    precompiled_functions_adder := cat -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      PrintAndReturn( "Adding precompiled operations for Constructor1" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    remaining_constructors_in_tower := [ "Constructor1", "Constructor2" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    precompiled_functions_adder := cat -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      PrintAndReturn( "Adding precompiled operations for Constructor2" ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HandlePrecompiledTowers( dummy2, dummy1, "Constructor1" );</span>
+Adding precompiled operations for Constructor1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HandlePrecompiledTowers( dummy3, dummy2, "Constructor2" );</span>
+Adding precompiled operations for Constructor2
+</pre></div>
+
+<p><a id="X7EA29B7D7BA60F42" name="X7EA29B7D7BA60F42"></a></p>
+
+<h4>17.5 <span class="Heading">Terminal category</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithMultipleObjects( );</span>
+TerminalCategoryWithMultipleObjects( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+InitialObject(  )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+TerminalObject(  )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+ZeroObject(  )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( id_z, fn_z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := "a" / T;</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( a );</span>
+a
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( a );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := ObjectConstructor( T, "a" );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
+a
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( a, aa );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( a, aa );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SomeIsomorphismBetweenObjects( a, aa ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := "b" / T;</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( a, b );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphicForObjects( a, b );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor_ab := SomeIsomorphismBetweenObjects( a, b );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( mor_ab );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mor_ab );</span>
+a
+|
+| SomeIsomorphismBetweenObjects
+v
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab := MorphismsOfExternalHom( a, b );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( Hom_ab );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab[1];</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Hom_ab[1] );</span>
+a
+|
+| InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+v
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Hom_ab[1] = mor_ab;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( mor_ab );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := MorphismConstructor( a, "m", b );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( m );</span>
+a
+|
+| m
+v
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := MorphismConstructor( a, "n", b );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( n );</span>
+a
+|
+| n
+v
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( m, n );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( m, n );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m = n;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_mn := HomStructure( m, n );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( a );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( id );</span>
+a
+|
+| IdentityMorphism( a )
+v
+a
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m = id;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id = MorphismConstructor( a, "xyz", a );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroMorphism( a, a );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( zero );</span>
+a
+|
+| ZeroMorphism( a, a )
+v
+a
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id = zero;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( m, n );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift := Lift( m, n );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( lift );</span>
+a
+|
+| Lift( m, n )
+v
+a
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( m, n );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colift := Colift( m, n );</span>
+&lt;A zero, isomorphism in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( colift );</span>
+b
+|
+| Colift( m, n )
+v
+b
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Equalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coproduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coequalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithSingleObject( );</span>
+TerminalCategoryWithSingleObject( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+A zero object in TerminalCategoryWithSingleObject( ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+A zero object in TerminalCategoryWithSingleObject( ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+A zero object in TerminalCategoryWithSingleObject( ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjectsOfCategory( T ) );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfMorphismsOfFiniteCategory( T ) );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( id_z, fn_z );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( id_z, fn_z );</span>
+&lt;A zero, identity morphism in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Equalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coproduct( T, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Coequalizer( T, z, [ ] );</span>
+&lt;A zero object in TerminalCategoryWithSingleObject( )&gt;
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap16_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap18_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chap18_mj.html">18</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

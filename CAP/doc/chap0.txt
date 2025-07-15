@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2025.07-02
+                                   2025.07-03
   
   
-                                  3 July 2025
+                                  15 July 2025
   
   
                                Sebastian Gutsche
@@ -1058,33 +1058,46 @@
       14.3-7 DummyHomalgRing
       14.3-8 DummyCommutativeHomalgRing
       14.3-9 DummyHomalgField
-  15 [33X[0;0YExamples and Tests[133X
-    15.1 [33X[0;0YDummy implementations[133X
-      15.1-1 [33X[0;0YDummy categories[133X
-      15.1-2 [33X[0;0YDummy rings[133X
-    15.2 [33X[0;0YFunctors[133X
-    15.3 [33X[0;0YHandlePrecompiledTowers[133X
-    15.4 [33X[0;0YTerminal category[133X
-  16 [33X[0;0YCAP automatic generated documentation[133X
-    16.1 [33X[0;0YCAP automatic generated documentation of properties[133X
-      16.1-1 IsEquivalentToFiniteCategory
-  17 [33X[0;0YTerminal category[133X
-    17.1 [33X[0;0Y[5XGAP[105X Categories[133X
-      17.1-1 IsCapTerminalCategoryWithSingleObject
-      17.1-2 IsObjectInCapTerminalCategoryWithSingleObject
-      17.1-3 IsMorphismInCapTerminalCategoryWithSingleObject
-      17.1-4 IsCapTerminalCategoryWithMultipleObjects
-      17.1-5 IsObjectInCapTerminalCategoryWithMultipleObjects
-      17.1-6 IsMorphismInCapTerminalCategoryWithMultipleObjects
-      17.1-7 IsTerminalCategory
-    17.2 [33X[0;0YConstructors[133X
-      17.2-1 TerminalCategoryWithSingleObject
-      17.2-2 TerminalCategoryWithMultipleObjects
-      17.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY
-    17.3 [33X[0;0YAttributes[133X
-      17.3-1 TerminalCategoryWithSingleObjectUniqueObject
-      17.3-2 TerminalCategoryWithSingleObjectUniqueMorphism
-      17.3-3 FunctorFromTerminalCategory
+  15 [33X[0;0YTerminal category[133X
+    15.1 [33X[0;0Y[5XGAP[105X Categories[133X
+      15.1-1 IsCapTerminalCategoryWithSingleObject
+      15.1-2 IsObjectInCapTerminalCategoryWithSingleObject
+      15.1-3 IsMorphismInCapTerminalCategoryWithSingleObject
+      15.1-4 IsCapTerminalCategoryWithMultipleObjects
+      15.1-5 IsObjectInCapTerminalCategoryWithMultipleObjects
+      15.1-6 IsMorphismInCapTerminalCategoryWithMultipleObjects
+      15.1-7 IsTerminalCategory
+    15.2 [33X[0;0YConstructors[133X
+      15.2-1 TerminalCategoryWithSingleObject
+      15.2-2 TerminalCategoryWithMultipleObjects
+      15.2-3 CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY
+    15.3 [33X[0;0YAttributes[133X
+      15.3-1 TerminalCategoryWithSingleObjectUniqueObject
+      15.3-2 TerminalCategoryWithSingleObjectUniqueMorphism
+      15.3-3 FunctorFromTerminalCategory
+  16 [33X[0;0YFinite skeletal discrete categories[133X
+    16.1 [33X[0;0Y[5XGAP[105X Categories[133X
+      16.1-1 IsFiniteSkeletalDiscreteCategory
+      16.1-2 IsObjectInFiniteSkeletalDiscreteCategory
+      16.1-3 IsMorphismInFiniteSkeletalDiscreteCategory
+    16.2 [33X[0;0YConstructors[133X
+      16.2-1 FiniteSkeletalDiscreteCategory
+    16.3 [33X[0;0YAttributes[133X
+      16.3-1 UnderlyingListOfGAPObjects
+      16.3-2 UnderlyingGAPObject
+    16.4 [33X[0;0YProperties[133X
+      16.4-1 IsDiscreteCategory
+  17 [33X[0;0YExamples and Tests[133X
+    17.1 [33X[0;0YDummy implementations[133X
+      17.1-1 [33X[0;0YDummy categories[133X
+      17.1-2 [33X[0;0YDummy rings[133X
+    17.2 [33X[0;0YFinite skeletal discrete categories[133X
+    17.3 [33X[0;0YFunctors[133X
+    17.4 [33X[0;0YHandlePrecompiledTowers[133X
+    17.5 [33X[0;0YTerminal category[133X
+  18 [33X[0;0YCAP automatic generated documentation[133X
+    18.1 [33X[0;0YCAP automatic generated documentation of properties[133X
+      18.1-1 IsEquivalentToFiniteCategory
   
   
   [32X
