@@ -4,6 +4,8 @@
 # Implementations
 #
 
+InstallTrueMethod( IsDiscreteCategory, IsTerminalCategory );
+
 ####################################
 #
 # Constructor
