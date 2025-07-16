@@ -32,16 +32,8 @@ Display( id_one );
 #! 1
 IsEqualForMorphisms( PreCompose( id_one, id_one ), id_one );
 #! true
-objs := SetOfObjectsOfCategory( D );
-#! [ <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )> ]
-mors := SetOfMorphismsOfFiniteCategory( D );
-#! [ <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )> ]
+Length( SetOfObjectsOfCategory( D ) );
+#! 5
+Length( SetOfMorphismsOfFiniteCategory( D ) );
+#! 5
 #! @EndExample
