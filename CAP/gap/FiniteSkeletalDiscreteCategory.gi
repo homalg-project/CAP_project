@@ -100,8 +100,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddIsWellDefinedForMorphisms( D,
       function( D, morphism )
         
-        return ForAny( SetOfObjectsOfCategory( D ), obj ->
-                        IsEqualForMorphisms( D, morphism, IdentityMorphism( D, obj ) ) );
+        return IsEndomorphism( D, morphism ) and IsOne( D, morphism );
         
     end );
     
