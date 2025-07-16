@@ -5,8 +5,7 @@
 #! @Example
 LoadPackage( "CAP", false );
 #! true
-gap_objects := [ 1 .. 5 ];;
-D := FiniteSkeletalDiscreteCategory( gap_objects );
+D := FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] );
 #! FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )
 one := ObjectConstructor( D, 1 );
 #! <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>
@@ -32,16 +31,8 @@ Display( id_one );
 #! 1
 IsEqualForMorphisms( PreCompose( id_one, id_one ), id_one );
 #! true
-objs := SetOfObjectsOfCategory( D );
-#! [ <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )> ]
-mors := SetOfMorphismsOfFiniteCategory( D );
-#! [ <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,
-#!   <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )> ]
+Length( SetOfObjectsOfCategory( D ) );
+#! 5
+Length( SetOfMorphismsOfFiniteCategory( D ) );
+#! 5
 #! @EndExample
