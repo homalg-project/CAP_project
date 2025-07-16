@@ -46,12 +46,12 @@ DeclareGlobalFunction( "FiniteSkeletalDiscreteCategory" );
 #! @Description
 #!  The underlying &GAP; objects of a finite skeletal discrete category.
 #! @Returns a list of &CAP; objects
-DeclareAttribute( "UnderlyingListOfGAPObjects", IsFiniteSkeletalDiscreteCategory );
+DeclareAttribute( "UnderlyingListOfGapObjects", IsFiniteSkeletalDiscreteCategory );
 
 #! @Description
 #!  The underlying &GAP; object of an object in a finite skeletal discrete category.
 #! @Returns a &CAP; object
-DeclareAttribute( "UnderlyingGAPObject", IsObjectInFiniteSkeletalDiscreteCategory );
+DeclareAttribute( "UnderlyingGapObject", IsObjectInFiniteSkeletalDiscreteCategory );
 
 ####################################
 #

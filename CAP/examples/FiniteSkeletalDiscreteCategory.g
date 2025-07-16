@@ -5,8 +5,7 @@
 #! @Example
 LoadPackage( "CAP", false );
 #! true
-gap_objects := [ 1 .. 5 ];;
-D := FiniteSkeletalDiscreteCategory( gap_objects );
+D := FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] );
 #! FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )
 one := ObjectConstructor( D, 1 );
 #! <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>

@@ -34,15 +34,15 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
                                          fail,
                                          fail );
     
-    D!.compiler_hints := rec( category_attribute_names := [ "UnderlyingListOfGAPObjects" ] );
+    D!.compiler_hints := rec( category_attribute_names := [ "UnderlyingListOfGapObjects" ] );
     
-    SetUnderlyingListOfGAPObjects( D, list_of_gap_objects );
+    SetUnderlyingListOfGapObjects( D, list_of_gap_objects );
     
     SetIsFiniteCategory( D, true );
     
-    SetIsDiscreteCategory( D, true );
-    
     SetIsSkeletalCategory( D, true );
+    
+    SetIsDiscreteCategory( D, true );
     
     ####################################
     #
@@ -54,15 +54,11 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddObjectConstructor( D,
       function( D, gap_object )
         
-        if not gap_object in UnderlyingListOfGAPObjects( D ) then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "<gap_object> does not belong to the underlying list of objects\n" );
-            
-        fi;
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, gap_object in UnderlyingListOfGapObjects( D ) );
         
         return CreateCapCategoryObjectWithAttributes( D,
-                                                      UnderlyingGAPObject, gap_object );
+                                                      UnderlyingGapObject, gap_object );
         
     end );
     
@@ -70,7 +66,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddObjectDatum( D,
       function( D, object )
         
-        return UnderlyingGAPObject( object );
+        return UnderlyingGapObject( object );
         
     end );
     
@@ -78,23 +74,28 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddMorphismConstructor( D,
       function( D, source, m, target )
         
-        if not IsEqualForObjects( D, source, target ) then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "<source> and <target> must be equal\n" );
-            
-        fi;
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsEqualForObjects( D, source, target ) );
         
         return CreateCapCategoryMorphismWithAttributes( D, source, target );
         
     end );
     
     ##
-    AddMorphismDatum( D, { D, morphism } -> fail );
+    AddMorphismDatum( D,
+      function( D, morphism )
+        
+        return fail;
+        
+    end );
     
     ##
     AddIsWellDefinedForObjects( D,
-        { D, object } -> UnderlyingGAPObject( object ) in UnderlyingListOfGAPObjects( D ) );
+      function( D, object )
+        
+        return UnderlyingGapObject( object ) in UnderlyingListOfGapObjects( D );
+        
+    end );
     
     ##
     AddIsWellDefinedForMorphisms( D,
@@ -107,7 +108,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddIsEqualForObjects( D,
       function( D, object_1, object_2 )
         
-        return UnderlyingGAPObject( object_1 ) = UnderlyingGAPObject( object_2 );
+        return UnderlyingGapObject( object_1 ) = UnderlyingGapObject( object_2 );
         
     end );
     
@@ -139,7 +140,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddSetOfObjectsOfCategory( D,
       function( D )
         
-        return List( UnderlyingListOfGAPObjects( D ), obj -> ObjectConstructor( D, obj ) );
+        return List( UnderlyingListOfGapObjects( D ), obj -> ObjectConstructor( D, obj ) );
         
     end );
     
@@ -173,7 +174,7 @@ InstallMethod( DisplayString,
 
   function( object )
     
-    return Concatenation( String( UnderlyingGAPObject( object ) ), "\n" );
+    return Concatenation( String( UnderlyingGapObject( object ) ), "\n" );
     
 end );
 
