@@ -118,8 +118,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gap_objects := [ 1 .. 5 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := FiniteSkeletalDiscreteCategory( gap_objects );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] );</span>
 FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := ObjectConstructor( D, 1 );</span>
 &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;
@@ -145,18 +144,10 @@ v
 1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( PreCompose( id_one, id_one ), id_one );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">objs := SetOfObjectsOfCategory( D );</span>
-[ &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt; ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mors := SetOfMorphismsOfFiniteCategory( D );</span>
-[ &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt;,
-  &lt;An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjectsOfCategory( D ) );</span>
+5
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfMorphismsOfFiniteCategory( D ) );</span>
+5
 </pre></div>
 
 <p><a id="X78D1062D78BE08C1" name="X78D1062D78BE08C1"></a></p>

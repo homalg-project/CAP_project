@@ -66,8 +66,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xgap_objects := [ 1 .. 5 ];;[127X[104X
-    [4X[25Xgap>[125X [27XD := FiniteSkeletalDiscreteCategory( gap_objects );[127X[104X
+    [4X[25Xgap>[125X [27XD := FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] );[127X[104X
     [4X[28XFiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )[128X[104X
     [4X[25Xgap>[125X [27Xone := ObjectConstructor( D, 1 );[127X[104X
     [4X[28X<An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>[128X[104X
@@ -93,18 +92,10 @@
     [4X[28X1[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( PreCompose( id_one, id_one ), id_one );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xobjs := SetOfObjectsOfCategory( D );[127X[104X
-    [4X[28X[ <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )> ][128X[104X
-    [4X[25Xgap>[125X [27Xmors := SetOfMorphismsOfFiniteCategory( D );[127X[104X
-    [4X[28X[ <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>,[128X[104X
-    [4X[28X  <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )> ][128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfObjectsOfCategory( D ) );[127X[104X
+    [4X[28X5[128X[104X
+    [4X[25Xgap>[125X [27XLength( SetOfMorphismsOfFiniteCategory( D ) );[127X[104X
+    [4X[28X5[128X[104X
   [4X[32X[104X
   
   

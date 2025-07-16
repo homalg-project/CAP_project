@@ -38,16 +38,16 @@
   
   [1X16.3 [33X[0;0YAttributes[133X[101X
   
-  [1X16.3-1 UnderlyingListOfGAPObjects[101X
+  [1X16.3-1 UnderlyingListOfGapObjects[101X
   
-  [33X[1;0Y[29X[2XUnderlyingListOfGAPObjects[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingListOfGapObjects[102X( [3Xarg[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X objects[133X
   
   [33X[0;0YThe underlying [5XGAP[105X objects of a finite skeletal discrete category.[133X
   
-  [1X16.3-2 UnderlyingGAPObject[101X
+  [1X16.3-2 UnderlyingGapObject[101X
   
-  [33X[1;0Y[29X[2XUnderlyingGAPObject[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingGapObject[102X( [3Xarg[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
   
   [33X[0;0YThe  underlying  [5XGAP[105X  object  of  an  object  in  a finite skeletal discrete

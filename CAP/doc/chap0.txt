@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2025.07-04
+                                   2025.07-06
   
   
-                                  15 July 2025
+                                  16 July 2025
   
   
                                Sebastian Gutsche
@@ -1083,8 +1083,8 @@
     16.2 [33X[0;0YConstructors[133X
       16.2-1 FiniteSkeletalDiscreteCategory
     16.3 [33X[0;0YAttributes[133X
-      16.3-1 UnderlyingListOfGAPObjects
-      16.3-2 UnderlyingGAPObject
+      16.3-1 UnderlyingListOfGapObjects
+      16.3-2 UnderlyingGapObject
     16.4 [33X[0;0YProperties[133X
       16.4-1 IsDiscreteCategory
   17 [33X[0;0YExamples and Tests[133X

@@ -1194,8 +1194,8 @@
   [2XTwoCellFilter[102X, for IsCapCategory 1.4-5 
   [2XUnderlyingCell[102X, for IsWrapperCapCategoryMorphism 13.2-2 
       for IsWrapperCapCategoryObject 13.2-1 
-  [2XUnderlyingGAPObject[102X, for IsObjectInFiniteSkeletalDiscreteCategory 16.3-2 
-  [2XUnderlyingListOfGAPObjects[102X, for IsFiniteSkeletalDiscreteCategory 16.3-1 
+  [2XUnderlyingGapObject[102X, for IsObjectInFiniteSkeletalDiscreteCategory 16.3-2 
+  [2XUnderlyingListOfGapObjects[102X, for IsFiniteSkeletalDiscreteCategory 16.3-1 
   [2XUniversalMorphismFromCoequalizer[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism 6.10-7 
   [2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.10-8 
   [2XUniversalMorphismFromCoproduct[102X, for IsList, IsCapCategoryObject, IsList 6.7-6 
