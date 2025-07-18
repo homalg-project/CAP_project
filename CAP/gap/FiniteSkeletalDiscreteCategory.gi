@@ -164,6 +164,34 @@ end ) );
 
 #################################
 #
+# Operators
+#
+#################################
+
+InstallMethod( \.,
+               "for a finite skeletal discrete category and a positive integer",
+               [ IsFiniteSkeletalDiscreteCategory, IsInt ],
+               
+  function ( D, index_as_string )
+    local objects, index;
+    
+    index := Int( NameRNam( index_as_string ) );
+    
+    objects := SetOfObjectsOfCategory( D );
+    
+    if index <= 0 or index > Length( objects ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "out of bounds access\n" );
+        
+    fi;
+    
+    return objects[ index ];
+    
+end );
+
+#################################
+#
 # View & Display
 #
 #################################

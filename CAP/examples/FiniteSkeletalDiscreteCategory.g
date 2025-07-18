@@ -15,7 +15,7 @@ ObjectDatum( one ) = 1;
 #! true
 Display( one );
 #! 1
-IsEqualForObjects( one, one );
+IsEqualForObjects( one, D.1 );
 #! true
 id_one := IdentityMorphism( D, one );
 #! <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>
