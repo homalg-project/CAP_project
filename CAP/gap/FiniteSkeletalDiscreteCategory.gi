@@ -168,14 +168,15 @@ end ) );
 #
 #################################
 
-InstallMethod( \.,
-               "for a finite skeletal discrete category and a positive integer",
-               [ IsFiniteSkeletalDiscreteCategory, IsInt ],
+##
+InstallOtherMethod( \/,
+               "for a string and a finite skeletal discrete category",
+               [ IsStringRep, IsFiniteSkeletalDiscreteCategory ],
                
-  function ( D, index_as_string )
-    local objects, index;
+  function ( string, D )
+    local index, objects;
     
-    index := Int( NameRNam( index_as_string ) );
+    index := Int( string );
     
     objects := SetOfObjectsOfCategory( D );
     
@@ -186,9 +187,21 @@ InstallMethod( \.,
         
     fi;
     
-    return objects[ index ];
+    return objects[index];
     
 end );
+
+#= comment for Julia
+InstallMethod( \.,
+               "for a finite skeletal discrete category and a positive integer",
+               [ IsFiniteSkeletalDiscreteCategory, IsInt ],
+               
+  function ( D, index_as_string )
+    
+    return NameRNam( index_as_string )  / D;
+    
+end );
+# =#
 
 #################################
 #
