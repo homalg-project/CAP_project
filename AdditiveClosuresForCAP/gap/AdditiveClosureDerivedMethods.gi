@@ -198,7 +198,7 @@ AddDerivationToCAP( WeakKernelEmbedding,
                       [ UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ]
                       ],
                     
-  function ( cat, phi )
+  function( cat, phi )
     local underlying_cat, objs, tau, diagram, S;
     
     underlying_cat := UnderlyingCategory( cat );
@@ -229,7 +229,7 @@ AddDerivationToCAP( WeakCokernelProjection,
                       [ UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ]
                       ],
                     
-  function ( cat, phi )
+  function( cat, phi )
     local underlying_cat, objs, tau, diagram, S;
     
     underlying_cat := UnderlyingCategory( cat );

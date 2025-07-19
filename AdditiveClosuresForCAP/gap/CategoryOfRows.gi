@@ -1266,7 +1266,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## Random Methods
     ##
     AddRandomObjectByList( category,
-      function ( category, L )
+      function( category, L )
         
         if IsEmpty( L ) or ForAny( L, IsNegInt ) then
           Error( "the list passed to 'RandomObjectByList' in ", Name( category ), " must be a non-empty list of non-negative integers!\n" );
@@ -1278,7 +1278,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddRandomObjectByInteger( category,
-      function ( category, n )
+      function( category, n )
         
         if IsNegInt( n ) then
           Error( "the integer passed to 'RandomObjectByInteger' in ", Name( category ), " must be a non-negative integer!\n" );
@@ -1290,7 +1290,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddRandomMorphismWithFixedSourceAndRangeByList( category,
-      function ( category, S, R, L )
+      function( category, S, R, L )
         local ring, s, r, mat;
         
         ring := UnderlyingRing( category );
@@ -1310,7 +1310,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
-      function ( category, S, R, n )
+      function( category, S, R, n )
         
         return RandomMorphismWithFixedSourceAndRangeByList( category, S, R, [ 1 ] );
         
@@ -1338,7 +1338,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
 [
   DistinguishedObjectOfHomomorphismStructure,
   [ ],
-  function ( cat )
+  function( cat )
     
     return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), 1 );
     
@@ -1349,7 +1349,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
   [
     [ BasisOfExternalHom, 1 ],
   ],
-  function ( cat, a, b )
+  function( cat, a, b )
     
     return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), Length( BasisOfExternalHom( cat, a, b ) ) );
     
@@ -1372,7 +1372,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
     #      b' <------- b
     #            β
     
-  function ( cat, hom_source, alpha, beta, hom_range )
+  function( cat, hom_source, alpha, beta, hom_range )
     local basis, m;
     
     basis := BasisOfExternalHom( cat, Range( alpha ), Source( beta ) );
@@ -1390,7 +1390,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
   [
     [ CoefficientsOfMorphism, 1 ],
   ],
-  function ( cat, distinguished_object, alpha, r )
+  function( cat, distinguished_object, alpha, r )
     local m;
     
     m := HomalgRowVector( CoefficientsOfMorphism( cat, alpha ), RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) );
@@ -1405,7 +1405,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
     [ BasisOfExternalHom, 1 ],
     [ LinearCombinationOfMorphisms, 1 ],
   ],
-  function ( cat, a, b, iota )
+  function( cat, a, b, iota )
     local coeffs, basis;
     
     coeffs := EntriesOfHomalgRowVector( UnderlyingMatrix( iota ) );
@@ -1417,7 +1417,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
   end
 ] :
   CategoryFilter :=
-    function ( cat )
+    function( cat )
       
       if not IsCategoryOfRows( cat ) and
          HasIsEquippedWithHomomorphismStructure( cat ) and IsEquippedWithHomomorphismStructure( cat ) and

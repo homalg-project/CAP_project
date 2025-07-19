@@ -61,7 +61,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
     
     
     
-    object_constructor := function ( cat, rank )
+    object_constructor := function( cat, rank )
         
         if not IsInt( rank ) or rank < 0 then
             
@@ -73,7 +73,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         
     end;
     
-    modeling_tower_object_constructor := function ( cat, rank )
+    modeling_tower_object_constructor := function( cat, rank )
       local add, ring_as_category, unique_object;
         
         if not IsInt( rank ) or rank < 0 then
@@ -91,19 +91,19 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         
     end;
     
-    object_datum := function ( cat, object )
+    object_datum := function( cat, object )
         
         return RankOfObject( object );
         
     end;
     
-    modeling_tower_object_datum := function ( cat, object )
+    modeling_tower_object_datum := function( cat, object )
         
         return Length( ObjectList( object ) );
         
     end;
     
-    morphism_constructor := function ( cat, source, underlying_matrix, range )
+    morphism_constructor := function( cat, source, underlying_matrix, range )
         
         if not IsHomalgMatrix( underlying_matrix ) then
             
@@ -133,7 +133,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         
     end;
     
-    modeling_tower_morphism_constructor := function ( cat, source2, underlying_matrix, range2 )
+    modeling_tower_morphism_constructor := function( cat, source2, underlying_matrix, range2 )
       local add, ring_as_category, unique_object, nr_rows, nr_cols, source, range, matrix_entries, listlist;
         
         if not IsHomalgMatrix( underlying_matrix ) then
@@ -200,13 +200,13 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
         
     end;
     
-    morphism_datum := function ( cat, morphism )
+    morphism_datum := function( cat, morphism )
         
         return UnderlyingMatrix( morphism );
         
     end;
     
-    modeling_tower_morphism_datum := function ( cat, morphism )
+    modeling_tower_morphism_datum := function( cat, morphism )
       local matrix_entries;
         
         matrix_entries := List( MorphismMatrix( morphism ),
@@ -326,7 +326,7 @@ InstallMethod( CategoryOfRows_as_AdditiveClosure_RingAsCategory,
     
 end ) );
 
-InstallGlobalFunction( COMPILATION_HELPER_HomalgMatrixFromRingElement, function ( ring_element, ring )
+InstallGlobalFunction( COMPILATION_HELPER_HomalgMatrixFromRingElement, function( ring_element, ring )
     
     return HomalgMatrixListList( [ [ ring_element ] ], 1, 1, ring );
     

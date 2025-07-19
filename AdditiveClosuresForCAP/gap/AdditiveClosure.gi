@@ -10,7 +10,7 @@
 ##
 ####################################
 
-InstallGlobalFunction( NullMatImmutable, function ( arg... )
+InstallGlobalFunction( NullMatImmutable, function( arg... )
   local null, m, n, zero, row, i, k, f;
     # taken from NullMat
     
@@ -52,13 +52,13 @@ InstallGlobalFunction( NullMatImmutable, function ( arg... )
     
 end );
 
-InstallGlobalFunction( UnionOfRowsListList, function ( nr_cols, matrices )
+InstallGlobalFunction( UnionOfRowsListList, function( nr_cols, matrices )
     
     return Concatenation( matrices );
     
 end );
 
-InstallGlobalFunction( UnionOfColumnsListList, function ( nr_rows, matrices )
+InstallGlobalFunction( UnionOfColumnsListList, function( nr_rows, matrices )
     
     return List( [ 1 .. nr_rows ], i -> Concatenation( List( matrices, mat -> mat[i] ) ) );
     
@@ -1019,14 +1019,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             fi;
             
             # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
-            object_function := function ( category, range_category, object )
+            object_function := function( category, range_category, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return AdditiveClosureObject( range_category, [ object ] );
                 
             end;
             
-            morphism_function := function ( category, range_category, source, morphism, range )
+            morphism_function := function( category, range_category, source, morphism, range )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return AdditiveClosureMorphism( range_category,
@@ -1037,7 +1037,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
             end;
             
-            object_function_inverse := function ( category, range_category, object )
+            object_function_inverse := function( category, range_category, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -1047,7 +1047,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
             end;
             
-            morphism_function_inverse := function ( category, range_category, source, morphism, range )
+            morphism_function_inverse := function( category, range_category, source, morphism, range )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
