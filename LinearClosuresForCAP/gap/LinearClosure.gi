@@ -89,6 +89,10 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     
     SetUnderlyingCategory( category, underlying_category );
     
+    if cocycle = fail then
+        SetIsLinearClosureOfACategory( category, true );
+    fi;
+    
     SetIsLinearCategoryOverCommutativeRing( category, true );
     
     SetIsAbCategory( category, true );
