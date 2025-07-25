@@ -21,6 +21,14 @@ DeclareCategory( "IsLinearClosureMorphism",
 DeclareCategory( "IsLinearClosure",
                  IsCapCategory );
 
+#! @Description
+#!  The property of <A>C</A> being a linear closure of a category.
+#! @Arguments C
+DeclareProperty( "IsLinearClosureOfACategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsLinearClosureOfACategory", "IsLinearClosureOfACategory" ] );
+
 DeclareGlobalFunction( "LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows" );
 
 DeclareGlobalFunction( "LINEAR_CLOSURE_CONSTRUCTOR" );
