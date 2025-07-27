@@ -38,6 +38,12 @@ beta := VectorSpaceMorphism( M3, matrix_2, M2 );
 
 mor := SemisimpleCategoryMorphism( a, [ [ MorphismIntoZeroObject( M1 ), chi_1 ], [ alpha, chi_2 ], [ beta, chi_3 ] ], b  );
 
+TensorProductOnObjects( a, b );
+
+tp_mor := TensorProductOnMorphisms( mor, mor );
+
+Display( tp_mor );
+
 #AssociatorLeftToRight( b, b, b );
 
 L := [ ob1, ob2, ob3 ];
