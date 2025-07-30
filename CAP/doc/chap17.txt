@@ -76,7 +76,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( one );[127X[104X
     [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForObjects( one, D.1 );[127X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( one, D[1] );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xid_one := IdentityMorphism( D, one );[127X[104X
     [4X[28X<An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>[128X[104X
