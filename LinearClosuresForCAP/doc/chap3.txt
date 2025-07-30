@@ -2,9 +2,19 @@
   [1X3 [33X[0;0YLinear closure of a category[133X[101X
   
   
-  [1X3.1 [33X[0;0YFunctors[133X[101X
+  [1X3.1 [33X[0;0YGAP Categories[133X[101X
   
-  [1X3.1-1 ExtendFunctorToLinearClosureOfSource[101X
+  [1X3.1-1 IsLinearClosureOfACategory[101X
+  
+  [33X[1;0Y[29X[2XIsLinearClosureOfACategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a linear closure of a category.[133X
+  
+  
+  [1X3.2 [33X[0;0YFunctors[133X[101X
+  
+  [1X3.2-1 ExtendFunctorToLinearClosureOfSource[101X
   
   [33X[1;0Y[29X[2XExtendFunctorToLinearClosureOfSource[102X( [3XF[103X, [3Xlinear_closure[103X, [3Xring_map[103X ) [32X operation[133X
   
@@ -15,7 +25,7 @@
   ring  homomorphism.  The  output  is  the linear extension functor of [3XF[103X from
   [3Xlinear_closure[103X to [23XD[123X.[133X
   
-  [1X3.1-2 ExtendFunctorToLinearClosureOfSource[101X
+  [1X3.2-2 ExtendFunctorToLinearClosureOfSource[101X
   
   [33X[1;0Y[29X[2XExtendFunctorToLinearClosureOfSource[102X( [3XF[103X, [3Xlinear_closure[103X ) [32X operation[133X
   

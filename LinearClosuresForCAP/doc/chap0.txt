@@ -6,10 +6,10 @@
                                [1X Linear closures [101X
   
   
-                                   2025.07-02
+                                   2025.07-03
   
   
-                                  15 July 2025
+                                  30 July 2025
   
   
                                 Sebastian Posur
@@ -55,9 +55,11 @@
   1 [33X[0;0YIntroduction[133X
   2 [33X[0;0YFunctionality[133X
   3 [33X[0;0YLinear closure of a category[133X
-    3.1 [33X[0;0YFunctors[133X
-      3.1-1 ExtendFunctorToLinearClosureOfSource
-      3.1-2 ExtendFunctorToLinearClosureOfSource
+    3.1 [33X[0;0YGAP Categories[133X
+      3.1-1 IsLinearClosureOfACategory
+    3.2 [33X[0;0YFunctors[133X
+      3.2-1 ExtendFunctorToLinearClosureOfSource
+      3.2-2 ExtendFunctorToLinearClosureOfSource
   4 [33X[0;0YExamples and Tests[133X
     4.1 [33X[0;0YLinear closure of categories[133X
     4.2 [33X[0;0YMatrices over ZG[133X

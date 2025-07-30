@@ -22,30 +22,48 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
 <p><a id="X84AA598D82DEB974" name="X84AA598D82DEB974"></a></p>
 <div class="ChapSects"><a href="chap3.html#X84AA598D82DEB974">3 <span class="Heading">Linear closure of a category</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X78D1062D78BE08C1">3.1 <span class="Heading">Functors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.1 <span class="Heading">GAP Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8256E21B7BB47402">3.1-1 ExtendFunctorToLinearClosureOfSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X865223157D59D0A0">3.1-2 ExtendFunctorToLinearClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A9D2B4879DBF438">3.1-1 IsLinearClosureOfACategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X78D1062D78BE08C1">3.2 <span class="Heading">Functors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8256E21B7BB47402">3.2-1 ExtendFunctorToLinearClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X865223157D59D0A0">3.2-2 ExtendFunctorToLinearClosureOfSource</a></span>
 </div></div>
 </div>
 
 <h3>3 <span class="Heading">Linear closure of a category</span></h3>
 
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>3.1 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X7A9D2B4879DBF438" name="X7A9D2B4879DBF438"></a></p>
+
+<h5>3.1-1 IsLinearClosureOfACategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLinearClosureOfACategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of <var class="Arg">C</var> being a linear closure of a category.</p>
+
 <p><a id="X78D1062D78BE08C1" name="X78D1062D78BE08C1"></a></p>
 
-<h4>3.1 <span class="Heading">Functors</span></h4>
+<h4>3.2 <span class="Heading">Functors</span></h4>
 
 <p><a id="X8256E21B7BB47402" name="X8256E21B7BB47402"></a></p>
 
-<h5>3.1-1 ExtendFunctorToLinearClosureOfSource</h5>
+<h5>3.2-1 ExtendFunctorToLinearClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToLinearClosureOfSource</code>( <var class="Arg">F</var>, <var class="Arg">linear_closure</var>, <var class="Arg">ring_map</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>The arguments are a functor <var class="Arg">F</var><span class="Math">:C\to D</span>, some linear closure <var class="Arg">linear_closure</var> of <span class="Math">C</span> over some commutative ring <span class="Math">S</span> and a function <var class="Arg">ring_map</var>; where <span class="Math">D</span> is a linear category over some commutative ring <span class="Math">R</span>. The <var class="Arg">ring_map</var> is a function that converts an element <span class="Math">s</span> in <span class="Math">S</span> to an element in <span class="Math">R</span>, such that <var class="Arg">ring_map</var> defines a ring homomorphism. The output is the linear extension functor of <var class="Arg">F</var> from <var class="Arg">linear_closure</var> to <span class="Math">D</span>.</p>
 
 <p><a id="X865223157D59D0A0" name="X865223157D59D0A0"></a></p>
 
-<h5>3.1-2 ExtendFunctorToLinearClosureOfSource</h5>
+<h5>3.2-2 ExtendFunctorToLinearClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToLinearClosureOfSource</code>( <var class="Arg">F</var>, <var class="Arg">linear_closure</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>The arguments are a functor <var class="Arg">F</var><span class="Math">:C\to D</span>, some linear closure <var class="Arg">linear_closure</var> of <span class="Math">C</span> over some commutative ring <span class="Math">S</span>; where <span class="Math">D</span> is a linear category over <span class="Math">S</span>. The output is the linear extension functor of <var class="Arg">F</var> from <var class="Arg">linear_closure</var> to <span class="Math">D</span>.</p>
