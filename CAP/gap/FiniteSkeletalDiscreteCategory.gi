@@ -169,15 +169,13 @@ end ) );
 #################################
 
 ##
-InstallOtherMethod( \/,
-               "for a string and a finite skeletal discrete category",
-               [ IsStringRep, IsFiniteSkeletalDiscreteCategory ],
+InstallOtherMethod( \[\],
+               "for a finite skeletal discrete category and a positive integer",
+               [ IsFiniteSkeletalDiscreteCategory, IsInt ],
                
-  function ( string, D )
-    local index, objects;
-    
-    index := Int( string );
-    
+  function ( D, index )
+    local objects;
+
     objects := SetOfObjectsOfCategory( D );
     
     if index <= 0 or index > Length( objects ) then
@@ -190,18 +188,6 @@ InstallOtherMethod( \/,
     return objects[index];
     
 end );
-
-#= comment for Julia
-InstallMethod( \.,
-               "for a finite skeletal discrete category and a positive integer",
-               [ IsFiniteSkeletalDiscreteCategory, IsInt ],
-               
-  function ( D, index_as_string )
-    
-    return NameRNam( index_as_string )  / D;
-    
-end );
-# =#
 
 #################################
 #
