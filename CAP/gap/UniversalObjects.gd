@@ -2295,46 +2295,6 @@ DeclareOperation( "ImageObjectFunctorialWithGivenImageObjects",
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the canonical morphism (in a preabelian category)
-#! $\mathrm{coim}(\alpha) \rightarrow \mathrm{im}(\alpha)$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{coim}(\alpha), \mathrm{im}(\alpha))$
-#! @Arguments alpha
-DeclareAttribute( "MorphismFromCoimageToImage",
-                  IsCapCategoryMorphism );
-
-#! @Description
-#! The argument is an object $C = \mathrm{coim}(\alpha)$,
-#! a morphism $\alpha: A \rightarrow B$,
-#! and an object $I = \mathrm{im}(\alpha)$.
-#! The output is the canonical morphism (in a preabelian category)
-#! $C \rightarrow I$.
-#! @Returns a morphism in $\mathrm{Hom}(C,I)$
-#! @Arguments C, alpha, I
-DeclareOperation( "MorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
-
-#! @Description
-#! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the inverse of the canonical morphism (in an abelian category)
-#! $\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}(\alpha), \mathrm{coim}(\alpha))$
-#! @Arguments alpha
-DeclareAttribute( "InverseOfMorphismFromCoimageToImage",
-                  IsCapCategoryMorphism );
-
-#! @Description
-#! The argument is an object $C = \mathrm{coim}(\alpha)$,
-#! a morphism $\alpha: A \rightarrow B$,
-#! and an object $I = \mathrm{im}(\alpha)$.
-#! The output is the inverse of the canonical morphism (in an abelian category)
-#! $I \rightarrow C$.
-#! @Returns a morphism in $\mathrm{Hom}(I,C)$
-#! @Arguments I, alpha, C
-DeclareOperation( "InverseOfMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
-
-#! @Description
-#! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
 #! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) )$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{coim}( \alpha ), \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )$.
@@ -2457,6 +2417,52 @@ DeclareOperation( "CoimageObjectFunctorial",
 #! @Arguments s, alpha, mu, alpha_prime, r
 DeclareOperation( "CoimageObjectFunctorialWithGivenCoimageObjects",
         [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+####################################
+##
+#! @Section Morphism between Coimage and Image
+##
+####################################
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the canonical morphism (in a preabelian category)
+#! $\mathrm{coim}(\alpha) \rightarrow \mathrm{im}(\alpha)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{coim}(\alpha), \mathrm{im}(\alpha))$
+#! @Arguments alpha
+DeclareAttribute( "MorphismFromCoimageToImage",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is an object $C = \mathrm{coim}(\alpha)$,
+#! a morphism $\alpha: A \rightarrow B$,
+#! and an object $I = \mathrm{im}(\alpha)$.
+#! The output is the canonical morphism (in a preabelian category)
+#! $C \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(C,I)$
+#! @Arguments C, alpha, I
+DeclareOperation( "MorphismFromCoimageToImageWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the inverse of the canonical morphism (in an abelian category)
+#! $\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}(\alpha), \mathrm{coim}(\alpha))$
+#! @Arguments alpha
+DeclareAttribute( "InverseOfMorphismFromCoimageToImage",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is an object $C = \mathrm{coim}(\alpha)$,
+#! a morphism $\alpha: A \rightarrow B$,
+#! and an object $I = \mathrm{im}(\alpha)$.
+#! The output is the inverse of the canonical morphism (in an abelian category)
+#! $I \rightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}(I,C)$
+#! @Arguments I, alpha, C
+DeclareOperation( "InverseOfMorphismFromCoimageToImageWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Chapter Universal Objects
 
