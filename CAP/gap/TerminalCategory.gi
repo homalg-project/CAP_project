@@ -43,9 +43,9 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         if info.return_type = "morphism" and IsList( info.with_given_without_given_name_pair ) and operation_name = info.with_given_without_given_name_pair[1] then
             if not info.with_given_without_given_name_pair[2] in list_of_operations_to_install then
                 Add( list_of_operations_to_install, info.with_given_without_given_name_pair[2] );
+                Add( skip, operation_name );
             fi;
             if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
-                Add( skip, operation_name );
                 Add( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name );
             fi;
         fi;
