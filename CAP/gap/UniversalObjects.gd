@@ -1674,7 +1674,7 @@ DeclareOperation( "IsomorphismFromCokernelOfJointPairwiseDifferencesOfMorphismsF
 
 ####################################
 ##
-#! @Section Fiber Product
+#! @Section Fiber Product (= Pullback)
 ##
 ####################################
 
