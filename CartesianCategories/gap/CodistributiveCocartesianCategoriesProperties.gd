@@ -17,6 +17,6 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCategory :=
   DuplicateFreeList(
           Concatenation(
                   ListOfDefiningOperations( "IsBicartesianCategory" ),
-                  [ "LeftCocartesianCodistributivityFactoringWithGivenObjects",
-                    "RightCocartesianCodistributivityFactoringWithGivenObjects",
+                  [ "LeftCocartesianCodistributivityFactoring",
+                    "RightCocartesianCodistributivityFactoring",
                     ] ) );

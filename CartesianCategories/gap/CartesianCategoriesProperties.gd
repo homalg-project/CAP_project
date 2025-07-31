@@ -23,8 +23,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory :=
           Concatenation(
                   ListOfDefiningOperations( "IsCategoryWithTerminalObject" ),
                   [ "DirectProduct",
-                    "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                    "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+                    "ProjectionInFactorOfDirectProduct",
+                    "UniversalMorphismIntoDirectProduct",
                     ] ) );
 
 ## For internal use only:
