@@ -1442,7 +1442,7 @@
   coequalizing the morphisms [23X\beta_i[123X.[133X
   
   
-  [1X6.11 [33X[0;0YFiber Product[133X[101X
+  [1X6.11 [33X[0;0YFiber Product (= Pullback)[133X[101X
   
   [33X[0;0YFor  an  integer  [23Xn  \geq 1[123X and a given list of morphisms [23XD = ( \beta_i: P_i
   \rightarrow  B  )_{i  =  1  \dots n}[123X, a fiber product of [23XD[123X consists of three
@@ -1963,45 +1963,7 @@
   the  object  [23XC[123X  of  such a [23X4[123X-tuple by [23X\mathrm{coim}(\alpha)[123X. We say that the
   morphism [23Xu( \tau )[123X is induced by the [13Xuniversal property of the coimage[113X.[133X
   
-  [1X6.14-1 MorphismFromCoimageToImage[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya       morphism       in      [23X\mathrm{Hom}(\mathrm{coim}(\alpha),
-            \mathrm{im}(\alpha))[123X[133X
-  
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
-  canonical   morphism   (in   a  preabelian  category)  [23X\mathrm{coim}(\alpha)
-  \rightarrow \mathrm{im}(\alpha)[123X.[133X
-  
-  [1X6.14-2 MorphismFromCoimageToImageWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromCoimageToImageWithGivenObjects[102X( [3XC[103X, [3Xalpha[103X, [3XI[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,I)[123X[133X
-  
-  [33X[0;0YThe  argument  is  an object [23XC = \mathrm{coim}(\alpha)[123X, a morphism [23X\alpha: A
-  \rightarrow  B[123X,  and  an  object  [23XI = \mathrm{im}(\alpha)[123X. The output is the
-  canonical morphism (in a preabelian category) [23XC \rightarrow I[123X.[133X
-  
-  [1X6.14-3 InverseOfMorphismFromCoimageToImage[101X
-  
-  [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya        morphism       in       [23X\mathrm{Hom}(\mathrm{im}(\alpha),
-            \mathrm{coim}(\alpha))[123X[133X
-  
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
-  inverse    of    the   canonical   morphism   (in   an   abelian   category)
-  [23X\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)[123X.[133X
-  
-  [1X6.14-4 InverseOfMorphismFromCoimageToImageWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X( [3XI[103X, [3Xalpha[103X, [3XC[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,C)[123X[133X
-  
-  [33X[0;0YThe  argument  is  an object [23XC = \mathrm{coim}(\alpha)[123X, a morphism [23X\alpha: A
-  \rightarrow  B[123X,  and  an  object  [23XI = \mathrm{im}(\alpha)[123X. The output is the
-  inverse of the canonical morphism (in an abelian category) [23XI \rightarrow C[123X.[133X
-  
-  [1X6.14-5 IsomorphismFromCoimageToCokernelOfKernel[101X
+  [1X6.14-1 IsomorphismFromCoimageToCokernelOfKernel[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCoimageToCokernelOfKernel[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya    morphism    in   [23X\mathrm{Hom}(   \mathrm{coim}(   \alpha   ),
@@ -2011,7 +1973,7 @@
   canonical      morphism      [23X\mathrm{coim}(     \alpha     )     \rightarrow
   \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) )[123X.[133X
   
-  [1X6.14-6 IsomorphismFromCokernelOfKernelToCoimage[101X
+  [1X6.14-2 IsomorphismFromCokernelOfKernelToCoimage[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCokernelOfKernelToCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    \mathrm{CokernelObject}(
@@ -2021,7 +1983,7 @@
   canonical morphism [23X\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha
   ) ) \rightarrow \mathrm{coim}( \alpha )[123X.[133X
   
-  [1X6.14-7 CoimageObject[101X
+  [1X6.14-3 CoimageObject[101X
   
   [33X[1;0Y[29X[2XCoimageObject[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -2029,7 +1991,7 @@
   [33X[0;0YThe  argument is a morphism [23X\alpha[123X. The output is the coimage [23X\mathrm{coim}(
   \alpha )[123X.[133X
   
-  [1X6.14-8 CoimageProjection[101X
+  [1X6.14-4 CoimageProjection[101X
   
   [33X[1;0Y[29X[2XCoimageProjection[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, \mathrm{coim}( \alpha ))[123X[133X
@@ -2037,7 +1999,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   coimage projection [23X\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )[123X.[133X
   
-  [1X6.14-9 CoimageProjectionWithGivenCoimageObject[101X
+  [1X6.14-5 CoimageProjectionWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XCoimageProjectionWithGivenCoimageObject[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, C)[123X[133X
@@ -2046,7 +2008,7 @@
   \mathrm{coim}(\alpha)[123X.   The   output  is  the  coimage  projection  [23X\pi:  A
   \twoheadrightarrow C[123X.[133X
   
-  [1X6.14-10 AstrictionToCoimage[101X
+  [1X6.14-6 AstrictionToCoimage[101X
   
   [33X[1;0Y[29X[2XAstrictionToCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{coim}( \alpha ),B)[123X[133X
@@ -2054,7 +2016,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   astriction to coimage [23Xa: \mathrm{coim}( \alpha ) \rightarrow B[123X.[133X
   
-  [1X6.14-11 AstrictionToCoimageWithGivenCoimageObject[101X
+  [1X6.14-7 AstrictionToCoimageWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XAstrictionToCoimageWithGivenCoimageObject[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,B)[123X[133X
@@ -2063,7 +2025,7 @@
   \mathrm{coim}(  \alpha  )[123X.  The  output  is  the  astriction to coimage [23Xa: C
   \rightarrow B[123X.[133X
   
-  [1X6.14-12 UniversalMorphismIntoCoimage[101X
+  [1X6.14-8 UniversalMorphismIntoCoimage[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoCoimage[102X( [3Xalpha[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T, \mathrm{coim}( \alpha ))[123X[133X
@@ -2074,7 +2036,7 @@
   The  output  is  the morphism [23Xu(\tau): T \rightarrow \mathrm{coim}( \alpha )[123X
   given by the universal property of the coimage.[133X
   
-  [1X6.14-13 UniversalMorphismIntoCoimageWithGivenCoimageObject[101X
+  [1X6.14-9 UniversalMorphismIntoCoimageWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoCoimageWithGivenCoimageObject[102X( [3Xalpha[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T, C)[123X[133X
@@ -2090,7 +2052,7 @@
   canonical   morphism   is   an   isomorphism,   we  call  it  the  [13Xcanonical
   identification[113X (between image and coimage).[133X
   
-  [1X6.14-14 CoimageObjectFunctorial[101X
+  [1X6.14-10 CoimageObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XCoimageObjectFunctorial[102X( [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(\mathrm{CoimageObject}(  \alpha  ),
@@ -2101,7 +2063,7 @@
   [23X\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha'
   )[123X given by the functoriality of the coimage.[133X
   
-  [1X6.14-15 CoimageObjectFunctorialWithGivenCoimageObjects[101X
+  [1X6.14-11 CoimageObjectFunctorialWithGivenCoimageObjects[101X
   
   [33X[1;0Y[29X[2XCoimageObjectFunctorialWithGivenCoimageObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
@@ -2113,7 +2075,48 @@
   \mathrm{CoimageObject}( \alpha' )[123X given by the functoriality of the coimage.[133X
   
   
-  [1X6.15 [33X[0;0YHomology objects[133X[101X
+  [1X6.15 [33X[0;0YMorphism between Coimage and Image[133X[101X
+  
+  [1X6.15-1 MorphismFromCoimageToImage[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya       morphism       in      [23X\mathrm{Hom}(\mathrm{coim}(\alpha),
+            \mathrm{im}(\alpha))[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
+  canonical   morphism   (in   a  preabelian  category)  [23X\mathrm{coim}(\alpha)
+  \rightarrow \mathrm{im}(\alpha)[123X.[133X
+  
+  [1X6.15-2 MorphismFromCoimageToImageWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromCoimageToImageWithGivenObjects[102X( [3XC[103X, [3Xalpha[103X, [3XI[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,I)[123X[133X
+  
+  [33X[0;0YThe  argument  is  an object [23XC = \mathrm{coim}(\alpha)[123X, a morphism [23X\alpha: A
+  \rightarrow  B[123X,  and  an  object  [23XI = \mathrm{im}(\alpha)[123X. The output is the
+  canonical morphism (in a preabelian category) [23XC \rightarrow I[123X.[133X
+  
+  [1X6.15-3 InverseOfMorphismFromCoimageToImage[101X
+  
+  [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya        morphism       in       [23X\mathrm{Hom}(\mathrm{im}(\alpha),
+            \mathrm{coim}(\alpha))[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
+  inverse    of    the   canonical   morphism   (in   an   abelian   category)
+  [23X\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)[123X.[133X
+  
+  [1X6.15-4 InverseOfMorphismFromCoimageToImageWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X( [3XI[103X, [3Xalpha[103X, [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,C)[123X[133X
+  
+  [33X[0;0YThe  argument  is  an object [23XC = \mathrm{coim}(\alpha)[123X, a morphism [23X\alpha: A
+  \rightarrow  B[123X,  and  an  object  [23XI = \mathrm{im}(\alpha)[123X. The output is the
+  inverse of the canonical morphism (in an abelian category) [23XI \rightarrow C[123X.[133X
+  
+  
+  [1X6.16 [33X[0;0YHomology objects[133X[101X
   
   [33X[0;0YIn an abelian category, we can define the operation that takes as an input a
   pair  of  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta: B \rightarrow C[123X and
@@ -2132,7 +2135,7 @@
   a  functorial  way  to  obtain  from  these  data a morphism between the two
   corresponding homology objects.[133X
   
-  [1X6.15-1 HomologyObject[101X
+  [1X6.16-1 HomologyObject[101X
   
   [33X[1;0Y[29X[2XHomologyObject[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -2140,7 +2143,7 @@
   [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B,  \beta:  B
   \rightarrow C[123X. The output is the homology object [23XH[123X of this pair.[133X
   
-  [1X6.15-2 HomologyObjectFunctorial[101X
+  [1X6.16-2 HomologyObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XHomologyObjectFunctorial[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xepsilon[103X, [3Xgamma[103X, [3Xdelta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( H_1, H_2 )[123X[133X
@@ -2155,7 +2158,7 @@
   [23X\alpha,  \beta[123X,  and  [23XH_2[123X  denotes  the  homology object of the pair [23X\gamma,
   \delta[123X.[133X
   
-  [1X6.15-3 HomologyObjectFunctorialWithGivenHomologyObjects[101X
+  [1X6.16-3 HomologyObjectFunctorialWithGivenHomologyObjects[101X
   
   [33X[1;0Y[29X[2XHomologyObjectFunctorialWithGivenHomologyObjects[102X( [3XH_1[103X, [3XL[103X, [3XH_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( H_1, H_2 )[123X[133X
@@ -2172,7 +2175,7 @@
   denotes  the  homology object of the pair [23X\alpha, \beta[123X, and [23XH_2[123X denotes the
   homology object of the pair [23X\gamma, \delta[123X.[133X
   
-  [1X6.15-4 IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[101X
+  [1X6.16-4 IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{HomologyObject}( \alpha, \beta
@@ -2184,7 +2187,7 @@
   [23X\mathrm{ImageObject}(  \mathrm{PreCompose}(  \mathrm{KernelEmbedding}( \beta
   ), \mathrm{CokernelProjection}( \alpha ) ) )[123X, denoted by [23XI[123X.[133X
   
-  [1X6.15-5 IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[101X
+  [1X6.16-5 IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( I, \mathrm{HomologyObject}( \alpha,
@@ -2197,16 +2200,16 @@
   )[123X, denoted by [23XI[123X, to the homology object [23XH[123X of [23X\alpha[123X and [23X\beta[123X.[133X
   
   
-  [1X6.16 [33X[0;0YProjective covers and injective envelopes[133X[101X
+  [1X6.17 [33X[0;0YProjective covers and injective envelopes[133X[101X
   
-  [1X6.16-1 ProjectiveCoverObject[101X
+  [1X6.17-1 ProjectiveCoverObject[101X
   
   [33X[1;0Y[29X[2XProjectiveCoverObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is an object [23XA[123X. The output is a projective cover of [23XA[123X.[133X
   
-  [1X6.16-2 EpimorphismFromProjectiveCoverObject[101X
+  [1X6.17-2 EpimorphismFromProjectiveCoverObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromProjectiveCoverObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan epimorphism[133X
@@ -2214,7 +2217,7 @@
   [33X[0;0YThe  argument is an object [23XA[123X. The output is an epimorphism from a projective
   cover of [23XA[123X.[133X
   
-  [1X6.16-3 EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[101X
+  [1X6.17-3 EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[102X( [3XA[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan epimorphism[133X
@@ -2222,14 +2225,14 @@
   [33X[0;0YThe  argument  is  an  object  [23XA[123X.  The  output  is  the epimorphism from the
   projective cover [23XP[123X of [23XA[123X.[133X
   
-  [1X6.16-4 InjectiveEnvelopeObject[101X
+  [1X6.17-4 InjectiveEnvelopeObject[101X
   
   [33X[1;0Y[29X[2XInjectiveEnvelopeObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is an object [23XA[123X. The output is an injective envelope of [23XA[123X.[133X
   
-  [1X6.16-5 MonomorphismIntoInjectiveEnvelopeObject[101X
+  [1X6.17-5 MonomorphismIntoInjectiveEnvelopeObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoInjectiveEnvelopeObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
@@ -2237,7 +2240,7 @@
   [33X[0;0YThe  argument is an object [23XA[123X. The output is a monomorphism into an injective
   envelope of [23XA[123X.[133X
   
-  [1X6.16-6 MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[101X
+  [1X6.17-6 MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[102X( [3XA[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
