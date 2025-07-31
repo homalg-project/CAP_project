@@ -21,11 +21,11 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory :=
   Concatenation(
           ListOfDefiningOperations( "IsCartesianCategory" ),
           [ "ExponentialOnObjects",
-            "ExponentialOnMorphismsWithGivenExponentials",
-            "CartesianRightEvaluationMorphismWithGivenSource",
-            "CartesianRightCoevaluationMorphismWithGivenRange",
-            "CartesianLeftEvaluationMorphismWithGivenSource",
-            "CartesianLeftCoevaluationMorphismWithGivenRange"
+            "ExponentialOnMorphisms",
+            "CartesianRightEvaluationMorphism",
+            "CartesianRightCoevaluationMorphism",
+            "CartesianLeftEvaluationMorphism",
+            "CartesianLeftCoevaluationMorphism"
             ] );
 
 #! @Description

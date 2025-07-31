@@ -8,14 +8,14 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory  :=
   Concatenation(
           ListOfDefiningOperations( "IsCapCategory" ),
           [ "TensorProductOnObjects",
-            "TensorProductOnMorphismsWithGivenTensorProducts",
+            "TensorProductOnMorphisms",
             "TensorUnit",
-            "AssociatorLeftToRightWithGivenTensorProducts",
-            "AssociatorRightToLeftWithGivenTensorProducts",
-            "LeftUnitorWithGivenTensorProduct",
-            "LeftUnitorInverseWithGivenTensorProduct",
-            "RightUnitorWithGivenTensorProduct",
-            "RightUnitorInverseWithGivenTensorProduct"
+            "AssociatorLeftToRight",
+            "AssociatorRightToLeft",
+            "LeftUnitor",
+            "LeftUnitorInverse",
+            "RightUnitor",
+            "RightUnitorInverse"
             ] );
 
 #! @Description

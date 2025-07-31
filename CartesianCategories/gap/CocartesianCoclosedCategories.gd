@@ -21,11 +21,11 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory :=
   Concatenation(
           ListOfDefiningOperations( "IsCocartesianCategory" ),
           [ "CoexponentialOnObjects",
-            "CoexponentialOnMorphismsWithGivenCoexponentials",
-            "CocartesianRightEvaluationMorphismWithGivenRange",
-            "CocartesianRightCoevaluationMorphismWithGivenSource",
-            "CocartesianLeftEvaluationMorphismWithGivenRange",
-            "CocartesianLeftCoevaluationMorphismWithGivenSource"
+            "CoexponentialOnMorphisms",
+            "CocartesianRightEvaluationMorphism",
+            "CocartesianRightCoevaluationMorphism",
+            "CocartesianLeftEvaluationMorphism",
+            "CocartesianLeftCoevaluationMorphism"
             ] );
 
 #! @Description

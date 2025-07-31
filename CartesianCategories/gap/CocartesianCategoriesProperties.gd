@@ -23,8 +23,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory :=
           Concatenation(
                   ListOfDefiningOperations( "IsCategoryWithInitialObject" ),
                   [ "Coproduct",
-                    "InjectionOfCofactorOfCoproductWithGivenCoproduct",
-                    "UniversalMorphismFromCoproductWithGivenCoproduct",
+                    "InjectionOfCofactorOfCoproduct",
+                    "UniversalMorphismFromCoproduct",
                     ] ) );
 
 ## For internal use only:

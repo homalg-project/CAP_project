@@ -8,11 +8,11 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsRigidSymmetricClosedMonoidalCatego
   Concatenation(
           ListOfDefiningOperations( "IsSymmetricClosedMonoidalCategory" ),
           [ "DualOnObjects",
-            "DualOnMorphismsWithGivenDuals",
-            "EvaluationForDualWithGivenTensorProduct",
-            "CoevaluationForDualWithGivenTensorProduct",
-            "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
-            "MorphismFromBidualWithGivenBidual",
+            "DualOnMorphisms",
+            "EvaluationForDual",
+            "CoevaluationForDual",
+            "TensorProductInternalHomCompatibilityMorphismInverse",
+            "MorphismFromBidual",
             ] );
 
 InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsRigidSymmetricClosedMonoidalCategory );

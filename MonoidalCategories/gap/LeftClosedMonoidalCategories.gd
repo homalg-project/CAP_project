@@ -18,9 +18,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLeftClosedMonoidalCategory :=
   Concatenation(
           ListOfDefiningOperations( "IsMonoidalCategory" ),
           [ "LeftInternalHomOnObjects",
-            "LeftInternalHomOnMorphismsWithGivenLeftInternalHoms",
-            "LeftClosedMonoidalEvaluationMorphismWithGivenSource",
-            "LeftClosedMonoidalCoevaluationMorphismWithGivenRange"
+            "LeftInternalHomOnMorphisms",
+            "LeftClosedMonoidalEvaluationMorphism",
+            "LeftClosedMonoidalCoevaluationMorphism"
             ] );
 
 #! @Description

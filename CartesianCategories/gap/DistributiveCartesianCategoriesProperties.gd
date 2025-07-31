@@ -17,6 +17,6 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory :=
   DuplicateFreeList(
           Concatenation(
                   ListOfDefiningOperations( "IsBicartesianCategory" ),
-                  [ "LeftCartesianDistributivityExpandingWithGivenObjects",
-                    "RightCartesianDistributivityExpandingWithGivenObjects",
+                  [ "LeftCartesianDistributivityExpanding",
+                    "RightCartesianDistributivityExpanding",
                     ] ) );
