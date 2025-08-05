@@ -183,6 +183,7 @@ Display( proj2 );
 #! @Example
 k := WeakKernelEmbedding( proj1 );
 #! <A morphism in Rows( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -202,6 +203,7 @@ Display( k );
 #! @Example
 ck := WeakCokernelProjection( k );
 #! <A morphism in Rows( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -231,6 +233,7 @@ IsEpimorphism( ck );
 #! true
 mor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], 2, 1, S ), obj6 );
 #! <A morphism in Rows( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -270,6 +273,7 @@ Display( mor2 );
 #! @Example
 lift := Lift( mor1, mor2 );
 #! <A morphism in Rows( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -317,6 +321,7 @@ fp := WeakBiFiberProduct( mor1, mor2 );
 #! <A row module over Z of rank 2>
 fp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );
 #! <A morphism in Rows( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -339,6 +344,7 @@ po := WeakBiPushout( mor, mor2 );
 #! <A row module over Z of rank 2>
 inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );
 #! <A morphism in Rows( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -385,6 +391,7 @@ Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( universal_morphism )
 #! [ [ 2 ] ]
 IsEqualForMorphisms( PreCompose( universal_morphism, equalizer ), (2 / Q) * equalizer );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 ##############
@@ -415,4 +422,5 @@ Display( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( universal_morphism )
 #! [ [ 2 ] ]
 IsEqualForMorphisms( PreCompose( coequalizer,  universal_morphism ), (2 / Q) * coequalizer );
 #! true
+# drop_example_in_Julia
 #! @EndExample

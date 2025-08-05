@@ -46,6 +46,7 @@ IsWellDefined( GradedRow( [ [ [ 1 ], 1 ] ], S2 ) );
 #! true
 IsWellDefined( GradedColumn( [ [ [ 1 ], 1 ] ], S2 ) );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 
@@ -80,6 +81,7 @@ Object2RShuffle := GradedColumn( [ [[0,1],1],
 IsEqualForObjects( Object2R, Object2RShuffle );
 #! false
 
+# drop_example_in_Julia
 #! @EndExample
 
 
@@ -101,6 +103,7 @@ m1L := GradedRowOrColumnMorphism(
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( m1L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -130,6 +133,7 @@ m1R := GradedRowOrColumnMorphism(
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( m1R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -163,6 +167,7 @@ categoryR := CapCategory( Q1R );
 #! Category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 
+# drop_example_in_Julia
 #! @EndExample
 
 
@@ -176,6 +181,7 @@ ZeroObject( categoryL );
 #! <A graded row of rank 0>
 O1L := GradedRow( [ [[-1,0],2] ], S );
 #! <A graded row of rank 2>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -204,6 +210,7 @@ O2L := GradedRow( [ [[0,0],1] ], S );
 #! <A graded row of rank 1>
 obj3L := GradedRow( [ [[-1,0],1] ], S );
 #! <A graded row of rank 1>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -233,6 +240,7 @@ IsWellDefined( IdentityMorphism( Q2L ) );
 #! true
 directSumL := DirectSum( [ O1L, O2L ] );
 #! <A graded row of rank 3>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -248,6 +256,7 @@ i1L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 1 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( i1L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -263,6 +272,7 @@ i2L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 2 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>
 IsWellDefined( i2L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -277,6 +287,7 @@ proj1L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 1 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj1L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -293,6 +304,7 @@ proj2L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 2 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj2L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -309,6 +321,7 @@ kL := WeakKernelEmbedding( proj1L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( kL );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -323,6 +336,7 @@ ckL := WeakCokernelProjection( kL );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( ckL );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -372,6 +386,7 @@ liftL := Lift( m3L, m1L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( liftL );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -394,6 +409,7 @@ coliftL := Colift( m2L, morL );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( coliftL );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -410,6 +426,7 @@ fp_proj1L := ProjectionInFirstFactorOfWeakBiFiberProduct( m1L, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj1L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -425,6 +442,7 @@ fp_proj2L := ProjectionInSecondFactorOfWeakBiFiberProduct( m1L, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj2L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -442,6 +460,7 @@ pbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( pbwfprow );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -475,6 +494,7 @@ inj1L := InjectionOfFirstCofactorOfWeakBiPushout( morL, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj1L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -490,6 +510,7 @@ inj2L := InjectionOfSecondCofactorOfWeakBiPushout( morL, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj2L );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -504,6 +525,7 @@ injectionL := InjectionOfBiasedWeakPushout( morL, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( injectionL );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -531,6 +553,7 @@ Display( injectionL );
 #! @Example
 tensorProductL := TensorProductOnObjects( O1L, O2L );
 #! <A graded row of rank 2>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -546,6 +569,7 @@ tensorProductMorphismL := TensorProductOnMorphisms( m2L, morL );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( tensorProductMorphismL );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -578,6 +602,7 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectL, Object2L ) ) );
 #! @Example
 IsWellDefined( DualOnMorphisms( m1L ) );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -606,6 +631,7 @@ Display( DualOnMorphisms( m1L ) );
 IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -648,6 +674,7 @@ ZeroObject( categoryR );
 #! <A graded column of rank 0>
 O1R := GradedColumn( [ [[-1,0],2] ], S );
 #! <A graded column of rank 2>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -676,6 +703,7 @@ O2R := GradedColumn( [ [[0,0],1] ], S );
 #! <A graded column of rank 1>
 obj3R := GradedColumn( [ [[-1,0],1] ], S );
 #! <A graded column of rank 1>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -705,6 +733,7 @@ IsWellDefined( IdentityMorphism( Q2R ) );
 #! true
 directSumR := DirectSum( [ O1R, O2R ] );
 #! <A graded column of rank 3>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -720,6 +749,7 @@ i1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( i1R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -736,6 +766,7 @@ i2R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 2 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>
 IsWellDefined( i2R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -752,6 +783,7 @@ proj1R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 1 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj1R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -767,6 +799,7 @@ proj2R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 2 );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj2R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -781,6 +814,7 @@ kR := WeakKernelEmbedding( proj1R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( kR );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -797,6 +831,7 @@ ckR := WeakCokernelProjection( kR );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( ckR );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -845,6 +880,7 @@ liftR := Lift( m3R, m1R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( liftR );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -868,6 +904,7 @@ coliftR := Colift( m2R, morR );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( coliftR );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -885,6 +922,7 @@ fp_proj1R := ProjectionInFirstFactorOfWeakBiFiberProduct( m1R, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj1R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -900,6 +938,7 @@ fp_proj2R := ProjectionInSecondFactorOfWeakBiFiberProduct( m1R, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj2R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -916,6 +955,7 @@ pbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( pbwfpcol );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -949,6 +989,7 @@ inj1R := InjectionOfFirstCofactorOfWeakBiPushout( morR, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj1R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -964,6 +1005,7 @@ inj2R := InjectionOfSecondCofactorOfWeakBiPushout( morR, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj2R );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -979,6 +1021,7 @@ injectionR := InjectionOfBiasedWeakPushout( morR, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( injectionR );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -1007,6 +1050,7 @@ Display( injectionR );
 #! @Example
 tensorProductR := TensorProductOnObjects( O1R, O2R );
 #! <A graded column of rank 2>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -1022,6 +1066,7 @@ tensorProductMorphismR := TensorProductOnMorphisms( m2R, morR );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( tensorProductMorphismR );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -1055,6 +1100,7 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectR, Object2R ) ) );
 #! @Example
 IsWellDefined( DualOnMorphisms( m1R ) );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -1084,6 +1130,7 @@ Display( DualOnMorphisms( m1R ) );
 IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -1148,6 +1195,7 @@ tens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aR,bR,phiR);
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( tens_mor );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 
@@ -1184,6 +1232,7 @@ tens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aC,bC,phiC);
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( tens_mor );
 #! true
+# drop_example_in_Julia
 #! @EndExample
 
 
@@ -1244,4 +1293,5 @@ some_map := DeduceSomeMapFromMatrixAndSourceForGradedCols( mat_2, b );
 #! <A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>
 IsWellDefined( some_map );
 #! true
+# drop_example_in_Julia
 #! @EndExample

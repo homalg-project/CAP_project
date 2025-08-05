@@ -5,8 +5,7 @@
 #! @Example
 LoadPackage( "AdditiveClosuresForCAP", false );
 #! true
-zz := HomalgRingOfIntegers( );
-#! Z
+zz := HomalgRingOfIntegers( );;
 Zmat := CategoryOfRows( zz );
 #! Rows( Z )
 Display( Zmat );
@@ -26,7 +25,7 @@ mat := HomalgMatrix(
                [ [  -36,   18,  -80,  -54,   28 ],
                  [   90,  -45,  140,   45,  -40 ],
                  [  -24,   12,  -32,   -4,    8 ],
-                 [   -6,    3,   -4,    5,    0 ] ], zz );;
+                 [   -6,    3,   -4,    5,    0 ] ], 4, 5, zz );;
 mor := mat / Zmat;
 #! <A morphism in Rows( Z )>
 split_epi := CoimageProjection( mor );
