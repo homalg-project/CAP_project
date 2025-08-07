@@ -78,10 +78,10 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE,
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
         
         t_finsets := TerminalObject( finsets );
-
+        
         FunctorObj := function( set )
             #% CAP_JIT_RESOLVE_FUNCTION
-            return CategoryOfRowsObject( rows, Length( set ) );
+            return CategoryOfRowsObject( rows, Int( Length( set ) ) );
         end;
         
         FunctorMor := function( mor )
@@ -186,7 +186,7 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE,
             
             b_und := UnderlyingOriginalObject( b );
             
-            range_finset := FinSet( finsets, size );
+            range_finset := FinSet( finsets, BigInt( size ) );
             
             return MorphismConstructor( cat,
                            a,
