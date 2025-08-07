@@ -31,6 +31,24 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
         with_nf := false;
         
+        if HasIsEquippedWithHomomorphismStructure( underlying_category ) and
+            IsEquippedWithHomomorphismStructure( underlying_category ) and
+            CanCompute( underlying_category, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" )
+            #= comment for Julia
+            and IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+            # =#
+        then
+            
+            sorting_function := HOM_STRUCTURE_BASED_SORTING_FUNCTION_OR_FAIL_FOR_LINEAR_CLOSURE( underlying_category );
+            
+            if sorting_function <> fail then
+                
+                with_nf := true;
+                
+            fi;
+            
+        fi;
+        
     elif Length( arg ) = 1 then
         
         sorting_function := arg[1];
