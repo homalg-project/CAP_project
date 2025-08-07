@@ -3,13 +3,6 @@
 #
 # Declarations
 #
-#! @Chapter Groups as categories
-
-####################################
-##
-#! @Section GAP Categories
-##
-####################################
 
 DeclareGlobalFunction( "HOM_STRUCTURE_BASED_SORTING_FUNCTION_OR_FAIL_FOR_LINEAR_CLOSURE" );
 
