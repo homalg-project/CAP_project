@@ -181,6 +181,7 @@ Display( proj2 );
 #! @Example
 k := WeakKernelEmbedding( proj1 );
 #! <A morphism in Columns( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -202,6 +203,7 @@ Display( k );
 #! @Example
 ck := WeakCokernelProjection( k );
 #! <A morphism in Columns( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -230,6 +232,7 @@ IsEpimorphism( ck );
 #! true
 mor1 := CategoryOfColumnsMorphism( obj5, HomalgMatrix( [[ 1, 2 ]], 1, 2, S ), obj6 );
 #! <A morphism in Columns( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -268,6 +271,7 @@ Display( mor2 );
 #! @Example
 lift := Lift( mor1, mor2 );
 #! <A morphism in Columns( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -315,6 +319,7 @@ fp := WeakBiFiberProduct( mor1, mor2 );
 #! <A column module over Z of rank 2>
 fp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );
 #! <A morphism in Columns( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log
@@ -337,6 +342,7 @@ po := WeakBiPushout( mor, mor2 );
 #! <A column module over Z of rank 2>
 inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );
 #! <A morphism in Columns( Z )>
+# drop_example_in_Julia
 #! @EndExample
 
 #! @Log

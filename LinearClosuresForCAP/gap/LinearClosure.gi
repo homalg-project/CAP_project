@@ -31,6 +31,24 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
         with_nf := false;
         
+        if HasIsEquippedWithHomomorphismStructure( underlying_category ) and
+            IsEquippedWithHomomorphismStructure( underlying_category ) and
+            CanCompute( underlying_category, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" )
+            #= comment for Julia
+            and IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+            # =#
+        then
+            
+            sorting_function := HOM_STRUCTURE_BASED_SORTING_FUNCTION_OR_FAIL_FOR_LINEAR_CLOSURE( underlying_category );
+            
+            if sorting_function <> fail then
+                
+                with_nf := true;
+                
+            fi;
+            
+        fi;
+        
     elif Length( arg ) = 1 then
         
         sorting_function := arg[1];
@@ -112,8 +130,10 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     
     if with_nf and
        HasIsEquippedWithHomomorphismStructure( underlying_category ) and
-       IsEquippedWithHomomorphismStructure( underlying_category ) and
-       IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+       IsEquippedWithHomomorphismStructure( underlying_category )
+       #= comment for Julia
+       and IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+       # =#
     then
         
         SET_HOMOMORPHISM_STRUCTURE_ATTRIBUTES_FOR_LINEAR_CLOSURE( category, rows );
@@ -161,7 +181,11 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
   function( ring, underlying_category, arg... )
     local rows;
     
-    rows := CategoryOfRows( ring : overhead := false, FinalizeCategory := true );
+    rows := CategoryOfRows( ring : FinalizeCategory := true
+            #= comment for Julia
+            , overhead := false
+            # =#
+            );
     
     return CallFuncList( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
                    Concatenation( [ rows, underlying_category ], arg ) );
@@ -239,12 +263,10 @@ end );
 ## no further restrictions
 ##
 InstallMethod( LinearClosureMorphism,
-               [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
-  function( source, coefficients, support_morphisms, range )
-    local category, sorting_function, coefficients_copy, support_morphisms_copy,
+               [ IsLinearClosure, IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
+  function( category, source, coefficients, support_morphisms, range )
+    local sorting_function, coefficients_copy, support_morphisms_copy,
           coefficients_NF, support_morphisms_NF, m, c, i, m_compare;
-    
-    category := CapCategory( source );
     
     if IsEmpty( coefficients ) or ( not category!.with_nf ) then
         
@@ -304,6 +326,15 @@ InstallMethod( LinearClosureMorphism,
     fi;
     
     return LinearClosureMorphismNC( source, coefficients_NF, support_morphisms_NF, range );
+    
+end );
+
+##
+InstallMethod( LinearClosureMorphism,
+               [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
+  function( source, coefficients, support_morphisms, range )
+    
+    return LinearClosureMorphism( CapCategory( source ), source, coefficients, support_morphisms, range );
     
 end );
 
@@ -775,8 +806,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     if with_nf and
        HasIsEquippedWithHomomorphismStructure( underlying_category ) and
-       IsEquippedWithHomomorphismStructure( underlying_category ) and
-       IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
+       IsEquippedWithHomomorphismStructure( underlying_category )
+       #= comment for Julia
+       and IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+       # =#
+    then
         
         INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE( category, rows );
         

@@ -80,6 +80,9 @@ CapJitAddTypeSignature( "LinearClosureObject", [ IsLinearClosure, IsCapCategoryO
 end );
 
 DeclareOperation( "LinearClosureMorphism",
+                  [ IsLinearClosure, IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ] );
+
+DeclareOperation( "LinearClosureMorphism",
                   [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ] );
 
 DeclareOperation( "LinearClosureMorphismNC",

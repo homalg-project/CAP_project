@@ -31,3 +31,28 @@ IsLiftable( a + b, -2*a ); ## over Q this is liftable
 #! false
 #! #@fi
 #! @EndExample
+
+#! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
+Q := HomalgFieldOfRationals( );;
+QSkeletalFinSets := LinearClosure( Q, SkeletalFinSets );
+#! LinearClosure( SkeletalFinSets )
+Display( QSkeletalFinSets );
+#! A CAP category with name LinearClosure( SkeletalFinSets ):
+#! 
+#! 22 primitive operations were used to derive 68 operations for this category which algorithmically
+#! * IsEquippedWithHomomorphismStructure
+#! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
+#! and furthermore mathematically
+#! * IsLinearClosureOfACategory
+#! * IsSkeletalCategory
+U := LinearClosureObject( QSkeletalFinSets, BigInt(2) / SkeletalFinSets );
+#! LinearClosureObject(|2|)
+HomomorphismStructureOnObjects( U, U );
+#! <A row module over Q of rank 4>
+hom_UU := BasisOfExternalHom( U, U );;
+Length( hom_UU );
+#! 4
+Assert( 0, hom_UU[1] + hom_UU[2] = hom_UU[2] + hom_UU[1] );
+#! #@fi
+#! @EndExample

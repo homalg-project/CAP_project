@@ -613,12 +613,18 @@ end );
 ##
 InstallMethod( CreateCapCategory,
                [ IsString, IsFunction, IsFunction, IsFunction, IsFunction ],
-               
-  function( name, category_filter, object_filter, morphism_filter, two_cell_filter )
-    
-    return CreateCapCategoryWithDataTypes( name, category_filter, object_filter, morphism_filter, two_cell_filter, fail, fail, fail );
-    
-end );
+  
+  FunctionWithNamedArguments(
+    [
+      [ "is_computable", true ],
+      [ "overhead", true ],
+    ],
+    function( CAP_NAMED_ARGUMENTS, name, category_filter, object_filter, morphism_filter, two_cell_filter )
+      
+      return CreateCapCategoryWithDataTypes( name, category_filter, object_filter, morphism_filter, two_cell_filter,
+                  fail, fail, fail : is_computable := CAP_NAMED_ARGUMENTS.is_computable, overhead := CAP_NAMED_ARGUMENTS.overhead );
+      
+end ) );
 
 ##
 InstallMethod( CanCompute,

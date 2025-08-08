@@ -1,5 +1,13 @@
-@Chapter Introduction
+@Chapter Linear closure of a category
 
-@Chapter Functionality
+@Section GAP Categories
+@Section Constructors
+@Section Attributes
+@Section Functors
+@Section Operations
 
-@Section Example Methods
+@Chapter Examples and Tests
+
+@Section Linear closure of categories
+@Section Matrices over ZG
+

@@ -4,6 +4,8 @@
 
 gap> START_TEST("ClosedAndCoclosedRows.tst");
 
+gap> # drop_example_in_Julia, example too large (https://github.com/JuliaDocs/Documenter.jl/issues/2489)
+
 gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 

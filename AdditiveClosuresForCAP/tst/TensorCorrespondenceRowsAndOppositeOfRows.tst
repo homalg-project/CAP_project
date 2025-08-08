@@ -4,6 +4,7 @@
 
 gap> START_TEST( "TensorCorrespondenceRowsAndOppositeOfRows.tst" );
 
+gap> # drop_example_in_Julia, MonoidalPreComposeMorphism is very slow because multiplication of matrices of Rationals{BigInt} is very slow
 gap> LoadPackage( "AdditiveClosuresForCAP", false );
 true
 

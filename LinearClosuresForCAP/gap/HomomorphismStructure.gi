@@ -17,6 +17,27 @@ has_prerequisites_for_hom_structure :=
 
 end;
 
+InstallGlobalFunction( HOM_STRUCTURE_BASED_SORTING_FUNCTION_OR_FAIL_FOR_LINEAR_CLOSURE,
+  
+  function( underlying_category )
+    
+    if IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+          
+          return function( alpha_1, alpha_2 )
+                   local index_1, index_2;
+                   index_1 := AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha_1 ) )[1];
+                   index_2 := AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha_2 ) )[1];
+                   return index_1 < index_2;
+                end;
+                
+    else
+          
+          return fail;
+          
+    fi;
+
+end );
+
 InstallGlobalFunction( SET_HOMOMORPHISM_STRUCTURE_ATTRIBUTES_FOR_LINEAR_CLOSURE,
   
   function( category, rows )
@@ -57,10 +78,10 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE,
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
         
         t_finsets := TerminalObject( finsets );
-
+        
         FunctorObj := function( set )
             #% CAP_JIT_RESOLVE_FUNCTION
-            return CategoryOfRowsObject( rows, Length( set ) );
+            return CategoryOfRowsObject( rows, Int( Length( set ) ) );
         end;
         
         FunctorMor := function( mor )
@@ -165,7 +186,7 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE,
             
             b_und := UnderlyingOriginalObject( b );
             
-            range_finset := FinSet( finsets, size );
+            range_finset := FinSet( finsets, BigInt( size ) );
             
             return MorphismConstructor( cat,
                            a,
