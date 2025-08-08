@@ -1,5 +1,5 @@
 name: LinearClosuresForCAP
-version: "2025.08-01"
+version: "2025.08-02"
 license: "GPL-2.0-or-later"
 date: 2025-08-08
 description: |
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/LinearClosuresForCAP/P
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.08-01/LinearClosuresForCAP-2025.08-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.08-02/LinearClosuresForCAP-2025.08-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.08-01/LinearClosuresForCAP-2025.08-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.08-02/LinearClosuresForCAP-2025.08-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.08-01/LinearClosuresForCAP-2025.08-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2025.08-02/LinearClosuresForCAP-2025.08-02-manual.pdf
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>PBZ08</span>]   <b class='BibAuthor'>Posur, S., Barakat, M. and Zickgraf, F.</b>,
      <i class='BibTitle'>LinearClosuresForCAP, Linear closures,
-             Version 2025.08-01</i>
+             Version 2025.08-02</i>
      (<span class='BibYear'>8-08</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LinearClosuresForCAP">https://homalg-project.github.io/pkg/LinearClosuresForCAP</a></span>.
@@ -70,7 +70,7 @@ bibtex: |
     @misc{ LinearClosuresForCAP,
       author =           {Posur, S. and Barakat, M. and Zickgraf, F.},
       title =            {{LinearClosuresForCAP},  {Linear  closures}, {V}ersion
-                          2025.08\texttt{\symbol{45}}01},
+                          2025.08\texttt{\symbol{45}}02},
       month =            {5\texttt{\symbol{45}}},
       year =             {8\texttt{\symbol{45}}08},
       note =             {GAP package},

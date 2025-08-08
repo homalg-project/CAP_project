@@ -2,9 +2,9 @@
   
   [1XIndex[101X
   
-  [2XExtendFunctorToLinearClosureOfSource[102X, for IsCapFunctor, IsLinearClosure 3.2-2 
-      for IsCapFunctor, IsLinearClosure, IsFunction 3.2-1 
-  [2XIsLinearClosureOfACategory[102X, for IsCapCategory 3.1-1 
+  [2XExtendFunctorToLinearClosureOfSource[102X, for IsCapFunctor, IsLinearClosure 1.2-2 
+      for IsCapFunctor, IsLinearClosure, IsFunction 1.2-1 
+  [2XIsLinearClosureOfACategory[102X, for IsCapCategory 1.1-1 
   
   
   -------------------------------------------------------
