@@ -178,6 +178,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xk := WeakKernelEmbedding( proj1 );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -197,6 +198,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xck := WeakCokernelProjection( k );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -226,6 +228,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xmor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], 2, 1, S ), obj6 );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -265,6 +268,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xlift := Lift( mor1, mor2 );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -312,6 +316,7 @@
     [4X[28X<A row module over Z of rank 2>[128X[104X
     [4X[25Xgap>[125X [27Xfp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -334,6 +339,7 @@
     [4X[28X<A row module over Z of rank 2>[128X[104X
     [4X[25Xgap>[125X [27Xinj_push := InjectionOfBiasedWeakPushout( mor, mor2 );[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -376,6 +382,7 @@
     [4X[28X[ [ 2 ] ][128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( PreCompose( universal_morphism, equalizer ), (2 / Q) * equalizer );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -402,6 +409,7 @@
     [4X[28X[ [ 2 ] ][128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( PreCompose( coequalizer,  universal_morphism ), (2 / Q) * coequalizer );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   

@@ -85,8 +85,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );[127X[104X
-    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27Xzz := HomalgRingOfIntegers( );;[127X[104X
     [4X[25Xgap>[125X [27XZmat := CategoryOfRows( zz );[127X[104X
     [4X[28XRows( Z )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( Zmat );[127X[104X
@@ -106,7 +105,7 @@
     [4X[25X>[125X [27X               [ [  -36,   18,  -80,  -54,   28 ],[127X[104X
     [4X[25X>[125X [27X                 [   90,  -45,  140,   45,  -40 ],[127X[104X
     [4X[25X>[125X [27X                 [  -24,   12,  -32,   -4,    8 ],[127X[104X
-    [4X[25X>[125X [27X                 [   -6,    3,   -4,    5,    0 ] ], zz );;[127X[104X
+    [4X[25X>[125X [27X                 [   -6,    3,   -4,    5,    0 ] ], 4, 5, zz );;[127X[104X
     [4X[25Xgap>[125X [27Xmor := mat / Zmat;[127X[104X
     [4X[28X<A morphism in Rows( Z )>[128X[104X
     [4X[25Xgap>[125X [27Xsplit_epi := CoimageProjection( mor );[127X[104X

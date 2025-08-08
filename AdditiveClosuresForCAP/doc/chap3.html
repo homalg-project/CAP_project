@@ -120,8 +120,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "AdditiveClosuresForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegers( );</span>
-Z
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zz := HomalgRingOfIntegers( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Zmat := CategoryOfRows( zz );</span>
 Rows( Z )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Zmat );</span>
@@ -141,7 +140,7 @@ and furthermore mathematically
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ [  -36,   18,  -80,  -54,   28 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [   90,  -45,  140,   45,  -40 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [  -24,   12,  -32,   -4,    8 ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [   -6,    3,   -4,    5,    0 ] ], zz );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 [   -6,    3,   -4,    5,    0 ] ], 4, 5, zz );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := mat / Zmat;</span>
 &lt;A morphism in Rows( Z )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">split_epi := CoimageProjection( mor );</span>

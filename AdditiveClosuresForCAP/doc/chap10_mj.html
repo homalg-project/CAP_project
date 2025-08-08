@@ -94,6 +94,7 @@ Q[x_1,x_2,x_3,x_4]
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( GradedColumn( [ [ [ 1 ], 1 ] ], S2 ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 <p>Whenever the object constructor is called, it tries to simplify the given degree list. To this end it checks if subsequent degree group elements match. If so, their multiplicities are added. So, as in the example above we have:</p>
@@ -120,6 +121,7 @@ false
 &lt;A graded column of rank 8&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( Object2R, Object2RShuffle );</span>
 false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X7A9CA0C983ECE36B" name="X7A9CA0C983ECE36B"></a></p>
@@ -140,6 +142,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m1L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -171,6 +174,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m1R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -201,6 +205,7 @@ Category of graded rows over Q[x_1,x_2,x_3,x_4]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">categoryR := CapCategory( Q1R );</span>
 Category of graded columns over Q[x_1,x_2,x_3,x_4] 
 (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X7A34A184800E1DD6" name="X7A34A184800E1DD6"></a></p>
@@ -213,6 +218,7 @@ Category of graded columns over Q[x_1,x_2,x_3,x_4]
 &lt;A graded row of rank 0&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O1L := GradedRow( [ [[-1,0],2] ], S );</span>
 &lt;A graded row of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -243,6 +249,7 @@ of rank 2 and degrees:
 &lt;A graded row of rank 1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj3L := GradedRow( [ [[-1,0],1] ], S );</span>
 &lt;A graded row of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -274,6 +281,7 @@ of rank 1 and degrees:
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">directSumL := DirectSum( [ O1L, O2L ] );</span>
 &lt;A graded row of rank 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -291,6 +299,7 @@ A graded row over Q[x_1,x_2,x_3,x_4]
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( i1L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -308,6 +317,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( i2L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -324,6 +334,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( proj1L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -342,6 +353,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( proj2L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -360,6 +372,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( kL );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -376,6 +389,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( ckL );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -427,6 +441,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( liftL );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -451,6 +466,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( coliftL );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -469,6 +485,7 @@ x_1,x_2
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fp_proj1L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -486,6 +503,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fp_proj2L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -505,6 +523,7 @@ x_2
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( pbwfprow );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -540,6 +559,7 @@ of rank 2 and degrees:
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( inj1L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -557,6 +577,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( inj2L );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -573,6 +594,7 @@ x_1,x_2
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( injectionL );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -602,6 +624,7 @@ of rank 2 and degrees:
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensorProductL := TensorProductOnObjects( O1L, O2L );</span>
 &lt;A graded row of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -619,6 +642,7 @@ A graded row over Q[x_1,x_2,x_3,x_4] (with weights
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( tensorProductMorphismL );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -653,6 +677,7 @@ A graded row over Q[x_1,x_2,x_3,x_4]
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( DualOnMorphisms( m1L ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -683,6 +708,7 @@ of rank 2 and degrees:
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -726,6 +752,7 @@ of rank 4 and degrees:
 &lt;A graded column of rank 0&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">O1R := GradedColumn( [ [[-1,0],2] ], S );</span>
 &lt;A graded column of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -756,6 +783,7 @@ of rank 2 and degrees:
 &lt;A graded column of rank 1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj3R := GradedColumn( [ [[-1,0],1] ], S );</span>
 &lt;A graded column of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -787,6 +815,7 @@ of rank 1 and degrees:
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">directSumR := DirectSum( [ O1R, O2R ] );</span>
 &lt;A graded column of rank 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -804,6 +833,7 @@ A graded column over Q[x_1,x_2,x_3,x_4]
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( i1R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -822,6 +852,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( i2R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -840,6 +871,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( proj1R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -857,6 +889,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( proj2R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -873,6 +906,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( kR );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -891,6 +925,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( ckR );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -941,6 +976,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( liftR );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -966,6 +1002,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( coliftR );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -985,6 +1022,7 @@ x_2
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fp_proj1R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1002,6 +1040,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fp_proj2R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1020,6 +1059,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( pbwfpcol );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1055,6 +1095,7 @@ of rank 2 and degrees:
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( inj1R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1072,6 +1113,7 @@ true
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( inj2R );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1089,6 +1131,7 @@ x_2
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( injectionR );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1119,6 +1162,7 @@ of rank 2 and degrees:
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tensorProductR := TensorProductOnObjects( O1R, O2R );</span>
 &lt;A graded column of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1136,6 +1180,7 @@ A graded column over Q[x_1,x_2,x_3,x_4] (with weights
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( tensorProductMorphismR );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1171,6 +1216,7 @@ A graded column over Q[x_1,x_2,x_3,x_4]
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( DualOnMorphisms( m1R ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1202,6 +1248,7 @@ of rank 2 and degrees:
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -1267,6 +1314,7 @@ true
 (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( tens_mor );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X83218D197FAD5A73" name="X83218D197FAD5A73"></a></p>
@@ -1303,6 +1351,7 @@ true
 (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( tens_mor );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X78BBD81679376CA5" name="X78BBD81679376CA5"></a></p>
@@ -1363,6 +1412,7 @@ true
 &lt;A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( some_map );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># drop_example_in_Julia</span>
 </pre></div>
 
 

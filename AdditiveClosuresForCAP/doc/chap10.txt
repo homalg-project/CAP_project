@@ -40,6 +40,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( GradedColumn( [ [ [ 1 ], 1 ] ], S2 ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWhenever  the  object  constructor is called, it tries to simplify the given
@@ -88,6 +89,7 @@
     [4X[28X<A graded column of rank 8>[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForObjects( Object2R, Object2RShuffle );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -106,6 +108,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( m1L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -135,6 +138,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( m1R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -162,6 +166,7 @@
     [4X[25Xgap>[125X [27XcategoryR := CapCategory( Q1R );[127X[104X
     [4X[28XCategory of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
     [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -172,6 +177,7 @@
     [4X[28X<A graded row of rank 0>[128X[104X
     [4X[25Xgap>[125X [27XO1L := GradedRow( [ [[-1,0],2] ], S );[127X[104X
     [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -200,6 +206,7 @@
     [4X[28X<A graded row of rank 1>[128X[104X
     [4X[25Xgap>[125X [27Xobj3L := GradedRow( [ [[-1,0],1] ], S );[127X[104X
     [4X[28X<A graded row of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -229,6 +236,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XdirectSumL := DirectSum( [ O1L, O2L ] );[127X[104X
     [4X[28X<A graded row of rank 3>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -244,6 +252,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( i1L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -259,6 +268,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( i2L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -273,6 +283,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( proj1L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -289,6 +300,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( proj2L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -305,6 +317,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( kL );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -319,6 +332,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ckL );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -368,6 +382,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( liftL );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -390,6 +405,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( coliftL );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -406,6 +422,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( fp_proj1L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -421,6 +438,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( fp_proj2L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -438,6 +456,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( pbwfprow );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -471,6 +490,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( inj1L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -486,6 +506,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( inj2L );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -500,6 +521,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( injectionL );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -527,6 +549,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XtensorProductL := TensorProductOnObjects( O1L, O2L );[127X[104X
     [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -542,6 +565,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( tensorProductMorphismL );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -574,6 +598,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( DualOnMorphisms( m1L ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -602,6 +627,7 @@
     [4X[25Xgap>[125X [27XIsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( [127X[104X
     [4X[25X>[125X [27XDualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -642,6 +668,7 @@
     [4X[28X<A graded column of rank 0>[128X[104X
     [4X[25Xgap>[125X [27XO1R := GradedColumn( [ [[-1,0],2] ], S );[127X[104X
     [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -670,6 +697,7 @@
     [4X[28X<A graded column of rank 1>[128X[104X
     [4X[25Xgap>[125X [27Xobj3R := GradedColumn( [ [[-1,0],1] ], S );[127X[104X
     [4X[28X<A graded column of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -699,6 +727,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XdirectSumR := DirectSum( [ O1R, O2R ] );[127X[104X
     [4X[28X<A graded column of rank 3>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -714,6 +743,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( i1R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -730,6 +760,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( i2R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -746,6 +777,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( proj1R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -761,6 +793,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( proj2R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -775,6 +808,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( kR );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -791,6 +825,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( ckR );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -839,6 +874,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( liftR );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -862,6 +898,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( coliftR );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -879,6 +916,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( fp_proj1R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -894,6 +932,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( fp_proj2R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -910,6 +949,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( pbwfpcol );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -943,6 +983,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( inj1R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -958,6 +999,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( inj2R );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -973,6 +1015,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( injectionR );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -1001,6 +1044,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XtensorProductR := TensorProductOnObjects( O1R, O2R );[127X[104X
     [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -1016,6 +1060,7 @@
     [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( tensorProductMorphismR );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -1049,6 +1094,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( DualOnMorphisms( m1R ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -1078,6 +1124,7 @@
     [4X[25Xgap>[125X [27XIsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( [127X[104X
     [4X[25X>[125X [27XDualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -1140,6 +1187,7 @@
     [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( tens_mor );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -1174,6 +1222,7 @@
     [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( tens_mor );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -1232,5 +1281,6 @@
     [4X[28X<A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( some_map );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
