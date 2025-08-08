@@ -263,12 +263,10 @@ end );
 ## no further restrictions
 ##
 InstallMethod( LinearClosureMorphism,
-               [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
-  function( source, coefficients, support_morphisms, range )
-    local category, sorting_function, coefficients_copy, support_morphisms_copy,
+               [ IsLinearClosure, IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
+  function( category, source, coefficients, support_morphisms, range )
+    local sorting_function, coefficients_copy, support_morphisms_copy,
           coefficients_NF, support_morphisms_NF, m, c, i, m_compare;
-    
-    category := CapCategory( source );
     
     if IsEmpty( coefficients ) or ( not category!.with_nf ) then
         
@@ -328,6 +326,15 @@ InstallMethod( LinearClosureMorphism,
     fi;
     
     return LinearClosureMorphismNC( source, coefficients_NF, support_morphisms_NF, range );
+    
+end );
+
+##
+InstallMethod( LinearClosureMorphism,
+               [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
+  function( source, coefficients, support_morphisms, range )
+    
+    return LinearClosureMorphism( CapCategory( source ), source, coefficients, support_morphisms, range );
     
 end );
 
