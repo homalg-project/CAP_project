@@ -66,6 +66,7 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingCategory",
+            "CommutativeRingOfLinearCategory",
         ],
     );
     
@@ -412,7 +413,7 @@ end );
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
   function( rows, category )
-    local ring, underlying_category, sorting_function, mul_coeffs, mul_supp, with_nf,
+    local ring, underlying_category, sorting_function, with_nf,
           equality_func, finsets, t_obj, t_finsets, FunctorMor, FunctorObj, cocycle;
     
     if not IsCategoryOfRows( rows ) then
@@ -446,14 +447,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         return UnderlyingOriginalObject( object );
         
     end );
-    
-    ##
-    AddMorphismConstructor( category,
-      function( cat, source, pair, range )
+
+    if with_nf then
         
-        return LinearClosureMorphismNC( cat, source, pair[1], pair[2], range );
+        ##
+        AddMorphismConstructor( category,
+          function( cat, source, pair, range )
+            
+            return LinearClosureMorphism( cat, source, pair[1], pair[2], range );
+            
+        end );
+
+    else
         
-    end );
+        ##
+        AddMorphismConstructor( category,
+          function( cat, source, pair, range )
+            
+            return LinearClosureMorphismNC( cat, source, pair[1], pair[2], range );
+            
+        end );
+        
+    fi;
     
     ##
     AddMorphismDatum( category,
@@ -464,52 +479,74 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     end );
     
     ##
-    AddIsEqualForObjects( category, {cat, a, b} -> IsEqualForObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
+    AddIsEqualForObjects( category,
+      function( cat, a, b )
+        
+        return IsEqualForObjects( UnderlyingCategory( cat ), UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) );
+        
+    end );
     
-    equality_func := function( alpha, beta, equal_or_cong )
-        local coeffs_a, coeffs_b, supp_a, supp_b, size;
+    ##
+    AddIsEqualForMorphisms( category,
+      function( cat, alpha, beta )
+        local coeffs_a, coeffs_b, supp_a, supp_b, size_coeffs_a;
         
         coeffs_a := CoefficientsList( alpha );
         
         coeffs_b := CoefficientsList( beta );
         
-        size := Length( coeffs_a );
+        size_coeffs_a := Length( coeffs_a );
         
-        if size <> Length( coeffs_b ) then
-            return false;
-        fi;
+        return size_coeffs_a = Length( coeffs_b ) and
+               ForAll( [ 1 .. size_coeffs_a ], i ->
+                       IsEqualForMorphisms( UnderlyingCategory( cat ), SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) ) and
+               coeffs_a = coeffs_b;
         
-        return ForAll( [ 1 .. size ], i -> equal_or_cong( SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) ) and
-                coeffs_a = coeffs_b;
-        
-    end;
-    
-    ##
-    AddIsEqualForMorphisms( category, {cat, alpha, beta} -> equality_func( alpha, beta, IsEqualForMorphisms ) );
+    end );
     
     if with_nf then
         
         ##
-        AddIsCongruentForMorphisms( category, {cat, alpha, beta} -> equality_func( alpha, beta, IsCongruentForMorphisms ) );
+        AddIsCongruentForMorphisms( category,
+          function( cat, alpha, beta )
+            local coeffs_a, coeffs_b, supp_a, supp_b, size_coeffs_a;
+            
+            coeffs_a := CoefficientsList( alpha );
+            
+            coeffs_b := CoefficientsList( beta );
+            
+            size_coeffs_a := Length( coeffs_a );
+            
+            return size_coeffs_a = Length( coeffs_b ) and
+                   ForAll( [ 1 .. size_coeffs_a ], i ->
+                           IsCongruentForMorphisms( UnderlyingCategory( cat ), SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) ) and
+                   coeffs_a = coeffs_b;
+            
+        end );
         
     else
         
         ##
         AddIsCongruentForMorphisms( category,
-            function( cat, alpha, beta )
-                
-                return IsZeroForMorphisms( SubtractionForMorphisms( alpha, beta ) );
-                
+          function( cat, alpha, beta )
+            
+            return IsZeroForMorphisms( cat, SubtractionForMorphisms( cat, alpha, beta ) );
+            
         end );
         
     fi;
     
     ##
-    AddIsWellDefinedForObjects( category, {cat, x} -> IsIdenticalObj( underlying_category, CapCategory( UnderlyingOriginalObject( x ) ) ) );
-
+    AddIsWellDefinedForObjects( category,
+      function( cat, x )
+        
+        return IsIdenticalObj( underlying_category, CapCategory( UnderlyingOriginalObject( x ) ) );
+        
+    end );
+    
     ##
     AddIsWellDefinedForMorphisms( category,
-    function( cat, alpha )
+      function( cat, alpha )
         local coeffs, supp, size, s, i;
         
         coeffs := CoefficientsList( alpha );
@@ -561,10 +598,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     end );
     
     ##
-    mul_supp := {alpha, beta} -> PreCompose( alpha, beta );
-    
-    mul_coeffs := {a,b} -> a * b;
-    
     if not IsBound( category!.cocycle ) then
         
         ##
@@ -572,11 +605,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         function( cat, alpha, beta )
             local coeffs, supp;
             
-            coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), mul_coeffs );
+            coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), { a,b } -> a * b );
             
-            supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), mul_supp );
+            supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), { alpha, beta } -> PreCompose( underlying_category, alpha, beta ) );
             
-            return LinearClosureMorphism( Source( alpha ), coeffs, supp, Range( beta ) );
+            return MorphismConstructor( cat, Source( alpha ), Pair( coeffs, supp ), Range( beta ) );
             
         end );
         
@@ -605,9 +638,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 
                 for b in [ 1 .. Length( coeffs_beta ) ] do
                     
-                    gamma := mul_supp( supp_alpha[a], supp_beta[b] );
+                    gamma := PreCompose( supp_alpha[a], supp_beta[b] );
                     
-                    coeff := mul_coeffs( coeffs_alpha[a], coeffs_beta[b] ) * cocycle( supp_alpha[a], supp_beta[b], gamma );
+                    coeff := ( coeffs_alpha[a] * coeffs_beta[b] ) * cocycle( supp_alpha[a], supp_beta[b], gamma );
                     
                     Add( supp, gamma );
                     
@@ -617,7 +650,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 
             od;
             
-            return LinearClosureMorphism( Source( alpha ), coeffs, supp, Range( beta ) );
+            return MorphismConstructor( cat, Source( alpha ), Pair( coeffs, supp ), Range( beta ) );
             
         end );
         
@@ -643,12 +676,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
     end );
     
-    
     if with_nf then
         
         ##
         AddIsZeroForMorphisms( category,
-        function( cat, alpha )
+          function( cat, alpha )
             
             return IsEmpty( CoefficientsList( alpha ) );
             
@@ -669,45 +701,49 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     ##
     AddAdditionForMorphisms( category,
       function( cat, alpha, beta )
-        return LinearClosureMorphism(
-            Source( alpha ),
-            Concatenation( CoefficientsList( alpha ), CoefficientsList( beta ) ),
-            Concatenation( SupportMorphisms( alpha ), SupportMorphisms( beta ) ),
-            Range( alpha )
-        );
+        
+        return MorphismConstructor( cat,
+                       Source( alpha ),
+                       Pair( Concatenation( CoefficientsList( alpha ), CoefficientsList( beta ) ),
+                             Concatenation( SupportMorphisms( alpha ), SupportMorphisms( beta ) ) ),
+                       Range( alpha ) );
+        
     end );
     
     ##
     AddAdditiveInverseForMorphisms( category,
       function( cat, alpha )
-        return LinearClosureMorphism(
-            Source( alpha ),
-            List( CoefficientsList( alpha ), c -> MinusOne( ring ) * c ),
-            SupportMorphisms( alpha ),
-            Range( alpha )
-        );
+        
+        return MorphismConstructor( cat,
+                       Source( alpha ),
+                       Pair( List( CoefficientsList( alpha ), c -> MinusOne( ring ) * c ),
+                             SupportMorphisms( alpha ) ),
+                       Range( alpha ) );
+        
     end );
     
     ##
     AddSubtractionForMorphisms( category,
       function( cat, alpha, beta )
-        return LinearClosureMorphism(
-            Source( alpha ),
-            Concatenation( CoefficientsList( alpha ), List( CoefficientsList( beta ), c -> MinusOne( ring ) * c ) ),
-            Concatenation( SupportMorphisms( alpha ), SupportMorphisms( beta ) ),
-            Range( alpha )
-        );
+
+        return MorphismConstructor( cat,
+                       Source( alpha ),
+                       Pair( Concatenation( CoefficientsList( alpha ), List( CoefficientsList( beta ), c -> MinusOne( ring ) * c ) ),
+                             Concatenation( SupportMorphisms( alpha ), SupportMorphisms( beta ) ) ),
+                       Range( alpha ) );
+        
     end );
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-        function( cat, r, alpha )
-            return LinearClosureMorphism(
-                Source( alpha ),
-                List( CoefficientsList( alpha ), c -> r * c ),
-                SupportMorphisms( alpha ),
-                Range( alpha )
-        );
+      function( cat, r, alpha )
+        
+        return MorphismConstructor( cat,
+                       Source( alpha ),
+                       Pair( List( CoefficientsList( alpha ), c -> r * c ),
+                             SupportMorphisms( alpha ) ),
+                       Range( alpha ) );
+        
     end );
     
     if not with_nf then
@@ -726,11 +762,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddSetOfObjectsOfCategory( category,
-            function( cat )
-                
-                return List( SetOfObjectsOfCategory( underlying_category ),
-                             obj -> LinearClosureObject( category, obj ) );
-                
+          function( cat )
+            
+            return List( SetOfObjectsOfCategory( underlying_category ),
+                         obj -> LinearClosureObject( category, obj ) );
+            
         end );
         
     fi;
@@ -740,8 +776,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     if with_nf and
        HasIsEquippedWithHomomorphismStructure( underlying_category ) and
        IsEquippedWithHomomorphismStructure( underlying_category ) and
-       IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" )
-    then
+       IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
         
         INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE( category, rows );
         

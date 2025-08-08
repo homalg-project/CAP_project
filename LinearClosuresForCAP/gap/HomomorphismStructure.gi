@@ -167,17 +167,16 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE,
             
             range_finset := FinSet( finsets, size );
             
-            return LinearClosureMorphism(
-                    a,
-                    EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
-                    List( [ 0 .. size - 1 ], i ->
-                        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
-                            a_und, b_und, MapOfFinSets( t_finsets, [ i ], range_finset )
-                        )
-                    ),
-                    b
-                );
-                
+            return MorphismConstructor( cat,
+                           a,
+                           Pair( EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
+                                 List( [ 0 .. size - 1 ], i ->
+                                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                               a_und,
+                                               b_und,
+                                               MapOfFinSets( t_finsets, [ i ], range_finset ) ) ) ),
+                           b );
+            
         end );
         
     fi;
