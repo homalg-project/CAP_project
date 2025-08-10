@@ -19,6 +19,8 @@ SetOfObjectsOfCategory( ZCG ) = [ v ];
 #! true
 elem1 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v );;
 elem2 := LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ h, g, h, g, h, g ], v );;
+SumOfMorphisms( v, [ elem1, elem1 ], v );
+#! (24*<(1,2)>) + (18*<(1,2,3)>)
 # for i in [ 1 .. 10^6 ] do LinearClosureMorphism( v, [ 1, 2, 3, 4, 5, 6 ], [ g, h, g, h, g, h ], v ); od;
 elem := LinearClosureMorphism( v, [ 0, 0, 0, 0, 0, 0 ], [ g, h, g, h, g, h ], v );;
 a := (1,2)/CG/ZCG;;

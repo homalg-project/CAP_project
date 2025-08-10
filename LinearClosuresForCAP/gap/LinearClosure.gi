@@ -742,6 +742,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     end );
     
     ##
+    AddSumOfMorphisms( category,
+      function( cat, source, morphisms, range )
+        local coefficients_list, support_morphisms_list;
+        
+        coefficients_list := List( morphisms, mor -> CoefficientsList( mor ) );
+        support_morphisms_list := List( morphisms, mor -> SupportMorphisms( mor ) );
+        
+        return MorphismConstructor( cat,
+                       source,
+                       Pair( Concatenation( coefficients_list ),
+                             Concatenation( support_morphisms_list ) ),
+                       range );
+        
+    end );
+    
+    ##
     AddAdditiveInverseForMorphisms( category,
       function( cat, alpha )
         
