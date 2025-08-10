@@ -48,6 +48,15 @@ DeclareGlobalFunction( "FiniteSkeletalDiscreteCategory" );
 #! @Returns a list of &CAP; objects
 DeclareAttribute( "UnderlyingListOfGapObjects", IsFiniteSkeletalDiscreteCategory );
 
+CapJitAddTypeSignature( "UnderlyingListOfGapObjects", [ IsFiniteSkeletalDiscreteCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsFiniteSkeletalDiscreteCategory( input_types[1].category ) );
+    
+    return CapJitDataTypeOfListOf( IsObject );
+    
+end );
+
 #! @Description
 #!  The underlying &GAP; object of an object in a finite skeletal discrete category.
 #! @Returns a &CAP; object
