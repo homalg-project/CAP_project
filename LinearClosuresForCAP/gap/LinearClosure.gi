@@ -636,7 +636,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         function( cat, alpha, beta )
             local coeffs, supp;
             
-            coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), { a,b } -> a * b );
+            coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), { a, b } -> a * b );
             
             supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), { alpha, beta } -> PreCompose( underlying_category, alpha, beta ) );
             
