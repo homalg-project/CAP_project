@@ -127,7 +127,11 @@ end );
 DeclareAttribute( "CoefficientsList",
                   IsLinearClosureMorphism );
 
-CapJitAddTypeSignature( "CoefficientsList", [ IsLinearClosureMorphism ], CapJitDataTypeOfListOf( IsHomalgRingElement ) );
+CapJitAddTypeSignature( "CoefficientsList", [ IsLinearClosureMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( UnderlyingRing( input_types[1].category ) ) );
+    
+end );
 
 DeclareAttribute( "SupportMorphisms",
                   IsLinearClosureMorphism );
