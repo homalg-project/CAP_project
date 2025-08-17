@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# AdditiveClosuresForCAP: Additive closures for pre-abelian categories
+# AdditiveClosuresForCAP: Additive closures for pre-additive categories
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,9 +9,9 @@
 SetPackageInfo( rec(
 
 PackageName := "AdditiveClosuresForCAP",
-Subtitle := "Additive closures for pre-abelian categories",
-Version := "2025.08-01",
-Date := "2025-08-08",
+Subtitle := "Additive closures for pre-additive categories",
+Version := "2025.08-02",
+Date := "2025-08-18",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -126,7 +126,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Additive closures for pre-abelian categories",
+  LongTitle := "Additive closures for pre-additive categories",
 ),
 
 Dependencies := rec(

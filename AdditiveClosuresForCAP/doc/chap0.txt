@@ -3,13 +3,13 @@
                             [1X AdditiveClosuresForCAP [101X
   
   
-                 [1X Additive closures for pre-abelian categories [101X
+                [1X Additive closures for pre-additive categories [101X
   
   
-                                   2025.08-01
+                                   2025.08-02
   
   
-                                 8 August 2025
+                                 18 August 2025
   
   
                                 Sebastian Posur

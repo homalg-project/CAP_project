@@ -1,7 +1,7 @@
 <!-- BEGIN HEADER -->
 # AdditiveClosuresForCAP&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
-### Additive closures for pre-abelian categories
+### Additive closures for pre-additive categories
 
 | Documentation | Latest Release | Build Status of [CAP_project](/../../) | Code Coverage |
 | ------------- | -------------- | ------------ | ------------- |
