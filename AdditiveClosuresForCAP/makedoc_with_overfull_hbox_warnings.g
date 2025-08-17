@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# AdditiveClosuresForCAP: Additive closures for pre-abelian categories
+# AdditiveClosuresForCAP: Additive closures for pre-additive categories
 #
 # This file is a script which compiles the package manual and prints overfull hbox warnings.
 #
