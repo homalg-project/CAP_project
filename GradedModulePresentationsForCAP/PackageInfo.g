@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
-Version := "2025.07-01",
-Date := "2025-07-03",
+Version := "2025.08-01",
+Date := "2025-08-23",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -72,11 +72,11 @@ Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2023.10-04" ],
-                           [ "MonoidalCategories", ">=2024.01-06" ],
-                           [ "ModulePresentationsForCAP", ">=2024.01-03" ],
-                           [ "GradedRingForHomalg", ">=2019.08.07" ],
-                           [ "ComplexesAndFilteredObjectsForCAP", ">=2016.09.19" ],
-                           [ "HomologicalAlgebraForCAP", ">=2015.05.08" ] ],
+                           [ "MonoidalCategories", ">= 2025.08-01" ],
+                           [ "ModulePresentationsForCAP", ">= 2024.01-03" ],
+                           [ "GradedRingForHomalg", ">= 2019.08.07" ],
+                           [ "ComplexesAndFilteredObjectsForCAP", ">= 2016.09.19" ],
+                           [ "HomologicalAlgebraForCAP", ">= 2015.05.08" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),

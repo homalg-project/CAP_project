@@ -1,7 +1,7 @@
 name: GradedModulePresentationsForCAP
-version: "2025.07-01"
+version: "2025.08-01"
 license: "GPL-2.0-or-later"
-date: 2025-07-03
+date: 2025-08-23
 description: |
     Presentations for graded modules
 
@@ -23,19 +23,19 @@ needed-pkgs:
       version: ">= 2023.10-04"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">=2024.01-06"
+      version: ">= 2025.08-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "ModulePresentationsForCAP"
-      version: ">=2024.01-03"
+      version: ">= 2024.01-03"
       url: "https://homalg-project.github.io/pkg/ModulePresentationsForCAP"
     - name: "GradedRingForHomalg"
-      version: ">=2019.08.07"
+      version: ">= 2019.08.07"
       url: "https://homalg-project.github.io/pkg/GradedRingForHomalg"
     - name: "ComplexesAndFilteredObjectsForCAP"
-      version: ">=2016.09.19"
+      version: ">= 2016.09.19"
       url: "https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP"
     - name: "HomologicalAlgebraForCAP"
-      version: ">=2015.05.08"
+      version: ">= 2015.05.08"
       url: "https://homalg-project.github.io/pkg/HomologicalAlgebraForCAP"
 
 www: https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GradedModulePresentati
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2025.07-01/GradedModulePresentationsForCAP-2025.07-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2025.08-01/GradedModulePresentationsForCAP-2025.08-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2025.07-01/GradedModulePresentationsForCAP-2025.07-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2025.08-01/GradedModulePresentationsForCAP-2025.08-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2025.07-01/GradedModulePresentationsForCAP-2025.07-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2025.08-01/GradedModulePresentationsForCAP-2025.08-01-manual.pdf
 
 abstract: |
 
@@ -57,10 +57,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Gut03</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
+    [<span class='BibKey'>Gut23</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
      <i class='BibTitle'>GradedModulePresentationsForCAP, Presentations for graded modules,
-             Version 2025.07-01</i>
-     (<span class='BibYear'>7-03</span>)<br />
+             Version 2025.08-01</i>
+     (<span class='BibYear'>8-23</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP">https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP</a></span>.
     </p>
@@ -71,15 +71,15 @@ bibtex: |
       author =           {Gutsche, S.},
       title =            {{GradedModulePresentationsForCAP},  {Presentations for
                           graded               modules},               {V}ersion
-                          2025.07\texttt{\symbol{45}}01},
+                          2025.08\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {7\texttt{\symbol{45}}03},
+      year =             {8\texttt{\symbol{45}}23},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GradedModulePresentationsForCAP}}},
-      printedkey =       {Gut03}
+      printedkey =       {Gut23}
     }
 
