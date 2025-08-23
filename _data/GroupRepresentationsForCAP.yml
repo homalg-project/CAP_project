@@ -1,7 +1,7 @@
 name: GroupRepresentationsForCAP
-version: "2025.07-02"
+version: "2025.08-01"
 license: "GPL-2.0-or-later"
-date: 2025-07-30
+date: 2025-08-23
 description: |
     Skeletal category of group representations for CAP
 
@@ -26,7 +26,7 @@ needed-pkgs:
       version: ">= 2023.02-09"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2025.07-01"
+      version: ">= 2025.08-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "LinearAlgebraForCAP"
       version: ">=2024.02-02"
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GroupRepresentationsFo
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2025.07-02/GroupRepresentationsForCAP-2025.07-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2025.08-01/GroupRepresentationsForCAP-2025.08-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2025.07-02/GroupRepresentationsForCAP-2025.07-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2025.08-01/GroupRepresentationsForCAP-2025.08-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2025.07-02/GroupRepresentationsForCAP-2025.07-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2025.08-01/GroupRepresentationsForCAP-2025.08-01-manual.pdf
 
 abstract: |
 
@@ -57,10 +57,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Pos30</span>]   <b class='BibAuthor'>Posur, S.</b>,
+    [<span class='BibKey'>Pos23</span>]   <b class='BibAuthor'>Posur, S.</b>,
      <i class='BibTitle'>GroupRepresentationsForCAP, Skeletal category of group representations for CAP,
-             Version 2025.07-02</i>
-     (<span class='BibYear'>7-30</span>)<br />
+             Version 2025.08-01</i>
+     (<span class='BibYear'>8-23</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GroupRepresentationsForCAP">https://homalg-project.github.io/pkg/GroupRepresentationsForCAP</a></span>.
     </p>
@@ -71,15 +71,15 @@ bibtex: |
       author =           {Posur, S.},
       title =            {{GroupRepresentationsForCAP},  {Skeletal  category  of
                           group     representations    for    CAP},    {V}ersion
-                          2025.07\texttt{\symbol{45}}02},
+                          2025.08\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {7\texttt{\symbol{45}}30},
+      year =             {8\texttt{\symbol{45}}23},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GroupRepresentationsForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GroupRepresentationsForCAP}}},
-      printedkey =       {Pos30}
+      printedkey =       {Pos23}
     }
 
