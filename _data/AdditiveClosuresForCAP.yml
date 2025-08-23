@@ -1,7 +1,7 @@
 name: AdditiveClosuresForCAP
-version: "2025.08-02"
+version: "2025.08-03"
 license: "GPL-2.0-or-later"
-date: 2025-08-18
+date: 2025-08-23
 description: |
     Additive closures for pre-additive categories
 
@@ -39,7 +39,7 @@ needed-pkgs:
       version: ">=2019.08.07"
       url: "https://homalg-project.github.io/pkg/GradedRingForHomalg"
     - name: "MonoidalCategories"
-      version: ">= 2025.07-03"
+      version: ">= 2025.08-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
 
 www: https://homalg-project.github.io/pkg/AdditiveClosuresForCAP
@@ -48,11 +48,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/AdditiveClosuresForCAP
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.08-02/AdditiveClosuresForCAP-2025.08-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.08-03/AdditiveClosuresForCAP-2025.08-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.08-02/AdditiveClosuresForCAP-2025.08-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.08-03/AdditiveClosuresForCAP-2025.08-03.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.08-02/AdditiveClosuresForCAP-2025.08-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/AdditiveClosuresForCAP-2025.08-03/AdditiveClosuresForCAP-2025.08-03-manual.pdf
 
 abstract: |
 
@@ -61,10 +61,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PBBSZ18</span>]   <b class='BibAuthor'>Posur, S., Bies, M., Barakat, M., Saleh, K. and Zickgraf, F.</b>,
+    [<span class='BibKey'>PBBSZ23</span>]   <b class='BibAuthor'>Posur, S., Bies, M., Barakat, M., Saleh, K. and Zickgraf, F.</b>,
      <i class='BibTitle'>AdditiveClosuresForCAP, Additive closures for pre-additive categories,
-             Version 2025.08-02</i>
-     (<span class='BibYear'>8-18</span>)<br />
+             Version 2025.08-03</i>
+     (<span class='BibYear'>8-23</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/AdditiveClosuresForCAP">https://homalg-project.github.io/pkg/AdditiveClosuresForCAP</a></span>.
     </p>
@@ -76,15 +76,15 @@ bibtex: |
                           and Zickgraf, F.},
       title =            {{AdditiveClosuresForCAP},   {Additive   closures   for
                           pre\texttt{\symbol{45}}additive categories}, {V}ersion
-                          2025.08\texttt{\symbol{45}}02},
+                          2025.08\texttt{\symbol{45}}03},
       month =            {5\texttt{\symbol{45}}},
-      year =             {8\texttt{\symbol{45}}18},
+      year =             {8\texttt{\symbol{45}}23},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/AdditiveClosuresForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{AdditiveClosuresForCAP}}},
-      printedkey =       {PBBSZ18}
+      printedkey =       {PBBSZ23}
     }
 

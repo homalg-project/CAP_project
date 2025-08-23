@@ -98,6 +98,7 @@
     [4X[28X* IsPreAbelianCategory[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28X* IsAdditiveMonoidalCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
     [4X[28X* IsStrictMonoidalCategory[128X[104X
