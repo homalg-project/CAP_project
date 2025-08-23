@@ -2685,6 +2685,8 @@ InstallMethod( SemisimpleCategory,
     
     SetIsAbelianCategory( semisimple_category, true );
     
+    SetIsAdditiveMonoidalCategory( semisimple_category, true );
+    
     SetIsRigidSymmetricClosedMonoidalCategory( semisimple_category, true );
 
     SetRangeCategoryOfHomomorphismStructure( semisimple_category, semisimple_category );

@@ -137,9 +137,10 @@ InstallMethod( ADDITIVE_CLOSURE,
     fi;
     
     if HasIsStrictMonoidalCategory( underlying_category ) and IsStrictMonoidalCategory( underlying_category ) then
-      SetIsStrictMonoidalCategory( category, true );
+        SetIsStrictMonoidalCategory( category, true );
+        SetIsAdditiveMonoidalCategory( category, true );
     elif HasIsMonoidalCategory( underlying_category ) and IsMonoidalCategory( underlying_category ) then
-      SetIsMonoidalCategory( category, true );
+        SetIsAdditiveMonoidalCategory( category, true );
     fi;
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
