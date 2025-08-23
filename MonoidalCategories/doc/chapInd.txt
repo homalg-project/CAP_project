@@ -538,12 +538,13 @@
   [2XInternalHomToTensorProductRightAdjunctionIsomorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-15 
   [2XInternalHomToTensorProductRightAdjunctMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-12 
   [2XInternalHomToTensorProductRightAdjunctMorphismWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 1.6-13 
-  [2XIsBraidedMonoidalCategory[102X, for IsCapCategory 6.1-1 
-  [2XIsClosedMonoidalCategory[102X, for IsCapCategory 6.1-2 
-  [2XIsCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-3 
-  [2XIsLeftClosedMonoidalCategory[102X, for IsCapCategory 6.1-4 
-  [2XIsLeftCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-5 
-  [2XIsMonoidalCategory[102X, for IsCapCategory 6.1-6 
+  [2XIsAdditiveMonoidalCategory[102X, for IsCapCategory 6.1-1 
+  [2XIsBraidedMonoidalCategory[102X, for IsCapCategory 6.1-2 
+  [2XIsClosedMonoidalCategory[102X, for IsCapCategory 6.1-3 
+  [2XIsCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-4 
+  [2XIsLeftClosedMonoidalCategory[102X, for IsCapCategory 6.1-5 
+  [2XIsLeftCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-6 
+  [2XIsMonoidalCategory[102X, for IsCapCategory 6.1-7 
   [2XIsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit[102X, for IsCapCategoryObject 1.8-37 
   [2XIsomorphismFromDualObjectToInternalHomIntoTensorUnit[102X, for IsCapCategoryObject 1.6-45 
   [2XIsomorphismFromInternalCoHomFromTensorUnitToCoDualObject[102X, for IsCapCategoryObject 1.8-38 
@@ -572,12 +573,12 @@
   [2XIsomorphismFromObjectToLeftInternalHomWithGivenLeftInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-35 
   [2XIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.12-2 
   [2XIsomorphismFromTensorProductWithDualObjectToInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 1.11-1 
-  [2XIsRigidSymmetricClosedMonoidalCategory[102X, for IsCapCategory 6.1-8 
-  [2XIsRigidSymmetricCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-9 
-  [2XIsStrictMonoidalCategory[102X, for IsCapCategory 6.1-7 
-  [2XIsSymmetricClosedMonoidalCategory[102X, for IsCapCategory 6.1-10 
-  [2XIsSymmetricCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-11 
-  [2XIsSymmetricMonoidalCategory[102X, for IsCapCategory 6.1-12 
+  [2XIsRigidSymmetricClosedMonoidalCategory[102X, for IsCapCategory 6.1-9 
+  [2XIsRigidSymmetricCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-10 
+  [2XIsStrictMonoidalCategory[102X, for IsCapCategory 6.1-8 
+  [2XIsSymmetricClosedMonoidalCategory[102X, for IsCapCategory 6.1-11 
+  [2XIsSymmetricCoclosedMonoidalCategory[102X, for IsCapCategory 6.1-12 
+  [2XIsSymmetricMonoidalCategory[102X, for IsCapCategory 6.1-13 
   [2XLambdaElimination[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 1.6-49 
   [2XLambdaIntroduction[102X, for IsCapCategoryMorphism 1.6-48 
   [2XLeftClosedMonoidalCategoriesTest[102X 2.1-10 

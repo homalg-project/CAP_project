@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2025.07-07
+                                   2025.08-01
   
   
-                                  31 July 2025
+                                 23 August 2025
   
   
                                 Mohamed Barakat
@@ -609,18 +609,19 @@
       5.2-16 TensorProductToInternalHomLeftAdjunctionMapWithGivenInternalHom
   6 [33X[0;0YMonoidalCategories automatic generated documentation[133X
     6.1 [33X[0;0YMonoidalCategories automatic generated documentation of properties[133X
-      6.1-1 IsBraidedMonoidalCategory
-      6.1-2 IsClosedMonoidalCategory
-      6.1-3 IsCoclosedMonoidalCategory
-      6.1-4 IsLeftClosedMonoidalCategory
-      6.1-5 IsLeftCoclosedMonoidalCategory
-      6.1-6 IsMonoidalCategory
-      6.1-7 IsStrictMonoidalCategory
-      6.1-8 IsRigidSymmetricClosedMonoidalCategory
-      6.1-9 IsRigidSymmetricCoclosedMonoidalCategory
-      6.1-10 IsSymmetricClosedMonoidalCategory
-      6.1-11 IsSymmetricCoclosedMonoidalCategory
-      6.1-12 IsSymmetricMonoidalCategory
+      6.1-1 IsAdditiveMonoidalCategory
+      6.1-2 IsBraidedMonoidalCategory
+      6.1-3 IsClosedMonoidalCategory
+      6.1-4 IsCoclosedMonoidalCategory
+      6.1-5 IsLeftClosedMonoidalCategory
+      6.1-6 IsLeftCoclosedMonoidalCategory
+      6.1-7 IsMonoidalCategory
+      6.1-8 IsStrictMonoidalCategory
+      6.1-9 IsRigidSymmetricClosedMonoidalCategory
+      6.1-10 IsRigidSymmetricCoclosedMonoidalCategory
+      6.1-11 IsSymmetricClosedMonoidalCategory
+      6.1-12 IsSymmetricCoclosedMonoidalCategory
+      6.1-13 IsSymmetricMonoidalCategory
   
   
   [32X
