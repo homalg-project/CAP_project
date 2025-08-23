@@ -18,6 +18,7 @@ Display( Zmat );
 #! * IsPreAbelianCategory
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! * IsAdditiveMonoidalCategory
 #! and furthermore mathematically
 #! * IsSkeletalCategory
 #! * IsStrictMonoidalCategory

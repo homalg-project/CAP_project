@@ -20,8 +20,8 @@ Display( Sgrmod );
 #! 
 #! 38 primitive operations were used to derive 228 operations for this category
 #! which algorithmically
-#! * IsMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives
+#! * IsAdditiveMonoidalCategory
 #! and not yet algorithmically
 #! * IsSymmetricClosedMonoidalCategory
 #ListPrimitivelyInstalledOperationsOfCategory( Sgrmod );

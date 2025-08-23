@@ -22,11 +22,13 @@ InstallMethod( GradedLeftPresentations,
     SetIsAbelianCategory( category, true );
     
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
-
+    
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
-      
-      SetIsSymmetricClosedMonoidalCategory( category, true );
-      
+        
+        SetIsAdditiveMonoidalCategory( category, true );
+        
+        SetIsSymmetricClosedMonoidalCategory( category, true );
+        
     fi;
     
     ADD_GRADED_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
@@ -76,9 +78,11 @@ InstallMethod( GradedRightPresentations,
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
-      
-      SetIsSymmetricClosedMonoidalCategory( category, true );
-      
+        
+        SetIsAdditiveMonoidalCategory( category, true );
+        
+        SetIsSymmetricClosedMonoidalCategory( category, true );
+        
     fi;
     
     ADD_GRADED_FUNCTIONS_FOR_RIGHT_PRESENTATION( category );

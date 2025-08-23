@@ -37,6 +37,8 @@ InstallMethod( CategoryOfRows,
         
         SetIsStrictMonoidalCategory( cat, true );
         
+        SetIsAdditiveMonoidalCategory( cat, true );
+        
         SetIsRigidSymmetricClosedMonoidalCategory( cat, true );
         
         SetIsRigidSymmetricCoclosedMonoidalCategory( cat, true );

@@ -40,6 +40,8 @@ InstallMethod( LeftPresentations,
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
+      SetIsAdditiveMonoidalCategory( category, true );
+      
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
       SetRangeCategoryOfHomomorphismStructure( category, category );
@@ -145,6 +147,8 @@ InstallMethod( RightPresentations,
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
+      
+      SetIsAdditiveMonoidalCategory( category, true );
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       

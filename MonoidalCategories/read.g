@@ -16,6 +16,7 @@ ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesMethodRecordInstallati
 
 ## Additive Monoidal
 
+ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategories.gi" );
 ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesMethodRecordInstallations.autogen.gi" );
