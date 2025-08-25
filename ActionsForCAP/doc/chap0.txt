@@ -6,10 +6,10 @@
                         [1X Actions and Coactions for CAP [101X
   
   
-                                   2024.09-02
+                                   2025.08-01
   
   
-                                 4 October 2024
+                                 25 August 2025
   
   
                                Sebastian Gutsche
@@ -19,7 +19,7 @@
   
   
   Sebastian Gutsche
-      Email:    [7Xmailto:gutsche@mathematik.uni-kl.de[107X
+      Email:    [7Xmailto:sebastian.gutsche@gmail.com[107X
       Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/~gutsche[107X
   Sebastian Posur
       Email:    [7Xmailto:sposur@momo.math.rwth-aachen.de[107X

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
-Version := "2024.09-02",
-Date := "2024-10-04",
+Version := "2025.08-01",
+Date := "2025-08-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Gutsche",
     WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche",
-    Email := "gutsche@mathematik.uni-kl.de",
+    Email := "sebastian.gutsche@gmail.com",
     Place := "Kaiserslautern",
     Institution := "TU Kaiserslautern",
   ),
