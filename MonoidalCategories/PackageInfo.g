@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "MonoidalCategories",
 Subtitle := "Monoidal and monoidal (co)closed categories",
-Version := "2025.08-01",
+Version := "2025.08-02",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -35,7 +35,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Gutsche",
     WWWHome := "http://algebra.mathematik.uni-siegen.de/gutsche/",
-    Email := "gutsche@mathematik.uni-siegen.de",
+    Email := "sebastian.gutsche@gmail.com",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
@@ -51,7 +51,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Posur",
     WWWHome := "http://algebra.mathematik.uni-siegen.de/posur/",
-    Email := "sebastian.posur@uni-siegen.de",
+    Email := "sebastian.posur@uni-muenster.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
@@ -83,7 +83,7 @@ Persons := [
     FirstNames := "Fabian",
     LastName := "Zickgraf",
     WWWHome := "https://github.com/zickgraf/",
-    Email := "fabian.zickgraf@uni-siegen.de",
+    Email := "f.zickgraf@dashdos.com",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
                "57068 Siegen\n",

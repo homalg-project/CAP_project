@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
-Version := "2025.07-01",
+Version := "2025.08-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Gutsche",
     WWWHome := "https://sebasguts.github.io/",
-    Email := "gutsche@mathematik.uni-siegen.de",
+    Email := "sebastian.gutsche@gmail.com",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
@@ -37,7 +37,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Posur",
     WWWHome := "https://sebastianpos.github.io",
-    Email := "sebastian.posur@uni-siegen.de",
+    Email := "sebastian.posur@uni-muenster.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
