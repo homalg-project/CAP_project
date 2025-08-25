@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2025.07-07
+                                   2025.08-01
   
   
-                                  31 July 2025
+                                 25 August 2025
   
   
                                 Mohamed Barakat
@@ -29,7 +29,7 @@
   
   
   Fabian Zickgraf
-      Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
+      Email:    [7Xmailto:f.zickgraf@dashdos.com[107X
       Homepage: [7Xhttps://github.com/zickgraf/[107X
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
