@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
-Version := "2025.08-01",
-Date := "2025-08-23",
+Version := "2025.08-02",
+Date := "2025-08-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Gutsche",
     WWWHome := "https://sebasguts.github.io/",
-    Email := "gutsche@mathematik.uni-siegen.de",
+    Email := "sebastian.gutsche@gmail.com",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
@@ -37,7 +37,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Posur",
     WWWHome := "https://sebastianpos.github.io",
-    Email := "sebastian.posur@uni-siegen.de",
+    Email := "sebastian.posur@uni-muenster.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
@@ -53,7 +53,7 @@ Persons := [
     FirstNames := "Fabian",
     LastName := "Zickgraf",
     WWWHome := "https://github.com/zickgraf/",
-    Email := "fabian.zickgraf@uni-siegen.de",
+    Email := "f.zickgraf@dashdos.com",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
                "57068 Siegen\n",
