@@ -6,10 +6,10 @@
                        [1X Toric sheaves as Serre quotients [101X
   
   
-                                   2025.02-01
+                                   2025.08-01
   
   
-                                  1 March 2025
+                                 25 August 2025
   
   
                                Sebastian Gutsche
@@ -17,7 +17,7 @@
   
   
   Sebastian Gutsche
-      Email:    [7Xmailto:gutsche@mathematik.uni-siegen.de[107X
+      Email:    [7Xmailto:sebastian.gutsche@gmail.com[107X
       Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/~gutsche/[107X
       Address:  [33X[0;14YTODO[133X
   

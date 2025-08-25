@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ToricSheaves",
 Subtitle := "Toric sheaves as Serre quotients",
-Version := "2025.02-01",
-Date := "2025-03-01",
+Version := "2025.08-01",
+Date := "2025-08-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Gutsche",
     WWWHome := "http://wwwb.math.rwth-aachen.de/~gutsche/",
-    Email := "gutsche@mathematik.uni-siegen.de",
+    Email := "sebastian.gutsche@gmail.com",
     PostalAddress := "TODO",
     Place := "Siegen",
     Institution := "Universitaet Siegen",
