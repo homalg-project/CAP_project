@@ -6,10 +6,10 @@
      [1X Constructions for Modules over the Internal Exterior Algebra for CAP [101X
   
   
-                                   2024.04-01
+                                   2025.08-01
   
   
-                                  4 April 2024
+                                 25 August 2025
   
   
                                 Sebastian Posur
@@ -17,7 +17,7 @@
   
   
   Sebastian Posur
-      Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
+      Email:    [7Xmailto:sebastian.posur@uni-muenster.de[107X
       Homepage: [7Xhttps://sebastianpos.github.io[107X
       Address:  [33X[0;14YDepartment Mathematik[133X
                 [33X[0;14YUniversität Siegen[133X
