@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModulesOverLocalRingsForCAP",
 Subtitle := "Category of modules over a local ring modeled by Serre quotients for CAP",
-Version := "2024.04-01",
-Date := "2024-04-04",
+Version := "2025.08-01",
+Date := "2025-08-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Posur",
     WWWHome := "https://sebastianpos.github.io",
-    Email := "sebastian.posur@uni-siegen.de",
+    Email := "sebastian.posur@uni-muenster.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
