@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
-Version := "2025.08-01",
-Date := "2025-08-23",
+Version := "2025.08-02",
+Date := "2025-08-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Gutsche",
     WWWHome := "https://sebasguts.github.io",
-    Email := "gutsche@mathematik.uni-siegen.de",
+    Email := "sebastian.gutsche@gmail.com",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
