@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearClosuresForCAP",
 Subtitle := "Linear closures",
-Version := "2025.08-03",
-Date := "2025-08-16",
+Version := "2025.08-04",
+Date := "2025-08-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Posur",
     WWWHome := "https://sebastianpos.github.io",
-    Email := "sebastian.posur@uni-siegen.de",
+    Email := "sebastian.posur@uni-muenster.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
@@ -51,7 +51,7 @@ Persons := [
     FirstNames := "Fabian",
     LastName := "Zickgraf",
     WWWHome := "https://github.com/zickgraf/",
-    Email := "fabian.zickgraf@uni-siegen.de",
+    Email := "f.zickgraf@dashdos.com",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
                "57068 Siegen\n",

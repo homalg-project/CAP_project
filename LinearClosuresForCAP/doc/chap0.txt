@@ -6,10 +6,10 @@
                                [1X Linear closures [101X
   
   
-                                   2025.08-03
+                                   2025.08-04
   
   
-                                 16 August 2025
+                                 25 August 2025
   
   
                                 Sebastian Posur
@@ -21,7 +21,7 @@
   
   
   Sebastian Posur
-      Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
+      Email:    [7Xmailto:sebastian.posur@uni-muenster.de[107X
       Homepage: [7Xhttps://sebastianpos.github.io[107X
       Address:  [33X[0;14YDepartment Mathematik[133X
                 [33X[0;14YUniversität Siegen[133X
@@ -39,7 +39,7 @@
   
   
   Fabian Zickgraf
-      Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
+      Email:    [7Xmailto:f.zickgraf@dashdos.com[107X
       Homepage: [7Xhttps://github.com/zickgraf/[107X
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
