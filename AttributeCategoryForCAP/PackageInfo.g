@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "AttributeCategoryForCAP",
 Subtitle := "Automatic enhancement with attributes of a CAP category",
-Version := "2025.02-01",
-Date := "2025-03-01",
+Version := "2025.08-01",
+Date := "2025-08-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -21,7 +21,7 @@ Persons := [
     FirstNames := "Sebastian",
     LastName := "Posur",
     WWWHome := "https://sebastianpos.github.io",
-    Email := "sebastian.posur@uni-siegen.de",
+    Email := "sebastian.posur@uni-muenster.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
