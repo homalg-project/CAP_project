@@ -638,7 +638,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), { a,b } -> a * b );
             
-            supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), { alpha, beta } -> PreCompose( underlying_category, alpha, beta ) );
+            supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), { a, b } -> PreCompose( underlying_category, a, b ) );
             
             return MorphismConstructor( cat, Source( alpha ), Pair( coeffs, supp ), Range( beta ) );
             
