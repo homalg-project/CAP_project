@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearClosuresForCAP",
 Subtitle := "Linear closures",
-Version := "2025.08-04",
-Date := "2025-08-25",
+Version := "2025.09-01",
+Date := "2025-09-02",
 License := "GPL-2.0-or-later",
 
 Persons := [
