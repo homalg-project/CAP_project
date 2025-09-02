@@ -354,12 +354,17 @@ end );
 InstallOtherMethodForCompilerForCAP( LinearClosureMorphismNC,
                                      [ IsLinearClosure, IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
   function( category, source, coefficients, support_morphisms, range )
+    local underlying_category;
+    
+    underlying_category := UnderlyingCategory( category );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, ForAll( support_morphisms, mor -> IsIdenticalObj( CapCategory( mor ), underlying_category ) ) );
     
     return CreateCapCategoryMorphismWithAttributes( category,
-        source, range,
-        CoefficientsList, coefficients,
-        SupportMorphisms, support_morphisms
-    );
+                   source, range,
+                   CoefficientsList, coefficients,
+                   SupportMorphisms, support_morphisms );
     
 end );
 
@@ -638,7 +643,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), { a,b } -> a * b );
             
-            supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), { alpha, beta } -> PreCompose( underlying_category, alpha, beta ) );
+            supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), { a, b } -> PreCompose( underlying_category, a, b ) );
             
             return MorphismConstructor( cat, Source( alpha ), Pair( coeffs, supp ), Range( beta ) );
             
