@@ -4154,28 +4154,24 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := UnderlyingRing( cat_1 );
-    deduped_3_1 := AsHomalgMatrix( alpha_1 );
-    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
-    morphism_attr_1_1 := UniqueRightDivide( HomalgIdentityMatrix( RowRankOfMatrix( deduped_3_1 ), deduped_4_1 ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), deduped_4_1 ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) ) );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := AsHomalgMatrix( alpha_1 );
+    morphism_attr_1_1 := UniqueRightDivide( HomalgIdentityMatrix( RowRankOfMatrix( deduped_2_1 ), UnderlyingRing( cat_1 ) ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 ), BasisOfRows( deduped_2_1 ) ) );
     return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
 end
 ########
         
-    , 1811 : IsPrecompiledDerivation := true );
+    , 805 : IsPrecompiledDerivation := true );
     
     ##
     cat!.cached_precompiled_functions.InverseOfMorphismFromCoimageToImage :=
         
 ########
 function ( cat_1, alpha_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := UnderlyingRing( cat_1 );
-    deduped_3_1 := AsHomalgMatrix( alpha_1 );
-    deduped_2_1 := RowRankOfMatrix( deduped_3_1 );
-    deduped_1_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, deduped_2_1 ), UniqueRightDivide( HomalgIdentityMatrix( deduped_2_1, deduped_4_1 ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_1_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_1_1 ), deduped_4_1 ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_1_1 ) ) ), AsCapCategoryObject( cat_1, ColumnRankOfMatrix( deduped_3_1 ) ) );
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := AsHomalgMatrix( alpha_1 );
+    deduped_1_1 := RowRankOfMatrix( deduped_2_1 );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, deduped_1_1 ), UniqueRightDivide( HomalgIdentityMatrix( deduped_1_1, UnderlyingRing( cat_1 ) ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 ), BasisOfRows( deduped_2_1 ) ) ), AsCapCategoryObject( cat_1, ColumnRankOfMatrix( deduped_2_1 ) ) );
 end
 ########
         
@@ -4186,32 +4182,13 @@ end
         
 ########
 function ( cat_1, I_1, alpha_1, C_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := UnderlyingRing( cat_1 );
-    deduped_3_1 := AsHomalgMatrix( alpha_1 );
-    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
-    morphism_attr_1_1 := UniqueRightDivide( HomalgIdentityMatrix( RowRankOfMatrix( deduped_3_1 ), deduped_4_1 ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), deduped_4_1 ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, C_1 );
+    local deduped_1_1;
+    deduped_1_1 := AsHomalgMatrix( alpha_1 );
+    return AsCapCategoryMorphism( cat_1, I_1, UniqueRightDivide( HomalgIdentityMatrix( AsInteger( I_1 ), UnderlyingRing( cat_1 ) ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_1_1 ), deduped_1_1 ), BasisOfRows( deduped_1_1 ) ) ), C_1 );
 end
 ########
         
-    , 1610 : IsPrecompiledDerivation := true );
-    
-    ##
-    cat!.cached_precompiled_functions.InverseOfMorphismFromCoimageToImageWithGivenObjects :=
-        
-########
-function ( cat_1, I_1, alpha_1, C_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := UnderlyingRing( cat_1 );
-    deduped_3_1 := AsHomalgMatrix( alpha_1 );
-    deduped_2_1 := RowRankOfMatrix( deduped_3_1 );
-    deduped_1_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, deduped_2_1 ), UniqueRightDivide( HomalgIdentityMatrix( deduped_2_1, deduped_4_1 ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_1_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_1_1 ), deduped_4_1 ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_1_1 ) ) ), C_1 );
-end
-########
-        
-    ;
+    , 604 : IsPrecompiledDerivation := true );
     
     ##
     AddIsAutomorphism( cat,
@@ -7094,25 +7071,23 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := AsHomalgMatrix( alpha_1 );
-    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
-    morphism_attr_1_1 := UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), UnderlyingRing( cat_1 ) ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) );
+    local morphism_attr_1_1, deduped_2_1;
+    deduped_2_1 := AsHomalgMatrix( alpha_1 );
+    morphism_attr_1_1 := UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 ), BasisOfRows( deduped_2_1 ) );
     return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
 end
 ########
         
-    , 1609 : IsPrecompiledDerivation := true );
+    , 603 : IsPrecompiledDerivation := true );
     
     ##
     cat!.cached_precompiled_functions.MorphismFromCoimageToImage :=
         
 ########
 function ( cat_1, alpha_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := AsHomalgMatrix( alpha_1 );
-    deduped_1_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) );
-    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, ColumnRankOfMatrix( deduped_2_1 ) ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 ), deduped_1_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_1_1 ), UnderlyingRing( cat_1 ) ), UniqueRightDivide( BasisOfRows( deduped_2_1 ), deduped_1_1 ) ), AsCapCategoryObject( cat_1, RowRankOfMatrix( deduped_2_1 ) ) );
+    local deduped_1_1;
+    deduped_1_1 := AsHomalgMatrix( alpha_1 );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, ColumnRankOfMatrix( deduped_1_1 ) ), UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_1_1 ), deduped_1_1 ), BasisOfRows( deduped_1_1 ) ), AsCapCategoryObject( cat_1, RowRankOfMatrix( deduped_1_1 ) ) );
 end
 ########
         
@@ -7123,29 +7098,13 @@ end
         
 ########
 function ( cat_1, C_1, alpha_1, I_1 )
-    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := AsHomalgMatrix( alpha_1 );
-    deduped_2_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_3_1 ) );
-    morphism_attr_1_1 := UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_3_1 ), deduped_3_1 ), deduped_2_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_2_1 ), UnderlyingRing( cat_1 ) ), UniqueRightDivide( BasisOfRows( deduped_3_1 ), deduped_2_1 ) );
-    return AsCapCategoryMorphism( cat_1, C_1, morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
+    local deduped_1_1;
+    deduped_1_1 := AsHomalgMatrix( alpha_1 );
+    return AsCapCategoryMorphism( cat_1, C_1, UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_1_1 ), deduped_1_1 ), BasisOfRows( deduped_1_1 ) ), I_1 );
 end
 ########
         
-    , 1408 : IsPrecompiledDerivation := true );
-    
-    ##
-    cat!.cached_precompiled_functions.MorphismFromCoimageToImageWithGivenObjects :=
-        
-########
-function ( cat_1, C_1, alpha_1, I_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := AsHomalgMatrix( alpha_1 );
-    deduped_1_1 := SyzygiesOfRows( SyzygiesOfColumns( deduped_2_1 ) );
-    return AsCapCategoryMorphism( cat_1, C_1, UniqueRightDivide( UniqueLeftDivide( BasisOfColumns( deduped_2_1 ), deduped_2_1 ), deduped_1_1 ) * UniqueRightDivide( HomalgIdentityMatrix( NumberRows( deduped_1_1 ), UnderlyingRing( cat_1 ) ), UniqueRightDivide( BasisOfRows( deduped_2_1 ), deduped_1_1 ) ), AsCapCategoryObject( cat_1, RowRankOfMatrix( deduped_2_1 ) ) );
-end
-########
-        
-    ;
+    , 402 : IsPrecompiledDerivation := true );
     
     ##
     AddMorphismFromEqualizerToSink( cat,
