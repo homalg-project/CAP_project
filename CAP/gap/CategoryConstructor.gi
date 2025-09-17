@@ -437,6 +437,17 @@ InstallMethod( CategoryConstructor,
                     top_source := options.generic_output_source_getter_string,
                 ) );
                 
+            elif IsBound( info.output_source_getter_string ) and
+              ## the last resort used by SyntacticCategory,
+              ## ensure that the operation to compute the source is at least marked for installation:
+              IsBound( info.output_source_getter_preconditions ) and
+              ForAll( info.output_source_getter_preconditions, pair -> IsList( pair ) and Length( pair ) = 2 ) and
+              ForAll( info.output_source_getter_preconditions, pair -> pair[1] in options.list_of_operations_to_install ) then
+                
+                func_string := ReplacedStringViaRecord( func_string, rec(
+                    top_source := info.output_source_getter_string,
+                ) );
+                
             fi;
             
             if IsBound( info.output_range_getter_string ) and IsBound( info.can_always_compute_output_range_getter ) and info.can_always_compute_output_range_getter then
@@ -451,12 +462,23 @@ InstallMethod( CategoryConstructor,
                     top_range := options.generic_output_range_getter_string,
                 ) );
                 
+            elif IsBound( info.output_range_getter_string ) and
+              ## the last resort used by SyntacticCategory,
+              ## ensure that the operation to compute the target is at least marked for installation:
+              IsBound( info.output_range_getter_preconditions ) and
+              ForAll( info.output_range_getter_preconditions, pair -> IsList( pair ) and Length( pair ) = 2 ) and
+              ForAll( info.output_range_getter_preconditions, pair -> pair[1] in options.list_of_operations_to_install ) then
+                
+                func_string := ReplacedStringViaRecord( func_string, rec(
+                    top_range := info.output_range_getter_string,
+                ) );
+                
             fi;
             
             # if source and range cannot be computed we cannot do anything
             if PositionSublist( func_string, "top_source" ) <> fail or PositionSublist( func_string, "top_range" ) <> fail then
                 
-                Info( InfoCategoryConstructor, 3, "cannot compute source and range of ", name );
+                Info( InfoCategoryConstructor, 3, "cannot compute source and/or range of ", name );
                 continue;
                 
             fi;
