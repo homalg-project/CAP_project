@@ -9,23 +9,21 @@ QQ := HomalgFieldOfRationals();;
 vec := MatrixCategory( QQ );;
 op := Opposite( vec );;
 Display( ListKnownCategoricalProperties( op ) );
-#! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughI\
-#! njectives"
-#!     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",
-#!   "IsAdditiveMonoidalCategory", "IsBraidedMonoidalCategory",
-#!   "IsCategoryWithCoequalizers", "IsCategoryWithCokernels",
-#!   "IsCategoryWithEqualizers", "IsCategoryWithInitialObject",
-#!   "IsCategoryWithKernels", "IsCategoryWithTerminalObject",
-#!   "IsCategoryWithZeroObject", "IsClosedMonoidalCategory",
-#!   "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",
-#!   "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"
-#!     ,
-#!   "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",
-#!   "IsMonoidalCategory", "IsPreAbelianCategory",
-#!   "IsRigidSymmetricClosedMonoidalCategory",
-#!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",
-#!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",
-#!   "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
+#! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",\
+#!  "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",\
+#!  "IsAdditiveMonoidalCategory", "IsBraidedMonoidalCategory",\
+#!  "IsCategoryWithCoequalizers", "IsCategoryWithCokernels",\
+#!  "IsCategoryWithEqualizers", "IsCategoryWithInitialObject",\
+#!  "IsCategoryWithKernels", "IsCategoryWithTerminalObject",\
+#!  "IsCategoryWithZeroObject", "IsClosedMonoidalCategory",\
+#!  "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",\
+#!  "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing",\
+#!  "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",\
+#!  "IsMonoidalCategory", "IsPreAbelianCategory",\
+#!  "IsRigidSymmetricClosedMonoidalCategory",\
+#!  "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",\
+#!  "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",\
+#!  "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
 V1 := Opposite( TensorUnit( vec ) );;
 V2 := DirectSum( V1, V1 );;
 V3 := DirectSum( V1, V2 );;
