@@ -607,24 +607,36 @@
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xvec := MatrixCategory( QQ );;[127X[104X
     [4X[25Xgap>[125X [27Xop := Opposite( vec );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( ListKnownCategoricalProperties( op ) );[127X[104X
-    [4X[28X[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughI\[128X[104X
-    [4X[28Xnjectives"[128X[104X
-    [4X[28X    , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",[128X[104X
-    [4X[28X  "IsAdditiveMonoidalCategory", "IsBraidedMonoidalCategory",[128X[104X
-    [4X[28X  "IsCategoryWithCoequalizers", "IsCategoryWithCokernels",[128X[104X
-    [4X[28X  "IsCategoryWithEqualizers", "IsCategoryWithInitialObject",[128X[104X
-    [4X[28X  "IsCategoryWithKernels", "IsCategoryWithTerminalObject",[128X[104X
-    [4X[28X  "IsCategoryWithZeroObject", "IsClosedMonoidalCategory",[128X[104X
-    [4X[28X  "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",[128X[104X
-    [4X[28X  "IsEquippedWithHomomorphismStructure", "IsLinearCategoryOverCommutativeRing"[128X[104X
-    [4X[28X    ,[128X[104X
-    [4X[28X  "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",[128X[104X
-    [4X[28X  "IsMonoidalCategory", "IsPreAbelianCategory",[128X[104X
-    [4X[28X  "IsRigidSymmetricClosedMonoidalCategory",[128X[104X
-    [4X[28X  "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",[128X[104X
-    [4X[28X  "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",[128X[104X
-    [4X[28X  "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( ListKnownCategoricalProperties( op ), Display );[127X[104X
+    [4X[28XIsAbCategory[128X[104X
+    [4X[28XIsAbelianCategory[128X[104X
+    [4X[28XIsAbelianCategoryWithEnoughInjectives[128X[104X
+    [4X[28XIsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28XIsAdditiveCategory[128X[104X
+    [4X[28XIsAdditiveMonoidalCategory[128X[104X
+    [4X[28XIsBraidedMonoidalCategory[128X[104X
+    [4X[28XIsCategoryWithCoequalizers[128X[104X
+    [4X[28XIsCategoryWithCokernels[128X[104X
+    [4X[28XIsCategoryWithEqualizers[128X[104X
+    [4X[28XIsCategoryWithInitialObject[128X[104X
+    [4X[28XIsCategoryWithKernels[128X[104X
+    [4X[28XIsCategoryWithTerminalObject[128X[104X
+    [4X[28XIsCategoryWithZeroObject[128X[104X
+    [4X[28XIsClosedMonoidalCategory[128X[104X
+    [4X[28XIsCoclosedMonoidalCategory[128X[104X
+    [4X[28XIsEnrichedOverCommutativeRegularSemigroup[128X[104X
+    [4X[28XIsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28XIsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28XIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
+    [4X[28XIsMonoidalCategory[128X[104X
+    [4X[28XIsPreAbelianCategory[128X[104X
+    [4X[28XIsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28XIsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28XIsSkeletalCategory[128X[104X
+    [4X[28XIsStrictMonoidalCategory[128X[104X
+    [4X[28XIsSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28XIsSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28XIsSymmetricMonoidalCategory[128X[104X
     [4X[25Xgap>[125X [27XV1 := Opposite( TensorUnit( vec ) );;[127X[104X
     [4X[25Xgap>[125X [27XV2 := DirectSum( V1, V1 );;[127X[104X
     [4X[25Xgap>[125X [27XV3 := DirectSum( V1, V2 );;[127X[104X
