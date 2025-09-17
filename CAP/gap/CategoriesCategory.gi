@@ -1134,3 +1134,27 @@ InstallMethodWithCacheFromObject( HorizontalPreComposeFunctorWithNaturalTransfor
     return composition;
     
 end );
+
+##
+InstallMethod( ViewString,
+               [ IsCapFunctor ],
+               
+  function ( F )
+    
+    return Name( F );
+    
+end );
+
+InstallMethod( DisplayString,
+               [ IsCapFunctor ],
+               
+  function ( F )
+    
+    return Concatenation(
+              Name( F ), ":", "\n\n",
+              Name( SourceOfFunctor( F ) ), "\n",
+              "  |\n",
+              "  V\n",
+              Name( RangeOfFunctor( F ) ), "\n" );
+    
+end );
