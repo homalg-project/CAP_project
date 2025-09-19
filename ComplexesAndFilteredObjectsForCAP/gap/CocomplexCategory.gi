@@ -62,11 +62,21 @@ InstallMethod( CocomplexCategory,
     
     cocomplex_category := CreateCapCategory( name : is_computable := false );
     
+    ## TODO: since the following is currently unavoidable deprecate this category constructor
+    DisableInputSanityChecks( cocomplex_category );
+    
     SetUnderlyingCategory( cocomplex_category, category );
     
     SetCocomplexCategory( category, cocomplex_category );
     
     INSTALL_OPERATIONS_FOR_COCOMPLEX_CATEGORY( category );
+    
+    AddIsEqualForObjects( cocomplex_category,
+      function( cocomplex_category, C1, C2 )
+        
+        return IsEqualForObjects( UnderlyingZFunctorCell( C1 ), UnderlyingZFunctorCell( C2 ) );
+        
+    end );
     
     Finalize( cocomplex_category );
     
@@ -93,11 +103,21 @@ InstallMethod( ComplexCategory,
     
     complex_category := CreateCapCategory( name : is_computable := false );
     
+    ## TODO: since the following is currently unavoidable deprecate this category constructor
+    DisableInputSanityChecks( complex_category );
+    
     SetUnderlyingCategory( complex_category, category );
     
     SetComplexCategory( category, complex_category );
     
     INSTALL_OPERATIONS_FOR_COMPLEX_CATEGORY( category );
+    
+    AddIsEqualForObjects( complex_category,
+      function( complex_category, C1, C2 )
+        
+        return IsEqualForObjects( UnderlyingZFunctorCell( C1 ), UnderlyingZFunctorCell( C2 ) );
+        
+    end );
     
     Finalize( complex_category );
     
