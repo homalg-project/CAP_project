@@ -1,5 +1,5 @@
-LoadPackage( "ModulePres" );
-LoadPackage( "Homological" );
+LoadPackage( "GradedModulePresentationsForCAP" );
+LoadPackage( "HomologicalAlgebraForCAP" );
 
 Qxyzt := HomalgFieldOfRationalsInSingular( ) * "x,y,z,t";
 
@@ -24,10 +24,10 @@ SetIsAdditiveCategory( ComplexCategory( CapCategory( S0 ) ), true );
 
 M := AsGradedLeftPresentation( wmat );
 
-res := FreeResolutionComplexOfModule( M );
+res := FreeResolutionComplex( M );
 res := res[ 1 ];
 homres := DualOnComplex( res );
-CE := CartanEilenbergResolution( homres, FreeResolutionCocomplexOfModule );
+CE := CartanEilenbergResolution( homres, FreeResolutionCocomplex );
 homCE := DualOnCocomplexCocomplex( CE );
 trhomCE := TransposeComplexOfComplex( homCE );
 

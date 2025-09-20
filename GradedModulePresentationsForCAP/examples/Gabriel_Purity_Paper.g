@@ -1,4 +1,4 @@
-LoadPackage( "ModulePresentationsForCAP" );
+LoadPackage( "GradedModulePresentationsForCAP" );
 LoadPackage( "HomologicalAlgebraForCAP" );
 
 SwitchGeneralizedMorphismStandard( "span" );

@@ -57,7 +57,7 @@ InstallOtherMethod( IsEqualForObjects,
             
         else
             
-            Error( "Cannot decide whether the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" are equal. You can fix this error by installing `IsEqualForObjects` in <cat> or possibly avoid it by enabling strict caching." );
+            Error( "Cannot decide whether the object \"", String( object_1 ), "\" and the object \"", String( object_2 ), "\" are equal. You can fix this error by installing `IsEqualForObjects` in <cat> or possibly avoid it by enabling strict caching\n" );
             
         fi;
         

@@ -681,16 +681,11 @@ InstallMethod( PurityFiltrationBySpectralSequence,
     
     embedding_list := List( [ 0 .. resolution_len ], i -> GeneralizedEmbeddingOfSpectralSequenceEntry( trhomCE, i, page, homCE, homres, connection_mor ) );
     
-    Print( "Computed embeddings\n" );
-    
     for i in Reversed( [ 1 .. Length( embedding_list ) ] ) do
         if IsZeroForObjects( UnderlyingHonestObject( Source( embedding_list[ i ] ) ) ) then
-            Print( "found a zero\n" );
             Remove( embedding_list, i );
         fi;
     od;
-    
-    Print( "Removed irrelevant embeddings" );
     
     embedding_list := Reversed( embedding_list );
     
@@ -703,8 +698,6 @@ InstallMethod( PurityFiltrationBySpectralSequence,
         od;
     fi;
     
-    Print( "First functors applied\n" );
-    
     pi_list := List( [ 2 .. Length( embedding_list ) ], i -> PreCompose( AsGeneralizedMorphism( combined_image_embeddings[ i ] ), 
                                                                          PseudoInverse( embedding_list[ i ] ) ) );
     
@@ -715,8 +708,6 @@ InstallMethod( PurityFiltrationBySpectralSequence,
             pi_list := List( pi_list, j -> PreCompose( j, ApplyNaturalTransformation( i, Range( j ) ) ) );
         od;
     fi;
-    
-    Print( "second functors applied\n" );
     
     ## inital_step
     
