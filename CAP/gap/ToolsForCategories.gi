@@ -106,7 +106,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
     elif string = "integer" then
         
-        return rec( filter := IsInt );
+        return rec( filter := IsSmallIntRep );
         
     elif string = "nonneg_integer_or_infinity" then
         
