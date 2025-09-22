@@ -1,7 +1,7 @@
 name: ComplexesAndFilteredObjectsForCAP
-version: "2025.02-01"
+version: "2025.09-01"
 license: "GPL-2.0-or-later"
-date: 2025-03-01
+date: 2025-09-22
 description: |
     Implementation of complexes, cocomplexes and filtered objects for CAP
 
@@ -33,11 +33,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ComplexesAndFilteredOb
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2025.02-01/ComplexesAndFilteredObjectsForCAP-2025.02-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2025.09-01/ComplexesAndFilteredObjectsForCAP-2025.09-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2025.02-01/ComplexesAndFilteredObjectsForCAP-2025.02-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2025.09-01/ComplexesAndFilteredObjectsForCAP-2025.09-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2025.02-01/ComplexesAndFilteredObjectsForCAP-2025.02-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-2025.09-01/ComplexesAndFilteredObjectsForCAP-2025.09-01-manual.pdf
 
 abstract: |
 
@@ -46,10 +46,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PG01</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
+    [<span class='BibKey'>PG22</span>]   <b class='BibAuthor'>Posur, S. and Gutsche, S.</b>,
      <i class='BibTitle'>ComplexesAndFilteredObjectsForCAP, Implementation of complexes, cocomplexes and filtered objects for CAP,
-             Version 2025.02-01</i>
-     (<span class='BibYear'>3-01</span>)<br />
+             Version 2025.09-01</i>
+     (<span class='BibYear'>9-22</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP">https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP</a></span>.
     </p>
@@ -60,15 +60,15 @@ bibtex: |
       author =           {Posur, S. and Gutsche, S.},
       title =            {{ComplexesAndFilteredObjectsForCAP},   {Implementation
                           of  complexes,  cocomplexes  and  filtered objects for
-                          CAP}, {V}ersion 2025.02\texttt{\symbol{45}}01},
+                          CAP}, {V}ersion 2025.09\texttt{\symbol{45}}01},
       month =            {5\texttt{\symbol{45}}},
-      year =             {3\texttt{\symbol{45}}01},
+      year =             {9\texttt{\symbol{45}}22},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ComplexesAndFilteredObjectsForCAP}}},
-      printedkey =       {PG01}
+      printedkey =       {PG22}
     }
 
