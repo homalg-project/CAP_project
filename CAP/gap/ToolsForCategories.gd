@@ -431,3 +431,8 @@ InstallGlobalFunction( BigInt, IdFunc );
 #!   Shorthand for `ObjectifyWithAttributes( rec( ), type, [attribute1, value1, ...] )`.
 #! @Arguments type, [attribute1, value1, ...]
 DeclareGlobalFunction( "CreateGapObjectWithAttributes" );
+
+#= comment for Julia
+# This is relevant only in Julia to avoid world-age conflicts
+DeclareSynonym( "CallFuncListAtRuntime", CallFuncList );
+# =#

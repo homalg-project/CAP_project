@@ -352,19 +352,19 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
             
             if filter_list[2] in [ "object", "morphism", "twocell" ] then
                 
-                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
+                get_convenience_function := oper -> { arg } -> CallFuncListAtRuntime( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
                 
             elif filter_list[2] = "list_of_objects" or filter_list[2] = "list_of_morphisms" then
                 
-                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1][1] ) ], arg ) );
+                get_convenience_function := oper -> { arg } -> CallFuncListAtRuntime( oper, Concatenation( [ CapCategory( arg[1][1] ) ], arg ) );
                 
             elif filter_list[3] in [ "object", "morphism", "twocell" ] then
                 
-                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[2] ) ], arg ) );
+                get_convenience_function := oper -> { arg } -> CallFuncListAtRuntime( oper, Concatenation( [ CapCategory( arg[2] ) ], arg ) );
                 
             elif filter_list[4] = "list_of_objects" or filter_list[4] = "list_of_morphisms" then
                 
-                get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[3][1] ) ], arg ) );
+                get_convenience_function := oper -> { arg } -> CallFuncListAtRuntime( oper, Concatenation( [ CapCategory( arg[3][1] ) ], arg ) );
                 
             else
                 
