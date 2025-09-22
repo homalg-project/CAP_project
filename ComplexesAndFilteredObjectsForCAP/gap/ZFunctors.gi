@@ -55,11 +55,22 @@ InstallMethod( ZFunctorCategory,
     
     z_functor_category := CreateCapCategory( name : is_computable := false );
     
+    ## TODO: since the following is currently unavoidable deprecate this category constructor
+    DisableInputSanityChecks( z_functor_category );
+    
     SetUnderlyingCategory( z_functor_category, category );
     
     SetZFunctorCategory( category, z_functor_category );
     
     INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY( category );
+    
+    AddIsEqualForObjects( z_functor_category,
+      function( z_functor_category, ZF1, ZF2 )
+        
+        ## return true;
+        return IsIdenticalObj( ZF1, ZF2 );
+        
+    end );
     
     Finalize( z_functor_category );
     

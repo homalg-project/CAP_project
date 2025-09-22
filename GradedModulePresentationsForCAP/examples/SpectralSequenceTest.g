@@ -1,5 +1,5 @@
-LoadPackage( "ModulePres" );
-LoadPackage( "Homological" );
+LoadPackage( "GradedModulePresentationsForCAP" );
+LoadPackage( "HomologicalAlgebraForCAP" );
 
 SwitchGeneralizedMorphismStandard( "span" );
 
@@ -26,10 +26,10 @@ SetIsAdditiveCategory( ComplexCategory( CapCategory( S0 ) ), true );
 
 M := AsGradedLeftPresentation( wmat );
 
-res1 := FreeResolutionComplexOfModule( M );
+res1 := FreeResolutionComplex( M );
 res := res1[ 1 ];
 homres := DualOnComplex( res );
-CE := CartanEilenbergResolution( homres, FreeResolutionCocomplexOfModule );
+CE := CartanEilenbergResolution( homres, FreeResolutionCocomplex );
 homCE := DualOnCocomplexCocomplex( CE );
 trhomCE := TransposeComplexOfComplex( homCE );
 
@@ -41,8 +41,8 @@ resolution_len := ResolutionLength( res );
 
 tot := TotalComplexOfBicomplex( homCE, resolution_len );
 
-connection_at_0 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 0, FreeResolutionCocomplexOfModule );
-connection_at_1 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 1, FreeResolutionCocomplexOfModule );
+connection_at_0 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 0, FreeResolutionCocomplex );
+connection_at_1 := ConnectingMorphismFromCocomplexToCartanEilenbergResolution( homres, 1, FreeResolutionCocomplex );
 
 homcon_at_0 := DualOnMorphisms( connection_at_0 );
 homcon_at_1 := DualOnMorphisms( connection_at_1 );
