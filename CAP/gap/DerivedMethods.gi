@@ -2606,13 +2606,15 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
     
     basis := List( basis, m -> PreCompose( range_cat, m, iota ) );
     
-    return
-      List( basis, m ->
-        List( [ 1 .. n ], j ->
-          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-            Target( left_coefficients[1][j] ),
-            Source( right_coefficients[1][j] ),
-            PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) ) ) ) );
+    return List( basis, m ->
+              List( [ 1 .. n ], j ->
+                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                  Target( left_coefficients[1][j] ),
+                  Source( right_coefficients[1][j] ),
+                  PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) )
+                )
+              )
+            );
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
@@ -2668,16 +2670,15 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
     
     B := List( B, m -> PreCompose( range_cat, m, iota ) );
     
-    return
-      List( B, m ->
-        List( [ 1 .. n ], j ->
-          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-            Target( alpha[1][j] ),
-            Source( beta[1][j] ),
-            PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) )
-          )
-        )
-      );
+    return List( B, m ->
+              List( [ 1 .. n ], j ->
+                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                  Target( alpha[1][j] ),
+                  Source( beta[1][j] ),
+                  PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) )
+                )
+              )
+            );
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
