@@ -2939,21 +2939,16 @@ AddFinalDerivationBundle( "IsomorphismFromImageObjectToKernelOfCokernel as the i
 
 ##
 AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
-                    "MorphismFromCoimageToImageWithGivenObjects using that images are given by kernels of cokernels",
-                    [ [ CokernelProjection, 1 ],
-                      [ KernelLift, 1 ],
+                    "MorphismFromCoimageToImageWithGivenObjects using that the image embedding lifts the coimage astriction",
+                    [ [ ImageEmbeddingWithGivenImageObject, 1 ],
                       [ AstrictionToCoimageWithGivenCoimageObject, 1 ],
-                      [ PreCompose, 1 ],
-                      [ IsomorphismFromKernelOfCokernelToImageObject, 1 ] ],
+                      [ LiftAlongMonomorphism, 1 ] ],
                     
   function( cat, coimage, morphism, image )
-    local cokernel_projection, kernel_lift;
     
-    cokernel_projection := CokernelProjection( cat, morphism );
-    
-    kernel_lift := KernelLift( cat, cokernel_projection, coimage, AstrictionToCoimageWithGivenCoimageObject( cat, morphism, coimage ) );
-    
-    return PreCompose( cat, kernel_lift, IsomorphismFromKernelOfCokernelToImageObject( cat, morphism ) );
+    return LiftAlongMonomorphism( cat,
+                   ImageEmbeddingWithGivenImageObject( cat, morphism, image ),
+                   AstrictionToCoimageWithGivenCoimageObject( cat, morphism, coimage ) );
     
 end : CategoryFilter := IsPreAbelianCategory );
 
