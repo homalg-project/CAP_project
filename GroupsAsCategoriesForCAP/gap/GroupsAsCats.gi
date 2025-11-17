@@ -15,7 +15,7 @@ InstallMethod( GroupAsCategory,
                [ IsGroup ],
                
   function( group )
-    local group_name, category, is_finite;
+    local group_name, group_as_category, is_finite;
     
     if HasName( group ) then
         group_name := Name( group );
@@ -25,7 +25,7 @@ InstallMethod( GroupAsCategory,
         group_name := String( group );
     fi;
     
-    category :=
+    group_as_category :=
       CreateCapCategoryWithDataTypes(
               Concatenation( "GroupAsCategory( ", group_name," )" ),
               IsGroupAsCategory,
@@ -37,35 +37,35 @@ InstallMethod( GroupAsCategory,
               fail
               : overhead := false );
     
-    category!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingGroup",
-        ],
-    );
+    group_as_category!.compiler_hints :=
+      rec( category_attribute_names := [
+              "UnderlyingGroup",
+              ],
+           );
     
-    SetUnderlyingGroup( category, group );
+    SetUnderlyingGroup( group_as_category, group );
     
-    SetIsObjectFiniteCategory( category, true );
+    SetIsObjectFiniteCategory( group_as_category, true );
     
     is_finite := HasIsFinite( group ) and IsFinite( group );
     
     if is_finite then
         
-        SetIsFiniteCategory( category, true );
+        SetIsFiniteCategory( group_as_category, true );
         
         if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
             
-            SET_HOMOMORPHISM_STRUCTURE_ATTRIBUTES_FOR_GROUP_AS_CATEGORY( category );
+            SET_HOMOMORPHISM_STRUCTURE_ATTRIBUTES_FOR_GROUP_AS_CATEGORY( group_as_category );
             
         fi;
         
     fi;
     
-    INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY( category, is_finite );
+    INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY( group_as_category, is_finite );
     
-    Finalize( category );
+    Finalize( group_as_category );
     
-    return category;
+    return group_as_category;
     
 end );
 
@@ -73,9 +73,9 @@ end );
 InstallMethod( GroupAsCategoryUniqueObject,
                [ IsGroupAsCategory ],
                
-  function( category )
+  function( group_as_category )
     
-    return CreateCapCategoryObjectWithAttributes( category );
+    return CreateCapCategoryObjectWithAttributes( group_as_category );
     
 end );
 
@@ -83,12 +83,12 @@ end );
 InstallMethod( GroupAsCategoryMorphismOp,
                [ IsGroupAsCategory, IsObject ],
                
-  function( category, element )
+  function( group_as_category, element )
     local unique_object;
     
-    unique_object := GroupAsCategoryUniqueObject( category );
+    unique_object := GroupAsCategoryUniqueObject( group_as_category );
     
-    return CreateCapCategoryMorphismWithAttributes( category,
+    return CreateCapCategoryMorphismWithAttributes( group_as_category,
                                                     unique_object,
                                                     unique_object,
                                                     UnderlyingGroupElement, element );
@@ -99,9 +99,9 @@ end );
 InstallOtherMethod( GroupAsCategoryMorphism,
                [ IsObject, IsGroupAsCategory ],
                
-  function( element, category )
+  function( element, group_as_category )
     
-    return GroupAsCategoryMorphism( category, element );
+    return GroupAsCategoryMorphism( group_as_category, element );
     
 end );
 
@@ -141,9 +141,9 @@ end );
 InstallMethod( ElementsOfUnderlyingGroup,
                [ IsGroupAsCategory ],
                
-  function( CG )
+  function( group_as_category )
     
-    return Elements( UnderlyingGroup( CG ) );
+    return Elements( UnderlyingGroup( group_as_category ) );
     
 end );
 
@@ -165,123 +165,157 @@ end );
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
   
-  function( category, is_finite )
-    local group, equality_func,
-          sets, t_obj, elements, size, RG, HOM_PERMUTATION_ARRAY;
+  function( group_as_category, is_finite )
+    local group;
     
-    group := UnderlyingGroup( category );
-    
-    ##
-    AddIsEqualForObjects( category, {cat, a, b} -> true );
-    
-    equality_func := {cat, alpha, beta} -> UnderlyingGroupElement( alpha ) = UnderlyingGroupElement( beta );
+    group := UnderlyingGroup( group_as_category );
     
     ##
-    AddIsEqualForMorphisms( category, equality_func );
-    
-    ##
-    AddIsCongruentForMorphisms( category, equality_func );
-    
-    ##
-    AddIsWellDefinedForObjects( category, {cat, x} -> IsIdenticalObj( category, CapCategory( x ) ) );
-    
-    ##
-    AddIsWellDefinedForMorphisms( category,
-      function( cat, alpha )
+    AddIsEqualForObjects( group_as_category,
+      function( group_as_category, a, b )
         
-        return UnderlyingGroupElement( alpha ) in UnderlyingGroup( category );
+        return true;
         
     end );
     
     ##
-    AddPreCompose( category,
-      function( cat, alpha, beta )
+    AddIsEqualForMorphisms( group_as_category,
+      function( group_as_category, alpha, beta )
         
-        return GroupAsCategoryMorphism(
-            category,
-            UnderlyingGroupElement( alpha ) * UnderlyingGroupElement( beta )
-        );
+        return UnderlyingGroupElement( alpha ) = UnderlyingGroupElement( beta );
         
     end );
     
     ##
-    AddIdentityMorphism( category,
-      function( cat, unique_object )
+    AddIsCongruentForMorphisms( group_as_category,
+      function( group_as_category, alpha, beta )
         
-        return GroupAsCategoryMorphism(
-            category,
-            One( group )
-        );
+        return IsEqualForMorphisms( group_as_category, alpha, beta );
         
     end );
     
     ##
-    AddInverseForMorphisms( category,
-      function( cat, alpha )
+    AddIsWellDefinedForObjects( group_as_category,
+      function( group_as_category, x )
         
-        return  GroupAsCategoryMorphism(
-            category,
-            Inverse( UnderlyingGroupElement( alpha ) )
-        );
+        return IsIdenticalObj( group_as_category, CapCategory( x ) );
         
     end );
     
     ##
-    AddIsIsomorphism( category, {cat, mor} -> true );
+    AddIsWellDefinedForMorphisms( group_as_category,
+      function( group_as_category, alpha )
+        
+        return UnderlyingGroupElement( alpha ) in UnderlyingGroup( group_as_category );
+        
+    end );
     
     ##
-    AddIsEpimorphism( category, {cat, mor} -> true );
+    AddPreCompose( group_as_category,
+      function( group_as_category, alpha, beta )
+        
+        return GroupAsCategoryMorphism( group_as_category,
+                       UnderlyingGroupElement( alpha ) * UnderlyingGroupElement( beta ) );
+        
+    end );
     
     ##
-    AddIsMonomorphism( category, {cat, mor} -> true );
+    AddIdentityMorphism( group_as_category,
+      function( group_as_category, unique_object )
+        
+        return GroupAsCategoryMorphism( group_as_category,
+                       One( group ) );
+        
+    end );
     
     ##
-    AddIsLiftable( category, {cat, mor1, mor2} -> true );
+    AddInverseForMorphisms( group_as_category,
+      function( group_as_category, alpha )
+        
+        return  GroupAsCategoryMorphism( group_as_category,
+            Inverse( UnderlyingGroupElement( alpha ) ) );
+        
+    end );
     
     ##
-    AddIsColiftable( category, {cat, mor1, mor2} -> true );
-    
-    ##
-    AddLift( category,
-        function( cat, alpha, beta )
-            return  GroupAsCategoryMorphism(
-            category,
-            UnderlyingGroupElement( alpha ) * Inverse( UnderlyingGroupElement( beta ) )
-        );
+    AddIsIsomorphism( group_as_category,
+      function( group_as_category, mor )
+        
+        return true;
+        
     end );
     
     ##
-    AddColift( category,
-        function( cat, alpha, beta )
-            return  GroupAsCategoryMorphism(
-            category,
-            Inverse( UnderlyingGroupElement( alpha ) ) * UnderlyingGroupElement( beta )
-        );
+    AddIsEpimorphism( group_as_category,
+      function( group_as_category, mor )
+        
+        return true;
+        
     end );
     
     ##
-    AddSetOfObjectsOfCategory( category,
-      function( cat )
+    AddIsMonomorphism( group_as_category,
+      function( group_as_category, mor )
         
-        return [ GroupAsCategoryUniqueObject( cat ) ];
+        return true;
         
     end );
+    
+    ##
+    AddIsLiftable( group_as_category,
+      function( group_as_category, mor1, mor2 )
         
+        return true;
+        
+    end );
+    
+    ##
+    AddIsColiftable( group_as_category,
+      function( group_as_category, mor1, mor2 )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddLift( group_as_category,
+      function( group_as_category, alpha, beta )
+        
+        return GroupAsCategoryMorphism( group_as_category,
+                       UnderlyingGroupElement( alpha ) * Inverse( UnderlyingGroupElement( beta ) ) );
+        
+    end );
+    
+    ##
+    AddColift( group_as_category,
+      function( group_as_category, alpha, beta )
+        
+        return GroupAsCategoryMorphism( group_as_category,
+                       Inverse( UnderlyingGroupElement( alpha ) ) * UnderlyingGroupElement( beta ) );
+        
+    end );
+    
+        ##
+    AddSetOfObjectsOfCategory( group_as_category,
+      function( group_as_category )
+        
+        return [ GroupAsCategoryUniqueObject( group_as_category ) ];
+        
+    end );
+    
     if is_finite then
         
-        elements := ElementsOfUnderlyingGroup( category );
-        
         ##
-        AddSetOfMorphismsOfFiniteCategory( category,
-          function( cat )
+        AddSetOfMorphismsOfFiniteCategory( group_as_category,
+          function( group_as_category )
             
-            return List( elements, el -> GroupAsCategoryMorphism( category, el ) );
+            return List( ElementsOfUnderlyingGroup( group_as_category ), el -> GroupAsCategoryMorphism( group_as_category, el ) );
             
         end );
         
         if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2023.07-03" ) then
             
-            INSTALL_HOMOMORPHISM_STRUCTURE_FOR_GROUP_AS_CATEGORY( category );
+            INSTALL_HOMOMORPHISM_STRUCTURE_FOR_GROUP_AS_CATEGORY( group_as_category );
             
         fi;
         
@@ -315,7 +349,8 @@ InstallOtherMethod( \/,
 
 ##
 InstallMethod( Down,
-               [ IsGroupAsCategoryObject ],
+        [ IsGroupAsCategoryObject ],
+        
   function( obj )
     
     return "*";
@@ -324,7 +359,8 @@ end );
 
 ##
 InstallMethod( DownOnlyMorphismData,
-               [ IsGroupAsCategoryMorphism ],
+        [ IsGroupAsCategoryMorphism ],
+        
   function( mor )
     
     return UnderlyingGroupElement( mor );
