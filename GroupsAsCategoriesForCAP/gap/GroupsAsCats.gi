@@ -321,6 +321,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
     fi;
     
+    if HasGeneratorsOfMagmaWithInverses( group ) then
+        
+        SetIsFinitelyPresentedCategory( group_as_category, true );
+        
+        ##
+        AddSetOfGeneratingMorphismsOfCategory( group_as_category,
+          function( group_as_category )
+            
+            return List( GeneratorsOfMagmaWithInverses( UnderlyingGroup( group_as_category ) ), el -> GroupAsCategoryMorphism( group_as_category, el ) );
+            
+        end );
+        
+    fi;
+    
 end );
 
 ####################################
