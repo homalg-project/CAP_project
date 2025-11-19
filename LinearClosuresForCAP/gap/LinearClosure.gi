@@ -12,7 +12,11 @@
 
 ##
 InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
-  function( rows, underlying_category, arg... ) ## rows = CategoryOfRows( ... )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, rows, underlying_category, arg... ) ## rows = CategoryOfRows( ... )
     local ring, name, category, is_finite, sorting_function, with_nf, cocycle;
     
     ring := UnderlyingRing( rows );
@@ -142,11 +146,15 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     
     INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE( rows, category );
     
-    Finalize( category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      
+      Finalize( category );
+      
+    fi;
     
     return category;
     
-end );
+end ) );
 
 ##
 InstallMethod( LinearClosure,
