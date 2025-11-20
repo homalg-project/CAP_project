@@ -2608,18 +2608,14 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
     
     return List( basis, m ->
               List( [ 1 .. n ], j ->
-                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-                  Target( left_coefficients[1][j] ),
-                  Source( right_coefficients[1][j] ),
-                  PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) )
-                )
-              )
-            );
+                    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                            Target( left_coefficients[1][j] ),
+                            Source( right_coefficients[1][j] ),
+                            PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) ) ) ) );
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
-);
+  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) );
 
 ##
 AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
@@ -2650,17 +2646,15 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
     
     H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( alpha[i][1] ), Target( beta[i][1] ) ) );
     
-    list_1 :=
-      List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, alpha[i][j], beta[i][j] ) )
-    );
+    list_1 := List( [ 1 .. n ], j ->
+                    List( [ 1 .. m ], i ->
+                          HomomorphismStructureOnMorphisms( cat, alpha[i][j], beta[i][j] ) ) );
     
     H_1 := MorphismBetweenDirectSums( range_cat, H_B_C, list_1, H_A_D );
 
-    list_2 :=
-      List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, gamma[i][j], delta[i][j] ) )
-    );
+    list_2 := List( [ 1 .. n ], j ->
+                    List( [ 1 .. m ], i ->
+                          HomomorphismStructureOnMorphisms( cat, gamma[i][j], delta[i][j] ) ) );
     
     H_2 := MorphismBetweenDirectSums( range_cat, H_B_C, list_2, H_A_D );
     
@@ -2671,19 +2665,15 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
     B := List( B, m -> PreCompose( range_cat, m, iota ) );
     
     return List( B, m ->
-              List( [ 1 .. n ], j ->
-                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-                  Target( alpha[1][j] ),
-                  Source( beta[1][j] ),
-                  PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) )
-                )
-              )
-            );
+                 List( [ 1 .. n ], j ->
+                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                               Target( alpha[1][j] ),
+                               Source( beta[1][j] ),
+                               PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, H_B_C, j ) ) ) ) );
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
-);
+  CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) );
 
 ## Final methods for Equalizer
 
