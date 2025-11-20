@@ -633,11 +633,9 @@ AddHorizontalPreCompose( category,
   function( cat, left_natural_transformation, right_natural_transformation )
     local pre_compose_transfo_functor, pre_compose_functor_transfo;
     
-    pre_compose_transfo_functor := 
-          HorizontalPreComposeNaturalTransformationWithFunctor( left_natural_transformation, Source( right_natural_transformation ) );
+    pre_compose_transfo_functor := HorizontalPreComposeNaturalTransformationWithFunctor( left_natural_transformation, Source( right_natural_transformation ) );
           
-    pre_compose_functor_transfo :=
-          HorizontalPreComposeFunctorWithNaturalTransformation( Range( left_natural_transformation ), right_natural_transformation );
+    pre_compose_functor_transfo := HorizontalPreComposeFunctorWithNaturalTransformation( Range( left_natural_transformation ), right_natural_transformation );
     
     return VerticalPreCompose( pre_compose_transfo_functor, pre_compose_functor_transfo );
     
