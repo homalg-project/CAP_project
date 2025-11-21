@@ -72,6 +72,56 @@ end : CategoryFilter := cat -> HasIsFiniteCategory( cat ) and IsFiniteCategory( 
 
 ###########################
 ##
+## In a finitely presented category
+##
+###########################
+
+##
+AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
+        "SetOfGeneratingMorphismsOfCategory for an opposite category",
+        [ [ ObjectConstructor, 4 ],
+          [ MorphismConstructor, 2 ],
+          [ SetOfGeneratingMorphismsOfCategory, 1, OppositeCategory ] ],
+        
+  function( cat_op )
+    local cat, morphisms;
+    
+    cat := OppositeCategory( cat_op );
+    
+    morphisms := SetOfGeneratingMorphismsOfCategory( cat );
+    
+    return List( morphisms, mor ->
+                 MorphismConstructor( cat_op,
+                         ObjectConstructor( cat_op, Target( mor ) ),
+                         mor,
+                         ObjectConstructor( cat_op, Source( mor ) ) ) );
+    
+end : CategoryGetters := rec( cat := OppositeCategory ),
+      CategoryFilter := cat_op -> HasOppositeCategory( cat_op ) );
+
+##
+AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
+        "SetOfGeneratingMorphismsOfCategory for a reinterpreted category",
+        [ [ SetOfGeneratingMorphismsOfCategory, 1, ModelingCategory ] ],
+        
+  function( cat )
+    local modeling_category, generating_morphisms;
+    
+    modeling_category := ModelingCategory( cat );
+    
+    generating_morphisms := SetOfGeneratingMorphismsOfCategory( modeling_category );
+    
+    return List( generating_morphisms, mor ->
+                 ReinterpretationOfMorphism( cat,
+                         ReinterpretationOfObject( cat, Source( mor ) ),
+                         mor,
+                         ReinterpretationOfObject( cat, Target( mor ) ) ) );
+    
+end : CategoryGetters := rec( modeling_category := ModelingCategory ),
+      CategoryFilter := cat -> HasModelingCategory( cat ) );
+
+###########################
+##
 ## WithGiven pairs
 ##
 ###########################

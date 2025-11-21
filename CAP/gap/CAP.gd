@@ -191,6 +191,14 @@ DeclareProperty( "IsEquivalentToFiniteCategory",
 AddCategoricalProperty( [ "IsEquivalentToFiniteCategory", "IsEquivalentToFiniteCategory" ] );
 
 #! @Description
+#!  The (evil) property of <A>C</A> being a finitely presented.
+#! @Arguments C
+DeclareProperty( "IsFinitelyPresentedCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsFinitelyPresentedCategory", "IsFinitelyPresentedCategory" ] );
+
+#! @Description
 #!  The property of the category <A>C</A> being equipped with a homomorphism structure.
 #! @Arguments C
 DeclareProperty( "IsEquippedWithHomomorphismStructure", IsCapCategory );

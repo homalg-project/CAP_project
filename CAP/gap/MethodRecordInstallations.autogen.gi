@@ -6472,6 +6472,31 @@ InstallMethod( AddRandomObjectByList,
     )
 );
 
+## SetOfGeneratingMorphismsOfCategory
+InstallMethod( AddSetOfGeneratingMorphismsOfCategory,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "SetOfGeneratingMorphismsOfCategory", category, func, -1 );
+    
+end );
+
+InstallMethod( AddSetOfGeneratingMorphismsOfCategory,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "SetOfGeneratingMorphismsOfCategory", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
 ## SetOfMorphismsOfFiniteCategory
 InstallMethod( AddSetOfMorphismsOfFiniteCategory,
                [ IsCapCategory, IsFunction ],

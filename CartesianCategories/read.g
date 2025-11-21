@@ -11,6 +11,7 @@ ReadPackage( "CartesianCategories", "gap/Tools.gi" );
 ## Initial category
 
 ReadPackage( "CartesianCategories", "gap/InitialCategory.gi" );
+ReadPackage( "CartesianCategories", "gap/InitialCategoryDerivedMethods.gi" );
 
 ## Cartesian and Cocartesian
 
