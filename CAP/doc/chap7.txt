@@ -3291,7 +3291,20 @@
   less    complex    =    faster    execution).    [23XF:    (    L    )   \mapsto
   \mathtt{RandomObjectByList}(L)[123X.[133X
   
-  [1X7.6-220 AddSetOfMorphismsOfFiniteCategory[101X
+  [1X7.6-220 AddSetOfGeneratingMorphismsOfCategory[101X
+  
+  [33X[1;0Y[29X[2XAddSetOfGeneratingMorphismsOfCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddSetOfGeneratingMorphismsOfCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSetOfGeneratingMorphismsOfCategory[110X.  Optionally, a weight (default: 100) can
+  be specified which should roughly correspond to the computational complexity
+  of  the  function  (lower  weight = less complex = faster execution). [23XF: ( )
+  \mapsto \mathtt{SetOfGeneratingMorphismsOfCategory}()[123X.[133X
+  
+  [1X7.6-221 AddSetOfMorphismsOfFiniteCategory[101X
   
   [33X[1;0Y[29X[2XAddSetOfMorphismsOfFiniteCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSetOfMorphismsOfFiniteCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3304,7 +3317,7 @@
   the  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( )
   \mapsto \mathtt{SetOfMorphismsOfFiniteCategory}()[123X.[133X
   
-  [1X7.6-221 AddSetOfObjectsOfCategory[101X
+  [1X7.6-222 AddSetOfObjectsOfCategory[101X
   
   [33X[1;0Y[29X[2XAddSetOfObjectsOfCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSetOfObjectsOfCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3317,7 +3330,7 @@
   function  (lower  weight  = less complex = faster execution). [23XF: ( ) \mapsto
   \mathtt{SetOfObjectsOfCategory}()[123X.[133X
   
-  [1X7.6-222 AddSimplifyEndo[101X
+  [1X7.6-223 AddSimplifyEndo[101X
   
   [33X[1;0Y[29X[2XAddSimplifyEndo[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyEndo[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3330,7 +3343,7 @@
   less    complex   =   faster   execution).   [23XF:   (   mor,   n   )   \mapsto
   \mathtt{SimplifyEndo}(mor, n)[123X.[133X
   
-  [1X7.6-223 AddSimplifyEndo_IsoFromInputObject[101X
+  [1X7.6-224 AddSimplifyEndo_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyEndo_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyEndo_IsoFromInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3343,7 +3356,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( mor, n )
   \mapsto \mathtt{SimplifyEndo_IsoFromInputObject}(mor, n)[123X.[133X
   
-  [1X7.6-224 AddSimplifyEndo_IsoToInputObject[101X
+  [1X7.6-225 AddSimplifyEndo_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyEndo_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyEndo_IsoToInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3356,7 +3369,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( mor, n )
   \mapsto \mathtt{SimplifyEndo_IsoToInputObject}(mor, n)[123X.[133X
   
-  [1X7.6-225 AddSimplifyMorphism[101X
+  [1X7.6-226 AddSimplifyMorphism[101X
   
   [33X[1;0Y[29X[2XAddSimplifyMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3369,7 +3382,7 @@
   less    complex   =   faster   execution).   [23XF:   (   mor,   n   )   \mapsto
   \mathtt{SimplifyMorphism}(mor, n)[123X.[133X
   
-  [1X7.6-226 AddSimplifyObject[101X
+  [1X7.6-227 AddSimplifyObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3382,7 +3395,7 @@
   less    complex    =    faster   execution).   [23XF:   (   A,   n   )   \mapsto
   \mathtt{SimplifyObject}(A, n)[123X.[133X
   
-  [1X7.6-227 AddSimplifyObject_IsoFromInputObject[101X
+  [1X7.6-228 AddSimplifyObject_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoFromInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3395,7 +3408,7 @@
   of  the function (lower weight = less complex = faster execution). [23XF: ( A, n
   ) \mapsto \mathtt{SimplifyObject_IsoFromInputObject}(A, n)[123X.[133X
   
-  [1X7.6-228 AddSimplifyObject_IsoToInputObject[101X
+  [1X7.6-229 AddSimplifyObject_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoToInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3408,7 +3421,7 @@
   the  function  (lower weight = less complex = faster execution). [23XF: ( A, n )
   \mapsto \mathtt{SimplifyObject_IsoToInputObject}(A, n)[123X.[133X
   
-  [1X7.6-229 AddSimplifyRange[101X
+  [1X7.6-230 AddSimplifyRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifyRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3421,7 +3434,7 @@
   less    complex   =   faster   execution).   [23XF:   (   mor,   n   )   \mapsto
   \mathtt{SimplifyRange}(mor, n)[123X.[133X
   
-  [1X7.6-230 AddSimplifyRange_IsoFromInputObject[101X
+  [1X7.6-231 AddSimplifyRange_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyRange_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyRange_IsoFromInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3434,7 +3447,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( mor, n )
   \mapsto \mathtt{SimplifyRange_IsoFromInputObject}(mor, n)[123X.[133X
   
-  [1X7.6-231 AddSimplifyRange_IsoToInputObject[101X
+  [1X7.6-232 AddSimplifyRange_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyRange_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifyRange_IsoToInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3447,7 +3460,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( mor, n )
   \mapsto \mathtt{SimplifyRange_IsoToInputObject}(mor, n)[123X.[133X
   
-  [1X7.6-232 AddSimplifySource[101X
+  [1X7.6-233 AddSimplifySource[101X
   
   [33X[1;0Y[29X[2XAddSimplifySource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3460,7 +3473,7 @@
   less    complex   =   faster   execution).   [23XF:   (   mor,   n   )   \mapsto
   \mathtt{SimplifySource}(mor, n)[123X.[133X
   
-  [1X7.6-233 AddSimplifySourceAndRange[101X
+  [1X7.6-234 AddSimplifySourceAndRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3473,7 +3486,7 @@
   function  (lower  weight  =  less complex = faster execution). [23XF: ( mor, n )
   \mapsto \mathtt{SimplifySourceAndRange}(mor, n)[123X.[133X
   
-  [1X7.6-234 AddSimplifySourceAndRange_IsoFromInputRange[101X
+  [1X7.6-235 AddSimplifySourceAndRange_IsoFromInputRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoFromInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoFromInputRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3487,7 +3500,7 @@
   [23XF: ( mor, n ) \mapsto \mathtt{SimplifySourceAndRange_IsoFromInputRange}(mor,
   n)[123X.[133X
   
-  [1X7.6-235 AddSimplifySourceAndRange_IsoFromInputSource[101X
+  [1X7.6-236 AddSimplifySourceAndRange_IsoFromInputSource[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoFromInputSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoFromInputSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3501,7 +3514,7 @@
   [23XF:            (            mor,            n            )            \mapsto
   \mathtt{SimplifySourceAndRange_IsoFromInputSource}(mor, n)[123X.[133X
   
-  [1X7.6-236 AddSimplifySourceAndRange_IsoToInputRange[101X
+  [1X7.6-237 AddSimplifySourceAndRange_IsoToInputRange[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoToInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoToInputRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3515,7 +3528,7 @@
   [23XF:  (  mor, n ) \mapsto \mathtt{SimplifySourceAndRange_IsoToInputRange}(mor,
   n)[123X.[133X
   
-  [1X7.6-237 AddSimplifySourceAndRange_IsoToInputSource[101X
+  [1X7.6-238 AddSimplifySourceAndRange_IsoToInputSource[101X
   
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoToInputSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySourceAndRange_IsoToInputSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3529,7 +3542,7 @@
   [23XF:  ( mor, n ) \mapsto \mathtt{SimplifySourceAndRange_IsoToInputSource}(mor,
   n)[123X.[133X
   
-  [1X7.6-238 AddSimplifySource_IsoFromInputObject[101X
+  [1X7.6-239 AddSimplifySource_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifySource_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySource_IsoFromInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3542,7 +3555,7 @@
   of  the function (lower weight = less complex = faster execution). [23XF: ( mor,
   n ) \mapsto \mathtt{SimplifySource_IsoFromInputObject}(mor, n)[123X.[133X
   
-  [1X7.6-239 AddSimplifySource_IsoToInputObject[101X
+  [1X7.6-240 AddSimplifySource_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifySource_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSimplifySource_IsoToInputObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3555,7 +3568,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( mor, n )
   \mapsto \mathtt{SimplifySource_IsoToInputObject}(mor, n)[123X.[133X
   
-  [1X7.6-240 AddSolveLinearSystemInAbCategory[101X
+  [1X7.6-241 AddSolveLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XAddSolveLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSolveLinearSystemInAbCategory[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3569,7 +3582,7 @@
   arg3,  arg4  )  \mapsto  \mathtt{SolveLinearSystemInAbCategory}(arg2,  arg3,
   arg4)[123X.[133X
   
-  [1X7.6-241 AddSomeInjectiveObject[101X
+  [1X7.6-242 AddSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSomeInjectiveObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3582,7 +3595,7 @@
   function  (lower  weight  =  less  complex  = faster execution). [23XF: ( arg2 )
   \mapsto \mathtt{SomeInjectiveObject}(arg2)[123X.[133X
   
-  [1X7.6-242 AddSomeIsomorphismBetweenObjects[101X
+  [1X7.6-243 AddSomeIsomorphismBetweenObjects[101X
   
   [33X[1;0Y[29X[2XAddSomeIsomorphismBetweenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSomeIsomorphismBetweenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3596,7 +3609,7 @@
   object_1,                 object_2                 )                 \mapsto
   \mathtt{SomeIsomorphismBetweenObjects}(object_1, object_2)[123X.[133X
   
-  [1X7.6-243 AddSomeProjectiveObject[101X
+  [1X7.6-244 AddSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSomeProjectiveObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3609,7 +3622,7 @@
   function  (lower  weight  =  less  complex  = faster execution). [23XF: ( arg2 )
   \mapsto \mathtt{SomeProjectiveObject}(arg2)[123X.[133X
   
-  [1X7.6-244 AddSomeReductionBySplitEpiSummand[101X
+  [1X7.6-245 AddSomeReductionBySplitEpiSummand[101X
   
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3622,7 +3635,7 @@
   the  function (lower weight = less complex = faster execution). [23XF: ( alpha )
   \mapsto \mathtt{SomeReductionBySplitEpiSummand}(alpha)[123X.[133X
   
-  [1X7.6-245 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange[101X
+  [1X7.6-246 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange[101X
   
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3636,7 +3649,7 @@
   faster        execution).       [23XF:       (       alpha       )       \mapsto
   \mathtt{SomeReductionBySplitEpiSummand_MorphismFromInputRange}(alpha)[123X.[133X
   
-  [1X7.6-246 AddSomeReductionBySplitEpiSummand_MorphismToInputRange[101X
+  [1X7.6-247 AddSomeReductionBySplitEpiSummand_MorphismToInputRange[101X
   
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand_MorphismToInputRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSomeReductionBySplitEpiSummand_MorphismToInputRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3650,7 +3663,7 @@
   faster        execution).       [23XF:       (       alpha       )       \mapsto
   \mathtt{SomeReductionBySplitEpiSummand_MorphismToInputRange}(alpha)[123X.[133X
   
-  [1X7.6-247 AddSubtractionForMorphisms[101X
+  [1X7.6-248 AddSubtractionForMorphisms[101X
   
   [33X[1;0Y[29X[2XAddSubtractionForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSubtractionForMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3663,7 +3676,7 @@
   the  function  (lower weight = less complex = faster execution). [23XF: ( alpha,
   beta ) \mapsto \mathtt{SubtractionForMorphisms}(alpha, beta)[123X.[133X
   
-  [1X7.6-248 AddSumOfMorphisms[101X
+  [1X7.6-249 AddSumOfMorphisms[101X
   
   [33X[1;0Y[29X[2XAddSumOfMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddSumOfMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3676,7 +3689,7 @@
   less  complex  =  faster execution). [23XF: ( source, list_of_morphisms, range )
   \mapsto \mathtt{SumOfMorphisms}(source, list_of_morphisms, range)[123X.[133X
   
-  [1X7.6-249 AddTerminalObject[101X
+  [1X7.6-250 AddTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTerminalObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3688,7 +3701,7 @@
   correspond  to  the computational complexity of the function (lower weight =
   less complex = faster execution). [23XF: ( ) \mapsto \mathtt{TerminalObject}()[123X.[133X
   
-  [1X7.6-250 AddTerminalObjectFunctorial[101X
+  [1X7.6-251 AddTerminalObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XAddTerminalObjectFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTerminalObjectFunctorial[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3701,7 +3714,7 @@
   the  function  (lower  weight  =  less  complex  = faster execution). [23XF: ( )
   \mapsto \mathtt{TerminalObjectFunctorial}()[123X.[133X
   
-  [1X7.6-251 AddTerminalObjectFunctorialWithGivenTerminalObjects[101X
+  [1X7.6-252 AddTerminalObjectFunctorialWithGivenTerminalObjects[101X
   
   [33X[1;0Y[29X[2XAddTerminalObjectFunctorialWithGivenTerminalObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTerminalObjectFunctorialWithGivenTerminalObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3715,7 +3728,7 @@
   faster       execution).       [23XF:      (      P,      Pp      )      \mapsto
   \mathtt{TerminalObjectFunctorialWithGivenTerminalObjects}(P, Pp)[123X.[133X
   
-  [1X7.6-252 AddUniversalMorphismFromCoequalizer[101X
+  [1X7.6-253 AddUniversalMorphismFromCoequalizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoequalizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoequalizer[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3729,7 +3742,7 @@
   morphisms,  T,  tau  )  \mapsto \mathtt{UniversalMorphismFromCoequalizer}(Y,
   morphisms, T, tau)[123X.[133X
   
-  [1X7.6-253 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer[101X
+  [1X7.6-254 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3744,7 +3757,7 @@
   \mathtt{UniversalMorphismFromCoequalizerWithGivenCoequalizer}(Y,  morphisms,
   T, tau, P)[123X.[133X
   
-  [1X7.6-254 AddUniversalMorphismFromCoproduct[101X
+  [1X7.6-255 AddUniversalMorphismFromCoproduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3757,7 +3770,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( objects,
   T, tau ) \mapsto \mathtt{UniversalMorphismFromCoproduct}(objects, T, tau)[123X.[133X
   
-  [1X7.6-255 AddUniversalMorphismFromCoproductWithGivenCoproduct[101X
+  [1X7.6-256 AddUniversalMorphismFromCoproductWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3772,7 +3785,7 @@
   \mathtt{UniversalMorphismFromCoproductWithGivenCoproduct}(objects,  T,  tau,
   P)[123X.[133X
   
-  [1X7.6-256 AddUniversalMorphismFromDirectSum[101X
+  [1X7.6-257 AddUniversalMorphismFromDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromDirectSum[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3785,7 +3798,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( objects,
   T, tau ) \mapsto \mathtt{UniversalMorphismFromDirectSum}(objects, T, tau)[123X.[133X
   
-  [1X7.6-257 AddUniversalMorphismFromDirectSumWithGivenDirectSum[101X
+  [1X7.6-258 AddUniversalMorphismFromDirectSumWithGivenDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromDirectSumWithGivenDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromDirectSumWithGivenDirectSum[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3800,7 +3813,7 @@
   \mathtt{UniversalMorphismFromDirectSumWithGivenDirectSum}(objects,  T,  tau,
   P)[123X.[133X
   
-  [1X7.6-258 AddUniversalMorphismFromImage[101X
+  [1X7.6-259 AddUniversalMorphismFromImage[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromImage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromImage[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3813,7 +3826,7 @@
   the  function  (lower weight = less complex = faster execution). [23XF: ( alpha,
   tau ) \mapsto \mathtt{UniversalMorphismFromImage}(alpha, tau)[123X.[133X
   
-  [1X7.6-259 AddUniversalMorphismFromImageWithGivenImageObject[101X
+  [1X7.6-260 AddUniversalMorphismFromImageWithGivenImageObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromImageWithGivenImageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromImageWithGivenImageObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3827,7 +3840,7 @@
   faster     execution).     [23XF:     (     alpha,     tau,    I    )    \mapsto
   \mathtt{UniversalMorphismFromImageWithGivenImageObject}(alpha, tau, I)[123X.[133X
   
-  [1X7.6-260 AddUniversalMorphismFromInitialObject[101X
+  [1X7.6-261 AddUniversalMorphismFromInitialObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromInitialObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3840,7 +3853,7 @@
   of  the  function (lower weight = less complex = faster execution). [23XF: ( T )
   \mapsto \mathtt{UniversalMorphismFromInitialObject}(T)[123X.[133X
   
-  [1X7.6-261 AddUniversalMorphismFromInitialObjectWithGivenInitialObject[101X
+  [1X7.6-262 AddUniversalMorphismFromInitialObjectWithGivenInitialObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromInitialObjectWithGivenInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromInitialObjectWithGivenInitialObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3854,7 +3867,7 @@
   faster       execution).       [23XF:       (      T,      P      )      \mapsto
   \mathtt{UniversalMorphismFromInitialObjectWithGivenInitialObject}(T, P)[123X.[133X
   
-  [1X7.6-262 AddUniversalMorphismFromPushout[101X
+  [1X7.6-263 AddUniversalMorphismFromPushout[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromPushout[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromPushout[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3868,7 +3881,7 @@
   morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromPushout}(morphisms,
   T, tau)[123X.[133X
   
-  [1X7.6-263 AddUniversalMorphismFromPushoutWithGivenPushout[101X
+  [1X7.6-264 AddUniversalMorphismFromPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromPushoutWithGivenPushout[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromPushoutWithGivenPushout[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3882,7 +3895,7 @@
   [23XF:       (       morphisms,       T,       tau,       P       )      \mapsto
   \mathtt{UniversalMorphismFromPushoutWithGivenPushout}(morphisms, T, tau, P)[123X.[133X
   
-  [1X7.6-264 AddUniversalMorphismFromZeroObject[101X
+  [1X7.6-265 AddUniversalMorphismFromZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromZeroObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3895,7 +3908,7 @@
   the  function  (lower  weight  =  less complex = faster execution). [23XF: ( T )
   \mapsto \mathtt{UniversalMorphismFromZeroObject}(T)[123X.[133X
   
-  [1X7.6-265 AddUniversalMorphismFromZeroObjectWithGivenZeroObject[101X
+  [1X7.6-266 AddUniversalMorphismFromZeroObjectWithGivenZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismFromZeroObjectWithGivenZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismFromZeroObjectWithGivenZeroObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3909,7 +3922,7 @@
   faster       execution).       [23XF:       (      T,      P      )      \mapsto
   \mathtt{UniversalMorphismFromZeroObjectWithGivenZeroObject}(T, P)[123X.[133X
   
-  [1X7.6-266 AddUniversalMorphismIntoCoimage[101X
+  [1X7.6-267 AddUniversalMorphismIntoCoimage[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimage[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3922,7 +3935,7 @@
   the  function  (lower weight = less complex = faster execution). [23XF: ( alpha,
   tau ) \mapsto \mathtt{UniversalMorphismIntoCoimage}(alpha, tau)[123X.[133X
   
-  [1X7.6-267 AddUniversalMorphismIntoCoimageWithGivenCoimageObject[101X
+  [1X7.6-268 AddUniversalMorphismIntoCoimageWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimageWithGivenCoimageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimageWithGivenCoimageObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3936,7 +3949,7 @@
   faster     execution).     [23XF:     (     alpha,     tau,    C    )    \mapsto
   \mathtt{UniversalMorphismIntoCoimageWithGivenCoimageObject}(alpha, tau, C)[123X.[133X
   
-  [1X7.6-268 AddUniversalMorphismIntoDirectProduct[101X
+  [1X7.6-269 AddUniversalMorphismIntoDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3950,7 +3963,7 @@
   objects,              T,              tau              )             \mapsto
   \mathtt{UniversalMorphismIntoDirectProduct}(objects, T, tau)[123X.[133X
   
-  [1X7.6-269 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct[101X
+  [1X7.6-270 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3965,7 +3978,7 @@
   \mathtt{UniversalMorphismIntoDirectProductWithGivenDirectProduct}(objects,
   T, tau, P)[123X.[133X
   
-  [1X7.6-270 AddUniversalMorphismIntoDirectSum[101X
+  [1X7.6-271 AddUniversalMorphismIntoDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectSum[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3978,7 +3991,7 @@
   the function (lower weight = less complex = faster execution). [23XF: ( objects,
   T, tau ) \mapsto \mathtt{UniversalMorphismIntoDirectSum}(objects, T, tau)[123X.[133X
   
-  [1X7.6-271 AddUniversalMorphismIntoDirectSumWithGivenDirectSum[101X
+  [1X7.6-272 AddUniversalMorphismIntoDirectSumWithGivenDirectSum[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectSumWithGivenDirectSum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoDirectSumWithGivenDirectSum[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -3993,7 +4006,7 @@
   \mathtt{UniversalMorphismIntoDirectSumWithGivenDirectSum}(objects,  T,  tau,
   P)[123X.[133X
   
-  [1X7.6-272 AddUniversalMorphismIntoEqualizer[101X
+  [1X7.6-273 AddUniversalMorphismIntoEqualizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoEqualizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoEqualizer[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4007,7 +4020,7 @@
   morphisms,   T,  tau  )  \mapsto  \mathtt{UniversalMorphismIntoEqualizer}(Y,
   morphisms, T, tau)[123X.[133X
   
-  [1X7.6-273 AddUniversalMorphismIntoEqualizerWithGivenEqualizer[101X
+  [1X7.6-274 AddUniversalMorphismIntoEqualizerWithGivenEqualizer[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoEqualizerWithGivenEqualizer[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoEqualizerWithGivenEqualizer[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4022,7 +4035,7 @@
   \mathtt{UniversalMorphismIntoEqualizerWithGivenEqualizer}(Y,  morphisms,  T,
   tau, P)[123X.[133X
   
-  [1X7.6-274 AddUniversalMorphismIntoFiberProduct[101X
+  [1X7.6-275 AddUniversalMorphismIntoFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4036,7 +4049,7 @@
   morphisms,              T,             tau             )             \mapsto
   \mathtt{UniversalMorphismIntoFiberProduct}(morphisms, T, tau)[123X.[133X
   
-  [1X7.6-275 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
+  [1X7.6-276 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4051,7 +4064,7 @@
   \mathtt{UniversalMorphismIntoFiberProductWithGivenFiberProduct}(morphisms,
   T, tau, P)[123X.[133X
   
-  [1X7.6-276 AddUniversalMorphismIntoTerminalObject[101X
+  [1X7.6-277 AddUniversalMorphismIntoTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoTerminalObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4064,7 +4077,7 @@
   of  the  function (lower weight = less complex = faster execution). [23XF: ( T )
   \mapsto \mathtt{UniversalMorphismIntoTerminalObject}(T)[123X.[133X
   
-  [1X7.6-277 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[101X
+  [1X7.6-278 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4078,7 +4091,7 @@
   faster       execution).       [23XF:       (      T,      P      )      \mapsto
   \mathtt{UniversalMorphismIntoTerminalObjectWithGivenTerminalObject}(T, P)[123X.[133X
   
-  [1X7.6-278 AddUniversalMorphismIntoZeroObject[101X
+  [1X7.6-279 AddUniversalMorphismIntoZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoZeroObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4091,7 +4104,7 @@
   the  function  (lower  weight  =  less complex = faster execution). [23XF: ( T )
   \mapsto \mathtt{UniversalMorphismIntoZeroObject}(T)[123X.[133X
   
-  [1X7.6-279 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject[101X
+  [1X7.6-280 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4105,7 +4118,7 @@
   faster       execution).       [23XF:       (      T,      P      )      \mapsto
   \mathtt{UniversalMorphismIntoZeroObjectWithGivenZeroObject}(T, P)[123X.[133X
   
-  [1X7.6-280 AddVerticalPostCompose[101X
+  [1X7.6-281 AddVerticalPostCompose[101X
   
   [33X[1;0Y[29X[2XAddVerticalPostCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddVerticalPostCompose[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4118,7 +4131,7 @@
   function (lower weight = less complex = faster execution). [23XF: ( arg2, arg3 )
   \mapsto \mathtt{VerticalPostCompose}(arg2, arg3)[123X.[133X
   
-  [1X7.6-281 AddVerticalPreCompose[101X
+  [1X7.6-282 AddVerticalPreCompose[101X
   
   [33X[1;0Y[29X[2XAddVerticalPreCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddVerticalPreCompose[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4131,7 +4144,7 @@
   less   complex   =   faster   execution).   [23XF:   (   arg2,  arg3  )  \mapsto
   \mathtt{VerticalPreCompose}(arg2, arg3)[123X.[133X
   
-  [1X7.6-282 AddZeroMorphism[101X
+  [1X7.6-283 AddZeroMorphism[101X
   
   [33X[1;0Y[29X[2XAddZeroMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddZeroMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4144,7 +4157,7 @@
   less    complex    =    faster   execution).   [23XF:   (   a,   b   )   \mapsto
   \mathtt{ZeroMorphism}(a, b)[123X.[133X
   
-  [1X7.6-283 AddZeroObject[101X
+  [1X7.6-284 AddZeroObject[101X
   
   [33X[1;0Y[29X[2XAddZeroObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddZeroObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4156,7 +4169,7 @@
   correspond  to  the computational complexity of the function (lower weight =
   less complex = faster execution). [23XF: ( ) \mapsto \mathtt{ZeroObject}()[123X.[133X
   
-  [1X7.6-284 AddZeroObjectFunctorial[101X
+  [1X7.6-285 AddZeroObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XAddZeroObjectFunctorial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddZeroObjectFunctorial[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -4169,7 +4182,7 @@
   function  (lower  weight  = less complex = faster execution). [23XF: ( ) \mapsto
   \mathtt{ZeroObjectFunctorial}()[123X.[133X
   
-  [1X7.6-285 AddZeroObjectFunctorialWithGivenZeroObjects[101X
+  [1X7.6-286 AddZeroObjectFunctorialWithGivenZeroObjects[101X
   
   [33X[1;0Y[29X[2XAddZeroObjectFunctorialWithGivenZeroObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddZeroObjectFunctorialWithGivenZeroObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
