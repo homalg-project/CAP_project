@@ -4174,6 +4174,25 @@ DeclareOperation( "AddRandomObjectByList",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `SetOfGeneratingMorphismsOfCategory`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: (  ) \mapsto \mathtt{SetOfGeneratingMorphismsOfCategory}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSetOfGeneratingMorphismsOfCategory",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddSetOfGeneratingMorphismsOfCategory",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `SetOfMorphismsOfFiniteCategory`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).

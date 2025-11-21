@@ -25,13 +25,11 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCategory :=
                   ListOfDefiningOperations( "IsObjectFiniteCategory" ),
                   [ "SetOfMorphismsOfFiniteCategory" ] ) );
 
-#! @Description
-#!  The property of <A>C</A> being equivalent to a finite category.
-#! @Arguments C
-DeclareProperty( "IsEquivalentToFiniteCategory",
-        IsCapCategory );
-
-AddCategoricalProperty( [ "IsEquivalentToFiniteCategory", "IsEquivalentToFiniteCategory" ] );
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory :=
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsObjectFiniteCategory" ),
+                  [ "SetOfGeneratingMorphismsOfCategory" ] ) );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsEquippedWithHomomorphismStructure := Concatenation(
     ListOfDefiningOperations( "IsCapCategory" ),
