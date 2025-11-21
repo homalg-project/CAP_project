@@ -1,7 +1,7 @@
 name: GroupsAsCategoriesForCAP
-version: "2025.11-01"
+version: "2025.11-02"
 license: "GPL-2.0-or-later"
-date: 2025-11-20
+date: 2025-11-21
 description: |
     Groups as categories on one object
 
@@ -21,7 +21,7 @@ GAP: ">= 4.13.0"
 
 needed-pkgs:
     - name: "CAP"
-      version: ">= 2025.07-02"
+      version: ">= 2025.11-03"
       url: "https://homalg-project.github.io/pkg/CAP"
 
 suggested-pkgs:
@@ -34,11 +34,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GroupsAsCategoriesForC
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.11-01/GroupsAsCategoriesForCAP-2025.11-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.11-02/GroupsAsCategoriesForCAP-2025.11-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.11-01/GroupsAsCategoriesForCAP-2025.11-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.11-02/GroupsAsCategoriesForCAP-2025.11-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.11-01/GroupsAsCategoriesForCAP-2025.11-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupsAsCategoriesForCAP-2025.11-02/GroupsAsCategoriesForCAP-2025.11-02-manual.pdf
 
 abstract: |
 
@@ -47,10 +47,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PZ20</span>]   <b class='BibAuthor'>Posur, S. and Zickgraf, F.</b>,
+    [<span class='BibKey'>PZ21</span>]   <b class='BibAuthor'>Posur, S. and Zickgraf, F.</b>,
      <i class='BibTitle'>GroupsAsCategoriesForCAP, Groups as categories on one object,
-             Version 2025.11-01</i>
-     (<span class='BibYear'>1-20</span>)<br />
+             Version 2025.11-02</i>
+     (<span class='BibYear'>1-21</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP">https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP</a></span>.
     </p>
@@ -60,15 +60,15 @@ bibtex: |
     @misc{ GroupsAsCategoriesForCAP,
       author =           {Posur, S. and Zickgraf, F.},
       title =            {{GroupsAsCategoriesForCAP},  {Groups  as categories on
-                          one object}, {V}ersion 2025.11\texttt{\symbol{45}}01},
+                          one object}, {V}ersion 2025.11\texttt{\symbol{45}}02},
       month =            {5\texttt{\symbol{45}}},
-      year =             {1\texttt{\symbol{45}}20},
+      year =             {1\texttt{\symbol{45}}21},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GroupsAsCategoriesForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GroupsAsCategoriesForCAP}}},
-      printedkey =       {PZ20}
+      printedkey =       {PZ21}
     }
 
