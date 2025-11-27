@@ -63,7 +63,6 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
@@ -90,14 +89,12 @@
     [4X[28XCategory of matrices over Dummy homalg field 1[128X[104X
     [4X[25Xgap>[125X [27XMatrixCategory( homalg_field )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
   [1X3.2 [33X[0;0YTests[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "AdditiveClosuresForCAP",[127X[104X
@@ -140,11 +137,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCategoryOfColumns( homalg_ring )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "AdditiveClosuresForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "AdditiveClosuresForCAP",[127X[104X
@@ -187,11 +182,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XCategoryOfRows( homalg_ring )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xdummy := DummyCategory( rec([127X[104X
@@ -249,11 +242,9 @@
     [4X[25X>[125X [27X);[127X[104X
     [4X[25Xgap>[125X [27XCoFreydCategory( dummy )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
@@ -374,14 +365,12 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XRightPresentations( homalg_ring )!.precompiled_functions_added;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[28X#@fi[128X[104X
     [4X[25Xgap>[125X [27X# put the letter 'V' here to work around[127X[104X
     [4X[25X>[125X [27X# https://github.com/frankluebeck/GAPDoc/pull/61[127X[104X
     [4X[25X>[125X [27X[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "RingsForHomalg", false );[127X[104X
@@ -416,6 +405,5 @@
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XOpposite_MatrixCategory_precompiled( homalg_field );[127X[104X
     [4X[28XOpposite( Category of matrices over Dummy homalg field 1 )[128X[104X
-    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   

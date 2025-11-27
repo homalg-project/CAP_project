@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up and verify categorical algorithms",
-Version := "2025.08-01",
-Date := "2025-08-25",
+Version := "2025.11-01",
+Date := "2025-11-27",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -67,7 +67,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.13.0",
+  GAP := ">= 4.15.0",
   NeededOtherPackages := [
       [ "ToolsForHomalg", ">= 2022.09-04" ],
       [ "CAP", ">= 2023.06-06" ],
