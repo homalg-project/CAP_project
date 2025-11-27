@@ -4,8 +4,6 @@
 
 #! @Example
 
-#! #@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
-
 LoadPackage( "AdditiveClosuresForCAP", false );
 #! true
 ReadPackage( "AdditiveClosuresForCAP",
@@ -53,6 +51,5 @@ CategoryOfColumns( EQQxy )!.precompiled_functions_added;
 #! true
 CategoryOfColumns( homalg_ring )!.precompiled_functions_added;
 #! true
-#! #@fi
 
 #! @EndExample

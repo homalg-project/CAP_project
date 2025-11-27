@@ -1,7 +1,6 @@
 gap> START_TEST( "AdditiveClosure_has_direct_sums" );
 
 # avoid wrapping the output
-#@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
 gap> old_screen_width := SizeScreen( )[1];;
 gap> SizeScreen( [ 4096 ] );;
 
@@ -1793,7 +1792,6 @@ gap> CapJitDisableProofAssistantMode( );
 
 #
 gap> SizeScreen( [ old_screen_width ] );;
-#@fi
 
 #
 gap> STOP_TEST( "AdditiveClosure_has_direct_sums" );

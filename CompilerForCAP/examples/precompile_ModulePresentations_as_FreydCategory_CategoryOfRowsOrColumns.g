@@ -4,8 +4,6 @@
 
 #! @Example
 
-#! #@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
-
 LoadPackage( "ModulePresentationsForCAP", false );
 #! true
 LoadPackage( "FreydCategoriesForCAP", false );
@@ -141,7 +139,6 @@ RightPresentations( commutative_homalg_ring )!.precompiled_functions_added;
 
 RightPresentations( homalg_ring )!.precompiled_functions_added;
 #! true
-#! #@fi
 
 # put the letter 'V' here to work around
 # https://github.com/frankluebeck/GAPDoc/pull/61
