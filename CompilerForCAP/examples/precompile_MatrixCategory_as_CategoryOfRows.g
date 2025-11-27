@@ -4,8 +4,6 @@
 
 #! @Example
 
-#! #@if String({}->1-[1-1]) = "function (  ) return 1 - [ (1 - 1) ]; end"
-
 LoadPackage( "AdditiveClosuresForCAP", false );
 #! true
 LoadPackage( "LinearAlgebraForCAP", false );
@@ -38,6 +36,5 @@ MatrixCategory_precompiled( homalg_field );
 
 MatrixCategory( homalg_field )!.precompiled_functions_added;
 #! true
-#! #@fi
 
 #! @EndExample
