@@ -223,7 +223,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
                 return List( hoisted_6_1, function ( s_3 )
                         local deduped_1_3;
                         deduped_1_3 := (CAP_JIT_INCOMPLETE_LOGIC( s_3 ) - 1) * deduped_7_1;
-                        return EntriesOfHomalgMatrix( CoercedMatrix( deduped_10_1, CAP_JIT_INCOMPLETE_LOGIC( CertainColumns( hoisted_3_1, [ (deduped_1_2 + (deduped_1_3 + 1)) .. (deduped_1_2 + (deduped_1_3 + deduped_7_1)) ] ) ) ) * deduped_11_1 )[1];
+                        return EntriesOfHomalgMatrix( CoercedMatrix( deduped_10_1, CAP_JIT_INCOMPLETE_LOGIC( CertainColumns( hoisted_3_1, [ deduped_1_2 + (deduped_1_3 + 1) .. deduped_1_2 + (deduped_1_3 + deduped_7_1) ] ) ) ) * deduped_11_1 )[1];
                     end );
             end ), deduped_8_1, deduped_9_1, deduped_10_1 ) );
 end

@@ -110,10 +110,10 @@ function ( cat_1, D_1, i_1 )
                        fi;
                        return;
                    end ) ) ) and Length( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_2 )
-                         if (i_2 = i_1) then
+                         if i_2 = i_1 then
                              return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
                                      return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
-                                             if (i_3 = j_4) then
+                                             if i_3 = j_4 then
                                                  return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3] );
                                              else
                                                  return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_1] )[j_4] );
@@ -136,7 +136,7 @@ function ( cat_1, D_1, i_1 )
     elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
-                 return (IsList( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                 return IsList( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  if i_3 = i_1 then
                                      return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
                                              return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
@@ -157,10 +157,10 @@ function ( cat_1, D_1, i_1 )
                                  fi;
                                  return;
                              end ) )[i_2] ) and Length( UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
-                                   if (i_3 = i_1) then
+                                   if i_3 = i_1 then
                                        return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
                                                return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
-                                                       if (i_4 = j_5) then
+                                                       if i_4 = j_5 then
                                                            return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
                                                        else
                                                            return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
@@ -176,14 +176,15 @@ function ( cat_1, D_1, i_1 )
                                            end );
                                    fi;
                                    return;
-                               end ) )[i_2] ) = Length( ObjectList( D_1[i_1] ) ));
+                               end ) )[i_2] ) = Length( ObjectList( D_1[i_1] ) );
              end ) then
         return false;
     elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
                  return ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_3 )
-                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i\
+_4 )
                                        return ObjectList( D_1[i_4] );
                                    end ) )[i_2], UnionOfRowsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                          if i_4 = i_1 then
@@ -192,7 +193,8 @@ function ( cat_1, D_1, i_1 )
                                                              if i_5 = j_6 then
                                                                  return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
                                                              else
-                                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j\
+_6] );
                                                              fi;
                                                              return;
                                                          end );
@@ -200,7 +202,8 @@ function ( cat_1, D_1, i_1 )
                                          else
                                              return List( [ 1 .. Length( ObjectList( D_1[i_4] ) ) ], function ( i_5 )
                                                      return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_6 )
-                                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_4] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_4] )[i_5], ObjectList( D_1[i_1] )[j_6] \
+);
                                                          end );
                                                  end );
                                          fi;
@@ -377,10 +380,10 @@ function ( cat_1, D_1, i_1 )
                        fi;
                        return;
                    end ) ) ) and Length( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_2 )
-                         if (i_2 = i_1) then
+                         if i_2 = i_1 then
                              return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_3 )
                                      return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_4 )
-                                             if (i_3 = j_4) then
+                                             if i_3 = j_4 then
                                                  return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3] );
                                              else
                                                  return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_3], ObjectList( D_1[i_1] )[j_4] );
@@ -399,7 +402,7 @@ function ( cat_1, D_1, i_1 )
                      end ) ) ) = Length( ObjectList( D_1[i_1] ) )) then
         return false;
     elif not ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
-                 return (IsList( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                 return IsList( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  if i_3 = i_1 then
                                      return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
                                              return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
@@ -420,10 +423,10 @@ function ( cat_1, D_1, i_1 )
                                  fi;
                                  return;
                              end ) )[i_2] ) and Length( UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_3 )
-                                   if (i_3 = i_1) then
+                                   if i_3 = i_1 then
                                        return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_4 )
                                                return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_5 )
-                                                       if (i_4 = j_5) then
+                                                       if i_4 = j_5 then
                                                            return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4] );
                                                        else
                                                            return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_4], ObjectList( D_1[i_1] )[j_5] );
@@ -441,21 +444,23 @@ function ( cat_1, D_1, i_1 )
                                    return;
                                end ) )[i_2] ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                return Length( ObjectList( D_1[i_3] ) );
-                           end ) ));
+                           end ) );
              end ) then
         return false;
     elif not ForAll( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_2 )
                  return ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  return Length( ObjectList( D_1[i_3] ) );
                              end ) ) ], function ( j_3 )
-                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], UnionOfColumnsListList( Length( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_2], UnionOfColumnsListList( Leng\
+th( ObjectList( D_1[i_1] ) ), List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                          if i_4 = i_1 then
                                              return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
                                                      return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( j_6 )
                                                              if i_5 = j_6 then
                                                                  return IdentityMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5] );
                                                              else
-                                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j_6] );
+                                                                 return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_1] )[j\
+_6] );
                                                              fi;
                                                              return;
                                                          end );
@@ -463,7 +468,8 @@ function ( cat_1, D_1, i_1 )
                                          else
                                              return List( [ 1 .. Length( ObjectList( D_1[i_1] ) ) ], function ( i_5 )
                                                      return List( [ 1 .. Length( ObjectList( D_1[i_4] ) ) ], function ( j_6 )
-                                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_4] )[j_6] );
+                                                             return ZeroMorphism( UnderlyingCategory( cat_1 ), ObjectList( D_1[i_1] )[i_5], ObjectList( D_1[i_4] )[j_6] \
+);
                                                          end );
                                                  end );
                                          fi;
@@ -1118,19 +1124,22 @@ end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
-    if not (IsList( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) and Length( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) = Length( ObjectList( T_1 ) )) then
+    if not (IsList( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) and Length( UnionOfColumnsListList( Length( ObjectList( T_1 )\
+ ), List( tau_1, MorphismMatrix ) ) ) = Length( ObjectList( T_1 ) )) then
         return false;
     elif not ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( i_2 )
-                 return (IsList( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) and Length( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
+                 return IsList( UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) and Length( UnionOfColumnsListList( Length( \
+ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                return Length( ObjectList( D_1[i_3] ) );
-                           end ) ));
+                           end ) );
              end ) then
         return false;
     elif not ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( i_2 )
                  return ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_3 )
                                  return Length( ObjectList( D_1[i_3] ) );
                              end ) ) ], function ( j_3 )
-                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_2], UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2][j_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), ObjectList( T_1 )[i_2], UnionOfColumnsListList( Length( O\
+bjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2][j_3], Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
                                        return ObjectList( D_1[i_4] );
                                    end ) )[j_3] );
                      end );
@@ -1455,21 +1464,24 @@ end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, D_1, T_1, tau_1 )
-    if not (IsList( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) and Length( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
+    if not (IsList( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) ) and Length( UnionOfRowsListList( Length( ObjectList( T_1 ) ), Li\
+st( tau_1, MorphismMatrix ) ) ) = Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                        return Length( ObjectList( D_1[i_2] ) );
                    end ) )) then
         return false;
     elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
-                 return (IsList( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) and Length( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) = Length( ObjectList( T_1 ) ));
+                 return IsList( UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) and Length( UnionOfRowsListList( Length( Object\
+List( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2] ) = Length( ObjectList( T_1 ) );
              end ) then
         return false;
     elif not ForAll( [ 1 .. Sum( List( [ 1 .. Length( D_1 ) ], function ( i_2 )
                          return Length( ObjectList( D_1[i_2] ) );
                      end ) ) ], function ( i_2 )
                  return ForAll( [ 1 .. Length( ObjectList( T_1 ) ) ], function ( j_3 )
-                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i_4 )
+                         return IsWellDefinedForMorphismsWithGivenSourceAndRange( UnderlyingCategory( cat_1 ), Concatenation( List( [ 1 .. Length( D_1 ) ], function ( i\
+_4 )
                                        return ObjectList( D_1[i_4] );
                                    end ) )[i_2], UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) )[i_2][j_3], ObjectList( T_1 )[j_3] );
                      end );
