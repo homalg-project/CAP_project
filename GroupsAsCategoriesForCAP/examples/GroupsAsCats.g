@@ -6,8 +6,10 @@ LoadPackage( "GroupsAsCategoriesForCAP" );;
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
 u := GroupAsCategoryUniqueObject( CG );;
-SetOfObjectsOfCategory( CG ) = [ u ];
+SetOfObjects( CG ) = [ u ];
 #! true
+SetOfGeneratingMorphisms( CG );
+#! [ <(1,2,3)>, <(1,2)> ]
 Length( SetOfMorphismsOfFiniteCategory( CG ) ) = Size( G );
 #! true
 x := (2,3)/CG;;
