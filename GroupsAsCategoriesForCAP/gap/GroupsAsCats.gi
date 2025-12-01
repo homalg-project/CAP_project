@@ -355,6 +355,26 @@ InstallOtherMethod( \/,
                [ IsObject, IsGroupAsCategory ],
                GroupAsCategoryMorphism );
 
+##
+InstallMethod( SetOfObjects,
+        [ IsGroupAsCategory ],
+        
+  function( cat )
+    
+    return SetOfObjectsOfCategory( cat );
+    
+end );
+
+##
+InstallMethod( SetOfGeneratingMorphisms,
+        [ IsGroupAsCategory ],
+        
+  function( cat )
+    
+    return SetOfGeneratingMorphismsOfCategory( cat );
+    
+end );
+
 ####################################
 ##
 ## Down
