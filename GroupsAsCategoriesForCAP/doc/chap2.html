@@ -31,8 +31,10 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjectsOfCategory( CG ) = [ u ];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjects( CG ) = [ u ];</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfGeneratingMorphisms( CG );</span>
+[ &lt;(1,2,3)&gt;, &lt;(1,2)&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfMorphismsOfFiniteCategory( CG ) ) = Size( G );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := (2,3)/CG;;</span>
