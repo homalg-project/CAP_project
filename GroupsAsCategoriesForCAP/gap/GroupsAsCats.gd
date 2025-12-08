@@ -36,9 +36,7 @@ DeclareAttribute( "GroupAsCategoryUniqueObject",
                   IsGroupAsCategory );
 
 DeclareOperation( "GroupAsCategoryMorphism",
-                  [ IsObject, IsGroupAsCategory ] );
-
-KeyDependentOperation( "GroupAsCategoryMorphism", IsGroupAsCategory, IsObject, ReturnTrue );
+                  [ IsGroupAsCategory, IsMultiplicativeElementWithInverse ] );
 
 ####################################
 ##

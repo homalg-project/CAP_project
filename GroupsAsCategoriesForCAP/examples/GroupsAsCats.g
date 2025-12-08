@@ -12,17 +12,19 @@ SetOfGeneratingMorphisms( CG );
 #! [ <(1,2,3)>, <(1,2)> ]
 Length( SetOfMorphismsOfFiniteCategory( CG ) ) = Size( G );
 #! true
-x := (2,3)/CG;;
-id := ()/CG;;
-IsIdenticalObj( x * x, id );
+x := (2,3) / CG;;
+id := () / CG;;
+x * x = id;
 #! true
-alpha := GroupAsCategoryMorphism( (1,2,3), CG );;
+IsIdenticalObj( x * x, id );
+#! false
+alpha := GroupAsCategoryMorphism( CG, (1,2,3) );;
 alpha * Inverse( alpha ) = IdentityMorphism( u );
 #! true
-beta := GroupAsCategoryMorphism( (1,2,3,5), CG );;
+beta := GroupAsCategoryMorphism( CG, (1,2,3,5) );;
 IsWellDefined( beta );
 #! false
-gamma := GroupAsCategoryMorphism( (1,3), CG );;
+gamma := GroupAsCategoryMorphism( CG, (1,3) );;
 IsWellDefined( gamma );
 #! true
 Lift( alpha, gamma ) * gamma = alpha;
@@ -33,11 +35,10 @@ alpha * Colift( alpha, gamma ) = gamma;
 Length( HomomorphismStructureOnObjects( u, u ) ) = Size( G );
 #! true
 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
-    u,u,
-    PreCompose(
-        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ), HomomorphismStructureOnMorphisms( gamma, Inverse( gamma ) )
-    )
-)
+        u,u,
+        PreCompose(
+                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ),
+                HomomorphismStructureOnMorphisms( gamma, Inverse( gamma ) ) ) )
 =
 gamma * alpha * Inverse( gamma );
 #! true
