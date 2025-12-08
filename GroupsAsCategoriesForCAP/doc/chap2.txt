@@ -11,17 +11,19 @@
     [4X[28X[ <(1,2,3)>, <(1,2)> ][128X[104X
     [4X[25Xgap>[125X [27XLength( SetOfMorphismsOfFiniteCategory( CG ) ) = Size( G );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xx := (2,3)/CG;;[127X[104X
-    [4X[25Xgap>[125X [27Xid := ()/CG;;[127X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( x * x, id );[127X[104X
+    [4X[25Xgap>[125X [27Xx := (2,3) / CG;;[127X[104X
+    [4X[25Xgap>[125X [27Xid := () / CG;;[127X[104X
+    [4X[25Xgap>[125X [27Xx * x = id;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xalpha := GroupAsCategoryMorphism( (1,2,3), CG );;[127X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( x * x, id );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := GroupAsCategoryMorphism( CG, (1,2,3) );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha * Inverse( alpha ) = IdentityMorphism( u );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xbeta := GroupAsCategoryMorphism( (1,2,3,5), CG );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := GroupAsCategoryMorphism( CG, (1,2,3,5) );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( beta );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xgamma := GroupAsCategoryMorphism( (1,3), CG );;[127X[104X
+    [4X[25Xgap>[125X [27Xgamma := GroupAsCategoryMorphism( CG, (1,3) );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( gamma );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLift( alpha, gamma ) * gamma = alpha;[127X[104X
@@ -32,11 +34,10 @@
     [4X[25Xgap>[125X [27XLength( HomomorphismStructureOnObjects( u, u ) ) = Size( G );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism([127X[104X
-    [4X[25X>[125X [27X    u,u,[127X[104X
-    [4X[25X>[125X [27X    PreCompose([127X[104X
-    [4X[25X>[125X [27X        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ), HomomorphismStructureOnMorphisms( gamma, Inverse( gamma ) )[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X)[127X[104X
+    [4X[25X>[125X [27X        u,u,[127X[104X
+    [4X[25X>[125X [27X        PreCompose([127X[104X
+    [4X[25X>[125X [27X                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ),[127X[104X
+    [4X[25X>[125X [27X                HomomorphismStructureOnMorphisms( gamma, Inverse( gamma ) ) ) )[127X[104X
     [4X[25X>[125X [27X=[127X[104X
     [4X[25X>[125X [27Xgamma * alpha * Inverse( gamma );[127X[104X
     [4X[28Xtrue[128X[104X
