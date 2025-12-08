@@ -12,7 +12,7 @@
 
 ##
 InstallMethod( GroupAsCategory,
-               [ IsGroup ],
+        [ IsGroup ],
                
   function( group )
     local group_name, group_as_category, is_finite;
@@ -32,7 +32,7 @@ InstallMethod( GroupAsCategory,
               IsGroupAsCategoryObject,
               IsGroupAsCategoryMorphism,
               IsCapCategoryTwoCell,
-              fail,
+              IsBool,
               CapJitDataTypeOfElementOfGroup( group ),
               fail
               : overhead := false );
@@ -70,38 +70,28 @@ InstallMethod( GroupAsCategory,
 end );
 
 ##
-InstallMethod( GroupAsCategoryUniqueObject,
-               [ IsGroupAsCategory ],
-               
+InstallMethodForCompilerForCAP( GroupAsCategoryUniqueObject,
+        [ IsGroupAsCategory ],
+        
   function( group_as_category )
     
-    return CreateCapCategoryObjectWithAttributes( group_as_category );
+    return ObjectConstructor( group_as_category, true );
     
 end );
 
 ##
-InstallMethod( GroupAsCategoryMorphismOp,
-               [ IsGroupAsCategory, IsObject ],
-               
-  function( group_as_category, element )
+InstallMethodForCompilerForCAP( GroupAsCategoryMorphism,
+        [ IsGroupAsCategory, IsMultiplicativeElementWithInverse ],
+        
+  function( group_as_category, group_element )
     local unique_object;
     
     unique_object := GroupAsCategoryUniqueObject( group_as_category );
     
-    return CreateCapCategoryMorphismWithAttributes( group_as_category,
-                                                    unique_object,
-                                                    unique_object,
-                                                    UnderlyingGroupElement, element );
-    
-end );
-
-##
-InstallOtherMethod( GroupAsCategoryMorphism,
-               [ IsObject, IsGroupAsCategory ],
-               
-  function( element, group_as_category )
-    
-    return GroupAsCategoryMorphism( group_as_category, element );
+    return MorphismConstructor( group_as_category,
+                   unique_object,
+                   group_element,
+                   unique_object );
     
 end );
 
@@ -113,18 +103,18 @@ end );
 
 ##
 InstallMethod( ViewString,
-               [ IsGroupAsCategoryMorphism ],
+        [ IsGroupAsCategoryMorphism ],
     
-    function( alpha )
-        
-        return Concatenation( "<", ViewString( UnderlyingGroupElement( alpha ) ), ">" );
-        
+  function( alpha )
+    
+    return Concatenation( "<", ViewString( UnderlyingGroupElement( alpha ) ), ">" );
+    
 end );
 
 ##
 InstallMethod( ViewString,
-               [ IsGroupAsCategoryObject ],
-
+        [ IsGroupAsCategoryObject ],
+        
   function( obj )
     
     return "*";
@@ -139,8 +129,8 @@ end );
 
 ##
 InstallMethod( ElementsOfUnderlyingGroup,
-               [ IsGroupAsCategory ],
-               
+        [ IsGroupAsCategory ],
+        
   function( group_as_category )
     
     return Elements( UnderlyingGroup( group_as_category ) );
@@ -149,8 +139,8 @@ end );
 
 ##
 InstallMethod( PositionWithinElements,
-               [ IsGroupAsCategoryMorphism ],
-               
+        [ IsGroupAsCategoryMorphism ],
+        
   function( alpha )
     
     return Position( ElementsOfUnderlyingGroup( CapCategory( alpha ) ), UnderlyingGroupElement( alpha ) );
@@ -169,6 +159,41 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     local group;
     
     group := UnderlyingGroup( group_as_category );
+    
+    ##
+    AddObjectConstructor( group_as_category,
+      function( group_as_category, input )
+        
+        return CreateCapCategoryObjectWithAttributes( group_as_category );
+        
+    end );
+    
+    ##
+    AddObjectDatum( group_as_category,
+      function( group_as_category, object )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( group_as_category,
+      function( group_as_category, source, group_element, target )
+
+        return CreateCapCategoryMorphismWithAttributes( group_as_category,
+                       source,
+                       target,
+                       UnderlyingGroupElement, group_element );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( group_as_category,
+      function( group_as_category, morphism )
+        
+        return UnderlyingGroupElement( morphism );
+        
+    end );
     
     ##
     AddIsEqualForObjects( group_as_category,
@@ -232,8 +257,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     AddInverseForMorphisms( group_as_category,
       function( group_as_category, alpha )
         
-        return  GroupAsCategoryMorphism( group_as_category,
-            Inverse( UnderlyingGroupElement( alpha ) ) );
+        return GroupAsCategoryMorphism( group_as_category,
+                       Inverse( UnderlyingGroupElement( alpha ) ) );
         
     end );
     
@@ -344,16 +369,23 @@ end );
 ####################################
 
 InstallMethod( \*,
-               [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ],
-               PreCompose );
+        [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ],
+        
+        PreCompose );
 
 InstallMethod( \=,
-               [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ],
-               IsCongruentForMorphisms );
+        [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ],
+        
+        IsCongruentForMorphisms );
 
 InstallOtherMethod( \/,
-               [ IsObject, IsGroupAsCategory ],
-               GroupAsCategoryMorphism );
+        [ IsMultiplicativeElementWithInverse, IsGroupAsCategory ],
+        
+  function( group_element, group_as_category )
+    
+    return GroupAsCategoryMorphism( group_as_category, group_element );
+    
+end );
 
 ##
 InstallMethod( SetOfObjects,
