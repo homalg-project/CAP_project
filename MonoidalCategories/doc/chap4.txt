@@ -6,7 +6,7 @@
   
   [33X[0;0YThis  category  [21Xlies[121X  in all doctrines and can hence be used (in conjunction
   with  [10XLazyCategory[110X)  in  order  to check the type-correctness of the various
-  derived methods provided by [5XCAP[105X or any [5XCAP[105X-based package.[133X
+  derived methods provided by CAP or any CAP-based package.[133X
   
   
   [1X4.1 [33X[0;0YConstructors[133X[101X
