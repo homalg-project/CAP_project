@@ -16,9 +16,9 @@
   [1X11.2-1 CategoryConstructor[101X
   
   [33X[1;0Y[29X[2XCategoryConstructor[102X( [3Xoptions[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
-  [33X[0;0YCreates  a [5XCAP[105X category subject to the options given via [3Xoptions[103X, which is a
+  [33X[0;0YCreates  a CAP category subject to the options given via [3Xoptions[103X, which is a
   record with the following keys:[133X
   
   [30X    [33X[0;6Y[10Xname[110X (optional): name of the category[133X
@@ -51,7 +51,7 @@
   [30X    [33X[0;6Y[10Xmorphism_datum[110X  (optional):  function  added  as  an  installation  of
         [2XMorphismDatum[102X ([14X3.3-2[114X) to the category[133X
   
-  [30X    [33X[0;6Y[10Xlist_of_operations_to_install[110X  (mandatory):  a  list  of  names of [5XCAP[105X
+  [30X    [33X[0;6Y[10Xlist_of_operations_to_install[110X  (mandatory):  a  list  of  names of CAP
         operations which should be installed for the category[133X
   
   [30X    [33X[0;6Y[10Xis_computable[110X    (optional):   whether   the   category   can   decide
@@ -85,7 +85,7 @@
   [30X    [33X[0;6Y[10Xcreate_func_list_of_objects[110X: see below[133X
   
   [33X[0;0YThe  values  of the keys [10Xcreate_func_*[110X should be either the string [10X"default[110X"
-  or  functions  which  accept the category and the name of a [5XCAP[105X operation of
+  or  functions  which  accept the category and the name of a CAP operation of
   the   corresponding  [10Xreturn_type[110X.  Values  for  return  types  occuring  for
   operations  in  [10Xlist_of_operations_to_install[110X  are  mandatory. The functions
   must  return either strings or pairs of a string and an integer: The strings

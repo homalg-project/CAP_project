@@ -31,7 +31,7 @@
   [1X16.2-1 FiniteSkeletalDiscreteCategory[101X
   
   [33X[1;0Y[29X[2XFiniteSkeletalDiscreteCategory[102X( [3Xarg[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YConstruct a finite skeletal discrete category.[133X
   
@@ -41,14 +41,14 @@
   [1X16.3-1 UnderlyingListOfGapObjects[101X
   
   [33X[1;0Y[29X[2XUnderlyingListOfGapObjects[102X( [3Xarg[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X objects[133X
+  [6XReturns:[106X  [33X[0;10Ya list of CAP objects[133X
   
   [33X[0;0YThe underlying [5XGAP[105X objects of a finite skeletal discrete category.[133X
   
   [1X16.3-2 UnderlyingGapObject[101X
   
   [33X[1;0Y[29X[2XUnderlyingGapObject[102X( [3Xarg[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP object[133X
   
   [33X[0;0YThe  underlying  [5XGAP[105X  object  of  an  object  in  a finite skeletal discrete
   category.[133X
@@ -61,6 +61,6 @@
   [33X[1;0Y[29X[2XIsDiscreteCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe  property  of  [3XC[103X  being  a  discrete [5XCAP[105X category, i.e., equivalent to a
+  [33X[0;0YThe  property  of  [3XC[103X  being  a  discrete CAP category, i.e., equivalent to a
   category in which any morphism is an identity.[133X
   

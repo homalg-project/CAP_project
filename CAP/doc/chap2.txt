@@ -272,7 +272,7 @@
   [1X2.9-1 SetOfObjectsOfCategory[101X
   
   [33X[1;0Y[29X[2XSetOfObjectsOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
+  [6XReturns:[106X  [33X[0;10Ya list of CAP category objects[133X
   
   [33X[0;0YReturn  a  duplicate free list of objects of the category [3XC[103X. The ordering of
   the returned list must always be the same.[133X
@@ -280,10 +280,10 @@
   [1X2.9-2 SetOfObjects[101X
   
   [33X[1;0Y[29X[2XSetOfObjects[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
+  [6XReturns:[106X  [33X[0;10Ya list of CAP category objects[133X
   
   [33X[0;0YReturn  a  duplicate free list of objects of the category [3XC[103X. The ordering of
-  the  returned  list must always be the same. The corresponding [5XCAP[105X operation
+  the  returned  list must always be the same. The corresponding CAP operation
   is [10XSetOfObjectsOfCategory[110X.[133X
   
   

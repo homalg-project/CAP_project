@@ -824,17 +824,17 @@
   [1X3.16-1 SetOfMorphismsOfFiniteCategory[101X
   
   [33X[1;0Y[29X[2XSetOfMorphismsOfFiniteCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
+  [6XReturns:[106X  [33X[0;10Ya list of a CAP category morphisms[133X
   
   [33X[0;0YReturn a duplicate free list of morphisms of the finite category [3XC[103X.[133X
   
   [1X3.16-2 SetOfMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfMorphisms[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of [5XCAP[105X category objects[133X
+  [6XReturns:[106X  [33X[0;10Ya list of CAP category objects[133X
   
   [33X[0;0YReturn  a  duplicate  free  list  of morphisms of the finite category [3XC[103X. The
-  corresponding [5XCAP[105X operation is [10XSetOfMorphismsOfFiniteCategory[110X.[133X
+  corresponding CAP operation is [10XSetOfMorphismsOfFiniteCategory[110X.[133X
   
   
   [1X3.17 [33X[0;0YSetOfGeneratingMorphisms[133X[101X
@@ -842,17 +842,17 @@
   [1X3.17-1 SetOfGeneratingMorphismsOfCategory[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphismsOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
+  [6XReturns:[106X  [33X[0;10Ya list of a CAP category morphisms[133X
   
   [33X[0;0YReturn a list of generating morphisms of the finitely generated category [3XC[103X.[133X
   
   [1X3.17-2 SetOfGeneratingMorphisms[101X
   
   [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of a [5XCAP[105X category morphisms[133X
+  [6XReturns:[106X  [33X[0;10Ya list of a CAP category morphisms[133X
   
   [33X[0;0YReturn  a list of generating morphisms of the finitely generated category [3XC[103X.
-  The corresponding [5XCAP[105X operation is [10XSetOfGeneratingMorphismsOfCategory[110X.[133X
+  The corresponding CAP operation is [10XSetOfGeneratingMorphismsOfCategory[110X.[133X
   
   
   [1X3.18 [33X[0;0YHomomorphism structures[133X[101X

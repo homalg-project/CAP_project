@@ -56,9 +56,9 @@
 <h5>11.2-1 CategoryConstructor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryConstructor</code>( <var class="Arg">options</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+<p>Returns: a CAP category</p>
 
-<p>Creates a <strong class="pkg">CAP</strong> category subject to the options given via <var class="Arg">options</var>, which is a record with the following keys:</p>
+<p>Creates a CAP category subject to the options given via <var class="Arg">options</var>, which is a record with the following keys:</p>
 
 
 <ul>
@@ -92,7 +92,7 @@
 <li><p><code class="code">morphism_datum</code> (optional): function added as an installation of <code class="func">MorphismDatum</code> (<a href="chap3.html#X7BBFB178866108FA"><span class="RefLink">3.3-2</span></a>) to the category</p>
 
 </li>
-<li><p><code class="code">list_of_operations_to_install</code> (mandatory): a list of names of <strong class="pkg">CAP</strong> operations which should be installed for the category</p>
+<li><p><code class="code">list_of_operations_to_install</code> (mandatory): a list of names of CAP operations which should be installed for the category</p>
 
 </li>
 <li><p><code class="code">is_computable</code> (optional): whether the category can decide <code class="code">IsCongruentForMorphisms</code></p>
@@ -138,7 +138,7 @@
 
 </li>
 </ul>
-<p>The values of the keys <code class="code">create_func_*</code> should be either the string <code class="code">"default</code>" or functions which accept the category and the name of a <strong class="pkg">CAP</strong> operation of the corresponding <code class="code">return_type</code>. Values for return types occuring for operations in <code class="code">list_of_operations_to_install</code> are mandatory. The functions must return either strings or pairs of a string and an integer: The strings (after some replacements described below) will be evaluated and added as installations of the corresponding operations to the category with weights given by the integer (if provided). The value <code class="code">"default"</code> chooses a suitable default string (see the implementation for details) and gets the weights from <code class="code">underlying_category</code>. The following placeholders may be used in the strings and are replaced automatically:</p>
+<p>The values of the keys <code class="code">create_func_*</code> should be either the string <code class="code">"default</code>" or functions which accept the category and the name of a CAP operation of the corresponding <code class="code">return_type</code>. Values for return types occuring for operations in <code class="code">list_of_operations_to_install</code> are mandatory. The functions must return either strings or pairs of a string and an integer: The strings (after some replacements described below) will be evaluated and added as installations of the corresponding operations to the category with weights given by the integer (if provided). The value <code class="code">"default"</code> chooses a suitable default string (see the implementation for details) and gets the weights from <code class="code">underlying_category</code>. The following placeholders may be used in the strings and are replaced automatically:</p>
 
 
 <ul>
