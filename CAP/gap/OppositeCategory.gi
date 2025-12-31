@@ -384,6 +384,7 @@ InstallMethod( Opposite,
                
  FunctionWithNamedArguments(
   [
+    [ "FinalizeCategory", true ],
     [ "only_primitive_operations", false ],
     [ "only_primitive_operations_and_hom_structure", false ],
   ],
@@ -552,7 +553,11 @@ InstallMethod( Opposite,
     
     CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category, CAP_NAMED_ARGUMENTS.only_primitive_operations, CAP_NAMED_ARGUMENTS.only_primitive_operations_and_hom_structure );
     
-    Finalize( opposite_category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( opposite_category );
+        
+    fi;
     
     if category!.predicate_logic then
         
