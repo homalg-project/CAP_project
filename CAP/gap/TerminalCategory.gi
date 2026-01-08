@@ -272,6 +272,26 @@ InstallGlobalFunction( TerminalCategoryWithSingleObject, FunctionWithNamedArgume
 end ) );
 
 ##
+InstallMethodForCompilerForCAP( SetOfObjects,
+        [ IsCapTerminalCategoryWithSingleObject ],
+        
+  function( T )
+    
+    return SetOfObjectsOfCategory( T );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( SetOfMorphisms,
+        [ IsCapTerminalCategoryWithSingleObject ],
+        
+  function( T )
+    
+    return SetOfMorphismsOfFiniteCategory( T );
+    
+end );
+
+##
 InstallMethod( TerminalCategoryWithSingleObjectUniqueObject,
                [ IsCapTerminalCategoryWithSingleObject ],
                
