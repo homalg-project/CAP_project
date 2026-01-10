@@ -1209,7 +1209,7 @@ InstallGlobalFunction( CapJitDataTypeOfGroup, function ( group )
 end );
 
 ##
-InstallGlobalFunction( CapJitDataTypeOfElementOfGroup, function ( group )
+InstallGlobalFunction( CapJitDataTypeOfGroupElement, function ( group )
   local type;
     
     if IsIdenticalObj( group, false ) then

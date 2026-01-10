@@ -212,7 +212,7 @@ DeclareGlobalFunction( "CapJitDataTypeOfNTupleOf" );
 #! @Arguments group
 DeclareGlobalFunction( "CapJitDataTypeOfGroup" );
 #! @Arguments group
-DeclareGlobalFunction( "CapJitDataTypeOfElementOfGroup" );
+DeclareGlobalFunction( "CapJitDataTypeOfGroupElement" );
 #! @EndGroup
 
 #! @BeginGroup

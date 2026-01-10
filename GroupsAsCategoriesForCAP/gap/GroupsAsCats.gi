@@ -33,7 +33,7 @@ InstallMethod( GroupAsCategory,
               IsGroupAsCategoryMorphism,
               IsCapCategoryTwoCell,
               IsBool,
-              CapJitDataTypeOfElementOfGroup( group ),
+              CapJitDataTypeOfGroupElement( group ),
               fail
               : overhead := false );
     
