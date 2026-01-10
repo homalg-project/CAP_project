@@ -7,9 +7,9 @@
 CapJitAddTypeSignature( "VertexIndex", [ IsQuiverVertex ], IsInt );
 CapJitAddTypeSignature( "Paths", [ IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsPath ) );
 CapJitAddTypeSignature( "AlgebraOfElement", [ IsQuiverAlgebraElement ], input_types -> CapJitDataTypeOfRing( input_types[1].ring ) );
-CapJitAddTypeSignature( "ZeroImmutable", [ IsQuiverAlgebra ], input_types -> CapJitDataTypeOfElementOfRing( input_types[1].ring ) );
-CapJitAddTypeSignature( "PathAsAlgebraElement", [ IsQuiverAlgebra, IsPath ], input_types -> CapJitDataTypeOfElementOfRing( input_types[1].ring ) );
-CapJitAddTypeSignature( "QuiverAlgebraElement", [ IsQuiverAlgebra, IsList, IsList ], input_types -> CapJitDataTypeOfElementOfRing( input_types[1].ring ) );
+CapJitAddTypeSignature( "ZeroImmutable", [ IsQuiverAlgebra ], input_types -> CapJitDataTypeOfRingElement( input_types[1].ring ) );
+CapJitAddTypeSignature( "PathAsAlgebraElement", [ IsQuiverAlgebra, IsPath ], input_types -> CapJitDataTypeOfRingElement( input_types[1].ring ) );
+CapJitAddTypeSignature( "QuiverAlgebraElement", [ IsQuiverAlgebra, IsList, IsList ], input_types -> CapJitDataTypeOfRingElement( input_types[1].ring ) );
 CapJitAddTypeSignature( "IsZero", [ IsQuiverAlgebraElement ], IsBool );
 CapJitAddTypeSignature( "+", [ IsQuiverAlgebraElement, IsQuiverAlgebraElement ], function ( input_types )
     

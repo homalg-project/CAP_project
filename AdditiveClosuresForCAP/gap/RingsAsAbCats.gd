@@ -63,7 +63,7 @@ DeclareAttribute( "UnderlyingRingElement",
                   IsRingAsCategoryMorphism );
 CapJitAddTypeSignature( "UnderlyingRingElement", [ IsRingAsCategoryMorphism ], function ( input_types )
     
-    return CapJitDataTypeOfElementOfRing( UnderlyingRing( input_types[1].category ) );
+    return CapJitDataTypeOfRingElement( UnderlyingRing( input_types[1].category ) );
     
 end );
 

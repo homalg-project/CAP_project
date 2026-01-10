@@ -22,8 +22,8 @@ CapJitAddTypeSignature( "AsHomalgMatrix", [ IsCapCategoryMorphism ], function ( 
     
 end );
 
-CapJitAddTypeSignature( "ZeroImmutable", [ IsHomalgRing ], input_types -> CapJitDataTypeOfElementOfRing( input_types[1].ring ) );
-CapJitAddTypeSignature( "OneImmutable", [ IsHomalgRing ], input_types -> CapJitDataTypeOfElementOfRing( input_types[1].ring ) );
+CapJitAddTypeSignature( "ZeroImmutable", [ IsHomalgRing ], input_types -> CapJitDataTypeOfRingElement( input_types[1].ring ) );
+CapJitAddTypeSignature( "OneImmutable", [ IsHomalgRing ], input_types -> CapJitDataTypeOfRingElement( input_types[1].ring ) );
 
 CapJitAddTypeSignature( "HomalgMatrixListList", [ IsList, IsInt, IsInt, IsHomalgRing ], function ( input_types )
   local ring;
@@ -31,7 +31,7 @@ CapJitAddTypeSignature( "HomalgMatrixListList", [ IsList, IsInt, IsInt, IsHomalg
     ring := input_types[4].ring;
     
     Assert( 0, input_types[1].element_type.filter = IsList );
-    Assert( 0, input_types[1].element_type.element_type = CapJitDataTypeOfElementOfRing( ring ) or input_types[1].element_type.element_type.filter = IsInt ); # for example, integers appear in AddZeroMorphism in AdditiveClosuresForCAP/gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory.gi
+    Assert( 0, input_types[1].element_type.element_type = CapJitDataTypeOfRingElement( ring ) or input_types[1].element_type.element_type.filter = IsInt ); # for example, integers appear in AddZeroMorphism in AdditiveClosuresForCAP/gap/CategoryOfRows_as_AdditiveClosure_RingAsCategory.gi
     
     return rec(
         filter := IsHomalgMatrix,
@@ -45,7 +45,7 @@ CapJitAddTypeSignature( "HomalgRowVector", [ IsList, IsInt, IsHomalgRing ], func
     
     ring := input_types[3].ring;
     
-    Assert( 0, input_types[1].element_type = CapJitDataTypeOfElementOfRing( ring ) );
+    Assert( 0, input_types[1].element_type = CapJitDataTypeOfRingElement( ring ) );
     
     return rec(
         filter := IsHomalgMatrix,
@@ -59,7 +59,7 @@ CapJitAddTypeSignature( "HomalgColumnVector", [ IsList, IsInt, IsHomalgRing ], f
     
     ring := input_types[3].ring;
     
-    Assert( 0, input_types[1].element_type = CapJitDataTypeOfElementOfRing( ring ) );
+    Assert( 0, input_types[1].element_type = CapJitDataTypeOfRingElement( ring ) );
     
     return rec(
         filter := IsHomalgMatrix,
@@ -72,7 +72,7 @@ CapJitAddTypeSignature( "HomalgIdentityMatrix", [ IsInt, IsHomalgRing ], input_t
 CapJitAddTypeSignature( "HomalgZeroMatrix", [ IsInt, IsInt, IsHomalgRing ], input_types -> rec( filter := IsHomalgMatrix, ring := input_types[3].ring ) );
 CapJitAddTypeSignature( "RandomMatrix", [ IsInt, IsInt, IsHomalgRing ], input_types -> rec( filter := IsHomalgMatrix, ring := input_types[3].ring ) );
 CapJitAddTypeSignature( "IsZero", [ IsHomalgMatrix ], IsBool );
-CapJitAddTypeSignature( "[,]", [ IsHomalgMatrix, IsInt, IsInt ], input_types -> CapJitDataTypeOfElementOfRing( input_types[1].ring ) );
+CapJitAddTypeSignature( "[,]", [ IsHomalgMatrix, IsInt, IsInt ], input_types -> CapJitDataTypeOfRingElement( input_types[1].ring ) );
 CapJitAddTypeSignature( "ConvertRowToMatrix", [ IsHomalgMatrix, IsInt, IsInt ], input_types -> input_types[1] );
 CapJitAddTypeSignature( "ConvertColumnToMatrix", [ IsHomalgMatrix, IsInt, IsInt ], input_types -> input_types[1] );
 CapJitAddTypeSignature( "ConvertMatrixToRow", [ IsHomalgMatrix ], input_types -> input_types[1] );
@@ -257,7 +257,7 @@ end );
 
 CapJitAddTypeSignature( "CoefficientsWithGivenMonomials", [ IsHomalgRingElement, IsHomalgMatrix ], function ( input_types )
     
-    Assert( 0, input_types[1] = CapJitDataTypeOfElementOfRing( input_types[2].ring ) );
+    Assert( 0, input_types[1] = CapJitDataTypeOfRingElement( input_types[2].ring ) );
     
     return input_types[2];
     
@@ -272,10 +272,10 @@ CapJitAddTypeSignature( "CoercedMatrix", [ IsHomalgRing, IsHomalgRing, IsHomalgM
 end );
 
 CapJitAddTypeSignature( "CoercedMatrix", [ IsHomalgRing, IsHomalgMatrix ], input_types -> rec( filter := IsHomalgMatrix, ring := input_types[1].ring ) );
-CapJitAddTypeSignature( "EntriesOfHomalgMatrix", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( input_types[1].ring ) ) );
-CapJitAddTypeSignature( "EntriesOfHomalgMatrixAsListList", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( input_types[1].ring ) ) ) );
-CapJitAddTypeSignature( "EntriesOfHomalgRowVector", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( input_types[1].ring ) ) );
-CapJitAddTypeSignature( "EntriesOfHomalgColumnVector", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( input_types[1].ring ) ) );
+CapJitAddTypeSignature( "EntriesOfHomalgMatrix", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfRingElement( input_types[1].ring ) ) );
+CapJitAddTypeSignature( "EntriesOfHomalgMatrixAsListList", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfRingElement( input_types[1].ring ) ) ) );
+CapJitAddTypeSignature( "EntriesOfHomalgRowVector", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfRingElement( input_types[1].ring ) ) );
+CapJitAddTypeSignature( "EntriesOfHomalgColumnVector", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfListOf( CapJitDataTypeOfRingElement( input_types[1].ring ) ) );
 
 CapJitAddTypeSignature( "DecideZeroRows", [ IsHomalgMatrix, IsHomalgMatrix ], function ( input_types )
     
@@ -297,7 +297,7 @@ CapJitAddTypeSignature( "SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInv
 CapJitAddTypeSignature( "SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfNTupleOf( 3, input_types[1], input_types[1], input_types[1] ) );
 CapJitAddTypeSignature( "SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix", [ IsHomalgMatrix ], input_types -> CapJitDataTypeOfNTupleOf( 3, input_types[1], input_types[1], input_types[1] ) );
 
-CapJitAddTypeSignature( "/", [ IsHomalgRingElement, IsHomalgRing ], input_types -> CapJitDataTypeOfElementOfRing( input_types[2].ring ) );
+CapJitAddTypeSignature( "/", [ IsHomalgRingElement, IsHomalgRing ], input_types -> CapJitDataTypeOfRingElement( input_types[2].ring ) );
 
 # addition
 CapJitAddTypeSignature( "+", [ IsHomalgRingElement, IsHomalgRingElement ], function ( input_types )

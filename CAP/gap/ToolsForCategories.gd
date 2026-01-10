@@ -221,7 +221,7 @@ DeclareGlobalFunction( "CapJitDataTypeOfElementOfGroup" );
 #! @Arguments ring
 DeclareGlobalFunction( "CapJitDataTypeOfRing" );
 #! @Arguments ring
-DeclareGlobalFunction( "CapJitDataTypeOfElementOfRing" );
+DeclareGlobalFunction( "CapJitDataTypeOfRingElement" );
 #! @EndGroup
 
 #! @BeginGroup

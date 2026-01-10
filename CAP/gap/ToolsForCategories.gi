@@ -216,11 +216,11 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
         if IsIdenticalObj( category, false ) or not HasCommutativeRingOfLinearCategory( category ) then
             
-            return CapJitDataTypeOfElementOfRing( false );
+            return CapJitDataTypeOfRingElement( false );
             
         fi;
         
-        return CapJitDataTypeOfElementOfRing( CommutativeRingOfLinearCategory( category ) );
+        return CapJitDataTypeOfRingElement( CommutativeRingOfLinearCategory( category ) );
         
     elif string = "list_of_elements_of_commutative_ring_of_linear_structure" then
         
@@ -1256,7 +1256,7 @@ InstallGlobalFunction( CapJitDataTypeOfRing, function ( ring )
 end );
 
 ##
-InstallGlobalFunction( CapJitDataTypeOfElementOfRing, function ( ring )
+InstallGlobalFunction( CapJitDataTypeOfRingElement, function ( ring )
   local type;
     
     if IsIdenticalObj( ring, false ) then
