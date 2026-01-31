@@ -435,4 +435,10 @@ DeclareGlobalFunction( "CreateGapObjectWithAttributes" );
 #= comment for Julia
 # This is relevant only in Julia to avoid world-age conflicts
 DeclareSynonym( "CallFuncListAtRuntime", CallFuncList );
+
+# The GAP emulation in Julia uses FilterIntersection to join filters
+DeclareSynonym( "FilterIntersection",
+  function(args...)
+    return Iterated( args, {a, b} -> a and b );
+end );
 # =#
