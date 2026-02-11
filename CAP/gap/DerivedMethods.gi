@@ -122,6 +122,23 @@ end : CategoryGetters := rec( modeling_category := ModelingCategory ),
 
 ###########################
 ##
+## In a preadditive category
+##
+###########################
+
+##
+AddDerivationToCAP( IsHomSetInhabited,
+                    "IsHomSetInhabited is always true in an Ab-category",
+                    [  ],
+                    
+  function( cat, object1, object2 )
+    
+    return true;
+    
+end : CategoryFilter := IsAbCategory );
+
+###########################
+##
 ## WithGiven pairs
 ##
 ###########################

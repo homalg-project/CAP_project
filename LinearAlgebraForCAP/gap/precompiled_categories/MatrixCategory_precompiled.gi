@@ -4412,6 +4412,17 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
+    AddIsHomSetInhabited( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return true;
+end
+########
+        
+    , 1 : IsPrecompiledDerivation := true );
+    
+    ##
     AddIsIdempotent( cat,
         
 ########
