@@ -280,6 +280,9 @@
   [30X    [33X[0;6Y[2XIsEqualToZeroMorphism[102X       ([14XCAP:       IsEqualToZeroMorphism      for
         IsCapCategoryMorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsHomSetInhabited[102X  ([14XCAP:  IsHomSetInhabited  for  IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsIdempotent[102X ([14XCAP: IsIdempotent for IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XIsInitial[102X ([14XCAP: IsInitial for IsCapCategoryObject[114X)[133X
