@@ -12,8 +12,8 @@ compare_func := function( g, h ) return UnderlyingGroupElement( g ) < Underlying
 ZZZ := HomalgRingOfIntegers();;
 ZCG := LinearClosure( ZZZ, CG, compare_func );;
 u := GroupAsCategoryUniqueObject( CG );;
-g := GroupAsCategoryMorphism( (1,2,3), CG );;
-h := GroupAsCategoryMorphism( (1,2), CG );;
+g := GroupAsCategoryMorphism( CG, (1,2,3) );;
+h := GroupAsCategoryMorphism( CG, (1,2) );;
 v := LinearClosureObject( ZCG, u );;
 SetOfObjectsOfCategory( ZCG ) = [ v ];
 #! true
