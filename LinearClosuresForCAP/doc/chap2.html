@@ -45,8 +45,8 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZZ := HomalgRingOfIntegers();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZZ, CG, compare_func );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := GroupAsCategoryMorphism( (1,2,3), CG );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := GroupAsCategoryMorphism( (1,2), CG );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := GroupAsCategoryMorphism( CG, (1,2,3) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := GroupAsCategoryMorphism( CG, (1,2) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := LinearClosureObject( ZCG, u );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetOfObjectsOfCategory( ZCG ) = [ v ];</span>
 true
@@ -74,7 +74,7 @@ LinearClosure( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( QSkeletalFinSets );</span>
 A CAP category with name LinearClosure( SkeletalFinSets ):
 
-22 primitive operations were used to derive 68 operations for this category which algorithmically
+22 primitive operations were used to derive 69 operations for this category which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 and furthermore mathematically
