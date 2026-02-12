@@ -12,8 +12,8 @@ compare_func := function( g, h ) return UnderlyingGroupElement( g ) < Underlying
 ZZZ := HomalgRingOfIntegers();;
 ZCG := LinearClosure( ZZZ, CG, compare_func );;
 u := GroupAsCategoryUniqueObject( CG );;
-g := GroupAsCategoryMorphism( (1,2,3), CG );;
-h := GroupAsCategoryMorphism( (1,2), CG );;
+g := GroupAsCategoryMorphism( CG, (1,2,3) );;
+h := GroupAsCategoryMorphism( CG, (1,2) );;
 v := LinearClosureObject( ZCG, u );;
 SetOfObjectsOfCategory( ZCG ) = [ v ];
 #! true
@@ -40,7 +40,7 @@ QSkeletalFinSets := LinearClosure( Q, SkeletalFinSets );
 Display( QSkeletalFinSets );
 #! A CAP category with name LinearClosure( SkeletalFinSets ):
 #! 
-#! 22 primitive operations were used to derive 68 operations for this category which algorithmically
+#! 22 primitive operations were used to derive 69 operations for this category which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
 #! and furthermore mathematically
