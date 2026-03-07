@@ -181,7 +181,7 @@
 <li><p><code class="code">apply_in_proof_assistant_mode</code> determines if the logic template is applied in proof assistant mode, is not applied in proof assistant mode, or is <em>only</em> applied in proof assistant mode but not in normal mode.</p>
 
 </li>
-<li><p><code class="code">debug</code> can be set to <code class="code">true</code> to print more information while <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-18</span></a>) tries to apply the template. (Note: this causes informational break loops which are not actual errors).</p>
+<li><p><code class="code">debug</code> can be set to <code class="keyw">true</code> to print more information while <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-18</span></a>) tries to apply the template. (Note: this causes informational break loops which are not actual errors).</p>
 
 </li>
 <li><p><code class="code">debug_path</code> can be set to a specific path to get exact information why the subtree at this path does or does not match <code class="code">src_template</code>.</p>
@@ -246,7 +246,7 @@
 <li><p>The handling of local variables and higher variables is unified by the concept of function variables: function variables (FVARs) reference local variables in functions via the function id (<code class="code">func_id</code>) and their name (<code class="code">name</code>), which is determined from the list of arguments/local variables of the function.</p>
 
 </li>
-<li><p>All statements after <code class="code">if ... then return ...; fi;</code> are moved into an <code class="code">else</code> branch.</p>
+<li><p>All statements after <code class="code">if ... then return ...; fi;</code> are moved into an <code class="keyw">else</code> branch.</p>
 
 </li>
 <li><p>The syntax tree types in <code class="code">CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS</code> (e.g. <code class="code">EXPR_ELM_MAT</code>) are replaced by calls to corresponding operations (so that they do not require special handling).</p>
@@ -272,7 +272,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ENHANCED_SYNTAX_TREE</code>( <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Returns an enhanced syntax tree of the plain function <var class="Arg">func</var> (see above). If the option <code class="code">globalize_hvars</code> is set to <code class="code">true</code>, higher variables pointing to variables in the environment of <var class="Arg">func</var> are assigned to global variables and referenced via these global variables in the tree. Otherwise, an error is thrown if such higher variables exist. If a list is given as the option <code class="code">given_arguments</code>, references to the <code class="code">i</code>-th argument of the function are replaced by references to a global variable with the value of <code class="code">given_arguments[i]</code> (only in case this position is bound).</p>
+<p>Returns an enhanced syntax tree of the plain function <var class="Arg">func</var> (see above). If the option <code class="code">globalize_hvars</code> is set to <code class="keyw">true</code>, higher variables pointing to variables in the environment of <var class="Arg">func</var> are assigned to global variables and referenced via these global variables in the tree. Otherwise, an error is thrown if such higher variables exist. If a list is given as the option <code class="code">given_arguments</code>, references to the <code class="code">i</code>-th argument of the function are replaced by references to a global variable with the value of <code class="code">given_arguments[i]</code> (only in case this position is bound).</p>
 
 <p><a id="X7803FE057B30BAAF" name="X7803FE057B30BAAF"></a></p>
 
@@ -301,7 +301,7 @@
 <li><p><var class="Arg">pre_func</var> allows to modify a (sub-)tree before the recursion over its children. For example, you could detect occurrences of <code class="code">if true then &lt;body&gt; fi;</code> and simply return the body to simplify the tree.</p>
 
 </li>
-<li><p><var class="Arg">result_func</var> allows to construct the return value of a (sub-)tree from the return values of its children. For example, if you want to check if a node of a certain type occurs in the tree, return <code class="code">true</code> if <var class="Arg">tree</var> has the type or any of the children returned <code class="code">true</code>, otherwise return <code class="code">false</code>.</p>
+<li><p><var class="Arg">result_func</var> allows to construct the return value of a (sub-)tree from the return values of its children. For example, if you want to check if a node of a certain type occurs in the tree, return <code class="keyw">true</code> if <var class="Arg">tree</var> has the type or any of the children returned <code class="keyw">true</code>, otherwise return <code class="keyw">false</code>.</p>
 
 </li>
 <li><p><var class="Arg">additional_arguments[_func]</var> allows to create and pass additional data to the children of <var class="Arg">tree</var>, for example the path or the function stack.</p>
@@ -411,7 +411,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitFindNodeDeep</code>( <var class="Arg">tree</var>, <var class="Arg">condition_func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list or fail</p>
 
-<p>Finds a node in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="code">true</code> and returns the path of this node. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. If multiple nodes are found, children are preferred over their parents (i.e. a "deep" node is returned). If no node can be found, <code class="code">fail</code> is returned.</p>
+<p>Finds a node in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="keyw">true</code> and returns the path of this node. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. If multiple nodes are found, children are preferred over their parents (i.e. a "deep" node is returned). If no node can be found, <code class="code">fail</code> is returned.</p>
 
 <p><a id="X7ACEA9D087F47BE6" name="X7ACEA9D087F47BE6"></a></p>
 
@@ -420,7 +420,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitFindNodes</code>( <var class="Arg">tree</var>, <var class="Arg">condition_func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Finds all nodes in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="code">true</code>. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. Returns a list of paths of nodes for which this call yields true.</p>
+<p>Finds all nodes in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="keyw">true</code>. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. Returns a list of paths of nodes for which this call yields true.</p>
 
 <p><a id="X7B97567F7B56CBFA" name="X7B97567F7B56CBFA"></a></p>
 
@@ -465,7 +465,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitIsEqualForEnhancedSyntaxTrees</code>( <var class="Arg">tree1</var>, <var class="Arg">tree2</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
-<p>Returns <code class="code">true</code> if the enhanced syntax trees <var class="Arg">tree1</var> and <var class="Arg">tree2</var> are equal up to:</p>
+<p>Returns <code class="keyw">true</code> if the enhanced syntax trees <var class="Arg">tree1</var> and <var class="Arg">tree2</var> are equal up to:</p>
 
 
 <ul>
@@ -678,7 +678,7 @@
 <li><p><code class="code">IsNTuple</code> with additional component <code class="code">element_types</code>: The types of the elements of the tuple.</p>
 
 </li>
-<li><p>filters implying <code class="code">IsRing</code>, <code class="code">IsRingElement</code>, <code class="code">IsHomalgMatrix</code> with additional component <code class="code">ring</code>: The ring instance (to which the element or matrix belongs). Exception: If the filter <code class="code">IsInt</code> describes a <code class="code"></code>technical'' integer (e.g. an index) and not an integer used in a mathematical context, the component <code class="code">ring</code> should not be set.</p>
+<li><p>filters implying <code class="code">IsRing</code>, <code class="code">IsRingElement</code>, <code class="code">IsHomalgMatrix</code> with additional component <code class="code">ring</code>: The ring instance (to which the element or matrix belongs). Exception: If the filter <code class="code">IsInt</code> describes a "technical" integer (e.g. an index) and not an integer used in a mathematical context, the component <code class="code">ring</code> should not be set.</p>
 
 </li>
 <li><p>filters implying <code class="code">IsCapCategory</code>, <code class="code">IsCapCategoryObject</code>, <code class="code">IsCapCategoryMorphism</code>, or <code class="code">IsCapCategoryTwoCell</code> with additional component <code class="code">category</code>: The category instance (to which the object, morphism or two cell belongs). WARNING: <code class="code">IsString</code> implies <code class="code">IsList</code>, so when creating a data type with filter implying <code class="code">IsString</code> one must set <code class="code">element_type</code> to a data type with filter <code class="code">IsChar</code>, or use <code class="code">IsStringRep</code> instead of <code class="code">IsString</code>.</p>
@@ -701,7 +701,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedBindings</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_var_refs_only</code> is set to <code class="code">true</code>, this is only done if the value is a reference to a (local or global) variable. If the option <code class="code">inline_fully</code> is NOT set to <code class="code">true</code>, wrapped arguments are not inlined (see <code class="func">CapJitOutlinedWrappedArguments</code> (<a href="chap2.html#X79FD7D407C591072"><span class="RefLink">2.5-19</span></a>)). Simple values like integers are always inlined. Also drops the inlined bindings.</p>
+<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_var_refs_only</code> is set to <code class="keyw">true</code>, this is only done if the value is a reference to a (local or global) variable. If the option <code class="code">inline_fully</code> is NOT set to <code class="keyw">true</code>, wrapped arguments are not inlined (see <code class="func">CapJitOutlinedWrappedArguments</code> (<a href="chap2.html#X79FD7D407C591072"><span class="RefLink">2.5-19</span></a>)). Simple values like integers are always inlined. Also drops the inlined bindings.</p>
 
 <p><a id="X82F8D6B5851674EB" name="X82F8D6B5851674EB"></a></p>
 
@@ -728,18 +728,18 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedFunctionCalls</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Example: transforms <code class="code">function() local x; x := (y -&gt; y + 2)(1); return x; end</code> into <code class="code">function() local x, y, r; y := 1; r := y + 2; x := r; return x; end</code>. Details: Searches for function calls of a resolved function in the right hand side of a variable assignment or a return statement. Inserts the body of the function right before the variable assignment / return statement to avoid the function call. Assumes that arguments of function calls are inlined (i.e., you should use <code class="func">CapJitInlinedArguments</code> (<a href="chap2.html#X7DF03AC082073C4C"><span class="RefLink">2.5-11</span></a>) first). Due to the nature of a <code class="code">return</code> statement breaking the execution and having no <code class="code">goto</code> keyword in GAP, only functions</p>
+<p>Example: transforms <code class="code">function() local x; x := (y -&gt; y + 2)(1); return x; end</code> into <code class="code">function() local x, y, r; y := 1; r := y + 2; x := r; return x; end</code>. Details: Searches for function calls of a resolved function in the right hand side of a variable assignment or a return statement. Inserts the body of the function right before the variable assignment / return statement to avoid the function call. Assumes that arguments of function calls are inlined (i.e., you should use <code class="func">CapJitInlinedArguments</code> (<a href="chap2.html#X7DF03AC082073C4C"><span class="RefLink">2.5-11</span></a>) first). Due to the nature of a <code class="keyw">return</code> statement breaking the execution and having no <code class="code">goto</code> keyword in GAP, only functions</p>
 
 
 <ul>
-<li><p>ending with a <code class="code">return</code> statement, or</p>
+<li><p>ending with a <code class="keyw">return</code> statement, or</p>
 
 </li>
-<li><p>ending with an if-(elif)-else-statement with <code class="code">return</code> statements at the end of all branches</p>
+<li><p>ending with an if-(elif)-else-statement with <code class="keyw">return</code> statements at the end of all branches</p>
 
 </li>
 </ul>
-<p>and not containing other <code class="code">return</code> statements can be inlined.</p>
+<p>and not containing other <code class="keyw">return</code> statements can be inlined.</p>
 
 <p><a id="X7C3064C27FBB1A0D" name="X7C3064C27FBB1A0D"></a></p>
 

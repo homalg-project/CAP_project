@@ -103,7 +103,7 @@
         mode,  or  is  [13Xonly[113X  applied in proof assistant mode but not in normal
         mode.[133X
   
-  [30X    [33X[0;6Y[10Xdebug[110X   can   be   set   to  [10Xtrue[110X  to  print  more  information  while
+  [30X    [33X[0;6Y[10Xdebug[110X   can   be   set   to  [9Xtrue[109X  to  print  more  information  while
         [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-18[114X)  tries  to  apply  the template.
         (Note:  this  causes  informational  break  loops which are not actual
         errors).[133X
@@ -178,7 +178,7 @@
         variables of the function.[133X
   
   [30X    [33X[0;6YAll  statements  after  [10Xif  ... then return ...; fi;[110X are moved into an
-        [10Xelse[110X branch.[133X
+        [9Xelse[109X branch.[133X
   
   [30X    [33X[0;6YThe             syntax             tree            types            in
         [10XCAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS[110X           (e.g.
@@ -221,7 +221,7 @@
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YReturns  an  enhanced syntax tree of the plain function [3Xfunc[103X (see above). If
-  the  option  [10Xglobalize_hvars[110X  is  set  to [10Xtrue[110X, higher variables pointing to
+  the  option  [10Xglobalize_hvars[110X  is  set  to [9Xtrue[109X, higher variables pointing to
   variables  in  the  environment of [3Xfunc[103X are assigned to global variables and
   referenced  via  these  global variables in the tree. Otherwise, an error is
   thrown  if  such  higher  variables  exist. If a list is given as the option
@@ -253,9 +253,9 @@
   
   [30X    [33X[0;6Y[3Xresult_func[103X  allows to construct the return value of a (sub-)tree from
         the  return  values of its children. For example, if you want to check
-        if  a  node  of a certain type occurs in the tree, return [10Xtrue[110X if [3Xtree[103X
-        has  the  type  or any of the children returned [10Xtrue[110X, otherwise return
-        [10Xfalse[110X.[133X
+        if  a  node  of a certain type occurs in the tree, return [9Xtrue[109X if [3Xtree[103X
+        has  the  type  or any of the children returned [9Xtrue[109X, otherwise return
+        [9Xfalse[109X.[133X
   
   [30X    [33X[0;6Y[3Xadditional_arguments[_func][103X  allows to create and pass additional data
         to the children of [3Xtree[103X, for example the path or the function stack.[133X
@@ -377,7 +377,7 @@
   [33X[1;0Y[29X[2XCapJitFindNodeDeep[102X( [3Xtree[103X, [3Xcondition_func[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list or fail[133X
   
-  [33X[0;0YFinds  a  node in [3Xtree[103X for which [3Xcondition_func[103X returns [10Xtrue[110X and returns the
+  [33X[0;0YFinds  a  node in [3Xtree[103X for which [3Xcondition_func[103X returns [9Xtrue[109X and returns the
   path of this node. For each node, [3Xcondition_func[103X is called with the node and
   current  path as arguments, and must return a boolean. If multiple nodes are
   found,  children  are  preferred  over  their parents (i.e. a "deep" node is
@@ -388,7 +388,7 @@
   [33X[1;0Y[29X[2XCapJitFindNodes[102X( [3Xtree[103X, [3Xcondition_func[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
-  [33X[0;0YFinds  all  nodes  in  [3Xtree[103X  for which [3Xcondition_func[103X returns [10Xtrue[110X. For each
+  [33X[0;0YFinds  all  nodes  in  [3Xtree[103X  for which [3Xcondition_func[103X returns [9Xtrue[109X. For each
   node,  [3Xcondition_func[103X is called with the node and current path as arguments,
   and  must  return a boolean. Returns a list of paths of nodes for which this
   call yields true.[133X
@@ -431,7 +431,7 @@
   [33X[1;0Y[29X[2XCapJitIsEqualForEnhancedSyntaxTrees[102X( [3Xtree1[103X, [3Xtree2[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YReturns [10Xtrue[110X if the enhanced syntax trees [3Xtree1[103X and [3Xtree2[103X are equal up to:[133X
+  [33X[0;0YReturns [9Xtrue[109X if the enhanced syntax trees [3Xtree1[103X and [3Xtree2[103X are equal up to:[133X
   
   [30X    [33X[0;6Yrenaming of arguments,[133X
   
@@ -633,7 +633,7 @@
   
   [30X    [33X[0;6Yfilters implying [10XIsRing[110X, [10XIsRingElement[110X, [10XIsHomalgMatrix[110X with additional
         component  [10Xring[110X:  The  ring  instance  (to which the element or matrix
-        belongs).  Exception:  If  the  filter  [10XIsInt[110X  describes a [10X[110Xtechnical''
+        belongs).  Exception:  If  the  filter  [10XIsInt[110X  describes a "technical"
         integer  (e.g.  an  index)  and  not an integer used in a mathematical
         context, the component [10Xring[110X should not be set.[133X
   
@@ -664,9 +664,9 @@
   [33X[0;0YExample:  transforms  [10Xfunction()  local  x;  x  :=  1;  return x^2; end[110X into
   [10Xfunction()   return  1^2;  end()[110X.  Details:  Replaces  references  to  local
   variables  of  a  function  by the value of the corresponding binding of the
-  function.  If  the  option [10Xinline_var_refs_only[110X is set to [10Xtrue[110X, this is only
+  function.  If  the  option [10Xinline_var_refs_only[110X is set to [9Xtrue[109X, this is only
   done  if  the  value  is a reference to a (local or global) variable. If the
-  option  [10Xinline_fully[110X  is  NOT set to [10Xtrue[110X, wrapped arguments are not inlined
+  option  [10Xinline_fully[110X  is  NOT set to [9Xtrue[109X, wrapped arguments are not inlined
   (see  [2XCapJitOutlinedWrappedArguments[102X  ([14X2.5-19[114X)). Simple values like integers
   are always inlined. Also drops the inlined bindings.[133X
   
@@ -696,15 +696,15 @@
   of  the  function right before the variable assignment / return statement to
   avoid  the  function  call.  Assumes  that  arguments  of function calls are
   inlined (i.e., you should use [2XCapJitInlinedArguments[102X ([14X2.5-11[114X) first). Due to
-  the  nature  of a [10Xreturn[110X statement breaking the execution and having no [10Xgoto[110X
+  the  nature  of a [9Xreturn[109X statement breaking the execution and having no [10Xgoto[110X
   keyword in GAP, only functions[133X
   
-  [30X    [33X[0;6Yending with a [10Xreturn[110X statement, or[133X
+  [30X    [33X[0;6Yending with a [9Xreturn[109X statement, or[133X
   
-  [30X    [33X[0;6Yending  with an if-(elif)-else-statement with [10Xreturn[110X statements at the
+  [30X    [33X[0;6Yending  with an if-(elif)-else-statement with [9Xreturn[109X statements at the
         end of all branches[133X
   
-  [33X[0;0Yand not containing other [10Xreturn[110X statements can be inlined.[133X
+  [33X[0;0Yand not containing other [9Xreturn[109X statements can be inlined.[133X
   
   [1X2.5-16 CapJitInlinedSimpleFunctionCalls[101X
   
