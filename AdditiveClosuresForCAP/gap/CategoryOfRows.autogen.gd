@@ -356,6 +356,10 @@
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismInverse" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismWithGivenObjects" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOfIdentityAndMorphism" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOfIdentityAndMorphismWithGivenTensorProducts" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOfMorphismAndIdentity" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOfMorphismAndIdentityWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismsWithGivenTensorProducts" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjects" Label="for Is" />

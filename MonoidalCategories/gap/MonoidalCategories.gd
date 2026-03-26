@@ -35,6 +35,42 @@ DeclareOperation( "TensorProductOnMorphismsWithGivenTensorProducts",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow a', \mathrm{id}_b: b \rightarrow b$.
+#! The output is the tensor product $\alpha \otimes \mathrm{id}_b$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, a' \otimes b)$
+#! @Arguments alpha, id_b
+DeclareOperation( "TensorProductOfMorphismAndIdentity",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are an object $s = a \otimes b$,
+#! two morphisms $\alpha: a \rightarrow a', \mathrm{id}_b: b \rightarrow b$,
+#! and an object $r = a' \otimes b$.
+#! The output is the tensor product $\alpha \otimes \mathrm{id}_b$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, a' \otimes b)$
+#! @Arguments s, alpha, id_b, r
+DeclareOperation( "TensorProductOfMorphismAndIdentityWithGivenTensorProducts",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two morphisms $\mathrm{id}_a: a \rightarrow a, \beta: b \rightarrow b'$.
+#! The output is the tensor product $\mathrm{id}_a \otimes \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, a \otimes b')$
+#! @Arguments id_a, beta
+DeclareOperation( "TensorProductOfIdentityAndMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are an object $s = a \otimes b$,
+#! two morphisms $\mathrm{id}_a: a \rightarrow a, \beta: b \rightarrow b'$,
+#! and an object $r = a \otimes b'$.
+#! The output is the tensor product $\mathrm{id}_a \otimes \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes b, a \otimes b')$
+#! @Arguments s, id_a, beta, r
+DeclareOperation( "TensorProductOfIdentityAndMorphismWithGivenTensorProducts",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the associator $\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes c$.
 #! @Returns a morphism in $\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b) \otimes c )$.

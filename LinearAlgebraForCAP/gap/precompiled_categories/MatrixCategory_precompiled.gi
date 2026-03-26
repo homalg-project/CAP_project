@@ -9526,6 +9526,76 @@ end
     , 14453 : IsPrecompiledDerivation := true );
     
     ##
+    AddTensorProductOfIdentityAndMorphism( cat,
+        
+########
+function ( cat_1, id_a_1, beta_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := KroneckerMat( AsHomalgMatrix( id_a_1 ), AsHomalgMatrix( beta_1 ) );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
+end
+########
+        
+    , 302 : IsPrecompiledDerivation := true );
+    
+    ##
+    cat!.cached_precompiled_functions.TensorProductOfIdentityAndMorphism :=
+        
+########
+function ( cat_1, id_a_1, beta_1 )
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, AsInteger( Source( id_a_1 ) ) * AsInteger( Source( beta_1 ) ) ), KroneckerMat( AsHomalgMatrix( id_a_1 ), AsHomalgMatrix( beta_1 ) ), AsCapCategoryObject( cat_1, AsInteger( Range( id_a_1 ) ) * AsInteger( Range( beta_1 ) ) ) );
+end
+########
+        
+    ;
+    
+    ##
+    AddTensorProductOfIdentityAndMorphismWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, id_a_1, beta_1, r_1 )
+    return AsCapCategoryMorphism( cat_1, s_1, KroneckerMat( AsHomalgMatrix( id_a_1 ), AsHomalgMatrix( beta_1 ) ), r_1 );
+end
+########
+        
+    , 101 : IsPrecompiledDerivation := true );
+    
+    ##
+    AddTensorProductOfMorphismAndIdentity( cat,
+        
+########
+function ( cat_1, alpha_1, id_b_1 )
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := KroneckerMat( AsHomalgMatrix( alpha_1 ), AsHomalgMatrix( id_b_1 ) );
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, NumberRows( morphism_attr_1_1 ) ), morphism_attr_1_1, AsCapCategoryObject( cat_1, NumberColumns( morphism_attr_1_1 ) ) );
+end
+########
+        
+    , 302 : IsPrecompiledDerivation := true );
+    
+    ##
+    cat!.cached_precompiled_functions.TensorProductOfMorphismAndIdentity :=
+        
+########
+function ( cat_1, alpha_1, id_b_1 )
+    return AsCapCategoryMorphism( cat_1, AsCapCategoryObject( cat_1, AsInteger( Source( alpha_1 ) ) * AsInteger( Source( id_b_1 ) ) ), KroneckerMat( AsHomalgMatrix( alpha_1 ), AsHomalgMatrix( id_b_1 ) ), AsCapCategoryObject( cat_1, AsInteger( Range( alpha_1 ) ) * AsInteger( Range( id_b_1 ) ) ) );
+end
+########
+        
+    ;
+    
+    ##
+    AddTensorProductOfMorphismAndIdentityWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, id_b_1, r_1 )
+    return AsCapCategoryMorphism( cat_1, s_1, KroneckerMat( AsHomalgMatrix( alpha_1 ), AsHomalgMatrix( id_b_1 ) ), r_1 );
+end
+########
+        
+    , 101 : IsPrecompiledDerivation := true );
+    
+    ##
     AddTensorProductOnMorphisms( cat,
         
 ########

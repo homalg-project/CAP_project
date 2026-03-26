@@ -241,6 +241,82 @@ DeclareOperation( "AddRightUnitorWithGivenTensorProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductOfIdentityAndMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( id_a, beta ) \mapsto \mathtt{TensorProductOfIdentityAndMorphism}(id_a, beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductOfIdentityAndMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddTensorProductOfIdentityAndMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductOfIdentityAndMorphismWithGivenTensorProducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, id_a, beta, r ) \mapsto \mathtt{TensorProductOfIdentityAndMorphismWithGivenTensorProducts}(s, id_a, beta, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductOfIdentityAndMorphismWithGivenTensorProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddTensorProductOfIdentityAndMorphismWithGivenTensorProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductOfMorphismAndIdentity`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( alpha, id_b ) \mapsto \mathtt{TensorProductOfMorphismAndIdentity}(alpha, id_b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductOfMorphismAndIdentity",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddTensorProductOfMorphismAndIdentity",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TensorProductOfMorphismAndIdentityWithGivenTensorProducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, alpha, id_b, r ) \mapsto \mathtt{TensorProductOfMorphismAndIdentityWithGivenTensorProducts}(s, alpha, id_b, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTensorProductOfMorphismAndIdentityWithGivenTensorProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddTensorProductOfMorphismAndIdentityWithGivenTensorProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `TensorProductOnMorphisms`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
