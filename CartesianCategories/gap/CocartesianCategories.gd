@@ -38,6 +38,42 @@ DeclareOperation( "CoproductOnMorphismsWithGivenCoproducts",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow a', \mathrm{id}_b: b \rightarrow b$.
+#! The output is the coproduct $\alpha \sqcup \mathrm{id}_b$.
+#! @Returns a morphism in $\mathrm{Hom}(a \sqcup b, a' \sqcup b)$
+#! @Arguments alpha, id_b
+DeclareOperation( "CoproductOfMorphismAndIdentity",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are an object $s = a \sqcup b$,
+#! two morphisms $\alpha: a \rightarrow a', \mathrm{id}_b: b \rightarrow b$,
+#! and an object $r = a' \sqcup b$.
+#! The output is the coproduct $\alpha \sqcup \mathrm{id}_b$.
+#! @Returns a morphism in $\mathrm{Hom}(a \sqcup b, a' \sqcup b)$
+#! @Arguments s, alpha, id_b, r
+DeclareOperation( "CoproductOfMorphismAndIdentityWithGivenCoproducts",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two morphisms $\mathrm{id}_a: a \rightarrow a, \beta: b \rightarrow b'$.
+#! The output is the coproduct $\mathrm{id}_a \sqcup \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \sqcup b, a \sqcup b')$
+#! @Arguments id_a, beta
+DeclareOperation( "CoproductOfIdentityAndMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are an object $s = a \sqcup b$,
+#! two morphisms $\mathrm{id}_a: a \rightarrow a, \beta: b \rightarrow b'$,
+#! and an object $r = a \sqcup b'$.
+#! The output is the coproduct $\mathrm{id}_a \sqcup \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \sqcup b, a \sqcup b')$
+#! @Arguments s, id_a, beta, r
+DeclareOperation( "CoproductOfIdentityAndMorphismWithGivenCoproducts",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the associator $\alpha_{a,(b,c)}: a \sqcup (b \sqcup c) \rightarrow (a \sqcup b) \sqcup c$.
 #! @Returns a morphism in $\mathrm{Hom}( a \sqcup (b \sqcup c), (a \sqcup b) \sqcup c )$.

@@ -38,6 +38,42 @@ DeclareOperation( "DirectProductOnMorphismsWithGivenDirectProducts",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow a', \mathrm{id}_b: b \rightarrow b$.
+#! The output is the direct product $\alpha \times \mathrm{id}_b$.
+#! @Returns a morphism in $\mathrm{Hom}(a \times b, a' \times b)$
+#! @Arguments alpha, id_b
+DeclareOperation( "DirectProductOfMorphismAndIdentity",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are an object $s = a \times b$,
+#! two morphisms $\alpha: a \rightarrow a', \mathrm{id}_b: b \rightarrow b$,
+#! and an object $r = a' \times b$.
+#! The output is the direct product $\alpha \times \mathrm{id}_b$.
+#! @Returns a morphism in $\mathrm{Hom}(a \times b, a' \times b)$
+#! @Arguments s, alpha, id_b, r
+DeclareOperation( "DirectProductOfMorphismAndIdentityWithGivenDirectProducts",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two morphisms $\mathrm{id}_a: a \rightarrow a, \beta: b \rightarrow b'$.
+#! The output is the direct product $\mathrm{id}_a \times \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \times b, a \times b')$
+#! @Arguments id_a, beta
+DeclareOperation( "DirectProductOfIdentityAndMorphism",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are an object $s = a \times b$,
+#! two morphisms $\mathrm{id}_a: a \rightarrow a, \beta: b \rightarrow b'$,
+#! and an object $r = a \times b'$.
+#! The output is the direct product $\mathrm{id}_a \times \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(a \times b, a \times b')$
+#! @Arguments s, id_a, beta, r
+DeclareOperation( "DirectProductOfIdentityAndMorphismWithGivenDirectProducts",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the associator $\alpha_{a,(b,c)}: a \times (b \times c) \rightarrow (a \times b) \times c$.
 #! @Returns a morphism in $\mathrm{Hom}( a \times (b \times c), (a \times b) \times c )$.

@@ -497,6 +497,152 @@ AddDerivationToCAP( CartesianRightUnitor,
     
 end : is_with_given_derivation := true );
 
+## DirectProductOfIdentityAndMorphism
+InstallMethod( AddDirectProductOfIdentityAndMorphism,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "DirectProductOfIdentityAndMorphism", category, func, -1 );
+    
+end );
+
+InstallMethod( AddDirectProductOfIdentityAndMorphism,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "DirectProductOfIdentityAndMorphism", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## DirectProductOfIdentityAndMorphismWithGivenDirectProducts
+InstallMethod( AddDirectProductOfIdentityAndMorphismWithGivenDirectProducts,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "DirectProductOfIdentityAndMorphismWithGivenDirectProducts", category, func, -1 );
+    
+end );
+
+InstallMethod( AddDirectProductOfIdentityAndMorphismWithGivenDirectProducts,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "DirectProductOfIdentityAndMorphismWithGivenDirectProducts", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( DirectProductOfIdentityAndMorphismWithGivenDirectProducts,
+                    "DirectProductOfIdentityAndMorphismWithGivenDirectProducts by calling DirectProductOfIdentityAndMorphism with the WithGiven argument(s) dropped",
+                    [
+                        [ DirectProductOfIdentityAndMorphism, 1 ],
+                    ],
+  function( cat, s, id_a, beta, r )
+    
+    return DirectProductOfIdentityAndMorphism( cat, id_a, beta );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( DirectProductOfIdentityAndMorphism,
+                    "DirectProductOfIdentityAndMorphism by calling DirectProductOfIdentityAndMorphismWithGivenDirectProducts with the WithGiven object(s)",
+                    [
+                        [ DirectProductOfIdentityAndMorphismWithGivenDirectProducts, 1 ],
+                        [ DirectProduct, 2 ],
+                    ],
+  function( cat, id_a, beta )
+    
+    return DirectProductOfIdentityAndMorphismWithGivenDirectProducts( cat, BinaryDirectProduct( cat, Source( id_a ), Source( beta ) ), id_a, beta, BinaryDirectProduct( cat, Range( id_a ), Range( beta ) ) );
+    
+end : is_with_given_derivation := true );
+
+## DirectProductOfMorphismAndIdentity
+InstallMethod( AddDirectProductOfMorphismAndIdentity,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "DirectProductOfMorphismAndIdentity", category, func, -1 );
+    
+end );
+
+InstallMethod( AddDirectProductOfMorphismAndIdentity,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "DirectProductOfMorphismAndIdentity", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## DirectProductOfMorphismAndIdentityWithGivenDirectProducts
+InstallMethod( AddDirectProductOfMorphismAndIdentityWithGivenDirectProducts,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "DirectProductOfMorphismAndIdentityWithGivenDirectProducts", category, func, -1 );
+    
+end );
+
+InstallMethod( AddDirectProductOfMorphismAndIdentityWithGivenDirectProducts,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "DirectProductOfMorphismAndIdentityWithGivenDirectProducts", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( DirectProductOfMorphismAndIdentityWithGivenDirectProducts,
+                    "DirectProductOfMorphismAndIdentityWithGivenDirectProducts by calling DirectProductOfMorphismAndIdentity with the WithGiven argument(s) dropped",
+                    [
+                        [ DirectProductOfMorphismAndIdentity, 1 ],
+                    ],
+  function( cat, s, alpha, id_b, r )
+    
+    return DirectProductOfMorphismAndIdentity( cat, alpha, id_b );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( DirectProductOfMorphismAndIdentity,
+                    "DirectProductOfMorphismAndIdentity by calling DirectProductOfMorphismAndIdentityWithGivenDirectProducts with the WithGiven object(s)",
+                    [
+                        [ DirectProductOfMorphismAndIdentityWithGivenDirectProducts, 1 ],
+                        [ DirectProduct, 2 ],
+                    ],
+  function( cat, alpha, id_b )
+    
+    return DirectProductOfMorphismAndIdentityWithGivenDirectProducts( cat, BinaryDirectProduct( cat, Source( alpha ), Source( id_b ) ), alpha, id_b, BinaryDirectProduct( cat, Range( alpha ), Range( id_b ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## DirectProductOnMorphisms
 InstallMethod( AddDirectProductOnMorphisms,
                [ IsCapCategory, IsFunction ],

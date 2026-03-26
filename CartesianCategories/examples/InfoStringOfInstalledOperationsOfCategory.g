@@ -13,7 +13,7 @@ distributive := DummyCategory( rec(
   properties := [ "IsBicartesianClosedCategory", "IsSkeletalCategory" ] ) );;
 
 InfoOfInstalledOperationsOfCategory( distributive );
-#! 21 primitive operations were used to derive 121 operations for this category \
+#! 21 primitive operations were used to derive 129 operations for this category \
 #! which algorithmically
 #! * IsBicartesianClosedCategory
 #! and not yet algorithmically
