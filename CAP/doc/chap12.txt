@@ -217,7 +217,7 @@
         reinterpretation [10XR[110X and a morphism in the modeling category and returns
         the corresponding morphism datum (in the sense of [10Xmorphism_datum[110X),[133X
   
-  [30X    [33X[0;6Y[10Xonly_primitive_operations[110X  (optional,  default [10Xfalse[110X): whether to only
+  [30X    [33X[0;6Y[10Xonly_primitive_operations[110X  (optional,  default [9Xfalse[109X): whether to only
         reinterpret primitive operations or all operations.[133X
   
   [1X12.6-2 ReinterpretationFunctor[101X

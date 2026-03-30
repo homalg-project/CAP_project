@@ -23,7 +23,7 @@
   
   [1X8.2-1 IsDerivedMethod[101X
   
-  [33X[1;0Y[29X[2XIsDerivedMethod[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsDerivedMethod[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YA  derivation  object  describes  a  derived method. It contains information
@@ -130,7 +130,7 @@
   
   [1X8.3-1 IsDerivedMethodGraph[101X
   
-  [33X[1;0Y[29X[2XIsDerivedMethodGraph[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsDerivedMethodGraph[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YA  derivation graph consists of a set of operations and a set of derivations
@@ -192,7 +192,7 @@
   
   [1X8.4-1 IsOperationWeightList[101X
   
-  [33X[1;0Y[29X[2XIsOperationWeightList[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsOperationWeightList[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YAn operation weight list manages the use of derivations in a single category
@@ -293,8 +293,4 @@
   [33X[1;0Y[29X[2XPrintTree[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
   [33X[0;0YPrints a tree structure.[133X
-  
-  [1X8.4-14 PrintTreeRec[101X
-  
-  [33X[1;0Y[29X[2XPrintTreeRec[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X ) [32X operation[133X
   

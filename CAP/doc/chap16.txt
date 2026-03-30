@@ -6,21 +6,21 @@
   
   [1X16.1-1 IsFiniteSkeletalDiscreteCategory[101X
   
-  [33X[1;0Y[29X[2XIsFiniteSkeletalDiscreteCategory[102X( [3XC[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsFiniteSkeletalDiscreteCategory[102X( [3XC[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X type of a finite skeletal discrete category.[133X
   
   [1X16.1-2 IsObjectInFiniteSkeletalDiscreteCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInFiniteSkeletalDiscreteCategory[102X( [3XO[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInFiniteSkeletalDiscreteCategory[102X( [3XO[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X type of an object in a finite skeletal discrete category.[133X
   
   [1X16.1-3 IsMorphismInFiniteSkeletalDiscreteCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInFiniteSkeletalDiscreteCategory[102X( [3XM[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInFiniteSkeletalDiscreteCategory[102X( [3XM[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X type of a morphism in a finite skeletal discrete category.[133X

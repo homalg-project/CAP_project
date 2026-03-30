@@ -366,14 +366,14 @@
 <h5>9.2-30 Iterated</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Iterated</code>( <var class="Arg">list</var>, <var class="Arg">func</var>, <var class="Arg">initial_value</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Shorthand for <code class="code">Iterated( Concatenation( [ <var class="Arg">initial_value</var> ], <var class="Arg">list</var> ), <var class="Arg">func</var> )</code>.</p>
+<p>Shorthand for <code class="code">Iterated( Concatenation( [ &lt;A&gt;initial_value&lt;/A&gt; ], &lt;A&gt;list&lt;/A&gt; ), &lt;A&gt;func&lt;/A&gt; )</code>.</p>
 
 <p><a id="X7D4C0F987B13D58D" name="X7D4C0F987B13D58D"></a></p>
 
 <h5>9.2-31 Iterated</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Iterated</code>( <var class="Arg">list</var>, <var class="Arg">func</var>, <var class="Arg">initial_value</var>, <var class="Arg">terminal_value</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Shorthand for <code class="code">Iterated( Concatenation( [ <var class="Arg">initial_value</var> ], <var class="Arg">list</var>, [ <var class="Arg">terminal_value</var> ] ), <var class="Arg">func</var> )</code>.</p>
+<p>Shorthand for <code class="code">Iterated( Concatenation( [ &lt;A&gt;initial_value&lt;/A&gt; ], &lt;A&gt;list&lt;/A&gt;, [ &lt;A&gt;terminal_value&lt;/A&gt; ] ), &lt;A&gt;func&lt;/A&gt; )</code>.</p>
 
 <p><a id="X7FA62DB97B67C4AB" name="X7FA62DB97B67C4AB"></a></p>
 
@@ -396,7 +396,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SafePosition</code>( <var class="Arg">list</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer</p>
 
-<p>Returns <code class="code">Position( <var class="Arg">list</var>, <var class="Arg">obj</var> )</code> while asserting that this value is not <code class="code">fail</code>.</p>
+<p>Returns <code class="code">Position( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;obj&lt;/A&gt; )</code> while asserting that this value is not <code class="code">fail</code>.</p>
 
 <p><a id="X85FE589D84D60BEC" name="X85FE589D84D60BEC"></a></p>
 
@@ -405,7 +405,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SafeUniquePosition</code>( <var class="Arg">list</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer</p>
 
-<p>Returns <code class="code">Position( <var class="Arg">list</var>, <var class="Arg">obj</var> )</code> while asserting that this value is not <code class="code">fail</code> and the position is unique.</p>
+<p>Returns <code class="code">Position( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;obj&lt;/A&gt; )</code> while asserting that this value is not <code class="code">fail</code> and the position is unique.</p>
 
 <p><a id="X81DF04B87E3C9D0D" name="X81DF04B87E3C9D0D"></a></p>
 
@@ -414,7 +414,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SafePositionProperty</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer</p>
 
-<p>Returns <code class="code">PositionProperty( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> while asserting that this value is not <code class="code">fail</code>.</p>
+<p>Returns <code class="code">PositionProperty( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> while asserting that this value is not <code class="code">fail</code>.</p>
 
 <p><a id="X810EE26082CAA38E" name="X810EE26082CAA38E"></a></p>
 
@@ -423,7 +423,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SafeUniquePositionProperty</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an integer</p>
 
-<p>Returns a position in <var class="Arg">list</var> for which <var class="Arg">func</var> returns <code class="code">true</code> when applied to the corresponding entry while asserting that there exists exactly one such position.</p>
+<p>Returns a position in <var class="Arg">list</var> for which <var class="Arg">func</var> returns <code class="keyw">true</code> when applied to the corresponding entry while asserting that there exists exactly one such position.</p>
 
 <p><a id="X860EA891868B5777" name="X860EA891868B5777"></a></p>
 
@@ -432,7 +432,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SafeFirst</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an element of the list</p>
 
-<p>Returns <code class="code">First( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> while asserting that this value is not <code class="code">fail</code>.</p>
+<p>Returns <code class="code">First( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> while asserting that this value is not <code class="code">fail</code>.</p>
 
 <p><a id="X8608EAF482DAC239" name="X8608EAF482DAC239"></a></p>
 
@@ -441,7 +441,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SafeUniqueEntry</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an element of the list</p>
 
-<p>Returns a value in <var class="Arg">list</var> for which <var class="Arg">func</var> returns <code class="code">true</code> while asserting that there exists exactly one such entry.</p>
+<p>Returns a value in <var class="Arg">list</var> for which <var class="Arg">func</var> returns <code class="keyw">true</code> while asserting that there exists exactly one such entry.</p>
 
 <p><a id="X7F2E50C87EC6E530" name="X7F2E50C87EC6E530"></a></p>
 
@@ -459,7 +459,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Pair</code>( <var class="Arg">first</var>, <var class="Arg">second</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Alias for <code class="code">NTuple( 2, <var class="Arg">first</var>, <var class="Arg">second</var> )</code>.</p>
+<p>Alias for <code class="code">NTuple( 2, &lt;A&gt;first&lt;/A&gt;, &lt;A&gt;second&lt;/A&gt; )</code>.</p>
 
 <p><a id="X7C52730F8526A57E" name="X7C52730F8526A57E"></a></p>
 
@@ -468,7 +468,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Triple</code>( <var class="Arg">first</var>, <var class="Arg">second</var>, <var class="Arg">third</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Alias for <code class="code">NTuple( 3, <var class="Arg">first</var>, <var class="Arg">second</var>, <var class="Arg">third</var> )</code>.</p>
+<p>Alias for <code class="code">NTuple( 3, &lt;A&gt;first&lt;/A&gt;, &lt;A&gt;second&lt;/A&gt;, &lt;A&gt;third&lt;/A&gt; )</code>.</p>
 
 <p><a id="X7AE413027C8587FE" name="X7AE413027C8587FE"></a></p>
 
@@ -484,7 +484,7 @@
 <h5>9.2-44 HandlePrecompiledTowers</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HandlePrecompiledTowers</code>( <var class="Arg">category</var>, <var class="Arg">underlying_category</var>, <var class="Arg">constructor_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Handles the information stored in <code class="code"><var class="Arg">underlying_category</var>!.compiler_hints.precompiled_towers</code> (if bound) which is a list of records with components:</p>
+<p>Handles the information stored in <code class="code">&lt;A&gt;underlying_category&lt;/A&gt;!.compiler_hints.precompiled_towers</code> (if bound) which is a list of records with components:</p>
 
 
 <ul>
@@ -495,7 +495,7 @@
 
 </li>
 </ul>
-<p>If <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code>, <code class="code">precompiled_functions_adder</code> is applied to <var class="Arg">category</var> (except if the option <code class="code">no_precompiled_code</code> is set to <code class="code">true</code>) and should add precompiled code. Else, if <var class="Arg">constructor_name</var> is the first entry of <code class="code">remaining_constructors_in_tower</code>, the information is attached to <code class="code"><var class="Arg">category</var>!.compiler_hints.precompiled_towers</code> after removing <var class="Arg">constructor_name</var> from <code class="code">remaining_constructors_in_tower</code>. Note: Currently, there is no logic for finding the "optimal" code to install if <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code> of multiple entries.</p>
+<p>If <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code>, <code class="code">precompiled_functions_adder</code> is applied to <var class="Arg">category</var> (except if the option <code class="code">no_precompiled_code</code> is set to <code class="keyw">true</code>) and should add precompiled code. Else, if <var class="Arg">constructor_name</var> is the first entry of <code class="code">remaining_constructors_in_tower</code>, the information is attached to <code class="code">&lt;A&gt;category&lt;/A&gt;!.compiler_hints.precompiled_towers</code> after removing <var class="Arg">constructor_name</var> from <code class="code">remaining_constructors_in_tower</code>. Note: Currently, there is no logic for finding the "optimal" code to install if <var class="Arg">constructor_name</var> is the only entry of <code class="code">remaining_constructors_in_tower</code> of multiple entries.</p>
 
 <p><a id="X7D06D3287E3BFCBB" name="X7D06D3287E3BFCBB"></a></p>
 
@@ -509,7 +509,7 @@
 <h5>9.2-46 CAP_JIT_EXPR_CASE_WRAPPER</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_JIT_EXPR_CASE_WRAPPER</code>( <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Simply returns <var class="Arg">func</var>, which must be a literal function without arguments only containing an <code class="code">if-elif-else</code> statement with each branch consisting of a single <code class="code">return</code> statement. Used to write expressions of the form <code class="code">function() if-elif-else end()</code> as <code class="code">CAP_JIT_EXPR_CASE_WRAPPER(function() if-elif-else end)()</code> because the former is not valid in Julia.</p>
+<p>Simply returns <var class="Arg">func</var>, which must be a literal function without arguments only containing an <code class="code">if-elif-else</code> statement with each branch consisting of a single <code class="keyw">return</code> statement. Used to write expressions of the form <code class="code">function() if-elif-else end()</code> as <code class="code">CAP_JIT_EXPR_CASE_WRAPPER(function() if-elif-else end)()</code> because the former is not valid in Julia.</p>
 
 <p><a id="X7F313F4B853D176C" name="X7F313F4B853D176C"></a></p>
 
@@ -518,7 +518,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">List( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">List( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X873A487F7DA2A359" name="X873A487F7DA2A359"></a></p>
 
@@ -527,7 +527,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SumWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">Sum( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">Sum( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X8321F3D8876ADA2D" name="X8321F3D8876ADA2D"></a></p>
 
@@ -536,7 +536,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProductWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">Product( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">Product( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X7F0574797C13C966" name="X7F0574797C13C966"></a></p>
 
@@ -545,7 +545,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ForAllWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">ForAll( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">ForAll( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X812F59097E8E7562" name="X812F59097E8E7562"></a></p>
 
@@ -554,7 +554,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ForAnyWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">ForAny( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">ForAny( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X8322F3FF84EC9AEB" name="X8322F3FF84EC9AEB"></a></p>
 
@@ -563,7 +563,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">Number( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">Number( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X7D0B0ECF7F70FB8E" name="X7D0B0ECF7F70FB8E"></a></p>
 
@@ -572,7 +572,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FilteredWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">Filtered( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">Filtered( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X7914B5437CBEB3EC" name="X7914B5437CBEB3EC"></a></p>
 
@@ -581,7 +581,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FirstWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">First( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">First( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X849D015F79B08FCC" name="X849D015F79B08FCC"></a></p>
 
@@ -590,7 +590,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LastWithKeys</code>( <var class="Arg">list</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Same as <code class="code">Last( <var class="Arg">list</var>, <var class="Arg">func</var> )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code"><var class="Arg">list</var>[i]</code> as arguments.</p>
+<p>Same as <code class="code">Last( &lt;A&gt;list&lt;/A&gt;, &lt;A&gt;func&lt;/A&gt; )</code> but <var class="Arg">func</var> gets both the key <code class="code">i</code> and <code class="code">&lt;A&gt;list&lt;/A&gt;[i]</code> as arguments.</p>
 
 <p><a id="X81386B5D7CE25406" name="X81386B5D7CE25406"></a></p>
 

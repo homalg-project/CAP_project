@@ -50,7 +50,7 @@
         arguments  as  the  operation  [10XSomeFunc[110X itself and can return an array
         containing  [10X[ true, something ][110X, which will cause the installed method
         to  simply return the object [10Xsomething[110X, or [10X[ false ][110X. If the output is
-        [10Xfalse[110X, the computation will continue with the step Prefunction.[133X
+        [9Xfalse[109X, the computation will continue with the step Prefunction.[133X
   
   [30X    [33X[0;6YPrefunction:  The  prefunction  should  be used for error handling and
         plausibility  checks  of the input to [10XSomeFunc[110X (e.g. for [10XKernelLift[110X it

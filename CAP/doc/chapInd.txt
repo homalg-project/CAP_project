@@ -1076,7 +1076,6 @@
   [2XPreInverseForMorphisms[102X, for IsCapCategoryMorphism 3.13-2 
   [2XPrintDerivationTree[102X, for IsOperationWeightList, IsString 8.4-12 
   [2XPrintTree[102X, for IsObject, IsFunction, IsFunction 8.4-13 
-  [2XPrintTreeRec[102X, for IsObject, IsFunction, IsFunction, IsInt 8.4-14 
   [2XProductWithKeys[102X 9.2-49 
   [2XProjectionInFactorOfDirectProduct[102X, for IsList, IsInt 6.8-3 
   [2XProjectionInFactorOfDirectProductWithGivenDirectProduct[102X, for IsList, IsInt, IsCapCategoryObject 6.8-4 

@@ -75,7 +75,7 @@
   
   [1X1.1-1 IsCapCategory[101X
   
-  [33X[1;0Y[29X[2XIsCapCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCapCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category  of  CAP  categories. Objects of this type handle the CAP
@@ -85,7 +85,7 @@
   
   [1X1.1-2 IsCapCategoryCell[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryCell[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCapCategoryCell[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category of CAP category cells. Every object, morphism, and [23X2[123X-cell
@@ -93,7 +93,7 @@
   
   [1X1.1-3 IsCapCategoryObject[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryObject[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCapCategoryObject[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category  of  CAP category objects. Every object of a CAP category
@@ -101,7 +101,7 @@
   
   [1X1.1-4 IsCapCategoryMorphism[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCapCategoryMorphism[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of CAP category morphisms. Every morphism of a CAP category
@@ -109,7 +109,7 @@
   
   [1X1.1-5 IsCapCategoryTwoCell[101X
   
-  [33X[1;0Y[29X[2XIsCapCategoryTwoCell[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCapCategoryTwoCell[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category  of  CAP category [23X2[123X-cells. Every [23X2[123X-cell of a CAP category
