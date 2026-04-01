@@ -48,6 +48,12 @@ WriteFileForMonoidalStructure(
                                ## TensorProductOnMorphisms
                                [ "TensorProductOnMorphisms( opposite",
                                  "CoproductOnMorphisms( opposite" ],
+                               ## TensorProductOfMorphismAndIdentity
+                               [ "TensorProductOfMorphismAndIdentity( opposite",
+                                 "CoproductOfMorphismAndIdentity( opposite" ],
+                               ## TensorProductOfIdentityAndMorphism
+                               [ "TensorProductOfIdentityAndMorphism( opposite",
+                                 "CoproductOfIdentityAndMorphism( opposite" ],
                                ## Braiding
                                [ "Braiding( opposite",
                                  "CocartesianBraiding( opposite" ],
@@ -468,6 +474,12 @@ WriteFileForMonoidalStructure(
                                ## TensorProductOnMorphisms
                                [ "TensorProductOnMorphisms( opposite",
                                  "DirectProductOnMorphisms( opposite" ],
+                               ## TensorProductOfMorphismAndIdentity
+                               [ "TensorProductOfMorphismAndIdentity( opposite",
+                                 "DirectProductOfMorphismAndIdentity( opposite" ],
+                               ## TensorProductOfIdentityAndMorphism
+                               [ "TensorProductOfIdentityAndMorphism( opposite",
+                                 "DirectProductOfIdentityAndMorphism( opposite" ],
                                ## Braiding
                                [ "Braiding( opposite",
                                  "CartesianBraiding( opposite" ],

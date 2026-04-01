@@ -279,6 +279,82 @@ DeclareOperation( "AddCocartesianRightUnitorWithGivenCoproduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductOfIdentityAndMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( id_a, beta ) \mapsto \mathtt{CoproductOfIdentityAndMorphism}(id_a, beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductOfIdentityAndMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddCoproductOfIdentityAndMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductOfIdentityAndMorphismWithGivenCoproducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, id_a, beta, r ) \mapsto \mathtt{CoproductOfIdentityAndMorphismWithGivenCoproducts}(s, id_a, beta, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductOfIdentityAndMorphismWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddCoproductOfIdentityAndMorphismWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductOfMorphismAndIdentity`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( alpha, id_b ) \mapsto \mathtt{CoproductOfMorphismAndIdentity}(alpha, id_b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductOfMorphismAndIdentity",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddCoproductOfMorphismAndIdentity",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductOfMorphismAndIdentityWithGivenCoproducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, alpha, id_b, r ) \mapsto \mathtt{CoproductOfMorphismAndIdentityWithGivenCoproducts}(s, alpha, id_b, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductOfMorphismAndIdentityWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddCoproductOfMorphismAndIdentityWithGivenCoproducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CoproductOnMorphisms`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).

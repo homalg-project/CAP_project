@@ -447,6 +447,152 @@ AddDerivationToCAP( RightUnitor,
     
 end : is_with_given_derivation := true );
 
+## TensorProductOfIdentityAndMorphism
+InstallMethod( AddTensorProductOfIdentityAndMorphism,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "TensorProductOfIdentityAndMorphism", category, func, -1 );
+    
+end );
+
+InstallMethod( AddTensorProductOfIdentityAndMorphism,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "TensorProductOfIdentityAndMorphism", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## TensorProductOfIdentityAndMorphismWithGivenTensorProducts
+InstallMethod( AddTensorProductOfIdentityAndMorphismWithGivenTensorProducts,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "TensorProductOfIdentityAndMorphismWithGivenTensorProducts", category, func, -1 );
+    
+end );
+
+InstallMethod( AddTensorProductOfIdentityAndMorphismWithGivenTensorProducts,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "TensorProductOfIdentityAndMorphismWithGivenTensorProducts", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( TensorProductOfIdentityAndMorphismWithGivenTensorProducts,
+                    "TensorProductOfIdentityAndMorphismWithGivenTensorProducts by calling TensorProductOfIdentityAndMorphism with the WithGiven argument(s) dropped",
+                    [
+                        [ TensorProductOfIdentityAndMorphism, 1 ],
+                    ],
+  function( cat, s, id_a, beta, r )
+    
+    return TensorProductOfIdentityAndMorphism( cat, id_a, beta );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( TensorProductOfIdentityAndMorphism,
+                    "TensorProductOfIdentityAndMorphism by calling TensorProductOfIdentityAndMorphismWithGivenTensorProducts with the WithGiven object(s)",
+                    [
+                        [ TensorProductOfIdentityAndMorphismWithGivenTensorProducts, 1 ],
+                        [ TensorProductOnObjects, 2 ],
+                    ],
+  function( cat, id_a, beta )
+    
+    return TensorProductOfIdentityAndMorphismWithGivenTensorProducts( cat, TensorProductOnObjects( cat, Source( id_a ), Source( beta ) ), id_a, beta, TensorProductOnObjects( cat, Range( id_a ), Range( beta ) ) );
+    
+end : is_with_given_derivation := true );
+
+## TensorProductOfMorphismAndIdentity
+InstallMethod( AddTensorProductOfMorphismAndIdentity,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "TensorProductOfMorphismAndIdentity", category, func, -1 );
+    
+end );
+
+InstallMethod( AddTensorProductOfMorphismAndIdentity,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "TensorProductOfMorphismAndIdentity", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## TensorProductOfMorphismAndIdentityWithGivenTensorProducts
+InstallMethod( AddTensorProductOfMorphismAndIdentityWithGivenTensorProducts,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "TensorProductOfMorphismAndIdentityWithGivenTensorProducts", category, func, -1 );
+    
+end );
+
+InstallMethod( AddTensorProductOfMorphismAndIdentityWithGivenTensorProducts,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "TensorProductOfMorphismAndIdentityWithGivenTensorProducts", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( TensorProductOfMorphismAndIdentityWithGivenTensorProducts,
+                    "TensorProductOfMorphismAndIdentityWithGivenTensorProducts by calling TensorProductOfMorphismAndIdentity with the WithGiven argument(s) dropped",
+                    [
+                        [ TensorProductOfMorphismAndIdentity, 1 ],
+                    ],
+  function( cat, s, alpha, id_b, r )
+    
+    return TensorProductOfMorphismAndIdentity( cat, alpha, id_b );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( TensorProductOfMorphismAndIdentity,
+                    "TensorProductOfMorphismAndIdentity by calling TensorProductOfMorphismAndIdentityWithGivenTensorProducts with the WithGiven object(s)",
+                    [
+                        [ TensorProductOfMorphismAndIdentityWithGivenTensorProducts, 1 ],
+                        [ TensorProductOnObjects, 2 ],
+                    ],
+  function( cat, alpha, id_b )
+    
+    return TensorProductOfMorphismAndIdentityWithGivenTensorProducts( cat, TensorProductOnObjects( cat, Source( alpha ), Source( id_b ) ), alpha, id_b, TensorProductOnObjects( cat, Range( alpha ), Range( id_b ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## TensorProductOnMorphisms
 InstallMethod( AddTensorProductOnMorphisms,
                [ IsCapCategory, IsFunction ],

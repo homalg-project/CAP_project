@@ -5,6 +5,69 @@
 #
 
 ##
+AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
+                    "TensorProductOnMorphismsWithGivenTensorProducts via TensorProductOfMorphismAndIdentityWithGivenTensorProducts and TensorProductOfIdentityAndMorphismWithGivenTensorProducts and the functoriality of the tensor product",
+                    [ [ TensorProductOfMorphismAndIdentityWithGivenTensorProducts, 1 ],
+                      [ TensorProductOfIdentityAndMorphismWithGivenTensorProducts, 1 ],
+                      [ IdentityMorphism, 2 ],
+                      [ TensorProductOnObjects, 4 ],
+                      [ PreCompose, 1 ],
+                    ],
+                    
+  function( cat, source, alpha, beta, range )
+    local alpha_source, alpha_range, beta_source, beta_range, alpha_times_id_source_beta, id_range_alpha_times_beta;
+    
+    alpha_source := Source( alpha );
+    alpha_range := Range( alpha );
+    
+    beta_source := Source( beta );
+    beta_range := Range( beta );
+    
+    # α ⊗ Id_Source(β)
+    alpha_times_id_source_beta := TensorProductOfMorphismAndIdentityWithGivenTensorProducts( cat,
+                                        TensorProductOnObjects( cat, alpha_source, beta_source ),
+                                        alpha,
+                                        IdentityMorphism( cat, beta_source ),
+                                        TensorProductOnObjects( cat, alpha_range, beta_source ) );
+    
+    # Id_Range(α) ⊗ β
+    id_range_alpha_times_beta := TensorProductOfIdentityAndMorphismWithGivenTensorProducts( cat,
+                                        TensorProductOnObjects( cat, alpha_range, beta_source ),
+                                        IdentityMorphism( cat, alpha_range ),
+                                        beta,
+                                        TensorProductOnObjects( cat, alpha_range, beta_range ) );
+    
+    # The functoriality of the bifunctor '⊗':
+    #
+    # α ⊗ β = (α · Id_Range(α)) ⊗ (Id_Source(β) · β)
+    #       = (α ⊗ Id_Source(β)) · (Id_Range(α) ⊗ β)
+    return PreCompose( cat, alpha_times_id_source_beta, id_range_alpha_times_beta );
+    
+end );
+
+##
+AddDerivationToCAP( TensorProductOfMorphismAndIdentityWithGivenTensorProducts,
+                    "TensorProductOfMorphismAndIdentityWithGivenTensorProducts via TensorProductOnMorphismsWithGivenTensorProducts",
+                    [ [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ] ],
+                    
+  function( cat, source, alpha, id_b, range )
+    
+    return TensorProductOnMorphismsWithGivenTensorProducts( cat, source, alpha, id_b, range );
+    
+end );
+
+##
+AddDerivationToCAP( TensorProductOfIdentityAndMorphismWithGivenTensorProducts,
+                    "TensorProductOfIdentityAndMorphismWithGivenTensorProducts via TensorProductOnMorphismsWithGivenTensorProducts",
+                    [ [ TensorProductOnMorphismsWithGivenTensorProducts, 1 ] ],
+                    
+  function( cat, source, id_a, beta, range )
+    
+    return TensorProductOnMorphismsWithGivenTensorProducts( cat, source, id_a, beta, range );
+    
+end );
+
+##
 AddDerivationToCAP( AssociatorLeftToRightWithGivenTensorProducts,
                     "AssociatorLeftToRightWithGivenTensorProducts as the inverse of AssociatorRightToLeftWithGivenTensorProducts",
                     [ [ InverseForMorphisms, 1 ],

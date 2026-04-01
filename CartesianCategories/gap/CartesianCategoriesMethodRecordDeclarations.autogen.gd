@@ -279,6 +279,82 @@ DeclareOperation( "AddCartesianRightUnitorWithGivenDirectProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductOfIdentityAndMorphism`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( id_a, beta ) \mapsto \mathtt{DirectProductOfIdentityAndMorphism}(id_a, beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductOfIdentityAndMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddDirectProductOfIdentityAndMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductOfIdentityAndMorphismWithGivenDirectProducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, id_a, beta, r ) \mapsto \mathtt{DirectProductOfIdentityAndMorphismWithGivenDirectProducts}(s, id_a, beta, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductOfIdentityAndMorphismWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddDirectProductOfIdentityAndMorphismWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductOfMorphismAndIdentity`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( alpha, id_b ) \mapsto \mathtt{DirectProductOfMorphismAndIdentity}(alpha, id_b)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductOfMorphismAndIdentity",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddDirectProductOfMorphismAndIdentity",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductOfMorphismAndIdentityWithGivenDirectProducts`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, alpha, id_b, r ) \mapsto \mathtt{DirectProductOfMorphismAndIdentityWithGivenDirectProducts}(s, alpha, id_b, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductOfMorphismAndIdentityWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddDirectProductOfMorphismAndIdentityWithGivenDirectProducts",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `DirectProductOnMorphisms`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
