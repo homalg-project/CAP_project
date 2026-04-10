@@ -858,9 +858,9 @@ CapJitAddTypeSignature( "RangeCategoryOfHomomorphismStructure", [ IsCapCategory 
     
 end );
 
-CapJitAddTypeSignature( "CommutativeRingOfLinearCategory", [ IsCapCategory ], function ( input_types )
+CapJitAddTypeSignature( "CommutativeSemiringOfLinearCategory", [ IsCapCategory ], function ( input_types )
     
-    return CapJitDataTypeOfRing( CommutativeRingOfLinearCategory( input_types[1].category ) );
+    return CapJitDataTypeOfRing( CommutativeSemiringOfLinearCategory( input_types[1].category ) );
     
 end );
 

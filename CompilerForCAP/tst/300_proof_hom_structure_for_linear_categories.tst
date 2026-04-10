@@ -13,8 +13,8 @@ gap> k := DummyCommutativeRing( );;
 
 # CategoryOfRows expects a *homalg* ring
 gap> SetFilterObj( k, IsHomalgRing );
-gap> k!.RingFilter := IsHomalgRing;;
-gap> k!.RingElementFilter := IsHomalgRingElement;;
+gap> k!.SemiringFilter := IsHomalgRing;;
+gap> k!.SemiringElementFilter := IsHomalgRingElement;;
 
 #
 gap> dummy := DummyCategory( rec(
@@ -32,7 +32,7 @@ gap> dummy := DummyCategory( rec(
 >         "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms",
 >         "IsEquippedWithHomomorphismStructure",
 >     ],
->     commutative_ring_of_linear_category := k
+>     commutative_semiring_of_linear_category := k
 > ) : FinalizeCategory := false );;
 gap> SetRangeCategoryOfHomomorphismStructure( dummy, CategoryOfRows( k ) );
 gap> AddBasisOfExternalHom( dummy, function ( cat, a, b )
@@ -156,15 +156,15 @@ We have to show
 function ( cat_1, A_1, B_1, C_1, D_1, alpha_1, beta_1 )
     if not IsHomalgMatrix( HomalgMatrixListList( List( BasisOfExternalHom( cat_1, B_1, C_1 ), function ( ell_2 )
                      return CoefficientsOfMorphism( cat_1, PreComposeList( cat_1, A_1, [ alpha_1, ell_2, beta_1 ], D_1 ) );
-                 end ), Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ), Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ) then
+                 end ), Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ), Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ) then
         return false;
     elif not NumberRows( HomalgMatrixListList( List( BasisOfExternalHom( cat_1, B_1, C_1 ), function ( ell_2 )
                        return CoefficientsOfMorphism( cat_1, PreComposeList( cat_1, A_1, [ alpha_1, ell_2, beta_1 ], D_1 ) );
-                   end ), Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ), Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ) = Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ) then
+                   end ), Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ), Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ) = Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ) then
         return false;
     elif not NumberColumns( HomalgMatrixListList( List( BasisOfExternalHom( cat_1, B_1, C_1 ), function ( ell_2 )
                        return CoefficientsOfMorphism( cat_1, PreComposeList( cat_1, A_1, [ alpha_1, ell_2, beta_1 ], D_1 ) );
-                   end ), Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ), Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ) = Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ) then
+                   end ), Length( BasisOfExternalHom( cat_1, B_1, C_1 ) ), Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ) = Length( BasisOfExternalHom( cat_1, A_1, D_1 ) ) then
         return false;
     else
         return true;
@@ -230,7 +230,7 @@ gap> # CoefficientsOfMorphism( BasisOfExternalHom[i] )[j]
 >     rec(
 >         variable_names := [ "cat", "A", "B", "i", "j" ],
 >         src_template := "CoefficientsOfMorphism( cat, BasisOfExternalHom( cat, A, B )[i] )[j]",
->         dst_template := "CAP_JIT_INTERNAL_EXPR_CASE( i = j, One( CommutativeRingOfLinearCategory( cat ) ), true, Zero( CommutativeRingOfLinearCategory( cat ) ) )",
+>         dst_template := "CAP_JIT_INTERNAL_EXPR_CASE( i = j, One( CommutativeSemiringOfLinearCategory( cat ) ), true, Zero( CommutativeSemiringOfLinearCategory( cat ) ) )",
 >     )
 > );
 gap> AssertLemma( );
@@ -534,11 +534,11 @@ end
 gap> PrintLemma( );
 We have to show
 function ( cat_1, A_1, B_1, alpha_1 )
-    if not IsHomalgMatrix( HomalgRowVector( CoefficientsOfMorphism( cat_1, alpha_1 ), Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ) then
+    if not IsHomalgMatrix( HomalgRowVector( CoefficientsOfMorphism( cat_1, alpha_1 ), Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ) then
         return false;
-    elif not NumberRows( HomalgRowVector( CoefficientsOfMorphism( cat_1, alpha_1 ), Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ) = 1 then
+    elif not NumberRows( HomalgRowVector( CoefficientsOfMorphism( cat_1, alpha_1 ), Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ) = 1 then
         return false;
-    elif not NumberColumns( HomalgRowVector( CoefficientsOfMorphism( cat_1, alpha_1 ), Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ) = Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ) then
+    elif not NumberColumns( HomalgRowVector( CoefficientsOfMorphism( cat_1, alpha_1 ), Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ) = Length( BasisOfExternalHom( cat_1, A_1, B_1 ) ) then
         return false;
     else
         return true;

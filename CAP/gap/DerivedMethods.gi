@@ -1244,14 +1244,14 @@ end : CategoryFilter := IsAbCategory );
 
 ##
 AddDerivationToCAP( LinearCombinationOfMorphisms,
-                    "LinearCombinationOfMorphisms using SumOfMorphisms and MultiplyWithElementOfCommutativeRingForMorphisms",
-                    [ [ MultiplyWithElementOfCommutativeRingForMorphisms, 2 ],
+                    "LinearCombinationOfMorphisms using SumOfMorphisms and MultiplyWithElementOfCommutativeSemiringForMorphisms",
+                    [ [ MultiplyWithElementOfCommutativeSemiringForMorphisms, 2 ],
                       [ SumOfMorphisms, 1 ] ],
                     
   function( cat, obj1, coeffs, mors, obj2 )
     local morphisms;
     
-    morphisms := ListN( coeffs, mors, { r, alpha } -> MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ) );
+    morphisms := ListN( coeffs, mors, { r, alpha } -> MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, alpha ) );
     
     return SumOfMorphisms( cat, obj1, morphisms, obj2 );
     
@@ -3474,7 +3474,7 @@ AddFinalDerivationBundle( "Adding BasisOfExternalHom and CoefficientsOfMorphism 
         
       fi;
       
-      if not IsIdenticalObj( CommutativeRingOfLinearCategory( cat ), CommutativeRingOfLinearCategory( range_cat ) ) then
+      if not IsIdenticalObj( CommutativeSemiringOfLinearCategory( cat ), CommutativeSemiringOfLinearCategory( range_cat ) ) then
         
         return false;
         

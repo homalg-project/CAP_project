@@ -376,7 +376,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     is_magma_ring := IsHomalgExternalRingInMAGMARep( field );
     
     SetIsLinearCategoryOverCommutativeRing( category, true );
-    SetCommutativeRingOfLinearCategory( category, field );
+    SetCommutativeSemiringOfLinearCategory( category, field );
     
     membership_function := MembershipFunctionForSemisimpleCategory( category );
     
@@ -706,11 +706,11 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
         
     end );
     
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
       function( cat, r, morphism )
         
         return SemisimpleCategoryMorphism( Source( morphism ),
-                       List( SemisimpleCategoryMorphismList( morphism ), elem -> [ MultiplyWithElementOfCommutativeRingForMorphisms( r, elem[1] ), elem[2] ] ),
+                       List( SemisimpleCategoryMorphismList( morphism ), elem -> [ MultiplyWithElementOfCommutativeSemiringForMorphisms( r, elem[1] ), elem[2] ] ),
                        Range( morphism ) );
         
     end );

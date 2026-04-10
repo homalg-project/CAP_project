@@ -498,25 +498,25 @@ DeclareAttribute( "TwoCellDatumType",
 #! The output is a commutative ring over which the category is linear.
 #! @Arguments C
 #! @Returns a ring
-DeclareAttribute( "CommutativeRingOfLinearCategory",
+DeclareAttribute( "CommutativeSemiringOfLinearCategory",
                   IsCapCategory );
 
-# display a warning when trying to overwrite an existing CommutativeRingOfLinearCategory with a different one
+# display a warning when trying to overwrite an existing CommutativeSemiringOfLinearCategory with a different one
 #= comment for Julia, which does not have "TryNextMethod"
-InstallMethod( SetCommutativeRingOfLinearCategory,
+InstallMethod( SetCommutativeSemiringOfLinearCategory,
                [ IsCapCategory, IsObject ],
                
   function( category, ring )
     
     if not (IsRing( ring ) and HasIsCommutative( ring ) and IsCommutative( ring )) then
         
-        Error( "CommutativeRingOfLinearCategory must be a commutative ring" );
+        Error( "CommutativeSemiringOfLinearCategory must be a commutative ring" );
         
     fi;
     
-    if HasCommutativeRingOfLinearCategory( category ) and not IsIdenticalObj( ring, CommutativeRingOfLinearCategory( category ) ) then
+    if HasCommutativeSemiringOfLinearCategory( category ) and not IsIdenticalObj( ring, CommutativeSemiringOfLinearCategory( category ) ) then
         
-        Print( "WARNING: Trying to set CommutativeRingOfLinearCategory to a ring with name \"", String( ring ), "\" but a different ring with name \"", String( CommutativeRingOfLinearCategory( category ) ), "\" is already set.\n" );
+        Print( "WARNING: Trying to set CommutativeSemiringOfLinearCategory to a ring with name \"", String( ring ), "\" but a different ring with name \"", String( CommutativeSemiringOfLinearCategory( category ) ), "\" is already set.\n" );
         
     fi;
     

@@ -91,17 +91,17 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 
 ##
 InstallMethod( \*,
-               [ IsRingElement, IsCapCategoryMorphism ],
+               [ IsSemiringElement, IsCapCategoryMorphism ],
                
-MultiplyWithElementOfCommutativeRingForMorphisms );
+MultiplyWithElementOfCommutativeSemiringForMorphisms );
 
 ##
 InstallMethod( \*,
-               [ IsCapCategoryMorphism, IsRingElement ],
+               [ IsCapCategoryMorphism, IsSemiringElement ],
                
   function( mor, r )
     
-    return MultiplyWithElementOfCommutativeRingForMorphisms( r, mor );
+    return MultiplyWithElementOfCommutativeSemiringForMorphisms( r, mor );
     
 end );
 
@@ -114,7 +114,7 @@ function( q, mor )
     
     cat := CapCategory( mor );
     
-    ring := CommutativeRingOfLinearCategory( cat );
+    ring := CommutativeSemiringOfLinearCategory( cat );
     
     if IsIdenticalObj( ring, Integers ) or IsIdenticalObj( ring, Rationals ) then
         
@@ -140,7 +140,7 @@ function( q, mor )
         
     fi;
     
-    return MultiplyWithElementOfCommutativeRingForMorphisms( r, mor );
+    return MultiplyWithElementOfCommutativeSemiringForMorphisms( r, mor );
     
 end );
 

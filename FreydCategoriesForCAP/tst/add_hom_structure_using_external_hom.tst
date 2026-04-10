@@ -10,8 +10,8 @@ gap> dummy := DummyCategory( rec(
 >                    "SumOfMorphisms" ],
 >                properties := [ "IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms" ] ) : FinalizeCategory := false );;
 gap> field := HomalgFieldOfRationals( );;
-gap> SetCommutativeRingOfLinearCategory( dummy, field );
-gap> AddMultiplyWithElementOfCommutativeRingForMorphisms( dummy, ReturnNothing );
+gap> SetCommutativeSemiringOfLinearCategory( dummy, field );
+gap> AddMultiplyWithElementOfCommutativeSemiringForMorphisms( dummy, ReturnNothing );
 gap> AddBasisOfExternalHom( dummy, ReturnNothing );
 gap> AddCoefficientsOfMorphism( dummy, ReturnNothing );
 gap> SetRangeCategoryOfHomomorphismStructure( dummy, CategoryOfRows( field ) );

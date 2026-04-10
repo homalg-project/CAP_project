@@ -206,25 +206,25 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
             
         fi;
         
-    elif string = "element_of_commutative_ring_of_linear_structure" then
+    elif string = "element_of_commutative_semiring_of_linear_structure" then
         
-        if not IsIdenticalObj( category, false ) and not HasCommutativeRingOfLinearCategory( category ) then
+        if not IsIdenticalObj( category, false ) and not HasCommutativeSemiringOfLinearCategory( category ) then
             
-            Print( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of the linear structure over a commutative ring but the category has no CommutativeRingOfLinearCategory (yet).\n" );
+            Print( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of the linear structure over a commutative ring but the category has no CommutativeSemiringOfLinearCategory (yet).\n" );
             
         fi;
         
-        if IsIdenticalObj( category, false ) or not HasCommutativeRingOfLinearCategory( category ) then
+        if IsIdenticalObj( category, false ) or not HasCommutativeSemiringOfLinearCategory( category ) then
             
             return CapJitDataTypeOfElementOfRing( false );
             
         fi;
         
-        return CapJitDataTypeOfElementOfRing( CommutativeRingOfLinearCategory( category ) );
+        return CapJitDataTypeOfElementOfRing( CommutativeSemiringOfLinearCategory( category ) );
         
-    elif string = "list_of_elements_of_commutative_ring_of_linear_structure" then
+    elif string = "list_of_elements_of_commutative_semiring_of_linear_structure" then
         
-        return CapJitDataTypeOfListOf( CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "element_of_commutative_ring_of_linear_structure", category ) );
+        return CapJitDataTypeOfListOf( CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING( "element_of_commutative_semiring_of_linear_structure", category ) );
         
     elif string = "list_of_integers_and_list_of_morphisms" then
         
@@ -1245,7 +1245,7 @@ InstallGlobalFunction( CapJitDataTypeOfRing, function ( ring )
     else
         
         type := rec(
-            filter := RingFilter( ring ),
+            filter := SemiringFilter( ring ),
             ring := ring,
         );
         
@@ -1268,7 +1268,7 @@ InstallGlobalFunction( CapJitDataTypeOfElementOfRing, function ( ring )
     else
         
         type := rec(
-            filter := RingElementFilter( ring ),
+            filter := SemiringElementFilter( ring ),
             ring := ring,
         );
         

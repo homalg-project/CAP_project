@@ -371,13 +371,13 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
         
     fi;
     
-    if "MultiplyWithElementOfCommutativeRingForMorphisms" in recnames and
+    if "MultiplyWithElementOfCommutativeSemiringForMorphisms" in recnames and
        HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
        IsLinearCategoryOverCommutativeRing( underlying_category ) and
-       HasCommutativeRingOfLinearCategory( underlying_category ) then
+       HasCommutativeSemiringOfLinearCategory( underlying_category ) then
         
         # we assume that `category_with_attributes` is linear over the same ring as `underlying_category`
-        SetCommutativeRingOfLinearCategory( category_with_attributes, CommutativeRingOfLinearCategory( underlying_category ) );
+        SetCommutativeSemiringOfLinearCategory( category_with_attributes, CommutativeSemiringOfLinearCategory( underlying_category ) );
         
     fi;
     

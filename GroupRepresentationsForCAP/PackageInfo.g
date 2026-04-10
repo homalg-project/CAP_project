@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
-Version := "2025.12-01",
+Version := "2026.04-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -72,12 +72,13 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "ToolsForHomalg", ">= 2020.09.01" ],
-                           [ "CAP", ">= 2023.02-09" ],
+                           [ "ToolsForHomalg", ">= 2026.04-01" ],
+                           [ "RingsForHomalg", ">= 2016.08.12" ],
+                           [ "repsn", ">= 3.0.2" ],
+                           [ "CAP", ">= 2026.04-01" ],
                            [ "MonoidalCategories", ">= 2025.08-01" ],
-                           [ "LinearAlgebraForCAP", ">=2024.02-02" ],
-                           [ "RingsForHomalg", ">=2016.08.12" ],
-                           [ "repsn", ">=3.0.2" ] ],
+                           [ "LinearAlgebraForCAP", ">= 2026.04-01" ],
+                         ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),

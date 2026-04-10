@@ -17,7 +17,7 @@ gap> CapJitEnableProofAssistantMode( );
 #
 gap> statement := function ( cat, a, b, c, d, e, f, g, i, j, k )
 >     
->     return ForAll( [ a, b, c, d, e, f, g, i, j, k ], x -> x in CommutativeRingOfLinearCategory( cat ) );
+>     return ForAll( [ a, b, c, d, e, f, g, i, j, k ], x -> x in CommutativeSemiringOfLinearCategory( cat ) );
 >     
 > end;;
 
@@ -26,7 +26,7 @@ gap> StateLemma(
 >     "a test statement",
 >     statement,
 >     cat,
->     Concatenation( [ "category" ], ListWithIdenticalEntries( 10, "element_of_commutative_ring_of_linear_structure" ) ),
+>     Concatenation( [ "category" ], ListWithIdenticalEntries( 10, "element_of_commutative_semiring_of_linear_structure" ) ),
 >     [ ]
 > );
 In RingAsCategory( Dummy commutative ring 1 ), a test statement:
@@ -34,7 +34,7 @@ For 10 elements a, b, c, d, e, f, g, i, j, and k of the commutative ring of th\
 e linear structure we have
 function ( cat, a, b, c, d, e, f, g, i, j, k )
     return ForAll( [ a, b, c, d, e, f, g, i, j, k ], function ( x )
-            return x in CommutativeRingOfLinearCategory( cat );
+            return x in CommutativeSemiringOfLinearCategory( cat );
         end );
 end
 

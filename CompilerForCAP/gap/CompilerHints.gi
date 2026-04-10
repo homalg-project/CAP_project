@@ -302,9 +302,9 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
             
         fi;
         
-        if HasCommutativeRingOfLinearCategory( cat ) then
+        if HasCommutativeSemiringOfLinearCategory( cat ) then
             
-            Add( attribute_names, "CommutativeRingOfLinearCategory" );
+            Add( attribute_names, "CommutativeSemiringOfLinearCategory" );
             
         fi;
         

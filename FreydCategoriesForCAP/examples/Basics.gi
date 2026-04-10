@@ -69,7 +69,7 @@ z := id + id;;
 CokernelProjection( z );;
 CokernelColift( z, CokernelProjection( z ) );;
 UniversalMorphismFromZeroObjectWithGivenZeroObject( obj_gamma, ZeroObject( freyd ) );;
-MultiplyWithElementOfCommutativeRingForMorphisms( 2 / R, f );;
+MultiplyWithElementOfCommutativeSemiringForMorphisms( 2 / R, f );;
 
 S := HomalgFieldOfRationalsInSingular() * "x,y,z";;
 Rows_S := CategoryOfRows( S );;

@@ -119,9 +119,9 @@ InstallMethod( ReinterpretationOfCategory,
         
     fi;
     
-    if HasCommutativeRingOfLinearCategory( C ) then
+    if HasCommutativeSemiringOfLinearCategory( C ) then
         
-        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+        category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( C );
         
     fi;
     

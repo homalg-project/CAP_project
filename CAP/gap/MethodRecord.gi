@@ -489,7 +489,7 @@ SumOfMorphisms := rec(
 ),
 
 LinearCombinationOfMorphisms := rec(
-  filter_list := [ "category", "object", "list_of_elements_of_commutative_ring_of_linear_structure", "list_of_morphisms", "object" ],
+  filter_list := [ "category", "object", "list_of_elements_of_commutative_semiring_of_linear_structure", "list_of_morphisms", "object" ],
   input_arguments_names := [ "cat", "source", "list_of_ring_elements", "list_of_morphisms", "range" ],
   pre_function := function( cat, source, list_of_ring_elements, list_of_morphisms, range )
     local m;
@@ -1324,8 +1324,8 @@ SubtractionForMorphisms := rec(
   compatible_with_congruence_of_morphisms := true,
 ),
 
-MultiplyWithElementOfCommutativeRingForMorphisms := rec(
-  filter_list := [ "category", "element_of_commutative_ring_of_linear_structure", "morphism" ],
+MultiplyWithElementOfCommutativeSemiringForMorphisms := rec(
+  filter_list := [ "category", "element_of_commutative_semiring_of_linear_structure", "morphism" ],
   input_arguments_names := [ "cat", "r", "alpha" ],
   output_source_getter_string := "Source( alpha )",
   output_source_getter_preconditions := [ ],
@@ -1334,7 +1334,7 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
   
   pre_function := function( cat, r, morphism )
     
-    if not r in CommutativeRingOfLinearCategory( cat ) then
+    if not r in CommutativeSemiringOfLinearCategory( cat ) then
       
       return [ false, "the first argument is not an element of the ring of the category of the morphism" ];
       
@@ -1342,7 +1342,7 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
     
     return [ true ];
   end,
-  dual_operation := "MultiplyWithElementOfCommutativeRingForMorphisms",
+  dual_operation := "MultiplyWithElementOfCommutativeSemiringForMorphisms",
   return_type := "morphism",
   compatible_with_congruence_of_morphisms := true,
 ),
@@ -3647,7 +3647,7 @@ BasisOfExternalHom := rec(
 
 CoefficientsOfMorphism := rec(
   filter_list := [ "category", "morphism" ],
-  return_type := "list_of_elements_of_commutative_ring_of_linear_structure",
+  return_type := "list_of_elements_of_commutative_semiring_of_linear_structure",
   dual_operation := "CoefficientsOfMorphism",
   dual_postprocessor_func := IdFunc
 ),

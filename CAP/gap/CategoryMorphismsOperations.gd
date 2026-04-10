@@ -385,32 +385,32 @@ DeclareAttribute( "AdditiveInverse",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are an element $r$ of a commutative ring
+#! The arguments are an element $r$ of a commutative semiring
 #! and a morphism $\alpha: a \rightarrow b$.
-#! The output is the multiplication with the ring element $r \cdot \alpha$.
+#! The output is the multiplication with the semiring element $r \cdot \alpha$.
 #! Note: The multiplication has to be compatible with the congruence of morphisms.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments r, alpha
-DeclareOperation( "MultiplyWithElementOfCommutativeRingForMorphisms",
-                  [ IsRingElement, IsCapCategoryMorphism ] );
+DeclareOperation( "MultiplyWithElementOfCommutativeSemiringForMorphisms",
+                  [ IsSemiringElement, IsCapCategoryMorphism ] );
 
 #! @Description
 #! This is a convenience method. It has two arguments.
 #! The first argument is either a rational number $q$
-#! or an element $r$ of a commutative ring $R$.
+#! or an element $r$ of a commutative semiring $R$.
 #! The second argument is a morphism $\alpha: a \rightarrow b$ in a linear category
-#! over the commutative ring $R$.
+#! over the commutative semiring $R$.
 #! In the case where the first element is a rational number, this method tries to interpret $q$ as an element $r$ of $R$ via
 #! <C>R!.interpret_rationals_func</C>. If no such interpretation
 #! exists, this method throws an error.
-#! The output is the multiplication with the ring element $r \cdot \alpha$.
+#! The output is the multiplication with the semiring element $r \cdot \alpha$.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments r, alpha
 DeclareOperation( "*",
-                  [ IsRingElement, IsCapCategoryMorphism ] );
+                  [ IsSemiringElement, IsCapCategoryMorphism ] );
 
 DeclareOperation( "*",
-                  [ IsCapCategoryMorphism, IsRingElement ] );
+                  [ IsCapCategoryMorphism, IsSemiringElement ] );
 
 
 ###################################
@@ -611,8 +611,8 @@ DeclareOperation( "SumOfMorphisms",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are two objects <A>s</A>, <A>r</A> in some linear category over a ring $R$,
-#! a list <A>coeffs</A> of ring elements in $R$ and a list <A>mors</A> of morphisms from <A>s</A> to <A>r</A>.
+#! The arguments are two objects <A>s</A>, <A>r</A> in some linear category over a semiring $R$,
+#! a list <A>coeffs</A> of semiring elements in $R$ and a list <A>mors</A> of morphisms from <A>s</A> to <A>r</A>.
 #! The output is the linear combination of the morphisms in <A>mors</A> with respect to the coefficients list <A>coeffs</A>,
 #! or the zero morphism from <A>s</A> to <A>r</A> if <A>coeffs</A> and <A>mors</A> are the empty lists.
 #! @Returns a morphism in $\mathrm{Hom}(s,r)$

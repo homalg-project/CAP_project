@@ -14,8 +14,8 @@ CAP_INTERNAL_DUMMY_RING_COUNTER := 1;
 InstallGlobalFunction( DummyRing, function( )
   local ring_filter, ring_element_filter, name, ring;
     
-    ring_filter := NewFilter( "DummyRingFilter", IsDummyRing );
-    ring_element_filter := NewFilter( "DummyRingElementFilter", IsDummyRingElement );
+    ring_filter := NewFilter( "DummySemiringFilter", IsDummyRing );
+    ring_element_filter := NewFilter( "DummySemiringElementFilter", IsDummyRingElement );
     
     name := Concatenation( "Dummy ring ", String( CAP_INTERNAL_DUMMY_RING_COUNTER ) );
     CAP_INTERNAL_DUMMY_RING_COUNTER := CAP_INTERNAL_DUMMY_RING_COUNTER + 1;
@@ -23,8 +23,8 @@ InstallGlobalFunction( DummyRing, function( )
     ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyRings, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
-        RingFilter, ring_filter,
-        RingElementFilter, ring_element_filter
+        SemiringFilter, ring_filter,
+        SemiringElementFilter, ring_element_filter
     );
     
     CapJitAddTypeSignature( "+", [ ring_element_filter, ring_element_filter ], ring_element_filter );
@@ -47,8 +47,8 @@ CAP_INTERNAL_DUMMY_COMMUTATIVE_RING_COUNTER := 1;
 InstallGlobalFunction( DummyCommutativeRing, function( )
   local ring_filter, ring_element_filter, name, ring;
     
-    ring_filter := NewFilter( "DummyCommutativeRingFilter", IsDummyCommutativeRing );
-    ring_element_filter := NewFilter( "DummyCommutativeRingElementFilter", IsDummyCommutativeRingElement );
+    ring_filter := NewFilter( "DummyCommutativeSemiringFilter", IsDummyCommutativeRing );
+    ring_element_filter := NewFilter( "DummyCommutativeSemiringElementFilter", IsDummyCommutativeRingElement );
     
     name := Concatenation( "Dummy commutative ring ", String( CAP_INTERNAL_DUMMY_COMMUTATIVE_RING_COUNTER ) );
     CAP_INTERNAL_DUMMY_COMMUTATIVE_RING_COUNTER := CAP_INTERNAL_DUMMY_COMMUTATIVE_RING_COUNTER + 1;
@@ -56,8 +56,8 @@ InstallGlobalFunction( DummyCommutativeRing, function( )
     ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyCommutativeRings, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
-        RingFilter, ring_filter,
-        RingElementFilter, ring_element_filter,
+        SemiringFilter, ring_filter,
+        SemiringElementFilter, ring_element_filter,
         IsCommutative, true
     );
     
@@ -90,8 +90,8 @@ InstallGlobalFunction( DummyField, function( )
     ring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyFields, IsAttributeStoringRep and ring_filter ),
         Name, name,
         String, name,
-        RingFilter, ring_filter,
-        RingElementFilter, ring_element_filter,
+        SemiringFilter, ring_filter,
+        SemiringElementFilter, ring_element_filter,
         IsField, true
     );
     

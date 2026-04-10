@@ -56,7 +56,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "a", "b", "c" ],
->         variable_filters := [ RingElementFilter( R ), RingElementFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringElementFilter( R ), SemiringElementFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "a + (b + c)",
 >         dst_template := "(a + b) + c",
 >     )
@@ -77,7 +77,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "a", "b" ],
->         variable_filters := [ RingElementFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringElementFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "b + a",
 >         dst_template := "a + b",
 >     )
@@ -98,7 +98,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "r", "a", "b" ],
->         variable_filters := [ RingElementFilter( R ), RingElementFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringElementFilter( R ), SemiringElementFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "(a + b) * r",
 >         dst_template := "a * r + b * r",
 >     )
@@ -119,7 +119,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "r", "a", "b" ],
->         variable_filters := [ RingElementFilter( R ), RingElementFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringElementFilter( R ), SemiringElementFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "r * (a + b)",
 >         dst_template := "r * a + r * b",
 >     )
@@ -160,7 +160,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "ring", "a" ],
->         variable_filters := [ RingFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "Zero( ring ) + a",
 >         dst_template := "a",
 >     )
@@ -181,7 +181,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "ring", "a" ],
->         variable_filters := [ RingFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "a + Zero( ring )",
 >         dst_template := "a",
 >     )
@@ -222,7 +222,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "ring", "a" ],
->         variable_filters := [ RingFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "-a + a = Zero( ring )",
 >         dst_template := "true",
 >     )
@@ -243,7 +243,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "ring", "a" ],
->         variable_filters := [ RingFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "a + (-a) = Zero( ring )",
 >         dst_template := "true",
 >     )

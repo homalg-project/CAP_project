@@ -644,7 +644,7 @@ InstallMethod( StateLemma,
                 
                 part := ReplacedString( part, "a integer ", "an integer " );
                 
-            elif filter = "element_of_commutative_ring_of_linear_structure" then
+            elif filter = "element_of_commutative_semiring_of_linear_structure" then
                 
                 part := Concatenation( numeral, " element", plural, " ", ConcatenationOfStringsAsEnumerationWithAnd( names{positions} ), " of the commutative ring of the linear structure" );
                 
@@ -970,7 +970,7 @@ InstallMethod( AttestValidInputs,
                 
                 Assert( 0, IsRing( ring ) );
                 
-                if HasRingElementFilter( ring ) and IsSpecializationOfFilter( RingElementFilter( ring ), tree.left.data_type.filter ) then
+                if HasSemiringElementFilter( ring ) and IsSpecializationOfFilter( SemiringElementFilter( ring ), tree.left.data_type.filter ) then
                     
                     return rec( type := "EXPR_TRUE" );
                     
@@ -1442,14 +1442,14 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
         ],
     ),
-    MultiplyWithElementOfCommutativeRingForMorphisms := rec(
+    MultiplyWithElementOfCommutativeSemiringForMorphisms := rec(
         lemmata := [
             rec(
                 description := "multiplying a morphism by a ring element defines a morphism",
-                input_types := [ "category", "object", "object", "element_of_commutative_ring_of_linear_structure", "morphism" ],
+                input_types := [ "category", "object", "object", "element_of_commutative_semiring_of_linear_structure", "morphism" ],
                 func := function ( cat, A, B, r, alpha )
                     
-                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), B );
+                    return IsWellDefinedForMorphismsWithGivenSourceAndRange( cat, A, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, alpha ), B );
                     
                 end,
                 preconditions := [
@@ -1459,10 +1459,10 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
             rec(
                 description := "multiplication with ring elements is associative",
-                input_types := [ "category", "object", "object", "element_of_commutative_ring_of_linear_structure", "element_of_commutative_ring_of_linear_structure", "morphism" ],
+                input_types := [ "category", "object", "object", "element_of_commutative_semiring_of_linear_structure", "element_of_commutative_semiring_of_linear_structure", "morphism" ],
                 func := function ( cat, A, B, r, s, alpha )
                     
-                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, MultiplyWithElementOfCommutativeRingForMorphisms( s, alpha ) ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r * s, alpha ) );
+                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, MultiplyWithElementOfCommutativeSemiringForMorphisms( s, alpha ) ), MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r * s, alpha ) );
                     
                 end,
                 preconditions := [
@@ -1472,10 +1472,10 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
             rec(
                 description := "composition distributes over the addition of ring elements",
-                input_types := [ "category", "object", "object", "element_of_commutative_ring_of_linear_structure", "element_of_commutative_ring_of_linear_structure", "morphism" ],
+                input_types := [ "category", "object", "object", "element_of_commutative_semiring_of_linear_structure", "element_of_commutative_semiring_of_linear_structure", "morphism" ],
                 func := function ( cat, A, B, r, s, alpha )
                     
-                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r + s, alpha ), AdditionForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, s, alpha ) ) );
+                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r + s, alpha ), AdditionForMorphisms( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, alpha ), MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, s, alpha ) ) );
                     
                 end,
                 preconditions := [
@@ -1485,10 +1485,10 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
             rec(
                 description := "ring multiplication distributes over the addition of morphisms",
-                input_types := [ "category", "object", "object", "element_of_commutative_ring_of_linear_structure", "morphism", "morphism" ],
+                input_types := [ "category", "object", "object", "element_of_commutative_semiring_of_linear_structure", "morphism", "morphism" ],
                 func := function ( cat, A, B, r, alpha, beta )
                     
-                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, AdditionForMorphisms( cat, alpha, beta ) ), AdditionForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, beta ) ) );
+                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, AdditionForMorphisms( cat, alpha, beta ) ), AdditionForMorphisms( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, alpha ), MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, beta ) ) );
                     
                 end,
                 preconditions := [
@@ -1503,7 +1503,7 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
                 input_types := [ "category", "object", "object", "morphism" ],
                 func := function ( cat, A, B, alpha )
                     
-                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, One( CommutativeRingOfLinearCategory( cat ) ), alpha ), alpha );
+                    return IsCongruentForMorphisms( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, One( CommutativeSemiringOfLinearCategory( cat ) ), alpha ), alpha );
                     
                 end,
                 preconditions := [
@@ -1513,10 +1513,10 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
             rec(
                 description := "composition is linear in the first component",
-                input_types := [ "category", "object", "object", "object", "element_of_commutative_ring_of_linear_structure", "morphism", "morphism" ],
+                input_types := [ "category", "object", "object", "object", "element_of_commutative_semiring_of_linear_structure", "morphism", "morphism" ],
                 func := function ( cat, A, B, C, r, alpha, beta )
                     
-                    return IsCongruentForMorphisms( cat, PreCompose( cat, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, alpha ), beta ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, PreCompose( cat, alpha, beta ) ) );
+                    return IsCongruentForMorphisms( cat, PreCompose( cat, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, alpha ), beta ), MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, PreCompose( cat, alpha, beta ) ) );
                     
                 end,
                 preconditions := [
@@ -1528,10 +1528,10 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_LEMMATA", rec(
             ),
             rec(
                 description := "composition is linear in the second component",
-                input_types := [ "category", "object", "object", "object", "element_of_commutative_ring_of_linear_structure", "morphism", "morphism" ],
+                input_types := [ "category", "object", "object", "object", "element_of_commutative_semiring_of_linear_structure", "morphism", "morphism" ],
                 func := function ( cat, A, B, C, r, alpha, beta )
                     
-                    return IsCongruentForMorphisms( cat, PreCompose( cat, alpha, MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, beta ) ), MultiplyWithElementOfCommutativeRingForMorphisms( cat, r, PreCompose( cat, alpha, beta ) ) );
+                    return IsCongruentForMorphisms( cat, PreCompose( cat, alpha, MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, beta ) ), MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, PreCompose( cat, alpha, beta ) ) );
                     
                 end,
                 preconditions := [
@@ -2129,7 +2129,7 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_PROPOSITIONS", rec(
     ),
     is_equipped_with_linear_structure := rec(
         description := "is equipped with a linear structure",
-        operations := [ "MultiplyWithElementOfCommutativeRingForMorphisms" ],
+        operations := [ "MultiplyWithElementOfCommutativeSemiringForMorphisms" ],
     ),
     has_zero_object := rec(
         description := "has a zero object",
@@ -2235,7 +2235,7 @@ BindGlobal( "CAP_JIT_INTERNAL_PROOF_ASSISTANT_ENHANCE_PROPOSITIONS", function ( 
                             
                             return [ mor, mor, mor ];
                             
-                        elif type = "integer" or type = "element_of_commutative_ring_of_linear_structure" then
+                        elif type = "integer" or type = "element_of_commutative_semiring_of_linear_structure" then
                             
                             return 2;
                             
