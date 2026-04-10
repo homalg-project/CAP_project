@@ -1,90 +1,75 @@
   
-  [1X13 [33X[0;0YAdd Functions[133X[101X
+  [1X13  [33X[0;0YThe  CAP category of graded module presentations for CAP by use of Freyd[101X
+  [1Xcategories[133X[101X
   
   
-  [1X13.1 [33X[0;0YAvailable Add functions[133X[101X
+  [1X13.1 [33X[0;0YCAP categories[133X[101X
   
-  [1X13.1-1 AddEpimorphismFromSomeProjectiveObjectForKernelObject[101X
+  [1X13.1-1 FpGradedLeftModules[101X
   
-  [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObjectForKernelObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObjectForKernelObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  [33X[1;0Y[29X[2XFpGradedLeftModules[102X( [3XS[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CapCategory[133X
   
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XEpimorphismFromSomeProjectiveObjectForKernelObject[110X.   Optionally,  a  weight
-  (default:  100)  can  be  specified  which  should roughly correspond to the
-  computational  complexity  of  the  function  (lower weight = less complex =
-  faster        execution).       [23XF:       (       alpha       )       \mapsto
-  \mathtt{EpimorphismFromSomeProjectiveObjectForKernelObject}(alpha)[123X.[133X
+  [33X[0;0YGiven  a  graded  ring  [3XS[103X, one can consider the category of f.p. graded left
+  [23XS[123X-modules, which is captured by this attribute.[133X
   
-  [1X13.1-2 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[101X
+  [1X13.1-2 FpGradedRightModules[101X
   
-  [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  [33X[1;0Y[29X[2XFpGradedRightModules[102X( [3XS[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CapCategory[133X
   
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject[110X.
-  Optionally,  a  weight  (default: 100) can be specified which should roughly
-  correspond  to  the computational complexity of the function (lower weight =
-  less   complex   =   faster   execution).  [23XF:  (  alpha,  source  )  \mapsto
-  \mathtt{EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject}(alpha,
-  source)[123X.[133X
+  [33X[0;0YGiven  a  graded  ring [3XS[103X, one can consider the category of f.p. graded right
+  [23XS[123X-modules, which is captured by this attribute.[133X
   
-  [1X13.1-3 AddMonomorphismToSomeInjectiveObjectForCokernelObject[101X
   
-  [33X[1;0Y[29X[2XAddMonomorphismToSomeInjectiveObjectForCokernelObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddMonomorphismToSomeInjectiveObjectForCokernelObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  [1X13.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X[101X
   
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMonomorphismToSomeInjectiveObjectForCokernelObject[110X.   Optionally,  a  weight
-  (default:  100)  can  be  specified  which  should roughly correspond to the
-  computational  complexity  of  the  function  (lower weight = less complex =
-  faster        execution).       [23XF:       (       alpha       )       \mapsto
-  \mathtt{MonomorphismToSomeInjectiveObjectForCokernelObject}(alpha)[123X.[133X
+  [1X13.2-1 IsFpGradedLeftOrRightModulesObject[101X
   
-  [1X13.1-4 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[101X
+  [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesObject[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[1;0Y[29X[2XAddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  [33X[0;0YThe GAP category of graded left and right module presentations.[133X
   
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[110X.
-  Optionally,  a  weight  (default: 100) can be specified which should roughly
-  correspond  to  the computational complexity of the function (lower weight =
-  less   complex   =   faster   execution).   [23XF:  (  alpha,  range  )  \mapsto
-  \mathtt{MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject}(alpha,
-  range)[123X.[133X
+  [1X13.2-2 IsFpGradedLeftModulesObject[101X
   
-  [1X13.1-5 AddSomeInjectiveObjectForCokernelObject[101X
+  [33X[1;0Y[29X[2XIsFpGradedLeftModulesObject[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[1;0Y[29X[2XAddSomeInjectiveObjectForCokernelObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddSomeInjectiveObjectForCokernelObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  [33X[0;0YThe  GAP  category of objects in the presentation category over the category
+  of projective graded left modules.[133X
   
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSomeInjectiveObjectForCokernelObject[110X.  Optionally,  a  weight (default: 100)
-  can  be  specified  which  should  roughly  correspond  to the computational
-  complexity of the function (lower weight = less complex = faster execution).
-  [23XF: ( arg2 ) \mapsto \mathtt{SomeInjectiveObjectForCokernelObject}(arg2)[123X.[133X
+  [1X13.2-3 IsFpGradedRightModulesObject[101X
   
-  [1X13.1-6 AddSomeProjectiveObjectForKernelObject[101X
+  [33X[1;0Y[29X[2XIsFpGradedRightModulesObject[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[1;0Y[29X[2XAddSomeProjectiveObjectForKernelObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddSomeProjectiveObjectForKernelObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  [33X[0;0YThe  GAP  category of objects in the presentation category over the category
+  of projective graded right modules.[133X
   
-  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XSomeProjectiveObjectForKernelObject[110X. Optionally, a weight (default: 100) can
-  be specified which should roughly correspond to the computational complexity
-  of  the function (lower weight = less complex = faster execution). [23XF: ( arg2
-  ) \mapsto \mathtt{SomeProjectiveObjectForKernelObject}(arg2)[123X.[133X
+  
+  [1X13.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X[101X
+  
+  [1X13.3-1 IsFpGradedLeftOrRightModulesMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesMorphism[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of left or right module presentation morphisms[133X
+  
+  [1X13.3-2 IsFpGradedLeftModulesMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedLeftModulesMorphism[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the presentation category over the category
+  of projective graded left modules.[133X
+  
+  [1X13.3-3 IsFpGradedRightModulesMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsFpGradedRightModulesMorphism[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in the presentation category over the category
+  of projective graded right modules.[133X
   
