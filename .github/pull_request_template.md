@@ -9,6 +9,6 @@ If anything is unclear or does not work, don't hesitate to submit the PR as is.
    You can view the automatically generated file at the following path: <tmp_path>
    ```
    If such a warning appears, copy the file at `<tmp_path>` to `<file>` in package `<package>`.
-3. Run `FreydCategoriesForCAP/examples/generate_documentation.g` to update the documentation.
+3. Run `AdditiveClosuresForCAP/examples/generate_documentation.g` to update the documentation.
 4. Execute `make test` in `CompilerForCAP` to update the precompiled code.
 5. Add and commit all files changed by the steps above.
