@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up and verify categorical algorithms",
-Version := "2026.03-01",
-Date := "2026-03-07",
+Version := "2026.04-01",
+Date := "2026-04-10",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -69,8 +69,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [
-      [ "ToolsForHomalg", ">= 2022.09-04" ],
-      [ "CAP", ">= 2023.06-06" ],
+      [ "ToolsForHomalg", ">= 2026.04-01" ],
+      [ "CAP", ">= 2026.04-01" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
@@ -78,7 +78,7 @@ Dependencies := rec(
 
 Extensions := [
   rec(
-    needed := [ [ "MatricesForHomalg", ">= 2023.11-02" ] ],
+    needed := [ [ "MatricesForHomalg", ">= 2026.04-01" ] ],
     filename := "gap/TypeSignaturesOfMatricesForHomalg.gi",
   ),
   rec(

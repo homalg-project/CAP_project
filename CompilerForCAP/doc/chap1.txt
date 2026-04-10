@@ -412,8 +412,8 @@
         record[133X
   
   [30X    [33X[0;6Y[3Xpreconditions[103X  is  a  list of records of the form [10Xrec( src_template :=
-        <string>,  dst_template  :=  <string>  )[110X;  the  template  strings  are
-        interpreted  in  the  context  of  [10Xclaim[110X  and  can be used to describe
+        &lt;string&gt;, dst_template := &lt;string&gt; )[110X; the template strings
+        are  interpreted  in  the context of [10Xclaim[110X and can be used to describe
         relations between the arguments of [10Xclaim[110X[133X
   
   [33X[0;0YThe  aim  is to reduce the function [3Xclaim[103X to [10X{...} -> true[110X by applying logic

@@ -301,7 +301,7 @@
 
 
 <ul>
-<li><p><var class="Arg">pre_func</var> allows to modify a (sub-)tree before the recursion over its children. For example, you could detect occurrences of <code class="code">if true then &lt;body&gt; fi;</code> and simply return the body to simplify the tree.</p>
+<li><p><var class="Arg">pre_func</var> allows to modify a (sub-)tree before the recursion over its children. For example, you could detect occurrences of <code class="code">if true then &amp;lt;body&amp;gt; fi;</code> and simply return the body to simplify the tree.</p>
 
 </li>
 <li><p><var class="Arg">result_func</var> allows to construct the return value of a (sub-)tree from the return values of its children. For example, if you want to check if a node of a certain type occurs in the tree, return <code class="keyw">true</code> if <var class="Arg">tree</var> has the type or any of the children returned <code class="keyw">true</code>, otherwise return <code class="keyw">false</code>.</p>

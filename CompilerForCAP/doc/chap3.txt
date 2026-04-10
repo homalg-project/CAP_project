@@ -298,7 +298,7 @@
     [4X[25X>[125X [27X      #"IsLiftable",[127X[104X
     [4X[25X>[125X [27X      #"LeftUnitorWithGivenTensorProduct",[127X[104X
     [4X[25X>[125X [27X      #"Lift",[127X[104X
-    [4X[25X>[125X [27X      "MultiplyWithElementOfCommutativeRingForMorphisms",[127X[104X
+    [4X[25X>[125X [27X      "MultiplyWithElementOfCommutativeSemiringForMorphisms",[127X[104X
     [4X[25X>[125X [27X      #"RightUnitorWithGivenTensorProduct",[127X[104X
     [4X[25X>[125X [27X      #"TensorProductOnMorphismsWithGivenTensorProducts",[127X[104X
     [4X[25X>[125X [27X      #"TensorProductOnObjects",[127X[104X

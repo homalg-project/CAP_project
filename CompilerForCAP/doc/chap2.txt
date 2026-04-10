@@ -249,7 +249,7 @@
   
   [30X    [33X[0;6Y[3Xpre_func[103X  allows  to modify a (sub-)tree before the recursion over its
         children.  For  example,  you could detect occurrences of [10Xif true then
-        <body> fi;[110X and simply return the body to simplify the tree.[133X
+        &lt;body&gt; fi;[110X and simply return the body to simplify the tree.[133X
   
   [30X    [33X[0;6Y[3Xresult_func[103X  allows to construct the return value of a (sub-)tree from
         the  return  values of its children. For example, if you want to check
