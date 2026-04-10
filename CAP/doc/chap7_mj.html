@@ -233,7 +233,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A8728957EEC0667">7.6-184 AddMorphismFromSourceToPushout</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7D880C937DDE1F34">7.6-185 AddMorphismFromSourceToPushoutWithGivenPushout</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7C37598A7F7C7413">7.6-186 AddMorphismsOfExternalHom</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7AE8C7897CB6FDF8">7.6-187 AddMultiplyWithElementOfCommutativeRingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7AAAE47F85470E15">7.6-187 AddMultiplyWithElementOfCommutativeSemiringForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7D093D4981AC4E7F">7.6-188 AddObjectConstructor</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7EF116D57BFA80B5">7.6-189 AddObjectDatum</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X853E87F47F9FC287">7.6-190 AddPostCompose</a></span>
@@ -561,7 +561,7 @@ DeclareOperation( "AddSomeFunc",
         "object_datum",
         "morphism_datum",
         "nonneg_integer_or_infinity",
-        "list_of_elements_of_commutative_ring_of_linear_structure",
+        "list_of_elements_of_commutative_semiring_of_linear_structure",
     ]
 </pre></div>
 
@@ -2560,15 +2560,15 @@ DeclareOperation( "AddSomeFunc",
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismsOfExternalHom</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{MorphismsOfExternalHom}(arg2, arg3)\)</span>.</p>
 
-<p><a id="X7AE8C7897CB6FDF8" name="X7AE8C7897CB6FDF8"></a></p>
+<p><a id="X7AAAE47F85470E15" name="X7AAAE47F85470E15"></a></p>
 
-<h5>7.6-187 AddMultiplyWithElementOfCommutativeRingForMorphisms</h5>
+<h5>7.6-187 AddMultiplyWithElementOfCommutativeSemiringForMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMultiplyWithElementOfCommutativeSemiringForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMultiplyWithElementOfCommutativeSemiringForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var>, <var class="Arg">weight</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MultiplyWithElementOfCommutativeRingForMorphisms</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( r, alpha ) \mapsto \mathtt{MultiplyWithElementOfCommutativeRingForMorphisms}(r, alpha)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MultiplyWithElementOfCommutativeSemiringForMorphisms</code>. Optionally, a weight (default: 100) can be specified which should roughly correspond to the computational complexity of the function (lower weight = less complex = faster execution). <span class="SimpleMath">\(F: ( r, alpha ) \mapsto \mathtt{MultiplyWithElementOfCommutativeSemiringForMorphisms}(r, alpha)\)</span>.</p>
 
 <p><a id="X7D093D4981AC4E7F" name="X7D093D4981AC4E7F"></a></p>
 

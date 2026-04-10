@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2026.03-01
+                                   2026.04-01
   
   
-                                 30 March 2026
+                                 10 April 2026
   
   
                                Sebastian Gutsche
@@ -116,7 +116,7 @@
       1.4-6 ObjectDatumType
       1.4-7 MorphismDatumType
       1.4-8 TwoCellDatumType
-      1.4-9 CommutativeRingOfLinearCategory
+      1.4-9 CommutativeSemiringOfLinearCategory
       1.4-10 RangeCategoryOfHomomorphismStructure
       1.4-11 AdditiveGenerators
       1.4-12 IndecomposableProjectiveObjects
@@ -256,7 +256,7 @@
       3.8-2 AdditionForMorphisms
       3.8-3 SubtractionForMorphisms
       3.8-4 AdditiveInverseForMorphisms
-      3.8-5 MultiplyWithElementOfCommutativeRingForMorphisms
+      3.8-5 MultiplyWithElementOfCommutativeSemiringForMorphisms
       3.8-6 *
       3.8-7 ZeroMorphism
     3.9 [33X[0;0YSubobject and Factorobject Operations[133X
@@ -796,7 +796,7 @@
       7.6-184 AddMorphismFromSourceToPushout
       7.6-185 AddMorphismFromSourceToPushoutWithGivenPushout
       7.6-186 AddMorphismsOfExternalHom
-      7.6-187 AddMultiplyWithElementOfCommutativeRingForMorphisms
+      7.6-187 AddMultiplyWithElementOfCommutativeSemiringForMorphisms
       7.6-188 AddObjectConstructor
       7.6-189 AddObjectDatum
       7.6-190 AddPostCompose

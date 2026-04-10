@@ -94,8 +94,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83B77FBB85927F14">3.8-2 AdditionForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B6461F5873F3F9D">3.8-3 SubtractionForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83177713785DCFFC">3.8-4 AdditiveInverseForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8187CAF17EB5D6D0">3.8-5 MultiplyWithElementOfCommutativeRingForMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X877D74C67D041F74">3.8-6 *</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8074C0A882460E8F">3.8-5 MultiplyWithElementOfCommutativeSemiringForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D6ACE3D8464DC52">3.8-6 *</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X873412DB7BD0FBD3">3.8-7 ZeroMorphism</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7C81E153817F489F">3.9 <span class="Heading">Subobject and Factorobject Operations</span></a>
@@ -659,23 +659,23 @@
 
 <p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its additive inverse <span class="SimpleMath">\(-\alpha\)</span>. Note: The addition has to be compatible with the congruence of morphisms.</p>
 
-<p><a id="X8187CAF17EB5D6D0" name="X8187CAF17EB5D6D0"></a></p>
+<p><a id="X8074C0A882460E8F" name="X8074C0A882460E8F"></a></p>
 
-<h5>3.8-5 MultiplyWithElementOfCommutativeRingForMorphisms</h5>
+<h5>3.8-5 MultiplyWithElementOfCommutativeSemiringForMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MultiplyWithElementOfCommutativeSemiringForMorphisms</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
 
-<p>The arguments are an element <span class="SimpleMath">\(r\)</span> of a commutative ring and a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is the multiplication with the ring element <span class="SimpleMath">\(r \cdot \alpha\)</span>. Note: The multiplication has to be compatible with the congruence of morphisms.</p>
+<p>The arguments are an element <span class="SimpleMath">\(r\)</span> of a commutative semiring and a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is the multiplication with the semiring element <span class="SimpleMath">\(r \cdot \alpha\)</span>. Note: The multiplication has to be compatible with the congruence of morphisms.</p>
 
-<p><a id="X877D74C67D041F74" name="X877D74C67D041F74"></a></p>
+<p><a id="X7D6ACE3D8464DC52" name="X7D6ACE3D8464DC52"></a></p>
 
 <h5>3.8-6 *</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; *</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
 
-<p>This is a convenience method. It has two arguments. The first argument is either a rational number <span class="SimpleMath">\(q\)</span> or an element <span class="SimpleMath">\(r\)</span> of a commutative ring <span class="SimpleMath">\(R\)</span>. The second argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> in a linear category over the commutative ring <span class="SimpleMath">\(R\)</span>. In the case where the first element is a rational number, this method tries to interpret <span class="SimpleMath">\(q\)</span> as an element <span class="SimpleMath">\(r\)</span> of <span class="SimpleMath">\(R\)</span> via <code class="code">R!.interpret_rationals_func</code>. If no such interpretation exists, this method throws an error. The output is the multiplication with the ring element <span class="SimpleMath">\(r \cdot \alpha\)</span>.</p>
+<p>This is a convenience method. It has two arguments. The first argument is either a rational number <span class="SimpleMath">\(q\)</span> or an element <span class="SimpleMath">\(r\)</span> of a commutative semiring <span class="SimpleMath">\(R\)</span>. The second argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> in a linear category over the commutative semiring <span class="SimpleMath">\(R\)</span>. In the case where the first element is a rational number, this method tries to interpret <span class="SimpleMath">\(q\)</span> as an element <span class="SimpleMath">\(r\)</span> of <span class="SimpleMath">\(R\)</span> via <code class="code">R!.interpret_rationals_func</code>. If no such interpretation exists, this method throws an error. The output is the multiplication with the semiring element <span class="SimpleMath">\(r \cdot \alpha\)</span>.</p>
 
 <p><a id="X873412DB7BD0FBD3" name="X873412DB7BD0FBD3"></a></p>
 
@@ -811,7 +811,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinearCombinationOfMorphisms</code>( <var class="Arg">s</var>, <var class="Arg">coeffs</var>, <var class="Arg">mors</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(s,r)\)</span></p>
 
-<p>The arguments are two objects <var class="Arg">s</var>, <var class="Arg">r</var> in some linear category over a ring <span class="SimpleMath">\(R\)</span>, a list <var class="Arg">coeffs</var> of ring elements in <span class="SimpleMath">\(R\)</span> and a list <var class="Arg">mors</var> of morphisms from <var class="Arg">s</var> to <var class="Arg">r</var>. The output is the linear combination of the morphisms in <var class="Arg">mors</var> with respect to the coefficients list <var class="Arg">coeffs</var>, or the zero morphism from <var class="Arg">s</var> to <var class="Arg">r</var> if <var class="Arg">coeffs</var> and <var class="Arg">mors</var> are the empty lists.</p>
+<p>The arguments are two objects <var class="Arg">s</var>, <var class="Arg">r</var> in some linear category over a semiring <span class="SimpleMath">\(R\)</span>, a list <var class="Arg">coeffs</var> of semiring elements in <span class="SimpleMath">\(R\)</span> and a list <var class="Arg">mors</var> of morphisms from <var class="Arg">s</var> to <var class="Arg">r</var>. The output is the linear combination of the morphisms in <var class="Arg">mors</var> with respect to the coefficients list <var class="Arg">coeffs</var>, or the zero morphism from <var class="Arg">s</var> to <var class="Arg">r</var> if <var class="Arg">coeffs</var> and <var class="Arg">mors</var> are the empty lists.</p>
 
 <p><a id="X7D5182B48598FBC5" name="X7D5182B48598FBC5"></a></p>
 

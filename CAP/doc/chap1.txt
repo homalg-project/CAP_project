@@ -440,9 +440,9 @@
   [2XCapJitInferredDataTypes[102X  ([14XCompilerForCAP:  CapJitInferredDataTypes[114X))  of two
   cell data of [23XC[123X (or [10Xfail[110X if this data type is not specified).[133X
   
-  [1X1.4-9 CommutativeRingOfLinearCategory[101X
+  [1X1.4-9 CommutativeSemiringOfLinearCategory[101X
   
-  [33X[1;0Y[29X[2XCommutativeRingOfLinearCategory[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCommutativeSemiringOfLinearCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya ring[133X
   
   [33X[0;0YThe  argument  is  a  category  [23XC[123X  which  is  expected  to lie in the filter

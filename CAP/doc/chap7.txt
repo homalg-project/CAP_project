@@ -205,7 +205,7 @@
     [4X        "object_datum",[104X
     [4X        "morphism_datum",[104X
     [4X        "nonneg_integer_or_infinity",[104X
-    [4X        "list_of_elements_of_commutative_ring_of_linear_structure",[104X
+    [4X        "list_of_elements_of_commutative_semiring_of_linear_structure",[104X
     [4X    ][104X
   [4X[32X[104X
   
@@ -2850,19 +2850,19 @@
   function (lower weight = less complex = faster execution). [23XF: ( arg2, arg3 )
   \mapsto \mathtt{MorphismsOfExternalHom}(arg2, arg3)[123X.[133X
   
-  [1X7.6-187 AddMultiplyWithElementOfCommutativeRingForMorphisms[101X
+  [1X7.6-187 AddMultiplyWithElementOfCommutativeSemiringForMorphisms[101X
   
-  [33X[1;0Y[29X[2XAddMultiplyWithElementOfCommutativeRingForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XAddMultiplyWithElementOfCommutativeRingForMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMultiplyWithElementOfCommutativeSemiringForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddMultiplyWithElementOfCommutativeSemiringForMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XMultiplyWithElementOfCommutativeRingForMorphisms[110X.   Optionally,   a   weight
+  [10XMultiplyWithElementOfCommutativeSemiringForMorphisms[110X.  Optionally,  a weight
   (default:  100)  can  be  specified  which  should roughly correspond to the
   computational  complexity  of  the  function  (lower weight = less complex =
   faster      execution).      [23XF:      (      r,      alpha      )     \mapsto
-  \mathtt{MultiplyWithElementOfCommutativeRingForMorphisms}(r, alpha)[123X.[133X
+  \mathtt{MultiplyWithElementOfCommutativeSemiringForMorphisms}(r, alpha)[123X.[133X
   
   [1X7.6-188 AddObjectConstructor[101X
   

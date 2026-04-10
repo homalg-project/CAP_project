@@ -2,7 +2,7 @@
   
   [1XIndex[101X
   
-  [2X*[102X, for IsRingElement, IsCapCategoryMorphism 3.8-6 
+  [2X*[102X, for IsSemiringElement, IsCapCategoryMorphism 3.8-6 
   [2X/[102X, for IsCapCategoryCell, IsWrapperCapCategory 13.3-4 
       for IsObject, IsCapCategory 2.7-2 
   [2XActivateDerivationInfo[102X 8.1-2 
@@ -390,7 +390,7 @@
   [2XAddMorphismFunction[102X, for IsCapFunctor, IsFunction 5.4-7 
   [2XAddMorphismsOfExternalHom[102X, for IsCapCategory, IsFunction 7.6-186 
       for IsCapCategory, IsFunction, IsInt 7.6-186 
-  [2XAddMultiplyWithElementOfCommutativeRingForMorphisms[102X, for IsCapCategory, IsFunction 7.6-187 
+  [2XAddMultiplyWithElementOfCommutativeSemiringForMorphisms[102X, for IsCapCategory, IsFunction 7.6-187 
       for IsCapCategory, IsFunction, IsInt 7.6-187 
   [2XAddNaturalTransformationFunction[102X, for IsCapNaturalTransformation, IsFunction 5.5-3 
   [2XAddObject[102X, for IsCapCategory, IsAttributeStoringRep 2.2-2 
@@ -700,7 +700,7 @@
   [2XColift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-8 
   [2XColiftAlongEpimorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-2 
   [2XColiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-9 
-  [2XCommutativeRingOfLinearCategory[102X, for IsCapCategory 1.4-9 
+  [2XCommutativeSemiringOfLinearCategory[102X, for IsCapCategory 1.4-9 
   [2XComponentOfMorphismFromCoproduct[102X, for IsCapCategoryMorphism, IsList, IsInt 6.7-10 
   [2XComponentOfMorphismFromDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-19 
   [2XComponentOfMorphismIntoDirectProduct[102X, for IsCapCategoryMorphism, IsList, IsInt 6.8-9 
@@ -1048,7 +1048,7 @@
   [2XMorphismFromZeroObject[102X, for IsCapCategoryObject 6.3-7 
   [2XMorphismIntoZeroObject[102X, for IsCapCategoryObject 6.3-8 
   [2XMorphismsOfExternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 3.18-25 
-  [2XMultiplyWithElementOfCommutativeRingForMorphisms[102X, for IsRingElement, IsCapCategoryMorphism 3.8-5 
+  [2XMultiplyWithElementOfCommutativeSemiringForMorphisms[102X, for IsSemiringElement, IsCapCategoryMorphism 3.8-5 
   [2XName[102X, for IsCapCategory 1.4-1 
       for IsCapNaturalTransformation 5.5-1 
   [2XNaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-16 
