@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearClosuresForCAP",
 Subtitle := "Linear closures",
-Version := "2026.02-01",
-Date := "2026-02-12",
+Version := "2026.04-01",
+Date := "2026-04-10",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -98,9 +98,9 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.13.0",
-  NeededOtherPackages := [ [ "CAP", ">= 2026.02-01" ],
+  NeededOtherPackages := [ [ "CAP", ">= 2026.04-01" ],
                            [ "GroupsAsCategoriesForCAP", ">= 2025.07-01" ],
-                           [ "AdditiveClosuresForCAP", ">= 2025.07-03" ],
+                           [ "AdditiveClosuresForCAP", ">= 2026.04-01" ],
                          ],
   SuggestedOtherPackages := [
     [ "FinSetsForCAP", ">= 2023.07-03" ],
