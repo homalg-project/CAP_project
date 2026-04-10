@@ -242,14 +242,29 @@
   
   [33X[0;0YThe property of the category [3XC[103X being preadditive.[133X
   
-  [1X1.2-18 IsLinearCategoryOverCommutativeRing[101X
+  [1X1.2-18 IsLinearCategoryOverCommutativeSemiring[101X
+  
+  [33X[1;0Y[29X[2XIsLinearCategoryOverCommutativeSemiring[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being linear over a commutative semiring.[133X
+  
+  [1X1.2-19 IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms[101X
+  
+  [33X[1;0Y[29X[2XIsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of  the category [3XC[103X being linear over a commutative semiring [23Xk[123X
+  such that all external homs are finitely generated free [23Xk[123X-modules.[133X
+  
+  [1X1.2-20 IsLinearCategoryOverCommutativeRing[101X
   
   [33X[1;0Y[29X[2XIsLinearCategoryOverCommutativeRing[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being linear over a commutative ring.[133X
   
-  [1X1.2-19 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[101X
+  [1X1.2-21 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[101X
   
   [33X[1;0Y[29X[2XIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
@@ -257,70 +272,70 @@
   [33X[0;0YThe  property  of the category [3XC[103X being linear over a commutative ring [23Xk[123X such
   that all external homs are finitely generated free [23Xk[123X-modules.[133X
   
-  [1X1.2-20 IsCategoryWithKernels[101X
+  [1X1.2-22 IsCategoryWithKernels[101X
   
   [33X[1;0Y[29X[2XIsCategoryWithKernels[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X having all kernels.[133X
   
-  [1X1.2-21 IsCategoryWithCokernels[101X
+  [1X1.2-23 IsCategoryWithCokernels[101X
   
   [33X[1;0Y[29X[2XIsCategoryWithCokernels[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X having all cokernels.[133X
   
-  [1X1.2-22 IsAdditiveCategory[101X
+  [1X1.2-24 IsAdditiveCategory[101X
   
   [33X[1;0Y[29X[2XIsAdditiveCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being additive.[133X
   
-  [1X1.2-23 IsPreAbelianCategory[101X
+  [1X1.2-25 IsPreAbelianCategory[101X
   
   [33X[1;0Y[29X[2XIsPreAbelianCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being preabelian.[133X
   
-  [1X1.2-24 IsAbelianCategory[101X
+  [1X1.2-26 IsAbelianCategory[101X
   
   [33X[1;0Y[29X[2XIsAbelianCategory[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being abelian.[133X
   
-  [1X1.2-25 IsAbelianCategoryWithEnoughProjectives[101X
+  [1X1.2-27 IsAbelianCategoryWithEnoughProjectives[101X
   
   [33X[1;0Y[29X[2XIsAbelianCategoryWithEnoughProjectives[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being abelian with enough projectives.[133X
   
-  [1X1.2-26 IsAbelianCategoryWithEnoughInjectives[101X
+  [1X1.2-28 IsAbelianCategoryWithEnoughInjectives[101X
   
   [33X[1;0Y[29X[2XIsAbelianCategoryWithEnoughInjectives[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being abelian with enough injectives.[133X
   
-  [1X1.2-27 IsLocallyOfFiniteProjectiveDimension[101X
+  [1X1.2-29 IsLocallyOfFiniteProjectiveDimension[101X
   
   [33X[1;0Y[29X[2XIsLocallyOfFiniteProjectiveDimension[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being locally of finite projective dimension.[133X
   
-  [1X1.2-28 IsLocallyOfFiniteInjectiveDimension[101X
+  [1X1.2-30 IsLocallyOfFiniteInjectiveDimension[101X
   
   [33X[1;0Y[29X[2XIsLocallyOfFiniteInjectiveDimension[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe property of the category [3XC[103X being locally of finite injective dimension.[133X
   
-  [1X1.2-29 ListOfDefiningOperations[101X
+  [1X1.2-31 ListOfDefiningOperations[101X
   
   [33X[1;0Y[29X[2XListOfDefiningOperations[102X( [3Xcategorical_property[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X

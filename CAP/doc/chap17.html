@@ -29,6 +29,8 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17.html#X7B19E3AE7AB1B31B">17.1-2 <span class="Heading">Dummy rings</span></a>
 </span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap17.html#X8521B35878F81695">17.1-3 <span class="Heading">Dummy semirings</span></a>
+</span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap17.html#X7BAE6D0285667B1F">17.2 <span class="Heading">Finite skeletal discrete categories</span></a>
 </span>
@@ -104,9 +106,31 @@ true
 Dummy field 1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyField( );</span>
 Dummy field 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSemiring( DummyField( ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRing( DummyField( ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsField( DummyField( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCommutative( DummyField( ) );</span>
+true
+</pre></div>
+
+<p><a id="X8521B35878F81695" name="X8521B35878F81695"></a></p>
+
+<h5>17.1-3 <span class="Heading">Dummy semirings</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyCommutativeSemiring( );</span>
+Dummy commutative semiring 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DummyCommutativeSemiring( );</span>
+Dummy commutative semiring 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSemiring( DummyCommutativeSemiring( ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCommutative( DummyCommutativeSemiring( ) );</span>
 true
 </pre></div>
 

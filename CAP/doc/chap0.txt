@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2026.04-01
+                                   2026.04-02
   
   
                                  10 April 2026
@@ -90,18 +90,20 @@
       1.2-15 IsEnrichedOverCommutativeRegularSemigroup
       1.2-16 IsSkeletalCategory
       1.2-17 IsAbCategory
-      1.2-18 IsLinearCategoryOverCommutativeRing
-      1.2-19 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
-      1.2-20 IsCategoryWithKernels
-      1.2-21 IsCategoryWithCokernels
-      1.2-22 IsAdditiveCategory
-      1.2-23 IsPreAbelianCategory
-      1.2-24 IsAbelianCategory
-      1.2-25 IsAbelianCategoryWithEnoughProjectives
-      1.2-26 IsAbelianCategoryWithEnoughInjectives
-      1.2-27 IsLocallyOfFiniteProjectiveDimension
-      1.2-28 IsLocallyOfFiniteInjectiveDimension
-      1.2-29 ListOfDefiningOperations
+      1.2-18 IsLinearCategoryOverCommutativeSemiring
+      1.2-19 IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms
+      1.2-20 IsLinearCategoryOverCommutativeRing
+      1.2-21 IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
+      1.2-22 IsCategoryWithKernels
+      1.2-23 IsCategoryWithCokernels
+      1.2-24 IsAdditiveCategory
+      1.2-25 IsPreAbelianCategory
+      1.2-26 IsAbelianCategory
+      1.2-27 IsAbelianCategoryWithEnoughProjectives
+      1.2-28 IsAbelianCategoryWithEnoughInjectives
+      1.2-29 IsLocallyOfFiniteProjectiveDimension
+      1.2-30 IsLocallyOfFiniteInjectiveDimension
+      1.2-31 ListOfDefiningOperations
     1.3 [33X[0;0YConstructor[133X
       1.3-1 CreateCapCategory
       1.3-2 CreateCapCategory
@@ -1039,15 +1041,21 @@
       13.3-6 WrappingFunctor
   14 [33X[0;0YDummy implementations[133X
     14.1 [33X[0;0YDummy rings[133X
-      14.1-1 IsDummyRing
-      14.1-2 IsDummyRingElement
-      14.1-3 IsDummyCommutativeRing
-      14.1-4 IsDummyCommutativeRingElement
-      14.1-5 IsDummyField
-      14.1-6 IsDummyFieldElement
-      14.1-7 DummyRing
-      14.1-8 DummyCommutativeRing
-      14.1-9 DummyField
+      14.1-1 IsDummySemiring
+      14.1-2 IsDummySemiringElement
+      14.1-3 IsDummyCommutativeSemiring
+      14.1-4 IsDummyCommutativeSemiringElement
+      14.1-5 IsDummyRing
+      14.1-6 IsDummyRingElement
+      14.1-7 IsDummyCommutativeRing
+      14.1-8 IsDummyCommutativeRingElement
+      14.1-9 IsDummyField
+      14.1-10 IsDummyFieldElement
+      14.1-11 DummySemiring
+      14.1-12 DummyCommutativeSemiring
+      14.1-13 DummyRing
+      14.1-14 DummyCommutativeRing
+      14.1-15 DummyField
     14.2 [33X[0;0YDummy categories[133X
       14.2-1 IsDummyCategory
       14.2-2 IsDummyCategoryObject
@@ -1096,6 +1104,7 @@
     17.1 [33X[0;0YDummy implementations[133X
       17.1-1 [33X[0;0YDummy categories[133X
       17.1-2 [33X[0;0YDummy rings[133X
+      17.1-3 [33X[0;0YDummy semirings[133X
     17.2 [33X[0;0YFinite skeletal discrete categories[133X
     17.3 [33X[0;0YFunctors[133X
     17.4 [33X[0;0YHandlePrecompiledTowers[133X

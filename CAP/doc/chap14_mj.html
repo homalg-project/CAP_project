@@ -28,15 +28,21 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14_mj.html#X7B19E3AE7AB1B31B">14.1 <span class="Heading">Dummy rings</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X86A21A2379AA70E4">14.1-1 IsDummyRing</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7D89EFE77FC37A85">14.1-2 IsDummyRingElement</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X87E7CFFB81611DED">14.1-3 IsDummyCommutativeRing</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X79CB0F12853487F4">14.1-4 IsDummyCommutativeRingElement</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7F1159E287E0850B">14.1-5 IsDummyField</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7A227A6D7F366CDE">14.1-6 IsDummyFieldElement</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X82B6E6F780AB19FA">14.1-7 DummyRing</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X823C63568160007F">14.1-8 DummyCommutativeRing</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X8675D79684AD56D0">14.1-9 DummyField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X877C617785A41B2A">14.1-1 IsDummySemiring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7DDFAD3285A5E9AC">14.1-2 IsDummySemiringElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7CE5FB417ED29971">14.1-3 IsDummyCommutativeSemiring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X875A8B8F798145D6">14.1-4 IsDummyCommutativeSemiringElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X86A21A2379AA70E4">14.1-5 IsDummyRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7D89EFE77FC37A85">14.1-6 IsDummyRingElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X87E7CFFB81611DED">14.1-7 IsDummyCommutativeRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X79CB0F12853487F4">14.1-8 IsDummyCommutativeRingElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7F1159E287E0850B">14.1-9 IsDummyField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X7A227A6D7F366CDE">14.1-10 IsDummyFieldElement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X86C2288F8699FE41">14.1-11 DummySemiring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X827A0653870547E3">14.1-12 DummyCommutativeSemiring</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X82B6E6F780AB19FA">14.1-13 DummyRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X823C63568160007F">14.1-14 DummyCommutativeRing</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap14_mj.html#X8675D79684AD56D0">14.1-15 DummyField</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap14_mj.html#X82A623E78640E822">14.2 <span class="Heading">Dummy categories</span></a>
 </span>
@@ -69,9 +75,45 @@
 
 <h4>14.1 <span class="Heading">Dummy rings</span></h4>
 
+<p><a id="X877C617785A41B2A" name="X877C617785A41B2A"></a></p>
+
+<h5>14.1-1 IsDummySemiring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummySemiring</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> filter of dummy semirings.</p>
+
+<p><a id="X7DDFAD3285A5E9AC" name="X7DDFAD3285A5E9AC"></a></p>
+
+<h5>14.1-2 IsDummySemiringElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummySemiringElement</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> filter of elements of a dummy semiring.</p>
+
+<p><a id="X7CE5FB417ED29971" name="X7CE5FB417ED29971"></a></p>
+
+<h5>14.1-3 IsDummyCommutativeSemiring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCommutativeSemiring</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> filter of dummy commutative semirings.</p>
+
+<p><a id="X875A8B8F798145D6" name="X875A8B8F798145D6"></a></p>
+
+<h5>14.1-4 IsDummyCommutativeSemiringElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCommutativeSemiringElement</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> filter of elements of a dummy commutative semiring.</p>
+
 <p><a id="X86A21A2379AA70E4" name="X86A21A2379AA70E4"></a></p>
 
-<h5>14.1-1 IsDummyRing</h5>
+<h5>14.1-5 IsDummyRing</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyRing</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -80,7 +122,7 @@
 
 <p><a id="X7D89EFE77FC37A85" name="X7D89EFE77FC37A85"></a></p>
 
-<h5>14.1-2 IsDummyRingElement</h5>
+<h5>14.1-6 IsDummyRingElement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyRingElement</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -89,7 +131,7 @@
 
 <p><a id="X87E7CFFB81611DED" name="X87E7CFFB81611DED"></a></p>
 
-<h5>14.1-3 IsDummyCommutativeRing</h5>
+<h5>14.1-7 IsDummyCommutativeRing</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCommutativeRing</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -98,7 +140,7 @@
 
 <p><a id="X79CB0F12853487F4" name="X79CB0F12853487F4"></a></p>
 
-<h5>14.1-4 IsDummyCommutativeRingElement</h5>
+<h5>14.1-8 IsDummyCommutativeRingElement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyCommutativeRingElement</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -107,7 +149,7 @@
 
 <p><a id="X7F1159E287E0850B" name="X7F1159E287E0850B"></a></p>
 
-<h5>14.1-5 IsDummyField</h5>
+<h5>14.1-9 IsDummyField</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyField</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -116,30 +158,44 @@
 
 <p><a id="X7A227A6D7F366CDE" name="X7A227A6D7F366CDE"></a></p>
 
-<h5>14.1-6 IsDummyFieldElement</h5>
+<h5>14.1-10 IsDummyFieldElement</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDummyFieldElement</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> filter of elements of a dummy field.</p>
 
+<p><a id="X86C2288F8699FE41" name="X86C2288F8699FE41"></a></p>
+
+<h5>14.1-11 DummySemiring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummySemiring</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a dummy semiring</p>
+
+<p><a id="X827A0653870547E3" name="X827A0653870547E3"></a></p>
+
+<h5>14.1-12 DummyCommutativeSemiring</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyCommutativeSemiring</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a dummy commutative semiring</p>
+
 <p><a id="X82B6E6F780AB19FA" name="X82B6E6F780AB19FA"></a></p>
 
-<h5>14.1-7 DummyRing</h5>
+<h5>14.1-13 DummyRing</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyRing</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a dummy ring</p>
 
 <p><a id="X823C63568160007F" name="X823C63568160007F"></a></p>
 
-<h5>14.1-8 DummyCommutativeRing</h5>
+<h5>14.1-14 DummyCommutativeRing</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyCommutativeRing</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a dummy commutative ring</p>
 
 <p><a id="X8675D79684AD56D0" name="X8675D79684AD56D0"></a></p>
 
-<h5>14.1-9 DummyField</h5>
+<h5>14.1-15 DummyField</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DummyField</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a dummy field</p>
