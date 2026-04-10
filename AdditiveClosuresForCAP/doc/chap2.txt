@@ -306,21 +306,21 @@
   
   [1X2.6-1 IsAdditiveClosureCategory[101X
   
-  [33X[1;0Y[29X[2XIsAdditiveClosureCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAdditiveClosureCategory[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YThe GAP category of additive closures of Ab-categories.[133X
   
   [1X2.6-2 IsAdditiveClosureObject[101X
   
-  [33X[1;0Y[29X[2XIsAdditiveClosureObject[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAdditiveClosureObject[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YThe GAP category of objects in additive closures of Ab-categories.[133X
   
   [1X2.6-3 IsAdditiveClosureMorphism[101X
   
-  [33X[1;0Y[29X[2XIsAdditiveClosureMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsAdditiveClosureMorphism[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YThe GAP category of morphisms in additive closures of Ab-categories.[133X

@@ -101,7 +101,7 @@
   
   [1X4.2-1 IsCategoryOfRowsObject[101X
   
-  [33X[1;0Y[29X[2XIsCategoryOfRowsObject[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCategoryOfRowsObject[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in the category of rows over a ring [23XR[123X.[133X
@@ -747,9 +747,9 @@
         MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory   for  IsList,
         IsList, IsList[114X)[133X
   
-  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeRingForMorphisms[102X                 ([14XCAP:
-        MultiplyWithElementOfCommutativeRingForMorphisms   for  IsRingElement,
-        IsCapCategoryMorphism[114X)[133X
+  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeSemiringForMorphisms[102X             ([14XCAP:
+        MultiplyWithElementOfCommutativeSemiringForMorphisms               for
+        IsSemiringElement, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategory[102X  ([14XCAP: SolveLinearSystemInAbCategory for
         IsList, IsList, IsList[114X)[133X
@@ -1287,9 +1287,9 @@
         MorphismToCoBidualWithGivenCoBidual      for      IsCapCategoryObject,
         IsCapCategoryObject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeRingForMorphisms[102X                 ([14XCAP:
-        MultiplyWithElementOfCommutativeRingForMorphisms   for  IsRingElement,
-        IsCapCategoryMorphism[114X)[133X
+  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeSemiringForMorphisms[102X             ([14XCAP:
+        MultiplyWithElementOfCommutativeSemiringForMorphisms               for
+        IsSemiringElement, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XRankMorphism[102X        ([14XMonoidalCategories:        RankMorphism       for
         IsCapCategoryObject[114X)[133X
