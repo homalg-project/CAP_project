@@ -922,11 +922,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         Assert( 0, IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category ) );
         
-        Assert( 0, IsIdenticalObj( CommutativeRingOfLinearCategory( category ), ring ) );
+        Assert( 0, IsIdenticalObj( CommutativeSemiringOfLinearCategory( category ), ring ) );
         
         ##
-        # MultiplyWithElementOfCommutativeRingForMorphisms cannot be typed yet, so it cannot be precompiled yet
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        # MultiplyWithElementOfCommutativeSemiringForMorphisms cannot be typed yet, so it cannot be precompiled yet
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
           function( cat, r, alpha )
             
             return CategoryOfRowsMorphism( cat, Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
@@ -965,11 +965,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         Assert( 0, IsLinearCategoryOverCommutativeRing( category ) );
         
-        Assert( 0, IsIdenticalObj( CommutativeRingOfLinearCategory( category ), BaseRing( ring ) ) );
+        Assert( 0, IsIdenticalObj( CommutativeSemiringOfLinearCategory( category ), BaseRing( ring ) ) );
         
         ##
-        # MultiplyWithElementOfCommutativeRingForMorphisms cannot be typed yet, so it cannot be precompiled yet
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        # MultiplyWithElementOfCommutativeSemiringForMorphisms cannot be typed yet, so it cannot be precompiled yet
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
           function( cat, r, alpha )
             
             return CategoryOfRowsMorphism( cat, Source( alpha ), (r / ring) * UnderlyingMatrix( alpha ), Range( alpha ) );
@@ -1381,7 +1381,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
     
     basis := List( basis, ell -> CoefficientsOfMorphism( cat, PreComposeList( cat, Source( alpha ), [ alpha, ell, beta ], Range( beta ) ) ) );
     
-    m := HomalgMatrixListList( basis, RankOfObject( hom_source ), RankOfObject( hom_range ), CommutativeRingOfLinearCategory( cat ) );
+    m := HomalgMatrixListList( basis, RankOfObject( hom_source ), RankOfObject( hom_range ), CommutativeSemiringOfLinearCategory( cat ) );
     
     return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), hom_source, m, hom_range );
     
@@ -1395,7 +1395,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
   function ( cat, distinguished_object, alpha, r )
     local m;
     
-    m := HomalgRowVector( CoefficientsOfMorphism( cat, alpha ), RankOfObject( r ), CommutativeRingOfLinearCategory( cat ) );
+    m := HomalgRowVector( CoefficientsOfMorphism( cat, alpha ), RankOfObject( r ), CommutativeSemiringOfLinearCategory( cat ) );
     
     return CategoryOfRowsMorphism( RangeCategoryOfHomomorphismStructure( cat ), distinguished_object, m, r );
     
@@ -1426,7 +1426,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
          HasRangeCategoryOfHomomorphismStructure( cat ) and
          IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( cat ) ) and
          HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and
-         HasCommutativeRingOfLinearCategory( cat ) and IsHomalgRing( CommutativeRingOfLinearCategory( cat ) ) then
+         HasCommutativeSemiringOfLinearCategory( cat ) and IsHomalgRing( CommutativeSemiringOfLinearCategory( cat ) ) then
           
           return true;
         

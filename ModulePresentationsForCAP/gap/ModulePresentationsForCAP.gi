@@ -49,7 +49,7 @@ InstallMethod( LeftPresentations,
       
       SetIsLinearCategoryOverCommutativeRing( category, true );
       
-      SetCommutativeRingOfLinearCategory( category, ring );
+      SetCommutativeSemiringOfLinearCategory( category, ring );
       
     fi;
     
@@ -157,7 +157,7 @@ InstallMethod( RightPresentations,
       
       SetIsLinearCategoryOverCommutativeRing( category, true );
       
-      SetCommutativeRingOfLinearCategory( category, ring );
+      SetCommutativeSemiringOfLinearCategory( category, ring );
       
     fi;
     

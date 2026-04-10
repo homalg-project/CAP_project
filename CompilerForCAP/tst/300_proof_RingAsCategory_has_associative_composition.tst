@@ -65,7 +65,7 @@ end
 gap> ApplyLogicTemplate(
 >     rec(
 >         variable_names := [ "a", "b", "c" ],
->         variable_filters := [ RingElementFilter( R ), RingElementFilter( R ), RingElementFilter( R ) ],
+>         variable_filters := [ SemiringElementFilter( R ), SemiringElementFilter( R ), SemiringElementFilter( R ) ],
 >         src_template := "a * (b * c)",
 >         dst_template := "(a * b) * c",
 >     )

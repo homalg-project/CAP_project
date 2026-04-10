@@ -204,7 +204,7 @@
 #! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory" Label="for Is" />
 #! * <Ref BookName="CAP" Func="MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory" Label="for Is" />
-#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeSemiringForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" Label="for Is" />
 
 #! @Subsection CategoryOfRows of a commutative ring
@@ -338,7 +338,7 @@
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToBidualWithGivenBidual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToCoBidual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="MorphismToCoBidualWithGivenCoBidual" Label="for Is" />
-#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeSemiringForMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RankMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpanding" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingWithGivenObjects" Label="for Is" />

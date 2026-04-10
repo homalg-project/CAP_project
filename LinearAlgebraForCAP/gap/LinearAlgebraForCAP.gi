@@ -61,7 +61,7 @@ InstallMethod( MatrixCategory,
     
     SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
     
-    SetCommutativeRingOfLinearCategory( category, homalg_field );
+    SetCommutativeSemiringOfLinearCategory( category, homalg_field );
     
     SetRangeCategoryOfHomomorphismStructure( category, category );
     SetIsEquippedWithHomomorphismStructure( category, true );

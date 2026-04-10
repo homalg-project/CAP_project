@@ -93,7 +93,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     ## Take care of attributes
     ## TODO: if there are more instances, set markers in the MethodRecord
-    list_of_attributes := [ CommutativeRingOfLinearCategory ];
+    list_of_attributes := [ CommutativeSemiringOfLinearCategory ];
     
     for attr in list_of_attributes do
         
@@ -249,7 +249,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                     return Concatenation( "MorphismDatum( cat, ", argument_name, " )" );
                     
-                elif filter in [ "integer", "element_of_commutative_ring_of_linear_structure", "nonneg_integer_or_infinity", "list_of_elements_of_commutative_ring_of_linear_structure" ] then
+                elif filter in [ "integer", "element_of_commutative_semiring_of_linear_structure", "nonneg_integer_or_infinity", "list_of_elements_of_commutative_semiring_of_linear_structure" ] then
                     
                     return argument_name;
                     

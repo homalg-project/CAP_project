@@ -61,7 +61,7 @@ operations_for_commutative_ring := Concatenation(
       #"IsLiftable",
       #"LeftUnitorWithGivenTensorProduct",
       #"Lift",
-      "MultiplyWithElementOfCommutativeRingForMorphisms",
+      "MultiplyWithElementOfCommutativeSemiringForMorphisms",
       #"RightUnitorWithGivenTensorProduct",
       #"TensorProductOnMorphismsWithGivenTensorProducts",
       #"TensorProductOnObjects",

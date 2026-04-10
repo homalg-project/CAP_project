@@ -88,7 +88,7 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingCategory",
-            "CommutativeRingOfLinearCategory",
+            "CommutativeSemiringOfLinearCategory",
         ],
     );
     
@@ -106,7 +106,7 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
     fi;
     
-    SetCommutativeRingOfLinearCategory( category, ring );
+    SetCommutativeSemiringOfLinearCategory( category, ring );
     
     SetUnderlyingRing( category, ring );
     
@@ -714,7 +714,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         return LinearClosureMorphismNC( cat,
                        a,
-                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( RingElementFilter( CommutativeRingOfLinearCategory( cat ) ) ) ),
+                       CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( SemiringElementFilter( CommutativeSemiringOfLinearCategory( cat ) ) ) ),
                        CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( cat ) ) ) ),
                        b );
         
@@ -779,7 +779,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     end );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
       function( cat, r, alpha )
         
         return MorphismConstructor( cat,

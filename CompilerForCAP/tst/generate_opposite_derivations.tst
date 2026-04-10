@@ -219,7 +219,7 @@ gap> BindGlobal( "GenerateOppositeDerivation", function ( derivation )
 >           
 >           return Concatenation( "CoercedMorphism( cat, copy, ", argument_name, " )" );
 >           
->       elif filter in [ "integer", "element_of_commutative_ring_of_linear_structure", "nonneg_integer_or_infinity", "list_of_elements_of_commutative_ring_of_linear_structure" ] then
+>       elif filter in [ "integer", "element_of_commutative_semiring_of_linear_structure", "nonneg_integer_or_infinity", "list_of_elements_of_commutative_semiring_of_linear_structure" ] then
 >           
 >           return argument_name;
 >           

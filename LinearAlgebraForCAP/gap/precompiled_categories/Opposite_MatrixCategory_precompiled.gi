@@ -54,7 +54,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_8_1 := AsInteger( deduped_10_1 );
     deduped_7_1 := deduped_8_1 * deduped_9_1;
     hoisted_4_1 := OppositeCategory( cat_1 );
-    hoisted_1_1 := HomalgIdentityMatrix( deduped_7_1, CommutativeRingOfLinearCategory( cat_1 ) );
+    hoisted_1_1 := HomalgIdentityMatrix( deduped_7_1, CommutativeSemiringOfLinearCategory( cat_1 ) );
     return List( [ 1 .. deduped_7_1 ], function ( i_2 )
             return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, Opposite, AsCapCategoryMorphism( hoisted_4_1, deduped_10_1, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ i_2 ] ), deduped_8_1, deduped_9_1 ), deduped_11_1 ) );
         end );
@@ -73,7 +73,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     deduped_3_1 := AsInteger( deduped_4_1 );
     hoisted_2_1 := AsInteger( Opposite( a_1 ) );
     deduped_1_1 := AsInteger( Opposite( b_1 ) );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_4_1, CertainRows( HomalgIdentityMatrix( deduped_3_1, CommutativeRingOfLinearCategory( cat_1 ) ), List( [ 1 .. deduped_3_1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_4_1, CertainRows( HomalgIdentityMatrix( deduped_3_1, CommutativeSemiringOfLinearCategory( cat_1 ) ), List( [ 1 .. deduped_3_1 ], function ( i_2 )
                   local deduped_1_2;
                   deduped_1_2 := i_2 - 1;
                   return REM_INT( deduped_1_2, deduped_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, deduped_1_1 ) + 1;
@@ -110,7 +110,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
 end
 ########
         
@@ -121,7 +121,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToColumn( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToColumn( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
 end
 ########
         
@@ -143,7 +143,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToColumn( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToColumn( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
 end
 ########
         
@@ -318,7 +318,7 @@ end
         
 ########
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( Pp_1 ), DiagMat( CommutativeRingOfLinearCategory( cat_1 ), List( L_1, function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( Pp_1 ), DiagMat( CommutativeSemiringOfLinearCategory( cat_1 ), List( L_1, function ( x_2 )
                   return AsHomalgMatrix( Opposite( x_2 ) );
               end ) ), Opposite( P_1 ) ) );
 end
@@ -366,7 +366,7 @@ end
 function ( cat_1, A_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( A_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, A_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, A_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
 end
 ########
         
@@ -377,7 +377,7 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeRingOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), ConvertMatrixToRow( HomalgIdentityMatrix( AsInteger( Opposite( a_1 ) ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ), Opposite( s_1 ) ) );
 end
 ########
         
@@ -412,7 +412,7 @@ end
 function ( cat_1, a_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
 end
 ########
         
@@ -448,7 +448,7 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_3_1 := objects_1[k_1];
     deduped_2_1 := List( objects_1, function ( x_2 )
             return AsInteger( Opposite( x_2 ) );
@@ -466,7 +466,7 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_2_1 := List( objects_1, function ( x_2 )
             return AsInteger( Opposite( x_2 ) );
         end );
@@ -708,7 +708,7 @@ end
 function ( cat_1, A_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( A_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, A_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, A_1, A_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
 end
 ########
         
@@ -743,7 +743,7 @@ end
 function ( cat_1, a_1, s_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), Opposite( s_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ), Opposite( s_1 ) ) );
 end
 ########
         
@@ -756,14 +756,14 @@ end
 function ( cat_1, a_1, r_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( r_1 ), HomalgIdentityMatrix( AsInteger( deduped_1_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
 end
 ########
         
     , 100 );
     
     ##
-    AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
+    AddMultiplyWithElementOfCommutativeSemiringForMorphisms( cat,
         
 ########
 function ( cat_1, r_1, alpha_1 )
@@ -817,7 +817,7 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_4_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_3_1 := objects_1[k_1];
     deduped_2_1 := List( objects_1, function ( x_2 )
             return AsInteger( Opposite( x_2 ) );
@@ -835,7 +835,7 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := CommutativeRingOfLinearCategory( cat_1 );
+    deduped_3_1 := CommutativeSemiringOfLinearCategory( cat_1 );
     deduped_2_1 := List( objects_1, function ( x_2 )
             return AsInteger( Opposite( x_2 ) );
         end );
@@ -1033,7 +1033,7 @@ function ( cat_1, source_1, list_of_morphisms_1, range_1 )
     deduped_1_1 := Opposite( range_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, Sum( List( list_of_morphisms_1, function ( x_2 )
                   return AsHomalgMatrix( Opposite( x_2 ) );
-              end ), HomalgZeroMatrix( AsInteger( deduped_1_1 ), AsInteger( deduped_2_1 ), CommutativeRingOfLinearCategory( cat_1 ) ) ), deduped_2_1 ) );
+              end ), HomalgZeroMatrix( AsInteger( deduped_1_1 ), AsInteger( deduped_2_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ) ), deduped_2_1 ) );
 end
 ########
         
@@ -1079,7 +1079,7 @@ end
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( T_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, UnionOfColumns( CommutativeRingOfLinearCategory( cat_1 ), AsInteger( deduped_1_1 ), List( tau_1, function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, UnionOfColumns( CommutativeSemiringOfLinearCategory( cat_1 ), AsInteger( deduped_1_1 ), List( tau_1, function ( x_2 )
                   return AsHomalgMatrix( Opposite( x_2 ) );
               end ) ), Opposite( P_1 ) ) );
 end
@@ -1094,7 +1094,7 @@ end
 function ( cat_1, T_1, P_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( T_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgZeroMatrix( AsInteger( deduped_1_1 ), 0, CommutativeRingOfLinearCategory( cat_1 ) ), Opposite( P_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgZeroMatrix( AsInteger( deduped_1_1 ), 0, CommutativeSemiringOfLinearCategory( cat_1 ) ), Opposite( P_1 ) ) );
 end
 ########
         
@@ -1107,7 +1107,7 @@ end
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( T_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( P_1 ), UnionOfRows( CommutativeRingOfLinearCategory( cat_1 ), AsInteger( deduped_1_1 ), List( tau_1, function ( x_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( P_1 ), UnionOfRows( CommutativeSemiringOfLinearCategory( cat_1 ), AsInteger( deduped_1_1 ), List( tau_1, function ( x_2 )
                   return AsHomalgMatrix( Opposite( x_2 ) );
               end ) ), deduped_1_1 ) );
 end
@@ -1122,7 +1122,7 @@ end
 function ( cat_1, T_1, P_1 )
     local deduped_1_1;
     deduped_1_1 := Opposite( T_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( P_1 ), HomalgZeroMatrix( 0, AsInteger( deduped_1_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), Opposite( P_1 ), HomalgZeroMatrix( 0, AsInteger( deduped_1_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ), deduped_1_1 ) );
 end
 ########
         
@@ -1136,7 +1136,7 @@ function ( cat_1, a_1, b_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := Opposite( a_1 );
     deduped_1_1 := Opposite( b_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgZeroMatrix( AsInteger( deduped_1_1 ), AsInteger( deduped_2_1 ), CommutativeRingOfLinearCategory( cat_1 ) ), deduped_2_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, Opposite, AsCapCategoryMorphism( OppositeCategory( cat_1 ), deduped_1_1, HomalgZeroMatrix( AsInteger( deduped_1_1 ), AsInteger( deduped_2_1 ), CommutativeSemiringOfLinearCategory( cat_1 ) ), deduped_2_1 ) );
 end
 ########
         

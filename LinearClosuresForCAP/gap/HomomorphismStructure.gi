@@ -145,7 +145,7 @@ InstallGlobalFunction( INSTALL_HOMOMORPHISM_STRUCTURE_FOR_LINEAR_CLOSURE,
                         i -> Iterated(
                             List(
                                 [ 1 .. size_b ],
-                                j ->  MultiplyWithElementOfCommutativeRingForMorphisms( rows, coeffs_a[i] * coeffs_b[j], FunctorMor( HomomorphismStructureOnMorphisms( UnderlyingCategory( cat ),  supp_a[i], supp_b[j] ) ) )
+                                j ->  MultiplyWithElementOfCommutativeSemiringForMorphisms( rows, coeffs_a[i] * coeffs_b[j], FunctorMor( HomomorphismStructureOnMorphisms( UnderlyingCategory( cat ),  supp_a[i], supp_b[j] ) ) )
                             ),
                             { mor1, mor2 } -> AdditionForMorphisms( rows, mor1, mor2 )
                         )

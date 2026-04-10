@@ -18,7 +18,7 @@ BindGlobal( "CAP_INTERNAL_VALID_RETURN_TYPES",
         "object_datum",
         "morphism_datum",
         "nonneg_integer_or_infinity",
-        "list_of_elements_of_commutative_ring_of_linear_structure",
+        "list_of_elements_of_commutative_semiring_of_linear_structure",
     ]
 #! @EndCode
 );
@@ -1190,7 +1190,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if ForAll( current_rec.filter_list, x -> x in [ "element_of_commutative_ring_of_linear_structure", "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "list_of_objects" ] ) then
+        if ForAll( current_rec.filter_list, x -> x in [ "element_of_commutative_semiring_of_linear_structure", "integer", "nonneg_integer_or_infinity", "category", "object", "object_in_range_category_of_homomorphism_structure", "list_of_objects" ] ) then
             
             if not IsBound( current_rec.compatible_with_congruence_of_morphisms ) then
                 

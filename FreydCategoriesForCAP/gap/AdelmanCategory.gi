@@ -61,11 +61,11 @@ InstallMethod( AdelmanCategory,
     
     if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
        IsLinearCategoryOverCommutativeRing( underlying_category ) and
-       HasCommutativeRingOfLinearCategory( underlying_category ) then
+       HasCommutativeSemiringOfLinearCategory( underlying_category ) then
       
       SetIsLinearCategoryOverCommutativeRing( adelman_category, true );
       
-      SetCommutativeRingOfLinearCategory( adelman_category, CommutativeRingOfLinearCategory( underlying_category ) );
+      SetCommutativeSemiringOfLinearCategory( adelman_category, CommutativeSemiringOfLinearCategory( underlying_category ) );
        
     fi;
     
@@ -764,13 +764,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
     end );
     
-    if ForAll( [ "MultiplyWithElementOfCommutativeRingForMorphisms" ],
+    if ForAll( [ "MultiplyWithElementOfCommutativeSemiringForMorphisms" ],
                f -> CanCompute( underlying_category, f ) ) then
         
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
           { cat, r, alpha } -> AdelmanCategoryMorphism( cat,
                               Source( alpha ),
-                              MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingMorphism( alpha ) ),
+                              MultiplyWithElementOfCommutativeSemiringForMorphisms( r, UnderlyingMorphism( alpha ) ),
                               Range( alpha )
                             )
         );

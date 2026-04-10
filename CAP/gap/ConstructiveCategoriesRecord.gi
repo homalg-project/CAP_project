@@ -121,7 +121,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbCategory := Concatenation(
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRing := Concatenation(
     ListOfDefiningOperations( "IsAbCategory" ),
     [
-        "MultiplyWithElementOfCommutativeRingForMorphisms",
+        "MultiplyWithElementOfCommutativeSemiringForMorphisms",
     ]
 );
 

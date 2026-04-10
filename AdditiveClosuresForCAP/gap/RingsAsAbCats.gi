@@ -46,7 +46,7 @@ InstallMethod( RING_AS_CATEGORY,
         
         SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
         
-        SetCommutativeRingOfLinearCategory( category, ring );
+        SetCommutativeSemiringOfLinearCategory( category, ring );
         
         SetIsStrictMonoidalCategory( category, true );
         
@@ -266,7 +266,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
         ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
           function( cat, r, alpha )
             
             return RingAsCategoryMorphism( category, r * UnderlyingRingElement( alpha ) );
@@ -440,13 +440,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( category, true );
         
-        SetCommutativeRingOfLinearCategory( category, field );
+        SetCommutativeSemiringOfLinearCategory( category, field );
         
         SetRangeCategoryOfHomomorphismStructure( category, CategoryOfRows( field ) );
         SetIsEquippedWithHomomorphismStructure( category, true );
         
         ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
           function( cat, r, alpha )
             
             return RingAsCategoryMorphism( category, (r / ring) * UnderlyingRingElement( alpha ) );

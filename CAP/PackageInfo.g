@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
-Version := "2026.03-01",
+Version := "2026.04-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -111,10 +111,10 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.13.0",
-  NeededOtherPackages := [ [ "ToolsForHomalg", ">= 2023.11-01" ],
+  NeededOtherPackages := [ [ "ToolsForHomalg", ">= 2026.04-01" ],
   ],
   SuggestedOtherPackages := [ [ "Browse", ">= 1.5" ],
-                              [ "CompilerForCAP", ">= 2021.12-05" ],
+                              [ "CompilerForCAP", ">= 2026.04-01" ],
   ],
   ExternalConditions := []
 
@@ -122,11 +122,11 @@ Dependencies := rec(
 
 Extensions := [
   rec(
-    needed := [ [ "MatricesForHomalg", ">= 2023.11-02" ] ],
+    needed := [ [ "MatricesForHomalg", ">= 2026.04-01" ] ],
     filename := "gap/DummyImplementationsOfMatricesForHomalg.gd",
   ),
   rec(
-    needed := [ [ "MatricesForHomalg", ">= 2023.11-02" ] ],
+    needed := [ [ "MatricesForHomalg", ">= 2026.04-01" ] ],
     filename := "gap/DummyImplementationsOfMatricesForHomalg.gi",
   ),
 ],

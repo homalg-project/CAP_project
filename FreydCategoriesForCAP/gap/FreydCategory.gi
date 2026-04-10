@@ -25,7 +25,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
     [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, underlying_category )
-    local name, freyd_category, commutative_ring;
+    local name, freyd_category, commutative_semiring;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
@@ -54,18 +54,18 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
        IsLinearCategoryOverCommutativeRing( underlying_category ) and
-       HasCommutativeRingOfLinearCategory( underlying_category ) then
+       HasCommutativeSemiringOfLinearCategory( underlying_category ) then
         
         SetIsLinearCategoryOverCommutativeRing( freyd_category, true );
         
-        commutative_ring := CommutativeRingOfLinearCategory( underlying_category );
+        commutative_semiring := CommutativeSemiringOfLinearCategory( underlying_category );
         
-        SetCommutativeRingOfLinearCategory( freyd_category, commutative_ring );
+        SetCommutativeSemiringOfLinearCategory( freyd_category, commutative_semiring );
         
         if HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( underlying_category ) and
            IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( underlying_category ) then
             
-            if HasIsFieldForHomalg( commutative_ring ) and IsFieldForHomalg( commutative_ring ) then
+            if HasIsFieldForHomalg( commutative_semiring ) and IsFieldForHomalg( commutative_semiring ) then
                 
                 SetIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( freyd_category, true );
                 
@@ -730,13 +730,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    if is_possible_to_install( "MultiplyWithElementOfCommutativeRingForMorphisms",
-                               [ "MultiplyWithElementOfCommutativeRingForMorphisms" ] ) then
+    if is_possible_to_install( "MultiplyWithElementOfCommutativeSemiringForMorphisms",
+                               [ "MultiplyWithElementOfCommutativeSemiringForMorphisms" ] ) then
         
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( category,
           { cat, r, alpha } -> FreydCategoryMorphism( cat,
                               Source( alpha ),
-                              MultiplyWithElementOfCommutativeRingForMorphisms( underlying_category, r, MorphismDatum( cat, alpha ) ),
+                              MultiplyWithElementOfCommutativeSemiringForMorphisms( underlying_category, r, MorphismDatum( cat, alpha ) ),
                               Range( alpha )
                             )
         );
