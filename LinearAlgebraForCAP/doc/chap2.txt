@@ -628,6 +628,8 @@
     [4X[28XIsEquippedWithHomomorphismStructure[128X[104X
     [4X[28XIsLinearCategoryOverCommutativeRing[128X[104X
     [4X[28XIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms[128X[104X
+    [4X[28XIsLinearCategoryOverCommutativeSemiring[128X[104X
+    [4X[28XIsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms[128X[104X
     [4X[28XIsMonoidalCategory[128X[104X
     [4X[28XIsPreAbelianCategory[128X[104X
     [4X[28XIsRigidSymmetricClosedMonoidalCategory[128X[104X
