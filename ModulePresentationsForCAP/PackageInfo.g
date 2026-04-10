@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
-Version := "2025.12-01",
-Date := "2025-12-23",
+Version := "2026.04-01",
+Date := "2026-04-10",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -100,8 +100,8 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.13.0",
-  NeededOtherPackages := [ [ "MatricesForHomalg", ">=2019.02.01" ],
-                           [ "CAP", ">= 2023.05-03" ],
+  NeededOtherPackages := [ [ "MatricesForHomalg", ">= 2026.04-01" ],
+                           [ "CAP", ">= 2026.04-01" ],
                            [ "MonoidalCategories", ">= 2025.08-01" ],
   ],
   SuggestedOtherPackages := [
@@ -112,8 +112,8 @@ Dependencies := rec(
 
 Extensions := [
   rec(
-    needed := [ [ "FreydCategoriesForCAP", ">= 2024.01-03" ],
-                [ "AdditiveClosuresForCAP", ">= 2025.06-01" ]
+    needed := [ [ "FreydCategoriesForCAP", ">= 2026.04-01" ],
+                [ "AdditiveClosuresForCAP", ">= 2026.04-01" ]
               ],
     filename := "gap/ModulePresentations_as_FreydCategory_CategoryOfRowsOrColumns.gi",
   ),
