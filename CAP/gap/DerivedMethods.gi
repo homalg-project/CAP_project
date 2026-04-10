@@ -137,6 +137,17 @@ AddDerivationToCAP( IsHomSetInhabited,
     
 end : CategoryFilter := IsAbCategory );
 
+##
+AddDerivationToCAP( IsHomSetInhabited,
+                    "IsHomSetInhabited is always true in an Ab-category",
+                    [  ],
+                    
+  function( cat, object1, object2 )
+    
+    return true;
+    
+end : CategoryFilter := IsLinearCategoryOverCommutativeSemiring );
+
 ###########################
 ##
 ## WithGiven pairs
@@ -1116,6 +1127,17 @@ AddDerivationToCAP( ZeroMorphism,
   end : CategoryFilter := IsAbCategory );
 
 ##
+AddDerivationToCAP( ZeroMorphism,
+                    "computing the empty sum of morphisms",
+                    [ [ SumOfMorphisms, 1 ] ],
+                    
+  function( cat, obj_source, obj_range )
+    
+    return SumOfMorphisms( cat, obj_source, [ ], obj_range );
+    
+  end : CategoryFilter := IsLinearCategoryOverCommutativeSemiring );
+
+##
 AddDerivationToCAP( PreCompose,
                     "PreCompose using PostCompose and swapping arguments",
                     [ [ PostCompose, 1 ] ],
@@ -1194,6 +1216,17 @@ end : CategoryFilter := IsAbCategory );
 
 ##
 AddDerivationToCAP( AdditionForMorphisms,
+                    "AdditionForMorphisms using SumOfMorphisms",
+                    [ [ SumOfMorphisms, 1 ] ],
+                    
+  function( cat, mor1, mor2 )
+    
+    return SumOfMorphisms( cat, Source( mor1 ), [ mor1, mor2 ], Range( mor1 ) );
+    
+end : CategoryFilter := IsLinearCategoryOverCommutativeSemiring );
+
+##
+AddDerivationToCAP( AdditionForMorphisms,
                     "AdditionForMorphisms(mor1, mor2) as the composition of (mor1,mor2) with the codiagonal morphism",
                     [ [ UniversalMorphismIntoDirectSum, 1 ],
                       [ IdentityMorphism, 1 ],
@@ -1233,14 +1266,51 @@ AddDerivationToCAP( SumOfMorphisms,
                     [ [ AdditionForMorphisms, 2 ],
                       [ ZeroMorphism, 1 ] ],
                     
-  function( cat, obj1, mors, obj2 )
+  function( cat, source, mors, target )
     local zero_morphism;
     
-    zero_morphism := ZeroMorphism( cat, obj1, obj2 );
+    zero_morphism := ZeroMorphism( cat, source, target );
     
     return Iterated( mors, { alpha, beta } -> AdditionForMorphisms( cat, alpha, beta ), zero_morphism );
     
 end : CategoryFilter := IsAbCategory );
+
+##
+AddDerivationToCAP( SumOfMorphisms,
+                    "SumOfMorphisms using AdditionForMorphisms and ZeroMorphism",
+                    [ [ AdditionForMorphisms, 2 ],
+                      [ ZeroMorphism, 1 ] ],
+                    
+  function( cat, source, mors, target )
+    local zero_morphism;
+    
+    zero_morphism := ZeroMorphism( cat, source, target );
+    
+    return Iterated( mors, { alpha, beta } -> AdditionForMorphisms( cat, alpha, beta ), zero_morphism );
+    
+end : CategoryFilter := IsLinearCategoryOverCommutativeSemiring );
+
+##
+AddDerivationToCAP( SumOfMorphisms,
+                    "SumOfMorphisms using LinearCombinationOfMorphisms",
+                    [ [ LinearCombinationOfMorphisms, 1 ] ],
+                    
+  function( cat, source, mors, target )
+    
+    return LinearCombinationOfMorphisms( cat, source, ListWithIdenticalEntries( Length( mors ), One( CommutativeSemiringOfLinearCategory( cat ) ) ), mors, target );
+    
+end : CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeSemiring( cat ) and IsLinearCategoryOverCommutativeSemiring( cat ) and HasCommutativeSemiringOfLinearCategory( cat ) );
+
+##
+AddDerivationToCAP( MultiplyWithElementOfCommutativeSemiringForMorphisms,
+                    "MultiplyWithElementOfCommutativeSemiringForMorphisms using LinearCombinationOfMorphisms",
+                    [ [ LinearCombinationOfMorphisms, 1 ] ],
+                    
+  function( cat, r, mor )
+    
+    return LinearCombinationOfMorphisms( cat, Source( mor ), [ r ], [ mor ], Target( mor ) );
+    
+end : CategoryFilter := cat -> HasIsLinearCategoryOverCommutativeSemiring( cat ) and IsLinearCategoryOverCommutativeSemiring( cat ) and HasCommutativeSemiringOfLinearCategory( cat ) );
 
 ##
 AddDerivationToCAP( LinearCombinationOfMorphisms,
@@ -1248,12 +1318,12 @@ AddDerivationToCAP( LinearCombinationOfMorphisms,
                     [ [ MultiplyWithElementOfCommutativeSemiringForMorphisms, 2 ],
                       [ SumOfMorphisms, 1 ] ],
                     
-  function( cat, obj1, coeffs, mors, obj2 )
+  function( cat, source, coeffs, mors, target )
     local morphisms;
     
     morphisms := ListN( coeffs, mors, { r, alpha } -> MultiplyWithElementOfCommutativeSemiringForMorphisms( cat, r, alpha ) );
     
-    return SumOfMorphisms( cat, obj1, morphisms, obj2 );
+    return SumOfMorphisms( cat, source, morphisms, target );
     
 end : CategoryFilter := IsLinearCategoryOverCommutativeRing );
 

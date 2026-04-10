@@ -276,6 +276,21 @@ DeclareProperty( "IsAbCategory", IsCapCategory );
 AddCategoricalProperty( [ "IsAbCategory", "IsAbCategory" ] );
 
 #! @Description
+#!  The property of the category <A>C</A> being linear over a commutative semiring.
+#! @Arguments C
+DeclareProperty( "IsLinearCategoryOverCommutativeSemiring", IsCapCategory );
+
+AddCategoricalProperty( [ "IsLinearCategoryOverCommutativeSemiring", "IsLinearCategoryOverCommutativeSemiring" ] );
+
+#! @Description
+#!  The property of the category <A>C</A> being linear over a commutative semiring $k$
+#!  such that all external homs are finitely generated free $k$-modules.
+#! @Arguments C
+DeclareProperty( "IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms", IsCapCategory );
+
+AddCategoricalProperty( [ "IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms", "IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms" ] );
+
+#! @Description
 #!  The property of the category <A>C</A> being linear over a commutative ring.
 #! @Arguments C
 DeclareProperty( "IsLinearCategoryOverCommutativeRing", IsCapCategory );

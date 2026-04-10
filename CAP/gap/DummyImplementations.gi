@@ -4,6 +4,39 @@
 # Implementations
 #
 
+## dummy commutative semirings
+
+BindGlobal( "TheFamilyOfDummyCommutativeSemirings",
+        NewFamily( "TheFamilyOfDummyCommutativeSemirings" ) );
+
+CAP_INTERNAL_DUMMY_COMMUTATIVE_SEMIRING_COUNTER := 1;
+
+InstallGlobalFunction( DummyCommutativeSemiring, function( )
+  local semiring_filter, semiring_element_filter, name, semiring;
+    
+    semiring_filter := NewFilter( "DummyCommutativeSemiringFilter", IsDummyCommutativeSemiring );
+    semiring_element_filter := NewFilter( "DummyCommutativeSemiringElementFilter", IsDummyCommutativeSemiringElement );
+    
+    name := Concatenation( "Dummy commutative semiring ", String( CAP_INTERNAL_DUMMY_COMMUTATIVE_SEMIRING_COUNTER ) );
+    CAP_INTERNAL_DUMMY_COMMUTATIVE_SEMIRING_COUNTER := CAP_INTERNAL_DUMMY_COMMUTATIVE_SEMIRING_COUNTER + 1;
+    
+    semiring := CreateGapObjectWithAttributes( NewType( TheFamilyOfDummyCommutativeSemirings, IsAttributeStoringRep and semiring_filter ),
+        Name, name,
+        String, name,
+        SemiringFilter, semiring_filter,
+        SemiringElementFilter, semiring_element_filter,
+        IsCommutative, true
+    );
+    
+    CapJitAddTypeSignature( "+", [ semiring_element_filter, semiring_element_filter ], semiring_element_filter );
+    CapJitAddTypeSignature( "ZeroImmutable", [ semiring_filter ], semiring_element_filter );
+    CapJitAddTypeSignature( "*", [ semiring_element_filter, semiring_element_filter ], semiring_element_filter );
+    CapJitAddTypeSignature( "OneImmutable", [ semiring_filter ], semiring_element_filter );
+    
+    return semiring;
+    
+end );
+
 ## dummy rings
 
 BindGlobal( "TheFamilyOfDummyRings",
