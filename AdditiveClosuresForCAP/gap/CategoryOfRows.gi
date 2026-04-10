@@ -1321,7 +1321,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
 end );
 
 ##
-## use ExternalHom & CoefficientsOfMorphism to derive Hom-Structure
+## use BasisOfExternalHom & CoefficientsOfMorphism to derive Hom-Structure
 ##
 AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism to equip k-linear categories with a Hom-Structure over the category of k-rows",
                     [
@@ -1425,8 +1425,9 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
          HasIsEquippedWithHomomorphismStructure( cat ) and IsEquippedWithHomomorphismStructure( cat ) and
          HasRangeCategoryOfHomomorphismStructure( cat ) and
          IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( cat ) ) and
-         HasIsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( cat ) and
-         HasCommutativeSemiringOfLinearCategory( cat ) and IsHomalgRing( CommutativeSemiringOfLinearCategory( cat ) ) then
+         HasIsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms( cat ) and
+         IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms( cat ) and
+         HasCommutativeSemiringOfLinearCategory( cat ) and IsHomalgSemiring( CommutativeSemiringOfLinearCategory( cat ) ) then
           
           return true;
         

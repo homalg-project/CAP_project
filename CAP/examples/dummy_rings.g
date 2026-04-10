@@ -29,9 +29,13 @@ DummyField( );
 #! Dummy field 1
 DummyField( );
 #! Dummy field 2
+IsSemiring( DummyField( ) );
+#! true
 IsRing( DummyField( ) );
 #! true
 IsField( DummyField( ) );
+#! true
+IsCommutative( DummyField( ) );
 #! true
 
 #! @EndExample

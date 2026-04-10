@@ -118,20 +118,35 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsAbCategory := Concatenation(
     ]
 );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRing := Concatenation(
-    ListOfDefiningOperations( "IsAbCategory" ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeSemiring := Concatenation(
+    ListOfDefiningOperations( "IsCapCategory" ),
     [
+        "AdditionForMorphisms",
+        "ZeroMorphism",
+        "IsZeroForMorphisms",
         "MultiplyWithElementOfCommutativeSemiringForMorphisms",
     ]
 );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms := Concatenation(
-    ListOfDefiningOperations( "IsLinearCategoryOverCommutativeRing" ),
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms := Concatenation(
+    ListOfDefiningOperations( "IsLinearCategoryOverCommutativeSemiring" ),
     [
         "BasisOfExternalHom",
         "CoefficientsOfMorphism",
     ]
 );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRing :=
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsAbCategory" ),
+                  ListOfDefiningOperations( "IsLinearCategoryOverCommutativeSemiring" ) ) );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms :=
+  DuplicateFreeList(
+          Concatenation(
+                  ListOfDefiningOperations( "IsLinearCategoryOverCommutativeRing" ),
+                  ListOfDefiningOperations( "IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms" ) ) );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCategoryWithKernels := Concatenation(
     ListOfDefiningOperations( "IsCapCategory" ),

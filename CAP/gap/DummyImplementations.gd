@@ -24,6 +24,26 @@
 ####################################
 
 #= comment for Julia
+#! @Description
+#!  The &GAP; filter of dummy semirings.
+DeclareFilter( "IsDummySemiring",
+        IsSemiringWithOne );
+
+#! @Description
+#!  The &GAP; filter of elements of a dummy semiring.
+DeclareFilter( "IsDummySemiringElement",
+        IsSemiringElementWithOne );
+
+#! @Description
+#!  The &GAP; filter of dummy commutative semirings.
+DeclareFilter( "IsDummyCommutativeSemiring",
+        IsDummySemiring );
+
+#! @Description
+#!  The &GAP; filter of elements of a dummy commutative semiring.
+DeclareFilter( "IsDummyCommutativeSemiringElement",
+        IsDummySemiringElement );
+
 # IsRingElement(WithOne) is a union of types, which we cannot subtype
 
 #! @Description
@@ -62,6 +82,16 @@ DeclareFilter( "IsDummyFieldElement",
 # Constructors
 #
 ####################################
+
+#! @Description
+#! @Arguments
+#! @Returns a dummy semiring
+DeclareGlobalFunction( "DummySemiring" );
+
+#! @Description
+#! @Arguments
+#! @Returns a dummy commutative semiring
+DeclareGlobalFunction( "DummyCommutativeSemiring" );
 
 #! @Description
 #! @Arguments

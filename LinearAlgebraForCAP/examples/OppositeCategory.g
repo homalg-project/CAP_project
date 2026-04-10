@@ -29,6 +29,8 @@ Perform( ListKnownCategoricalProperties( op ), Display );
 #! IsEquippedWithHomomorphismStructure
 #! IsLinearCategoryOverCommutativeRing
 #! IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms
+#! IsLinearCategoryOverCommutativeSemiring
+#! IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms
 #! IsMonoidalCategory
 #! IsPreAbelianCategory
 #! IsRigidSymmetricClosedMonoidalCategory
