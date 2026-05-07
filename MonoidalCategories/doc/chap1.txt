@@ -52,7 +52,41 @@
   \rightarrow  a',  \beta:  b \rightarrow b'[123X, and an object [23Xr = a' \otimes b'[123X.
   The output is the tensor product [23X\alpha \otimes \beta[123X.[133X
   
-  [1X1.1-3 AssociatorRightToLeft[101X
+  [1X1.1-3 TensorProductOnMorphismAndObject[101X
+  
+  [33X[1;0Y[29X[2XTensorProductOnMorphismAndObject[102X( [3Xalpha[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, a' \otimes b)[123X[133X
+  
+  [33X[0;0YThe  arguments  are a morphism [23X\alpha: a \rightarrow a'[123X and an object [23Xb[123X. The
+  output is the tensor product [23X\alpha \otimes \mathrm{id}_b[123X.[133X
+  
+  [1X1.1-4 TensorProductOnMorphismAndObjectWithGivenTensorProducts[101X
+  
+  [33X[1;0Y[29X[2XTensorProductOnMorphismAndObjectWithGivenTensorProducts[102X( [3Xs[103X, [3Xalpha[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, a' \otimes b)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xs  =  a  \otimes  b[123X,  a  morphism [23X\alpha: a
+  \rightarrow  a'[123X,  an  object [23Xb[123X and an object [23Xr = a' \otimes b[123X. The output is
+  the tensor product [23X\alpha \otimes \mathrm{id}_b[123X.[133X
+  
+  [1X1.1-5 TensorProductOnObjectAndMorphism[101X
+  
+  [33X[1;0Y[29X[2XTensorProductOnObjectAndMorphism[102X( [3Xa[103X, [3Xbeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, a \otimes b')[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an object [23Xa[123X and a morphism [23X\beta: b \rightarrow b'[123X. The
+  output is the tensor product [23X\mathrm{id}_a \otimes \beta[123X.[133X
+  
+  [1X1.1-6 TensorProductOnObjectAndMorphismWithGivenTensorProducts[101X
+  
+  [33X[1;0Y[29X[2XTensorProductOnObjectAndMorphismWithGivenTensorProducts[102X( [3Xs[103X, [3Xa[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, a \otimes b')[123X[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs = a \otimes b[123X, an object [23Xa[123X, a morphism [23X\beta:
+  b  \rightarrow  b'[123X  and an object [23Xr = a \otimes b'[123X. The output is the tensor
+  product [23X\mathrm{id}_a \otimes \beta[123X.[133X
+  
+  [1X1.1-7 AssociatorRightToLeft[101X
   
   [33X[1;0Y[29X[2XAssociatorRightToLeft[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b)
@@ -62,7 +96,7 @@
   [23X\alpha_{a,(b,c)}:  a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes
   c[123X.[133X
   
-  [1X1.1-4 AssociatorRightToLeftWithGivenTensorProducts[101X
+  [1X1.1-8 AssociatorRightToLeftWithGivenTensorProducts[101X
   
   [33X[1;0Y[29X[2XAssociatorRightToLeftWithGivenTensorProducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b)
@@ -73,7 +107,7 @@
   associator  [23X\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes
   b) \otimes c[123X.[133X
   
-  [1X1.1-5 AssociatorLeftToRight[101X
+  [1X1.1-9 AssociatorLeftToRight[101X
   
   [33X[1;0Y[29X[2XAssociatorLeftToRight[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a
@@ -83,7 +117,7 @@
   [23X\alpha_{(a,b),c}:  (a  \otimes b) \otimes c \rightarrow a \otimes (b \otimes
   c)[123X.[133X
   
-  [1X1.1-6 AssociatorLeftToRightWithGivenTensorProducts[101X
+  [1X1.1-10 AssociatorLeftToRightWithGivenTensorProducts[101X
   
   [33X[1;0Y[29X[2XAssociatorLeftToRightWithGivenTensorProducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a
@@ -94,7 +128,7 @@
   associator  [23X\alpha_{(a,b),c}:  (a \otimes b) \otimes c \rightarrow a \otimes
   (b \otimes c)[123X.[133X
   
-  [1X1.1-7 LeftUnitor[101X
+  [1X1.1-11 LeftUnitor[101X
   
   [33X[1;0Y[29X[2XLeftUnitor[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a)[123X[133X
@@ -102,7 +136,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the left unitor [23X\lambda_a: 1
   \otimes a \rightarrow a[123X.[133X
   
-  [1X1.1-8 LeftUnitorWithGivenTensorProduct[101X
+  [1X1.1-12 LeftUnitorWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XLeftUnitorWithGivenTensorProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \otimes a, a)[123X[133X
@@ -110,7 +144,7 @@
   [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xs = 1 \otimes a[123X. The output is
   the left unitor [23X\lambda_a: 1 \otimes a \rightarrow a[123X.[133X
   
-  [1X1.1-9 LeftUnitorInverse[101X
+  [1X1.1-13 LeftUnitorInverse[101X
   
   [33X[1;0Y[29X[2XLeftUnitorInverse[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, 1 \otimes a)[123X[133X
@@ -118,7 +152,7 @@
   [33X[0;0YThe  argument  is  an object [23Xa[123X. The output is the inverse of the left unitor
   [23X\lambda_a^{-1}: a \rightarrow 1 \otimes a[123X.[133X
   
-  [1X1.1-10 LeftUnitorInverseWithGivenTensorProduct[101X
+  [1X1.1-14 LeftUnitorInverseWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XLeftUnitorInverseWithGivenTensorProduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, 1 \otimes a)[123X[133X
@@ -126,7 +160,7 @@
   [33X[0;0YThe argument is an object [23Xa[123X and an object [23Xr = 1 \otimes a[123X. The output is the
   inverse of the left unitor [23X\lambda_a^{-1}: a \rightarrow 1 \otimes a[123X.[133X
   
-  [1X1.1-11 RightUnitor[101X
+  [1X1.1-15 RightUnitor[101X
   
   [33X[1;0Y[29X[2XRightUnitor[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a)[123X[133X
@@ -134,7 +168,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output is the right unitor [23X\rho_a: a
   \otimes 1 \rightarrow a[123X.[133X
   
-  [1X1.1-12 RightUnitorWithGivenTensorProduct[101X
+  [1X1.1-16 RightUnitorWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XRightUnitorWithGivenTensorProduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes 1, a)[123X[133X
@@ -142,7 +176,7 @@
   [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xs = a \otimes 1[123X. The output is
   the right unitor [23X\rho_a: a \otimes 1 \rightarrow a[123X.[133X
   
-  [1X1.1-13 RightUnitorInverse[101X
+  [1X1.1-17 RightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XRightUnitorInverse[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \otimes 1)[123X[133X
@@ -150,7 +184,7 @@
   [33X[0;0YThe  argument  is an object [23Xa[123X. The output is the inverse of the right unitor
   [23X\rho_a^{-1}: a \rightarrow a \otimes 1[123X.[133X
   
-  [1X1.1-14 RightUnitorInverseWithGivenTensorProduct[101X
+  [1X1.1-18 RightUnitorInverseWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XRightUnitorInverseWithGivenTensorProduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \otimes 1)[123X[133X
@@ -158,7 +192,7 @@
   [33X[0;0YThe  arguments  are an object [23Xa[123X and an object [23Xr = a \otimes 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \otimes 1[123X.[133X
   
-  [1X1.1-15 TensorProductOnObjects[101X
+  [1X1.1-19 TensorProductOnObjects[101X
   
   [33X[1;0Y[29X[2XTensorProductOnObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -166,7 +200,7 @@
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,  b[123X. The output is the tensor product [23Xa
   \otimes b[123X.[133X
   
-  [1X1.1-16 TensorUnit[101X
+  [1X1.1-20 TensorUnit[101X
   
   [33X[1;0Y[29X[2XTensorUnit[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -5148,7 +5182,35 @@
   of  the function (lower weight = less complex = faster execution). [23XF: ( a, s
   ) \mapsto \mathtt{RightUnitorWithGivenTensorProduct}(a, s)[123X.[133X
   
-  [1X1.14-197 AddTensorProductOnMorphisms[101X
+  [1X1.14-197 AddTensorProductOnMorphismAndObject[101X
+  
+  [33X[1;0Y[29X[2XAddTensorProductOnMorphismAndObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddTensorProductOnMorphismAndObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductOnMorphismAndObject[110X. Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the function (lower weight = less complex = faster execution). [23XF: ( alpha, b
+  ) \mapsto \mathtt{TensorProductOnMorphismAndObject}(alpha, b)[123X.[133X
+  
+  [1X1.14-198 AddTensorProductOnMorphismAndObjectWithGivenTensorProducts[101X
+  
+  [33X[1;0Y[29X[2XAddTensorProductOnMorphismAndObjectWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddTensorProductOnMorphismAndObjectWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductOnMorphismAndObjectWithGivenTensorProducts[110X.    Optionally,    a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).    [23XF:    (    s,    alpha,    b,    r    )    \mapsto
+  \mathtt{TensorProductOnMorphismAndObjectWithGivenTensorProducts}(s,   alpha,
+  b, r)[123X.[133X
+  
+  [1X1.14-199 AddTensorProductOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddTensorProductOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTensorProductOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5161,7 +5223,7 @@
   the  function  (lower weight = less complex = faster execution). [23XF: ( alpha,
   beta ) \mapsto \mathtt{TensorProductOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X1.14-198 AddTensorProductOnMorphismsWithGivenTensorProducts[101X
+  [1X1.14-200 AddTensorProductOnMorphismsWithGivenTensorProducts[101X
   
   [33X[1;0Y[29X[2XAddTensorProductOnMorphismsWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTensorProductOnMorphismsWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5175,7 +5237,35 @@
   faster    execution).    [23XF:    (    s,    alpha,    beta,    r   )   \mapsto
   \mathtt{TensorProductOnMorphismsWithGivenTensorProducts}(s, alpha, beta, r)[123X.[133X
   
-  [1X1.14-199 AddTensorProductOnObjects[101X
+  [1X1.14-201 AddTensorProductOnObjectAndMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddTensorProductOnObjectAndMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddTensorProductOnObjectAndMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductOnObjectAndMorphism[110X. Optionally, a weight (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, beta
+  ) \mapsto \mathtt{TensorProductOnObjectAndMorphism}(a, beta)[123X.[133X
+  
+  [1X1.14-202 AddTensorProductOnObjectAndMorphismWithGivenTensorProducts[101X
+  
+  [33X[1;0Y[29X[2XAddTensorProductOnObjectAndMorphismWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddTensorProductOnObjectAndMorphismWithGivenTensorProducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTensorProductOnObjectAndMorphismWithGivenTensorProducts[110X.    Optionally,    a
+  weight  (default:  100)  can be specified which should roughly correspond to
+  the  computational complexity of the function (lower weight = less complex =
+  faster     execution).     [23XF:    (    s,    a,    beta,    r    )    \mapsto
+  \mathtt{TensorProductOnObjectAndMorphismWithGivenTensorProducts}(s, a, beta,
+  r)[123X.[133X
+  
+  [1X1.14-203 AddTensorProductOnObjects[101X
   
   [33X[1;0Y[29X[2XAddTensorProductOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTensorProductOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5188,7 +5278,7 @@
   function (lower weight = less complex = faster execution). [23XF: ( arg2, arg3 )
   \mapsto \mathtt{TensorProductOnObjects}(arg2, arg3)[123X.[133X
   
-  [1X1.14-200 AddTensorUnit[101X
+  [1X1.14-204 AddTensorUnit[101X
   
   [33X[1;0Y[29X[2XAddTensorUnit[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTensorUnit[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5200,7 +5290,7 @@
   correspond  to  the computational complexity of the function (lower weight =
   less complex = faster execution). [23XF: ( ) \mapsto \mathtt{TensorUnit}()[123X.[133X
   
-  [1X1.14-201 AddCoevaluationForDual[101X
+  [1X1.14-205 AddCoevaluationForDual[101X
   
   [33X[1;0Y[29X[2XAddCoevaluationForDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoevaluationForDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5213,7 +5303,7 @@
   function  (lower weight = less complex = faster execution). [23XF: ( a ) \mapsto
   \mathtt{CoevaluationForDual}(a)[123X.[133X
   
-  [1X1.14-202 AddCoevaluationForDualWithGivenTensorProduct[101X
+  [1X1.14-206 AddCoevaluationForDualWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XAddCoevaluationForDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoevaluationForDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5227,7 +5317,7 @@
   [23XF: ( s, a, r ) \mapsto \mathtt{CoevaluationForDualWithGivenTensorProduct}(s,
   a, r)[123X.[133X
   
-  [1X1.14-203 AddIsomorphismFromInternalHomToTensorProductWithDualObject[101X
+  [1X1.14-207 AddIsomorphismFromInternalHomToTensorProductWithDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromInternalHomToTensorProductWithDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromInternalHomToTensorProductWithDualObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5241,7 +5331,7 @@
   faster       execution).       [23XF:       (      a,      b      )      \mapsto
   \mathtt{IsomorphismFromInternalHomToTensorProductWithDualObject}(a, b)[123X.[133X
   
-  [1X1.14-204 AddIsomorphismFromTensorProductWithDualObjectToInternalHom[101X
+  [1X1.14-208 AddIsomorphismFromTensorProductWithDualObjectToInternalHom[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithDualObjectToInternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithDualObjectToInternalHom[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5255,7 +5345,7 @@
   faster       execution).       [23XF:       (      a,      b      )      \mapsto
   \mathtt{IsomorphismFromTensorProductWithDualObjectToInternalHom}(a, b)[123X.[133X
   
-  [1X1.14-205 AddMorphismFromBidual[101X
+  [1X1.14-209 AddMorphismFromBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5268,7 +5358,7 @@
   less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{MorphismFromBidual}(a)[123X.[133X
   
-  [1X1.14-206 AddMorphismFromBidualWithGivenBidual[101X
+  [1X1.14-210 AddMorphismFromBidualWithGivenBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromBidualWithGivenBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromBidualWithGivenBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5281,7 +5371,7 @@
   of  the function (lower weight = less complex = faster execution). [23XF: ( a, s
   ) \mapsto \mathtt{MorphismFromBidualWithGivenBidual}(a, s)[123X.[133X
   
-  [1X1.14-207 AddMorphismFromInternalHomToTensorProduct[101X
+  [1X1.14-211 AddMorphismFromInternalHomToTensorProduct[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromInternalHomToTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromInternalHomToTensorProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5294,7 +5384,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a, b ) \mapsto \mathtt{MorphismFromInternalHomToTensorProduct}(a, b)[123X.[133X
   
-  [1X1.14-208 AddMorphismFromInternalHomToTensorProductWithGivenObjects[101X
+  [1X1.14-212 AddMorphismFromInternalHomToTensorProductWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromInternalHomToTensorProductWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromInternalHomToTensorProductWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5308,7 +5398,7 @@
   faster     execution).     [23XF:     (     s,     a,    b,    r    )    \mapsto
   \mathtt{MorphismFromInternalHomToTensorProductWithGivenObjects}(s, a, b, r)[123X.[133X
   
-  [1X1.14-209 AddRankMorphism[101X
+  [1X1.14-213 AddRankMorphism[101X
   
   [33X[1;0Y[29X[2XAddRankMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddRankMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5320,7 +5410,7 @@
   correspond  to  the computational complexity of the function (lower weight =
   less complex = faster execution). [23XF: ( a ) \mapsto \mathtt{RankMorphism}(a)[123X.[133X
   
-  [1X1.14-210 AddTensorProductInternalHomCompatibilityMorphismInverse[101X
+  [1X1.14-214 AddTensorProductInternalHomCompatibilityMorphismInverse[101X
   
   [33X[1;0Y[29X[2XAddTensorProductInternalHomCompatibilityMorphismInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTensorProductInternalHomCompatibilityMorphismInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5334,7 +5424,7 @@
   faster        execution).        [23XF:       (       list       )       \mapsto
   \mathtt{TensorProductInternalHomCompatibilityMorphismInverse}(list)[123X.[133X
   
-  [1X1.14-211 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[101X
+  [1X1.14-215 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5349,7 +5439,7 @@
   \mathtt{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X1.14-212 AddTraceMap[101X
+  [1X1.14-216 AddTraceMap[101X
   
   [33X[1;0Y[29X[2XAddTraceMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddTraceMap[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5362,7 +5452,7 @@
   less    complex    =    faster    execution).   [23XF:   (   alpha   )   \mapsto
   \mathtt{TraceMap}(alpha)[123X.[133X
   
-  [1X1.14-213 AddCoRankMorphism[101X
+  [1X1.14-217 AddCoRankMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoRankMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoRankMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5375,7 +5465,7 @@
   less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{CoRankMorphism}(a)[123X.[133X
   
-  [1X1.14-214 AddCoTraceMap[101X
+  [1X1.14-218 AddCoTraceMap[101X
   
   [33X[1;0Y[29X[2XAddCoTraceMap[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoTraceMap[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5388,7 +5478,7 @@
   less    complex    =    faster    execution).   [23XF:   (   alpha   )   \mapsto
   \mathtt{CoTraceMap}(alpha)[123X.[133X
   
-  [1X1.14-215 AddCoclosedCoevaluationForCoDual[101X
+  [1X1.14-219 AddCoclosedCoevaluationForCoDual[101X
   
   [33X[1;0Y[29X[2XAddCoclosedCoevaluationForCoDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoclosedCoevaluationForCoDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5401,7 +5491,7 @@
   the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
   \mapsto \mathtt{CoclosedCoevaluationForCoDual}(a)[123X.[133X
   
-  [1X1.14-216 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct[101X
+  [1X1.14-220 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XAddCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5415,7 +5505,7 @@
   faster      execution).      [23XF:      (     s,     a,     r     )     \mapsto
   \mathtt{CoclosedCoevaluationForCoDualWithGivenTensorProduct}(s, a, r)[123X.[133X
   
-  [1X1.14-217 AddInternalCoHomTensorProductCompatibilityMorphismInverse[101X
+  [1X1.14-221 AddInternalCoHomTensorProductCompatibilityMorphismInverse[101X
   
   [33X[1;0Y[29X[2XAddInternalCoHomTensorProductCompatibilityMorphismInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddInternalCoHomTensorProductCompatibilityMorphismInverse[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5429,7 +5519,7 @@
   faster        execution).        [23XF:       (       list       )       \mapsto
   \mathtt{InternalCoHomTensorProductCompatibilityMorphismInverse}(list)[123X.[133X
   
-  [1X1.14-218 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[101X
+  [1X1.14-222 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5444,7 +5534,7 @@
   \mathtt{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X1.14-219 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[101X
+  [1X1.14-223 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5458,7 +5548,7 @@
   faster       execution).       [23XF:       (      a,      b      )      \mapsto
   \mathtt{IsomorphismFromInternalCoHomToTensorProductWithCoDualObject}(a, b)[123X.[133X
   
-  [1X1.14-220 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[101X
+  [1X1.14-224 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5472,7 +5562,7 @@
   faster       execution).       [23XF:       (      a,      b      )      \mapsto
   \mathtt{IsomorphismFromTensorProductWithCoDualObjectToInternalCoHom}(a, b)[123X.[133X
   
-  [1X1.14-221 AddMorphismFromTensorProductToInternalCoHom[101X
+  [1X1.14-225 AddMorphismFromTensorProductToInternalCoHom[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromTensorProductToInternalCoHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromTensorProductToInternalCoHom[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5485,7 +5575,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a, b ) \mapsto \mathtt{MorphismFromTensorProductToInternalCoHom}(a, b)[123X.[133X
   
-  [1X1.14-222 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects[101X
+  [1X1.14-226 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5500,7 +5590,7 @@
   \mathtt{MorphismFromTensorProductToInternalCoHomWithGivenObjects}(s,  a,  b,
   r)[123X.[133X
   
-  [1X1.14-223 AddMorphismToCoBidual[101X
+  [1X1.14-227 AddMorphismToCoBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCoBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismToCoBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -5513,7 +5603,7 @@
   less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{MorphismToCoBidual}(a)[123X.[133X
   
-  [1X1.14-224 AddMorphismToCoBidualWithGivenCoBidual[101X
+  [1X1.14-228 AddMorphismToCoBidualWithGivenCoBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismToCoBidualWithGivenCoBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismToCoBidualWithGivenCoBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X

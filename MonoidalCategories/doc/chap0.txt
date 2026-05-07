@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2025.12-01
+                                   2026.05-01
   
   
-                                23 December 2025
+                                   7 May 2026
   
   
                                 Mohamed Barakat
@@ -80,20 +80,24 @@
     1.1 [33X[0;0YMonoidal Categories[133X
       1.1-1 TensorProductOnMorphisms
       1.1-2 TensorProductOnMorphismsWithGivenTensorProducts
-      1.1-3 AssociatorRightToLeft
-      1.1-4 AssociatorRightToLeftWithGivenTensorProducts
-      1.1-5 AssociatorLeftToRight
-      1.1-6 AssociatorLeftToRightWithGivenTensorProducts
-      1.1-7 LeftUnitor
-      1.1-8 LeftUnitorWithGivenTensorProduct
-      1.1-9 LeftUnitorInverse
-      1.1-10 LeftUnitorInverseWithGivenTensorProduct
-      1.1-11 RightUnitor
-      1.1-12 RightUnitorWithGivenTensorProduct
-      1.1-13 RightUnitorInverse
-      1.1-14 RightUnitorInverseWithGivenTensorProduct
-      1.1-15 TensorProductOnObjects
-      1.1-16 TensorUnit
+      1.1-3 TensorProductOnMorphismAndObject
+      1.1-4 TensorProductOnMorphismAndObjectWithGivenTensorProducts
+      1.1-5 TensorProductOnObjectAndMorphism
+      1.1-6 TensorProductOnObjectAndMorphismWithGivenTensorProducts
+      1.1-7 AssociatorRightToLeft
+      1.1-8 AssociatorRightToLeftWithGivenTensorProducts
+      1.1-9 AssociatorLeftToRight
+      1.1-10 AssociatorLeftToRightWithGivenTensorProducts
+      1.1-11 LeftUnitor
+      1.1-12 LeftUnitorWithGivenTensorProduct
+      1.1-13 LeftUnitorInverse
+      1.1-14 LeftUnitorInverseWithGivenTensorProduct
+      1.1-15 RightUnitor
+      1.1-16 RightUnitorWithGivenTensorProduct
+      1.1-17 RightUnitorInverse
+      1.1-18 RightUnitorInverseWithGivenTensorProduct
+      1.1-19 TensorProductOnObjects
+      1.1-20 TensorUnit
     1.2 [33X[0;0YAdditive Monoidal Categories[133X
       1.2-1 LeftDistributivityExpanding
       1.2-2 LeftDistributivityExpandingWithGivenObjects
@@ -515,34 +519,38 @@
       1.14-194 AddRightUnitorInverse
       1.14-195 AddRightUnitorInverseWithGivenTensorProduct
       1.14-196 AddRightUnitorWithGivenTensorProduct
-      1.14-197 AddTensorProductOnMorphisms
-      1.14-198 AddTensorProductOnMorphismsWithGivenTensorProducts
-      1.14-199 AddTensorProductOnObjects
-      1.14-200 AddTensorUnit
-      1.14-201 AddCoevaluationForDual
-      1.14-202 AddCoevaluationForDualWithGivenTensorProduct
-      1.14-203 AddIsomorphismFromInternalHomToTensorProductWithDualObject
-      1.14-204 AddIsomorphismFromTensorProductWithDualObjectToInternalHom
-      1.14-205 AddMorphismFromBidual
-      1.14-206 AddMorphismFromBidualWithGivenBidual
-      1.14-207 AddMorphismFromInternalHomToTensorProduct
-      1.14-208 AddMorphismFromInternalHomToTensorProductWithGivenObjects
-      1.14-209 AddRankMorphism
-      1.14-210 AddTensorProductInternalHomCompatibilityMorphismInverse
-      1.14-211 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
-      1.14-212 AddTraceMap
-      1.14-213 AddCoRankMorphism
-      1.14-214 AddCoTraceMap
-      1.14-215 AddCoclosedCoevaluationForCoDual
-      1.14-216 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct
-      1.14-217 AddInternalCoHomTensorProductCompatibilityMorphismInverse
-      1.14-218 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
-      1.14-219 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject
-      1.14-220 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom
-      1.14-221 AddMorphismFromTensorProductToInternalCoHom
-      1.14-222 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects
-      1.14-223 AddMorphismToCoBidual
-      1.14-224 AddMorphismToCoBidualWithGivenCoBidual
+      1.14-197 AddTensorProductOnMorphismAndObject
+      1.14-198 AddTensorProductOnMorphismAndObjectWithGivenTensorProducts
+      1.14-199 AddTensorProductOnMorphisms
+      1.14-200 AddTensorProductOnMorphismsWithGivenTensorProducts
+      1.14-201 AddTensorProductOnObjectAndMorphism
+      1.14-202 AddTensorProductOnObjectAndMorphismWithGivenTensorProducts
+      1.14-203 AddTensorProductOnObjects
+      1.14-204 AddTensorUnit
+      1.14-205 AddCoevaluationForDual
+      1.14-206 AddCoevaluationForDualWithGivenTensorProduct
+      1.14-207 AddIsomorphismFromInternalHomToTensorProductWithDualObject
+      1.14-208 AddIsomorphismFromTensorProductWithDualObjectToInternalHom
+      1.14-209 AddMorphismFromBidual
+      1.14-210 AddMorphismFromBidualWithGivenBidual
+      1.14-211 AddMorphismFromInternalHomToTensorProduct
+      1.14-212 AddMorphismFromInternalHomToTensorProductWithGivenObjects
+      1.14-213 AddRankMorphism
+      1.14-214 AddTensorProductInternalHomCompatibilityMorphismInverse
+      1.14-215 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
+      1.14-216 AddTraceMap
+      1.14-217 AddCoRankMorphism
+      1.14-218 AddCoTraceMap
+      1.14-219 AddCoclosedCoevaluationForCoDual
+      1.14-220 AddCoclosedCoevaluationForCoDualWithGivenTensorProduct
+      1.14-221 AddInternalCoHomTensorProductCompatibilityMorphismInverse
+      1.14-222 AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
+      1.14-223 AddIsomorphismFromInternalCoHomToTensorProductWithCoDualObject
+      1.14-224 AddIsomorphismFromTensorProductWithCoDualObjectToInternalCoHom
+      1.14-225 AddMorphismFromTensorProductToInternalCoHom
+      1.14-226 AddMorphismFromTensorProductToInternalCoHomWithGivenObjects
+      1.14-227 AddMorphismToCoBidual
+      1.14-228 AddMorphismToCoBidualWithGivenCoBidual
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YTest functions[133X
       2.1-1 AdditiveMonoidalCategoriesTest
