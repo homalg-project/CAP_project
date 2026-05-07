@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
-Version := "2026.04-03",
-Date := "2026-04-22",
+Version := "2026.05-01",
+Date := "2026-05-07",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -104,14 +104,14 @@ Dependencies := rec(
                            [ "MatricesForHomalg", ">= 2026.04-01" ],
                            [ "GaussForHomalg", ">= 2026.04-01" ],
                            [ "CAP", ">= 2026.04-02" ],
-                           [ "MonoidalCategories", ">= 2025.08-01" ],
+                           [ "MonoidalCategories", ">= 2026.05-01" ],
                            ],
   ExternalConditions := [ ],
 ),
 
 Extensions := [
   rec(
-    needed := [ [ "AdditiveClosuresForCAP", ">= 2025.06-01" ] ],
+    needed := [ [ "AdditiveClosuresForCAP", ">= 2026.05-01" ] ],
     filename := "gap/MatrixCategory_as_CategoryOfRows.gi",
   ),
 ],
