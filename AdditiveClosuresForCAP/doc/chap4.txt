@@ -1354,12 +1354,32 @@
         TensorProductInternalHomCompatibilityMorphismWithGivenObjects      for
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XTensorProductOnMorphismAndObject[102X                  ([14XMonoidalCategories:
+        TensorProductOnMorphismAndObject       for      IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductOnMorphismAndObjectWithGivenTensorProducts[102X
+        ([14XMonoidalCategories:
+        TensorProductOnMorphismAndObjectWithGivenTensorProducts            for
+        IsCapCategoryObject,    IsCapCategoryMorphism,    IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XTensorProductOnMorphisms[102X ([14XMonoidalCategories: TensorProductOnMorphisms
         for IsCapCategoryMorphism, IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorProductOnMorphismsWithGivenTensorProducts[102X   ([14XMonoidalCategories:
         TensorProductOnMorphismsWithGivenTensorProducts                    for
         IsCapCategoryObject,   IsCapCategoryMorphism,   IsCapCategoryMorphism,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductOnObjectAndMorphism[102X                  ([14XMonoidalCategories:
+        TensorProductOnObjectAndMorphism        for       IsCapCategoryObject,
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XTensorProductOnObjectAndMorphismWithGivenTensorProducts[102X
+        ([14XMonoidalCategories:
+        TensorProductOnObjectAndMorphismWithGivenTensorProducts            for
+        IsCapCategoryObject,    IsCapCategoryObject,    IsCapCategoryMorphism,
         IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XTensorProductOnObjects[102X ([14XMonoidalCategories: TensorProductOnObjects for
