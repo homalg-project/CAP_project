@@ -6,7 +6,7 @@
   
   [1X1.1-1 IsGradedLeftOrRightPresentationMorphism[101X
   
-  [33X[1;0Y[29X[2XIsGradedLeftOrRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsGradedLeftOrRightPresentationMorphism[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category  of  morphisms  in  the  category of graded left or right
@@ -14,21 +14,21 @@
   
   [1X1.1-2 IsGradedLeftPresentationMorphism[101X
   
-  [33X[1;0Y[29X[2XIsGradedLeftPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsGradedLeftPresentationMorphism[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms in the category of graded left presentations.[133X
   
   [1X1.1-3 IsGradedRightPresentationMorphism[101X
   
-  [33X[1;0Y[29X[2XIsGradedRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsGradedRightPresentationMorphism[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms in the category of graded right presentations.[133X
   
   [1X1.1-4 IsGradedLeftOrRightPresentation[101X
   
-  [33X[1;0Y[29X[2XIsGradedLeftOrRightPresentation[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsGradedLeftOrRightPresentation[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP category of objects in the category of graded left presentations or
@@ -36,14 +36,14 @@
   
   [1X1.1-5 IsGradedLeftPresentation[101X
   
-  [33X[1;0Y[29X[2XIsGradedLeftPresentation[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsGradedLeftPresentation[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in the category of graded left presentations.[133X
   
   [1X1.1-6 IsGradedRightPresentation[101X
   
-  [33X[1;0Y[29X[2XIsGradedRightPresentation[102X( [3Xobject[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsGradedRightPresentation[102X( [3Xobject[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in the category of graded right presentations.[133X
@@ -216,7 +216,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XThe category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ]):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X38 primitive operations were used to derive 229 operations for this category[128X[104X
+    [4X[28X38 primitive operations were used to derive 233 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
     [4X[28X* IsAdditiveMonoidalCategory[128X[104X
