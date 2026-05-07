@@ -85,7 +85,41 @@
   \rightarrow a', \beta: b \rightarrow b'[123X, and an object [23Xr = a' \sqcup b'[123X. The
   output is the coproduct [23X\alpha \sqcup \beta[123X.[133X
   
-  [1X2.1-7 CocartesianAssociatorRightToLeft[101X
+  [1X2.1-7 CoproductOnMorphismAndObject[101X
+  
+  [33X[1;0Y[29X[2XCoproductOnMorphismAndObject[102X( [3Xalpha[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup b, a' \sqcup b)[123X[133X
+  
+  [33X[0;0YThe  arguments  are a morphism [23X\alpha: a \rightarrow a'[123X and an object [23Xb[123X. The
+  output is the coproduct [23X\alpha \sqcup \mathrm{id}_b[123X.[133X
+  
+  [1X2.1-8 CoproductOnMorphismAndObjectWithGivenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XCoproductOnMorphismAndObjectWithGivenCoproducts[102X( [3Xs[103X, [3Xalpha[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup b, a' \sqcup b)[123X[133X
+  
+  [33X[0;0YThe arguments are an object [23Xs = a \sqcup b[123X, a morphism [23X\alpha: a \rightarrow
+  a'[123X,  an  object [23Xb[123X and an object [23Xr = a' \sqcup b[123X. The output is the coproduct
+  [23X\alpha \sqcup \mathrm{id}_b[123X.[133X
+  
+  [1X2.1-9 CoproductOnObjectAndMorphism[101X
+  
+  [33X[1;0Y[29X[2XCoproductOnObjectAndMorphism[102X( [3Xa[103X, [3Xbeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup b, a \sqcup b')[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an object [23Xa[123X and a morphism [23X\beta: b \rightarrow b'[123X. The
+  output is the coproduct [23X\mathrm{id}_a \sqcup \beta[123X.[133X
+  
+  [1X2.1-10 CoproductOnObjectAndMorphismWithGivenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XCoproductOnObjectAndMorphismWithGivenCoproducts[102X( [3Xs[103X, [3Xa[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup b, a \sqcup b')[123X[133X
+  
+  [33X[0;0YThe arguments are an object [23Xs = a \sqcup b[123X, an object [23Xa[123X, a morphism [23X\beta: b
+  \rightarrow  b'[123X  and  an object [23Xr = a \sqcup b'[123X. The output is the coproduct
+  [23X\mathrm{id}_a \sqcup \beta[123X.[133X
+  
+  [1X2.1-11 CocartesianAssociatorRightToLeft[101X
   
   [33X[1;0Y[29X[2XCocartesianAssociatorRightToLeft[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( a \sqcup (b \sqcup c), (a \sqcup b)
@@ -94,7 +128,7 @@
   [33X[0;0YThe  arguments  are  three  objects  [23Xa,b,c[123X.  The  output  is  the associator
   [23X\alpha_{a,(b,c)}: a \sqcup (b \sqcup c) \rightarrow (a \sqcup b) \sqcup c[123X.[133X
   
-  [1X2.1-8 CocartesianAssociatorRightToLeftWithGivenCoproducts[101X
+  [1X2.1-12 CocartesianAssociatorRightToLeftWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XCocartesianAssociatorRightToLeftWithGivenCoproducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( a \sqcup (b \sqcup c), (a \sqcup b)
@@ -104,7 +138,7 @@
   and  an  object  [23Xr  =  (a  \sqcup  b) \sqcup c[123X. The output is the associator
   [23X\alpha_{a,(b,c)}: a \sqcup (b \sqcup c) \rightarrow (a \sqcup b) \sqcup c[123X.[133X
   
-  [1X2.1-9 CocartesianAssociatorLeftToRight[101X
+  [1X2.1-13 CocartesianAssociatorLeftToRight[101X
   
   [33X[1;0Y[29X[2XCocartesianAssociatorLeftToRight[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( (a \sqcup b) \sqcup c \rightarrow a
@@ -113,7 +147,7 @@
   [33X[0;0YThe  arguments  are  three  objects  [23Xa,b,c[123X.  The  output  is  the associator
   [23X\alpha_{(a,b),c}: (a \sqcup b) \sqcup c \rightarrow a \sqcup (b \sqcup c)[123X.[133X
   
-  [1X2.1-10 CocartesianAssociatorLeftToRightWithGivenCoproducts[101X
+  [1X2.1-14 CocartesianAssociatorLeftToRightWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XCocartesianAssociatorLeftToRightWithGivenCoproducts[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( (a \sqcup b) \sqcup c \rightarrow a
@@ -123,7 +157,7 @@
   and  an  object  [23Xr  =  a  \sqcup  (b \sqcup c)[123X. The output is the associator
   [23X\alpha_{(a,b),c}: (a \sqcup b) \sqcup c \rightarrow a \sqcup (b \sqcup c)[123X.[133X
   
-  [1X2.1-11 CocartesianLeftUnitor[101X
+  [1X2.1-15 CocartesianLeftUnitor[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftUnitor[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \sqcup a, a)[123X[133X
@@ -131,7 +165,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the left unitor [23X\lambda_a: 1
   \sqcup a \rightarrow a[123X.[133X
   
-  [1X2.1-12 CocartesianLeftUnitorWithGivenCoproduct[101X
+  [1X2.1-16 CocartesianLeftUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftUnitorWithGivenCoproduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1 \sqcup a, a)[123X[133X
@@ -139,7 +173,7 @@
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xs = 1 \sqcup a[123X. The output is
   the left unitor [23X\lambda_a: 1 \sqcup a \rightarrow a[123X.[133X
   
-  [1X2.1-13 CocartesianLeftUnitorInverse[101X
+  [1X2.1-17 CocartesianLeftUnitorInverse[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftUnitorInverse[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, 1 \sqcup a)[123X[133X
@@ -147,7 +181,7 @@
   [33X[0;0YThe  argument  is  an object [23Xa[123X. The output is the inverse of the left unitor
   [23X\lambda_a^{-1}: a \rightarrow 1 \sqcup a[123X.[133X
   
-  [1X2.1-14 CocartesianLeftUnitorInverseWithGivenCoproduct[101X
+  [1X2.1-18 CocartesianLeftUnitorInverseWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianLeftUnitorInverseWithGivenCoproduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, 1 \sqcup a)[123X[133X
@@ -155,7 +189,7 @@
   [33X[0;0YThe  argument is an object [23Xa[123X and an object [23Xr = 1 \sqcup a[123X. The output is the
   inverse of the left unitor [23X\lambda_a^{-1}: a \rightarrow 1 \sqcup a[123X.[133X
   
-  [1X2.1-15 CocartesianRightUnitor[101X
+  [1X2.1-19 CocartesianRightUnitor[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitor[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup 1, a)[123X[133X
@@ -163,7 +197,7 @@
   [33X[0;0YThe argument is an object [23Xa[123X. The output is the right unitor [23X\rho_a: a \sqcup
   1 \rightarrow a[123X.[133X
   
-  [1X2.1-16 CocartesianRightUnitorWithGivenCoproduct[101X
+  [1X2.1-20 CocartesianRightUnitorWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitorWithGivenCoproduct[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \sqcup 1, a)[123X[133X
@@ -171,7 +205,7 @@
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xs = a \sqcup 1[123X. The output is
   the right unitor [23X\rho_a: a \sqcup 1 \rightarrow a[123X.[133X
   
-  [1X2.1-17 CocartesianRightUnitorInverse[101X
+  [1X2.1-21 CocartesianRightUnitorInverse[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitorInverse[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \sqcup 1)[123X[133X
@@ -179,7 +213,7 @@
   [33X[0;0YThe  argument  is an object [23Xa[123X. The output is the inverse of the right unitor
   [23X\rho_a^{-1}: a \rightarrow a \sqcup 1[123X.[133X
   
-  [1X2.1-18 CocartesianRightUnitorInverseWithGivenCoproduct[101X
+  [1X2.1-22 CocartesianRightUnitorInverseWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XCocartesianRightUnitorInverseWithGivenCoproduct[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, a \sqcup 1)[123X[133X
@@ -187,7 +221,7 @@
   [33X[0;0YThe  arguments  are  an object [23Xa[123X and an object [23Xr = a \sqcup 1[123X. The output is
   the inverse of the right unitor [23X\rho_a^{-1}: a \rightarrow a \sqcup 1[123X.[133X
   
-  [1X2.1-19 IsSymmetricMonoidalCategoryStructureGivenByCoproduct[101X
+  [1X2.1-23 IsSymmetricMonoidalCategoryStructureGivenByCoproduct[101X
   
   [33X[1;0Y[29X[2XIsSymmetricMonoidalCategoryStructureGivenByCoproduct[102X( [3XC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
@@ -195,7 +229,7 @@
   [33X[0;0YThe  property  of the category [3XC[103X being symmetric monoidal by its cocartesian
   structure.[133X
   
-  [1X2.1-20 CocartesianCodiagonal[101X
+  [1X2.1-24 CocartesianCodiagonal[101X
   
   [33X[1;0Y[29X[2XCocartesianCodiagonal[102X( [3Xa[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\sqcup_{i=1}^n a, a)[123X.[133X
@@ -204,7 +238,7 @@
   codiagonal morphism from the [23Xn[123X-fold cocartesian multiple [23X\sqcup_{i=1}^n a[123X to
   [23Xa[123X. If the category does not support empty limits, [23Xn[123X must be not be 0.[133X
   
-  [1X2.1-21 CocartesianCodiagonalWithGivenCocartesianMultiple[101X
+  [1X2.1-25 CocartesianCodiagonalWithGivenCocartesianMultiple[101X
   
   [33X[1;0Y[29X[2XCocartesianCodiagonalWithGivenCocartesianMultiple[102X( [3Xa[103X, [3Xn[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b, a)[123X[133X
@@ -213,7 +247,7 @@
   [23Xn[123X-fold  cocartesian  multiple  [23X\sqcup_{i=1}^n  a[123X  of  [23Xa[123X.  The  output is the
   codiagonal morphism from [23Xb[123X to [23Xa[123X.[133X
   
-  [1X2.1-22 SetTensorProductToCoproduct[101X
+  [1X2.1-26 SetTensorProductToCoproduct[101X
   
   [33X[1;0Y[29X[2XSetTensorProductToCoproduct[102X( [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -221,7 +255,7 @@
   [33X[0;0YThe  argument  [23XC[123X  is a cocartesian category. The operation equips [23XC[123X with the
   symmetric monodial structure defined by the coproduct.[133X
   
-  [1X2.1-23 LeftCocartesianCodistributivityExpanding[101X
+  [1X2.1-27 LeftCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityExpanding[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a  \sqcup (b_1 \times \dots \times
@@ -231,7 +265,7 @@
   The  output  is  the left distributivity morphism [23Xa \sqcup (b_1 \times \dots
   \times b_n) \rightarrow (a \sqcup b_1) \times \dots \times (a \sqcup b_n)[123X.[133X
   
-  [1X2.1-24 LeftCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.1-28 LeftCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -241,7 +275,7 @@
   \sqcup  b_1)  \times  \dots  \times  (a  \sqcup b_n)[123X. The output is the left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-25 LeftCocartesianCodistributivityFactoring[101X
+  [1X2.1-29 LeftCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityFactoring[102X( [3Xa[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( (a \sqcup b_1) \times \dots \times (a
@@ -251,7 +285,7 @@
   The  output  is the left distributivity morphism [23X(a \sqcup b_1) \times \dots
   \times (a \sqcup b_n) \rightarrow a \sqcup (b_1 \times \dots \times b_n)[123X.[133X
   
-  [1X2.1-26 LeftCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.1-30 LeftCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3XL[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -261,7 +295,7 @@
   =  a  \sqcup  (b_1  \times  \dots  \times  b_n)[123X.  The  output  is  the  left
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-27 RightCocartesianCodistributivityExpanding[101X
+  [1X2.1-31 RightCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityExpanding[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( (b_1 \times \dots \times b_n) \sqcup
@@ -271,7 +305,7 @@
   The  output  is  the  right distributivity morphism [23X(b_1 \times \dots \times
   b_n) \sqcup a \rightarrow (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)[123X.[133X
   
-  [1X2.1-28 RightCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.1-32 RightCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -281,7 +315,7 @@
   \sqcup  a)  \times  \dots  \times  (b_n  \sqcup  a)[123X. The output is the right
   distributivity morphism [23Xs \rightarrow r[123X.[133X
   
-  [1X2.1-29 RightCocartesianCodistributivityFactoring[101X
+  [1X2.1-33 RightCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityFactoring[102X( [3XL[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  (b_1 \sqcup a) \times \dots \times
@@ -291,7 +325,7 @@
   The  output is the right distributivity morphism [23X(b_1 \sqcup a) \times \dots
   \times (b_n \sqcup a) \rightarrow (b_1 \times \dots \times b_n) \sqcup a [123X.[133X
   
-  [1X2.1-30 RightCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.1-34 RightCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3Xs[103X, [3XL[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -1013,7 +1047,34 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a, s ) \mapsto \mathtt{CocartesianRightUnitorWithGivenCoproduct}(a, s)[123X.[133X
   
-  [1X2.4-19 AddCoproductOnMorphisms[101X
+  [1X2.4-19 AddCoproductOnMorphismAndObject[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductOnMorphismAndObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductOnMorphismAndObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCoproductOnMorphismAndObject[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the function (lower weight = less complex = faster execution). [23XF: ( alpha, b
+  ) \mapsto \mathtt{CoproductOnMorphismAndObject}(alpha, b)[123X.[133X
+  
+  [1X2.4-20 AddCoproductOnMorphismAndObjectWithGivenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductOnMorphismAndObjectWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductOnMorphismAndObjectWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCoproductOnMorphismAndObjectWithGivenCoproducts[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).    [23XF:    (    s,    alpha,    b,    r    )    \mapsto
+  \mathtt{CoproductOnMorphismAndObjectWithGivenCoproducts}(s, alpha, b, r)[123X.[133X
+  
+  [1X2.4-21 AddCoproductOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCoproductOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoproductOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1026,7 +1087,7 @@
   function  (lower weight = less complex = faster execution). [23XF: ( alpha, beta
   ) \mapsto \mathtt{CoproductOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X2.4-20 AddCoproductOnMorphismsWithGivenCoproducts[101X
+  [1X2.4-22 AddCoproductOnMorphismsWithGivenCoproducts[101X
   
   [33X[1;0Y[29X[2XAddCoproductOnMorphismsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoproductOnMorphismsWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1040,7 +1101,34 @@
   [23XF:        (        s,       alpha,       beta,       r       )       \mapsto
   \mathtt{CoproductOnMorphismsWithGivenCoproducts}(s, alpha, beta, r)[123X.[133X
   
-  [1X2.4-21 AddCocartesianDualOnMorphisms[101X
+  [1X2.4-23 AddCoproductOnObjectAndMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductOnObjectAndMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductOnObjectAndMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCoproductOnObjectAndMorphism[110X.  Optionally,  a  weight  (default: 100) can be
+  specified which should roughly correspond to the computational complexity of
+  the  function (lower weight = less complex = faster execution). [23XF: ( a, beta
+  ) \mapsto \mathtt{CoproductOnObjectAndMorphism}(a, beta)[123X.[133X
+  
+  [1X2.4-24 AddCoproductOnObjectAndMorphismWithGivenCoproducts[101X
+  
+  [33X[1;0Y[29X[2XAddCoproductOnObjectAndMorphismWithGivenCoproducts[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoproductOnObjectAndMorphismWithGivenCoproducts[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCoproductOnObjectAndMorphismWithGivenCoproducts[110X.    Optionally,   a   weight
+  (default:  100)  can  be  specified  which  should roughly correspond to the
+  computational  complexity  of  the  function  (lower weight = less complex =
+  faster     execution).     [23XF:    (    s,    a,    beta,    r    )    \mapsto
+  \mathtt{CoproductOnObjectAndMorphismWithGivenCoproducts}(s, a, beta, r)[123X.[133X
+  
+  [1X2.4-25 AddCocartesianDualOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1053,7 +1141,7 @@
   the  function (lower weight = less complex = faster execution). [23XF: ( alpha )
   \mapsto \mathtt{CocartesianDualOnMorphisms}(alpha)[123X.[133X
   
-  [1X2.4-22 AddCocartesianDualOnMorphismsWithGivenCocartesianDuals[101X
+  [1X2.4-26 AddCocartesianDualOnMorphismsWithGivenCocartesianDuals[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphismsWithGivenCocartesianDuals[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianDualOnMorphismsWithGivenCocartesianDuals[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1067,7 +1155,7 @@
   faster     execution).     [23XF:     (     s,     alpha,     r     )    \mapsto
   \mathtt{CocartesianDualOnMorphismsWithGivenCocartesianDuals}(s, alpha, r)[123X.[133X
   
-  [1X2.4-23 AddCocartesianDualOnObjects[101X
+  [1X2.4-27 AddCocartesianDualOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianDualOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1080,7 +1168,7 @@
   the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
   \mapsto \mathtt{CocartesianDualOnObjects}(a)[123X.[133X
   
-  [1X2.4-24 AddCocartesianDualityCoproductCompatibilityMorphism[101X
+  [1X2.4-28 AddCocartesianDualityCoproductCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1094,7 +1182,7 @@
   faster       execution).       [23XF:       (      a,      b      )      \mapsto
   \mathtt{CocartesianDualityCoproductCompatibilityMorphism}(a, b)[123X.[133X
   
-  [1X2.4-25 AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[101X
+  [1X2.4-29 AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1109,7 +1197,7 @@
   \mathtt{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}(s,
   a, b, r)[123X.[133X
   
-  [1X2.4-26 AddCocartesianEvaluationForCocartesianDual[101X
+  [1X2.4-30 AddCocartesianEvaluationForCocartesianDual[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1122,7 +1210,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a ) \mapsto \mathtt{CocartesianEvaluationForCocartesianDual}(a)[123X.[133X
   
-  [1X2.4-27 AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[101X
+  [1X2.4-31 AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianEvaluationForCocartesianDualWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1136,7 +1224,7 @@
   faster      execution).      [23XF:      (     s,     a,     r     )     \mapsto
   \mathtt{CocartesianEvaluationForCocartesianDualWithGivenCoproduct}(s, a, r)[123X.[133X
   
-  [1X2.4-28 AddCocartesianLambdaElimination[101X
+  [1X2.4-32 AddCocartesianLambdaElimination[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLambdaElimination[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianLambdaElimination[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1149,7 +1237,7 @@
   the  function  (lower  weight = less complex = faster execution). [23XF: ( a, b,
   alpha ) \mapsto \mathtt{CocartesianLambdaElimination}(a, b, alpha)[123X.[133X
   
-  [1X2.4-29 AddCocartesianLambdaIntroduction[101X
+  [1X2.4-33 AddCocartesianLambdaIntroduction[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianLambdaIntroduction[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1162,7 +1250,7 @@
   the  function (lower weight = less complex = faster execution). [23XF: ( alpha )
   \mapsto \mathtt{CocartesianLambdaIntroduction}(alpha)[123X.[133X
   
-  [1X2.4-30 AddCocartesianLeftCoevaluationMorphism[101X
+  [1X2.4-34 AddCocartesianLeftCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1175,7 +1263,7 @@
   of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
   ) \mapsto \mathtt{CocartesianLeftCoevaluationMorphism}(a, b)[123X.[133X
   
-  [1X2.4-31 AddCocartesianLeftCoevaluationMorphismWithGivenSource[101X
+  [1X2.4-35 AddCocartesianLeftCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianLeftCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1189,7 +1277,7 @@
   faster      execution).      [23XF:      (     a,     b,     s     )     \mapsto
   \mathtt{CocartesianLeftCoevaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
-  [1X2.4-32 AddCocartesianLeftEvaluationMorphism[101X
+  [1X2.4-36 AddCocartesianLeftEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1202,7 +1290,7 @@
   of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
   ) \mapsto \mathtt{CocartesianLeftEvaluationMorphism}(a, b)[123X.[133X
   
-  [1X2.4-33 AddCocartesianLeftEvaluationMorphismWithGivenRange[101X
+  [1X2.4-37 AddCocartesianLeftEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianLeftEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1216,7 +1304,7 @@
   faster      execution).      [23XF:      (     a,     b,     r     )     \mapsto
   \mathtt{CocartesianLeftEvaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
-  [1X2.4-34 AddCocartesianPostCoComposeMorphism[101X
+  [1X2.4-38 AddCocartesianPostCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1229,7 +1317,7 @@
   the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
   ) \mapsto \mathtt{CocartesianPostCoComposeMorphism}(a, b, c)[123X.[133X
   
-  [1X2.4-35 AddCocartesianPostCoComposeMorphismWithGivenObjects[101X
+  [1X2.4-39 AddCocartesianPostCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianPostCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1243,7 +1331,7 @@
   faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
   \mathtt{CocartesianPostCoComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
-  [1X2.4-36 AddCocartesianPreCoComposeMorphism[101X
+  [1X2.4-40 AddCocartesianPreCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1256,7 +1344,7 @@
   the  function (lower weight = less complex = faster execution). [23XF: ( a, b, c
   ) \mapsto \mathtt{CocartesianPreCoComposeMorphism}(a, b, c)[123X.[133X
   
-  [1X2.4-37 AddCocartesianPreCoComposeMorphismWithGivenObjects[101X
+  [1X2.4-41 AddCocartesianPreCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianPreCoComposeMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1270,7 +1358,7 @@
   faster    execution).    [23XF:    (    s,    a,    b,    c,    r    )   \mapsto
   \mathtt{CocartesianPreCoComposeMorphismWithGivenObjects}(s, a, b, c, r)[123X.[133X
   
-  [1X2.4-38 AddCocartesianRightCoevaluationMorphism[101X
+  [1X2.4-42 AddCocartesianRightCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1283,7 +1371,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a, b ) \mapsto \mathtt{CocartesianRightCoevaluationMorphism}(a, b)[123X.[133X
   
-  [1X2.4-39 AddCocartesianRightCoevaluationMorphismWithGivenSource[101X
+  [1X2.4-43 AddCocartesianRightCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianRightCoevaluationMorphismWithGivenSource[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1297,7 +1385,7 @@
   faster      execution).      [23XF:      (     a,     b,     s     )     \mapsto
   \mathtt{CocartesianRightCoevaluationMorphismWithGivenSource}(a, b, s)[123X.[133X
   
-  [1X2.4-40 AddCocartesianRightEvaluationMorphism[101X
+  [1X2.4-44 AddCocartesianRightEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1310,7 +1398,7 @@
   of  the function (lower weight = less complex = faster execution). [23XF: ( a, b
   ) \mapsto \mathtt{CocartesianRightEvaluationMorphism}(a, b)[123X.[133X
   
-  [1X2.4-41 AddCocartesianRightEvaluationMorphismWithGivenRange[101X
+  [1X2.4-45 AddCocartesianRightEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCocartesianRightEvaluationMorphismWithGivenRange[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1324,7 +1412,7 @@
   faster      execution).      [23XF:      (     a,     b,     r     )     \mapsto
   \mathtt{CocartesianRightEvaluationMorphismWithGivenRange}(a, b, r)[123X.[133X
   
-  [1X2.4-42 AddCoexponentialCoproductCompatibilityMorphism[101X
+  [1X2.4-46 AddCoexponentialCoproductCompatibilityMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1338,7 +1426,7 @@
   [23XF:                (               list               )               \mapsto
   \mathtt{CoexponentialCoproductCompatibilityMorphism}(list)[123X.[133X
   
-  [1X2.4-43 AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[101X
+  [1X2.4-47 AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialCoproductCompatibilityMorphismWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1353,7 +1441,7 @@
   \mathtt{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}(source,
   list, range)[123X.[133X
   
-  [1X2.4-44 AddCoexponentialOnMorphisms[101X
+  [1X2.4-48 AddCoexponentialOnMorphisms[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphisms[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1366,7 +1454,7 @@
   the  function  (lower weight = less complex = faster execution). [23XF: ( alpha,
   beta ) \mapsto \mathtt{CoexponentialOnMorphisms}(alpha, beta)[123X.[133X
   
-  [1X2.4-45 AddCoexponentialOnMorphismsWithGivenCoexponentials[101X
+  [1X2.4-49 AddCoexponentialOnMorphismsWithGivenCoexponentials[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphismsWithGivenCoexponentials[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialOnMorphismsWithGivenCoexponentials[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1380,7 +1468,7 @@
   faster    execution).    [23XF:    (    s,    alpha,    beta,    r   )   \mapsto
   \mathtt{CoexponentialOnMorphismsWithGivenCoexponentials}(s, alpha, beta, r)[123X.[133X
   
-  [1X2.4-46 AddCoexponentialOnObjects[101X
+  [1X2.4-50 AddCoexponentialOnObjects[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialOnObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1393,7 +1481,7 @@
   function  (lower  weight  =  less  complex  = faster execution). [23XF: ( a, b )
   \mapsto \mathtt{CoexponentialOnObjects}(a, b)[123X.[133X
   
-  [1X2.4-47 AddCoexponentialToCoproductLeftAdjunctMorphism[101X
+  [1X2.4-51 AddCoexponentialToCoproductLeftAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1407,7 +1495,7 @@
   [23XF:          (          a,          c,          f          )          \mapsto
   \mathtt{CoexponentialToCoproductLeftAdjunctMorphism}(a, c, f)[123X.[133X
   
-  [1X2.4-48 AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[101X
+  [1X2.4-52 AddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1422,7 +1510,7 @@
   \mathtt{CoexponentialToCoproductLeftAdjunctMorphismWithGivenCoproduct}(a, c,
   f, t)[123X.[133X
   
-  [1X2.4-49 AddCoexponentialToCoproductRightAdjunctMorphism[101X
+  [1X2.4-53 AddCoexponentialToCoproductRightAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1436,7 +1524,7 @@
   [23XF:          (          a,          b,          f          )          \mapsto
   \mathtt{CoexponentialToCoproductRightAdjunctMorphism}(a, b, f)[123X.[133X
   
-  [1X2.4-50 AddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[101X
+  [1X2.4-54 AddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[101X
   
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1451,7 +1539,7 @@
   \mathtt{CoexponentialToCoproductRightAdjunctMorphismWithGivenCoproduct}(a,
   b, f, t)[123X.[133X
   
-  [1X2.4-51 AddCoproductToCoexponentialLeftAdjunctMorphism[101X
+  [1X2.4-55 AddCoproductToCoexponentialLeftAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1465,7 +1553,7 @@
   [23XF:          (          b,          c,          g          )          \mapsto
   \mathtt{CoproductToCoexponentialLeftAdjunctMorphism}(b, c, g)[123X.[133X
   
-  [1X2.4-52 AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[101X
+  [1X2.4-56 AddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1480,7 +1568,7 @@
   \mathtt{CoproductToCoexponentialLeftAdjunctMorphismWithGivenCoexponential}(b,
   c, g, i)[123X.[133X
   
-  [1X2.4-53 AddCoproductToCoexponentialRightAdjunctMorphism[101X
+  [1X2.4-57 AddCoproductToCoexponentialRightAdjunctMorphism[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphism[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1494,7 +1582,7 @@
   [23XF:          (          b,          c,          g          )          \mapsto
   \mathtt{CoproductToCoexponentialRightAdjunctMorphism}(b, c, g)[123X.[133X
   
-  [1X2.4-54 AddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[101X
+  [1X2.4-58 AddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddCoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1509,7 +1597,7 @@
   \mathtt{CoproductToCoexponentialRightAdjunctMorphismWithGivenCoexponential}(b,
   c, g, i)[123X.[133X
   
-  [1X2.4-55 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[101X
+  [1X2.4-59 AddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1523,7 +1611,7 @@
   less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{IsomorphismFromCocartesianDualObjectToCoexponentialFromInitialObject}(a)[123X.[133X
   
-  [1X2.4-56 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
+  [1X2.4-60 AddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1537,7 +1625,7 @@
   less    complex    =    faster    execution).    [23XF:    (    a    )   \mapsto
   \mathtt{IsomorphismFromCoexponentialFromInitialObjectToCocartesianDualObject}(a)[123X.[133X
   
-  [1X2.4-57 AddIsomorphismFromCoexponentialToObject[101X
+  [1X2.4-61 AddIsomorphismFromCoexponentialToObject[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObject[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1550,7 +1638,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a ) \mapsto \mathtt{IsomorphismFromCoexponentialToObject}(a)[123X.[133X
   
-  [1X2.4-58 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[101X
+  [1X2.4-62 AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromCoexponentialToObjectWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1564,7 +1652,7 @@
   faster       execution).       [23XF:       (      a,      s      )      \mapsto
   \mathtt{IsomorphismFromCoexponentialToObjectWithGivenCoexponential}(a, s)[123X.[133X
   
-  [1X2.4-59 AddIsomorphismFromObjectToCoexponential[101X
+  [1X2.4-63 AddIsomorphismFromObjectToCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1577,7 +1665,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a ) \mapsto \mathtt{IsomorphismFromObjectToCoexponential}(a)[123X.[133X
   
-  [1X2.4-60 AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[101X
+  [1X2.4-64 AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[101X
   
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddIsomorphismFromObjectToCoexponentialWithGivenCoexponential[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1591,7 +1679,7 @@
   faster       execution).       [23XF:       (      a,      r      )      \mapsto
   \mathtt{IsomorphismFromObjectToCoexponentialWithGivenCoexponential}(a, r)[123X.[133X
   
-  [1X2.4-61 AddMorphismFromCocartesianBidual[101X
+  [1X2.4-65 AddMorphismFromCocartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1604,7 +1692,7 @@
   the  function  (lower  weight  =  less complex = faster execution). [23XF: ( a )
   \mapsto \mathtt{MorphismFromCocartesianBidual}(a)[123X.[133X
   
-  [1X2.4-62 AddMorphismFromCocartesianBidualWithGivenCocartesianBidual[101X
+  [1X2.4-66 AddMorphismFromCocartesianBidualWithGivenCocartesianBidual[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidualWithGivenCocartesianBidual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromCocartesianBidualWithGivenCocartesianBidual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1618,7 +1706,7 @@
   faster       execution).       [23XF:       (      a,      s      )      \mapsto
   \mathtt{MorphismFromCocartesianBidualWithGivenCocartesianBidual}(a, s)[123X.[133X
   
-  [1X2.4-63 AddMorphismFromCoexponentialToCoproduct[101X
+  [1X2.4-67 AddMorphismFromCoexponentialToCoproduct[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproduct[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproduct[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1631,7 +1719,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a, b ) \mapsto \mathtt{MorphismFromCoexponentialToCoproduct}(a, b)[123X.[133X
   
-  [1X2.4-64 AddMorphismFromCoexponentialToCoproductWithGivenObjects[101X
+  [1X2.4-68 AddMorphismFromCoexponentialToCoproductWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproductWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddMorphismFromCoexponentialToCoproductWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1645,7 +1733,7 @@
   faster     execution).     [23XF:     (     s,     a,    b,    r    )    \mapsto
   \mathtt{MorphismFromCoexponentialToCoproductWithGivenObjects}(s, a, b, r)[123X.[133X
   
-  [1X2.4-65 AddUniversalPropertyOfCocartesianDual[101X
+  [1X2.4-69 AddUniversalPropertyOfCocartesianDual[101X
   
   [33X[1;0Y[29X[2XAddUniversalPropertyOfCocartesianDual[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddUniversalPropertyOfCocartesianDual[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1658,7 +1746,7 @@
   of the function (lower weight = less complex = faster execution). [23XF: ( t, a,
   alpha ) \mapsto \mathtt{UniversalPropertyOfCocartesianDual}(t, a, alpha)[123X.[133X
   
-  [1X2.4-66 AddLeftCocartesianCodistributivityExpanding[101X
+  [1X2.4-70 AddLeftCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1671,7 +1759,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityExpanding}(a, L)[123X.[133X
   
-  [1X2.4-67 AddLeftCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.4-71 AddLeftCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1686,7 +1774,7 @@
   \mathtt{LeftCocartesianCodistributivityExpandingWithGivenObjects}(s,  a,  L,
   r)[123X.[133X
   
-  [1X2.4-68 AddLeftCocartesianCodistributivityFactoring[101X
+  [1X2.4-72 AddLeftCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1699,7 +1787,7 @@
   complexity of the function (lower weight = less complex = faster execution).
   [23XF: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoring}(a, L)[123X.[133X
   
-  [1X2.4-69 AddLeftCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.4-73 AddLeftCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddLeftCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1714,7 +1802,7 @@
   \mathtt{LeftCocartesianCodistributivityFactoringWithGivenObjects}(s,  a,  L,
   r)[123X.[133X
   
-  [1X2.4-70 AddRightCocartesianCodistributivityExpanding[101X
+  [1X2.4-74 AddRightCocartesianCodistributivityExpanding[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpanding[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1728,7 +1816,7 @@
   [23XF:  (  L,  a ) \mapsto \mathtt{RightCocartesianCodistributivityExpanding}(L,
   a)[123X.[133X
   
-  [1X2.4-71 AddRightCocartesianCodistributivityExpandingWithGivenObjects[101X
+  [1X2.4-75 AddRightCocartesianCodistributivityExpandingWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityExpandingWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1743,7 +1831,7 @@
   \mathtt{RightCocartesianCodistributivityExpandingWithGivenObjects}(s,  L, a,
   r)[123X.[133X
   
-  [1X2.4-72 AddRightCocartesianCodistributivityFactoring[101X
+  [1X2.4-76 AddRightCocartesianCodistributivityFactoring[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoring[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
@@ -1757,7 +1845,7 @@
   [23XF:  (  L,  a ) \mapsto \mathtt{RightCocartesianCodistributivityFactoring}(L,
   a)[123X.[133X
   
-  [1X2.4-73 AddRightCocartesianCodistributivityFactoringWithGivenObjects[101X
+  [1X2.4-77 AddRightCocartesianCodistributivityFactoringWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XAddRightCocartesianCodistributivityFactoringWithGivenObjects[102X( [3XC[103X, [3XF[103X, [3Xweight[103X ) [32X operation[133X
