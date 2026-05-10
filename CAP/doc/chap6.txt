@@ -1074,7 +1074,7 @@
   
   [1X6.9 [33X[0;0YEqualizer[133X[101X
   
-  [33X[0;0YFor  an  integer  [23Xn  \geq  1[123X  and a given list of morphisms [23XD = ( \beta_i: A
+  [33X[0;0YFor  an  integer  [23Xn  \geq  0[123X  and a given list of morphisms [23XD = ( \beta_i: A
   \rightarrow B )_{i = 1 \dots n}[123X, an equalizer of [23XD[123X consists of three parts:[133X
   
   [30X    [33X[0;6Yan object [23XE[123X,[133X
@@ -1109,11 +1109,11 @@
   [30X    [33X[0;6YThe arguments are an object [23XA[123X and a list of morphisms [23XD = ( \beta_i: A
         \rightarrow B )_{i = 1 \dots n}[123X.[133X
   
-  [30X    [33X[0;6YThe  argument  is  a  list of morphisms [23XD = ( \beta_i: A \rightarrow B
-        )_{i = 1 \dots n}[123X.[133X
+  [30X    [33X[0;6YThe  argument  is  a  nonempty  list  of  morphisms  [23XD  = ( \beta_i: A
+        \rightarrow B )_{i = 1 \dots n}[123X.[133X
   
   [30X    [33X[0;6YThe  arguments are morphisms [23X\beta_1: A \rightarrow B, \dots, \beta_n:
-        A \rightarrow B[123X.[133X
+        A \rightarrow B[123X with [23Xn \geq 1[123X.[133X
   
   [33X[0;0YThe output is the equalizer [23X\mathrm{Equalizer}(D)[123X.[133X
   
@@ -1124,8 +1124,8 @@
   
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and  list  of morphisms [23XD = ( \beta_i: A
   \rightarrow  B  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
-  omitted  and is automatically derived from [23XD[123X in that case. The output is the
-  equalizer [23X\mathrm{Equalizer}(D)[123X.[133X
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output is the equalizer [23X\mathrm{Equalizer}(D)[123X.[133X
   
   [1X6.9-3 EmbeddingOfEqualizer[101X
   
@@ -1134,8 +1134,9 @@
   
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: A
   \rightarrow  B  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
-  omitted  and is automatically derived from [23XD[123X in that case. The output is the
-  equalizer embedding [23X\iota: \mathrm{Equalizer}(D) \rightarrow A[123X.[133X
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output  is  the equalizer embedding [23X\iota: \mathrm{Equalizer}(D) \rightarrow
+  A[123X.[133X
   
   [1X6.9-4 EmbeddingOfEqualizerWithGivenEqualizer[101X
   
@@ -1145,8 +1146,8 @@
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: A
   \rightarrow  B  )_{i  = 1 \dots n}[123X, and an object [23XE = \mathrm{Equalizer}(D)[123X.
   For  convenience,  the  object [23XA[123X can be omitted and is automatically derived
-  from  [23XD[123X  in  that  case.  The  output  is  the  equalizer embedding [23X\iota: E
-  \rightarrow A[123X.[133X
+  from  [23XD[123X,  which  has  to  be nonempty. The output is the equalizer embedding
+  [23X\iota: E \rightarrow A[123X.[133X
   
   [1X6.9-5 MorphismFromEqualizerToSink[101X
   
@@ -1155,9 +1156,9 @@
   
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: A
   \rightarrow  B  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
-  omitted  and is automatically derived from [23XD[123X in that case. The output is the
-  composition [23X\mu: \mathrm{Equalizer}(D) \rightarrow B[123X of the embedding [23X\iota:
-  \mathrm{Equalizer}(D) \rightarrow A[123X and [23X\beta_1[123X.[133X
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output  is  the  composition [23X\mu: \mathrm{Equalizer}(D) \rightarrow B[123X of the
+  embedding [23X\iota: \mathrm{Equalizer}(D) \rightarrow A[123X and [23X\beta_1[123X.[133X
   
   [1X6.9-6 MorphismFromEqualizerToSinkWithGivenEqualizer[101X
   
@@ -1166,9 +1167,9 @@
   
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: A
   \rightarrow B )_{i = 1 \dots n}[123X and an object [23XE = \mathrm{Equalizer}(D)[123X. For
-  convenience, the object [23XA[123X can be omitted and is automatically derived from [23XD[123X
-  in  that  case.  The  output  is the composition [23X\mu: E \rightarrow B[123X of the
-  embedding [23X\iota: E \rightarrow A[123X and [23X\beta_1[123X.[133X
+  convenience,  the  object [23XA[123X can be omitted and is automatically derived from
+  [23XD[123X,  which  has  to  be  nonempty.  The  output  is  the  composition  [23X\mu: E
+  \rightarrow B[123X of the embedding [23X\iota: E \rightarrow A[123X and [23X\beta_1[123X.[133X
   
   [1X6.9-7 UniversalMorphismIntoEqualizer[101X
   
@@ -1179,10 +1180,10 @@
   \rightarrow  B  )_{i  = 1 \dots n}[123X, a test object [23XT[123X, and a morphism [23X \tau: T
   \rightarrow  A  [123X such that [23X\beta_i \circ \tau \sim_{T, B} \beta_j \circ \tau[123X
   for  all  pairs  [23Xi,j[123X.  For  convenience,  the object [23XA[123X can be omitted and is
-  automatically  derived from [23XD[123X in that case. For convenience, the test object
-  [3XT[103X  can  be  omitted  and is automatically derived from [3Xtau[103X in that case. The
-  output  is the morphism [23Xu( \tau ): T \rightarrow \mathrm{Equalizer}(D)[123X given
-  by the universal property of the equalizer.[133X
+  automatically derived from [23XD[123X, which has to be nonempty. For convenience, the
+  test  object  [3XT[103X can be omitted and is automatically derived from [3Xtau[103X in that
+  case.   The   output   is   the   morphism   [23Xu(   \tau   ):   T  \rightarrow
+  \mathrm{Equalizer}(D)[123X given by the universal property of the equalizer.[133X
   
   [1X6.9-8 UniversalMorphismIntoEqualizerWithGivenEqualizer[101X
   
@@ -1193,10 +1194,10 @@
   \rightarrow  B  )_{i  =  1  \dots  n}[123X,  a  test object [23XT[123X, a morphism [23X\tau: T
   \rightarrow  A )[123X such that [23X\beta_i \circ \tau \sim_{T, B} \beta_j \circ \tau[123X
   for all pairs [23Xi,j[123X, and an object [23XE = \mathrm{Equalizer}(D)[123X. For convenience,
-  the  object  [23XA[123X  can  be  omitted and is automatically derived from [23XD[123X in that
-  case. For convenience, the test object [3XT[103X can be omitted and is automatically
-  derived  from  [3Xtau[103X  in  that  case.  The output is the morphism [23Xu( \tau ): T
-  \rightarrow E[123X given by the universal property of the equalizer.[133X
+  the  object  [23XA[123X can be omitted and is automatically derived from [23XD[123X, which has
+  to  be  nonempty.  For  convenience, the test object [3XT[103X can be omitted and is
+  automatically  derived  from [3Xtau[103X in that case. The output is the morphism [23Xu(
+  \tau ): T \rightarrow E[123X given by the universal property of the equalizer.[133X
   
   [1X6.9-9 EqualizerFunctorial[101X
   
@@ -1259,7 +1260,7 @@
   
   [1X6.10 [33X[0;0YCoequalizer[133X[101X
   
-  [33X[0;0YFor  an  integer  [23Xn  \geq  1[123X  and a given list of morphisms [23XD = ( \beta_i: B
+  [33X[0;0YFor  an  integer  [23Xn  \geq  0[123X  and a given list of morphisms [23XD = ( \beta_i: B
   \rightarrow A )_{i = 1 \dots n}[123X, a coequalizer of [23XD[123X consists of three parts:[133X
   
   [30X    [33X[0;6Yan object [23XC[123X,[133X
@@ -1294,11 +1295,11 @@
   [30X    [33X[0;6YThe arguments are an object [23XA[123X and a list of morphisms [23XD = ( \beta_i: B
         \rightarrow A )_{i = 1 \dots n}[123X.[133X
   
-  [30X    [33X[0;6YThe  argument  is  a  list of morphisms [23XD = ( \beta_i: B \rightarrow A
-        )_{i = 1 \dots n}[123X.[133X
+  [30X    [33X[0;6YThe  argument  is  a  nonempty  list  of  morphisms  [23XD  = ( \beta_i: B
+        \rightarrow A )_{i = 1 \dots n}[123X.[133X
   
   [30X    [33X[0;6YThe  arguments are morphisms [23X\beta_1: B \rightarrow A, \dots, \beta_n:
-        B \rightarrow A[123X.[133X
+        B \rightarrow A[123X with [23Xn \geq 1[123X.[133X
   
   [33X[0;0YThe output is the coequalizer [23X\mathrm{Coequalizer}(D)[123X.[133X
   
@@ -1309,8 +1310,8 @@
   
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: B
   \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
-  omitted  and is automatically derived from [23XD[123X in that case. The output is the
-  coequalizer [23X\mathrm{Coequalizer}(D)[123X.[133X
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output is the coequalizer [23X\mathrm{Coequalizer}(D)[123X.[133X
   
   [1X6.10-3 ProjectionOntoCoequalizer[101X
   
@@ -1319,8 +1320,8 @@
   
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: B
   \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
-  omitted  and is automatically derived from [23XD[123X in that case. The output is the
-  projection [23X\pi: A \rightarrow \mathrm{Coequalizer}( D )[123X.[133X
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output is the projection [23X\pi: A \rightarrow \mathrm{Coequalizer}( D )[123X.[133X
   
   [1X6.10-4 ProjectionOntoCoequalizerWithGivenCoequalizer[101X
   
@@ -1330,7 +1331,8 @@
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: B
   \rightarrow  A )_{i = 1 \dots n}[123X, and an object [23XC = \mathrm{Coequalizer}(D)[123X.
   For  convenience,  the  object [23XA[123X can be omitted and is automatically derived
-  from [23XD[123X in that case. The output is the projection [23X\pi: A \rightarrow C[123X.[133X
+  from  [23XD[123X,  which  has  to  be  nonempty.  The output is the projection [23X\pi: A
+  \rightarrow C[123X.[133X
   
   [1X6.10-5 MorphismFromSourceToCoequalizer[101X
   
@@ -1339,9 +1341,9 @@
   
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X  and a list of morphisms [23XD = ( \beta_i: B
   \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
-  omitted  and is automatically derived from [23XD[123X in that case. The output is the
-  composition  [23X\mu:  B  \rightarrow \mathrm{Coequalizer}(D)[123X of [23X\beta_1[123X and the
-  projection [23X\pi: A \rightarrow \mathrm{Coequalizer}( D )[123X.[133X
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output  is  the  composition  [23X\mu:  B \rightarrow \mathrm{Coequalizer}(D)[123X of
+  [23X\beta_1[123X and the projection [23X\pi: A \rightarrow \mathrm{Coequalizer}( D )[123X.[133X
   
   [1X6.10-6 MorphismFromSourceToCoequalizerWithGivenCoequalizer[101X
   
@@ -1351,8 +1353,8 @@
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X,  a  list  of  morphisms [23XD = ( \beta_i: B
   \rightarrow  A  )_{i = 1 \dots n}[123X and an object [23XC = \mathrm{Coequalizer}(D)[123X.
   For  convenience,  the  object [23XA[123X can be omitted and is automatically derived
-  from  [23XD[123X  in that case. The output is the composition [23X\mu: B \rightarrow C[123X of
-  [23X\beta_1[123X and the projection [23X\pi: A \rightarrow C[123X.[133X
+  from  [23XD[123X,  which  has  to  be  nonempty. The output is the composition [23X\mu: B
+  \rightarrow C[123X of [23X\beta_1[123X and the projection [23X\pi: A \rightarrow C[123X.[133X
   
   [1X6.10-7 UniversalMorphismFromCoequalizer[101X
   
@@ -1363,10 +1365,10 @@
   \rightarrow  A  )_{i  =  1 \dots n}[123X, a test object [23XT[123X, and a morphism [23X\tau: A
   \rightarrow  T  [123X  such that [23X\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j[123X
   for  all  pairs  [23Xi,j[123X.  For  convenience,  the object [23XA[123X can be omitted and is
-  automatically  derived from [23XD[123X in that case. For convenience, the test object
-  [3XT[103X  can  be  omitted  and is automatically derived from [3Xtau[103X in that case. The
-  output  is  the  morphism  [23Xu(  \tau ): \mathrm{Coequalizer}(D) \rightarrow T[123X
-  given by the universal property of the coequalizer.[133X
+  automatically derived from [23XD[123X, which has to be nonempty. For convenience, the
+  test  object  [3XT[103X can be omitted and is automatically derived from [3Xtau[103X in that
+  case.  The  output  is  the  morphism  [23Xu(  \tau  ):  \mathrm{Coequalizer}(D)
+  \rightarrow T[123X given by the universal property of the coequalizer.[133X
   
   [1X6.10-8 UniversalMorphismFromCoequalizerWithGivenCoequalizer[101X
   
@@ -1377,10 +1379,10 @@
   \rightarrow  A  )_{i  =  1  \dots  n}[123X,  a  test object [23XT[123X, a morphism [23X\tau: A
   \rightarrow  T  [123X such that [23X\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j[123X,
   and an object [23XC = \mathrm{Coequalizer}(D)[123X. For convenience, the object [23XA[123X can
-  be   omitted  and  is  automatically  derived  from  [23XD[123X  in  that  case.  For
-  convenience,  the  test object [3XT[103X can be omitted and is automatically derived
-  from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): C \rightarrow T[123X
-  given by the universal property of the coequalizer.[133X
+  be  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty.
+  For  convenience,  the  test  object  [3XT[103X  can be omitted and is automatically
+  derived  from  [3Xtau[103X  in  that  case.  The output is the morphism [23Xu( \tau ): C
+  \rightarrow T[123X given by the universal property of the coequalizer.[133X
   
   [1X6.10-9 CoequalizerFunctorial[101X
   
@@ -1442,7 +1444,186 @@
   coequalizing the morphisms [23X\beta_i[123X.[133X
   
   
-  [1X6.11 [33X[0;0YFiber Product (= Pullback)[133X[101X
+  [1X6.11 [33X[0;0YCoequalizerOfIdentityAndAutomorphisms[133X[101X
+  
+  [33X[0;0YFor  an integer [23Xn \geq 0[123X and a given list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow A )_{i = 1 \dots n}[123X, a coequalizer of the identity morphism on [23XA[123X
+  and [23XD[123X consists of three parts:[133X
+  
+  [30X    [33X[0;6Yan object [23XC[123X,[133X
+  
+  [30X    [33X[0;6Ya  morphism  [23X\pi:  A  \rightarrow  C  [123X  such  that  [23X\pi \circ \alpha_i
+        \sim_{A,C} \pi \circ \alpha_j[123X for all pairs [23Xi,j[123X,[133X
+  
+  [30X    [33X[0;6Ya  dependent  function  [23Xu[123X  mapping the morphism [23X\tau: A \rightarrow T [123X
+        such  that  [23X\tau  \circ  \alpha_i  \sim_{A,T} \tau \circ \alpha_j[123X to a
+        morphism  [23Xu(  \tau  ):  C  \rightarrow T[123X such that [23Xu( \tau ) \circ \pi
+        \sim_{A, T} \tau[123X.[133X
+  
+  [33X[0;0YThe  triple  [23X(  C, \pi, u )[123X is called a [13Xcoequalizer[113X of [23XD[123X if the morphisms [23Xu(
+  \tau  )[123X are uniquely determined up to congruence of morphisms. We denote the
+  object         [23XC[123X         of         such         a         triple         by
+  [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}(D)[123X.  We say that the morphism
+  [23Xu(  \tau  )[123X  is  induced  by  the [13Xuniversal property of the coequalizer[113X. [23X\\ [123X
+  [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}[123X  is  a  functorial operation.
+  This  means: For a second diagram [23XD' = (\alpha_i': A' \rightarrow A')_{i = 1
+  \dots  n}[123X  and  a  natural  morphism  between  coequalizer diagrams (i.e., a
+  collection  of  morphisms [23X\mu: A \rightarrow A'[123X and [23X\alpha: A \rightarrow A'[123X
+  such  that [23X\alpha_i' \circ \alpha \sim_{A, A'} \mu \circ \alpha_i[123X for [23Xi = 1,
+  \dots           n[123X)           we          obtain          a          morphism
+  [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}(      D     )     \rightarrow
+  \mathrm{CoequalizerOfIdentityAndAutomorphisms}( D' )[123X.[133X
+  
+  [33X[0;0YGiven a category [23X\mathbf{C}[123X and a functor [23XF: G \to \mathbf{C}[123X from a group [23XG[123X
+  (viewed     as    a    groupoid    on    one    object).    The    operation
+  [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}[123X  is  needed  in [23X\mathbf{C}[123X to
+  lift  [23XF[123X  to  a  functor  [23X\widetilde{F}:  \mathrm{T}(G) \to \mathbf{C}[123X, where
+  [23X\mathrm{T}(G)[123X  is  the  coequalizer  completion of [23XG[123X, namely the category of
+  transitive (left) [23XG[123X-sets.[133X
+  
+  [1X6.11-1 CoequalizerOfIdentityAndAutomorphisms[101X
+  
+  [33X[1;0Y[29X[2XCoequalizerOfIdentityAndAutomorphisms[102X( [3Xarg[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThis  is  a  convenience  method. There are three different ways to use this
+  method:[133X
+  
+  [30X    [33X[0;6YThe  arguments  are  an  object  [23XA[123X  and  a list of automorphisms [23XD = (
+        \alpha_i: A \rightarrow A )_{i = 1 \dots n}[123X.[133X
+  
+  [30X    [33X[0;6YThe  argument  is  a  nonempty list of automorphisms [23XD = ( \alpha_i: A
+        \rightarrow A )_{i = 1 \dots n}[123X.[133X
+  
+  [30X    [33X[0;6YThe   arguments  are  morphisms  [23X\alpha_1:  A  \rightarrow  A,  \dots,
+        \alpha_n: A \rightarrow A[123X with [23Xn \geq 1[123X.[133X
+  
+  [33X[0;0YThe             output             is             the            coequalizer
+  [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}(D)[123X.[133X
+  
+  [1X6.11-2 CoequalizerOfIdentityAndAutomorphismsOp[101X
+  
+  [33X[1;0Y[29X[2XCoequalizerOfIdentityAndAutomorphismsOp[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments are an object [23XA[123X and a list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output is the coequalizer [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}(D)[123X.[133X
+  
+  [1X6.11-3 ProjectionOntoCoequalizerOfIdentityAndAutomorphisms[101X
+  
+  [33X[1;0Y[29X[2XProjectionOntoCoequalizerOfIdentityAndAutomorphisms[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya          morphism          in          [23X\mathrm{Hom}(          A,
+            \mathrm{CoequalizerOfIdentityAndAutomorphisms}( D ) )[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23XA[123X and a list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow  A  )_{i  =  1  \dots  n}[123X.  For convenience, the object [23XA[123X can be
+  omitted  and  is automatically derived from [23XD[123X, which has to be nonempty. The
+  output       is       the       projection      [23X\pi:      A      \rightarrow
+  \mathrm{CoequalizerOfIdentityAndAutomorphisms}( D )[123X.[133X
+  
+  [1X6.11-4 ProjectionOntoCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer[101X
+  
+  [33X[1;0Y[29X[2XProjectionOntoCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer[102X( [3XA[103X, [3XD[103X, [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( A, C )[123X.[133X
+  
+  [33X[0;0YThe  arguments  are  an  object [23XA[123X, a list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow    A    )_{i    =    1   \dots   n}[123X,   and   an   object   [23XC   =
+  \mathrm{CoequalizerOfIdentityAndAutomorphisms}(D)[123X.   For   convenience,  the
+  object [23XA[123X can be omitted and is automatically derived from [23XD[123X, which has to be
+  nonempty. The output is the projection [23X\pi: A \rightarrow C[123X.[133X
+  
+  [1X6.11-5 UniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms[101X
+  
+  [33X[1;0Y[29X[2XUniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms[102X( [3XA[103X, [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya              morphism              in              [23X\mathrm{Hom}(
+            \mathrm{CoequalizerOfIdentityAndAutomorphisms}(D), T )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object [23XA[123X, a list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow  A  )_{i  =  1 \dots n}[123X, a test object [23XT[123X, and a morphism [23X\tau: A
+  \rightarrow  T [123X such that [23X\tau \circ \alpha_i \sim_{A,T} \tau \circ \alpha_j[123X
+  for  all  pairs  [23Xi,j[123X.  For  convenience,  the object [23XA[123X can be omitted and is
+  automatically derived from [23XD[123X, which has to be nonempty. For convenience, the
+  test  object  [3XT[103X can be omitted and is automatically derived from [3Xtau[103X in that
+  case.      The     output     is     the     morphism     [23Xu(     \tau     ):
+  \mathrm{CoequalizerOfIdentityAndAutomorphisms}(D) \rightarrow T[123X given by the
+  universal property of the coequalizer.[133X
+  
+  [1X6.11-6 UniversalMorphismFromCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer[101X
+  
+  [33X[1;0Y[29X[2XUniversalMorphismFromCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer[102X( [3XA[103X, [3XD[103X, [3XT[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, T )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object [23XA[123X, a list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow  A  )_{i  =  1  \dots  n}[123X,  a  test object [23XT[123X, a morphism [23X\tau: A
+  \rightarrow T [123X such that [23X\tau \circ \alpha_i \sim_{A,T} \tau \circ \alpha_j[123X,
+  and  an  object  [23XC  = \mathrm{CoequalizerOfIdentityAndAutomorphisms}(D)[123X. For
+  convenience,  the  object [23XA[123X can be omitted and is automatically derived from
+  [23XD[123X,  which  has  to  be  nonempty.  For convenience, the test object [3XT[103X can be
+  omitted  and  is  automatically derived from [3Xtau[103X in that case. The output is
+  the  morphism  [23Xu( \tau ): C \rightarrow T[123X given by the universal property of
+  the coequalizer.[133X
+  
+  [1X6.11-7 CoequalizerOfIdentityAndAutomorphismsFunctorial[101X
+  
+  [33X[1;0Y[29X[2XCoequalizerOfIdentityAndAutomorphismsFunctorial[102X( [3XLs[103X, [3Xmu[103X, [3XLr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya                            morphism                           in
+            [23X\mathrm{Hom}(\mathrm{CoequalizerOfIdentityAndAutomorphisms}(     (
+            \alpha_i           )_{i=1           \dots           n}          ),
+            \mathrm{CoequalizerOfIdentityAndAutomorphisms}( ( \alpha_i' )_{i=1
+            \dots n} ))[123X[133X
+  
+  [33X[0;0YThe  arguments are a list of automorphisms [23XL_s = ( \alpha_i: A \rightarrow A
+  )_{i  =  1  \dots  n}[123X,  a  morphism  [23X\mu:  A  \rightarrow  A'[123X, and a list of
+  automorphisms  [23XL_r  =  ( \alpha_i': A' \rightarrow A' )_{i = 1 \dots n}[123X such
+  that  there  exists  a morphism [23X\alpha: A \rightarrow A'[123X such that [23X\alpha_i'
+  \circ  \alpha \sim_{A, A'} \mu \circ \alpha_i[123X for [23Xi = 1, \dots n[123X. The output
+  is  the  morphism [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}( ( \alpha_i
+  )_{i=1}^n  )  \rightarrow  \mathrm{CoequalizerOfIdentityAndAutomorphisms}( (
+  \alpha_i' )_{i=1}^n )[123X given by the functorality of the coequalizer.[133X
+  
+  [1X6.11-8 CoequalizerOfIdentityAndAutomorphismsFunctorialWithGivenCoequalizers[101X
+  
+  [33X[1;0Y[29X[2XCoequalizerOfIdentityAndAutomorphismsFunctorialWithGivenCoequalizers[102X( [3Xs[103X, [3XLs[103X, [3Xmu[103X, [3XLr[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
+  
+  [33X[0;0YThe         arguments         are         an        object        [23Xs        =
+  \mathrm{CoequalizerOfIdentityAndAutomorphisms}(  (  \alpha_i  )_{i=1}^n )[123X, a
+  list of automorphisms [23XL_s = ( \alpha_i: A \rightarrow A )_{i = 1 \dots n}[123X, a
+  morphism  [23X\mu:  A  \rightarrow  A'[123X,  and  a  list  of  automorphisms [23XL_r = (
+  \alpha_i':  A'  \rightarrow  A'  )_{i  = 1 \dots n}[123X such that there exists a
+  morphism  [23X\alpha: A \rightarrow A'[123X such that [23X\alpha_i' \circ \alpha \sim_{A,
+  A'}   \mu   \circ  \alpha_i[123X  for  [23Xi  =  1,  \dots  n[123X,  and  an  object  [23Xr  =
+  \mathrm{CoequalizerOfIdentityAndAutomorphisms}( ( \alpha_i' )_{i=1}^n )[123X. The
+  output  is  the  morphism  [23Xs  \rightarrow r[123X given by the functorality of the
+  coequalizer.[133X
+  
+  [1X6.11-9 IsomorphismFromCoequalizerOfIdentityAndAutomorphismsToCoequalizer[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromCoequalizerOfIdentityAndAutomorphismsToCoequalizer[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya              morphism              in              [23X\mathrm{Hom}(
+            \mathrm{CoequalizerOfIdentityAndAutomorphisms}(        D        ),
+            \mathrm{Coequalizer}( D ) )[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23XA[123X and a list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow   A   )_{i   =  1  \dots  n}[123X.  The  output  is  the  isomorphism
+  [23X\mathrm{CoequalizerOfIdentityAndAutomorphisms}(      D     )     \rightarrow
+  \mathrm{Coequalizer}( D )[123X.[133X
+  
+  [1X6.11-10 IsomorphismFromCoequalizerToCoequalizerOfIdentityAndAutomorphisms[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromCoequalizerToCoequalizerOfIdentityAndAutomorphisms[102X( [3XA[103X, [3XD[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{Coequalizer}(   D   ),
+            \mathrm{CoequalizerOfIdentityAndAutomorphisms}( D ) )[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23XA[123X and a list of automorphisms [23XD = ( \alpha_i: A
+  \rightarrow   A   )_{i   =  1  \dots  n}[123X.  The  output  is  the  isomorphism
+  [23X\mathrm{Coequalizer}(              D              )              \rightarrow
+  \mathrm{CoequalizerOfIdentityAndAutomorphisms}( D )[123X.[133X
+  
+  
+  [1X6.12 [33X[0;0YFiber Product (= Pullback)[133X[101X
   
   [33X[0;0YFor  an  integer  [23Xn  \geq 1[123X and a given list of morphisms [23XD = ( \beta_i: P_i
   \rightarrow  B  )_{i  =  1  \dots n}[123X, a fiber product of [23XD[123X consists of three
@@ -1472,7 +1653,7 @@
   \beta_i[123X for [23Xi = 1, \dots, n[123X) we obtain a morphism [23X\mathrm{FiberProduct}( D )
   \rightarrow \mathrm{FiberProduct}( D' )[123X.[133X
   
-  [1X6.11-1 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[101X
+  [1X6.12-1 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)[123X[133X
@@ -1482,7 +1663,7 @@
   \Delta[123X,  where  [23X\Delta[123X  denotes  the equalizer of the product diagram of the
   morphisms [23X\beta_i[123X.[133X
   
-  [1X6.11-2 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[101X
+  [1X6.12-2 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))[123X[133X
@@ -1492,7 +1673,7 @@
   \mathrm{FiberProduct}(D)[123X,  where [23X\Delta[123X denotes the equalizer of the product
   diagram of the morphisms [23X\beta_i[123X.[133X
   
-  [1X6.11-3 FiberProductEmbeddingInDirectProduct[101X
+  [1X6.12-3 FiberProductEmbeddingInDirectProduct[101X
   
   [33X[1;0Y[29X[2XFiberProductEmbeddingInDirectProduct[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \mathrm{FiberProduct}(D),
@@ -1502,7 +1683,7 @@
   \beta_i:  P_i  \rightarrow  B  )_{i  = 1 \dots n}[123X. The output is the natural
   embedding [23X\mathrm{FiberProduct}(D) \rightarrow \prod_{i=1}^n P_i[123X.[133X
   
-  [1X6.11-4 FiberProductEmbeddingInDirectSum[101X
+  [1X6.12-4 FiberProductEmbeddingInDirectSum[101X
   
   [33X[1;0Y[29X[2XFiberProductEmbeddingInDirectSum[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \mathrm{FiberProduct}(D),
@@ -1512,7 +1693,7 @@
   \beta_i:  P_i  \rightarrow  B  )_{i  = 1 \dots n}[123X. The output is the natural
   embedding [23X\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i[123X.[133X
   
-  [1X6.11-5 FiberProduct[101X
+  [1X6.12-5 FiberProduct[101X
   
   [33X[1;0Y[29X[2XFiberProduct[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1528,7 +1709,7 @@
   
   [33X[0;0YThe output is the fiber product [23X\mathrm{FiberProduct}(D)[123X.[133X
   
-  [1X6.11-6 FiberProductOp[101X
+  [1X6.12-6 FiberProductOp[101X
   
   [33X[1;0Y[29X[2XFiberProductOp[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1536,7 +1717,7 @@
   [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: P_i \rightarrow B )_{i =
   1 \dots n}[123X. The output is the fiber product [23X\mathrm{FiberProduct}(D)[123X.[133X
   
-  [1X6.11-7 ProjectionInFactorOfFiberProduct[101X
+  [1X6.12-7 ProjectionInFactorOfFiberProduct[101X
   
   [33X[1;0Y[29X[2XProjectionInFactorOfFiberProduct[102X( [3XD[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )[123X[133X
@@ -1545,7 +1726,7 @@
   =  1  \dots  n}[123X and an integer [23Xk[123X. The output is the [23Xk[123X-th projection [23X\pi_{k}:
   \mathrm{FiberProduct}(D) \rightarrow P_k[123X.[133X
   
-  [1X6.11-8 ProjectionInFactorOfFiberProductWithGivenFiberProduct[101X
+  [1X6.12-8 ProjectionInFactorOfFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XProjectionInFactorOfFiberProductWithGivenFiberProduct[102X( [3XD[103X, [3Xk[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, P_k )[123X[133X
@@ -1554,7 +1735,7 @@
   =  1 \dots n}[123X, an integer [23Xk[123X, and an object [23XP = \mathrm{FiberProduct}(D)[123X. The
   output is the [23Xk[123X-th projection [23X\pi_{k}: P \rightarrow P_k[123X.[133X
   
-  [1X6.11-9 MorphismFromFiberProductToSink[101X
+  [1X6.12-9 MorphismFromFiberProductToSink[101X
   
   [33X[1;0Y[29X[2XMorphismFromFiberProductToSink[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{FiberProduct}(D), B )[123X[133X
@@ -1564,7 +1745,7 @@
   \rightarrow   B[123X  of  the  [23X1[123X-st  projection  [23X\pi_1:  \mathrm{FiberProduct}(D)
   \rightarrow P_1[123X and [23X\beta_1[123X.[133X
   
-  [1X6.11-10 MorphismFromFiberProductToSinkWithGivenFiberProduct[101X
+  [1X6.12-10 MorphismFromFiberProductToSinkWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XMorphismFromFiberProductToSinkWithGivenFiberProduct[102X( [3XD[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, B )[123X[133X
@@ -1574,7 +1755,7 @@
   composition [23X\mu: P \rightarrow B[123X of the [23X1[123X-st projection [23X\pi_1: P \rightarrow
   P_1[123X and [23X\beta_1[123X.[133X
   
-  [1X6.11-11 UniversalMorphismIntoFiberProduct[101X
+  [1X6.12-11 UniversalMorphismIntoFiberProduct[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProduct[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )[123X[133X
@@ -1587,7 +1768,7 @@
   morphism  [23Xu(  \tau  ):  T  \rightarrow \mathrm{FiberProduct}(D)[123X given by the
   universal property of the fiber product.[133X
   
-  [1X6.11-12 UniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
+  [1X6.12-12 UniversalMorphismIntoFiberProductWithGivenFiberProduct[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
@@ -1600,7 +1781,7 @@
   from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): T \rightarrow P[123X
   given by the universal property of the fiber product.[133X
   
-  [1X6.11-13 FiberProductFunctorial[101X
+  [1X6.12-13 FiberProductFunctorial[101X
   
   [33X[1;0Y[29X[2XFiberProductFunctorial[102X( [3XLs[103X, [3XLm[103X, [3XLr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{FiberProduct}( ( \beta_i )_{i=1
@@ -1615,7 +1796,7 @@
   )  \rightarrow  \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} )[123X given by
   the functoriality of the fiber product.[133X
   
-  [1X6.11-14 FiberProductFunctorialWithGivenFiberProducts[101X
+  [1X6.12-14 FiberProductFunctorialWithGivenFiberProducts[101X
   
   [33X[1;0Y[29X[2XFiberProductFunctorialWithGivenFiberProducts[102X( [3Xs[103X, [3XLs[103X, [3XLm[103X, [3XLr[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
@@ -1631,7 +1812,7 @@
   product.[133X
   
   
-  [1X6.12 [33X[0;0YPushout[133X[101X
+  [1X6.13 [33X[0;0YPushout[133X[101X
   
   [33X[0;0YFor  an  integer  [23Xn  \geq  1[123X  and a given list of morphisms [23XD = ( \beta_i: B
   \rightarrow I_i )_{i = 1 \dots n}[123X, a pushout of [23XD[123X consists of three parts:[133X
@@ -1660,7 +1841,7 @@
   we  obtain a morphism [23X\mathrm{Pushout}( D ) \rightarrow \mathrm{Pushout}( D'
   )[123X.[133X
   
-  [1X6.12-1 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram[101X
+  [1X6.13-1 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromPushoutToCoequalizerOfCoproductDiagram[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)[123X[133X
@@ -1670,7 +1851,7 @@
   where  [23X\Delta[123X  denotes  the  coequalizer  of  the  coproduct  diagram of the
   morphisms [23X\beta_i[123X.[133X
   
-  [1X6.12-2 IsomorphismFromCoequalizerOfCoproductDiagramToPushout[101X
+  [1X6.13-2 IsomorphismFromCoequalizerOfCoproductDiagramToPushout[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))[123X[133X
@@ -1680,7 +1861,7 @@
   where  [23X\Delta[123X  denotes  the  coequalizer  of  the  coproduct  diagram of the
   morphisms [23X\beta_i[123X.[133X
   
-  [1X6.12-3 PushoutProjectionFromCoproduct[101X
+  [1X6.13-3 PushoutProjectionFromCoproduct[101X
   
   [33X[1;0Y[29X[2XPushoutProjectionFromCoproduct[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya    morphism    in    [23X\mathrm{Hom}(    \bigsqcup   {i=1}^n   I_i,
@@ -1690,7 +1871,7 @@
   \beta_i:  B  \rightarrow  I_i  )_{i  = 1 \dots n}[123X. The output is the natural
   projection [23X\bigsqcup_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)[123X.[133X
   
-  [1X6.12-4 PushoutProjectionFromDirectSum[101X
+  [1X6.13-4 PushoutProjectionFromDirectSum[101X
   
   [33X[1;0Y[29X[2XPushoutProjectionFromDirectSum[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \bigoplus_{i=1}^n    I_i,
@@ -1700,7 +1881,7 @@
   \beta_i:  B  \rightarrow  I_i  )_{i  = 1 \dots n}[123X. The output is the natural
   projection [23X\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)[123X.[133X
   
-  [1X6.12-5 Pushout[101X
+  [1X6.13-5 Pushout[101X
   
   [33X[1;0Y[29X[2XPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1708,7 +1889,7 @@
   [33X[0;0YThe  argument is a list of morphisms [23XD = ( \beta_i: B \rightarrow I_i )_{i =
   1 \dots n}[123X. The output is the pushout [23X\mathrm{Pushout}(D)[123X.[133X
   
-  [1X6.12-6 Pushout[101X
+  [1X6.13-6 Pushout[101X
   
   [33X[1;0Y[29X[2XPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1716,7 +1897,7 @@
   [33X[0;0YThis  is  a  convenience  method.  The arguments are a morphism [23X\alpha[123X and a
   morphism [23X\beta[123X. The output is the pushout [23X\mathrm{Pushout}(\alpha, \beta)[123X.[133X
   
-  [1X6.12-7 InjectionOfCofactorOfPushout[101X
+  [1X6.13-7 InjectionOfCofactorOfPushout[101X
   
   [33X[1;0Y[29X[2XInjectionOfCofactorOfPushout[102X( [3XD[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )[123X.[133X
@@ -1725,7 +1906,7 @@
   = 1 \dots n}[123X and an integer [23Xk[123X. The output is the [23Xk[123X-th injection [23X\iota_k: I_k
   \rightarrow \mathrm{Pushout}( D )[123X.[133X
   
-  [1X6.12-8 InjectionOfCofactorOfPushoutWithGivenPushout[101X
+  [1X6.13-8 InjectionOfCofactorOfPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XInjectionOfCofactorOfPushoutWithGivenPushout[102X( [3XD[103X, [3Xk[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( I_k, I )[123X.[133X
@@ -1734,7 +1915,7 @@
   =  1  \dots  n}[123X,  an  integer  [23Xk[123X, and an object [23XI = \mathrm{Pushout}(D)[123X. The
   output is the [23Xk[123X-th injection [23X\iota_k: I_k \rightarrow I[123X.[133X
   
-  [1X6.12-9 MorphismFromSourceToPushout[101X
+  [1X6.13-9 MorphismFromSourceToPushout[101X
   
   [33X[1;0Y[29X[2XMorphismFromSourceToPushout[102X( [3XD[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, \mathrm{Pushout}( D ) )[123X.[133X
@@ -1744,7 +1925,7 @@
   \mathrm{Pushout}(D)[123X   of   [23X\beta_1[123X  and  the  [23X1[123X-st  injection  [23X\iota_1:  I_1
   \rightarrow \mathrm{Pushout}( D )[123X.[133X
   
-  [1X6.12-10 MorphismFromSourceToPushoutWithGivenPushout[101X
+  [1X6.13-10 MorphismFromSourceToPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XMorphismFromSourceToPushoutWithGivenPushout[102X( [3XD[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, I )[123X.[133X
@@ -1754,7 +1935,7 @@
   composition  [23X\mu: B \rightarrow I[123X of [23X\beta_1[123X and the [23X1[123X-st injection [23X\iota_1:
   I_1 \rightarrow I[123X.[133X
   
-  [1X6.12-11 UniversalMorphismFromPushout[101X
+  [1X6.13-11 UniversalMorphismFromPushout[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromPushout[102X( [3XD[103X, [3XT[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{Pushout}(D), T )[123X[133X
@@ -1767,7 +1948,7 @@
   [23Xu( \tau ): \mathrm{Pushout}(D) \rightarrow T[123X given by the universal property
   of the pushout.[133X
   
-  [1X6.12-12 UniversalMorphismFromPushoutWithGivenPushout[101X
+  [1X6.13-12 UniversalMorphismFromPushoutWithGivenPushout[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromPushoutWithGivenPushout[102X( [3XD[103X, [3XT[103X, [3Xtau[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( I, T )[123X[133X
@@ -1780,7 +1961,7 @@
   from [3Xtau[103X in that case. The output is the morphism [23Xu( \tau ): I \rightarrow T[123X
   given by the universal property of the pushout.[133X
   
-  [1X6.12-13 PushoutFunctorial[101X
+  [1X6.13-13 PushoutFunctorial[101X
   
   [33X[1;0Y[29X[2XPushoutFunctorial[102X( [3XLs[103X, [3XLm[103X, [3XLr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}(\mathrm{Pushout}( ( \beta_i )_{i=1}^n
@@ -1795,7 +1976,7 @@
   \rightarrow   \mathrm{Pushout}(   (   \beta_i'  )_{i=1}^n  )[123X  given  by  the
   functoriality of the pushout.[133X
   
-  [1X6.12-14 PushoutFunctorialWithGivenPushouts[101X
+  [1X6.13-14 PushoutFunctorialWithGivenPushouts[101X
   
   [33X[1;0Y[29X[2XPushoutFunctorialWithGivenPushouts[102X( [3Xs[103X, [3XLs[103X, [3XLm[103X, [3XLr[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
@@ -1810,7 +1991,7 @@
   \rightarrow r[123X given by the functoriality of the pushout.[133X
   
   
-  [1X6.13 [33X[0;0YImage[133X[101X
+  [1X6.14 [33X[0;0YImage[133X[101X
   
   [33X[0;0YFor a given morphism [23X\alpha: A \rightarrow B[123X, an image of [23X\alpha[123X consists of
   four parts:[133X
@@ -1833,7 +2014,7 @@
   the  object  [23XI[123X  of  such  a  [23X4[123X-tuple by [23X\mathrm{im}(\alpha)[123X. We say that the
   morphism [23Xu( \tau )[123X is induced by the [13Xuniversal property of the image[113X.[133X
   
-  [1X6.13-1 IsomorphismFromImageObjectToKernelOfCokernel[101X
+  [1X6.14-1 IsomorphismFromImageObjectToKernelOfCokernel[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromImageObjectToKernelOfCokernel[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      morphism      in     [23X\mathrm{Hom}(     \mathrm{im}(\alpha),
@@ -1843,7 +2024,7 @@
   [23X\mathrm{im}(\alpha)            \rightarrow            \mathrm{KernelObject}(
   \mathrm{CokernelProjection}( \alpha ) )[123X.[133X
   
-  [1X6.13-2 IsomorphismFromKernelOfCokernelToImageObject[101X
+  [1X6.14-2 IsomorphismFromKernelOfCokernelToImageObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromKernelOfCokernelToImageObject[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism     in     [23X\mathrm{Hom}(     \mathrm{KernelObject}(
@@ -1853,7 +2034,7 @@
   [23X\mathrm{KernelObject}(  \mathrm{CokernelProjection}(  \alpha ) ) \rightarrow
   \mathrm{im}(\alpha)[123X.[133X
   
-  [1X6.13-3 ImageObject[101X
+  [1X6.14-3 ImageObject[101X
   
   [33X[1;0Y[29X[2XImageObject[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1861,7 +2042,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X. The output is the image [23X\mathrm{im}(
   \alpha )[123X.[133X
   
-  [1X6.13-4 ImageEmbedding[101X
+  [1X6.14-4 ImageEmbedding[101X
   
   [33X[1;0Y[29X[2XImageEmbedding[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{im}(\alpha), B)[123X[133X
@@ -1869,7 +2050,7 @@
   [33X[0;0YThe  argument is a morphism [23X\alpha: A \rightarrow B[123X. The output is the image
   embedding [23X\iota: \mathrm{im}(\alpha) \hookrightarrow B[123X.[133X
   
-  [1X6.13-5 ImageEmbeddingWithGivenImageObject[101X
+  [1X6.14-5 ImageEmbeddingWithGivenImageObject[101X
   
   [33X[1;0Y[29X[2XImageEmbeddingWithGivenImageObject[102X( [3Xalpha[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I, B)[123X[133X
@@ -1878,7 +2059,7 @@
   \mathrm{im}(   \alpha  )[123X.  The  output  is  the  image  embedding  [23X\iota:  I
   \hookrightarrow B[123X.[133X
   
-  [1X6.13-6 CoastrictionToImage[101X
+  [1X6.14-6 CoastrictionToImage[101X
   
   [33X[1;0Y[29X[2XCoastrictionToImage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, \mathrm{im}( \alpha ))[123X[133X
@@ -1886,7 +2067,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   coastriction to image [23Xc: A \rightarrow \mathrm{im}( \alpha )[123X.[133X
   
-  [1X6.13-7 CoastrictionToImageWithGivenImageObject[101X
+  [1X6.14-7 CoastrictionToImageWithGivenImageObject[101X
   
   [33X[1;0Y[29X[2XCoastrictionToImageWithGivenImageObject[102X( [3Xalpha[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, I)[123X[133X
@@ -1895,7 +2076,7 @@
   \mathrm{im}(  \alpha  )[123X.  The  output  is  the  coastriction  to  image [23Xc: A
   \rightarrow I[123X.[133X
   
-  [1X6.13-8 UniversalMorphismFromImage[101X
+  [1X6.14-8 UniversalMorphismFromImage[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromImage[102X( [3Xalpha[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{im}(\alpha), T)[123X[133X
@@ -1906,7 +2087,7 @@
   output  is  the morphism [23Xu(\tau): \mathrm{im}(\alpha) \rightarrow T[123X given by
   the universal property of the image.[133X
   
-  [1X6.13-9 UniversalMorphismFromImageWithGivenImageObject[101X
+  [1X6.14-9 UniversalMorphismFromImageWithGivenImageObject[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismFromImageWithGivenImageObject[102X( [3Xalpha[103X, [3Xtau[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I, T)[123X[133X
@@ -1918,7 +2099,7 @@
   \mathrm{im}(\alpha)  \rightarrow  T[123X  given  by the universal property of the
   image.[133X
   
-  [1X6.13-10 ImageObjectFunctorial[101X
+  [1X6.14-10 ImageObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XImageObjectFunctorial[102X( [3Xalpha[103X, [3Xnu[103X, [3Xalpha_prime[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(  \mathrm{ImageObject}(  \alpha  ),
@@ -1929,7 +2110,7 @@
   [23X\mathrm{ImageObject}(  \alpha  ) \rightarrow \mathrm{ImageObject}( \alpha' )[123X
   given by the functoriality of the image.[133X
   
-  [1X6.13-11 ImageObjectFunctorialWithGivenImageObjects[101X
+  [1X6.14-11 ImageObjectFunctorialWithGivenImageObjects[101X
   
   [33X[1;0Y[29X[2XImageObjectFunctorialWithGivenImageObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xnu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( s, r )[123X[133X
@@ -1941,7 +2122,7 @@
   \mathrm{ImageObject}( \alpha' )[123X given by the functoriality of the image.[133X
   
   
-  [1X6.14 [33X[0;0YCoimage[133X[101X
+  [1X6.15 [33X[0;0YCoimage[133X[101X
   
   [33X[0;0YFor  a  given morphism [23X\alpha: A \rightarrow B[123X, a coimage of [23X\alpha[123X consists
   of four parts:[133X
@@ -1963,7 +2144,7 @@
   the  object  [23XC[123X  of  such a [23X4[123X-tuple by [23X\mathrm{coim}(\alpha)[123X. We say that the
   morphism [23Xu( \tau )[123X is induced by the [13Xuniversal property of the coimage[113X.[133X
   
-  [1X6.14-1 IsomorphismFromCoimageToCokernelOfKernel[101X
+  [1X6.15-1 IsomorphismFromCoimageToCokernelOfKernel[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCoimageToCokernelOfKernel[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya    morphism    in   [23X\mathrm{Hom}(   \mathrm{coim}(   \alpha   ),
@@ -1973,7 +2154,7 @@
   canonical      morphism      [23X\mathrm{coim}(     \alpha     )     \rightarrow
   \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) )[123X.[133X
   
-  [1X6.14-2 IsomorphismFromCokernelOfKernelToCoimage[101X
+  [1X6.15-2 IsomorphismFromCokernelOfKernelToCoimage[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromCokernelOfKernelToCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    \mathrm{CokernelObject}(
@@ -1983,7 +2164,7 @@
   canonical morphism [23X\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha
   ) ) \rightarrow \mathrm{coim}( \alpha )[123X.[133X
   
-  [1X6.14-3 CoimageObject[101X
+  [1X6.15-3 CoimageObject[101X
   
   [33X[1;0Y[29X[2XCoimageObject[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1991,7 +2172,7 @@
   [33X[0;0YThe  argument is a morphism [23X\alpha[123X. The output is the coimage [23X\mathrm{coim}(
   \alpha )[123X.[133X
   
-  [1X6.14-4 CoimageProjection[101X
+  [1X6.15-4 CoimageProjection[101X
   
   [33X[1;0Y[29X[2XCoimageProjection[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, \mathrm{coim}( \alpha ))[123X[133X
@@ -1999,7 +2180,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   coimage projection [23X\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )[123X.[133X
   
-  [1X6.14-5 CoimageProjectionWithGivenCoimageObject[101X
+  [1X6.15-5 CoimageProjectionWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XCoimageProjectionWithGivenCoimageObject[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, C)[123X[133X
@@ -2008,7 +2189,7 @@
   \mathrm{coim}(\alpha)[123X.   The   output  is  the  coimage  projection  [23X\pi:  A
   \twoheadrightarrow C[123X.[133X
   
-  [1X6.14-6 AstrictionToCoimage[101X
+  [1X6.15-6 AstrictionToCoimage[101X
   
   [33X[1;0Y[29X[2XAstrictionToCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{coim}( \alpha ),B)[123X[133X
@@ -2016,7 +2197,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   astriction to coimage [23Xa: \mathrm{coim}( \alpha ) \rightarrow B[123X.[133X
   
-  [1X6.14-7 AstrictionToCoimageWithGivenCoimageObject[101X
+  [1X6.15-7 AstrictionToCoimageWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XAstrictionToCoimageWithGivenCoimageObject[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,B)[123X[133X
@@ -2025,7 +2206,7 @@
   \mathrm{coim}(  \alpha  )[123X.  The  output  is  the  astriction to coimage [23Xa: C
   \rightarrow B[123X.[133X
   
-  [1X6.14-8 UniversalMorphismIntoCoimage[101X
+  [1X6.15-8 UniversalMorphismIntoCoimage[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoCoimage[102X( [3Xalpha[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T, \mathrm{coim}( \alpha ))[123X[133X
@@ -2036,7 +2217,7 @@
   The  output  is  the morphism [23Xu(\tau): T \rightarrow \mathrm{coim}( \alpha )[123X
   given by the universal property of the coimage.[133X
   
-  [1X6.14-9 UniversalMorphismIntoCoimageWithGivenCoimageObject[101X
+  [1X6.15-9 UniversalMorphismIntoCoimageWithGivenCoimageObject[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoCoimageWithGivenCoimageObject[102X( [3Xalpha[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T, C)[123X[133X
@@ -2052,7 +2233,7 @@
   canonical   morphism   is   an   isomorphism,   we  call  it  the  [13Xcanonical
   identification[113X (between image and coimage).[133X
   
-  [1X6.14-10 CoimageObjectFunctorial[101X
+  [1X6.15-10 CoimageObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XCoimageObjectFunctorial[102X( [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism  in  [23X\mathrm{Hom}(\mathrm{CoimageObject}(  \alpha  ),
@@ -2063,7 +2244,7 @@
   [23X\mathrm{CoimageObject}( \alpha ) \rightarrow \mathrm{CoimageObject}( \alpha'
   )[123X given by the functoriality of the coimage.[133X
   
-  [1X6.14-11 CoimageObjectFunctorialWithGivenCoimageObjects[101X
+  [1X6.15-11 CoimageObjectFunctorialWithGivenCoimageObjects[101X
   
   [33X[1;0Y[29X[2XCoimageObjectFunctorialWithGivenCoimageObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xmu[103X, [3Xalpha_prime[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(s, r)[123X[133X
@@ -2075,9 +2256,9 @@
   \mathrm{CoimageObject}( \alpha' )[123X given by the functoriality of the coimage.[133X
   
   
-  [1X6.15 [33X[0;0YMorphism between Coimage and Image[133X[101X
+  [1X6.16 [33X[0;0YMorphism between Coimage and Image[133X[101X
   
-  [1X6.15-1 MorphismFromCoimageToImage[101X
+  [1X6.16-1 MorphismFromCoimageToImage[101X
   
   [33X[1;0Y[29X[2XMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya       morphism       in      [23X\mathrm{Hom}(\mathrm{coim}(\alpha),
@@ -2087,7 +2268,7 @@
   canonical   morphism   (in   a  preabelian  category)  [23X\mathrm{coim}(\alpha)
   \rightarrow \mathrm{im}(\alpha)[123X.[133X
   
-  [1X6.15-2 MorphismFromCoimageToImageWithGivenObjects[101X
+  [1X6.16-2 MorphismFromCoimageToImageWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XMorphismFromCoimageToImageWithGivenObjects[102X( [3XC[103X, [3Xalpha[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,I)[123X[133X
@@ -2096,7 +2277,7 @@
   \rightarrow  B[123X,  and  an  object  [23XI = \mathrm{im}(\alpha)[123X. The output is the
   canonical morphism (in a preabelian category) [23XC \rightarrow I[123X.[133X
   
-  [1X6.15-3 InverseOfMorphismFromCoimageToImage[101X
+  [1X6.16-3 InverseOfMorphismFromCoimageToImage[101X
   
   [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya        morphism       in       [23X\mathrm{Hom}(\mathrm{im}(\alpha),
@@ -2106,7 +2287,7 @@
   inverse    of    the   canonical   morphism   (in   an   abelian   category)
   [23X\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)[123X.[133X
   
-  [1X6.15-4 InverseOfMorphismFromCoimageToImageWithGivenObjects[101X
+  [1X6.16-4 InverseOfMorphismFromCoimageToImageWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XInverseOfMorphismFromCoimageToImageWithGivenObjects[102X( [3XI[103X, [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,C)[123X[133X
@@ -2116,7 +2297,7 @@
   inverse of the canonical morphism (in an abelian category) [23XI \rightarrow C[123X.[133X
   
   
-  [1X6.16 [33X[0;0YHomology objects[133X[101X
+  [1X6.17 [33X[0;0YHomology objects[133X[101X
   
   [33X[0;0YIn an abelian category, we can define the operation that takes as an input a
   pair  of  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta: B \rightarrow C[123X and
@@ -2135,7 +2316,7 @@
   a  functorial  way  to  obtain  from  these  data a morphism between the two
   corresponding homology objects.[133X
   
-  [1X6.16-1 HomologyObject[101X
+  [1X6.17-1 HomologyObject[101X
   
   [33X[1;0Y[29X[2XHomologyObject[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -2143,7 +2324,7 @@
   [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B,  \beta:  B
   \rightarrow C[123X. The output is the homology object [23XH[123X of this pair.[133X
   
-  [1X6.16-2 HomologyObjectFunctorial[101X
+  [1X6.17-2 HomologyObjectFunctorial[101X
   
   [33X[1;0Y[29X[2XHomologyObjectFunctorial[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xepsilon[103X, [3Xgamma[103X, [3Xdelta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( H_1, H_2 )[123X[133X
@@ -2158,7 +2339,7 @@
   [23X\alpha,  \beta[123X,  and  [23XH_2[123X  denotes  the  homology object of the pair [23X\gamma,
   \delta[123X.[133X
   
-  [1X6.16-3 HomologyObjectFunctorialWithGivenHomologyObjects[101X
+  [1X6.17-3 HomologyObjectFunctorialWithGivenHomologyObjects[101X
   
   [33X[1;0Y[29X[2XHomologyObjectFunctorialWithGivenHomologyObjects[102X( [3XH_1[103X, [3XL[103X, [3XH_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( H_1, H_2 )[123X[133X
@@ -2175,7 +2356,7 @@
   denotes  the  homology object of the pair [23X\alpha, \beta[123X, and [23XH_2[123X denotes the
   homology object of the pair [23X\gamma, \delta[123X.[133X
   
-  [1X6.16-4 IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[101X
+  [1X6.17-4 IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{HomologyObject}( \alpha, \beta
@@ -2187,7 +2368,7 @@
   [23X\mathrm{ImageObject}(  \mathrm{PreCompose}(  \mathrm{KernelEmbedding}( \beta
   ), \mathrm{CokernelProjection}( \alpha ) ) )[123X, denoted by [23XI[123X.[133X
   
-  [1X6.16-5 IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[101X
+  [1X6.17-5 IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}( I, \mathrm{HomologyObject}( \alpha,
@@ -2200,16 +2381,16 @@
   )[123X, denoted by [23XI[123X, to the homology object [23XH[123X of [23X\alpha[123X and [23X\beta[123X.[133X
   
   
-  [1X6.17 [33X[0;0YProjective covers and injective envelopes[133X[101X
+  [1X6.18 [33X[0;0YProjective covers and injective envelopes[133X[101X
   
-  [1X6.17-1 ProjectiveCoverObject[101X
+  [1X6.18-1 ProjectiveCoverObject[101X
   
   [33X[1;0Y[29X[2XProjectiveCoverObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is an object [23XA[123X. The output is a projective cover of [23XA[123X.[133X
   
-  [1X6.17-2 EpimorphismFromProjectiveCoverObject[101X
+  [1X6.18-2 EpimorphismFromProjectiveCoverObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromProjectiveCoverObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan epimorphism[133X
@@ -2217,7 +2398,7 @@
   [33X[0;0YThe  argument is an object [23XA[123X. The output is an epimorphism from a projective
   cover of [23XA[123X.[133X
   
-  [1X6.17-3 EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[101X
+  [1X6.18-3 EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject[102X( [3XA[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan epimorphism[133X
@@ -2225,14 +2406,14 @@
   [33X[0;0YThe  argument  is  an  object  [23XA[123X.  The  output  is  the epimorphism from the
   projective cover [23XP[123X of [23XA[123X.[133X
   
-  [1X6.17-4 InjectiveEnvelopeObject[101X
+  [1X6.18-4 InjectiveEnvelopeObject[101X
   
   [33X[1;0Y[29X[2XInjectiveEnvelopeObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is an object [23XA[123X. The output is an injective envelope of [23XA[123X.[133X
   
-  [1X6.17-5 MonomorphismIntoInjectiveEnvelopeObject[101X
+  [1X6.18-5 MonomorphismIntoInjectiveEnvelopeObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoInjectiveEnvelopeObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
@@ -2240,7 +2421,7 @@
   [33X[0;0YThe  argument is an object [23XA[123X. The output is a monomorphism into an injective
   envelope of [23XA[123X.[133X
   
-  [1X6.17-6 MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[101X
+  [1X6.18-6 MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject[102X( [3XA[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya monomorphism[133X

@@ -318,7 +318,9 @@
   [33X[1;0Y[29X[2XCapFixpoint[102X( [3Xpredicate[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X function[133X
   
   [33X[0;0YComputes  a  fixpoint  of  [3Xfunc[103X  with regard to equality given by [3Xpredicate[103X,
-  starting  with [3Xinitial_value[103X. If no such fixpoint exists, the execution does
+  starting  with  [3Xinitial_value[103X. More precisely, [10XCapFixpoint[110X( [3Xpredicate[103X, [3Xfunc[103X,
+  [3Xinitial_value[103X  )  terminates  and  returns  [23Xy[123X once [3Xpredicate[103X( [23Xx[123X, [23Xy[123X ) returns
+  [10Xtrue[110X,  where  [23Xy[123X := [3Xfunc[103X( [23Xx[123X ). If no such fixpoint exists, the execution does
   not terminate.[133X
   
   [1X9.2-30 Iterated[101X

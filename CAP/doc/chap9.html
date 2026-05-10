@@ -356,7 +356,7 @@
 <h5>9.2-29 CapFixpoint</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFixpoint</code>( <var class="Arg">predicate</var>, <var class="Arg">func</var>, <var class="Arg">initial_value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Computes a fixpoint of <var class="Arg">func</var> with regard to equality given by <var class="Arg">predicate</var>, starting with <var class="Arg">initial_value</var>. If no such fixpoint exists, the execution does not terminate.</p>
+<p>Computes a fixpoint of <var class="Arg">func</var> with regard to equality given by <var class="Arg">predicate</var>, starting with <var class="Arg">initial_value</var>. More precisely, <code class="code">CapFixpoint</code>( <var class="Arg">predicate</var>, <var class="Arg">func</var>, <var class="Arg">initial_value</var> ) terminates and returns <span class="Math">y</span> once <var class="Arg">predicate</var>( <span class="Math">x</span>, <span class="Math">y</span> ) returns <code class="code">true</code>, where <span class="Math">y</span> := <var class="Arg">func</var>( <span class="Math">x</span> ). If no such fixpoint exists, the execution does not terminate.</p>
 
 <p><a id="X83607E077857CBDB" name="X83607E077857CBDB"></a></p>
 
