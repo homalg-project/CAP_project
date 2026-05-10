@@ -1495,6 +1495,19 @@
         CoequalizerFunctorialWithGivenCoequalizers   for  IsCapCategoryObject,
         IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XCoequalizerOfIdentityAndAutomorphisms[102X                            ([14XCAP:
+        CoequalizerOfIdentityAndAutomorphisms[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoequalizerOfIdentityAndAutomorphismsFunctorial[102X                  ([14XCAP:
+        CoequalizerOfIdentityAndAutomorphismsFunctorial       for      IsList,
+        IsCapCategoryMorphism, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XCoequalizerOfIdentityAndAutomorphismsFunctorialWithGivenCoequalizers[102X
+        ([14XCAP:
+        CoequalizerOfIdentityAndAutomorphismsFunctorialWithGivenCoequalizers
+        for   IsCapCategoryObject,   IsList,   IsCapCategoryMorphism,  IsList,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XCoimageObject[102X ([14XCAP: CoimageObject for IsCapCategoryMorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoimageObjectFunctorial[102X      ([14XCAP:     CoimageObjectFunctorial     for
@@ -1610,6 +1623,16 @@
   
   [30X    [33X[0;6Y[2XIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X            ([14XCAP:
         IsomorphismFromCoequalizerOfCoproductDiagramToPushout for IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsomorphismFromCoequalizerOfIdentityAndAutomorphismsToCoequalizer[102X
+        ([14XCAP:
+        IsomorphismFromCoequalizerOfIdentityAndAutomorphismsToCoequalizer  for
+        IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsomorphismFromCoequalizerToCoequalizerOfIdentityAndAutomorphisms[102X
+        ([14XCAP:
+        IsomorphismFromCoequalizerToCoequalizerOfIdentityAndAutomorphisms  for
+        IsCapCategoryObject, IsList[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromCoequalizerToCokernelOfJointPairwiseDifferencesOfMorphismsFromCoproduct[102X
         ([14XCAP:
@@ -1761,6 +1784,15 @@
   [30X    [33X[0;6Y[2XProjectionOntoCoequalizer[102X    ([14XCAP:    ProjectionOntoCoequalizer    for
         IsCapCategoryObject, IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XProjectionOntoCoequalizerOfIdentityAndAutomorphisms[102X              ([14XCAP:
+        ProjectionOntoCoequalizerOfIdentityAndAutomorphisms                for
+        IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XProjectionOntoCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer[102X
+        ([14XCAP:
+        ProjectionOntoCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer
+        for IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XProjectionOntoCoequalizerWithGivenCoequalizer[102X                    ([14XCAP:
         ProjectionOntoCoequalizerWithGivenCoequalizer for IsCapCategoryObject,
         IsList, IsCapCategoryObject[114X)[133X
@@ -1781,6 +1813,17 @@
   [30X    [33X[0;6Y[2XUniversalMorphismFromCoequalizer[102X                                 ([14XCAP:
         UniversalMorphismFromCoequalizer   for   IsCapCategoryObject,  IsList,
         IsCapCategoryObject, IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XUniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms[102X       ([14XCAP:
+        UniversalMorphismFromCoequalizerOfIdentityAndAutomorphisms         for
+        IsCapCategoryObject,            IsList,           IsCapCategoryObject,
+        IsCapCategoryMorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XUniversalMorphismFromCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer[102X
+        ([14XCAP:
+        UniversalMorphismFromCoequalizerOfIdentityAndAutomorphismsWithGivenCoequalizer
+        for       IsCapCategoryObject,       IsList,      IsCapCategoryObject,
+        IsCapCategoryMorphism, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X             ([14XCAP:
         UniversalMorphismFromCoequalizerWithGivenCoequalizer               for
