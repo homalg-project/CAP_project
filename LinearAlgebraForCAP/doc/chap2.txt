@@ -616,8 +616,10 @@
     [4X[28XIsAdditiveMonoidalCategory[128X[104X
     [4X[28XIsBraidedMonoidalCategory[128X[104X
     [4X[28XIsCategoryWithCoequalizers[128X[104X
+    [4X[28XIsCategoryWithCoequalizersOfIdentityAndAutomorphisms[128X[104X
     [4X[28XIsCategoryWithCokernels[128X[104X
     [4X[28XIsCategoryWithEqualizers[128X[104X
+    [4X[28XIsCategoryWithEqualizersOfIdentityAndAutomorphisms[128X[104X
     [4X[28XIsCategoryWithInitialObject[128X[104X
     [4X[28XIsCategoryWithKernels[128X[104X
     [4X[28XIsCategoryWithTerminalObject[128X[104X
