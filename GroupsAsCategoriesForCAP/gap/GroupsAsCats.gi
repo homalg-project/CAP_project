@@ -11,10 +11,14 @@
 ####################################
 
 ##
-InstallMethod( GroupAsCategory,
+InstallMethod( GROUP_AS_CATEGORY,
         [ IsGroup ],
-               
-  function( group )
+        
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, group )
     local group_name, group_as_category, is_finite;
     
     if HasName( group ) then
@@ -63,11 +67,21 @@ InstallMethod( GroupAsCategory,
     
     INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY( group_as_category, is_finite );
     
-    Finalize( group_as_category );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( group_as_category );
+        
+    fi;
     
     return group_as_category;
     
-end );
+end ) );
+
+##
+InstallMethod( GroupAsCategory,
+        [ IsGroup ],
+        
+  GROUP_AS_CATEGORY );
 
 ##
 InstallMethodForCompilerForCAP( GroupAsCategoryUniqueObject,

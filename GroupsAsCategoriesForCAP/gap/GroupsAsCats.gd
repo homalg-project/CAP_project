@@ -29,6 +29,9 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY" );
 ##
 ####################################
 
+DeclareOperation( "GROUP_AS_CATEGORY",
+                  [ IsGroup ] );
+
 DeclareAttribute( "GroupAsCategory",
                   IsGroup );
 
