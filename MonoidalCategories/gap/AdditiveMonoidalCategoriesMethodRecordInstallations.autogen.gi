@@ -30,6 +30,80 @@ InstallMethod( AddLeftDistributivityExpanding,
     )
 );
 
+## LeftDistributivityExpandingUsingMultiplicities
+InstallMethod( AddLeftDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftDistributivityExpandingUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftDistributivityExpandingUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddLeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects by calling LeftDistributivityExpandingUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ LeftDistributivityExpandingUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, a, L, M, r )
+    
+    return LeftDistributivityExpandingUsingMultiplicities( cat, a, L, M );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( LeftDistributivityExpandingUsingMultiplicities,
+                    "LeftDistributivityExpandingUsingMultiplicities by calling LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ TensorProductOnObjects, 3 ],
+                        [ DirectSum, 2 ],
+                    ],
+  function( cat, a, L, M )
+    
+    return LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects( cat, TensorProductOnObjects( cat, a, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ) ), a, L, M, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, a, summand ) ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## LeftDistributivityExpandingWithGivenObjects
 InstallMethod( AddLeftDistributivityExpandingWithGivenObjects,
                [ IsCapCategory, IsFunction ],
@@ -103,6 +177,80 @@ InstallMethod( AddLeftDistributivityFactoring,
         end
     )
 );
+
+## LeftDistributivityFactoringUsingMultiplicities
+InstallMethod( AddLeftDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftDistributivityFactoringUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftDistributivityFactoringUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddLeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects by calling LeftDistributivityFactoringUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ LeftDistributivityFactoringUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, a, L, M, r )
+    
+    return LeftDistributivityFactoringUsingMultiplicities( cat, a, L, M );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( LeftDistributivityFactoringUsingMultiplicities,
+                    "LeftDistributivityFactoringUsingMultiplicities by calling LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ DirectSum, 2 ],
+                        [ TensorProductOnObjects, 3 ],
+                    ],
+  function( cat, a, L, M )
+    
+    return LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects( cat, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, a, summand ) ) ), a, L, M, TensorProductOnObjects( cat, a, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ) ) );
+    
+end : is_with_given_derivation := true );
 
 ## LeftDistributivityFactoringWithGivenObjects
 InstallMethod( AddLeftDistributivityFactoringWithGivenObjects,
@@ -178,6 +326,80 @@ InstallMethod( AddRightDistributivityExpanding,
     )
 );
 
+## RightDistributivityExpandingUsingMultiplicities
+InstallMethod( AddRightDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightDistributivityExpandingUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightDistributivityExpandingUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddRightDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects by calling RightDistributivityExpandingUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ RightDistributivityExpandingUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, L, M, a, r )
+    
+    return RightDistributivityExpandingUsingMultiplicities( cat, L, M, a );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( RightDistributivityExpandingUsingMultiplicities,
+                    "RightDistributivityExpandingUsingMultiplicities by calling RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ TensorProductOnObjects, 3 ],
+                        [ DirectSum, 2 ],
+                    ],
+  function( cat, L, M, a )
+    
+    return RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects( cat, TensorProductOnObjects( cat, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ), a ), L, M, a, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, summand, a ) ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## RightDistributivityExpandingWithGivenObjects
 InstallMethod( AddRightDistributivityExpandingWithGivenObjects,
                [ IsCapCategory, IsFunction ],
@@ -251,6 +473,80 @@ InstallMethod( AddRightDistributivityFactoring,
         end
     )
 );
+
+## RightDistributivityFactoringUsingMultiplicities
+InstallMethod( AddRightDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightDistributivityFactoringUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightDistributivityFactoringUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddRightDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects by calling RightDistributivityFactoringUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ RightDistributivityFactoringUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, L, M, a, r )
+    
+    return RightDistributivityFactoringUsingMultiplicities( cat, L, M, a );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( RightDistributivityFactoringUsingMultiplicities,
+                    "RightDistributivityFactoringUsingMultiplicities by calling RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ DirectSum, 2 ],
+                        [ TensorProductOnObjects, 3 ],
+                    ],
+  function( cat, L, M, a )
+    
+    return RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects( cat, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, summand, a ) ) ), L, M, a, TensorProductOnObjects( cat, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ), a ) );
+    
+end : is_with_given_derivation := true );
 
 ## RightDistributivityFactoringWithGivenObjects
 InstallMethod( AddRightDistributivityFactoringWithGivenObjects,

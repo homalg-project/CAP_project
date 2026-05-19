@@ -39,6 +39,21 @@ AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
 ##
+AddDerivationToCAP( LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects using LeftDistributivityExpandingWithGivenObjects",
+                    [ [ LeftDistributivityExpandingWithGivenObjects, 1 ] ],
+                    
+  function( cat, factored_object, object, summands, multiplicities, expanded_object )
+    
+    return LeftDistributivityExpandingWithGivenObjects( cat,
+                factored_object,
+                object,
+                Concatenation( List( [ 1 .. Length( summands ) ], i -> ListWithIdenticalEntries( multiplicities[i], summands[i] ) ) ),
+                expanded_object );
+    
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
+
+##
 AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
                     "LeftDistributivityFactoringWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
@@ -69,6 +84,21 @@ AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
                                                     factored_object ) );
     
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram, factored_object, injection_list_tensored, expanded_object );
+    
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
+
+##
+AddDerivationToCAP( LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects using LeftDistributivityFactoringWithGivenObjects",
+                    [ [ LeftDistributivityFactoringWithGivenObjects, 1 ] ],
+                    
+  function( cat, expanded_object, object, summands, multiplicities, factored_object )
+    
+    return LeftDistributivityFactoringWithGivenObjects( cat,
+                expanded_object,
+                object,
+                Concatenation( List( [ 1 .. Length( summands ) ], i -> ListWithIdenticalEntries( multiplicities[i], summands[i] ) ) ),
+                factored_object );
     
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
@@ -107,6 +137,21 @@ AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
 ##
+AddDerivationToCAP( RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects using RightDistributivityExpandingWithGivenObjects",
+                    [ [ RightDistributivityExpandingWithGivenObjects, 1 ] ],
+                    
+  function( cat, factored_object, summands, multiplicities, object, expanded_object )
+    
+    return RightDistributivityExpandingWithGivenObjects( cat,
+                factored_object,
+                Concatenation( List( [ 1 .. Length( summands ) ], i -> ListWithIdenticalEntries( multiplicities[i], summands[i] ) ) ),
+                object,
+                expanded_object );
+    
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
+
+##
 AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
                     "RightDistributivityFactoringWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
@@ -139,3 +184,18 @@ AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram, factored_object, injection_list_tensored, expanded_object );
     
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
+
+##
+AddDerivationToCAP( RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects using RightDistributivityFactoringWithGivenObjects",
+                    [ [ RightDistributivityFactoringWithGivenObjects, 1 ] ],
+                    
+  function( cat, expanded_object, summands, multiplicities, object, factored_object )
+    return RightDistributivityFactoringWithGivenObjects( cat,
+                expanded_object,
+                Concatenation( List( [ 1 .. Length( summands ) ], i -> ListWithIdenticalEntries( multiplicities[i], summands[i] ) ) ),
+                object,
+                factored_object );
+    
+end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
+

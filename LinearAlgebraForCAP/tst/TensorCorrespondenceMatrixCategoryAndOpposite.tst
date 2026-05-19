@@ -64,18 +64,19 @@ gap> MonoidalCategoriesTest( mc, opposite, a, b, c, alpha, beta );;
 
 gap> a := 2 / mc;;
 gap> L := [ 3 / mc, 4 / mc, 5 / mc ];;
+gap> M := [ 3, 2, 4 ];;
 
-gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L );;
+gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L, M );;
 
 gap> a := 0 / mc;;
 gap> L := [ 3 / mc, 4 / mc, 5 / mc ];;
 
-gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L );;
+gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L, M );;
 
 gap> a := 2 / mc;;
 gap> L := [ 3 / mc, 0 / mc, 5 / mc ];;
 
-gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L );;
+gap> AdditiveMonoidalCategoriesTest( mc, opposite, a, L, M );;
 
 ##############################################
 # BraidedMonoidalCategoriesTest

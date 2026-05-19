@@ -32,6 +32,44 @@ DeclareOperation( "AddLeftDistributivityExpanding",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `LeftDistributivityExpandingUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( a, L, M ) \mapsto \mathtt{LeftDistributivityExpandingUsingMultiplicities}(a, L, M)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, a, L, M, r ) \mapsto \mathtt{LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects}(s, a, L, M, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `LeftDistributivityExpandingWithGivenObjects`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
@@ -62,6 +100,44 @@ DeclareOperation( "AddLeftDistributivityFactoring",
 
 #! @Arguments C, F, weight
 DeclareOperation( "AddLeftDistributivityFactoring",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftDistributivityFactoringUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( a, L, M ) \mapsto \mathtt{LeftDistributivityFactoringUsingMultiplicities}(a, L, M)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, a, L, M, r ) \mapsto \mathtt{LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects}(s, a, L, M, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 #! @EndGroup
 
@@ -108,6 +184,44 @@ DeclareOperation( "AddRightDistributivityExpanding",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `RightDistributivityExpandingUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( L, M, a ) \mapsto \mathtt{RightDistributivityExpandingUsingMultiplicities}(L, M, a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, L, M, a, r ) \mapsto \mathtt{RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects}(s, L, M, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `RightDistributivityExpandingWithGivenObjects`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
@@ -138,6 +252,44 @@ DeclareOperation( "AddRightDistributivityFactoring",
 
 #! @Arguments C, F, weight
 DeclareOperation( "AddRightDistributivityFactoring",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightDistributivityFactoringUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( L, M, a ) \mapsto \mathtt{RightDistributivityFactoringUsingMultiplicities}(L, M, a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, L, M, a, r ) \mapsto \mathtt{RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects}(s, L, M, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 #! @EndGroup
 
