@@ -6,27 +6,35 @@
 
 ##
 AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
-                    "LeftDistributivityExpandingWithGivenObjects using the universal property of the direct sum",
-                    [ [ IdentityMorphism, 1 ],
-                      [ ProjectionInFactorOfDirectSum, 2 ],
-                      [ TensorProductOnMorphisms, 2 ],
-                      [ TensorProductOnObjects, 2 ],
-                      [ UniversalMorphismIntoDirectSum, 1 ] ],
+                   "LeftDistributivityExpandingWithGivenObjects using the universal property of the direct sum",
+                   [ [ IdentityMorphism, 1 ],
+                     [ DirectSum, 1 ],
+                     [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ],
+                     [ TensorProductOnMorphismsWithGivenTensorProducts, 2 ],
+                     [ TensorProductOnObjects, 2 ],
+                     [ UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ] ],
                     
   function( cat, factored_object, object, summands, expanded_object )
-    local nr_summands, projection_list, id, diagram;
+    local nr_summands, id, diagram, sum_of_summands, projection_list, projection_list_tensored;
     
     nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     
-    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( cat, summands, i ) );
+    diagram := List( [ 1 .. nr_summands ], i -> TensorProductOnObjects( cat, object, summands[i] ) );
     
-    projection_list := List( projection_list, mor -> TensorProductOnMorphisms( cat, id, mor ) );
+    sum_of_summands := DirectSum( cat, summands );
     
-    diagram := List( summands, summand -> TensorProductOnObjects( cat, object, summand ) );
+    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
+    projection_list_tensored := List( [1 .. nr_summands ],
+                                      i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
+                                                    factored_object,
+                                                    id,
+                                                    projection_list[i],
+                                                    diagram[i] ) );
+    
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram, factored_object, projection_list_tensored, expanded_object );
     
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
@@ -34,25 +42,33 @@ end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCatego
 AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
                     "LeftDistributivityFactoringWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
-                      [ InjectionOfCofactorOfDirectSum, 2 ],
-                      [ TensorProductOnMorphisms, 2 ],
+                      [ DirectSum, 1 ],
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ],
+                      [ TensorProductOnMorphismsWithGivenTensorProducts, 2 ],
                       [ TensorProductOnObjects, 2 ],
-                      [ UniversalMorphismFromDirectSum, 1 ] ],
+                      [ UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ] ],
                     
   function( cat, expanded_object, object, summands, factored_object )
-    local nr_summands, injection_list, id, diagram;
+    local nr_summands, id, diagram, sum_of_summands, injection_list, injection_list_tensored;
     
     nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     
-    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( cat, summands, i ) );
+    diagram := List( [ 1 .. nr_summands ], i -> TensorProductOnObjects( cat, object, summands[i] ) );
     
-    injection_list := List( injection_list, mor -> TensorProductOnMorphisms( cat, id, mor ) );
+    sum_of_summands := DirectSum( cat, summands );
     
-    diagram := List( summands, summand -> TensorProductOnObjects( cat, object, summand ) );
+    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
+    injection_list_tensored := List( [1 .. nr_summands ],
+                                     i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
+                                                    diagram[i],
+                                                    id,
+                                                    injection_list[i],
+                                                    factored_object ) );
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram, factored_object, injection_list_tensored, expanded_object );
     
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
@@ -60,25 +76,33 @@ end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCatego
 AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
                     "RightDistributivityExpandingWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
-                      [ ProjectionInFactorOfDirectSum, 2 ],
-                      [ TensorProductOnMorphisms, 2 ],
+                      [ DirectSum, 1 ],
+                      [ ProjectionInFactorOfDirectSumWithGivenDirectSum, 2 ],
+                      [ TensorProductOnMorphismsWithGivenTensorProducts, 2 ],
                       [ TensorProductOnObjects, 2 ],
-                      [ UniversalMorphismIntoDirectSum, 1 ] ],
+                      [ UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ] ],
                     
   function( cat, factored_object, summands, object, expanded_object )
-    local nr_summands, projection_list, id, diagram;
+    local nr_summands, id, diagram, sum_of_summands, projection_list, projection_list_tensored;
     
     nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     
-    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( cat, summands, i ) );
+    diagram := List( [ 1 .. nr_summands ], i -> TensorProductOnObjects( cat, summands[i], object ) );
     
-    projection_list := List( projection_list, mor -> TensorProductOnMorphisms( cat, mor, id ) );
+    sum_of_summands := DirectSum( cat, summands );
     
-    diagram := List( summands, summand -> TensorProductOnObjects( cat, summand, object ) );
+    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
+    projection_list_tensored := List( [1 .. nr_summands ],
+                                      i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
+                                                    factored_object,
+                                                    projection_list[i],
+                                                    id,
+                                                    diagram[i] ) );
+    
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram, factored_object, projection_list_tensored, expanded_object );
     
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
 
@@ -86,24 +110,32 @@ end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCatego
 AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
                     "RightDistributivityFactoringWithGivenObjects using the universal property of the direct sum",
                     [ [ IdentityMorphism, 1 ],
-                      [ InjectionOfCofactorOfDirectSum, 2 ],
-                      [ TensorProductOnMorphisms, 2 ],
+                      [ DirectSum, 1 ],
+                      [ InjectionOfCofactorOfDirectSumWithGivenDirectSum, 2 ],
+                      [ TensorProductOnMorphismsWithGivenTensorProducts, 2 ],
                       [ TensorProductOnObjects, 2 ],
-                      [ UniversalMorphismFromDirectSum, 1 ] ],
+                      [ UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ] ],
                     
   function( cat, expanded_object, summands, object, factored_object )
-    local nr_summands, injection_list, id, diagram;
+    local nr_summands, id, diagram, sum_of_summands, injection_list, injection_list_tensored;
     
     nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     
-    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( cat, summands, i ) );
+    diagram := List( [ 1 .. nr_summands ], i -> TensorProductOnObjects( cat, summands[i], object ) );
     
-    injection_list := List( injection_list, mor -> TensorProductOnMorphisms( cat, mor, id ) );
+    sum_of_summands := DirectSum( cat, summands );
     
-    diagram := List( summands, summand -> TensorProductOnObjects( cat, summand, object ) );
+    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
+    injection_list_tensored := List( [1 .. nr_summands ],
+                                     i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
+                                                    diagram[i],
+                                                    injection_list[i],
+                                                    id,
+                                                    factored_object ) );
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram, factored_object, injection_list_tensored, expanded_object );
     
 end : CategoryFilter := cat -> HasIsMonoidalCategory( cat ) and IsMonoidalCategory( cat ) and HasIsAdditiveCategory( cat ) and IsAdditiveCategory( cat ) );
