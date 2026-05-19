@@ -1519,3 +1519,27 @@ CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject, IsObject ], 
     return rec( args := args, output_type := args.2.data_type.signature[2] );
     
 end );
+
+#= comment for Julia
+CapJitAddTypeSignature( "ConjugateSubgroup", [ IsGroup, IsMultiplicativeElementWithInverse ], function ( input_types )
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
+    
+    Assert( 0, IsIdenticalObj( input_types[1].group, input_types[2].group ) );
+    
+    return CapJitDataTypeOfSubgroup( input_types[1].group );
+    
+end );
+
+CapJitAddTypeSignature( "IsSubset", [ IsGroup, IsGroup ], function ( input_types )
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[2].filter ) );
+    
+    Assert( 0, IsIdenticalObj( input_types[1].group, input_types[2].group ) );
+    
+    return rec( filter := IsBool );
+    
+end );
+# =#

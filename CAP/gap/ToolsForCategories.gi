@@ -1208,6 +1208,28 @@ InstallGlobalFunction( CapJitDataTypeOfGroup, function ( group )
     
 end );
 
+InstallGlobalFunction( CapJitDataTypeOfSubgroup, function ( group )
+  local type;
+    
+    if IsIdenticalObj( group, false ) then
+        
+        type := rec(
+            filter := IsGroup and HasParent,
+        );
+        
+    else
+        
+        type := rec(
+            filter := IsGroup and HasParent,
+            group := group, ## do not call this parentgroup
+        );
+        
+    fi;
+    
+    return type;
+    
+end );
+
 ##
 InstallGlobalFunction( CapJitDataTypeOfElementOfGroup, function ( group )
   local type;
