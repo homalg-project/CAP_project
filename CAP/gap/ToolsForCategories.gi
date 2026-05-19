@@ -1208,19 +1208,26 @@ InstallGlobalFunction( CapJitDataTypeOfGroup, function ( group )
     
 end );
 
+## Cache the filter object so that repeated calls to CapJitDataTypeOfSubgroup
+## return data_type records with an identical filter object. GAP compares filters
+## by identity, so creating `IsGroup and HasParent` anew each call would produce
+## non-equal data_type records even when they represent the same type, causing
+## the compiler's resolving phase to loop forever.
+BindGlobal( "CAP_JIT_INTERNAL_SUBGROUP_FILTER", IsGroup and HasParent );
+
 InstallGlobalFunction( CapJitDataTypeOfSubgroup, function ( group )
   local type;
     
     if IsIdenticalObj( group, false ) then
         
         type := rec(
-            filter := IsGroup and HasParent,
+            filter := CAP_JIT_INTERNAL_SUBGROUP_FILTER,
         );
         
     else
         
         type := rec(
-            filter := IsGroup and HasParent,
+            filter := CAP_JIT_INTERNAL_SUBGROUP_FILTER,
             group := group, ## do not call this parentgroup
         );
         
