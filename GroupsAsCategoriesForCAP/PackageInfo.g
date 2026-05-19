@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GroupsAsCategoriesForCAP",
 Subtitle := "Groups as categories on one object",
-Version := "2026.04-02",
-Date := "2026-04-15",
+Version := "2026.05-01",
+Date := "2026-05-19",
 License := "GPL-2.0-or-later",
 
 Persons := [
