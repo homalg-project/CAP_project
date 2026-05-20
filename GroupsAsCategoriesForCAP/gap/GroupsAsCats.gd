@@ -49,6 +49,14 @@ end );
 DeclareOperation( "GroupAsCategoryMorphism",
                   [ IsGroupAsCategory, IsMultiplicativeElementWithInverse ] );
 
+CapJitAddTypeSignature( "GroupAsCategoryMorphism", [ IsGroupAsCategory, IsMultiplicativeElementWithInverse ], function ( input_types )
+    
+    Assert( 0, IsGroupAsCategory( input_types[1].category ) );
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 ####################################
 ##
 #! @Section Attributes
