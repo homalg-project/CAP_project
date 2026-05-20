@@ -12,14 +12,14 @@
 ####################################
 
 ##
+DeclareCategory( "IsGroupAsCategory",
+                 IsCapCategory );
+
 DeclareCategory( "IsObjectInGroupAsCategory",
                  IsCapCategoryObject );
 
 DeclareCategory( "IsMorphismInGroupAsCategory",
                  FilterIntersection( IsCapCategoryMorphism, IsAutomorphism ) );
-
-DeclareCategory( "IsGroupAsCategory",
-                 IsCapCategory );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY" );
 
@@ -37,6 +37,14 @@ DeclareAttribute( "GroupAsCategory",
 
 DeclareAttribute( "GroupAsCategoryUniqueObject",
                   IsGroupAsCategory );
+
+CapJitAddTypeSignature( "GroupAsCategoryUniqueObject", [ IsGroupAsCategory ], function ( input_types )
+    
+    Assert( 0, IsGroupAsCategory( input_types[1].category ) );
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
 
 DeclareOperation( "GroupAsCategoryMorphism",
                   [ IsGroupAsCategory, IsMultiplicativeElementWithInverse ] );
@@ -56,6 +64,14 @@ DeclareAttribute( "ElementsOfUnderlyingGroup",
 DeclareAttribute( "UnderlyingGroupElement",
                   IsMorphismInGroupAsCategory );
 
+CapJitAddTypeSignature( "UnderlyingGroupElement", [ IsMorphismInGroupAsCategory ], function ( input_types )
+    
+    Assert( 0, IsGroupAsCategory( input_types[1].category ) );
+    
+    return MorphismDatumType( input_types[1].category );
+    
+end );
+
 DeclareAttribute( "PositionWithinElements",
                   IsMorphismInGroupAsCategory );
 
@@ -64,6 +80,12 @@ DeclareAttribute( "PositionWithinElements",
 #! @Section Operations
 ##
 ####################################
+
+##
+DeclareOperation( "MultiplyGroupElements",
+                  [ IsMultiplicativeElementWithInverse, IsMultiplicativeElementWithInverse ] );
+
+CapJitAddTypeSignature( "MultiplyGroupElements", [ IsMultiplicativeElementWithInverse, IsMultiplicativeElementWithInverse ], IsMultiplicativeElementWithInverse );
 
 ##
 DeclareOperation( "*",

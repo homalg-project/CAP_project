@@ -10,6 +10,17 @@
 ##
 ####################################
 
+## CompilerForCAP has issues with typing * when the input are group elements,
+## so we hide * within this unresolvable function
+InstallMethod( MultiplyGroupElements,
+        [ IsMultiplicativeElementWithInverse, IsMultiplicativeElementWithInverse ],
+        
+  function ( g, h )
+    
+    return g * h;
+    
+end );
+
 ##
 InstallMethod( GROUP_AS_CATEGORY,
         [ IsGroup ],
@@ -254,7 +265,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
       function( group_as_category, alpha, beta )
         
         return GroupAsCategoryMorphism( group_as_category,
-                       UnderlyingGroupElement( alpha ) * UnderlyingGroupElement( beta ) );
+                       MultiplyGroupElements( UnderlyingGroupElement( alpha ), UnderlyingGroupElement( beta ) ) );
         
     end );
     
@@ -264,15 +275,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         return GroupAsCategoryMorphism( group_as_category,
                        One( group ) );
-        
-    end );
-    
-    ##
-    AddInverseForMorphisms( group_as_category,
-      function( group_as_category, alpha )
-        
-        return GroupAsCategoryMorphism( group_as_category,
-                       Inverse( UnderlyingGroupElement( alpha ) ) );
         
     end );
     
@@ -301,10 +303,27 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     end );
     
     ##
+    AddInverseForMorphisms( group_as_category,
+      function( group_as_category, alpha )
+        
+        return GroupAsCategoryMorphism( group_as_category,
+                       InverseImmutable( UnderlyingGroupElement( alpha ) ) );
+        
+    end );
+    
+    ##
     AddIsLiftable( group_as_category,
       function( group_as_category, mor1, mor2 )
         
         return true;
+        
+    end );
+    
+    ##
+    AddLift( group_as_category,
+      function( group_as_category, alpha, beta )
+        
+        return PreCompose( group_as_category, alpha, InverseForMorphisms( group_as_category, beta ) );
         
     end );
     
@@ -317,24 +336,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     end );
     
     ##
-    AddLift( group_as_category,
+    AddColift( group_as_category,
       function( group_as_category, alpha, beta )
         
-        return GroupAsCategoryMorphism( group_as_category,
-                       UnderlyingGroupElement( alpha ) * Inverse( UnderlyingGroupElement( beta ) ) );
+        return PreCompose( group_as_category, InverseForMorphisms( group_as_category, alpha ), beta );
         
     end );
     
     ##
-    AddColift( group_as_category,
-      function( group_as_category, alpha, beta )
-        
-        return GroupAsCategoryMorphism( group_as_category,
-                       Inverse( UnderlyingGroupElement( alpha ) ) * UnderlyingGroupElement( beta ) );
-        
-    end );
-    
-        ##
     AddSetOfObjectsOfCategory( group_as_category,
       function( group_as_category )
         
