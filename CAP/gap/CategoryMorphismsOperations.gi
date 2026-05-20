@@ -85,7 +85,7 @@ InverseForMorphisms );
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
   rec(
     Inverse := [ [ "InverseForMorphisms", 1 ] ],
-    InverseImmutable := [ [ "InverseForMorphisms", 1 ] ],
+    #InverseImmutable := [ [ "InverseForMorphisms", 1 ] ], ## adding this leads to false positives, where InverseForMorphisms have been correctly resolved
   )
  );
 
