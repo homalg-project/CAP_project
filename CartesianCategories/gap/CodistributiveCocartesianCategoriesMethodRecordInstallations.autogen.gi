@@ -30,6 +30,80 @@ InstallMethod( AddLeftCocartesianCodistributivityExpanding,
     )
 );
 
+## LeftCocartesianCodistributivityExpandingUsingMultiplicities
+InstallMethod( AddLeftCocartesianCodistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCocartesianCodistributivityExpandingUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCocartesianCodistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCocartesianCodistributivityExpandingUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddLeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects by calling LeftCocartesianCodistributivityExpandingUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ LeftCocartesianCodistributivityExpandingUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, a, L, M, r )
+    
+    return LeftCocartesianCodistributivityExpandingUsingMultiplicities( cat, a, L, M );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( LeftCocartesianCodistributivityExpandingUsingMultiplicities,
+                    "LeftCocartesianCodistributivityExpandingUsingMultiplicities by calling LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ TensorProductOnObjects, 3 ],
+                        [ DirectSum, 2 ],
+                    ],
+  function( cat, a, L, M )
+    
+    return LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects( cat, TensorProductOnObjects( cat, a, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ) ), a, L, M, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, a, summand ) ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## LeftCocartesianCodistributivityExpandingWithGivenObjects
 InstallMethod( AddLeftCocartesianCodistributivityExpandingWithGivenObjects,
                [ IsCapCategory, IsFunction ],
@@ -103,6 +177,80 @@ InstallMethod( AddLeftCocartesianCodistributivityFactoring,
         end
     )
 );
+
+## LeftCocartesianCodistributivityFactoringUsingMultiplicities
+InstallMethod( AddLeftCocartesianCodistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCocartesianCodistributivityFactoringUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCocartesianCodistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCocartesianCodistributivityFactoringUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddLeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects by calling LeftCocartesianCodistributivityFactoringUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ LeftCocartesianCodistributivityFactoringUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, a, L, M, r )
+    
+    return LeftCocartesianCodistributivityFactoringUsingMultiplicities( cat, a, L, M );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( LeftCocartesianCodistributivityFactoringUsingMultiplicities,
+                    "LeftCocartesianCodistributivityFactoringUsingMultiplicities by calling LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ DirectSum, 2 ],
+                        [ TensorProductOnObjects, 3 ],
+                    ],
+  function( cat, a, L, M )
+    
+    return LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects( cat, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, a, summand ) ) ), a, L, M, TensorProductOnObjects( cat, a, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ) ) );
+    
+end : is_with_given_derivation := true );
 
 ## LeftCocartesianCodistributivityFactoringWithGivenObjects
 InstallMethod( AddLeftCocartesianCodistributivityFactoringWithGivenObjects,
@@ -178,6 +326,80 @@ InstallMethod( AddRightCocartesianCodistributivityExpanding,
     )
 );
 
+## RightCocartesianCodistributivityExpandingUsingMultiplicities
+InstallMethod( AddRightCocartesianCodistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCocartesianCodistributivityExpandingUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCocartesianCodistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCocartesianCodistributivityExpandingUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddRightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects by calling RightCocartesianCodistributivityExpandingUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ RightCocartesianCodistributivityExpandingUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, L, M, a, r )
+    
+    return RightCocartesianCodistributivityExpandingUsingMultiplicities( cat, L, M, a );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( RightCocartesianCodistributivityExpandingUsingMultiplicities,
+                    "RightCocartesianCodistributivityExpandingUsingMultiplicities by calling RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ TensorProductOnObjects, 3 ],
+                        [ DirectSum, 2 ],
+                    ],
+  function( cat, L, M, a )
+    
+    return RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects( cat, TensorProductOnObjects( cat, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ), a ), L, M, a, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, summand, a ) ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## RightCocartesianCodistributivityExpandingWithGivenObjects
 InstallMethod( AddRightCocartesianCodistributivityExpandingWithGivenObjects,
                [ IsCapCategory, IsFunction ],
@@ -251,6 +473,80 @@ InstallMethod( AddRightCocartesianCodistributivityFactoring,
         end
     )
 );
+
+## RightCocartesianCodistributivityFactoringUsingMultiplicities
+InstallMethod( AddRightCocartesianCodistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCocartesianCodistributivityFactoringUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCocartesianCodistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCocartesianCodistributivityFactoringUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddRightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects by calling RightCocartesianCodistributivityFactoringUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ RightCocartesianCodistributivityFactoringUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, L, M, a, r )
+    
+    return RightCocartesianCodistributivityFactoringUsingMultiplicities( cat, L, M, a );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( RightCocartesianCodistributivityFactoringUsingMultiplicities,
+                    "RightCocartesianCodistributivityFactoringUsingMultiplicities by calling RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ DirectSum, 2 ],
+                        [ TensorProductOnObjects, 3 ],
+                    ],
+  function( cat, L, M, a )
+    
+    return RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects( cat, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, summand, a ) ) ), L, M, a, TensorProductOnObjects( cat, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ), a ) );
+    
+end : is_with_given_derivation := true );
 
 ## RightCocartesianCodistributivityFactoringWithGivenObjects
 InstallMethod( AddRightCocartesianCodistributivityFactoringWithGivenObjects,

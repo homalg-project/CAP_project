@@ -32,6 +32,44 @@ DeclareOperation( "AddLeftCartesianDistributivityExpanding",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCartesianDistributivityExpandingUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( a, L, M ) \mapsto \mathtt{LeftCartesianDistributivityExpandingUsingMultiplicities}(a, L, M)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCartesianDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCartesianDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, a, L, M, r ) \mapsto \mathtt{LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects}(s, a, L, M, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `LeftCartesianDistributivityExpandingWithGivenObjects`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
@@ -62,6 +100,44 @@ DeclareOperation( "AddLeftCartesianDistributivityFactoring",
 
 #! @Arguments C, F, weight
 DeclareOperation( "AddLeftCartesianDistributivityFactoring",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCartesianDistributivityFactoringUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( a, L, M ) \mapsto \mathtt{LeftCartesianDistributivityFactoringUsingMultiplicities}(a, L, M)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCartesianDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCartesianDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, a, L, M, r ) \mapsto \mathtt{LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects}(s, a, L, M, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 #! @EndGroup
 
@@ -108,6 +184,44 @@ DeclareOperation( "AddRightCartesianDistributivityExpanding",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `RightCartesianDistributivityExpandingUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( L, M, a ) \mapsto \mathtt{RightCartesianDistributivityExpandingUsingMultiplicities}(L, M, a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCartesianDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCartesianDistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, L, M, a, r ) \mapsto \mathtt{RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects}(s, L, M, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `RightCartesianDistributivityExpandingWithGivenObjects`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
@@ -138,6 +252,44 @@ DeclareOperation( "AddRightCartesianDistributivityFactoring",
 
 #! @Arguments C, F, weight
 DeclareOperation( "AddRightCartesianDistributivityFactoring",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightCartesianDistributivityFactoringUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( L, M, a ) \mapsto \mathtt{RightCartesianDistributivityFactoringUsingMultiplicities}(L, M, a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCartesianDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCartesianDistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, L, M, a, r ) \mapsto \mathtt{RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects}(s, L, M, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 #! @EndGroup
 

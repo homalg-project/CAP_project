@@ -30,6 +30,80 @@ InstallMethod( AddLeftCartesianDistributivityExpanding,
     )
 );
 
+## LeftCartesianDistributivityExpandingUsingMultiplicities
+InstallMethod( AddLeftCartesianDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCartesianDistributivityExpandingUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCartesianDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCartesianDistributivityExpandingUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddLeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects by calling LeftCartesianDistributivityExpandingUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ LeftCartesianDistributivityExpandingUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, a, L, M, r )
+    
+    return LeftCartesianDistributivityExpandingUsingMultiplicities( cat, a, L, M );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( LeftCartesianDistributivityExpandingUsingMultiplicities,
+                    "LeftCartesianDistributivityExpandingUsingMultiplicities by calling LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ TensorProductOnObjects, 3 ],
+                        [ DirectSum, 2 ],
+                    ],
+  function( cat, a, L, M )
+    
+    return LeftCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects( cat, TensorProductOnObjects( cat, a, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ) ), a, L, M, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, a, summand ) ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## LeftCartesianDistributivityExpandingWithGivenObjects
 InstallMethod( AddLeftCartesianDistributivityExpandingWithGivenObjects,
                [ IsCapCategory, IsFunction ],
@@ -103,6 +177,80 @@ InstallMethod( AddLeftCartesianDistributivityFactoring,
         end
     )
 );
+
+## LeftCartesianDistributivityFactoringUsingMultiplicities
+InstallMethod( AddLeftCartesianDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCartesianDistributivityFactoringUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCartesianDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCartesianDistributivityFactoringUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddLeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddLeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects by calling LeftCartesianDistributivityFactoringUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ LeftCartesianDistributivityFactoringUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, a, L, M, r )
+    
+    return LeftCartesianDistributivityFactoringUsingMultiplicities( cat, a, L, M );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( LeftCartesianDistributivityFactoringUsingMultiplicities,
+                    "LeftCartesianDistributivityFactoringUsingMultiplicities by calling LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ DirectSum, 2 ],
+                        [ TensorProductOnObjects, 3 ],
+                    ],
+  function( cat, a, L, M )
+    
+    return LeftCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects( cat, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, a, summand ) ) ), a, L, M, TensorProductOnObjects( cat, a, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ) ) );
+    
+end : is_with_given_derivation := true );
 
 ## LeftCartesianDistributivityFactoringWithGivenObjects
 InstallMethod( AddLeftCartesianDistributivityFactoringWithGivenObjects,
@@ -178,6 +326,80 @@ InstallMethod( AddRightCartesianDistributivityExpanding,
     )
 );
 
+## RightCartesianDistributivityExpandingUsingMultiplicities
+InstallMethod( AddRightCartesianDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCartesianDistributivityExpandingUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCartesianDistributivityExpandingUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCartesianDistributivityExpandingUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddRightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects,
+                    "RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects by calling RightCartesianDistributivityExpandingUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ RightCartesianDistributivityExpandingUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, L, M, a, r )
+    
+    return RightCartesianDistributivityExpandingUsingMultiplicities( cat, L, M, a );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( RightCartesianDistributivityExpandingUsingMultiplicities,
+                    "RightCartesianDistributivityExpandingUsingMultiplicities by calling RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ TensorProductOnObjects, 3 ],
+                        [ DirectSum, 2 ],
+                    ],
+  function( cat, L, M, a )
+    
+    return RightCartesianDistributivityExpandingUsingMultiplicitiesWithGivenObjects( cat, TensorProductOnObjects( cat, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ), a ), L, M, a, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, summand, a ) ) ) );
+    
+end : is_with_given_derivation := true );
+
 ## RightCartesianDistributivityExpandingWithGivenObjects
 InstallMethod( AddRightCartesianDistributivityExpandingWithGivenObjects,
                [ IsCapCategory, IsFunction ],
@@ -251,6 +473,80 @@ InstallMethod( AddRightCartesianDistributivityFactoring,
         end
     )
 );
+
+## RightCartesianDistributivityFactoringUsingMultiplicities
+InstallMethod( AddRightCartesianDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCartesianDistributivityFactoringUsingMultiplicities", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCartesianDistributivityFactoringUsingMultiplicities,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCartesianDistributivityFactoringUsingMultiplicities", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+## RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects
+InstallMethod( AddRightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    
+    AddCapOperation( "RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, -1 );
+    
+end );
+
+InstallMethod( AddRightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+               [ IsCapCategory, IsFunction, IsInt ],
+               
+    FunctionWithNamedArguments(
+        [
+            [ "IsPrecompiledDerivation", false ],
+        ],
+        function( CAP_NAMED_ARGUMENTS, category, func, weight )
+            
+            AddCapOperation( "RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects", category, func, weight : IsPrecompiledDerivation := CAP_NAMED_ARGUMENTS.IsPrecompiledDerivation );
+            
+        end
+    )
+);
+
+AddDerivationToCAP( RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects,
+                    "RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects by calling RightCartesianDistributivityFactoringUsingMultiplicities with the WithGiven argument(s) dropped",
+                    [
+                        [ RightCartesianDistributivityFactoringUsingMultiplicities, 1 ],
+                    ],
+  function( cat, s, L, M, a, r )
+    
+    return RightCartesianDistributivityFactoringUsingMultiplicities( cat, L, M, a );
+        
+end : is_with_given_derivation := true );
+
+AddDerivationToCAP( RightCartesianDistributivityFactoringUsingMultiplicities,
+                    "RightCartesianDistributivityFactoringUsingMultiplicities by calling RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects with the WithGiven object(s)",
+                    [
+                        [ RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects, 1 ],
+                        [ DirectSum, 2 ],
+                        [ TensorProductOnObjects, 3 ],
+                    ],
+  function( cat, L, M, a )
+    
+    return RightCartesianDistributivityFactoringUsingMultiplicitiesWithGivenObjects( cat, DirectSum( cat, List( Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ), summand -> TensorProductOnObjects( cat, summand, a ) ) ), L, M, a, TensorProductOnObjects( cat, DirectSum( cat, Concatenation( List( [ 1 .. Length( L ) ], i -> ListWithIdenticalEntries( M[i], L[i] ) ) ) ), a ) );
+    
+end : is_with_given_derivation := true );
 
 ## RightCartesianDistributivityFactoringWithGivenObjects
 InstallMethod( AddRightCartesianDistributivityFactoringWithGivenObjects,
