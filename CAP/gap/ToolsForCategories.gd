@@ -260,12 +260,25 @@ DeclareGlobalFunction( "CapJitTypedExpression" );
 DeclareGlobalFunction( "CapFixpoint" );
 
 #! @Description
-#!   Shorthand for `Iterated( Concatenation( [ <A>initial_value</A> ], <A>list</A> ), <A>func</A> )`.
+#!   This input is a homogeneous list of elements, i.e., having the same type,
+#!   a bivariate function <A>func</A>, and an object <A>initial_value</A>.
+#!   The type of the first argument of <A>func</A> must be equal to the type of <A>initial_value</A>.
+#!   The type of the second argument of <A>func</A> must be equal to the type of the entries of <A>list</A>.
+#!   The type of the output of <A>func</A> must be equal to the type of <A>initial_value</A>.
+#!   The installed method simply calls `Iterated( Concatenation( [ <A>initial_value</A> ], <A>list</A> ), <A>func</A> )`.
+#!   In particular, if <A>list</A> is empty, the output will be <A>initial_value</A>.
+#!   This allows for the implementation of compilable initialized for-loops in CAP.
 #! @Arguments list, func, initial_value
 DeclareOperation( "Iterated", [ IsList, IsFunction, IsObject ] );
 
 #! @Description
-#!   Shorthand for `Iterated( Concatenation( [ <A>initial_value</A> ], <A>list</A>, [ <A>terminal_value</A> ] ), <A>func</A> )`.
+#!   This input is a homogeneous list of elements, i.e., having the same type,
+#!   a bivariate function <A>func</A>, an object <A>initial_value</A>, and another object <A>terminal_entry</A>.
+#!   The type of the <A>terminal_entry</A> must be equal to the type of the entries of <A>list</A>.
+#!   The type of the first argument of <A>func</A> must be equal to the type of <A>initial_value</A>.
+#!   The type of the second argument of <A>func</A> must be equal to the type of the entries of <A>list</A>.
+#!   The type of the output of <A>func</A> must be equal to the type of <A>initial_value</A>.
+#!   The installed method simply calls `Iterated( Concatenation( [ <A>initial_value</A> ], <A>list</A>, [ <A>terminal_entry</A> ] ), <A>func</A> )`.
 #! @Arguments list, func, initial_value, terminal_value
 DeclareOperation( "Iterated", [ IsList, IsFunction, IsObject, IsObject ] );
 
