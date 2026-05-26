@@ -899,6 +899,249 @@ InstallMethod( NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms,
     
 end );
 
+## Suppose the source category has 3 objects A, B, C and Hom(A, B) has basis { f_1, f_2 },
+## then the caching records looks like this:
+##
+## values_on_objects =
+##   [ [ A, B, C ],
+##     [ F(A), F(B), F(C) ] ]
+##
+## bases_of_source_category =
+##   [ [ A, B, C ],                             ## [1]: list of encountered source objects S
+##     [ [ [ B, [ f_1, f_2 ] ], ... ],           ## [2][1]: for S=A, list of [ T, BasisOfExternalHom(A,T) ]
+##       [ ... ],                                 ## [2][2]: for S=B
+##       [ ... ] ] ]                              ## [2][3]: for S=C
+##
+## values_on_bases_elements =
+##   [ [ A, B, C ],                                          ## [1]: list of encountered source objects S
+##     [ [ [ B, LazyHList( [ f_1, f_2 ], b -> F(b) ) ], ... ], ## [2][1]: for S=A, list of [ T, lazy list of basis images ]
+##       [ ... ],                                             ## [2][2]: for S=B
+##       [ ... ] ] ]                                          ## [2][3]: for S=C
+##
+InstallMethodWithCache( AdditiveFunctorDataFromValuesOnBasisMorphisms,
+        [ IsCapCategory, IsCapCategory, IsFunction, IsFunction ],
+
+  FunctionWithNamedArguments(
+    [
+      [ "is_full", false ],
+      [ "known_values_on_objects", fail ],
+    ],
+    function( CAP_NAMED_ARGUMENTS, source_cat, target_cat, F_o, F_m )
+    local values_on_objects, values_on_bases_elements, bases_of_source_category,
+      cached_position, cached_target_position, ensure_source_cache_entry,
+      ensure_target_cache_entry, cached_F_o, cached_F_m, data, preimage_data,
+      preimage_object_function, preimage_morphism_function,
+      range_cat_of_HomStructure, distinguished_obj, data_rec;
+    
+    if not IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms( source_cat ) then
+      Error( "the source category must be linear over a commutative ring and have finitely generated free external homs!\n" );
+    fi;
+
+    if not ( ForAll( [ source_cat, target_cat ], IsLinearCategoryOverCommutativeRing )
+              and IsIdenticalObj( CommutativeSemiringOfLinearCategory( source_cat ), CommutativeSemiringOfLinearCategory( target_cat ) ) ) then
+      Error( "the source and target categories must be linear over the same commutative ring!\n" );
+    fi;
+    
+    values_on_objects := CAP_NAMED_ARGUMENTS.known_values_on_objects;
+    
+    if values_on_objects = fail then
+      values_on_objects := [[],[]];
+    fi;
+    
+    values_on_bases_elements := [[],[]];
+    bases_of_source_category := [[],[]];
+    
+    cached_position :=
+      function( list, object )
+        return PositionProperty( list, x -> IsIdenticalObj( x, object ) or IsEqualForObjects( x, object ) );
+    end;
+    
+    cached_target_position :=
+      function( list, object )
+        return PositionProperty( list, x -> IsIdenticalObj( x[1], object ) or IsEqualForObjects( x[1], object ) );
+    end;
+    
+    ensure_source_cache_entry :=
+      function( S )
+        local index_S;
+        
+        index_S := cached_position( values_on_bases_elements[1], S );
+        
+        if index_S = fail then
+          Add( bases_of_source_category[1], S );
+          Add( bases_of_source_category[2], [] );
+          
+          Add( values_on_bases_elements[1], S );
+          Add( values_on_bases_elements[2], [] );
+          
+          index_S := Length( values_on_bases_elements[1] );
+        fi;
+        
+        return index_S;
+    end;
+    
+    ensure_target_cache_entry :=
+      function( index_S, S, T )
+        local index_T, basis_of_hom;
+        
+        index_T := cached_target_position( values_on_bases_elements[2][index_S], T );
+        
+        if index_T = fail then
+          basis_of_hom := BasisOfExternalHom( source_cat, S, T );
+          
+          Add( bases_of_source_category[2][index_S], [ T, basis_of_hom ] );
+          Add( values_on_bases_elements[2][index_S], [
+            T,
+            LazyHList( basis_of_hom,
+              b -> F_m( cached_F_o( S ), b, cached_F_o( T ) ) ) ] );
+          
+          index_T := Length( values_on_bases_elements[2][index_S] );
+        fi;
+        
+        return index_T;
+    end;
+    
+    cached_F_o :=
+      function( o )
+        local p;
+        
+        p := cached_position( values_on_objects[1], o );
+        
+        if p = fail then
+          
+          Add( values_on_objects[1], o );
+          
+          Add( values_on_objects[2], F_o( o ) );
+          
+          p := Length( values_on_objects[2] );
+          
+        fi;
+        
+        return values_on_objects[2][p];
+        
+    end;
+    
+    cached_F_m :=
+      function( F_S, phi, F_T )
+        local S, T, index_S, index_T, coeffs, positions;
+        
+        S := Source( phi );
+        T := Target( phi );
+        
+        coeffs := CoefficientsOfMorphism( source_cat, phi );
+        
+        positions := PositionsProperty( coeffs, c -> not IsZero( c ) );
+
+        index_S := ensure_source_cache_entry( S );
+        index_T := ensure_target_cache_entry( index_S, S, T );
+
+        return LinearCombinationOfMorphisms(
+          target_cat,
+          F_S,
+          List( positions, p -> coeffs[ p ] ),
+          List( positions, p -> values_on_bases_elements[2][index_S][index_T][2][p] ),
+          F_T );
+    
+    end;
+    
+    data := [ cached_F_o, cached_F_m ];
+    
+    if CAP_NAMED_ARGUMENTS.is_full then
+      
+      range_cat_of_HomStructure := RangeCategoryOfHomomorphismStructure( target_cat );
+      distinguished_obj := DistinguishedObjectOfHomomorphismStructure( range_cat_of_HomStructure );
+      
+      preimage_object_function :=
+        function( o )
+          local p;
+          
+          p := cached_position( values_on_objects[2], o );
+          
+          if p = fail then
+            Error( "please make sure you applied the 'full' functor on all relevant objects in the source category!\n" );
+          fi;
+          
+          return values_on_objects[1][p];
+          
+      end;
+      
+      preimage_data := [[],[]];
+      
+      preimage_morphism_function :=
+        function( S, phi, T )
+          local index_S, index_T, num_new_entries, basis_values, Hom_ST, tau, u, coeffs;
+          
+          index_S := ensure_source_cache_entry( S );
+
+          num_new_entries := index_S - Length( preimage_data[1] );
+          if num_new_entries > 0 then
+            Append( preimage_data[1], ListWithIdenticalEntries( num_new_entries, fail ) );
+          fi;
+
+          num_new_entries := index_S - Length( preimage_data[2] );
+          if num_new_entries > 0 then
+            Append( preimage_data[2], ListWithIdenticalEntries( num_new_entries, fail ) );
+          fi;
+
+          if preimage_data[1][index_S] = fail then
+            preimage_data[1][index_S] := S;
+            preimage_data[2][index_S] := [];
+          fi;
+
+          index_T := ensure_target_cache_entry( index_S, S, T );
+
+          num_new_entries := index_T - Length( preimage_data[2][index_S] );
+          if num_new_entries > 0 then
+            Append( preimage_data[2][index_S], ListWithIdenticalEntries( num_new_entries, fail ) );
+          fi;
+
+          if preimage_data[2][index_S][index_T] = fail then
+            basis_values := values_on_bases_elements[2][index_S][index_T][2];
+            
+            Hom_ST := HomomorphismStructureOnObjects( target_cat, Source( phi ), Target( phi ) );
+            
+            tau := List( ListOfValues( basis_values ), m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( target_cat, distinguished_obj, m, Hom_ST ) );
+            
+            u := UniversalMorphismFromDirectSum( range_cat_of_HomStructure, ListWithIdenticalEntries( Length( tau ), distinguished_obj ), Hom_ST, tau );
+            
+            u := PreInverseForMorphisms( range_cat_of_HomStructure, u );
+            
+            preimage_data[2][index_S][index_T] := [ T, u, Hom_ST ];
+            
+          fi;
+          
+          Hom_ST := preimage_data[2][index_S][index_T][3];
+          
+          coeffs := PreCompose( range_cat_of_HomStructure,
+                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( target_cat, distinguished_obj, phi, Hom_ST ),
+                      preimage_data[2][index_S][index_T][2] );
+          
+          coeffs := CoefficientsOfMorphism( range_cat_of_HomStructure, coeffs );
+          
+          return LinearCombinationOfMorphisms( source_cat, S, coeffs , bases_of_source_category[2][index_S][index_T][2], T );
+          
+        end;
+        
+        Add( data, preimage_object_function );
+        Add( data, preimage_morphism_function );
+        
+    fi;
+    
+    data_rec := rec(
+        values_on_objects := values_on_objects,
+        bases_of_source_category := bases_of_source_category,
+        values_on_bases_elements := values_on_bases_elements
+    );
+    
+    if CAP_NAMED_ARGUMENTS.is_full then
+      data_rec.preimage_data := preimage_data;
+    fi;
+    
+    return Concatenation( data, [ data_rec ] );
+    
+  end )
+);
+
 ###################################
 ##
 ## Natural transformations
