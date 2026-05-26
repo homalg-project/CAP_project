@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2026.05-06
+                                   2026.05-07
   
   
-                                  20 May 2026
+                                  26 May 2026
   
   
                                Sebastian Gutsche
@@ -399,6 +399,7 @@
       5.4-14 NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects
       5.4-15 FunctorCanonicalizeZeroMorphisms
       5.4-16 NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms
+      5.4-17 AdditiveFunctorDataFromValuesOnBasisMorphisms
     5.5 [33X[0;0YNatural transformations[133X
       5.5-1 Name
       5.5-2 NaturalTransformation

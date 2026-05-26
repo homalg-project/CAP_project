@@ -256,6 +256,31 @@
   [33X[0;0YReturns   the   natural   isomorphism   from   the   identity   functor   to
   [10XFunctorCanonicalizeZeroMorphisms[110X([3Xcat[103X).[133X
   
+  [1X5.4-17 AdditiveFunctorDataFromValuesOnBasisMorphisms[101X
+  
+  [33X[1;0Y[29X[2XAdditiveFunctorDataFromValuesOnBasisMorphisms[102X( [3Xsource[103X, [3Xrange[103X, [3XF_o[103X, [3XF_m[103X[, [3Xoptions[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya  list  consisting of two or four functions together with a final
+            record storing cache data[133X
+  
+  [33X[0;0YThe  arguments  are  two  linear  categories  [3Xsource[103X and [3Xrange[103X over the same
+  commutative ring, together with a function [3XF_o[103X on objects and a function [3XF_m[103X
+  on  basis  morphisms.  The  operation  returns the data needed to define the
+  additive  functor  determined  by  these  values,  extending  [3XF_m[103X from basis
+  morphisms to arbitrary morphisms by linearity.[133X
+  
+  [33X[0;0YThe result is a list whose first two entries are the induced object function
+  and  morphism  function.  These functions cache values on objects and lazily
+  cache values on basis morphisms via [10XLazyHList[110X.[133X
+  
+  [33X[0;0YTwo  options  can  be passed. The option [10Xknown_values_on_objects[110X initializes
+  the  object cache with a pair of parallel lists. The option [10Xis_full[110X controls
+  whether  two  additional  entries are returned, namely preimage functions on
+  objects and morphisms.[133X
+  
+  [33X[0;0YThe  last  entry  is  always a record containing the internal cache data. If
+  [10Xis_full  := true[110X, this record also contains the cached data for the preimage
+  functions.[133X
+  
   
   [1X5.5 [33X[0;0YNatural transformations[133X[101X
   

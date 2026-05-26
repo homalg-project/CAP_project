@@ -62,6 +62,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7EF63850830B8064">5.4-14 NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7AA6B22B7BF73AAE">5.4-15 FunctorCanonicalizeZeroMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X8223CAD483193F52">5.4-16 NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7B1F47537A0EEB93">5.4-17 AdditiveFunctorDataFromValuesOnBasisMorphisms</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X836749D8814FEEE6">5.5 <span class="Heading">Natural transformations</span></a>
 </span>
@@ -290,6 +291,21 @@
 <p>Returns: a natural transformation</p>
 
 <p>Returns the natural isomorphism from the identity functor to <code class="code">FunctorCanonicalizeZeroMorphisms</code>(<var class="Arg">cat</var>).</p>
+
+<p><a id="X7B1F47537A0EEB93" name="X7B1F47537A0EEB93"></a></p>
+
+<h5>5.4-17 AdditiveFunctorDataFromValuesOnBasisMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveFunctorDataFromValuesOnBasisMorphisms</code>( <var class="Arg">source</var>, <var class="Arg">range</var>, <var class="Arg">F_o</var>, <var class="Arg">F_m</var>[, <var class="Arg">options</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list consisting of two or four functions together with a final record storing cache data</p>
+
+<p>The arguments are two linear categories <var class="Arg">source</var> and <var class="Arg">range</var> over the same commutative ring, together with a function <var class="Arg">F_o</var> on objects and a function <var class="Arg">F_m</var> on basis morphisms. The operation returns the data needed to define the additive functor determined by these values, extending <var class="Arg">F_m</var> from basis morphisms to arbitrary morphisms by linearity.</p>
+
+<p>The result is a list whose first two entries are the induced object function and morphism function. These functions cache values on objects and lazily cache values on basis morphisms via <code class="code">LazyHList</code>.</p>
+
+<p>Two options can be passed. The option <code class="code">known_values_on_objects</code> initializes the object cache with a pair of parallel lists. The option <code class="code">is_full</code> controls whether two additional entries are returned, namely preimage functions on objects and morphisms.</p>
+
+<p>The last entry is always a record containing the internal cache data. If <code class="code">is_full := true</code>, this record also contains the cached data for the preimage functions.</p>
 
 <p><a id="X836749D8814FEEE6" name="X836749D8814FEEE6"></a></p>
 
