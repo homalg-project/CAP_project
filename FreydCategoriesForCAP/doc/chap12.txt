@@ -316,6 +316,46 @@
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( Opposite( gamma ),[127X[104X
     [4X[25X>[125X [27XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xrows_QQ := CategoryOfRows( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27Xfreyd_QQ := FreydCategory( rows_QQ );;[127X[104X
+    [4X[25Xgap>[125X [27XF_o := obj -> CokernelObject( RelationMorphism( obj ) );;[127X[104X
+    [4X[25Xgap>[125X [27XF_m := { S, m, T } -> CokernelColift( rows_QQ, RelationMorphism( Source( m ) ), PreCompose( UnderlyingMorphism( m ), CokernelProjection( rows_QQ, RelationMorphism( Target( m ) ) ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xdata := AdditiveFunctorDataFromValuesOnBasisMorphisms( freyd_QQ, rows_QQ, F_o, F_m : is_full := true );;[127X[104X
+    [4X[25Xgap>[125X [27Xobj1 := HomalgMatrix( [ [ -180, 240, 100, 20, 90, -240, -10, 60, 30, 180 ], [ 300, -15, -20, 40, -30, -120, -60, -12, -180, 0 ] ], 2, 10, QQ ) / rows_QQ / freyd_QQ;;[127X[104X
+    [4X[25Xgap>[125X [27Xobj2 := HomalgZeroMatrix( 0, 4, QQ ) / rows_QQ / freyd_QQ;;[127X[104X
+    [4X[25Xgap>[125X [27Xm := FreydCategoryMorphism([127X[104X
+    [4X[25X>[125X [27X        obj1,[127X[104X
+    [4X[25X>[125X [27X        HomalgMatrix([127X[104X
+    [4X[25X>[125X [27X            [   [ 10328, -2748, -1803, -49840 ],[127X[104X
+    [4X[25X>[125X [27X                [ 62416, -88224, -85956, -183680 ],[127X[104X
+    [4X[25X>[125X [27X                [ 13860, 27720, 27720, -27720 ],[127X[104X
+    [4X[25X>[125X [27X                [ 0, 55440, 0, -27720 ],[127X[104X
+    [4X[25X>[125X [27X                [ -83160, 27720, 9240, 0 ],[127X[104X
+    [4X[25X>[125X [27X                [ 18480, -27720, 0, -97020 ],[127X[104X
+    [4X[25X>[125X [27X                [ 9240, 83160, -6930, -18480 ],[127X[104X
+    [4X[25X>[125X [27X                [ -4620, -110880, 27720, 0 ],[127X[104X
+    [4X[25X>[125X [27X                [ 9240, 5544, 0, 0 ],[127X[104X
+    [4X[25X>[125X [27X                [ -13860, 83160, 83160, 83160 ] ],[127X[104X
+    [4X[25X>[125X [27X            10, 4,[127X[104X
+    [4X[25X>[125X [27X            QQ ) / rows_QQ,[127X[104X
+    [4X[25X>[125X [27X        obj2 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( m );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Ximage_m := F_m( F_o( Source( m ) ), m, F_o( Target( m ) ) );[127X[104X
+    [4X[28X<A morphism in Rows( Q )>[128X[104X
+    [4X[25Xgap>[125X [27XRankOfObject( Source( image_m ) );[127X[104X
+    [4X[28X8[128X[104X
+    [4X[25Xgap>[125X [27XRankOfObject( Target( image_m ) );[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27Ximage_m = data[2]( data[1]( Source( m ) ), m, data[1]( Target( m ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdata[3]( data[1]( Source( m ) ) ) = Source( m );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdata[3]( data[1]( Target( m ) ) ) = Target( m );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdata[4]( Source( m ), image_m, Target( m ) ) = m;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   

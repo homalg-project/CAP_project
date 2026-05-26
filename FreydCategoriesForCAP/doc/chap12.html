@@ -394,6 +394,46 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( Opposite( gamma ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows_QQ := CategoryOfRows( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">freyd_QQ := FreydCategory( rows_QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_o := obj -&gt; CokernelObject( RelationMorphism( obj ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F_m := { S, m, T } -&gt; CokernelColift( rows_QQ, RelationMorphism( Source( m ) ), PreCompose( UnderlyingMorphism( m ), CokernelProjection( rows_QQ, RelationMorphism( Target( m ) ) ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data := AdditiveFunctorDataFromValuesOnBasisMorphisms( freyd_QQ, rows_QQ, F_o, F_m : is_full := true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := HomalgMatrix( [ [ -180, 240, 100, 20, 90, -240, -10, 60, 30, 180 ], [ 300, -15, -20, 40, -30, -120, -60, -12, -180, 0 ] ], 2, 10, QQ ) / rows_QQ / freyd_QQ;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := HomalgZeroMatrix( 0, 4, QQ ) / rows_QQ / freyd_QQ;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FreydCategoryMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        obj1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        HomalgMatrix(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            [   [ 10328, -2748, -1803, -49840 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ 62416, -88224, -85956, -183680 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ 13860, 27720, 27720, -27720 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ 0, 55440, 0, -27720 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ -83160, 27720, 9240, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ 18480, -27720, 0, -97020 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ 9240, 83160, -6930, -18480 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ -4620, -110880, 27720, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ 9240, 5544, 0, 0 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                [ -13860, 83160, 83160, 83160 ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            10, 4,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            QQ ) / rows_QQ,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        obj2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZeroForMorphisms( m );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">image_m := F_m( F_o( Source( m ) ), m, F_o( Target( m ) ) );</span>
+&lt;A morphism in Rows( Q )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Source( image_m ) );</span>
+8
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Target( image_m ) );</span>
+4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">image_m = data[2]( data[1]( Source( m ) ), m, data[1]( Target( m ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data[3]( data[1]( Source( m ) ) ) = Source( m );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data[3]( data[1]( Target( m ) ) ) = Target( m );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">data[4]( Source( m ), image_m, Target( m ) ) = m;</span>
+true
 </pre></div>
 
 <p><a id="X7C2B2E197863A2B5" name="X7C2B2E197863A2B5"></a></p>
