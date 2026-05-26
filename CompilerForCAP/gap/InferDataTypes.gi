@@ -1483,11 +1483,11 @@ end );
 
 CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject ], function ( args, func_stack )
     
-    Assert( 0, args.1.data_type.element_type = args.3.data_type );
+    ## the type of the elements of the list might differ from the type of the initial value (third argument)
     
     args := ShallowCopy( args );
     
-    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type, args.1.data_type.element_type ], func_stack );
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.3.data_type, args.1.data_type.element_type ], func_stack );
     
     if args.2 = fail then
         
@@ -1502,12 +1502,13 @@ end );
 
 CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject, IsObject ], function ( args, func_stack )
     
-    Assert( 0, args.1.data_type.element_type = args.3.data_type );
+    ## the type of the elements of the list might differ from the type of the initial value (third argument)
+    
     Assert( 0, args.1.data_type.element_type = args.4.data_type );
     
     args := ShallowCopy( args );
     
-    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type, args.1.data_type.element_type ], func_stack );
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.3.data_type, args.1.data_type.element_type ], func_stack );
     
     if args.2 = fail then
         
