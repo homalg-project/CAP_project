@@ -328,15 +328,29 @@
   
   [33X[1;0Y[29X[2XIterated[102X( [3Xlist[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X operation[133X
   
-  [33X[0;0YShorthand for [10XIterated( Concatenation( [ <A>initial_value</A> ], <A>list</A>
-  ), <A>func</A> )[110X.[133X
+  [33X[0;0YThis  input is a homogeneous list of elements, i.e., having the same type, a
+  bivariate  function [3Xfunc[103X, and an object [3Xinitial_value[103X. The type of the first
+  argument of [3Xfunc[103X must be equal to the type of [3Xinitial_value[103X. The type of the
+  second  argument  of  [3Xfunc[103X must be equal to the type of the entries of [3Xlist[103X.
+  The  type  of the output of [3Xfunc[103X must be equal to the type of [3Xinitial_value[103X.
+  The    installed    method   simply   calls   [10XIterated(   Concatenation(   [
+  <A>initial_value</A> ], <A>list</A> ), <A>func</A> )[110X. In particular, if [3Xlist[103X
+  is   empty,   the   output  will  be  [3Xinitial_value[103X.  This  allows  for  the
+  implementation of compilable initialized for-loops in CAP.[133X
   
   [1X9.2-31 Iterated[101X
   
   [33X[1;0Y[29X[2XIterated[102X( [3Xlist[103X, [3Xfunc[103X, [3Xinitial_value[103X, [3Xterminal_value[103X ) [32X operation[133X
   
-  [33X[0;0YShorthand   for   [10XIterated(   Concatenation(   [   <A>initial_value</A>   ],
-  <A>list</A>, [ <A>terminal_value</A> ] ), <A>func</A> )[110X.[133X
+  [33X[0;0YThis  input is a homogeneous list of elements, i.e., having the same type, a
+  bivariate  function  [3Xfunc[103X,  an  object  [3Xinitial_value[103X,  and  another  object
+  [3Xterminal_entry[103X.  The type of the [3Xterminal_entry[103X must be equal to the type of
+  the entries of [3Xlist[103X. The type of the first argument of [3Xfunc[103X must be equal to
+  the  type  of [3Xinitial_value[103X. The type of the second argument of [3Xfunc[103X must be
+  equal  to  the  type  of the entries of [3Xlist[103X. The type of the output of [3Xfunc[103X
+  must  be  equal  to  the  type of [3Xinitial_value[103X. The installed method simply
+  calls  [10XIterated(  Concatenation(  [  <A>initial_value</A>  ], <A>list</A>, [
+  <A>terminal_entry</A> ] ), <A>func</A> )[110X.[133X
   
   [1X9.2-32 TransitivelyNeededOtherPackages[101X
   
