@@ -224,4 +224,45 @@ interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphi
 IsCongruentForMorphisms( Opposite( gamma ),
 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );
 #! true
+
+QQ := HomalgFieldOfRationals( );;
+rows_QQ := CategoryOfRows( QQ );;
+freyd_QQ := FreydCategory( rows_QQ );;
+F_o := obj -> CokernelObject( RelationMorphism( obj ) );;
+F_m := { S, m, T } -> CokernelColift( rows_QQ, RelationMorphism( Source( m ) ), PreCompose( UnderlyingMorphism( m ), CokernelProjection( rows_QQ, RelationMorphism( Target( m ) ) ) ) );;
+data := AdditiveFunctorDataFromValuesOnBasisMorphisms( freyd_QQ, rows_QQ, F_o, F_m : is_full := true );;
+obj1 := HomalgMatrix( [ [ -180, 240, 100, 20, 90, -240, -10, 60, 30, 180 ], [ 300, -15, -20, 40, -30, -120, -60, -12, -180, 0 ] ], 2, 10, QQ ) / rows_QQ / freyd_QQ;;
+obj2 := HomalgZeroMatrix( 0, 4, QQ ) / rows_QQ / freyd_QQ;;
+m := FreydCategoryMorphism(
+        obj1,
+        HomalgMatrix(
+            [   [ 10328, -2748, -1803, -49840 ],
+                [ 62416, -88224, -85956, -183680 ],
+                [ 13860, 27720, 27720, -27720 ],
+                [ 0, 55440, 0, -27720 ],
+                [ -83160, 27720, 9240, 0 ],
+                [ 18480, -27720, 0, -97020 ],
+                [ 9240, 83160, -6930, -18480 ],
+                [ -4620, -110880, 27720, 0 ],
+                [ 9240, 5544, 0, 0 ],
+                [ -13860, 83160, 83160, 83160 ] ],
+            10, 4,
+            QQ ) / rows_QQ,
+        obj2 );;
+IsZeroForMorphisms( m );
+#! false
+image_m := F_m( F_o( Source( m ) ), m, F_o( Target( m ) ) );
+#! <A morphism in Rows( Q )>
+RankOfObject( Source( image_m ) );
+#! 8
+RankOfObject( Target( image_m ) );
+#! 4
+image_m = data[2]( data[1]( Source( m ) ), m, data[1]( Target( m ) ) );
+#! true
+data[3]( data[1]( Source( m ) ) ) = Source( m );
+#! true
+data[3]( data[1]( Target( m ) ) ) = Target( m );
+#! true
+data[4]( Source( m ), image_m, Target( m ) ) = m;
+#! true
 #! @EndExample

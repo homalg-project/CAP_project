@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
-Version := "2026.04-01",
+Version := "2026.05-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -101,7 +101,7 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.13.0",
-  NeededOtherPackages := [ [ "CAP", ">= 2026.04-01" ],
+  NeededOtherPackages := [ [ "CAP", ">= 2026.05-07" ],
                            [ "MatricesForHomalg", ">= 2026.04-01" ],
                            [ "GradedRingForHomalg", ">= 2026.04-01" ],
                            [ "AdditiveClosuresForCAP", ">= 2026.04-01" ],

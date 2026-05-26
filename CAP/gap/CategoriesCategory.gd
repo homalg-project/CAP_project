@@ -359,6 +359,25 @@ DeclareAttribute( "FunctorCanonicalizeZeroMorphisms",
 DeclareAttribute( "NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms",
                   IsCapCategory );
 
+#! @Description
+#! The arguments are two linear categories <A>source</A> and <A>range</A> over the same commutative ring,
+#! together with a function <A>F_o</A> on objects and a function <A>F_m</A> on basis morphisms.
+#! The operation returns the data needed to define the additive functor determined by these values,
+#! extending <A>F_m</A> from basis morphisms to arbitrary morphisms by linearity.
+#!
+#! The result is a list whose first two entries are the induced object function and morphism function.
+#! These functions cache values on objects and lazily cache values on basis morphisms via <C>LazyHList</C>.
+#!
+#! Two options can be passed. The option <C>known_values_on_objects</C> initializes the object cache with a pair of parallel lists.
+#! The option <C>is_full</C> controls whether two additional entries are returned, namely preimage
+#! functions on objects and morphisms.
+#!
+#! The last entry is always a record containing the internal cache data. If <C>is_full := true</C>,
+#! this record also contains the cached data for the preimage functions.
+#! @Arguments source, range, F_o, F_m[, options]
+#! @Returns a list consisting of two or four functions together with a final record storing cache data
+DeclareOperation( "AdditiveFunctorDataFromValuesOnBasisMorphisms",
+                  [ IsCapCategory, IsCapCategory, IsFunction, IsFunction ] );
 
 ####################################
 ##
