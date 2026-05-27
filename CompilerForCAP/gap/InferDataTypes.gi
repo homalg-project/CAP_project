@@ -904,6 +904,18 @@ CapJitAddTypeSignature( "OneImmutable", [ IsIntegers ], IsInt );
 CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) );
+#= comment for Julia
+CapJitAddTypeSignature( "InverseImmutable", [ IsMultiplicativeElementWithInverse ], function ( input_types )
+    
+    return input_types[1];
+    
+end );
+CapJitAddTypeSignature( "RightTransversal", [ IsGroup, IsGroup ], function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfGroup( input_types[1].group ) );
+    
+end );
+# =#
 CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
 
 CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], function ( input_types )
@@ -1522,6 +1534,12 @@ CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject, IsObject ], 
 end );
 
 #= comment for Julia
+CapJitAddTypeSignature( "OneImmutable", [ IsGroup ], function ( input_types )
+    
+    return CapJitDataTypeOfElementOfGroup( input_types[1].group );
+    
+end );
+
 CapJitAddTypeSignature( "ConjugateSubgroup", [ IsGroup, IsMultiplicativeElementWithInverse ], function ( input_types )
     
     Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
@@ -1541,6 +1559,66 @@ CapJitAddTypeSignature( "IsSubset", [ IsGroup, IsGroup ], function ( input_types
     Assert( 0, IsIdenticalObj( input_types[1].group, input_types[2].group ) );
     
     return rec( filter := IsBool );
+    
+end );
+
+CapJitAddTypeSignature( "GeneratorsOfMagmaWithInverses", [ IsGroup ], function ( input_types )
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfGroup( input_types[1].group ) );
+    
+end );
+
+CapJitAddTypeSignature( "SubmagmaWithInverses", [ IsGroup, IsList ], function ( input_types )
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
+    
+    return CapJitDataTypeOfSubgroup( input_types[1].group );
+    
+end );
+
+CapJitAddTypeSignature( "Index", [ IsGroup, IsGroup ], function ( input_types )
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[2].filter ) );
+    
+    Assert( 0, IsIdenticalObj( input_types[1].group, input_types[2].group ) );
+    
+    return rec( filter := IsBigInt );
+    
+end );
+
+CapJitAddTypeSignature( "IsConjugate", [ IsGroup, IsGroup, IsGroup ], function ( input_types )
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[2].filter ) );
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[3].filter ) );
+    
+    Assert( 0, IsIdenticalObj( input_types[1].group, input_types[2].group ) );
+    
+    Assert( 0, IsIdenticalObj( input_types[1].group, input_types[3].group ) );
+    
+    return rec( filter := IsBool );
+    
+end );
+
+CapJitAddTypeSignature( "RepresentativeAction", [ IsGroup, IsGroup, IsGroup ], function ( input_types )
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[1].filter ) );
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[2].filter ) );
+    
+    Assert( 0, IsSpecializationOfFilter( IsGroup, input_types[3].filter ) );
+    
+    Assert( 0, IsIdenticalObj( input_types[1].group, input_types[2].group ) );
+    
+    Assert( 0, IsIdenticalObj( input_types[1].group, input_types[3].group ) );
+    
+    return CapJitDataTypeOfElementOfGroup( input_types[1].group );
     
 end );
 # =#
