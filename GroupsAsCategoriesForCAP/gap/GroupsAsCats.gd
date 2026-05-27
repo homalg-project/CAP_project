@@ -93,7 +93,13 @@ DeclareAttribute( "PositionWithinElements",
 DeclareOperation( "MultiplyGroupElements",
                   [ IsMultiplicativeElementWithInverse, IsMultiplicativeElementWithInverse ] );
 
-CapJitAddTypeSignature( "MultiplyGroupElements", [ IsMultiplicativeElementWithInverse, IsMultiplicativeElementWithInverse ], IsMultiplicativeElementWithInverse );
+CapJitAddTypeSignature( "MultiplyGroupElements", [ IsMultiplicativeElementWithInverse, IsMultiplicativeElementWithInverse ], function ( input_types )
+    
+    Assert( 0, input_types[1] = input_types[2] );
+    
+    return input_types[1];
+    
+end );
 
 ##
 DeclareOperation( "*",

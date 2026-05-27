@@ -15,11 +15,7 @@
 InstallMethod( MultiplyGroupElements,
         [ IsMultiplicativeElementWithInverse, IsMultiplicativeElementWithInverse ],
         
-  function ( g, h )
-    
-    return g * h;
-    
-end );
+  \* );
 
 ##
 InstallMethod( GROUP_AS_CATEGORY,
