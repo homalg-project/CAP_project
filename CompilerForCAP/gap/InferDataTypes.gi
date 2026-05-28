@@ -910,11 +910,6 @@ CapJitAddTypeSignature( "InverseImmutable", [ IsMultiplicativeElementWithInverse
     return input_types[1];
     
 end );
-CapJitAddTypeSignature( "RightTransversal", [ IsGroup, IsGroup ], function ( input_types )
-    
-    return CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfGroup( input_types[1].group ) );
-    
-end );
 # =#
 CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
 
@@ -1587,6 +1582,12 @@ CapJitAddTypeSignature( "Index", [ IsGroup, IsGroup ], function ( input_types )
     Assert( 0, IsIdenticalObj( input_types[1].group, input_types[2].group ) );
     
     return rec( filter := IsBigInt );
+    
+end );
+
+CapJitAddTypeSignature( "RightTransversal", [ IsGroup, IsGroup ], function ( input_types )
+    
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfGroup( input_types[1].group ) );
     
 end );
 
