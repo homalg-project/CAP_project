@@ -76,5 +76,26 @@ end
 gap> CapJitIsEqualForEnhancedSyntaxTrees( tree, ENHANCED_SYNTAX_TREE( func2 ) );
 true
 
+# CapJitTypedExpression for groups
+gap> S3 := SymmetricGroup( 3 );; StructureDescription( S3 );; S3;
+S3
+gap> U := Subgroup( S3, [ (1,2) ] );;
+gap> type_group := CapJitDataTypeOfGroup( S3 );
+rec( filter := <Filter "(IsMagmaWithInverses and IsAssociative)">, group := S3 )
+gap> type_group_element := CapJitDataTypeOfElementOfGroup( S3 );
+rec( filter := <Category "IsMultiplicativeElementWithInverse">, group := S3 )
+gap> type_subgroup := CapJitDataTypeOfSubgroup( S3 );
+rec( filter := <Filter "((IsMagmaWithInverses and IsAssociative) and HasParentAttr)">, group := S3 )
+gap> CapJitCompiledFunction( g -> Inverse( g ), [ [ type_group_element ], type_group_element ] );;
+gap> CapJitCompiledFunction( G -> One( G ), [ [ type_group ], type_group_element ] );;
+gap> CapJitCompiledFunction( G -> Subgroup( G, [ One( G ) ] ), [ [ type_group ], type_subgroup ] );;
+gap> CapJitCompiledFunction( G -> GeneratorsOfGroup( G ), [ [ type_group ], CapJitDataTypeOfListOf( type_group_element ) ] );;
+gap> CapJitCompiledFunction( { G, U } -> Index( G, U ), [ [ type_group, type_subgroup ], rec( filter := IsInt ) ] );;
+gap> CapJitCompiledFunction( { G, U } -> RightTransversal( G, U ), [ [ type_group, type_subgroup ], CapJitDataTypeOfListOf( type_group_element ) ] );;
+gap> CapJitCompiledFunction( { U, g } -> ConjugateSubgroup( U, g ), [ [ type_subgroup, type_group_element ], type_subgroup ] );;
+gap> CapJitCompiledFunction( { U, V } -> IsSubset( U, V ), [ [ type_subgroup, type_subgroup ], rec( filter := IsBool ) ] );;
+gap> CapJitCompiledFunction( { G, U, V } -> IsConjugate( G, U, V ), [ [ type_group, type_subgroup, type_subgroup ], rec( filter := IsBool ) ] );;
+gap> CapJitCompiledFunction( { G, U, V } -> RepresentativeAction( G, U, V ), [ [ type_group, type_subgroup, type_subgroup ], type_group_element ] );;
+
 #
 gap> STOP_TEST( "CapJitTypedExpression" );
