@@ -363,7 +363,7 @@
   
   [1X3.1-27 CodistributiveCocartesianCategoriesTest[101X
   
-  [33X[1;0Y[29X[2XCodistributiveCocartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCodistributiveCocartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X, [3XM[103X ) [32X function[133X
   
   [33X[0;0YThe arguments are[133X
   
@@ -372,6 +372,8 @@
   [30X    [33X[0;6Yan object [23Xa[123X[133X
   
   [30X    [33X[0;6Ya list [23XL[123X of objects[133X
+  
+  [30X    [33X[0;6Ya list [23XM[123X of integers with [10XLength(L) = Length(M)[110X[133X
   
   [33X[0;0YThis     function     checks     for    every    operation    declared    in
   CodistributiveCocartesianCategories.gd  if  it  is  computable  in  the  CAP
@@ -389,7 +391,7 @@
   
   [1X3.1-28 DistributiveCartesianCategoriesTest[101X
   
-  [33X[1;0Y[29X[2XDistributiveCartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDistributiveCartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X, [3XM[103X ) [32X function[133X
   
   [33X[0;0YThe arguments are[133X
   
@@ -398,6 +400,8 @@
   [30X    [33X[0;6Yan object [23Xa[123X[133X
   
   [30X    [33X[0;6Ya list [23XL[123X of objects[133X
+  
+  [30X    [33X[0;6Ya list [23XM[123X of integers with [10XLength(L) = Length(M)[110X[133X
   
   [33X[0;0YThis     function     checks     for    every    operation    declared    in
   DistributiveCartesianCategories.gd  if  it is computable in the CAP category
