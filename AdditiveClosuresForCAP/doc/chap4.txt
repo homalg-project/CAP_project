@@ -1152,12 +1152,32 @@
   [30X    [33X[0;6Y[2XLeftDistributivityExpanding[102X                       ([14XMonoidalCategories:
         LeftDistributivityExpanding for IsCapCategoryObject, IsList[114X)[133X
   
+  [30X    [33X[0;6Y[2XLeftDistributivityExpandingUsingMultiplicities[102X    ([14XMonoidalCategories:
+        LeftDistributivityExpandingUsingMultiplicities                     for
+        IsCapCategoryObject, IsList, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects     for
+        IsCapCategoryObject,      IsCapCategoryObject,     IsList,     IsList,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XLeftDistributivityExpandingWithGivenObjects[102X       ([14XMonoidalCategories:
         LeftDistributivityExpandingWithGivenObjects  for  IsCapCategoryObject,
         IsCapCategoryObject, IsList, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XLeftDistributivityFactoring[102X                       ([14XMonoidalCategories:
         LeftDistributivityFactoring for IsCapCategoryObject, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftDistributivityFactoringUsingMultiplicities[102X    ([14XMonoidalCategories:
+        LeftDistributivityFactoringUsingMultiplicities                     for
+        IsCapCategoryObject, IsList, IsList[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects     for
+        IsCapCategoryObject,      IsCapCategoryObject,     IsList,     IsList,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XLeftDistributivityFactoringWithGivenObjects[102X       ([14XMonoidalCategories:
         LeftDistributivityFactoringWithGivenObjects  for  IsCapCategoryObject,
@@ -1297,12 +1317,32 @@
   [30X    [33X[0;6Y[2XRightDistributivityExpanding[102X                      ([14XMonoidalCategories:
         RightDistributivityExpanding for IsList, IsCapCategoryObject[114X)[133X
   
+  [30X    [33X[0;6Y[2XRightDistributivityExpandingUsingMultiplicities[102X   ([14XMonoidalCategories:
+        RightDistributivityExpandingUsingMultiplicities  for  IsList,  IsList,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightDistributivityExpandingUsingMultiplicitiesWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects    for
+        IsCapCategoryObject,      IsList,     IsList,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
+  
   [30X    [33X[0;6Y[2XRightDistributivityExpandingWithGivenObjects[102X      ([14XMonoidalCategories:
         RightDistributivityExpandingWithGivenObjects  for IsCapCategoryObject,
         IsList, IsCapCategoryObject, IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XRightDistributivityFactoring[102X                      ([14XMonoidalCategories:
         RightDistributivityFactoring for IsList, IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightDistributivityFactoringUsingMultiplicities[102X   ([14XMonoidalCategories:
+        RightDistributivityFactoringUsingMultiplicities  for  IsList,  IsList,
+        IsCapCategoryObject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightDistributivityFactoringUsingMultiplicitiesWithGivenObjects[102X
+        ([14XMonoidalCategories:
+        RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects    for
+        IsCapCategoryObject,      IsList,     IsList,     IsCapCategoryObject,
+        IsCapCategoryObject[114X)[133X
   
   [30X    [33X[0;6Y[2XRightDistributivityFactoringWithGivenObjects[102X      ([14XMonoidalCategories:
         RightDistributivityFactoringWithGivenObjects  for IsCapCategoryObject,
