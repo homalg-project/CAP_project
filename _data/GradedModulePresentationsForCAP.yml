@@ -1,7 +1,7 @@
 name: GradedModulePresentationsForCAP
-version: "2026.05-02"
+version: "2026.06-01"
 license: "GPL-2.0-or-later"
-date: 2026-05-10
+date: 2026-06-02
 description: |
     Presentations for graded modules
 
@@ -20,10 +20,10 @@ needed-pkgs:
       version: ">= 1.5"
       url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
-      version: ">= 2026.05-02"
+      version: ">= 2026.06-01"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2026.05-01"
+      version: ">= 2026.06-01"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "ModulePresentationsForCAP"
       version: ">= 2024.01-03"
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GradedModulePresentati
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2026.05-02/GradedModulePresentationsForCAP-2026.05-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2026.06-01/GradedModulePresentationsForCAP-2026.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2026.05-02/GradedModulePresentationsForCAP-2026.05-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2026.06-01/GradedModulePresentationsForCAP-2026.06-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2026.05-02/GradedModulePresentationsForCAP-2026.05-02-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2026.06-01/GradedModulePresentationsForCAP-2026.06-01-manual.pdf
 
 abstract: |
 
@@ -57,10 +57,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Gut10</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
+    [<span class='BibKey'>Gut02</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
      <i class='BibTitle'>GradedModulePresentationsForCAP, Presentations for graded modules,
-             Version 2026.05-02</i>
-     (<span class='BibYear'>5-10</span>)<br />
+             Version 2026.06-01</i>
+     (<span class='BibYear'>6-02</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP">https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP</a></span>.
     </p>
@@ -71,15 +71,15 @@ bibtex: |
       author =           {Gutsche, S.},
       title =            {{GradedModulePresentationsForCAP},  {Presentations for
                           graded               modules},               {V}ersion
-                          2026.05\texttt{\symbol{45}}02},
+                          2026.06\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
-      year =             {5\texttt{\symbol{45}}10},
+      year =             {6\texttt{\symbol{45}}02},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GradedModulePresentationsForCAP}}},
-      printedkey =       {Gut10}
+      printedkey =       {Gut02}
     }
 
