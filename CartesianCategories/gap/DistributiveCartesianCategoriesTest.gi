@@ -9,7 +9,7 @@
 
 InstallGlobalFunction( "DistributiveCartesianCategoriesTest",
     
-    function( cat, opposite, a, L )
+    function( cat, opposite, a, L, M )
         
         local verbose,
               
@@ -37,6 +37,22 @@ InstallGlobalFunction( "DistributiveCartesianCategoriesTest",
             
         fi;
         
+        if CanCompute( cat, "LeftCartesianDistributivityExpandingUsingMultiplicities" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'LeftCartesianDistributivityExpandingUsingMultiplicities' ..." );
+                
+            fi;
+            
+            left_expanding_a_L := LeftCartesianDistributivityExpandingUsingMultiplicities( a, L, M );
+            left_factoring_a_L_op := LeftCartesianDistributivityFactoringUsingMultiplicities( opposite, a_op, L_op, M );
+            
+            Assert( 0, IsCongruentForMorphisms( left_expanding_a_L, Opposite( left_factoring_a_L_op ) ) );
+            
+        fi;
+        
         if CanCompute( cat, "LeftCartesianDistributivityFactoring" ) then
             
             if verbose then
@@ -48,6 +64,22 @@ InstallGlobalFunction( "DistributiveCartesianCategoriesTest",
             
             left_factoring_a_L := LeftCartesianDistributivityFactoring( a, L );
             left_expanding_a_L_op := LeftCocartesianCodistributivityExpanding( opposite, a_op, L_op );
+            
+            Assert( 0, IsCongruentForMorphisms( left_factoring_a_L, Opposite( left_expanding_a_L_op ) ) );
+            
+        fi;
+        
+        if CanCompute( cat, "LeftCartesianDistributivityFactoringUsingMultiplicities" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'LeftCartesianDistributivityFactoringUsingMultiplicities' ..." );
+                
+            fi;
+            
+            left_factoring_a_L := LeftCartesianDistributivityFactoringUsingMultiplicities( a, L, M );
+            left_expanding_a_L_op := LeftCartesianDistributivityExpandingUsingMultiplicities( opposite, a_op, L_op, M );
             
             Assert( 0, IsCongruentForMorphisms( left_factoring_a_L, Opposite( left_expanding_a_L_op ) ) );
             
@@ -69,6 +101,22 @@ InstallGlobalFunction( "DistributiveCartesianCategoriesTest",
             
         fi;
         
+        if CanCompute( cat, "RightCartesianDistributivityExpandingUsingMultiplicities" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'RightCartesianDistributivityExpandingUsingMultiplicities' ..." );
+                
+            fi;
+            
+            right_expanding_L_a := RightCartesianDistributivityExpandingUsingMultiplicities( L, M, a );
+            right_factoring_L_a_op := RightCartesianDistributivityFactoringUsingMultiplicities( opposite, L_op, M, a_op );
+            
+            Assert( 0, IsCongruentForMorphisms( right_expanding_L_a, Opposite( right_factoring_L_a_op ) ) );
+            
+        fi;
+        
         if CanCompute( cat, "RightCartesianDistributivityFactoring" ) then
             
             if verbose then
@@ -85,4 +133,19 @@ InstallGlobalFunction( "DistributiveCartesianCategoriesTest",
             
         fi;
         
+        if CanCompute( cat, "RightCartesianDistributivityFactoringUsingMultiplicities" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'RightCartesianDistributivityFactoringUsingMultiplicities' ..." );
+                
+            fi;
+            
+            right_factoring_L_a := RightCartesianDistributivityFactoringUsingMultiplicities( L, M, a );
+            right_expanding_L_a_op := RightCartesianDistributivityExpandingUsingMultiplicities( opposite, L_op, M, a_op );
+            
+            Assert( 0, IsCongruentForMorphisms( right_factoring_L_a, Opposite( right_expanding_L_a_op ) ) );
+            
+        fi;
 end );

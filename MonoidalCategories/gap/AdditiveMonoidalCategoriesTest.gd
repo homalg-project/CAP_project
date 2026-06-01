@@ -13,6 +13,7 @@
 #! * a CAP category $cat$
 #! * an object $a$
 #! * a list $L$ of objects
+#! * a list $M$ of integers with <C>Length(L) = Length(M)</C>
 #! This function checks for every operation
 #! declared in AdditiveMonoidalCategories.gd
 #! if it is computable in the CAP category $cat$.
@@ -29,5 +30,5 @@
 #!    installed operations in $cat$.
 #!    The advantage is, that more derivations might be tested.
 #!    On the downside, this might test fewer dual_pre/postprocessor_funcs.
-#! @Arguments cat, a, L
+#! @Arguments cat, a, L, M
 DeclareGlobalFunction( "AdditiveMonoidalCategoriesTest" );

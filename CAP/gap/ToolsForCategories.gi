@@ -128,6 +128,10 @@ InstallGlobalFunction( "CAP_INTERNAL_GET_DATA_TYPE_FROM_STRING", function ( stri
         
         return CapJitDataTypeOfTwoCellOfCategory( category );
         
+    elif string = "list_of_integers" then
+        
+        return CapJitDataTypeOfListOf( rec( filter := IsInt ) );
+        
     elif string = "list_of_objects" then
         
         return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( category ) );

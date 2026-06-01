@@ -32,6 +32,44 @@ DeclareOperation( "AddLeftCocartesianCodistributivityExpanding",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCocartesianCodistributivityExpandingUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( a, L, M ) \mapsto \mathtt{LeftCocartesianCodistributivityExpandingUsingMultiplicities}(a, L, M)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, a, L, M, r ) \mapsto \mathtt{LeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects}(s, a, L, M, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `LeftCocartesianCodistributivityExpandingWithGivenObjects`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
@@ -62,6 +100,44 @@ DeclareOperation( "AddLeftCocartesianCodistributivityFactoring",
 
 #! @Arguments C, F, weight
 DeclareOperation( "AddLeftCocartesianCodistributivityFactoring",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCocartesianCodistributivityFactoringUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( a, L, M ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoringUsingMultiplicities}(a, L, M)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, a, L, M, r ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects}(s, a, L, M, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 #! @EndGroup
 
@@ -108,6 +184,44 @@ DeclareOperation( "AddRightCocartesianCodistributivityExpanding",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `RightCocartesianCodistributivityExpandingUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( L, M, a ) \mapsto \mathtt{RightCocartesianCodistributivityExpandingUsingMultiplicities}(L, M, a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, L, M, a, r ) \mapsto \mathtt{RightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects}(s, L, M, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `RightCocartesianCodistributivityExpandingWithGivenObjects`.
 #! Optionally, a weight (default: 100) can be specified which should roughly correspond
 #! to the computational complexity of the function (lower weight = less complex = faster execution).
@@ -138,6 +252,44 @@ DeclareOperation( "AddRightCocartesianCodistributivityFactoring",
 
 #! @Arguments C, F, weight
 DeclareOperation( "AddRightCocartesianCodistributivityFactoring",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightCocartesianCodistributivityFactoringUsingMultiplicities`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( L, M, a ) \mapsto \mathtt{RightCocartesianCodistributivityFactoringUsingMultiplicities}(L, M, a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringUsingMultiplicities",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+#! @EndGroup
+
+
+#! @BeginGroup
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects`.
+#! Optionally, a weight (default: 100) can be specified which should roughly correspond
+#! to the computational complexity of the function (lower weight = less complex = faster execution).
+#! $F: ( s, L, M, a, r ) \mapsto \mathtt{RightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects}(s, L, M, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+#! @Arguments C, F, weight
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringUsingMultiplicitiesWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 #! @EndGroup
 

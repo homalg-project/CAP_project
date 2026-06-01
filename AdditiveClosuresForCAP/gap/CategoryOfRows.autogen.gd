@@ -305,8 +305,12 @@
 #! * <Ref BookName="MonoidalCategories" Func="LambdaElimination" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LambdaIntroduction" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpanding" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpandingUsingMultiplicities" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpandingUsingMultiplicitiesWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpandingWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoring" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoringUsingMultiplicities" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoringUsingMultiplicitiesWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoringWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftUnitor" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="LeftUnitorInverse" Label="for Is" />
@@ -341,8 +345,12 @@
 #! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeSemiringForMorphisms" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RankMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpanding" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingUsingMultiplicities" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingUsingMultiplicitiesWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoring" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoringUsingMultiplicities" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoringUsingMultiplicitiesWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoringWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitor" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverse" Label="for Is" />
