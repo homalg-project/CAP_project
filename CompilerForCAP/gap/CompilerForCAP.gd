@@ -84,6 +84,7 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_POST_PROCESSED_TREE" );
 #!   an instance of a CAP category, a list of input filters (as in `filter_list` in the method name record) and an output filter (as in `return_type` in the method name record).
 #!   If a full type signature is not available but the first argument of <A>func</A> is a CAP category, an instance of a CAP category can be given as the second argument.
 #!   In this case, the category is used to get the type information required to resolve CAP operations.
+#!   If the option `apply_irreversible_optimizations` is set to false, then the subsequent irreversible optimizations are skipped.
 #! @Returns a function
 #! @Arguments func[, type_signature]
 DeclareGlobalFunction( "CapJitCompiledFunction" );
