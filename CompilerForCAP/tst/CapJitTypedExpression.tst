@@ -88,6 +88,7 @@ gap> type_subgroup := CapJitDataTypeOfSubgroup( S3 );
 rec( filter := <Filter "((IsMagmaWithInverses and IsAssociative) and HasParentAttr)">, group := S3 )
 gap> CapJitCompiledFunction( g -> Inverse( g ), [ [ type_group_element ], type_group_element ] );;
 gap> CapJitCompiledFunction( G -> One( G ), [ [ type_group ], type_group_element ] );;
+gap> CapJitCompiledFunction( { i, g } -> i^g, [ [ rec( filter := IsInt ), rec( filter := IsPerm ) ], rec( filter := IsInt ) ] );;
 gap> CapJitCompiledFunction( G -> Subgroup( G, [ One( G ) ] ), [ [ type_group ], type_subgroup ] );;
 gap> CapJitCompiledFunction( G -> GeneratorsOfGroup( G ), [ [ type_group ], CapJitDataTypeOfListOf( type_group_element ) ] );;
 gap> CapJitCompiledFunction( { G, U } -> Index( G, U ), [ [ type_group, type_subgroup ], rec( filter := IsInt ) ] );;

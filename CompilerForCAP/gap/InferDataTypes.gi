@@ -901,6 +901,7 @@ CapJitAddTypeSignature( "QUO_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "IsZero", [ IsInt ], IsBool );
 CapJitAddTypeSignature( "OneImmutable", [ IsIntegers ], IsInt );
 CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
+CapJitAddTypeSignature( "^", [ IsInt, IsPerm ], IsInt );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) );
 CapJitAddTypeSignature( "InverseImmutable", [ IsMultiplicativeElementWithInverse ], function ( input_types )
