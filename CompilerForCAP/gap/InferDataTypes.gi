@@ -909,6 +909,7 @@ CapJitAddTypeSignature( "InverseImmutable", [ IsMultiplicativeElementWithInverse
     return input_types[1];
     
 end );
+CapJitAddTypeSignature( "OrbitsPerms", [ IsList, IsList ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsBigInt ) ) );
 CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
 
 CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], function ( input_types )

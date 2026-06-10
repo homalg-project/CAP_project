@@ -97,6 +97,7 @@ gap> CapJitCompiledFunction( { U, g } -> ConjugateSubgroup( U, g ), [ [ type_sub
 gap> CapJitCompiledFunction( { U, V } -> IsSubset( U, V ), [ [ type_subgroup, type_subgroup ], rec( filter := IsBool ) ] );;
 gap> CapJitCompiledFunction( { G, U, V } -> IsConjugate( G, U, V ), [ [ type_group, type_subgroup, type_subgroup ], rec( filter := IsBool ) ] );;
 gap> CapJitCompiledFunction( { G, U, V } -> RepresentativeAction( G, U, V ), [ [ type_group, type_subgroup, type_subgroup ], type_group_element ] );;
+gap> CapJitCompiledFunction( { gens, list } -> OrbitsPerms( gens, list ), [ [ CapJitDataTypeOfListOf( type_group_element ), CapJitDataTypeOfListOf( IsInt ) ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ] );;
 
 #
 gap> STOP_TEST( "CapJitTypedExpression" );
