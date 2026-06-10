@@ -134,7 +134,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
         
     fi;
     
-    return ENHANCED_SYNTAX_TREE_CODE( CAP_JIT_INTERNAL_POST_PROCESSED_TREE( compiled_tree, category ) );
+    return ENHANCED_SYNTAX_TREE_CODE( CAP_JIT_INTERNAL_POST_PROCESSED_TREE( compiled_tree, category, ValueOption( "apply_irreversible_optimizations" ) <> false ) );
     
 end );
 
