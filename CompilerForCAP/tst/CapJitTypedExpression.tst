@@ -88,6 +88,7 @@ gap> type_subgroup := CapJitDataTypeOfSubgroup( S3 );
 rec( filter := <Filter "((IsMagmaWithInverses and IsAssociative) and HasParentAttr)">, group := S3 )
 gap> CapJitCompiledFunction( g -> Inverse( g ), [ [ type_group_element ], type_group_element ] );;
 gap> CapJitCompiledFunction( G -> One( G ), [ [ type_group ], type_group_element ] );;
+gap> CapJitCompiledFunction( { i, g } -> i^g, [ [ rec( filter := IsInt ), rec( filter := IsPerm ) ], rec( filter := IsInt ) ] );;
 gap> CapJitCompiledFunction( G -> Subgroup( G, [ One( G ) ] ), [ [ type_group ], type_subgroup ] );;
 gap> CapJitCompiledFunction( G -> GeneratorsOfGroup( G ), [ [ type_group ], CapJitDataTypeOfListOf( type_group_element ) ] );;
 gap> CapJitCompiledFunction( { G, U } -> Index( G, U ), [ [ type_group, type_subgroup ], rec( filter := IsInt ) ] );;
@@ -96,6 +97,7 @@ gap> CapJitCompiledFunction( { U, g } -> ConjugateSubgroup( U, g ), [ [ type_sub
 gap> CapJitCompiledFunction( { U, V } -> IsSubset( U, V ), [ [ type_subgroup, type_subgroup ], rec( filter := IsBool ) ] );;
 gap> CapJitCompiledFunction( { G, U, V } -> IsConjugate( G, U, V ), [ [ type_group, type_subgroup, type_subgroup ], rec( filter := IsBool ) ] );;
 gap> CapJitCompiledFunction( { G, U, V } -> RepresentativeAction( G, U, V ), [ [ type_group, type_subgroup, type_subgroup ], type_group_element ] );;
+gap> CapJitCompiledFunction( { gens, list } -> OrbitsPerms( gens, list ), [ [ CapJitDataTypeOfListOf( type_group_element ), CapJitDataTypeOfListOf( IsInt ) ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ] );;
 
 #
 gap> STOP_TEST( "CapJitTypedExpression" );
