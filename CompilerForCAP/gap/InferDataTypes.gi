@@ -79,12 +79,11 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( val
     elif IsRing( value ) then
         
         return CapJitDataTypeOfRing( value );
-
-    #= comment for Julia
+        
     elif IsGroup( value ) then
         
         return CapJitDataTypeOfGroup( value );
-    # =#
+        
     elif IsFunction( value ) then
         
         # signature has to be set from somewhere else
@@ -904,13 +903,11 @@ CapJitAddTypeSignature( "OneImmutable", [ IsIntegers ], IsInt );
 CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) );
-#= comment for Julia
 CapJitAddTypeSignature( "InverseImmutable", [ IsMultiplicativeElementWithInverse ], function ( input_types )
     
     return input_types[1];
     
 end );
-# =#
 CapJitAddTypeSignature( "BigInt", [ IsInt ], IsBigInt );
 
 CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], function ( input_types )
@@ -1528,7 +1525,6 @@ CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject, IsObject ], 
     
 end );
 
-#= comment for Julia
 CapJitAddTypeSignature( "OneImmutable", [ IsGroup ], function ( input_types )
     
     return CapJitDataTypeOfElementOfGroup( input_types[1].group );
@@ -1622,4 +1618,3 @@ CapJitAddTypeSignature( "RepresentativeAction", [ IsGroup, IsGroup, IsGroup ], f
     return CapJitDataTypeOfElementOfGroup( input_types[1].group );
     
 end );
-# =#
