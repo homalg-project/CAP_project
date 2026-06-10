@@ -265,7 +265,9 @@
   If  a full type signature is not available but the first argument of [3Xfunc[103X is
   a  CAP  category,  an  instance of a CAP category can be given as the second
   argument.  In  this  case,  the category is used to get the type information
-  required to resolve CAP operations.[133X
+  required     to     resolve     CAP     operations.     If     the    option
+  [10Xapply_irreversible_optimizations[110X  is  set  to  false,  then  the  subsequent
+  irreversible optimizations are skipped.[133X
   
   [1X1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
   
