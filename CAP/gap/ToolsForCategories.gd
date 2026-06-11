@@ -281,6 +281,21 @@ DeclareOperation( "Iterated", [ IsList, IsFunction, IsObject ] );
 DeclareOperation( "Iterated", [ IsList, IsFunction, IsObject, IsObject ] );
 
 #! @Description
+#!   The input is a homogeneous list <A>L</A> of length $m$, another homogeneous list <A>operators</A> of length $n$,
+#!   and a bivariate function <A>action</A> encoding a right action.
+#!   The output is a new homogeneous list of length $m+n$ extending $L$ be $n$ new entries.
+#!   The type of the first argument of <A>action</A> must be equal to type of <A>L</A>.
+#!   The type of the second argument of <A>action</A> must be equal to the common type of the entries of <A>operators</A>.
+#!   The type of the output of <A>action</A> must be equal to the common type of the entries of <A>L</A>.
+#!   More precisely, in the initial step <A>L</A> is replaced by a copy of itself,
+#!   then <A>action</A> successively applies the entries of <A>operators</A> (as its second argument) to <A>L</A> (as its first argument),
+#!   and the result of each application of <A>action</A> is successively added to <A>L</A>, altering <A>L</A> with every application.
+#!   In particular, if <A>operators</A> is empty, the output is a copy of <A>L</A>.
+#!   This allows for the implementation of compilable initialized for-loops in CAP.
+#! @Arguments L, operators, action
+DeclareOperation( "IteratedListOfActions", [ IsList, IsList, IsFunction ] );
+
+#! @Description
 #!   Returns a list of package names which are transitively needed other packages of the package <A>package_name</A>.
 #! @Arguments package_name
 DeclareGlobalFunction( "TransitivelyNeededOtherPackages" );

@@ -1500,6 +1500,25 @@ InstallMethod( Iterated,
 end );
 
 ##
+InstallMethod( IteratedListOfActions,
+               [ IsList, IsList, IsFunction ],
+               
+  function( L, list, action )
+    local operator;
+    
+    L := ShallowCopy( L );
+    
+    for operator in list do
+        
+        Add( L, action( L, operator ) );
+        
+    od;
+    
+    return L;
+    
+end );
+
+##
 InstallGlobalFunction( TransitivelyNeededOtherPackages, function ( package_name )
   local collected_dependencies, package_info, dep, p;
     

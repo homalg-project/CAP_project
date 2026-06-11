@@ -1549,6 +1549,25 @@ CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction, IsObject, IsObject ], 
     
 end );
 
+CapJitAddTypeSignature( "IteratedListOfActions", [ IsList, IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.3 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.3, [ args.1.data_type, args.2.data_type.element_type ], func_stack );
+    
+    if args.3 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    Assert( 0, args.1.data_type.element_type = args.3.data_type.signature[2] );
+    
+    return rec( args := args, output_type := args.1.data_type );
+    
+end );
+
 CapJitAddTypeSignature( "OneImmutable", [ IsGroup ], function ( input_types )
     
     return CapJitDataTypeOfElementOfGroup( input_types[1].group );
