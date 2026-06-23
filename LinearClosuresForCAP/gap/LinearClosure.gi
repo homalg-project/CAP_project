@@ -15,6 +15,10 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
   FunctionWithNamedArguments(
   [
     [ "FinalizeCategory", true ],
+    [ "category_filter", IsLinearClosure ],
+    [ "category_object_filter", IsLinearClosureObject ],
+    [ "category_morphism_filter", IsLinearClosureMorphism ],
+    [ "category_two_cell_filter", IsCapCategoryTwoCell ],
   ],
   function( CAP_NAMED_ARGUMENTS, rows, underlying_category, arg... ) ## rows = CategoryOfRows( ... )
     local ring, name, category, is_finite, sorting_function, with_nf, cocycle;
@@ -83,7 +87,11 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows,
         
     fi;
     
-    category := CreateCapCategory( name, IsLinearClosure, IsLinearClosureObject, IsLinearClosureMorphism, IsCapCategoryTwoCell : overhead := false );
+    category := CreateCapCategory( name,
+                    CAP_NAMED_ARGUMENTS.category_filter,
+                    CAP_NAMED_ARGUMENTS.category_object_filter,
+                    CAP_NAMED_ARGUMENTS.category_morphism_filter,
+                    CAP_NAMED_ARGUMENTS.category_two_cell_filter : overhead := false );
     
     category!.compiler_hints := rec(
         category_attribute_names := [
