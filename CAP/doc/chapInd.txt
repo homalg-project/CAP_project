@@ -656,8 +656,8 @@
   [2XCAP_INTERNAL_REPLACED_STRINGS_WITH_FILTERS[102X 9.2-5 
   [2XCAP_INTERNAL_RETURN_OPTION_OR_DEFAULT[102X 9.2-6 
   [2XCAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD[102X 10.3-2 
-  [2XCAP_JIT_EXPR_CASE_WRAPPER[102X 9.2-46 
-  [2XCAP_JIT_INCOMPLETE_LOGIC[102X 9.2-45 
+  [2XCAP_JIT_EXPR_CASE_WRAPPER[102X 9.2-47 
+  [2XCAP_JIT_INCOMPLETE_LOGIC[102X 9.2-46 
   [2XCAPAddPrepareFunction[102X 7.5-2 
   [2XCapCat[102X 5.1-1 
   [2XCapCategory[102X, for IsCapCategoryMorphism 3.1-1 
@@ -742,7 +742,7 @@
   [2XCreateCapCategoryTwoCellWithAttributes[102X 4.2-3 
   [2XCreateCapCategoryWithDataTypes[102X 1.3-4 
   [2XCreateDerivation[102X 8.2-2 
-  [2XCreateGapObjectWithAttributes[102X 9.2-56 
+  [2XCreateGapObjectWithAttributes[102X 9.2-57 
   [2XCurrentOperationWeight[102X, for IsOperationWeightList, IsString 8.4-5 
   [2XDeactivateCachingOfCategory[102X 1.9-2 
   [2XDeactivateDefaultCaching[102X 1.9-3 
@@ -808,11 +808,11 @@
   [2XFiberProductFunctorial[102X, for IsList, IsList, IsList 6.12-13 
   [2XFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.12-14 
   [2XFiberProductOp[102X, for IsList 6.12-6 
-  [2XFilteredWithKeys[102X 9.2-53 
+  [2XFilteredWithKeys[102X 9.2-54 
   [2XFiniteSkeletalDiscreteCategory[102X 16.2-1 
-  [2XFirstWithKeys[102X 9.2-54 
-  [2XForAllWithKeys[102X 9.2-50 
-  [2XForAnyWithKeys[102X 9.2-51 
+  [2XFirstWithKeys[102X 9.2-55 
+  [2XForAllWithKeys[102X 9.2-51 
+  [2XForAnyWithKeys[102X 9.2-52 
   [2XFunctionCalledBeforeInstallation[102X, for IsDerivedMethod 8.2-11 
   [2XFunctionWithNamedArguments[102X 9.2-1 
   [2XFunctorCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-15 
@@ -820,7 +820,7 @@
   [2XFunctorFromTerminalCategory[102X, for IsCapCategoryObject 15.3-3 
   [2XFunctorMorphismOperation[102X, for IsCapFunctor 5.4-8 
   [2XFunctorObjectOperation[102X, for IsCapFunctor 5.4-6 
-  [2XHandlePrecompiledTowers[102X 9.2-44 
+  [2XHandlePrecompiledTowers[102X 9.2-45 
   [2XHomologyObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.17-1 
   [2XHomologyObjectFunctorial[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 6.17-2 
   [2XHomologyObjectFunctorialWithGivenHomologyObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 6.17-3 
@@ -1025,6 +1025,7 @@
   [2XIsZeroForObjects[102X, for IsCapCategoryObject 2.4-6 
   [2XIterated[102X, for IsList, IsFunction, IsObject 9.2-30 
       for IsList, IsFunction, IsObject, IsObject 9.2-31 
+  [2XIteratedListOfActions[102X, for IsList, IsList, IsFunction 9.2-32 
   [2XJointPairwiseDifferencesOfMorphismsFromCoproduct[102X, for IsCapCategoryObject, IsList 6.10-11 
   [2XJointPairwiseDifferencesOfMorphismsIntoDirectProduct[102X, for IsCapCategoryObject, IsList 6.9-11 
   [2XKernelEmbedding[102X, for IsCapCategoryMorphism 6.1-2 
@@ -1036,7 +1037,7 @@
       for IsList 6.1-8 
   [2XKernelObjectFunctorialWithGivenKernelObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 6.1-11 
       for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject 6.1-10 
-  [2XLastWithKeys[102X 9.2-55 
+  [2XLastWithKeys[102X 9.2-56 
   [2XLaTeXOutput[102X, for IsCapCategory 1.14-2 
       for IsCapCategoryCell 1.14-1 
   [2XLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-5 
@@ -1045,7 +1046,7 @@
   [2XLinearCombinationOfMorphisms[102X, for IsCapCategoryObject, IsList, IsList, IsCapCategoryObject 3.10-9 
   [2XListCAPPrepareFunctions[102X 7.5-3 
   [2XListOfDefiningOperations[102X 1.2-33 
-  [2XListWithKeys[102X 9.2-47 
+  [2XListWithKeys[102X 9.2-48 
   [2XMakeDerivationGraph[102X, for IsDenseList 8.3-2 
   [2XMakeOperationWeightList[102X, for IsCapCategory, IsDerivedMethodGraph 8.4-2 
   [2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.18-10 
@@ -1090,8 +1091,8 @@
   [2XNaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-16 
   [2XNaturalIsomorphismFromIdentityToCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-14 
   [2XNaturalTransformation[102X, for IsCapFunctor, IsCapFunctor 5.5-2 
-  [2XNTuple[102X 9.2-40 
-  [2XNumberWithKeys[102X 9.2-52 
+  [2XNTuple[102X 9.2-41 
+  [2XNumberWithKeys[102X 9.2-53 
   [2XObjectCache[102X, for IsCapFunctor 9.1-1 
   [2XObjectConstructor[102X, for IsCapCategory, IsObject 2.7-1 
   [2XObjectDatum[102X, for IsCapCategoryObject 2.7-3 
@@ -1100,8 +1101,8 @@
   [2XOperations[102X, for IsDerivedMethodGraph 8.3-6 
   [2XOperationWeight[102X, for IsCapCategory, IsString 1.6-2 
   [2XOperationWeightUsingDerivation[102X, for IsOperationWeightList, IsDerivedMethod 8.4-6 
-  [2XPackageOfCAPOperation[102X 9.2-33 
-  [2XPair[102X 9.2-41 
+  [2XPackageOfCAPOperation[102X 9.2-34 
+  [2XPair[102X 9.2-42 
   [2XPostCompose[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.10-5 
       for IsList 3.10-6 
   [2XPostComposeList[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 3.10-7 
@@ -1112,7 +1113,7 @@
   [2XPreInverseForMorphisms[102X, for IsCapCategoryMorphism 3.13-2 
   [2XPrintDerivationTree[102X, for IsOperationWeightList, IsString 8.4-12 
   [2XPrintTree[102X, for IsObject, IsFunction, IsFunction 8.4-13 
-  [2XProductWithKeys[102X 9.2-49 
+  [2XProductWithKeys[102X 9.2-50 
   [2XProjectionInFactorOfDirectProduct[102X, for IsList, IsInt 6.8-3 
   [2XProjectionInFactorOfDirectProductWithGivenDirectProduct[102X, for IsList, IsInt, IsCapCategoryObject 6.8-4 
   [2XProjectionInFactorOfDirectSum[102X, for IsList, IsInt 6.6-3 
@@ -1164,12 +1165,12 @@
   [2XReinterpretationOfMorphism[102X, for IsCapCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 12.6-6 
   [2XReinterpretationOfObject[102X, for IsCapCategory, IsCapCategoryObject 12.6-4 
   [2XResetTimingStatistics[102X 1.11-1 
-  [2XSafeFirst[102X, for IsList, IsFunction 9.2-38 
-  [2XSafePosition[102X, for IsList, IsObject 9.2-34 
-  [2XSafePositionProperty[102X, for IsList, IsFunction 9.2-36 
-  [2XSafeUniqueEntry[102X, for IsList, IsFunction 9.2-39 
-  [2XSafeUniquePosition[102X, for IsList, IsObject 9.2-35 
-  [2XSafeUniquePositionProperty[102X, for IsList, IsFunction 9.2-37 
+  [2XSafeFirst[102X, for IsList, IsFunction 9.2-39 
+  [2XSafePosition[102X, for IsList, IsObject 9.2-35 
+  [2XSafePositionProperty[102X, for IsList, IsFunction 9.2-37 
+  [2XSafeUniqueEntry[102X, for IsList, IsFunction 9.2-40 
+  [2XSafeUniquePosition[102X, for IsList, IsObject 9.2-36 
+  [2XSafeUniquePositionProperty[102X, for IsList, IsFunction 9.2-38 
   [2XSaturate[102X, for IsOperationWeightList 8.4-10 
   [2XSetCachingOfCategory[102X 1.9-1 
   [2XSetCachingOfCategoryCrisp[102X 1.9-2 
@@ -1216,7 +1217,7 @@
   [2XSourceOfFunctor[102X, for IsCapFunctor 5.4-3 
   [2XSubtractionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-3 
   [2XSumOfMorphisms[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 3.10-8 
-  [2XSumWithKeys[102X 9.2-48 
+  [2XSumWithKeys[102X 9.2-49 
   [2XTarget[102X, for IsCapCategoryMorphism 3.1-4 
       for IsCapCategoryTwoCell 4.1-3 
   [2XTargetOperation[102X, for IsDerivedMethod 8.2-8 
@@ -1228,10 +1229,10 @@
       for IsCapCategoryCell 6.4-2 
   [2XTerminalObjectFunctorial[102X, for IsCapCategory 6.4-5 
   [2XTerminalObjectFunctorialWithGivenTerminalObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 6.4-6 
-  [2XTransitivelyNeededOtherPackages[102X 9.2-32 
-  [2XTransposedMatWithGivenDimensions[102X 9.2-43 
+  [2XTransitivelyNeededOtherPackages[102X 9.2-33 
+  [2XTransposedMatWithGivenDimensions[102X 9.2-44 
   [2XTriggerDerivationsUsingOperation[102X, for IsOperationWeightList, IsString 8.4-8 
-  [2XTriple[102X 9.2-42 
+  [2XTriple[102X 9.2-43 
   [2XTwoCellDatumType[102X, for IsCapCategory 1.4-8 
   [2XTwoCellFilter[102X, for IsCapCategory 1.4-5 
   [2XUnderlyingCell[102X, for IsWrapperCapCategoryMorphism 13.2-2 
