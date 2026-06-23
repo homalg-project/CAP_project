@@ -1307,3 +1307,79 @@ CapJitAddLogicFunction( function ( tree )
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
     
 end );
+
+# IteratedListOfActions
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for IteratedListOfActions." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local args, list, func, entries, new_tree, i;
+        
+        if CapJitIsCallToGlobalFunction( tree, "IteratedListOfActions" ) then
+            
+            args := tree.args;
+            
+            Assert( 0, args.length = 3 );
+            
+            list := args.2;
+            func := args.3;
+            
+            if list.type = "EXPR_LIST" then
+                
+                entries := list.list;
+                
+                entries := ConcatenationForSyntaxTreeLists( AsSyntaxTreeList( [ args.1 ] ), entries );
+                
+                Assert( 0, entries.length > 0 );
+                
+                new_tree := entries.1;
+                
+                for i in [ 2 .. entries.length ] do
+                    
+                    new_tree := rec(
+                        type := "EXPR_FUNCCALL",
+                        funcref := CapJitCopyWithNewFunctionIDs( func ),
+                        args := AsSyntaxTreeList( [
+                            new_tree,
+                            entries.(i)
+                        ] ),
+                    );
+                    
+                od;
+                
+                return new_tree;
+                
+            else
+                
+                if args.length = 3 then
+                    
+                    # IteratedListOfActions( initial_value, list, func )
+                    #
+                    # tree := tree,
+                    # result_func_index := 2,
+                    # additional_funcs_indices := [ ],
+                    # additional_values_indices := [ 3 ],
+                    # additional_lists_indices := [ 1 ],
+                    return CAP_JIT_INTERNAL_TELESCOPED_ITERATION( tree, 2, [ ], [ 3 ], [ 1 ] );
+                    
+                else
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "this should never happen" );
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
