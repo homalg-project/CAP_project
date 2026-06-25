@@ -6,7 +6,11 @@
 
 ##
 InstallGlobalFunction( InitialCategory,
-  function(  )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS )
     local I;
     
     I := CreateCapCategory( "InitialCategory( )", IsInitialCapCategory, IsObjectInInitialCapCategory, IsMorphismInInitialCapCategory, IsCapCategoryTwoCell );
@@ -56,8 +60,12 @@ InstallGlobalFunction( InitialCategory,
         
     end );
     
-    Finalize( I );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        
+        Finalize( I );
+        
+    fi;
     
     return I;
     
-end );
+end ) );
