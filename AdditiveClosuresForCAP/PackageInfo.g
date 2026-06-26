@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "AdditiveClosuresForCAP",
 Subtitle := "Additive closures for pre-additive categories",
-Version := "2026.06-01",
-Date := "2026-06-02",
+Version := "2026.06-02",
+Date := "2026-06-26",
 License := "GPL-2.0-or-later",
 
 Persons := [
