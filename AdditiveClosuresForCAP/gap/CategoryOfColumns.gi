@@ -223,32 +223,6 @@ end );
 ##
 ####################################
 
-#= comment for Julia
-##
-InstallMethod( Display,
-               [ IsCategoryOfColumnsMorphism ],
-               
-  function( category_of_columns_morphism )
-    
-    # source
-    Print( "Source: \n" );
-    Display( Source( category_of_columns_morphism ) );
-    
-    # mapping matrix
-    Print( Concatenation( "\n", "Matrix: \n" ) );
-    Display( UnderlyingMatrix( category_of_columns_morphism ) );
-    
-    # range
-    Print( Concatenation( "\n", "Range: \n" ) );
-    Display( Range( category_of_columns_morphism ) );
-    Print( "\n" );
-    
-    # general information on morphism
-    Display( StringMutable( category_of_columns_morphism ) );
-    
-end );
-# =#
-
 ##
 InstallMethod( String,
               [ IsCategoryOfColumnsObject ],
@@ -277,6 +251,24 @@ InstallMethod( DisplayString,
   function( category_of_columns_object )
     
     return Concatenation( String( category_of_columns_object ), "\n" );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( category_of_columns_morphism )
+    
+    return Concatenation(
+        "Source: \n",
+        DisplayString( Source( category_of_columns_morphism ) ),
+        "\nMatrix: \n",
+        StringDisplay( UnderlyingMatrix( category_of_columns_morphism ) ),
+        "\nRange: \n",
+        DisplayString( Range( category_of_columns_morphism ) ),
+        "\n",
+        StringMutable( category_of_columns_morphism ), "\n" );
     
 end );
 

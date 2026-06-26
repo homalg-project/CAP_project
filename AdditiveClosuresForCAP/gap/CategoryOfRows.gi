@@ -1443,32 +1443,6 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
 ##
 ####################################
 
-#= comment for Julia
-##
-InstallMethod( Display,
-               [ IsCategoryOfRowsMorphism ],
-               
-  function( category_of_rows_morphism )
-    
-    # source
-    Print( "Source: \n" );
-    Display( Source( category_of_rows_morphism ) );
-    
-    # mapping matrix
-    Print( Concatenation( "\n", "Matrix: \n" ) );
-    Display( UnderlyingMatrix( category_of_rows_morphism ) );
-    
-    # range
-    Print( Concatenation( "\n", "Range: \n" ) );
-    Display( Range( category_of_rows_morphism ) );
-    Print( "\n" );
-    
-    # general information on morphism
-    Display( StringMutable( category_of_rows_morphism ) );
-    
-end );
-# =#
-
 ##
 InstallMethod( String,
               [ IsCategoryOfRowsObject ],
@@ -1498,6 +1472,24 @@ InstallMethod( DisplayString,
   function( category_of_rows_object )
     
     return Concatenation( String( category_of_rows_object ), "\n" );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+               [ IsCategoryOfRowsMorphism ],
+               
+  function( category_of_rows_morphism )
+    
+    return Concatenation(
+        "Source: \n",
+        DisplayString( Source( category_of_rows_morphism ) ),
+        "\nMatrix: \n",
+        StringDisplay( UnderlyingMatrix( category_of_rows_morphism ) ),
+        "\nRange: \n",
+        DisplayString( Range( category_of_rows_morphism ) ),
+        "\n",
+        StringMutable( category_of_rows_morphism ), "\n" );
     
 end );
 
