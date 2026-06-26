@@ -2000,6 +2000,7 @@ InstallMethod( DisplayString,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsFreydCategoryObject ],
