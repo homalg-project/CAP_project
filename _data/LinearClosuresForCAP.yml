@@ -1,7 +1,7 @@
 name: LinearClosuresForCAP
-version: "2026.04-01"
+version: "2026.06-01"
 license: "GPL-2.0-or-later"
-date: 2026-04-10
+date: 2026-06-26
 description: |
     Linear closures
 
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/LinearClosuresForCAP/P
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2026.04-01/LinearClosuresForCAP-2026.04-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2026.06-01/LinearClosuresForCAP-2026.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2026.04-01/LinearClosuresForCAP-2026.04-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2026.06-01/LinearClosuresForCAP-2026.06-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2026.04-01/LinearClosuresForCAP-2026.04-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/LinearClosuresForCAP-2026.06-01/LinearClosuresForCAP-2026.06-01-manual.pdf
 
 abstract: |
 
@@ -57,10 +57,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>PBZ10</span>]   <b class='BibAuthor'>Posur, S., Barakat, M. and Zickgraf, F.</b>,
+    [<span class='BibKey'>PBZ26</span>]   <b class='BibAuthor'>Posur, S., Barakat, M. and Zickgraf, F.</b>,
      <i class='BibTitle'>LinearClosuresForCAP, Linear closures,
-             Version 2026.04-01</i>
-     (<span class='BibYear'>4-10</span>)<br />
+             Version 2026.06-01</i>
+     (<span class='BibYear'>6-26</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LinearClosuresForCAP">https://homalg-project.github.io/pkg/LinearClosuresForCAP</a></span>.
     </p>
@@ -70,15 +70,15 @@ bibtex: |
     @misc{ LinearClosuresForCAP,
       author =           {Posur, S. and Barakat, M. and Zickgraf, F.},
       title =            {{LinearClosuresForCAP},  {Linear  closures}, {V}ersion
-                          2026.04\texttt{\symbol{45}}01},
+                          2026.06\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
-      year =             {4\texttt{\symbol{45}}10},
+      year =             {6\texttt{\symbol{45}}26},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/LinearClosuresForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{LinearClosuresForCAP}}},
-      printedkey =       {PBZ10}
+      printedkey =       {PBZ26}
     }
 
