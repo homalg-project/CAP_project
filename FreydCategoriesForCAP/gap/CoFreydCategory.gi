@@ -143,50 +143,46 @@ end );
 ##
 ####################################
 
-#= comment for Julia
 ##
-InstallMethod( Display,
-               [ IsCoFreydCategoryObject ],
-               
-  function( co_freyd_category_object )
+InstallMethod( DisplayString,
+        [ IsCoFreydCategoryMorphism ],
+        
+  function( phi )
+    local sep;
     
-    Print( Concatenation( "\n", "--------------------------------\n" ) );
-    Print( "CoRelation morphism:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( CoRelationMorphism( co_freyd_category_object ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
+    sep := "--------------------------------\n";
     
-    Print( "General description:\n" );
-    Print( "--------------------------------\n\n" );
-    Print( Concatenation( StringMutable( co_freyd_category_object ), "\n\n" ) );
+    return Concatenation(
+        "\n", sep,
+        "Source:\n", sep, "\n",
+        DisplayString( CoRelationMorphism( Source( phi ) ) ),
+        "\n\n", sep,
+        "Morphism datum:\n", sep, "\n",
+        DisplayString( UnderlyingMorphism( phi ) ),
+        "\n\n", sep,
+        "Range:\n", sep, "\n",
+        DisplayString( CoRelationMorphism( Range( phi ) ) ),
+        "\n\n", sep,
+        "General description:\n", sep, "\n",
+        StringMutable( phi ), "\n\n" );
     
 end );
 
 ##
-InstallMethod( Display,
-               [ IsCoFreydCategoryMorphism ],
-               
-  function( co_freyd_category_morphism )
+InstallMethod( DisplayString,
+        [ IsCoFreydCategoryObject ],
+        
+  function( a )
+    local sep;
     
-    Print( Concatenation( "\n", "--------------------------------\n" ) );
-    Print( "Source:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( CoRelationMorphism( Source( co_freyd_category_morphism ) ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
+    sep := "--------------------------------\n";
     
-    Print( "Morphism datum:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( UnderlyingMorphism( co_freyd_category_morphism ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
-    
-    Print( "Range:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( CoRelationMorphism( Range( co_freyd_category_morphism ) ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
-    
-    Print( "General description:\n" );
-    Print( "--------------------------------\n\n" );
-    Print( Concatenation( StringMutable( co_freyd_category_morphism ), "\n\n" ) );
+    return Concatenation(
+        "\n", sep,
+        "CoRelation morphism:\n", sep, "\n",
+        DisplayString( CoRelationMorphism( a ) ),
+        "\n\n", sep,
+        "General description:\n", sep, "\n",
+        StringMutable( a ), "\n\n" );
     
 end );
-# =#

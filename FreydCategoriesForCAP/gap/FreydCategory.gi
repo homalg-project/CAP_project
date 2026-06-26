@@ -1956,51 +1956,47 @@ end );
 ##
 ####################################
 
-#= comment for Julia
 ##
-InstallMethod( Display,
-               [ IsFreydCategoryMorphism ],
-               
-  function( freyd_category_morphism )
+InstallMethod( DisplayString,
+        [ IsFreydCategoryMorphism ],
+        
+  function( phi )
+    local sep;
     
-    Print( Concatenation( "\n", "--------------------------------\n" ) );
-    Print( "Source:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( ObjectDatum( Source( freyd_category_morphism ) ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
+    sep := "--------------------------------\n";
     
-    Print( "Morphism datum:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( MorphismDatum( freyd_category_morphism ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
-    
-    Print( "Range:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( ObjectDatum( Range( freyd_category_morphism ) ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
-    
-    Print( "General description:\n" );
-    Print( "--------------------------------\n\n" );
-    Print( Concatenation( StringMutable( freyd_category_morphism ), "\n\n" ) );
+    return Concatenation(
+        "\n", sep,
+        "Source:\n", sep, "\n",
+        DisplayString( ObjectDatum( Source( phi ) ) ),
+        "\n\n", sep,
+        "Morphism datum:\n", sep, "\n",
+        DisplayString( MorphismDatum( phi ) ),
+        "\n\n", sep,
+        "Range:\n", sep, "\n",
+        DisplayString( ObjectDatum( Range( phi ) ) ),
+        "\n\n", sep,
+        "General description:\n", sep, "\n",
+        StringMutable( phi ), "\n\n" );
     
 end );
 
-
 ##
-InstallMethod( Display,
-               [ IsFreydCategoryObject ],
-               
-  function( freyd_category_object )
+InstallMethod( DisplayString,
+        [ IsFreydCategoryObject ],
+        
+  function( a )
+    local sep;
     
-    Print( Concatenation( "\n", "--------------------------------\n" ) );
-    Print( "Relation morphism:\n" );
-    Print( "--------------------------------\n\n" );
-    Display( ObjectDatum( freyd_category_object ) );
-    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
+    sep := "--------------------------------\n";
     
-    Print( "General description:\n" );
-    Print( "--------------------------------\n\n" );
-    Print( Concatenation( StringMutable( freyd_category_object ), "\n\n" ) );
+    return Concatenation(
+        "\n", sep,
+        "Relation morphism:\n", sep, "\n",
+        DisplayString( ObjectDatum( a ) ),
+        "\n\n", sep,
+        "General description:\n", sep, "\n",
+        StringMutable( a ), "\n\n" );
     
 end );
 
