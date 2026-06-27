@@ -579,13 +579,17 @@ InstallMethod( Opposite,
   [
     [ "only_primitive_operations", false ],
     [ "only_primitive_operations_and_hom_structure", false ],
+    [ "FinalizeCategory", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, category )
     local opposite_category;
     
     opposite_category := Concatenation( "Opposite( ", Name( category ), " )" );
     
-    return Opposite( category, opposite_category : only_primitive_operations := CAP_NAMED_ARGUMENTS.only_primitive_operations, only_primitive_operations_and_hom_structure := CAP_NAMED_ARGUMENTS.only_primitive_operations_and_hom_structure );
+    return Opposite( category, opposite_category :
+                only_primitive_operations := CAP_NAMED_ARGUMENTS.only_primitive_operations,
+                only_primitive_operations_and_hom_structure := CAP_NAMED_ARGUMENTS.only_primitive_operations_and_hom_structure,
+                FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
 end ) );
 
