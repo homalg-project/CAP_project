@@ -55,3 +55,6 @@ test-spacing:
 	rm spacing_diff_no_blanks
 
 ci-test: test-basic-spacing test-with-coverage
+
+match_tests_to_examples:
+	python3 $$([ -f ../dev/match_tst_to_examples.py ] && echo ../dev/match_tst_to_examples.py || echo dev/match_tst_to_examples.py) .
