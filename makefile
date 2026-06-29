@@ -192,4 +192,66 @@ ci-test_MonoidalCategories:
 ci-test_ToricSheaves:
 	$(MAKE) -C ToricSheaves ci-test
 
+################################
+match_tests_to_examples: match_tests_to_examples_CAP match_tests_to_examples_ActionsForCAP match_tests_to_examples_AdditiveClosuresForCAP match_tests_to_examples_AttributeCategoryForCAP match_tests_to_examples_CartesianCategories match_tests_to_examples_CompilerForCAP match_tests_to_examples_ComplexesAndFilteredObjectsForCAP match_tests_to_examples_FreydCategoriesForCAP match_tests_to_examples_GeneralizedMorphismsForCAP match_tests_to_examples_GradedModulePresentationsForCAP match_tests_to_examples_GroupRepresentationsForCAP match_tests_to_examples_GroupsAsCategoriesForCAP match_tests_to_examples_HomologicalAlgebraForCAP match_tests_to_examples_InternalExteriorAlgebraForCAP match_tests_to_examples_LinearAlgebraForCAP match_tests_to_examples_LinearClosuresForCAP match_tests_to_examples_ModulePresentationsForCAP match_tests_to_examples_ModulesOverLocalRingsForCAP match_tests_to_examples_MonoidalCategories match_tests_to_examples_ToricSheaves
+
+match_tests_to_examples_CAP:
+	$(MAKE) -C CAP match_tests_to_examples
+
+match_tests_to_examples_ActionsForCAP:
+	$(MAKE) -C ActionsForCAP match_tests_to_examples
+
+match_tests_to_examples_AdditiveClosuresForCAP:
+	$(MAKE) -C AdditiveClosuresForCAP match_tests_to_examples
+
+match_tests_to_examples_AttributeCategoryForCAP:
+	$(MAKE) -C AttributeCategoryForCAP match_tests_to_examples
+
+match_tests_to_examples_CartesianCategories:
+	$(MAKE) -C CartesianCategories match_tests_to_examples
+
+match_tests_to_examples_CompilerForCAP:
+	$(MAKE) -C CompilerForCAP match_tests_to_examples
+
+match_tests_to_examples_ComplexesAndFilteredObjectsForCAP:
+	$(MAKE) -C ComplexesAndFilteredObjectsForCAP match_tests_to_examples
+
+match_tests_to_examples_FreydCategoriesForCAP:
+	$(MAKE) -C FreydCategoriesForCAP match_tests_to_examples
+
+match_tests_to_examples_GeneralizedMorphismsForCAP:
+	$(MAKE) -C GeneralizedMorphismsForCAP match_tests_to_examples
+
+match_tests_to_examples_GradedModulePresentationsForCAP:
+	$(MAKE) -C GradedModulePresentationsForCAP match_tests_to_examples
+
+match_tests_to_examples_GroupRepresentationsForCAP:
+	$(MAKE) -C GroupRepresentationsForCAP match_tests_to_examples
+
+match_tests_to_examples_GroupsAsCategoriesForCAP:
+	$(MAKE) -C GroupsAsCategoriesForCAP match_tests_to_examples
+
+match_tests_to_examples_HomologicalAlgebraForCAP:
+	$(MAKE) -C HomologicalAlgebraForCAP match_tests_to_examples
+
+match_tests_to_examples_InternalExteriorAlgebraForCAP:
+	$(MAKE) -C InternalExteriorAlgebraForCAP match_tests_to_examples
+
+match_tests_to_examples_LinearAlgebraForCAP:
+	$(MAKE) -C LinearAlgebraForCAP match_tests_to_examples
+
+match_tests_to_examples_LinearClosuresForCAP:
+	$(MAKE) -C LinearClosuresForCAP match_tests_to_examples
+
+match_tests_to_examples_ModulePresentationsForCAP:
+	$(MAKE) -C ModulePresentationsForCAP match_tests_to_examples
+
+match_tests_to_examples_ModulesOverLocalRingsForCAP:
+	$(MAKE) -C ModulesOverLocalRingsForCAP match_tests_to_examples
+
+match_tests_to_examples_MonoidalCategories:
+	$(MAKE) -C MonoidalCategories match_tests_to_examples
+
+match_tests_to_examples_ToricSheaves:
+	$(MAKE) -C ToricSheaves match_tests_to_examples
 # END PACKAGE JANITOR
