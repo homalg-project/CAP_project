@@ -23,7 +23,7 @@ InstallMethod( CoFreydCategory_as_Opposite_FreydCategory_Opposite,
     
     op1 := Opposite( underlying_category : only_primitive_operations := true );
     
-    freyd := FreydCategory( op1 );
+    freyd := CallFuncListAtRuntime( FreydCategory, [ op1 ] );
     
     op2 := Opposite( freyd : only_primitive_operations := true );
     
