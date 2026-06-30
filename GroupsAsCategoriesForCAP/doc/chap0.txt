@@ -6,10 +6,10 @@
                       [1X Groups as categories on one object [101X
   
   
-                                   2026.05-04
+                                   2026.06-01
   
   
-                                  27 May 2026
+                                  30 June 2026
   
   
                                 Sebastian Posur
