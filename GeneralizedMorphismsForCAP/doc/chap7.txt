@@ -17,7 +17,7 @@
   
   [1X7.1-1 IsSerreQuotientCategoryObject[101X
   
-  [33X[1;0Y[29X[2XIsSerreQuotientCategoryObject[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsSerreQuotientCategoryObject[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  category  of  objects  in  the  category of Serre quotients. For actual
@@ -25,7 +25,7 @@
   
   [1X7.1-2 IsSerreQuotientCategoryMorphism[101X
   
-  [33X[1;0Y[29X[2XIsSerreQuotientCategoryMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsSerreQuotientCategoryMorphism[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  category  of  morphisms  in the category of Serre quotients. For actual
