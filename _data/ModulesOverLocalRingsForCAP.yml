@@ -1,7 +1,7 @@
 name: ModulesOverLocalRingsForCAP
-version: "2025.08-01"
+version: "2026.06-01"
 license: "GPL-2.0-or-later"
-date: 2025-08-25
+date: 2026-06-30
 description: |
     Category of modules over a local ring modeled by Serre quotients for CAP
 
@@ -35,11 +35,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsF
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2025.08-01/ModulesOverLocalRingsForCAP-2025.08-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2026.06-01/ModulesOverLocalRingsForCAP-2026.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2025.08-01/ModulesOverLocalRingsForCAP-2025.08-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2026.06-01/ModulesOverLocalRingsForCAP-2026.06-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2025.08-01/ModulesOverLocalRingsForCAP-2025.08-01-manual.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2026.06-01/ModulesOverLocalRingsForCAP-2026.06-01-manual.pdf
 
 abstract: |
 
@@ -48,10 +48,10 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Pos25</span>]   <b class='BibAuthor'>Posur, S.</b>,
+    [<span class='BibKey'>Pos30</span>]   <b class='BibAuthor'>Posur, S.</b>,
      <i class='BibTitle'>ModulesOverLocalRingsForCAP, Category of modules over a local ring modeled by Serre quotients for CAP,
-             Version 2025.08-01</i>
-     (<span class='BibYear'>8-25</span>)<br />
+             Version 2026.06-01</i>
+     (<span class='BibYear'>6-30</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP">https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP</a></span>.
     </p>
@@ -62,15 +62,15 @@ bibtex: |
       author =           {Posur, S.},
       title =            {{ModulesOverLocalRingsForCAP},  {Category  of  modules
                           over a local ring modeled by Serre quotients for CAP},
-                          {V}ersion 2025.08\texttt{\symbol{45}}01},
-      month =            {5\texttt{\symbol{45}}},
-      year =             {8\texttt{\symbol{45}}25},
+                          {V}ersion 2026.06\texttt{\symbol{45}}01},
+      month =            {6\texttt{\symbol{45}}},
+      year =             {6\texttt{\symbol{45}}30},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP}
                           {\texttt{https://homalg\texttt{\symbol{45}}project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ModulesOverLocalRingsForCAP}}},
-      printedkey =       {Pos25}
+      printedkey =       {Pos30}
     }
 
