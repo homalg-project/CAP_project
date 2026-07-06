@@ -14,6 +14,11 @@
 @Section Random methods for additive closure category
 @Section GAP Categories
 
+@Chapter Reinterpret a linear category over a commutative semiring with free f.g. external Homs
+@Section Constructors
+@Section Attributes
+@Section GAP Categories
+
 @Chapter Example on additive closure
 
 @Chapter Category of rows

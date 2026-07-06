@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "AdditiveClosuresForCAP",
 Subtitle := "Additive closures for pre-additive categories",
-Version := "2026.06-03",
+Version := "2026.07-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
