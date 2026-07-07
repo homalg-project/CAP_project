@@ -1,476 +1,1286 @@
   
-  [1X11 [33X[0;0YBasic operations[133X[101X
-  
-  
-  [1X11.1 [33X[0;0YWeak kernel[133X[101X
-  
-  [33X[0;0YFor  a  given  morphism  [23X\alpha:  A  \rightarrow  B[123X, a weak kernel of [23X\alpha[123X
-  consists of three parts:[133X
-  
-  [30X    [33X[0;6Yan object [23XK[123X,[133X
-  
-  [30X    [33X[0;6Ya  morphism  [23X\iota:  K  \rightarrow  A[123X  such  that  [23X\alpha \circ \iota
-        \sim_{K,B} 0[123X,[133X
-  
-  [30X    [33X[0;6Ya  dependent  function  [23Xu[123X  mapping each morphism [23X\tau: T \rightarrow A[123X
-        satisfying  [23X\alpha  \circ  \tau  \sim_{T,B} 0[123X to a morphism [23Xu(\tau): T
-        \rightarrow K[123X such that [23X\iota \circ u( \tau ) \sim_{T,A} \tau[123X.[133X
-  
-  [33X[0;0YThe  triple [23X( K, \iota, u )[123X is called a [13Xweak kernel[113X of [23X\alpha[123X. We denote the
-  object  [23XK[123X of such a triple by [23X\mathrm{WeakKernelObject}(\alpha)[123X. We say that
-  the  morphism  [23Xu(\tau)[123X  is  induced  by  the  [13Xuniversal property of the weak
-  kernel[113X.[133X
-  
-  [1X11.1-1 WeakKernelObject[101X
-  
-  [33X[1;0Y[29X[2XWeakKernelObject[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output is the weak kernel [23XK[123X of
-  [23X\alpha[123X.[133X
-  
-  [1X11.1-2 WeakKernelEmbedding[101X
-  
-  [33X[1;0Y[29X[2XWeakKernelEmbedding[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{WeakKernelObject}(\alpha),A)[123X[133X
-  
-  [33X[0;0YThe  argument  is a morphism [23X\alpha: A \rightarrow B[123X. The output is the weak
-  kernel embedding [23X\iota: \mathrm{WeakKernelObject}(\alpha) \rightarrow A[123X.[133X
-  
-  [1X11.1-3 WeakKernelEmbeddingWithGivenWeakKernelObject[101X
-  
-  [33X[1;0Y[29X[2XWeakKernelEmbeddingWithGivenWeakKernelObject[102X( [3Xalpha[103X, [3XK[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(K,A)[123X[133X
-  
-  [33X[0;0YThe  arguments  are  a  morphism  [23X\alpha:  A \rightarrow B[123X and an object [23XK =
-  \mathrm{WeakKernelObject}(\alpha)[123X.  The  output is the weak kernel embedding
-  [23X\iota: K \rightarrow A[123X.[133X
-  
-  [1X11.1-4 WeakKernelLift[101X
-  
-  [33X[1;0Y[29X[2XWeakKernelLift[102X( [3Xalpha[103X, [3Xtau[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T,\mathrm{WeakKernelObject}(\alpha))[123X[133X
-  
-  [33X[0;0YThe  arguments  are  a  morphism [23X\alpha: A \rightarrow B[123X and a test morphism
-  [23X\tau:  T \rightarrow A[123X satisfying [23X\alpha \circ \tau \sim_{T,B} 0[123X. The output
-  is  the  morphism  [23Xu(\tau):  T \rightarrow \mathrm{WeakKernelObject}(\alpha)[123X
-  given by the universal property of the weak kernel.[133X
-  
-  [1X11.1-5 WeakKernelLiftWithGivenWeakKernelObject[101X
-  
-  [33X[1;0Y[29X[2XWeakKernelLiftWithGivenWeakKernelObject[102X( [3Xalpha[103X, [3Xtau[103X, [3XK[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T,K)[123X[133X
-  
-  [33X[0;0YThe  arguments are a morphism [23X\alpha: A \rightarrow B[123X, a test morphism [23X\tau:
-  T \rightarrow A[123X satisfying [23X\alpha \circ \tau \sim_{T,B} 0[123X, and an object [23XK =
-  \mathrm{WeakKernelObject}(\alpha)[123X.  The  output  is  the morphism [23Xu(\tau): T
-  \rightarrow K[123X given by the universal property of the weak kernel.[133X
-  
-  
-  [1X11.2 [33X[0;0YWeak cokernel[133X[101X
-  
-  [33X[0;0YFor  a  given  morphism  [23X\alpha:  A \rightarrow B[123X, a weak cokernel of [23X\alpha[123X
-  consists of three parts:[133X
-  
-  [30X    [33X[0;6Yan object [23XK[123X,[133X
-  
-  [30X    [33X[0;6Ya  morphism  [23X\epsilon: B \rightarrow K[123X such that [23X\epsilon \circ \alpha
-        \sim_{A,K} 0[123X,[133X
-  
-  [30X    [33X[0;6Ya  dependent  function [23Xu[123X mapping each [23X\tau: B \rightarrow T[123X satisfying
-        [23X\tau  \circ \alpha \sim_{A, T} 0[123X to a morphism [23Xu(\tau):K \rightarrow T[123X
-        such that [23Xu(\tau) \circ \epsilon \sim_{B,T} \tau[123X.[133X
-  
-  [33X[0;0YThe triple [23X( K, \epsilon, u )[123X is called a [13Xweak cokernel[113X of [23X\alpha[123X. We denote
-  the object [23XK[123X of such a triple by [23X\mathrm{WeakCokernelObject}(\alpha)[123X. We say
-  that  the  morphism [23Xu(\tau)[123X is induced by the [13Xuniversal property of the weak
-  cokernel[113X.[133X
-  
-  [1X11.2-1 WeakCokernelObject[101X
-  
-  [33X[1;0Y[29X[2XWeakCokernelObject[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe  argument  is a morphism [23X\alpha: A \rightarrow B[123X. The output is the weak
-  cokernel [23XK[123X of [23X\alpha[123X.[133X
-  
-  [1X11.2-2 WeakCokernelProjection[101X
-  
-  [33X[1;0Y[29X[2XWeakCokernelProjection[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}(B, \mathrm{WeakCokernelObject}( \alpha
-            ))[123X[133X
-  
-  [33X[0;0YThe  argument  is a morphism [23X\alpha: A \rightarrow B[123X. The output is the weak
-  cokernel  projection  [23X\epsilon:  B  \rightarrow \mathrm{WeakCokernelObject}(
-  \alpha )[123X.[133X
-  
-  [1X11.2-3 WeakCokernelProjectionWithGivenWeakCokernelObject[101X
-  
-  [33X[1;0Y[29X[2XWeakCokernelProjectionWithGivenWeakCokernelObject[102X( [3Xalpha[103X, [3XK[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(B, K)[123X[133X
-  
-  [33X[0;0YThe  arguments  are  a  morphism  [23X\alpha:  A \rightarrow B[123X and an object [23XK =
-  \mathrm{WeakCokernelObject}(\alpha)[123X.   The   output  is  the  weak  cokernel
-  projection [23X\epsilon: B \rightarrow \mathrm{WeakCokernelObject}( \alpha )[123X.[133X
-  
-  [1X11.2-4 WeakCokernelColift[101X
-  
-  [33X[1;0Y[29X[2XWeakCokernelColift[102X( [3Xalpha[103X, [3Xtau[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{WeakCokernelObject}(\alpha),T)[123X[133X
-  
-  [33X[0;0YThe  arguments  are  a  morphism [23X\alpha: A \rightarrow B[123X and a test morphism
-  [23X\tau: B \rightarrow T[123X satisfying [23X\tau \circ \alpha \sim_{A, T} 0[123X. The output
-  is  the  morphism [23Xu(\tau): \mathrm{WeakCokernelObject}(\alpha) \rightarrow T[123X
-  given by the universal property of the weak cokernel.[133X
-  
-  [1X11.2-5 WeakCokernelColiftWithGivenWeakCokernelObject[101X
-  
-  [33X[1;0Y[29X[2XWeakCokernelColiftWithGivenWeakCokernelObject[102X( [3Xalpha[103X, [3Xtau[103X, [3XK[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(K,T)[123X[133X
-  
-  [33X[0;0YThe  arguments are a morphism [23X\alpha: A \rightarrow B[123X, a test morphism [23X\tau:
-  B  \rightarrow T[123X satisfying [23X\tau \circ \alpha \sim_{A, T} 0[123X, and an object [23XK
-  = \mathrm{WeakCokernelObject}(\alpha)[123X. The output is the morphism [23Xu(\tau): K
-  \rightarrow T[123X given by the universal property of the weak cokernel.[133X
-  
-  
-  [1X11.3 [33X[0;0YWeak bi-fiber product[133X[101X
-  
-  [33X[0;0YFor  a  given  pair  of  morphisms  [23X(\alpha: A \rightarrow B, \beta \colon C
-  \rightarrow B)[123X, a weak bi-fiber product of [23X(\alpha, \beta)[123X consists of three
-  parts:[133X
-  
-  [30X    [33X[0;6Yan object [23XP[123X,[133X
-  
-  [30X    [33X[0;6Ymorphisms  [23X\pi_1:  P  \rightarrow  A[123X, [23X\pi_2: P \rightarrow B[123X such that
-        [23X\alpha \circ \pi_1 \sim_{P,B} \beta \circ \pi_2[123X,[133X
-  
-  [30X    [33X[0;6Ya  dependent function [23Xu[123X mapping each pair [23X\tau = ( \tau_1, \tau_2 )[123X of
-        morphisms  [23X\tau_1:  T  \rightarrow A[123X, [23X\tau_2: T \rightarrow C[123X with the
-        property  [23X\alpha  \circ  \tau_1  \sim_{T,B}  \beta  \circ  \tau_2[123X to a
-        morphism  [23Xu(\tau):T  \rightarrow  P[123X  such  that  [23X\pi_1 \circ u( \tau )
-        \sim_{A,T} \tau_1[123X and [23X\pi_2 \circ u( \tau ) \sim_{C,T} \tau_2[123X.[133X
-  
-  [33X[0;0YThe  quadrupel  [23X(  P, \pi_1, \pi_2, u )[123X is called a [13Xweak bi-fiber product[113X of
-  [23X(\alpha,\beta)[123X.   We   denote   the   object   [23XP[123X  of  such  a  quadrupel  by
-  [23X\mathrm{WeakBiFiberProduct}(\alpha,\beta)[123X.  We say that the morphism [23Xu(\tau)[123X
-  is induced by the [13Xuniversal property of the weak bi-fiber product[113X.[133X
-  
-  [1X11.3-1 WeakBiFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XWeakBiFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X.  The  output  is  the  weak bi-fiber product [23XP[123X of [23X\alpha[123X and
-  [23X\beta[123X.[133X
-  
-  [1X11.3-2 ProjectionInFirstFactorOfWeakBiFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XProjectionInFirstFactorOfWeakBiFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, A )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X.  The  output  is  the first weak bi-fiber product projection
-  [23X\pi_1: P \rightarrow A[123X.[133X
-  
-  [1X11.3-3 ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, A )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X  and an object [23XP = \mathrm{WeakBiFiberProduct}( \alpha, \beta
-  )[123X.  The  output  is  the  first  weak  bi-fiber  product projection [23X\pi_1: P
-  \rightarrow A[123X.[133X
-  
-  [1X11.3-4 ProjectionInSecondFactorOfWeakBiFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XProjectionInSecondFactorOfWeakBiFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, C )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X.  The  output  is the second weak bi-fiber product projection
-  [23X\pi_2: P \rightarrow C[123X.[133X
-  
-  [1X11.3-5 ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, C )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X  and an object [23XP = \mathrm{WeakBiFiberProduct}( \alpha, \beta
-  )[123X.  The  output  is  the  second  weak  bi-fiber product projection [23X\pi_2: P
-  \rightarrow C[123X.[133X
-  
-  [1X11.3-6 UniversalMorphismIntoWeakBiFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismIntoWeakBiFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau_1[103X, [3Xtau_2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  four  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X, [23X\tau_1: T \rightarrow A[123X, [23X\tau_2: T \rightarrow C[123X. The output
-  is  the  morphism  [23Xu(  \tau  )[123X induced by the universal property of the weak
-  bi-fiber product [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
-  
-  [1X11.3-7 UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau_1[103X, [3Xtau_2[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  four  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X,  [23X\tau_1:  T  \rightarrow  A[123X,  [23X\tau_2: T \rightarrow C[123X and an
-  object  [23XP  = \mathrm{WeakBiFiberProduct}( \alpha, \beta )[123X. The output is the
-  morphism  [23Xu(  \tau  )[123X induced by the universal property of the weak bi-fiber
-  product [23XP[123X.[133X
-  
-  [1X11.3-8 WeakBiFiberProductMorphismToDirectSum[101X
-  
-  [33X[1;0Y[29X[2XWeakBiFiberProductMorphismToDirectSum[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, A \oplus C )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X. The output is the morphism [23XP \rightarrow A \oplus C[123X obtained
-  from  the  two  weak  bi-fiber  product  projections [23X\pi_1[123X and [23X\pi_2[123X and the
-  universal property of the direct sum.[133X
-  
-  
-  [1X11.4 [33X[0;0YBiased weak fiber product[133X[101X
-  
-  [33X[0;0YFor  a  given  pair  of  morphisms  [23X(\alpha: A \rightarrow B, \beta \colon C
-  \rightarrow  B)[123X,  a biased weak fiber product of [23X(\alpha, \beta)[123X consists of
-  three parts:[133X
-  
-  [30X    [33X[0;6Yan object [23XP[123X,[133X
-  
-  [30X    [33X[0;6Ya  morphism  [23X\pi:  P  \rightarrow  A[123X such that there exists a morphism
-        [23X\delta: P \rightarrow C[123X such that [23X\beta \circ \delta \sim_{P,B} \alpha
-        \circ \pi[123X,[133X
-  
-  [30X    [33X[0;6Ya  dependent  function  [23Xu[123X  mapping  each  [23X\tau: T \rightarrow A[123X, which
-        admits  a  morphism  [23X\mu  \colon  T \rightarrow C[123X with [23X\beta \circ \mu
-        \sim_{T,B}  \alpha  \circ  \tau[123X, to a morphism [23Xu(\tau):T \rightarrow P[123X
-        such that [23X\pi \circ u(\tau) \sim_{T,A} \tau[123X.[133X
-  
-  [33X[0;0YThe  triple  [23X(  P,  \pi,  u  )[123X  is  called  a  [13Xbiased  weak fiber product[113X of
-  [23X(\alpha,\beta)[123X.   We   denote   the   object   [23XP[123X   of   such   a  triple  by
-  [23X\mathrm{BiasedWeakFiberProduct}(\alpha,\beta)[123X.  We  say  that  the  morphism
-  [23Xu(\tau)[123X  is  induced  by  the  [13Xuniversal  property  of the biased weak fiber
-  product[113X.[133X
-  
-  [1X11.4-1 BiasedWeakFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XBiasedWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X.  The output is the biased weak fiber product [23XP[123X of [23X\alpha[123X and
-  [23X\beta[123X.[133X
-  
-  [1X11.4-2 ProjectionOfBiasedWeakFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XProjectionOfBiasedWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, A )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow B[123X. The output is the biased weak fiber product projection [23X\pi: P
-  \rightarrow A[123X.[133X
-  
-  [1X11.4-3 ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, A )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X,  and  an object [23XP = \mathrm{BiasedWeakFiberProduct}( \alpha,
-  \beta  )[123X.  The  output  is  the  biased weak fiber product projection [23X\pi: P
-  \rightarrow A[123X.[133X
-  
-  [1X11.4-4 UniversalMorphismIntoBiasedWeakFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismIntoBiasedWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta: C
-  \rightarrow  B[123X,  [23X\tau: T \rightarrow A[123X. The output is the morphism [23Xu( \tau )[123X
-  induced  by  the  universal  property  of the biased weak fiber product [23XP[123X of
-  [23X\alpha[123X and [23X\beta[123X.[133X
-  
-  [1X11.4-5 UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( T, P )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta: C
-  \rightarrow    B[123X,    [23X\tau:   T   \rightarrow   A[123X   and   an   object   [23XP   =
-  \mathrm{BiasedWeakFiberProduct}( \alpha, \beta )[123X. The output is the morphism
-  [23Xu( \tau )[123X induced by the universal property of the biased weak fiber product
-  [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
-  
-  
-  [1X11.5 [33X[0;0YWeak bi-pushout[133X[101X
-  
-  [33X[0;0YFor  a  given  pair  of  morphisms  [23X(\alpha: A \rightarrow B, \beta \colon A
-  \rightarrow  C)[123X,  a  weak  bi-pushout  of  [23X(\alpha, \beta)[123X consists of three
-  parts:[133X
-  
-  [30X    [33X[0;6Yan object [23XP[123X,[133X
-  
-  [30X    [33X[0;6Ymorphisms [23X\iota_1: B \rightarrow P[123X, [23X\iota_2: C \rightarrow P[123X such that
-        [23X\iota_1 \circ \alpha \sim_{A,P} \iota_2 \circ \beta[123X,[133X
-  
-  [30X    [33X[0;6Ya  dependent  function  [23Xu[123X mapping each pair [23X\tau = (\tau_1, \tau_2)[123X of
-        morphisms  [23X\tau_1:  B  \rightarrow T[123X, [23X\tau_2: C \rightarrow T[123X with the
-        property  [23X\tau_1  \circ  \alpha  \sim_{A,T}  \tau_2  \circ  \beta[123X to a
-        morphism  [23Xu(\tau):  P  \rightarrow T[123X such that [23Xu( \tau ) \circ \iota_1
-        \sim_{B,T} \tau_1[123X and [23Xu( \tau ) \circ \iota_2 \sim_{C,T} \tau_2[123X.[133X
-  
-  [33X[0;0YThe  quadrupel  [23X(  P,  \iota_1,  \iota_2, u )[123X is called a [13Xweak bi-pushout[113X of
-  [23X(\alpha,\beta)[123X.   We   denote   the   object   [23XP[123X  of  such  a  quadrupel  by
-  [23X\mathrm{WeakBiPushout}(\alpha,\beta)[123X.  We  say  that the morphism [23Xu(\tau)[123X is
-  induced by the [13Xuniversal property of the weak bi-pushout[113X.[133X
-  
-  [1X11.5-1 WeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow C[123X. The output is the weak bi-pushout [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
-  
-  [1X11.5-2 InjectionOfFirstCofactorOfWeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfFirstCofactorOfWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, P )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow  C[123X. The output is the first weak bi-pushout injection [23X\iota_1: B
-  \rightarrow P[123X.[133X
-  
-  [1X11.5-3 InjectionOfSecondCofactorOfWeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfSecondCofactorOfWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, P )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow C[123X. The output is the second weak bi-pushout injection [23X\iota_2: C
-  \rightarrow P[123X.[133X
-  
-  [1X11.5-4 InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, P )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow C[123X and an object [23XP = \mathrm{WeakBiPushout}( \alpha, \beta )[123X. The
-  output is the first weak bi-pushout injection [23X\iota_1: B \rightarrow P[123X.[133X
-  
-  [1X11.5-5 InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( C, P )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow C[123X and an object [23XP = \mathrm{WeakBiPushout}( \alpha, \beta )[123X. The
-  output is the second weak bi-pushout injection [23X\iota_2: C \rightarrow P[123X.[133X
-  
-  [1X11.5-6 UniversalMorphismFromWeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismFromWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau_1[103X, [3Xtau_2[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, T )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  four  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow  C[123X, [23X\tau_1: B \rightarrow T[123X, [23X\tau_2: C \rightarrow T[123X. The output
-  is  the  morphism  [23Xu(  \tau  )[123X induced by the universal property of the weak
-  bi-pushout [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
-  
-  [1X11.5-7 UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau_1[103X, [3Xtau_2[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, T )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  four  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow  C[123X,  [23X\tau_1:  B  \rightarrow  T[123X, [23X\tau_2: C \rightarrow T[123X, and an
-  object  [23XP  =  \mathrm{WeakBiPushout}(  \alpha,  \beta  )[123X.  The output is the
-  morphism  [23Xu( \tau )[123X induced by the universal property of the weak bi-pushout
-  [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
-  
-  [1X11.5-8 DirectSumMorphismToWeakBiPushout[101X
-  
-  [33X[1;0Y[29X[2XDirectSumMorphismToWeakBiPushout[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(B \oplus C, P )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  C
-  \rightarrow  B[123X. The output is the morphism [23XB \oplus C \rightarrow P[123X obtained
-  from  the  two  weak bi-fiber product injections [23X\iota_1[123X and [23X\iota_2[123X and the
-  universal property of the direct sum.[133X
-  
-  
-  [1X11.6 [33X[0;0YBiased weak pushout[133X[101X
-  
-  [33X[0;0YFor a given pair of morphisms [23X(\alpha: A \rightarrow B, \beta: A \rightarrow
-  C)[123X, a biased weak pushout of [23X(\alpha, \beta)[123X consists of three parts:[133X
-  
-  [30X    [33X[0;6Yan object [23XP[123X,[133X
-  
-  [30X    [33X[0;6Ya  morphism  [23X\iota:  B \rightarrow P[123X such that there exists a morphism
-        [23X\delta:  C \rightarrow P[123X such that [23X\delta \circ \beta \sim_{A,P} \iota
-        \circ \alpha[123X,[133X
-  
-  [30X    [33X[0;6Ya  dependent  function  [23Xu[123X  mapping  each  [23X\tau: B \rightarrow T[123X, which
-        admits  a  morphism  [23X\mu  \colon  C \rightarrow T[123X with [23X\mu \circ \beta
-        \sim_{B,T}  \tau  \circ  \alpha[123X, to a morphism [23Xu(\tau):P \rightarrow T[123X
-        such that [23Xu(\tau) \circ \iota \sim_{A,T} \tau[123X.[133X
-  
-  [33X[0;0YThe   triple   [23X(  P,  \iota,  u  )[123X  is  called  a  [13Xbiased  weak  pushout[113X  of
-  [23X(\alpha,\beta)[123X.   We   denote   the   object   [23XP[123X   of   such   a  triple  by
-  [23X\mathrm{BiasedWeakPushout}(\alpha,\beta)[123X.  We  say that the morphism [23Xu(\tau)[123X
-  is induced by the [13Xuniversal property of the biased weak pushout[113X.[133X
-  
-  [1X11.6-1 BiasedWeakPushout[101X
-  
-  [33X[1;0Y[29X[2XBiasedWeakPushout[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Yan object[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow C[123X. The output is the biased weak pushout [23XP[123X of [23X\alpha[123X and [23X\beta[123X.[133X
-  
-  [1X11.6-2 InjectionOfBiasedWeakPushout[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfBiasedWeakPushout[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, P )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow  C[123X.  The  output  is  the biased weak pushout injection [23X\iota: B
-  \rightarrow P[123X.[133X
-  
-  [1X11.6-3 InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout[101X
-  
-  [33X[1;0Y[29X[2XInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout[102X( [3Xalpha[103X, [3Xbeta[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( B, P )[123X[133X
-  
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta:  A
-  \rightarrow C[123X and an object [23XP = \mathrm{BiasedWeakPushout}( \alpha, \beta )[123X.
-  The output is the biased weak pushout injection [23X\iota: B \rightarrow P[123X.[133X
-  
-  [1X11.6-4 UniversalMorphismFromBiasedWeakPushout[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismFromBiasedWeakPushout[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, T )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta: A
-  \rightarrow  C[123X,  [23X\tau: B \rightarrow T[123X. The output is the morphism [23Xu( \tau )[123X
-  induced by the universal property of the biased weak pushout [23XP[123X of [23X\alpha[123X and
-  [23X\beta[123X.[133X
-  
-  [1X11.6-5 UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[101X
-  
-  [33X[1;0Y[29X[2XUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xtau[103X, [3XP[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( P, T )[123X[133X
-  
-  [33X[0;0YThe  arguments  are  three  morphisms  [23X\alpha:  A  \rightarrow  B[123X,  [23X\beta: A
-  \rightarrow    C[123X,    [23X\tau:   B   \rightarrow   T[123X   and   an   object   [23XP   =
-  \mathrm{BiasedWeakPushout}(  \alpha,  \beta )[123X. The output is the morphism [23Xu(
-  \tau  )[123X  induced  by  the universal property of the biased weak pushout [23XP[123X of
-  [23X\alpha[123X and [23X\beta[123X.[133X
+  [1X11 [33X[0;0YExamples on graded rows and columns[133X[101X
+  
+  
+  [1X11.1 [33X[0;0YConstructors of objects and reduction of degree lists[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular();[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XS := GradedRing( Q * "x_1, x_2, x_3, x_4" );[127X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(weights: yet unset)[128X[104X
+    [4X[25Xgap>[125X [27XSetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );[127X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XObjectL := GradedRow( [ [[1,0],2] ], S );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27XDegreeList( ObjectL );[127X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XObject2L := GradedRow( [ [[1,0],2], [127X[104X
+    [4X[25X>[125X [27X           [[1,0],3],[[0,1],2],[[1,0],1] ], S );[127X[104X
+    [4X[28X<A graded row of rank 8>[128X[104X
+    [4X[25Xgap>[125X [27XDegreeList( Object2L );[127X[104X
+    [4X[28X[ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XUnzipDegreeList( Object2L );[127X[104X
+    [4X[28X[ ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ), ( 1, 0 ) ][128X[104X
+    [4X[25Xgap>[125X [27XObjectR := GradedColumn( [ [[1,0],2] ], S );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27XDegreeList( ObjectR );[127X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XObject2R := GradedColumn( [ [[1,0],2], [127X[104X
+    [4X[25X>[125X [27X           [[1,0],3],[[0,1],2],[[1,0],1] ], S );[127X[104X
+    [4X[28X<A graded column of rank 8>[128X[104X
+    [4X[25Xgap>[125X [27XDegreeList( Object2R );[127X[104X
+    [4X[28X[ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XUnzipDegreeList( Object2R );[127X[104X
+    [4X[28X[ ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ), ( 1, 0 ) ][128X[104X
+    [4X[25Xgap>[125X [27XS2 := GradedRing( Q * "x" );;[127X[104X
+    [4X[25Xgap>[125X [27XSetWeightsOfIndeterminates( S2, [ 1 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( GradedRow( [ [ [ 1 ], 1 ] ], S2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( GradedColumn( [ [ [ 1 ], 1 ] ], S2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWhenever  the  object  constructor is called, it tries to simplify the given
+  degree  list.  To  this  end  it  checks if subsequent degree group elements
+  match. If so, their multiplicities are added. So, as in the example above we
+  have:[133X
+  
+  
+  [24X[33X[0;6Y[  [(1,0),2], [(1,0),3],[(0,1),2],[(1,0),1] ] \mapsto [ [ ( 1, 0 ), 5 ], [ (
+  0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ][133X
+  
+  [124X
+  
+  [33X[0;0YNote that, even though there are two occurances of [23X\left( 1,0 \right)[123X in the
+  final  degree  list,  we  do not simplify further. The reason for this is as
+  follows. Assume that we have a map of graded rows[133X
+  
+  
+  [24X[33X[0;6Y\varphi \colon A \to B[133X
+  
+  [124X
+  
+  [33X[0;0Ygiven by a homomgeneous matrix [23XM[123X and that we want to compute the weak kernel
+  embedding  of this mapping. To this end we first compute the row syzygies of
+  [23XM[123X. Let us call the corresponding matrix [23XN[123X. Then we deduce the degree list of
+  the  weak  kernel  object from [23XN[123X and from the graded row [23XA[123X. Once this degree
+  list  is  known,  we  would  call  the  object  constructor.  If this object
+  constructor  summarised  all  (and  not  only  subsequent) occurances of one
+  degree  element in the degree list, then in order to make sure that the weak
+  kernel embedding is a mapping of graded rows, the rows of the matrix [23XN[123X would
+  have to be shuffled. The latter we do not wish to perform.[133X
+  
+  [33X[0;0YNote  that  the 'IsEqualForObjects' methods returns true whenever the degree
+  lists  of two graded rows/columns are identical. So in particular it returns
+  false,  if the degree lists are mere permutations of one another. Here is an
+  example.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XObject2LShuffle := GradedRow( [ [[0,1],1],[127X[104X
+    [4X[25X>[125X [27X           [[1,0],2],[[0,1],1],[[1,0],4] ], S );[127X[104X
+    [4X[28X<A graded row of rank 8>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( Object2L, Object2LShuffle );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XObject2RShuffle := GradedColumn( [ [[0,1],1],[127X[104X
+    [4X[25X>[125X [27X           [[1,0],2],[[0,1],1],[[1,0],4] ], S );[127X[104X
+    [4X[28X<A graded column of rank 8>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( Object2R, Object2RShuffle );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.2 [33X[0;0YConstructors of morphisms[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ1L := GradedRow( [ [[0,0],1] ], S );[127X[104X
+    [4X[28X<A graded row of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Q1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ2L := GradedRow( [ [[1,0],2] ], S );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xm1L := GradedRowOrColumnMorphism( [127X[104X
+    [4X[25X>[125X [27X      Q1L, HomalgMatrix( [["x_1","x_2"]], S ) ,Q2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( m1L ) );[127X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Range( m1L ) );[127X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( m1L ) );[127X[104X
+    [4X[28Xx_1,x_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ1R := GradedColumn( [ [[0,0],1] ], S );[127X[104X
+    [4X[28X<A graded column of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Q1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ2R := GradedColumn( [ [[1,0],2] ], S );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xm1R := GradedRowOrColumnMorphism( [127X[104X
+    [4X[25X>[125X [27X      Q1R, HomalgMatrix( [["x_1"],["x_2"]], S ) ,Q2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( m1R ) );[127X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Range( m1R ) );[127X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( m1R ) );[127X[104X
+    [4X[28Xx_1,[128X[104X
+    [4X[28Xx_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.3 [33X[0;0YThe GAP categories[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XcategoryL := CapCategory( Q1L );[127X[104X
+    [4X[28XCategory of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[25Xgap>[125X [27XcategoryR := CapCategory( Q1R );[127X[104X
+    [4X[28XCategory of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.4 [33X[0;0YA few categorical constructions for graded rows[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZeroObject( categoryL );[127X[104X
+    [4X[28X<A graded row of rank 0>[128X[104X
+    [4X[25Xgap>[125X [27XO1L := GradedRow( [ [[-1,0],2] ], S );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( ZeroMorphism( ZeroObject( categoryL ), O1L ) );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 0 and degrees: [128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X(an empty 0 x 2 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( -1, 0 ), 2 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XO2L := GradedRow( [ [[0,0],1] ], S );[127X[104X
+    [4X[28X<A graded row of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27Xobj3L := GradedRow( [ [[-1,0],1] ], S );[127X[104X
+    [4X[28X<A graded row of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( IdentityMorphism( O2L ) );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( IdentityMorphism( Q2L ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XdirectSumL := DirectSum( [ O1L, O2L ] );[127X[104X
+    [4X[28X<A graded row of rank 3>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( directSumL );[127X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:[128X[104X
+    [4X[28X[ [ ( -1, 0 ), 2 ], [ 0, 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xi1L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 1 );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( i1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( i1L ) );[127X[104X
+    [4X[28X1,0,0,[128X[104X
+    [4X[28X0,1,0 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xi2L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( i2L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( i2L ) );[127X[104X
+    [4X[28X0,0,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xproj1L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 1 );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( proj1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( proj1L ) );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1,[128X[104X
+    [4X[28X0,0 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xproj2L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( proj2L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( proj2L ) );[127X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XkL := WeakKernelEmbedding( proj1L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( kL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( kL ) );[127X[104X
+    [4X[28X0,0,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XckL := WeakCokernelProjection( kL );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ckL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( ckL ) );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1,[128X[104X
+    [4X[28X0,0 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( kL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( kL );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( ckL );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( ckL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm1L := GradedRowOrColumnMorphism( O1L, [127X[104X
+    [4X[25X>[125X [27X      HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm2L := IdentityMorphism( O2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m2L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xobj1L := GradedRow( [ [[0,0],1], [[-1,0],1] ], S );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xm1L := GradedRowOrColumnMorphism( obj1L, [127X[104X
+    [4X[25X>[125X [27X      HomalgMatrix( [[ 1 ], [ "x_2"] ], S ), O2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm3L := GradedRowOrColumnMorphism( obj3L, [127X[104X
+    [4X[25X>[125X [27X      HomalgMatrix( [[ "x_1" ]], S ), O2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m3L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XliftL := Lift( m3L, m1L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( liftL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( liftL ) );[127X[104X
+    [4X[28Xx_1, 0[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XO3L := GradedRow( [ [[1,0],2] ], S );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27XmorL := GradedRowOrColumnMorphism( [127X[104X
+    [4X[25X>[125X [27X       O2L, HomalgMatrix( [[ "x_1, x_2" ]], S ), O3L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( morL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XcoliftL := Colift( m2L, morL );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( coliftL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( coliftL ) );[127X[104X
+    [4X[28Xx_1,x_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XfpL := WeakBiFiberProduct( m1L, m2L );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xfp_proj1L := ProjectionInFirstFactorOfWeakBiFiberProduct( m1L, m2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fp_proj1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( fp_proj1L ) );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfp_proj2L := ProjectionInSecondFactorOfWeakBiFiberProduct( m1L, m2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fp_proj2L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( fp_proj2L ) );[127X[104X
+    [4X[28X1,[128X[104X
+    [4X[28Xx_2 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XBiasedWeakFiberProduct( m1L, m2L );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xpbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( pbwfprow );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( pbwfprow );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ], [ ( -1, 0 ), 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ], [ ( -1, 0 ), 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XpoL := WeakBiPushout( morL, m2L );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xinj1L := InjectionOfFirstCofactorOfWeakBiPushout( morL, m2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( inj1L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( inj1L ) );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xinj2L := InjectionOfSecondCofactorOfWeakBiPushout( morL, m2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( inj2L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( inj2L ) );[127X[104X
+    [4X[28Xx_1,x_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XinjectionL := InjectionOfBiasedWeakPushout( morL, m2L );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( injectionL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( injectionL );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XtensorProductL := TensorProductOnObjects( O1L, O2L );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( tensorProductL );[127X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( -1, 0 ), 2 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XtensorProductMorphismL := TensorProductOnMorphisms( m2L, morL );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( tensorProductMorphismL );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( tensorProductMorphismL );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28Xx_1,x_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( DualOnObjects( TensorProductOnObjects( ObjectL, Object2L ) ) );[127X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: [128X[104X
+    [4X[28X[ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], [128X[104X
+    [4X[28X[ ( -2, 0 ), 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( DualOnMorphisms( m1L ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( DualOnMorphisms( m1L ) );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,x_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ], [ ( 1, 0 ), 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( [127X[104X
+    [4X[25X>[125X [27XDualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( [127X[104X
+    [4X[25X>[125X [27XDualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );[127X[104X
+    [4X[28XA morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] (with weights [128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 4 and degrees: [128X[104X
+    [4X[28X[ [ 0, 4 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,[128X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( InternalHomOnObjects( ObjectL, ObjectL ) );[127X[104X
+    [4X[28XA graded row over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 4 and degrees: [128X[104X
+    [4X[28X[ [ 0, 4 ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.5 [33X[0;0YA few categorical constructions for graded columns[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZeroObject( categoryR );[127X[104X
+    [4X[28X<A graded column of rank 0>[128X[104X
+    [4X[25Xgap>[125X [27XO1R := GradedColumn( [ [[-1,0],2] ], S );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( ZeroMorphism( ZeroObject( categoryR ), O1R ) );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1,0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 0 and degrees: [128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X(an empty 2 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1,0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( -1, 0 ), 2 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XO2R := GradedColumn( [ [[0,0],1] ], S );[127X[104X
+    [4X[28X<A graded column of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27Xobj3R := GradedColumn( [ [[-1,0],1] ], S );[127X[104X
+    [4X[28X<A graded column of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( IdentityMorphism( O2R ) );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( IdentityMorphism( Q2R ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XdirectSumR := DirectSum( [ O1R, O2R ] );[127X[104X
+    [4X[28X<A graded column of rank 3>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( directSumR );[127X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:[128X[104X
+    [4X[28X[ [ ( -1, 0 ), 2 ], [ 0, 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xi1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( i1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( i1R ) );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1,[128X[104X
+    [4X[28X0,0[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xi2R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( i2R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( i2R ) );[127X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xproj1R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 1 );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( proj1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( proj1R ) );[127X[104X
+    [4X[28X1,0,0,[128X[104X
+    [4X[28X0,1,0[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xproj2R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 2 );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( proj2R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( proj2R ) );[127X[104X
+    [4X[28X0,0,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XkR := WeakKernelEmbedding( proj1R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( kR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( kR ) );[127X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X0,[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XckR := WeakCokernelProjection( kR );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ckR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( ckR ) );[127X[104X
+    [4X[28X1,0,0,[128X[104X
+    [4X[28X0,1,0[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( kR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( kR );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( ckR );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( ckR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm1R := GradedRowOrColumnMorphism( O1R, [127X[104X
+    [4X[25X>[125X [27X      HomalgMatrix( [[ "x_1", "x_2" ]], S ), O2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm2R := IdentityMorphism( O2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m2R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xobj1R := GradedColumn( [ [[0,0],1], [[-1,0],1] ], S );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xm1R := GradedRowOrColumnMorphism( obj1R, [127X[104X
+    [4X[25X>[125X [27X      HomalgMatrix( [ [ 1, "x_2"] ], S ), O2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm3R := GradedRowOrColumnMorphism( obj3R, [127X[104X
+    [4X[25X>[125X [27X      HomalgMatrix( [[ "x_1" ]], S ), O2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m3R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XliftR := Lift( m3R, m1R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( liftR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( liftR ) );[127X[104X
+    [4X[28Xx_1,[128X[104X
+    [4X[28X0[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XO3R := GradedColumn( [ [[1,0],2] ], S );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27XmorR := GradedRowOrColumnMorphism( [127X[104X
+    [4X[25X>[125X [27X       O2R, HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O3R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( morR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XcoliftR := Colift( m2R, morR );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( coliftR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( coliftR ) );[127X[104X
+    [4X[28Xx_1,[128X[104X
+    [4X[28Xx_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XfpR := WeakBiFiberProduct( m1R, m2R );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xfp_proj1R := ProjectionInFirstFactorOfWeakBiFiberProduct( m1R, m2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fp_proj1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( fp_proj1R ) );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfp_proj2R := ProjectionInSecondFactorOfWeakBiFiberProduct( m1R, m2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fp_proj2R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( fp_proj2R ) );[127X[104X
+    [4X[28X1, x_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XBiasedWeakFiberProduct( m1R, m2R );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xpbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( pbwfpcol );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( pbwfpcol );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ], [ ( -1, 0 ), 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ], [ ( -1, 0 ), 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XpoR := WeakBiPushout( morR, m2R );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xinj1R := InjectionOfFirstCofactorOfWeakBiPushout( morR, m2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( inj1R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( inj1R ) );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xinj2R := InjectionOfSecondCofactorOfWeakBiPushout( morR, m2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( inj2R );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingHomalgMatrix( inj2R ) );[127X[104X
+    [4X[28Xx_1,[128X[104X
+    [4X[28Xx_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XinjectionR := InjectionOfBiasedWeakPushout( morR, m2R );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over[128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( injectionR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( injectionR );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XtensorProductR := TensorProductOnObjects( O1R, O2R );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( tensorProductR );[127X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] (with weights [128X[104X
+    [4X[28X[ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( -1, 0 ), 2 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XtensorProductMorphismR := TensorProductOnMorphisms( m2R, morR );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over [128X[104X
+    [4X[28XQ[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( tensorProductMorphismR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( tensorProductMorphismR );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28Xx_1,[128X[104X
+    [4X[28Xx_2 [128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ ( 1, 0 ), 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( DualOnObjects( TensorProductOnObjects( ObjectR, Object2R ) ) );[127X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: [128X[104X
+    [4X[28X[ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], [128X[104X
+    [4X[28X[ ( -2, 0 ), 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( DualOnMorphisms( m1R ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( DualOnMorphisms( m1R ) );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1, [128X[104X
+    [4X[28Xx_2[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 2 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ], [ ( 1, 0 ), 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( [127X[104X
+    [4X[25X>[125X [27XDualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( [127X[104X
+    [4X[25X>[125X [27XDualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );[127X[104X
+    [4X[28XA morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 4 and degrees: [128X[104X
+    [4X[28X[ [ 0, 4 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X1,0,0,1[128X[104X
+    [4X[28X(over a graded ring)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 1 and degrees: [128X[104X
+    [4X[28X[ [ 0, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( InternalHomOnObjects( ObjectR, ObjectR ) );[127X[104X
+    [4X[28XA graded column over Q[x_1,x_2,x_3,x_4] [128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) [128X[104X
+    [4X[28Xof rank 4 and degrees: [128X[104X
+    [4X[28X[ [ 0, 4 ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.6 [33X[0;0YAdditional examples on monoidal structure for graded rows[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XaR := GradedRow( [ [ [1,0], 1 ] ], S );[127X[104X
+    [4X[28X<A graded row of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27XbR := ZeroObject( CapCategory( aR ) );[127X[104X
+    [4X[28X<A graded row of rank 0>[128X[104X
+    [4X[25Xgap>[125X [27XcoevR := CoevaluationForDual( bR );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( coevR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XevalR := EvaluationForDual( bR );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( evalR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XcR := GradedRow( [ [ [2,0], 1 ] ], S );[127X[104X
+    [4X[28X<A graded row of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27XaR_o_bR := TensorProductOnObjects( aR, bR );[127X[104X
+    [4X[28X<A graded row of rank 0>[128X[104X
+    [4X[25Xgap>[125X [27XphiR := ZeroMorphism( aR_o_bR, cR );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( phiR );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xtens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aR,bR,phiR);[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( tens_mor );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.7 [33X[0;0YAdditional examples on monoidal structure for graded columns[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XaC := GradedColumn( [ [ [1,0], 1 ] ], S );[127X[104X
+    [4X[28X<A graded column of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27XbC := ZeroObject( CapCategory( aC ) );[127X[104X
+    [4X[28X<A graded column of rank 0>[128X[104X
+    [4X[25Xgap>[125X [27XcoevC := CoevaluationForDual( bC );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( coevC );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XevalC := EvaluationForDual( bC );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( evalC );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XcC := GradedColumn( [ [ [2,0], 1 ] ], S );[127X[104X
+    [4X[28X<A graded column of rank 1>[128X[104X
+    [4X[25Xgap>[125X [27XaC_o_bC := TensorProductOnObjects( aC, bC );[127X[104X
+    [4X[28X<A graded column of rank 0>[128X[104X
+    [4X[25Xgap>[125X [27XphiC := ZeroMorphism( aC_o_bC, cC );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( phiC );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xtens_mor := TensorProductToInternalHomLeftAdjunctMorphism(aC,bC,phiC);[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4][128X[104X
+    [4X[28X(with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( tens_mor );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.8 [33X[0;0YExamples to test Tools methods in graded rows/cols[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XS := GradedRing( Q * "x,y" );[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[28X(weights: yet unset)[128X[104X
+    [4X[25Xgap>[125X [27XSetWeightsOfIndeterminates( S, [ 1, 1 ] );[127X[104X
+    [4X[25Xgap>[125X [27Xmat_1 := HomalgMatrix( "[ x, 0, 0, y ]", 2, 2, S );[127X[104X
+    [4X[28X<A 2 x 2 matrix over a graded ring>[128X[104X
+    [4X[25Xgap>[125X [27Xmat_2 := HomalgMatrix( "[ x, 0, 0, 0 ]", 2, 2, S );[127X[104X
+    [4X[28X<A 2 x 2 matrix over a graded ring>[128X[104X
+    [4X[25Xgap>[125X [27Xa := GradedRow( [ [ [ 1 ], 1 ], [ [ 2 ], 1 ] ], S );[127X[104X
+    [4X[28X<A graded row of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xb := GradedColumn( [ [ [ 1 ], 1 ], [ [ 2 ], 1 ] ], S );[127X[104X
+    [4X[28X<A graded column of rank 2>[128X[104X
+    [4X[25Xgap>[125X [27Xmap := DeduceMapFromMatrixAndRangeForGradedRows( mat_1, a );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndRangeForGradedRows( mat_1, a );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( map, some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xmap := DeduceMapFromMatrixAndSourceForGradedRows( mat_1, a );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndSourceForGradedRows( mat_1, a );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( map, some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndRangeForGradedRows( mat_2, a );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndSourceForGradedRows( mat_2, a );[127X[104X
+    [4X[28X<A morphism in Category of graded rows over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xmap := DeduceMapFromMatrixAndRangeForGradedCols( mat_1, b );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndRangeForGradedCols( mat_1, b );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( map, some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xmap := DeduceMapFromMatrixAndSourceForGradedCols( mat_1, b );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndSourceForGradedCols( mat_1, b );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( map, some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndRangeForGradedCols( mat_2, b );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsome_map := DeduceSomeMapFromMatrixAndSourceForGradedCols( mat_2, b );[127X[104X
+    [4X[28X<A morphism in Category of graded columns over Q[x,y] (with weights [ 1, 1 ])>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( some_map );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# drop_example_in_Julia[127X[104X
+  [4X[32X[104X
   
