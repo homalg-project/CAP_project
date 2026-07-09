@@ -8,7 +8,11 @@
 InstallMethod( CategoryConstructor,
                [ IsRecord ],
                
-  function( options )
+  FunctionWithNamedArguments(
+  [
+    [ "overhead", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, options )
     local known_options_with_filters, name, object_datum_type, morphism_datum_type, is_computable, filter, CC, underlying_category, default_func_strings, info, unknown_filters, create_func_name, create_func, func_string, weight, func_string_and_weight, underlying_arguments, add, func, option_name, prop;
     
     ## check given options
@@ -111,8 +115,8 @@ InstallMethod( CategoryConstructor,
         name, options.category_filter,
         options.category_object_filter, options.category_morphism_filter, IsCapCategoryTwoCell,
         object_datum_type, morphism_datum_type, fail
-        : is_computable := is_computable
-    );
+        : is_computable := is_computable,
+          overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     if IsBound( options.supports_empty_limits ) then
         
@@ -523,4 +527,4 @@ InstallMethod( CategoryConstructor,
     
     return CC;
     
-end );
+end ) );
