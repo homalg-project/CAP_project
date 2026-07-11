@@ -6,7 +6,7 @@
 
 ##
 InstallMethod( LinearCategoryWithMorphismsByCoefficients,
-        [ FilterIntersection( IsCapCategory, IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms ), IsRecord ],
+        [  IsCapCategory, IsRecord ],
         
  FunctionWithNamedArguments(
   [ [ "overhead", true ],
@@ -20,6 +20,9 @@ InstallMethod( LinearCategoryWithMorphismsByCoefficients,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           reinterpretation_options, Coeff;
+    
+    Assert( 0, HasIsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms( L ) and
+            IsLinearCategoryOverCommutativeSemiringWithFinitelyGeneratedFreeExternalHoms( L ) );
     
     Assert( 0, HasRangeCategoryOfHomomorphismStructure( L ) and
             IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( L ) ) );
@@ -193,7 +196,8 @@ InstallMethod( LinearCategoryWithMorphismsByCoefficients,
     Coeff :=
       ReinterpretationOfCategory( L,
               reinterpretation_options :
-              FinalizeCategory := false );
+              FinalizeCategory := false,
+              overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     ##
     AddBasisOfExternalHom( Coeff,
