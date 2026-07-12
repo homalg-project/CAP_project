@@ -23,7 +23,11 @@ BindGlobal( "IsCapTerminalCategoryMorphismRep", IsMorphismInCapTerminalCategoryW
 ####################################
 
 InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
-  function( input_record )
+  FunctionWithNamedArguments(
+  [
+    [ "overhead", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, input_record )
     local completed_record, list_of_operations_to_install, skip, info, properties, excluded_properties, T, operation_name, operation;
     
     completed_record := ShallowCopy( input_record );
@@ -95,7 +99,7 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
         completed_record.commutative_semiring_of_linear_category := Integers;
     fi;
     
-    T := CategoryConstructor( completed_record );
+    T := CategoryConstructor( completed_record : overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     ##
     AddIsCongruentForMorphisms( T,
@@ -108,7 +112,7 @@ InstallGlobalFunction( CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY,
     
     return T;
     
-end );
+end ) );
 
 #########################################
 #
