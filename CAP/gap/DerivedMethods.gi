@@ -1149,6 +1149,17 @@ AddDerivationToCAP( PreCompose,
 end );
 
 ##
+AddDerivationToCAP( IdentityMorphism,
+                    "IdentityMorphism is the empty PreComposeList",
+                    [ [ PreComposeList, 1 ] ],
+                    
+  function( cat, object )
+    
+    return PreComposeList( cat, object, CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( cat ) ) ), object );
+    
+end );
+
+##
 AddDerivationToCAP( PreCompose,
                     "PreCompose by wrapping the arguments in a list",
                     [ [ PreComposeList, 1 ] ],
