@@ -8,6 +8,12 @@
 # some options should affect the whole function stack and should hence not be consumed by FunctionWithNamedArguments
 BindGlobal( "CAP_INTERNAL_GLOBAL_OPTIONS", [ "no_precompiled_code" ] );
 
+## LaTeX bracket constants: used in Concatenation to avoid transpiler { -> [ conversion in Julia
+#= comment for Julia
+BindGlobal( "LATEX_LBRACE", "{" );
+BindGlobal( "LATEX_RBRACE", "}" );
+# =#
+
 InstallGlobalFunction( "FunctionWithNamedArguments", function ( specification, func )
     
     Assert( 0, IsList( specification ) );
