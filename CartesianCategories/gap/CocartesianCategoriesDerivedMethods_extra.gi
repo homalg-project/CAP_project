@@ -85,6 +85,70 @@ AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
 end );
 
 ##
+AddDerivationToCAP( CocartesianLeftUnitorWithGivenCoproduct,
+                    "CocartesianLeftUnitor using CocartesianCodiagonal and UniversalMorphismIntoInitialObject",
+                    [ [ Coproduct, 1 ],
+                      [ InitialObject, 1 ],
+                      [ CocartesianCodiagonalWithGivenCocartesianMultiple, 1 ],
+                      [ UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ],
+                      [ CoproductOnMorphismAndObjectWithGivenCoproducts, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, ixa )
+    local L, axa, i;
+    
+    L := ListWithIdenticalEntries( 2, a );
+    
+    axa := Coproduct( cat, L );
+    
+    i := InitialObject( cat );
+    
+    return PreCompose( cat,
+                   CoproductOnMorphismAndObjectWithGivenCoproducts( cat,
+                           ixa,
+                           UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, a, i ),
+                           a,
+                           axa ),
+                   CocartesianCodiagonalWithGivenCocartesianMultiple( cat,
+                           a,
+                           2,
+                           axa ) );
+    
+end );
+
+##
+AddDerivationToCAP( CocartesianRightUnitorWithGivenCoproduct,
+                    "CocartesianRightUnitor using CocartesianCodiagonal and UniversalMorphismIntoInitialObject",
+                    [ [ Coproduct, 1 ],
+                      [ InitialObject, 1 ],
+                      [ CocartesianCodiagonalWithGivenCocartesianMultiple, 1 ],
+                      [ UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ],
+                      [ CoproductOnObjectAndMorphismWithGivenCoproducts, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, axi )
+    local L, axa, i;
+    
+    L := ListWithIdenticalEntries( 2, a );
+    
+    axa := Coproduct( cat, L );
+    
+    i := InitialObject( cat );
+    
+    return PreCompose( cat,
+                   CoproductOnObjectAndMorphismWithGivenCoproducts( cat,
+                           axi,
+                           a,
+                           UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, a, i ),
+                           axa ),
+                   CocartesianCodiagonalWithGivenCocartesianMultiple( cat,
+                           a,
+                           2,
+                           axa ) );
+    
+end );
+
+##
 AddDerivationToCAP( CocartesianAssociatorLeftToRightWithGivenCoproducts,
                     "CocartesianAssociatorLeftToRightWithGivenCoproducts using the universal morphism from coproduct",
                     [ [ Coproduct, 2 ],

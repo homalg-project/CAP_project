@@ -85,6 +85,70 @@ AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
 end );
 
 ##
+AddDerivationToCAP( CartesianLeftUnitorInverseWithGivenDirectProduct,
+                    "CartesianLeftUnitorInverse using CartesianDiagonal and UniversalMorphismIntoTerminalObject",
+                    [ [ DirectProduct, 1 ],
+                      [ TerminalObject, 1 ],
+                      [ CartesianDiagonalWithGivenCartesianPower, 1 ],
+                      [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+                      [ DirectProductOnMorphismAndObjectWithGivenDirectProducts, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, txa )
+    local L, axa, t;
+    
+    L := ListWithIdenticalEntries( 2, a );
+    
+    axa := DirectProduct( cat, L );
+    
+    t := TerminalObject( cat );
+    
+    return PreCompose( cat,
+                   CartesianDiagonalWithGivenCartesianPower( cat,
+                           a,
+                           2,
+                           axa ),
+                   DirectProductOnMorphismAndObjectWithGivenDirectProducts( cat,
+                           axa,
+                           UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, a, t ),
+                           a,
+                           txa ) );
+    
+end );
+
+##
+AddDerivationToCAP( CartesianRightUnitorInverseWithGivenDirectProduct,
+                    "CartesianRightUnitorInverse using CartesianDiagonal and UniversalMorphismIntoTerminalObject",
+                    [ [ DirectProduct, 1 ],
+                      [ TerminalObject, 1 ],
+                      [ CartesianDiagonalWithGivenCartesianPower, 1 ],
+                      [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
+                      [ DirectProductOnObjectAndMorphismWithGivenDirectProducts, 1 ],
+                      [ PreCompose, 1 ] ],
+                    
+  function( cat, a, axt )
+    local L, axa, t;
+    
+    L := ListWithIdenticalEntries( 2, a );
+    
+    axa := DirectProduct( cat, L );
+    
+    t := TerminalObject( cat );
+    
+    return PreCompose( cat,
+                   CartesianDiagonalWithGivenCartesianPower( cat,
+                           a,
+                           2,
+                           axa ),
+                   DirectProductOnObjectAndMorphismWithGivenDirectProducts( cat,
+                           axa,
+                           a,
+                           UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, a, t ),
+                           axt ) );
+    
+end );
+
+##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
                     "CartesianAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product",
                     [ [ DirectProduct, 2 ],
