@@ -1740,7 +1740,6 @@ InstallMethod( DisplayString,
     
 end );
 
-#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
           [ IsAdditiveClosureObject ],
@@ -1757,9 +1756,9 @@ InstallMethod( LaTeXOutput,
           List( objs,
               function( pair )
                 local s;
-                s := Concatenation( "{", LaTeXOutput( pair[ 1 ] ), "}" );
+                s := Concatenation( LATEX_LBRACE, LaTeXOutput( pair[ 1 ] ), LATEX_RBRACE );
                 if pair[ 2 ] <> 1 then
-                    s := Concatenation( s, "^{\\oplus ", String( pair[ 2 ] ), "}" );
+                    s := Concatenation( s, "^", LATEX_LBRACE, "\\oplus ", String( pair[ 2 ] ), LATEX_RBRACE );
                 fi;
                 return s;
               end ),
@@ -1771,37 +1770,39 @@ end );
 ##
 InstallMethod( LaTeXOutput,
           [ IsAdditiveClosureMorphism ],
-          
-  function( morphism )
-    local matrix, str;
-    
-    matrix := MorphismMatrix( morphism );
-    
-    if ForAny( List( [ Source( morphism ), Range( morphism ) ], ObjectList ), IsEmpty ) then
-        str := "\\\\";
-    else
-        str := JoinStringsWithSeparator(
-              List( matrix, row -> JoinStringsWithSeparator(
-                                      List( row, m -> LaTeXOutput( m : OnlyDatum := true ) ),
-                                      "\&" ) ),
-              "\\\\ \n"
-            );
-    fi;
-    
-    str :=  Concatenation( "\\begin{pmatrix}", str, "\\end{pmatrix}" );
-    
-    if ValueOption( "OnlyDatum" ) = true then
-        return str;
-    fi;
-    
-    return Concatenation(
-              LaTeXOutput( Source( morphism ) ),
-              "\\xrightarrow{", str, "}",
-              LaTeXOutput( Range( morphism ) )
-            );
-    
-end );
-# =#
+  FunctionWithNamedArguments(
+    [ [ "OnlyDatum", false ] ],
+    function( CAP_NAMED_ARGUMENTS, morphism )
+      local matrix, str;
+      
+      matrix := MorphismMatrix( morphism );
+      
+      if ForAny( List( [ Source( morphism ), Range( morphism ) ], ObjectList ), IsEmpty ) then
+          str := "\\\\";
+      else
+          str := JoinStringsWithSeparator(
+                List( matrix, row -> JoinStringsWithSeparator(
+                                        List( row, m -> LaTeXOutput( m : OnlyDatum := true ) ),
+                                        "&" ) ),
+                "\\\\ \n"
+              );
+      fi;
+      
+      str :=  Concatenation( "\\begin", LATEX_LBRACE, "pmatrix", LATEX_RBRACE, str, "\\end", LATEX_LBRACE, "pmatrix", LATEX_RBRACE );
+      
+      if CAP_NAMED_ARGUMENTS.OnlyDatum = true then
+          return str;
+      fi;
+      
+      return Concatenation(
+                LaTeXOutput( Source( morphism ) ),
+                "\\xrightarrow", LATEX_LBRACE, str, LATEX_RBRACE,
+                LaTeXOutput( Range( morphism ) )
+              );
+      
+    end
+  )
+);
 
 ####################################
 ##

@@ -2000,12 +2000,11 @@ InstallMethod( DisplayString,
     
 end );
 
-#= comment for Julia
 ##
 InstallMethod( LaTeXOutput,
                [ IsFreydCategoryObject ],
   function( object )
-    local rel, corel, r, m, c, rel_dat, corel_dat;
+    local rel, r, m, rel_dat;
     
     rel := ObjectDatum( object );
     
@@ -2018,11 +2017,11 @@ InstallMethod( LaTeXOutput,
     return Concatenation(
       "\\big(",
       r,
-      "\\xrightarrow{",
+      "\\xrightarrow", LATEX_LBRACE,
       rel_dat,
-      "}",
+      LATEX_RBRACE,
       m,
-      "\\big)_{\\mathcal{A}}"
+      "\\big)_", LATEX_LBRACE, "\\mathcal", LATEX_LBRACE, "A", LATEX_RBRACE, LATEX_RBRACE
     );
     
 end );
@@ -2030,33 +2029,36 @@ end );
 ##
 InstallMethod( LaTeXOutput,
                [ IsFreydCategoryMorphism ],
-  function( mor )
-    local datum;
-    
-    datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
-    
-    if ValueOption( "OnlyDatum" ) = true then
-       
-       return Concatenation(
-        """{\color{blue}{""",
-        datum,
-        """}}"""
-      );
+  FunctionWithNamedArguments(
+    [ [ "OnlyDatum", false ] ],
+    function( CAP_NAMED_ARGUMENTS, mor )
+      local datum;
       
-    else
+      datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
       
-      return Concatenation(
-        "{ \\tiny ", LaTeXOutput( Source( mor ) ), "}",
-        """{\color{blue}{\xrightarrow{""",
-        datum,
-        """}}}""",
-        "{ \\tiny ", LaTeXOutput( Range( mor ) ), "}"
-      );
+      if CAP_NAMED_ARGUMENTS.OnlyDatum = true then
+         
+         return Concatenation(
+          LATEX_LBRACE, "\\color", LATEX_LBRACE, "blue", LATEX_RBRACE, LATEX_LBRACE,
+          datum,
+          LATEX_RBRACE, LATEX_RBRACE
+        );
+        
+      else
+        
+        return Concatenation(
+          LATEX_LBRACE, " \\tiny ", LaTeXOutput( Source( mor ) ), LATEX_RBRACE,
+          LATEX_LBRACE, "\\color", LATEX_LBRACE, "blue", LATEX_RBRACE, LATEX_LBRACE, "\\xrightarrow", LATEX_LBRACE,
+          datum,
+          LATEX_RBRACE, LATEX_RBRACE, LATEX_RBRACE,
+          LATEX_LBRACE, " \\tiny ", LaTeXOutput( Range( mor ) ), LATEX_RBRACE
+        );
+        
+      fi;
       
-    fi;
-    
-end );
-# =#
+    end
+  )
+);
 
 ####################################################################################
 ##

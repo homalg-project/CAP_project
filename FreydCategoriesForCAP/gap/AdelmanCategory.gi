@@ -1405,6 +1405,7 @@ InstallMethod( Display,
     Display( CorelationMorphism( object ) );
     
 end );
+# =#
 
 ##
 InstallMethod( LaTeXOutput,
@@ -1426,20 +1427,20 @@ InstallMethod( LaTeXOutput,
     
     corel_dat := LaTeXOutput( corel : OnlyDatum := true );
     
-    m := Concatenation( """{  \color{blue}{""", m, "} }" );
+    m := Concatenation( LATEX_LBRACE, "  \\color", LATEX_LBRACE, "blue", LATEX_RBRACE, LATEX_LBRACE, m, LATEX_RBRACE, " ", LATEX_RBRACE );
     
     return Concatenation(
-      """{ \big(""",
+      LATEX_LBRACE, " \\big(",
       r,
-      "\\xrightarrow{",
+      "\\xrightarrow", LATEX_LBRACE,
       rel_dat,
-      "}",
+      LATEX_RBRACE,
       m,
-      "\\xrightarrow{",
+      "\\xrightarrow", LATEX_LBRACE,
       corel_dat,
-      "}",
+      LATEX_RBRACE,
       c,
-      """\big)}"""
+      "\\big)", LATEX_RBRACE
     );
     
 end );
@@ -1454,14 +1455,13 @@ InstallMethod( LaTeXOutput,
     
     return Concatenation(
       LaTeXOutput( Source( mor ) ),
-      """{\color{blue}{\xrightarrow{""",
+      LATEX_LBRACE, "\\color", LATEX_LBRACE, "blue", LATEX_RBRACE, LATEX_LBRACE, "\\xrightarrow", LATEX_LBRACE,
       datum,
-      """}}}""",
+      LATEX_RBRACE, LATEX_RBRACE, LATEX_RBRACE,
       LaTeXOutput( Range( mor ) )
     );
     
 end );
-# =#
 
 ####################################
 ##
