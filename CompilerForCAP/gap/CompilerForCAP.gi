@@ -279,6 +279,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
     
     # resolving phase
     resolving_phase_functions := [
+        CapJitInferredDataTypes,
         CapJitResolvedOperations,
         CapJitInlinedArguments,
         CapJitDroppedUnusedBindings,
@@ -398,6 +399,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_COMPILED_ENHANCED_SYNTAX_TREE, function 
                 # COVERAGE_IGNORE_BLOCK_END
                 
             fi;
+            
+            #Display(ENHANCED_SYNTAX_TREE_CODE( tree ) );
             
             tree := f( tree );
             
