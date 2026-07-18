@@ -10,7 +10,7 @@
 
 #! @Description
 #! This is a debug operation.
-#! The arguments are two objects $obj$ in a monoidal category $cat$.
+#! The arguments are a monoidal category $cat$ and an object $obj$ therein.
 #! The output is true if the left and right unitors are invertible for $obj$.
 #! @Returns a boolean
 #! @Arguments cat, obj
@@ -19,9 +19,9 @@ DeclareOperation( "TestMonoidalUnitorsForInvertibility",
 
 #! @Description
 #! This is a debug operation.
-#! The arguments are two objects $obj_1, obj_2, obj_3$ in a monoidal category $cat$.
+#! The arguments are a monoidal category $cat$ and three objects $obj_1, obj_2, obj_3$ therein.
 #! The output is true if the associator are invertible
-#! for these 3 objects, false otherwise.
+#! for these three objects, false otherwise.
 #! @Returns a boolean
 #! @Arguments cat, obj_1, obj_2, obj_3
 DeclareOperation( "TestAssociatorForInvertibility",
@@ -29,9 +29,9 @@ DeclareOperation( "TestAssociatorForInvertibility",
 
 #! @Description
 #! This is a debug operation.
-#! The arguments are two objects $obj_1, obj_2$ in a monoidal category $cat$.
+#! The arguments are a monoidal category $cat$ and two objects $obj_1, obj_2$ therein.
 #! The output is true if the triangle identity holds
-#! for these 2 objects, false otherwise.
+#! for these two objects, false otherwise.
 #! @Returns a boolean
 #! @Arguments cat, obj_1, obj_2
 DeclareOperation( "TestMonoidalTriangleIdentity",
@@ -39,7 +39,7 @@ DeclareOperation( "TestMonoidalTriangleIdentity",
 
 #! @Description
 #! This is a debug operation.
-#! The argument is a list $L$ of objects in a monoidal category $cat$.
+#! The arguments are a monoidal category $cat$ and a list $L$ of objects therein.
 #! The output is true if the triangle identity holds
 #! for all pairs of objects in $L$, otherwise false.
 #! @Returns a boolean
@@ -48,9 +48,9 @@ DeclareOperation( "TestMonoidalTriangleIdentityForAllPairsInList", [ IsCapCatego
 
 #! @Description
 #! This is a debug operation.
-#! The arguments are 4 objects $obj_1, obj_2, obj_3, obj_4$ in a monoidal category $cat$.
+#! The arguments are a monoidal category $cat$ and four objects $obj_1, obj_2, obj_3, obj_4$ therein.
 #! The output is true if the pentagon identity holds
-#! for these 4 objects, false otherwise.
+#! for these four objects, false otherwise.
 #! @Returns a boolean
 #! @Arguments cat, obj_1, obj_2, obj_3, obj_4
 DeclareOperation( "TestMonoidalPentagonIdentity",
@@ -58,9 +58,9 @@ DeclareOperation( "TestMonoidalPentagonIdentity",
 
 #! @Description
 #! This is a debug operation.
-#! The arguments are 4 objects $obj_1, obj_2, obj_3, obj_4$ in a monoidal category $cat$.
+#! The arguments are a monoidal category $cat$ and four objects $obj_1, obj_2, obj_3, obj_4$ therein.
 #! The output is true if the pentagon identity holds
-#! for these 4 objects, false otherwise.
+#! for these four objects, false otherwise.
 #! This test uses the WithGiven-operations.
 #! @Returns a boolean
 #! @Arguments cat, obj_1, obj_2, obj_3, obj_4
@@ -69,7 +69,7 @@ DeclareOperation( "TestMonoidalPentagonIdentityUsingWithGivenOperations",
 
 #! @Description
 #! This is a debug operation.
-#! The argument is a list $L$ of objects in a monoidal category $cat$.
+#! The arguments are a monoidal category $cat$ and a list $L$ of objects therein.
 #! The output is true if the pentagon identity holds
 #! for all quadruples of objects in $L$, otherwise false.
 #! @Returns a boolean
