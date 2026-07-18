@@ -16,7 +16,7 @@
 #! false otherwise.
 #! @Returns a boolean
 #! @Arguments cat, obj
-DeclareOperation( "TestZigZagIdentitiesForDual", [ IsCapCategory, IsCapCategoryObject ] );
+DeclareOperation( "TestZigzagIdentitiesForDual", [ IsCapCategory, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are
