@@ -9,6 +9,54 @@
 #! @Section Test functions
 
 #! @Description
+#! This is a debug operation.
+#! The arguments are a monoidal category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $L(b) \to (LRL)(b) \to L(b) = id_b$ is satisfied for
+#! * $L = a \otimes -$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfClosedMonoidalRightTensorProduct",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are a monoidal category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $R(b) \to (RLR)(b) \to R(b) = id_b$ is satisfied for
+#! * $L = a \otimes -$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfClosedMonoidalRightInternalHom",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are a monoidal category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $L(b) \to (LRL)(b) \to L(b) = id_b$ is satisfied for
+#! * $L = - \otimes a$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfClosedMonoidalLeftTensorProduct",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are a monoidal category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $R(b) \to (RLR)(b) \to R(b) = id_b$ is satisfied for
+#! * $L = - \otimes a$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfClosedMonoidalLeftInternalHom",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are
 #! * a CAP category $cat$
 #! * objects $a, b, c, d$

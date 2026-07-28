@@ -4,6 +4,83 @@
 # Implementations
 #
 
+##
+InstallMethod( TestZigzagOfClosedMonoidalRightTensorProduct,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, a, b )
+    
+    return IsOne( cat,
+                  PreCompose( cat,
+                          TensorProductOnObjectAndMorphism( cat,
+                                  a,
+                                  ClosedMonoidalRightCoevaluationMorphism( cat, a, b ) ),
+                          ClosedMonoidalRightEvaluationMorphism( cat,
+                                  a,
+                                  TensorProductOnObjects( cat, a, b ) ) ) );
+    
+end );
+
+##
+InstallMethod( TestZigzagOfClosedMonoidalRightInternalHom,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, a, b )
+    
+    return IsOne( cat,
+                  PreCompose( cat,
+                          ClosedMonoidalRightCoevaluationMorphism( cat,
+                                  a,
+                                  InternalHomOnObjects( cat,
+                                          a,
+                                          b ) ),
+                          InternalHomOnMorphisms( cat,
+                                  IdentityMorphism( a ),
+                                  ClosedMonoidalRightEvaluationMorphism( cat,
+                                          a,
+                                          b ) ) ) );
+    
+end );
+
+##
+InstallMethod( TestZigzagOfClosedMonoidalLeftTensorProduct,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, a, b )
+    
+    return IsOne( cat,
+                  PreCompose( cat,
+                          TensorProductOnMorphismAndObject( cat,
+                                  ClosedMonoidalLeftCoevaluationMorphism( cat, a, b ),
+                                  a ),
+                          ClosedMonoidalLeftEvaluationMorphism( cat,
+                                  a,
+                                  TensorProductOnObjects( cat, b, a ) ) ) );
+    
+end );
+
+##
+InstallMethod( TestZigzagOfClosedMonoidalLeftInternalHom,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( cat, a, b )
+    
+    return IsOne( cat,
+                  PreCompose( cat,
+                          ClosedMonoidalLeftCoevaluationMorphism( cat,
+                                  a,
+                                  InternalHomOnObjects( cat,
+                                          a,
+                                          b ) ),
+                          InternalHomOnMorphisms( cat,
+                                  IdentityMorphism( a ),
+                                  ClosedMonoidalLeftEvaluationMorphism( cat,
+                                          a,
+                                          b ) ) ) );
+    
+end );
+
+##
 InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
     
     function( cat, opposite, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta )
@@ -169,14 +246,14 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
         fi;
         
         if CanCompute( cat, "ClosedMonoidalRightCoevaluationMorphism" ) then
-            
+
             if verbose then
-                
+
                 # COVERAGE_IGNORE_NEXT_LINE
                 Display( "Testing 'ClosedMonoidalRightEvaluationMorphism' ..." );
-                
+
             fi;
-            
+
             coev_ab := ClosedMonoidalRightCoevaluationMorphism( a, b );
             coev_ba := ClosedMonoidalRightCoevaluationMorphism( b, a );
             
@@ -226,6 +303,52 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             
             Assert( 0, IsCongruentForMorphisms( cocl_coev_ab_op, Opposite( opposite, coev_ab ) ) );
             Assert( 0, IsCongruentForMorphisms( cocl_coev_ba_op, Opposite( opposite, coev_ba ) ) );
+            
+        fi;
+        
+        if CanCompute( cat, "ClosedMonoidalRightCoevaluationMorphism" ) and
+           CanCompute( cat, "ClosedMonoidalRightEvaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'TestZigzagOfClosedMonoidalRightTensorProduct' ..." );
+                
+            fi;
+            
+            Assert( 0, TestZigzagOfClosedMonoidalRightTensorProduct( cat, a, b ) );
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'TestZigzagOfClosedMonoidalRightInternalHom' ..." );
+                
+            fi;
+            
+            Assert( 0, TestZigzagOfClosedMonoidalRightInternalHom( cat, a, b ) );
+            
+        fi;
+        
+        if CanCompute( cat, "ClosedMonoidalLeftCoevaluationMorphism" ) and
+           CanCompute( cat, "ClosedMonoidalLeftEvaluationMorphism" ) then
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'TestZigzagOfClosedMonoidalLeftTensorProduct' ..." );
+                
+            fi;
+            
+            Assert( 0, TestZigzagOfClosedMonoidalLeftTensorProduct( cat, a, b ) );
+            
+            if verbose then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Display( "Testing 'TestZigzagOfClosedMonoidalLeftInternalHom' ..." );
+                
+            fi;
+            
+            Assert( 0, TestZigzagOfClosedMonoidalLeftInternalHom( cat, a, b ) );
             
         fi;
         

@@ -12,6 +12,54 @@
 #! @Section Test functions
 
 #! @Description
+#! This is a debug operation.
+#! The arguments are a cartesian category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $L(b) \to (LRL)(b) \to L(b) = id_b$ is satisfied for
+#! * $L = a \times -$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfCartesianRightDirectProduct",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are a cartesian category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $R(b) \to (RLR)(b) \to R(b) = id_b$ is satisfied for
+#! * $L = a \times -$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfCartesianRightExponential",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are a cartesian category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $L(b) \to (LRL)(b) \to L(b) = id_b$ is satisfied for
+#! * $L = - \times a$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfCartesianLeftDirectProduct",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a debug operation.
+#! The arguments are a cartesian category $cat$ and two objects $a$, $b$ therein.
+#! The output is true if the zigzag rule
+#! $R(b) \to (RLR)(b) \to R(b) = id_b$ is satisfied for
+#! * $L = - \times a$,
+#! * $R = \mathrm{Hom}(a, -)$.
+#! @Returns a boolean
+#! @Arguments cat, a, b
+DeclareOperation( "TestZigzagOfCartesianLeftExponential",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are
 #! * a CAP category $cat$
 #! * objects $a, b, c, d$
