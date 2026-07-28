@@ -111,8 +111,8 @@
   [33X[1;0Y[29X[2XTestCartesianUnitorsForInvertibility[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is a debug operation. The arguments are two objects [23Xobj[123X in a cartesian
-  category  [23Xcat[123X.  The  output  is  true  if  the  left  and  right unitors are
+  [33X[0;0YThis is a debug operation. The arguments are a cartesian category [23Xcat[123X and an
+  object  [23Xobj[123X  therein.  The  output is true if the left and right unitors are
   invertible for [23Xobj[123X.[133X
   
   [1X3.1-10 TestCartesianAssociatorForInvertibility[101X
@@ -120,26 +120,26 @@
   [33X[1;0Y[29X[2XTestCartesianAssociatorForInvertibility[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis is a debug operation. The arguments are two objects [23Xobj_1, obj_2, obj_3[123X
-  in  a  cartesian  category  [23Xcat[123X.  The  output  is true if the associator are
-  invertible for these 3 objects, false otherwise.[133X
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  three  objects  [23Xobj_1,  obj_2,  obj_3[123X  therein.  The  output  is true if the
+  associator are invertible for these three objects, false otherwise.[133X
   
   [1X3.1-11 TestCartesianTriangleIdentity[101X
   
   [33X[1;0Y[29X[2XTestCartesianTriangleIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a debug operation. The arguments are two objects [23Xobj_1, obj_2[123X in a
-  cartesian  category  [23Xcat[123X.  The output is true if the triangle identity holds
-  for these 2 objects, false otherwise.[133X
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  two  objects  [23Xobj_1,  obj_2[123X  therein.  The  output  is  true if the triangle
+  identity holds for these two objects, false otherwise.[133X
   
   [1X3.1-12 TestCartesianTriangleIdentityForAllPairsInList[101X
   
   [33X[1;0Y[29X[2XTestCartesianTriangleIdentityForAllPairsInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a  debug  operation.  The  argument  is  a  list [23XL[123X of objects in a
-  cartesian  category  [23Xcat[123X.  The output is true if the triangle identity holds
+  [33X[0;0YThis  is a debug operation. The arguments are a cartesian category [23Xcat[123X and a
+  list [23XL[123X of objects therein. The output is true if the triangle identity holds
   for all pairs of objects in [23XL[123X, otherwise false.[133X
   
   [1X3.1-13 TestCartesianPentagonIdentity[101X
@@ -147,27 +147,27 @@
   [33X[1;0Y[29X[2XTestCartesianPentagonIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is a debug operation. The arguments are 4 objects [23Xobj_1, obj_2, obj_3,
-  obj_4[123X  in  a  cartesian  category  [23Xcat[123X.  The  output is true if the pentagon
-  identity holds for these 4 objects, false otherwise.[133X
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  four  objects  [23Xobj_1, obj_2, obj_3, obj_4[123X therein. The output is true if the
+  pentagon identity holds for these four objects, false otherwise.[133X
   
   [1X3.1-14 TestCartesianPentagonIdentityUsingWithGivenOperations[101X
   
   [33X[1;0Y[29X[2XTestCartesianPentagonIdentityUsingWithGivenOperations[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is a debug operation. The arguments are 4 objects [23Xobj_1, obj_2, obj_3,
-  obj_4[123X  in  a  cartesian  category  [23Xcat[123X.  The  output is true if the pentagon
-  identity  holds  for  these  4  objects, false otherwise. This test uses the
-  WithGiven-operations.[133X
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  four  objects  [23Xobj_1, obj_2, obj_3, obj_4[123X therein. The output is true if the
+  pentagon  identity  holds for these four objects, false otherwise. This test
+  uses the WithGiven-operations.[133X
   
   [1X3.1-15 TestCartesianPentagonIdentityForAllQuadruplesInList[101X
   
   [33X[1;0Y[29X[2XTestCartesianPentagonIdentityForAllQuadruplesInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a  debug  operation.  The  argument  is  a  list [23XL[123X of objects in a
-  cartesian  category  [23Xcat[123X.  The output is true if the pentagon identity holds
+  [33X[0;0YThis  is a debug operation. The arguments are a cartesian category [23Xcat[123X and a
+  list [23XL[123X of objects therein. The output is true if the pentagon identity holds
   for all quadruples of objects in [23XL[123X, otherwise false.[133X
   
   [1X3.1-16 CartesianCategoriesTest[101X
@@ -197,7 +197,59 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-17 CartesianClosedCategoriesTest[101X
+  [1X3.1-17 TestZigzagOfCartesianRightDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfCartesianRightDirectProduct[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  two  objects  [23Xa[123X,  [23Xb[123X  therein. The output is true if the zigzag rule [23XL(b) \to
+  (LRL)(b) \to L(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = a \times -[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X3.1-18 TestZigzagOfCartesianRightExponential[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfCartesianRightExponential[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  two  objects  [23Xa[123X,  [23Xb[123X  therein. The output is true if the zigzag rule [23XR(b) \to
+  (RLR)(b) \to R(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = a \times -[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X3.1-19 TestZigzagOfCartesianLeftDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfCartesianLeftDirectProduct[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  two  objects  [23Xa[123X,  [23Xb[123X  therein. The output is true if the zigzag rule [23XL(b) \to
+  (LRL)(b) \to L(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = - \times a[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X3.1-20 TestZigzagOfCartesianLeftExponential[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfCartesianLeftExponential[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis  is  a  debug operation. The arguments are a cartesian category [23Xcat[123X and
+  two  objects  [23Xa[123X,  [23Xb[123X  therein. The output is true if the zigzag rule [23XR(b) \to
+  (RLR)(b) \to R(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = - \times a[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X3.1-21 CartesianClosedCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCartesianClosedCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -233,71 +285,71 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-18 TestCocartesianUnitorsForInvertibility[101X
+  [1X3.1-22 TestCocartesianUnitorsForInvertibility[101X
   
   [33X[1;0Y[29X[2XTestCocartesianUnitorsForInvertibility[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a  debug  operation.  The  arguments  are  two  objects  [23Xobj[123X  in a
-  cocartesian  category  [23Xcat[123X. The output is true if the left and right unitors
-  are invertible for [23Xobj[123X.[133X
+  [33X[0;0YThis  is a debug operation. The arguments are a cocartesian category [23Xcat[123X and
+  an  object [23Xobj[123X therein. The output is true if the left and right unitors are
+  invertible for [23Xobj[123X.[133X
   
-  [1X3.1-19 TestCocartesianAssociatorForInvertibility[101X
+  [1X3.1-23 TestCocartesianAssociatorForInvertibility[101X
   
   [33X[1;0Y[29X[2XTestCocartesianAssociatorForInvertibility[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis is a debug operation. The arguments are two objects [23Xobj_1, obj_2, obj_3[123X
-  in  a  cocartesian  category  [23Xcat[123X.  The output is true if the associator are
-  invertible for these 3 objects, false otherwise.[133X
+  [33X[0;0YThis  is a debug operation. The arguments are a cocartesian category [23Xcat[123X and
+  three  objects  [23Xobj_1,  obj_2,  obj_3[123X  therein.  The  output  is true if the
+  associator are invertible for these three objects, false otherwise.[133X
   
-  [1X3.1-20 TestCocartesianTriangleIdentity[101X
+  [1X3.1-24 TestCocartesianTriangleIdentity[101X
   
   [33X[1;0Y[29X[2XTestCocartesianTriangleIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a debug operation. The arguments are two objects [23Xobj_1, obj_2[123X in a
-  cocartesian  category [23Xcat[123X. The output is true if the triangle identity holds
-  for these 2 objects, false otherwise.[133X
+  [33X[0;0YThis  is a debug operation. The arguments are a cocartesian category [23Xcat[123X and
+  two  objects  [23Xobj_1,  obj_2[123X  therein.  The  output  is  true if the triangle
+  identity holds for these two objects, false otherwise.[133X
   
-  [1X3.1-21 TestCocartesianTriangleIdentityForAllPairsInList[101X
+  [1X3.1-25 TestCocartesianTriangleIdentityForAllPairsInList[101X
   
   [33X[1;0Y[29X[2XTestCocartesianTriangleIdentityForAllPairsInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a  debug  operation.  The  argument  is  a  list [23XL[123X of objects in a
-  cocartesian  category [23Xcat[123X. The output is true if the triangle identity holds
-  for all pairs of objects in [23XL[123X, otherwise false.[133X
+  [33X[0;0YThis  is a debug operation. The arguments are a cocartesian category [23Xcat[123X and
+  a  list  [23XL[123X  of  objects therein. The output is true if the triangle identity
+  holds for all pairs of objects in [23XL[123X, otherwise false.[133X
   
-  [1X3.1-22 TestCocartesianPentagonIdentity[101X
+  [1X3.1-26 TestCocartesianPentagonIdentity[101X
   
   [33X[1;0Y[29X[2XTestCocartesianPentagonIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is a debug operation. The arguments are 4 objects [23Xobj_1, obj_2, obj_3,
-  obj_4[123X  in  a  cocartesian  category  [23Xcat[123X. The output is true if the pentagon
-  identity holds for these 4 objects, false otherwise.[133X
+  [33X[0;0YThis  is a debug operation. The arguments are a cocartesian category [23Xcat[123X and
+  four  objects  [23Xobj_1, obj_2, obj_3, obj_4[123X therein. The output is true if the
+  pentagon identity holds for these four objects, false otherwise.[133X
   
-  [1X3.1-23 TestCocartesianPentagonIdentityUsingWithGivenOperations[101X
+  [1X3.1-27 TestCocartesianPentagonIdentityUsingWithGivenOperations[101X
   
   [33X[1;0Y[29X[2XTestCocartesianPentagonIdentityUsingWithGivenOperations[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is a debug operation. The arguments are 4 objects [23Xobj_1, obj_2, obj_3,
-  obj_4[123X  in  a  cocartesian  category  [23Xcat[123X. The output is true if the pentagon
-  identity  holds  for  these  4  objects, false otherwise. This test uses the
-  WithGiven-operations.[133X
+  [33X[0;0YThis  is a debug operation. The arguments are a cocartesian category [23Xcat[123X and
+  four  objects  [23Xobj_1, obj_2, obj_3, obj_4[123X therein. The output is true if the
+  pentagon  identity  holds for these four objects, false otherwise. This test
+  uses the WithGiven-operations.[133X
   
-  [1X3.1-24 TestCocartesianPentagonIdentityForAllQuadruplesInList[101X
+  [1X3.1-28 TestCocartesianPentagonIdentityForAllQuadruplesInList[101X
   
   [33X[1;0Y[29X[2XTestCocartesianPentagonIdentityForAllQuadruplesInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a  debug  operation.  The  argument  is  a  list [23XL[123X of objects in a
-  cocartesian  category [23Xcat[123X. The output is true if the pentagon identity holds
-  for all quadruples of objects in [23XL[123X, otherwise false.[133X
+  [33X[0;0YThis  is a debug operation. The arguments are a cocartesian category [23Xcat[123X and
+  a  list  [23XL[123X  of  objects therein. The output is true if the pentagon identity
+  holds for all quadruples of objects in [23XL[123X, otherwise false.[133X
   
-  [1X3.1-25 CocartesianCategoriesTest[101X
+  [1X3.1-29 CocartesianCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCocartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -325,7 +377,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-26 CocartesianCoclosedCategoriesTest[101X
+  [1X3.1-30 CocartesianCoclosedCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCocartesianCoclosedCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -361,7 +413,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-27 CodistributiveCocartesianCategoriesTest[101X
+  [1X3.1-31 CodistributiveCocartesianCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCodistributiveCocartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X, [3XM[103X ) [32X function[133X
   
@@ -389,7 +441,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X3.1-28 DistributiveCartesianCategoriesTest[101X
+  [1X3.1-32 DistributiveCartesianCategoriesTest[101X
   
   [33X[1;0Y[29X[2XDistributiveCartesianCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3XL[103X, [3XM[103X ) [32X function[133X
   

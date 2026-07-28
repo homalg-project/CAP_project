@@ -6,10 +6,10 @@
         [1X Cartesian and cocartesian categories and various subdoctrines [101X
   
   
-                                   2026.07-01
+                                   2026.07-02
   
   
-                                  16 July 2026
+                                  28 July 2026
   
   
                                 Mohamed Barakat
@@ -440,18 +440,22 @@
       3.1-14 TestCartesianPentagonIdentityUsingWithGivenOperations
       3.1-15 TestCartesianPentagonIdentityForAllQuadruplesInList
       3.1-16 CartesianCategoriesTest
-      3.1-17 CartesianClosedCategoriesTest
-      3.1-18 TestCocartesianUnitorsForInvertibility
-      3.1-19 TestCocartesianAssociatorForInvertibility
-      3.1-20 TestCocartesianTriangleIdentity
-      3.1-21 TestCocartesianTriangleIdentityForAllPairsInList
-      3.1-22 TestCocartesianPentagonIdentity
-      3.1-23 TestCocartesianPentagonIdentityUsingWithGivenOperations
-      3.1-24 TestCocartesianPentagonIdentityForAllQuadruplesInList
-      3.1-25 CocartesianCategoriesTest
-      3.1-26 CocartesianCoclosedCategoriesTest
-      3.1-27 CodistributiveCocartesianCategoriesTest
-      3.1-28 DistributiveCartesianCategoriesTest
+      3.1-17 TestZigzagOfCartesianRightDirectProduct
+      3.1-18 TestZigzagOfCartesianRightExponential
+      3.1-19 TestZigzagOfCartesianLeftDirectProduct
+      3.1-20 TestZigzagOfCartesianLeftExponential
+      3.1-21 CartesianClosedCategoriesTest
+      3.1-22 TestCocartesianUnitorsForInvertibility
+      3.1-23 TestCocartesianAssociatorForInvertibility
+      3.1-24 TestCocartesianTriangleIdentity
+      3.1-25 TestCocartesianTriangleIdentityForAllPairsInList
+      3.1-26 TestCocartesianPentagonIdentity
+      3.1-27 TestCocartesianPentagonIdentityUsingWithGivenOperations
+      3.1-28 TestCocartesianPentagonIdentityForAllQuadruplesInList
+      3.1-29 CocartesianCategoriesTest
+      3.1-30 CocartesianCoclosedCategoriesTest
+      3.1-31 CodistributiveCocartesianCategoriesTest
+      3.1-32 DistributiveCartesianCategoriesTest
     3.2 [33X[0;0YInfoOfInstalledOperationsOfCategory[133X
   4 [33X[0;0YThe initial category[133X
     4.1 [33X[0;0YConstructor[133X
