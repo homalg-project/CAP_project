@@ -782,8 +782,8 @@ WriteFileForCoclosedMonoidalStructure(
                                  "CARTESIAN_CLOSED_CATEGORIES" ],
                                [ "CoclosedMonoidalCategories.autogen.gd",
                                  "CocartesianCoclosedCategories.autogen.gd" ],
-                               [ "\"ClosedMonoidalCategories.autogen.gd\", \"Monoidal Categories\"",
-                                 "\"CartesianClosedCategories.autogen.gd\", \"Cartesian Categories\"" ],
+                               [ "\"ClosedMonoidalCategoriesMethodRecord\", \"Monoidal Categories\"",
+                                 "\"CartesianClosedCategoriesMethodRecord\", \"Cartesian Categories\"" ],
                                ##############################
                                ## Safe replacements for Tests
                                ##############################
