@@ -83,7 +83,59 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-6 ClosedMonoidalCategoriesTest[101X
+  [1X2.1-6 TestZigzagOfClosedMonoidalRightTensorProduct[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfClosedMonoidalRightTensorProduct[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The arguments are a monoidal category [23Xcat[123X and two
+  objects  [23Xa[123X,  [23Xb[123X  therein.  The  output  is  true  if the zigzag rule [23XL(b) \to
+  (LRL)(b) \to L(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = a \otimes -[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X2.1-7 TestZigzagOfClosedMonoidalRightInternalHom[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfClosedMonoidalRightInternalHom[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The arguments are a monoidal category [23Xcat[123X and two
+  objects  [23Xa[123X,  [23Xb[123X  therein.  The  output  is  true  if the zigzag rule [23XR(b) \to
+  (RLR)(b) \to R(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = a \otimes -[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X2.1-8 TestZigzagOfClosedMonoidalLeftTensorProduct[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfClosedMonoidalLeftTensorProduct[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The arguments are a monoidal category [23Xcat[123X and two
+  objects  [23Xa[123X,  [23Xb[123X  therein.  The  output  is  true  if the zigzag rule [23XL(b) \to
+  (LRL)(b) \to L(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = - \otimes a[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X2.1-9 TestZigzagOfClosedMonoidalLeftInternalHom[101X
+  
+  [33X[1;0Y[29X[2XTestZigzagOfClosedMonoidalLeftInternalHom[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThis is a debug operation. The arguments are a monoidal category [23Xcat[123X and two
+  objects  [23Xa[123X,  [23Xb[123X  therein.  The  output  is  true  if the zigzag rule [23XR(b) \to
+  (RLR)(b) \to R(b) = id_b[123X is satisfied for[133X
+  
+  [30X    [33X[0;6Y[23XL = - \otimes a[123X,[133X
+  
+  [30X    [33X[0;6Y[23XR = \mathrm{Hom}(a, -)[123X.[133X
+  
+  [1X2.1-10 ClosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -119,7 +171,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-7 ClosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-11 ClosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XClosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -147,7 +199,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-8 CoclosedMonoidalCategoriesTest[101X
+  [1X2.1-12 CoclosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -183,7 +235,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-9 CoclosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-13 CoclosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XCoclosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -211,7 +263,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-10 LeftClosedMonoidalCategoriesTest[101X
+  [1X2.1-14 LeftClosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XLeftClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -247,7 +299,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-11 LeftClosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-15 LeftClosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XLeftClosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -275,7 +327,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-12 LeftCoclosedMonoidalCategoriesTest[101X
+  [1X2.1-16 LeftCoclosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -311,7 +363,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-13 LeftCoclosedMonoidalCategoriesTestWithGiven[101X
+  [1X2.1-17 LeftCoclosedMonoidalCategoriesTestWithGiven[101X
   
   [33X[1;0Y[29X[2XLeftCoclosedMonoidalCategoriesTestWithGiven[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X, [3Xdelta[103X, [3Xepsilon[103X, [3Xzeta[103X ) [32X function[133X
   
@@ -339,7 +391,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-14 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[101X
+  [1X2.1-18 MonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[101X
   
   [33X[1;0Y[29X[2XMonoidalCategoriesTensorProductOnObjectsAndTensorUnitTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X ) [32X function[133X
   
@@ -363,71 +415,71 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-15 TestMonoidalUnitorsForInvertibility[101X
+  [1X2.1-19 TestMonoidalUnitorsForInvertibility[101X
   
   [33X[1;0Y[29X[2XTestMonoidalUnitorsForInvertibility[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a debug operation. The arguments are two objects [23Xobj[123X in a monoidal
-  category  [23Xcat[123X.  The  output  is  true  if  the  left  and  right unitors are
+  [33X[0;0YThis  is a debug operation. The arguments are a monoidal category [23Xcat[123X and an
+  object  [23Xobj[123X  therein.  The  output is true if the left and right unitors are
   invertible for [23Xobj[123X.[133X
   
-  [1X2.1-16 TestAssociatorForInvertibility[101X
+  [1X2.1-20 TestAssociatorForInvertibility[101X
   
   [33X[1;0Y[29X[2XTestAssociatorForInvertibility[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis is a debug operation. The arguments are two objects [23Xobj_1, obj_2, obj_3[123X
-  in  a  monoidal  category  [23Xcat[123X.  The  output  is  true if the associator are
-  invertible for these 3 objects, false otherwise.[133X
+  [33X[0;0YThis  is  a  debug  operation. The arguments are a monoidal category [23Xcat[123X and
+  three  objects  [23Xobj_1,  obj_2,  obj_3[123X  therein.  The  output  is true if the
+  associator are invertible for these three objects, false otherwise.[133X
   
-  [1X2.1-17 TestMonoidalTriangleIdentity[101X
+  [1X2.1-21 TestMonoidalTriangleIdentity[101X
   
   [33X[1;0Y[29X[2XTestMonoidalTriangleIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is  a debug operation. The arguments are two objects [23Xobj_1, obj_2[123X in a
-  monoidal category [23Xcat[123X. The output is true if the triangle identity holds for
-  these 2 objects, false otherwise.[133X
+  [33X[0;0YThis is a debug operation. The arguments are a monoidal category [23Xcat[123X and two
+  objects  [23Xobj_1,  obj_2[123X  therein. The output is true if the triangle identity
+  holds for these two objects, false otherwise.[133X
   
-  [1X2.1-18 TestMonoidalTriangleIdentityForAllPairsInList[101X
+  [1X2.1-22 TestMonoidalTriangleIdentityForAllPairsInList[101X
   
   [33X[1;0Y[29X[2XTestMonoidalTriangleIdentityForAllPairsInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis is a debug operation. The argument is a list [23XL[123X of objects in a monoidal
-  category  [23Xcat[123X.  The  output  is  true if the triangle identity holds for all
-  pairs of objects in [23XL[123X, otherwise false.[133X
+  [33X[0;0YThis  is  a debug operation. The arguments are a monoidal category [23Xcat[123X and a
+  list [23XL[123X of objects therein. The output is true if the triangle identity holds
+  for all pairs of objects in [23XL[123X, otherwise false.[133X
   
-  [1X2.1-19 TestMonoidalPentagonIdentity[101X
+  [1X2.1-23 TestMonoidalPentagonIdentity[101X
   
   [33X[1;0Y[29X[2XTestMonoidalPentagonIdentity[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is a debug operation. The arguments are 4 objects [23Xobj_1, obj_2, obj_3,
-  obj_4[123X  in  a  monoidal  category  [23Xcat[123X.  The  output  is true if the pentagon
-  identity holds for these 4 objects, false otherwise.[133X
+  [33X[0;0YThis  is  a  debug  operation. The arguments are a monoidal category [23Xcat[123X and
+  four  objects  [23Xobj_1, obj_2, obj_3, obj_4[123X therein. The output is true if the
+  pentagon identity holds for these four objects, false otherwise.[133X
   
-  [1X2.1-20 TestMonoidalPentagonIdentityUsingWithGivenOperations[101X
+  [1X2.1-24 TestMonoidalPentagonIdentityUsingWithGivenOperations[101X
   
   [33X[1;0Y[29X[2XTestMonoidalPentagonIdentityUsingWithGivenOperations[102X( [3Xcat[103X, [3Xobj_1[103X, [3Xobj_2[103X, [3Xobj_3[103X, [3Xobj_4[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis  is a debug operation. The arguments are 4 objects [23Xobj_1, obj_2, obj_3,
-  obj_4[123X  in  a  monoidal  category  [23Xcat[123X.  The  output  is true if the pentagon
-  identity  holds  for  these  4  objects, false otherwise. This test uses the
-  WithGiven-operations.[133X
+  [33X[0;0YThis  is  a  debug  operation. The arguments are a monoidal category [23Xcat[123X and
+  four  objects  [23Xobj_1, obj_2, obj_3, obj_4[123X therein. The output is true if the
+  pentagon  identity  holds for these four objects, false otherwise. This test
+  uses the WithGiven-operations.[133X
   
-  [1X2.1-21 TestMonoidalPentagonIdentityForAllQuadruplesInList[101X
+  [1X2.1-25 TestMonoidalPentagonIdentityForAllQuadruplesInList[101X
   
   [33X[1;0Y[29X[2XTestMonoidalPentagonIdentityForAllQuadruplesInList[102X( [3Xcat[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YThis is a debug operation. The argument is a list [23XL[123X of objects in a monoidal
-  category  [23Xcat[123X.  The  output  is  true if the pentagon identity holds for all
-  quadruples of objects in [23XL[123X, otherwise false.[133X
+  [33X[0;0YThis  is  a debug operation. The arguments are a monoidal category [23Xcat[123X and a
+  list [23XL[123X of objects therein. The output is true if the pentagon identity holds
+  for all quadruples of objects in [23XL[123X, otherwise false.[133X
   
-  [1X2.1-22 MonoidalCategoriesTest[101X
+  [1X2.1-26 MonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xalpha[103X, [3Xbeta[103X ) [32X function[133X
   
@@ -454,16 +506,16 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-23 TestZigZagIdentitiesForDual[101X
+  [1X2.1-27 TestZigzagIdentitiesForDual[101X
   
-  [33X[1;0Y[29X[2XTestZigZagIdentitiesForDual[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XTestZigzagIdentitiesForDual[102X( [3Xcat[103X, [3Xobj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThis  is  a  debug  operation.  The  argument  is  an  object [23Xobj[123X in a rigid
   symmetric  monoidal category [23Xcat[123X. The output is true if the zig zag identity
   for duals hold, false otherwise.[133X
   
-  [1X2.1-24 RigidSymmetricClosedMonoidalCategoriesTest[101X
+  [1X2.1-28 RigidSymmetricClosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XRigidSymmetricClosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X ) [32X function[133X
   
@@ -489,7 +541,7 @@
         tested.     On     the     downside,    this    might    test    fewer
         dual_pre/postprocessor_funcs.[133X
   
-  [1X2.1-25 RigidSymmetricCoclosedMonoidalCategoriesTest[101X
+  [1X2.1-29 RigidSymmetricCoclosedMonoidalCategoriesTest[101X
   
   [33X[1;0Y[29X[2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X( [3Xcat[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xd[103X, [3Xalpha[103X ) [32X function[133X
   
