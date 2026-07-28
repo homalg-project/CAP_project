@@ -86,65 +86,45 @@ end );
 
 ##
 AddDerivationToCAP( CartesianLeftUnitorInverseWithGivenDirectProduct,
-                    "CartesianLeftUnitorInverse using CartesianDiagonal and UniversalMorphismIntoTerminalObject",
-                    [ [ DirectProduct, 1 ],
-                      [ TerminalObject, 1 ],
-                      [ CartesianDiagonalWithGivenCartesianPower, 1 ],
+                    "CartesianLeftUnitorInverse using UniversalMorphismIntoTerminalObject and UniversalMorphismIntoDirectProduct",
+                    [ [ TerminalObject, 1 ],
                       [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
-                      [ DirectProductOnMorphismAndObjectWithGivenDirectProducts, 1 ],
-                      [ PreCompose, 1 ] ],
+                      [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
                     
   function( cat, a, txa )
-    local L, axa, t;
-    
-    L := ListWithIdenticalEntries( 2, a );
-    
-    axa := DirectProduct( cat, L );
+    local t;
     
     t := TerminalObject( cat );
     
-    return PreCompose( cat,
-                   CartesianDiagonalWithGivenCartesianPower( cat,
-                           a,
-                           2,
-                           axa ),
-                   DirectProductOnMorphismAndObjectWithGivenDirectProducts( cat,
-                           axa,
-                           UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, a, t ),
-                           a,
-                           txa ) );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   [ t, a ],
+                   a,
+                   [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, a, t ),
+                     IdentityMorphism( cat, a ) ],
+                   txa );
     
 end );
 
 ##
 AddDerivationToCAP( CartesianRightUnitorInverseWithGivenDirectProduct,
-                    "CartesianRightUnitorInverse using CartesianDiagonal and UniversalMorphismIntoTerminalObject",
-                    [ [ DirectProduct, 1 ],
-                      [ TerminalObject, 1 ],
-                      [ CartesianDiagonalWithGivenCartesianPower, 1 ],
+                    "CartesianRightUnitorInverse using UniversalMorphismIntoTerminalObject and UniversalMorphismIntoDirectProduct",
+                    [ [ TerminalObject, 1 ],
+                      [ IdentityMorphism, 1 ],
                       [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
-                      [ DirectProductOnObjectAndMorphismWithGivenDirectProducts, 1 ],
-                      [ PreCompose, 1 ] ],
+                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ] ],
                     
   function( cat, a, axt )
-    local L, axa, t;
-    
-    L := ListWithIdenticalEntries( 2, a );
-    
-    axa := DirectProduct( cat, L );
+    local t;
     
     t := TerminalObject( cat );
     
-    return PreCompose( cat,
-                   CartesianDiagonalWithGivenCartesianPower( cat,
-                           a,
-                           2,
-                           axa ),
-                   DirectProductOnObjectAndMorphismWithGivenDirectProducts( cat,
-                           axa,
-                           a,
-                           UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, a, t ),
-                           axt ) );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   [ a, t ],
+                   a,
+                   [ IdentityMorphism( cat, a ),
+                     UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, a, t ) ],
+                   axt );
     
 end );
 

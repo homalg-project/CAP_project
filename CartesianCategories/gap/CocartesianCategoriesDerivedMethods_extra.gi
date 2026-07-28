@@ -86,65 +86,45 @@ end );
 
 ##
 AddDerivationToCAP( CocartesianLeftUnitorWithGivenCoproduct,
-                    "CocartesianLeftUnitor using CocartesianCodiagonal and UniversalMorphismIntoInitialObject",
-                    [ [ Coproduct, 1 ],
-                      [ InitialObject, 1 ],
-                      [ CocartesianCodiagonalWithGivenCocartesianMultiple, 1 ],
+                    "CocartesianLeftUnitor using UniversalMorphismIntoInitialObject and UniversalMorphismFromCoproduct",
+                    [ [ InitialObject, 1 ],
                       [ UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ],
-                      [ CoproductOnMorphismAndObjectWithGivenCoproducts, 1 ],
-                      [ PreCompose, 1 ] ],
+                      [ IdentityMorphism, 1 ],
+                      [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
                     
   function( cat, a, ixa )
-    local L, axa, i;
-    
-    L := ListWithIdenticalEntries( 2, a );
-    
-    axa := Coproduct( cat, L );
+    local i;
     
     i := InitialObject( cat );
     
-    return PreCompose( cat,
-                   CoproductOnMorphismAndObjectWithGivenCoproducts( cat,
-                           ixa,
-                           UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, a, i ),
-                           a,
-                           axa ),
-                   CocartesianCodiagonalWithGivenCocartesianMultiple( cat,
-                           a,
-                           2,
-                           axa ) );
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   [ i, a ],
+                   a,
+                   [ UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, a, i ),
+                     IdentityMorphism( cat, a ) ],
+                   ixa );
     
 end );
 
 ##
 AddDerivationToCAP( CocartesianRightUnitorWithGivenCoproduct,
-                    "CocartesianRightUnitor using CocartesianCodiagonal and UniversalMorphismIntoInitialObject",
-                    [ [ Coproduct, 1 ],
-                      [ InitialObject, 1 ],
-                      [ CocartesianCodiagonalWithGivenCocartesianMultiple, 1 ],
+                    "CocartesianRightUnitor using UniversalMorphismIntoInitialObject and UniversalMorphismFromCoproduct",
+                    [ [ InitialObject, 1 ],
+                      [ IdentityMorphism, 1 ],
                       [ UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ],
-                      [ CoproductOnObjectAndMorphismWithGivenCoproducts, 1 ],
-                      [ PreCompose, 1 ] ],
+                      [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ] ],
                     
   function( cat, a, axi )
-    local L, axa, i;
-    
-    L := ListWithIdenticalEntries( 2, a );
-    
-    axa := Coproduct( cat, L );
+    local i;
     
     i := InitialObject( cat );
     
-    return PreCompose( cat,
-                   CoproductOnObjectAndMorphismWithGivenCoproducts( cat,
-                           axi,
-                           a,
-                           UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, a, i ),
-                           axa ),
-                   CocartesianCodiagonalWithGivenCocartesianMultiple( cat,
-                           a,
-                           2,
-                           axa ) );
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   [ a, i ],
+                   a,
+                   [ IdentityMorphism( cat, a ),
+                     UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, a, i ) ],
+                   axi );
     
 end );
 
