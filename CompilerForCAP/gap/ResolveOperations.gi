@@ -159,7 +159,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                     Info( InfoCapJit, 1, "####" );
                     Info( InfoCapJit, 1, Concatenation( "Resolve CAP operation ", operation_name, ", recurse compilation." ) );
                     
-                    CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, Length( info.filter_list ), [ CapJitDataTypeOfCategory( category ).filter ], Length( category!.added_functions.(operation_name) ), { operation_name } -> Concatenation(
+                    CAP_JIT_INTERNAL_WARN_ABOUT_SIMILAR_METHODS( operation, Length( info.filter_list ), [ CapJitDataTypeOfCategory( category ).filter ], category!.number_of_installed_methods.(operation_name), { operation_name } -> Concatenation(
                         # COVERAGE_IGNORE_BLOCK_START
                         "WARNING: A method for the CAP operation ", operation_name, " was installed manually (e.g. using Install(Other)Method), ",
                         "but CompilerForCAP will always resolve the methods installed via CAP's Add-functions.\n"
