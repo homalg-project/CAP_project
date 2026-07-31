@@ -23,7 +23,7 @@ InstallMethod( AddCapOperation,
     [ "IsPrecompiledDerivation", false ],
   ],
   function( CAP_NAMED_ARGUMENTS, function_name, category, func_to_install, weight )
-    local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, type, replaced_filter_list,
+    local record, category_name, is_derivation, is_final_derivation, is_precompiled_derivation, type, replaces_primitive_installation, replaced_filter_list,
         input_human_readable_identifier_getter, input_sanity_check_functions, data_type, output_human_readable_identifier_getter,
         output_data_type, output_sanity_check_function, filter_string;
     
@@ -68,6 +68,8 @@ InstallMethod( AddCapOperation,
         type := "primitive_installation";
         
     fi;
+
+    replaces_primitive_installation := false;
     
     # Display a warning in various cases when overwriting existing functions
     if IsBound( category!.operations.(function_name) ) then
@@ -87,6 +89,20 @@ InstallMethod( AddCapOperation,
             
             return;
             
+        fi;
+
+        replaces_primitive_installation :=
+            category!.operations.( function_name ).type = "primitive_installation" and
+            type = "primitive_installation";
+
+        if replaces_primitive_installation then
+
+            Info( CapOperationInstallationInfo, 1,
+                  "Duplicate primitive installation for ", function_name,
+                  " in category \"", category_name,
+                  "\": replacing weight ", category!.operations.( function_name ).weight,
+                  " with weight ", weight, "." );
+
         fi;
         
         if category!.operations.( function_name ).type = "primitive_installation" then
@@ -221,6 +237,20 @@ InstallMethod( AddCapOperation,
         fi;
         
     fi;
+
+    if replaces_primitive_installation then
+
+        return;
+
+    fi;
+
+    if not IsBound( category!.number_of_installed_methods.( function_name ) ) then
+
+        category!.number_of_installed_methods.( function_name ) := 0;
+
+    fi;
+
+    category!.number_of_installed_methods.( function_name ) := category!.number_of_installed_methods.( function_name ) + 1;
     
     if not category!.overhead then
         
@@ -229,7 +259,7 @@ InstallMethod( AddCapOperation,
                             
             function( arg )
                 
-                return CallFuncList( func_to_install, arg );
+                return CallFuncList( category!.operations.( function_name ).func, arg );
                 
         end );
         
@@ -280,7 +310,7 @@ InstallMethod( AddCapOperation,
                 
             fi;
             
-            result := CallFuncList( func_to_install, arg );
+            result := CallFuncList( category!.operations.( function_name ).func, arg );
             
             if collect_timing_statistics then
                 
