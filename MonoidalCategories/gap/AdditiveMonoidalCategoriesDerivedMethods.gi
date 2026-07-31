@@ -27,7 +27,7 @@ AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
     
     projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    projection_list_tensored := List( [1 .. nr_summands ],
+    projection_list_tensored := List( [ 1 .. nr_summands ],
                                       i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
                                                     factored_object,
                                                     id,
@@ -76,7 +76,7 @@ AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
     
     injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    injection_list_tensored := List( [1 .. nr_summands ],
+    injection_list_tensored := List( [ 1 .. nr_summands ],
                                      i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
                                                     diagram[i],
                                                     id,
@@ -125,7 +125,7 @@ AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
     
     projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    projection_list_tensored := List( [1 .. nr_summands ],
+    projection_list_tensored := List( [ 1 .. nr_summands ],
                                       i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
                                                     factored_object,
                                                     projection_list[i],
@@ -174,7 +174,7 @@ AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
     
     injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, summands, i, sum_of_summands ) );
     
-    injection_list_tensored := List( [1 .. nr_summands ],
+    injection_list_tensored := List( [ 1 .. nr_summands ],
                                      i -> TensorProductOnMorphismsWithGivenTensorProducts( cat,
                                                     diagram[i],
                                                     injection_list[i],
