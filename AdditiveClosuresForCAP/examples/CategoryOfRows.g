@@ -21,6 +21,13 @@ obj2 := CategoryOfRowsObject( 8, rows );
 #! @Section Constructors of morphisms
 #####################################
 
+s := CategoryOfRowsObject( 2, rows );;
+t := CategoryOfRowsObject( 0, rows );;
+mor := CategoryOfRowsMorphism( s, HomalgMatrix( [ [],[] ], 2, 0, S ), t );;
+IsWellDefined( mor );
+
+mor := CategoryOfRowsMorphism( s, HomalgMatrix( [ ], 2, 0, S ), t );;
+
 #! @Example
 obj3 := CategoryOfRowsObject( 1, rows );
 #! <A row module over Z of rank 1>
