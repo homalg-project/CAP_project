@@ -44,14 +44,18 @@ DeclareGlobalFunction( "FiniteSkeletalDiscreteCategory" );
 ########################################
 
 #! @Description
-#!  The underlying &GAP; objects of a finite skeletal discrete category.
+#!  The number of objects of a finite skeletal discrete category.
 #! @Returns a list of &CAP; objects
-DeclareAttribute( "UnderlyingListOfGapObjects", IsFiniteSkeletalDiscreteCategory );
+DeclareAttribute( "NumberOfObjects", IsFiniteSkeletalDiscreteCategory );
+
+CapJitAddTypeSignature( "NumberOfObjects", [ IsFiniteSkeletalDiscreteCategory ], IsBigInt );
 
 #! @Description
-#!  The underlying &GAP; object of an object in a finite skeletal discrete category.
-#! @Returns a &CAP; object
-DeclareAttribute( "UnderlyingGapObject", IsObjectInFiniteSkeletalDiscreteCategory );
+#!  The index of an object in a finite skeletal discrete category.
+#! @Returns an integer
+DeclareAttribute( "IndexOfObject", IsObjectInFiniteSkeletalDiscreteCategory );
+
+CapJitAddTypeSignature( "IndexOfObject", [ IsObjectInFiniteSkeletalDiscreteCategory ], IsBigInt );
 
 ####################################
 #

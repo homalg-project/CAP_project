@@ -19,24 +19,23 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
   [
     [ "FinalizeCategory", true ],
   ],
-  function( CAP_NAMED_ARGUMENTS, list_of_gap_objects )
+  function( CAP_NAMED_ARGUMENTS, number_of_objects )
     local name, D;
     
-    name := Concatenation( "FiniteSkeletalDiscreteCategory( ", String( list_of_gap_objects ), " )" );
+    name := Concatenation( "FiniteSkeletalDiscreteCategory( ", String( number_of_objects ), " )" );
     
     D := CreateCapCategoryWithDataTypes( name,
                                          IsFiniteSkeletalDiscreteCategory,
                                          IsObjectInFiniteSkeletalDiscreteCategory,
                                          IsMorphismInFiniteSkeletalDiscreteCategory,
                                          IsCapCategoryTwoCell,
-                                         rec( category := false,
-                                              filter := IsObject ),
+                                         IsBigInt,
                                          fail,
                                          fail );
     
-    D!.compiler_hints := rec( category_attribute_names := [ "UnderlyingListOfGapObjects" ] );
+    D!.compiler_hints := rec( category_attribute_names := [ "NumberOfObjects" ] );
     
-    SetUnderlyingListOfGapObjects( D, list_of_gap_objects );
+    SetNumberOfObjects( D, number_of_objects );
     
     SetIsFiniteCategory( D, true );
     
@@ -52,13 +51,13 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     
     ##
     AddObjectConstructor( D,
-      function( D, gap_object )
+      function( D, index )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, gap_object in UnderlyingListOfGapObjects( D ) );
+        Assert( 0, 1 <= index and index <= NumberOfObjects( D ) );
         
         return CreateCapCategoryObjectWithAttributes( D,
-                                                      UnderlyingGapObject, gap_object );
+                                                      IndexOfObject, index );
         
     end );
     
@@ -66,7 +65,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddObjectDatum( D,
       function( D, object )
         
-        return UnderlyingGapObject( object );
+        return IndexOfObject( object );
         
     end );
     
@@ -93,7 +92,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddIsWellDefinedForObjects( D,
       function( D, object )
         
-        return UnderlyingGapObject( object ) in UnderlyingListOfGapObjects( D );
+        return 1 <= IndexOfObject( object ) and IndexOfObject( object ) <= NumberOfObjects( D );
         
     end );
     
@@ -108,7 +107,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddIsEqualForObjects( D,
       function( D, object_1, object_2 )
         
-        return UnderlyingGapObject( object_1 ) = UnderlyingGapObject( object_2 );
+        return IndexOfObject( object_1 ) = IndexOfObject( object_2 );
         
     end );
     
@@ -140,7 +139,7 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     AddSetOfObjectsOfCategory( D,
       function( D )
         
-        return List( UnderlyingListOfGapObjects( D ), obj -> ObjectConstructor( D, obj ) );
+        return List( [ 1 .. NumberOfObjects( D ) ], i -> ObjectConstructor( D, i ) );
         
     end );
     
@@ -161,6 +160,21 @@ InstallGlobalFunction( FiniteSkeletalDiscreteCategory,
     return D;
     
 end ) );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+InstallMethodForCompilerForCAP( IndexOfObject,
+                                [ IsObjectInFiniteSkeletalDiscreteCategory ],
+                                
+  function( obj )
+    
+    return IndexOfObject( obj );
+    
+end );
 
 #################################
 #
@@ -201,7 +215,7 @@ InstallMethod( DisplayString,
 
   function( object )
     
-    return Concatenation( String( UnderlyingGapObject( object ) ), "\n" );
+    return Concatenation( String( IndexOfObject( object ) ), "\n" );
     
 end );
 

@@ -5,10 +5,10 @@
 #! @Example
 LoadPackage( "CAP", false );
 #! true
-D := FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] );
-#! FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )
+D := FiniteSkeletalDiscreteCategory( 5 );
+#! FiniteSkeletalDiscreteCategory( 5 )
 one := ObjectConstructor( D, 1 );
-#! <An object in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>
+#! <An object in FiniteSkeletalDiscreteCategory( 5 )>
 IsWellDefinedForObjects( one );
 #! true
 ObjectDatum( one ) = 1;
@@ -18,7 +18,7 @@ Display( one );
 IsEqualForObjects( one, D[1] );
 #! true
 id_one := IdentityMorphism( D, one );
-#! <An identity morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )>
+#! <An identity morphism in FiniteSkeletalDiscreteCategory( 5 )>
 IsWellDefinedForMorphisms( id_one );
 #! true
 MorphismDatum( id_one ) = fail;
@@ -26,7 +26,7 @@ MorphismDatum( id_one ) = fail;
 Display( id_one );
 #! 1
 #! |
-#! | A morphism in FiniteSkeletalDiscreteCategory( [ 1 .. 5 ] )
+#! | A morphism in FiniteSkeletalDiscreteCategory( 5 )
 #! v
 #! 1
 IsEqualForMorphisms( PreCompose( id_one, id_one ), id_one );
