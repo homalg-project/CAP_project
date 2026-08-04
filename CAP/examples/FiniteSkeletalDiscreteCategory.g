@@ -5,8 +5,13 @@
 #! @Example
 LoadPackage( "CAP", false );
 #! true
-D := FiniteSkeletalDiscreteCategory( 5 );
+
+# Set 'overhead := false' so that the actual function installed
+# for IsEqualForMorphisms is executed in the CI and not just
+# its redirect function.
+D := FiniteSkeletalDiscreteCategory( 5 : overhead := false );
 #! FiniteSkeletalDiscreteCategory( 5 )
+
 one := ObjectConstructor( D, 1 );
 #! <An object in FiniteSkeletalDiscreteCategory( 5 )>
 IsWellDefinedForObjects( one );
@@ -18,7 +23,7 @@ Display( one );
 IsEqualForObjects( one, D[1] );
 #! true
 id_one := IdentityMorphism( D, one );
-#! <An identity morphism in FiniteSkeletalDiscreteCategory( 5 )>
+#! <A morphism in FiniteSkeletalDiscreteCategory( 5 )>
 IsWellDefinedForMorphisms( id_one );
 #! true
 MorphismDatum( id_one ) = fail;
