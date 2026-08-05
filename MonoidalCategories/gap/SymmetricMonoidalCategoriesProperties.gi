@@ -5,6 +5,6 @@
 #
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory :=
-  ListOfDefiningOperations( "IsBraidedMonoidalCategory" );
+  Difference( ListOfDefiningOperations( "IsBraidedMonoidalCategory" ), [ "BraidingInverse" ] );
 
 InstallTrueMethod( IsBraidedMonoidalCategory, IsSymmetricMonoidalCategory );

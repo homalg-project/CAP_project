@@ -5,6 +5,30 @@
 #
 
 ##
+AddDerivationToCAP( Braiding,
+                    "Braiding using BraidingInverse",
+                    [ [ BraidingInverse, 1 ] ],
+                    
+  function( cat, object_1, object_2 )
+    
+    return BraidingInverse( cat,
+                            object_2, object_1 );
+    
+end : CategoryFilter := IsSymmetricMonoidalCategory );
+
+##
+AddDerivationToCAP( BraidingInverse,
+                    "BraidingInverse using Braiding",
+                    [ [ Braiding, 1 ] ],
+                    
+  function( cat, object_1, object_2 )
+    
+    return Braiding( cat,
+                     object_2, object_1 );
+    
+end : CategoryFilter := IsSymmetricMonoidalCategory );
+
+##
 AddDerivationToCAP( BraidingWithGivenTensorProducts,
                     "BraidingWithGivenTensorProducts using BraidingInverseWithGivenTensorProducts",
                     [ [ BraidingInverseWithGivenTensorProducts, 1 ] ],
