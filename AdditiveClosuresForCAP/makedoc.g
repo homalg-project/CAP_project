@@ -20,9 +20,12 @@ AutoDoc( rec(
     gapdoc := rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
+                \usepackage{mathtools}
+                \usepackage[table]{xcolor}
                 \usepackage{tikz}
                 \usetikzlibrary{arrows}
                 \usetikzlibrary{calc}
+                \DeclareUnicodeCharacter{2295}{\ensuremath{\oplus}}
             """,
         ),
     ),
