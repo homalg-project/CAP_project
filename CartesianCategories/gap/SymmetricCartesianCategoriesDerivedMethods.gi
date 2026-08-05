@@ -8,6 +8,30 @@
 
 
 ##
+AddDerivationToCAP( CartesianBraiding,
+                    "CartesianBraiding using CartesianBraidingInverse",
+                    [ [ CartesianBraidingInverse, 1 ] ],
+                    
+  function( cat, object_1, object_2 )
+    
+    return CartesianBraidingInverse( cat,
+                            object_2, object_1 );
+    
+end : CategoryFilter := IsCartesianCategory );
+
+##
+AddDerivationToCAP( CartesianBraidingInverse,
+                    "CartesianBraidingInverse using CartesianBraiding",
+                    [ [ CartesianBraiding, 1 ] ],
+                    
+  function( cat, object_1, object_2 )
+    
+    return CartesianBraiding( cat,
+                     object_2, object_1 );
+    
+end : CategoryFilter := IsCartesianCategory );
+
+##
 AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
                     "CartesianBraidingWithGivenDirectProducts using CartesianBraidingInverseWithGivenDirectProducts",
                     [ [ CartesianBraidingInverseWithGivenDirectProducts, 1 ] ],
