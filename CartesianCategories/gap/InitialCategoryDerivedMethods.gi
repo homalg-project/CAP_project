@@ -13,4 +13,16 @@ AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
     
     return CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( initial_category ) ) );
     
-end : CategoryFilter := cat -> HasIsInitialCategory( cat ) and IsInitialCategory( cat ) );
+end : CategoryFilter := IsInitialCategory );
+
+##
+AddDerivationToCAP( SetOfObjectsOfCategory,
+        "SetOfObjectsOfCategory for the initial category",
+        [  ],
+        
+  function( initial_category )
+    
+    return CapJitTypedExpression( [ ], cat -> CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( initial_category ) ) );
+    
+end : CategoryFilter := IsInitialCategory );
+
