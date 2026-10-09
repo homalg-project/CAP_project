@@ -15,11 +15,23 @@
 @Section GAP Categories
 
 @Chapter Reinterpret a linear category over a commutative semiring with free f.g. external Homs
-@Section Constructors
-@Section Attributes
-@Section GAP Categories
 
 @Chapter Example on additive closure
+
+@Chapter Additive closure of an object finite category
+@ChapterLabel AdditiveClosureObjectFinite
+
+@InsertChunk AddClosureObjFinIntroduction
+@InsertChunk AddClosureObjFinConstruction
+@Section Attributes
+@Section Constructors
+@Section Operations
+@Section Operators
+@Section GAP Categories
+@Section Examples
+
+@Subsection Test Monoidal
+@InsertChunk AddClosureObjFinKronecker
 
 @Chapter Category of rows
 @Section Constructors
