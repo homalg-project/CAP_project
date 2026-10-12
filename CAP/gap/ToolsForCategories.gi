@@ -1505,6 +1505,15 @@ InstallMethod( Iterated,
     
 end );
 
+InstallMethod( Iterated,
+               [ IsLazyHList, IsFunction, IsObject, IsObject ],
+               
+  function( list, func, initial_value, terminal_value )
+    
+    return Iterated( Concatenation( [ initial_value ], ListOfValues( list ), [ terminal_value ] ), func );
+    
+end );
+
 ##
 InstallMethod( IteratedListOfActions,
                [ IsList, IsList, IsFunction ],
