@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "AttributeCategoryForCAP",
 Subtitle := "Automatic enhancement with attributes of a CAP category",
-Version := "2026.06-01",
-Date := "2026-06-30",
+Version := "2026.10-01",
+Date := "2026-10-19",
 License := "GPL-2.0-or-later",
 
 Persons := [
