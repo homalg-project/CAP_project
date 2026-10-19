@@ -57,4 +57,10 @@ test-spacing:
 ci-test: test-basic-spacing test-with-coverage
 
 match_tests_to_examples:
-	python3 $$([ -f ../dev/match_tst_to_examples.py ] && echo ../dev/match_tst_to_examples.py || echo dev/match_tst_to_examples.py) .
+	@if [ -f ../dev/match_tst_to_examples.py ]; then \
+		python3 ../dev/match_tst_to_examples.py .; \
+	elif [ -f dev/match_tst_to_examples.py ]; then \
+		python3 dev/match_tst_to_examples.py .; \
+	else \
+		python3 "$$HOME/.gap/PackageJanitor/files/match_tst_to_examples.py" .; \
+	fi

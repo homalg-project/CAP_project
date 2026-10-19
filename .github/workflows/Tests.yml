@@ -55,7 +55,6 @@ jobs:
           if [ -d "CAP_project/CartesianCategories" ]; then make -C "CAP_project/CartesianCategories" doc; fi
           if [ -d "CAP_project/AdditiveClosuresForCAP" ]; then make -C "CAP_project/AdditiveClosuresForCAP" doc; fi
           if [ -d "CAP_project/FreydCategoriesForCAP" ]; then make -C "CAP_project/FreydCategoriesForCAP" doc; fi
-          if [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ]; then make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc; fi
           if [ -d "homalg_project/homalg" ]; then make -C "homalg_project/homalg" doc; fi
           if [ -d "homalg_project/Modules" ]; then make -C "homalg_project/Modules" doc; fi
           if [ -d "CategoricalTowers/ToolsForCategoricalTowers" ]; then make -C "CategoricalTowers/ToolsForCategoricalTowers" doc; fi
