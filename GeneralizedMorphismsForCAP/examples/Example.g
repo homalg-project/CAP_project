@@ -7,9 +7,10 @@ LoadPackage( "LinearAlgebraForCAP" );
 
 #! @Example
 Q := HomalgFieldOfRationals();;
-A := VectorSpaceObject( 4, Q );;
-B := VectorSpaceObject( 3, Q );;
-C := VectorSpaceObject( 2, Q );;
+vec := MatrixCategory( Q );;
+A := MatrixCategoryObject( vec, 4 );;
+B := MatrixCategoryObject( vec, 3 );;
+C := MatrixCategoryObject( vec, 2 );;
 alpha := VectorSpaceMorphism( A, 
 HomalgMatrix( [ [ 1, 1, 1 ], [ 0, 1, 1 ], 
 [ 1, 0, 1 ], [ 1, 1, 0 ] ], 4, 3, Q ), B );;
@@ -26,4 +27,5 @@ gen2 := PreCompose( GeneralizedInverse( p ), AsGeneralizedMorphism( q ) );
 #! <A morphism in Generalized morphism category of Category of matrices over Q>
 IsCongruentForMorphisms( gen1, gen2 );
 #! true
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample

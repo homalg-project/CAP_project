@@ -76,4 +76,5 @@ HK := HomologyObject( j, s );
 HC := HomologyObject( s, k );
 #! <An object in WrapperCategory( Category of matrices over Q )>
 SwitchGeneralizedMorphismStandard( old_generalized_morphism_standard );
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample

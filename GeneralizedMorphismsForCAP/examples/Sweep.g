@@ -9,7 +9,8 @@ LoadPackage( "GeneralizedMorphismsForCAP" );
 
 #! @Example
 Q := HomalgFieldOfRationals();;
-V := VectorSpaceObject( 3, Q );;
+vec := MatrixCategory( Q );;
+V := MatrixCategoryObject( vec, 3 );;
 mat := HomalgMatrix( [ [ 9, 8, 7 ], [ 6, 5, 4 ], [ 3, 2, 1 ] ], 3, 3, Q );;
 alpha := VectorSpaceMorphism( V, mat, V );;
 graph := FiberProductEmbeddingInDirectSum( 
@@ -56,4 +57,5 @@ Display( alpha );
 #!   [  3,  2,  1 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample
