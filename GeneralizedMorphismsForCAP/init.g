@@ -14,6 +14,7 @@ ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryBySpa
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategoryFunctors.gd" );
 
+#= comment for Julia
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotients.gd" );
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsByThreeArrows.gd" );
@@ -25,5 +26,6 @@ ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsBySpans.gd" );
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientsFunctors.gd" );
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/SerreQuotientSubcategory.gd" );
+# =#
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/Switcher.gd" );
