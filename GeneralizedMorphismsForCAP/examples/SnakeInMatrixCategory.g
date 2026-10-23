@@ -7,7 +7,7 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! true
 LoadPackage( "GeneralizedMorphismsForCAP", false );
 #! true
-old_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;
+old_generalized_morphism_standard := CAP_INTERNAL_FIND_CORRECT_GENERALIZED_CATEGORY_TYPE( CAP_INTERNAL );;
 SwitchGeneralizedMorphismStandard( "cospan" );
 Q := HomalgFieldOfRationals( );
 #! Q

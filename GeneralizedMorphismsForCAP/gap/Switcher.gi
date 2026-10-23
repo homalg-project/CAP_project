@@ -7,17 +7,34 @@
 BindGlobal( "CAP_INTERNAL_FIND_CORRECT_GENERALIZED_CATEGORY_TYPE",
   
   function( category )
-    
-    if IsBound( category!.generalized_type ) then
-        
-        return category!.generalized_morphism_standard;
-        
-    else
-        
-        return CAP_INTERNAL!.generalized_morphism_standard;
-        
+    local generalized_morphism_standard;
+
+    if IsBound( category!.generalized_morphism_standard ) then
+
+        generalized_morphism_standard := category!.generalized_morphism_standard;
+
+        if IsString( generalized_morphism_standard ) then
+
+            return generalized_morphism_standard;
+
+        fi;
+
     fi;
-    
+
+    if IsBound( CAP_INTERNAL!.generalized_morphism_standard ) then
+
+        generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;
+
+        if IsString( generalized_morphism_standard ) then
+
+            return generalized_morphism_standard;
+
+        fi;
+
+    fi;
+
+    return "threearrow";
+
 end );
 
 InstallGlobalFunction( SwitchGeneralizedMorphismStandard,
