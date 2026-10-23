@@ -539,15 +539,6 @@ InstallMethod( IdempotentDefinedByFactorobjectByCospan,
     
 end );
 
-InstallMethod( GeneralizedInverseByCospan,
-              [ IsCapCategoryMorphism ],
-              
-  function( morphism )
-    
-    return PseudoInverse( AsGeneralizedMorphismByCospan( morphism ) );
-    
-end );
-
 ##
 InstallMethodWithCacheFromObject( CommonCoastrictionOp,
                                   [ IsList, IsGeneralizedMorphismByCospan ],
