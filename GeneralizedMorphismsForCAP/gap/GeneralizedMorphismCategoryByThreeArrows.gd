@@ -43,6 +43,8 @@ DeclareFilter( "WasCreatedAsGeneralizedMorphismCategoryByThreeArrows" );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY" );
 
+DeclareGlobalFunction( "PRECOMPOSE_USING_KNOWN_IDENTITY_AIDS_FOR_GENERALIZED_MORPHISMS_BY_THREE_ARROWS" );
+
 ####################################
 ##
 #! @Section Properties
