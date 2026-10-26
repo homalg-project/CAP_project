@@ -272,6 +272,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROW
 end );
 
 ##
+#% G2J:julia-only @FilterIntersection( IsGeneralizedMorphismByThreeArrows, HasSourceAid, HasRangeAid, HasArrow )
+
 InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
                [ IsCapCategory ],
                
@@ -325,7 +327,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
                                              name,
                                              IsGeneralizedMorphismCategoryByThreeArrows,
                                              IsGeneralizedMorphismCategoryByThreeArrowsObject,
-                                             IsGeneralizedMorphismByThreeArrows and HasSourceAid and HasRangeAid and HasArrow,
+                                             FilterIntersection( IsGeneralizedMorphismByThreeArrows, HasSourceAid, HasRangeAid, HasArrow ),
                                              IsCapCategoryTwoCell,
                                              fail,
                                              fail,
@@ -337,15 +339,19 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
+    #= comment for Julia
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryByThreeArrows );
+    # =#
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_BY_THREE_ARROWS_CATEGORY( generalized_morphism_category );
     
+    #= comment for Julia
     AddPredicateImplicationFileToCategory( generalized_morphism_category,
       Filename(
         DirectoriesPackageLibrary( "GeneralizedMorphismsForCAP", "LogicForGeneralizedMorphismCategory" ),
         "PredicateImplicationsForGeneralizedMorphismCategory.tex" )
     );
+    # =#
     
     Finalize( generalized_morphism_category );
     
@@ -491,7 +497,7 @@ InstallMethod( HasFullDomain,
                
   function( generalized_morphism )
     
-    return IsIsomorphism( Domain( generalized_morphism ) );
+    return IsIsomorphism( DomainEmbedding( generalized_morphism ) );
     
 end );
 
@@ -542,7 +548,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphismByThreeArrows and HasIdentityAsRangeAid ],
+               [ FilterIntersection( IsGeneralizedMorphismByThreeArrows, HasIdentityAsRangeAid ) ],
                
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, domain, pushout_diagram, associated_morphism, codomain;
@@ -575,7 +581,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphismByThreeArrows and HasIdentityAsSourceAid ],
+               [ FilterIntersection( IsGeneralizedMorphismByThreeArrows, HasIdentityAsSourceAid ) ],
                  
   function( generalized_morphism )
     local source_aid, morphism_aid, range_aid, codomain, pullback_diagram, domain, associated_morphism;
@@ -608,9 +614,7 @@ end );
 
 ##
 InstallMethod( DomainAssociatedMorphismCodomainTriple,
-               [ IsGeneralizedMorphismByThreeArrows
-                 and HasIdentityAsSourceAid
-                 and HasIdentityAsRangeAid ],
+               [ FilterIntersection( IsGeneralizedMorphismByThreeArrows, HasIdentityAsSourceAid, HasIdentityAsRangeAid ) ],
                  
   function( generalized_morphism )
     
@@ -798,8 +802,7 @@ end : ArgumentNumber := 2 );
 ## than pullbacks.
 ##
 InstallMethod( PseudoInverse,
-               [ IsGeneralizedMorphismByThreeArrows
-                 and HasIdentityAsRangeAid ],
+               [ FilterIntersection( IsGeneralizedMorphismByThreeArrows, HasIdentityAsRangeAid ) ],
                  
   function( generalized_morphism )
     
@@ -827,8 +830,7 @@ InstallMethod( PseudoInverse,
 end );
 
 InstallMethod( PseudoInverse,
-               [ IsGeneralizedMorphismByThreeArrows
-                 and HasIdentityAsSourceAid ],
+               [ FilterIntersection( IsGeneralizedMorphismByThreeArrows, HasIdentityAsSourceAid ) ],
                
   function( generalized_morphism )
     

@@ -79,7 +79,9 @@ DeclareProperty( "HasIdentityAsSourceAid",
 DeclareProperty( "HasIdentityAsRangeAid",
                  IsGeneralizedMorphismByThreeArrows );
 
+#= comment for Julia
 InstallTrueMethod( HasIdentitiesAsReversedArrows, HasIdentityAsRangeAid and HasIdentityAsSourceAid );
+# =#
 
 InstallTrueMethod( HasIdentityAsRangeAid, HasIdentitiesAsReversedArrows );
 
@@ -132,8 +134,12 @@ DeclareAttribute( "Arrow",
 #! The output is its pseudo inverse $b \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}_{\mathbf{G(A)}}(b,a)$
 #! @Arguments alpha
+#= comment for Julia
 DeclareAttribute( "PseudoInverse",
                   IsGeneralizedMorphismByThreeArrows );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "PseudoInverse" )
 
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b \in \mathbf{A}$.

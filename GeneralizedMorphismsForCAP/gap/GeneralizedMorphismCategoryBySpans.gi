@@ -220,6 +220,8 @@ end );
 ####################################
 
 ##
+#% G2J:julia-only @FilterIntersection( IsGeneralizedMorphismBySpan, HasArrow, HasReversedArrow )
+
 InstallMethod( GeneralizedMorphismCategoryBySpans,
                [ IsCapCategory ],
                
@@ -273,7 +275,7 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
                                              name,
                                              IsGeneralizedMorphismCategoryBySpans,
                                              IsGeneralizedMorphismCategoryBySpansObject,
-                                             IsGeneralizedMorphismBySpan and HasArrow and HasReversedArrow,
+                                             FilterIntersection( IsGeneralizedMorphismBySpan, HasArrow, HasReversedArrow ),
                                              IsCapCategoryTwoCell,
                                              fail,
                                              fail,
@@ -285,15 +287,19 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
+    #= comment for Julia
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryBySpans );
+    # =#
     
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_SPANS( generalized_morphism_category );
     
+    #= comment for Julia
     AddPredicateImplicationFileToCategory( generalized_morphism_category,
       Filename(
         DirectoriesPackageLibrary( "GeneralizedMorphismsForCAP", "LogicForGeneralizedMorphismCategory" ),
         "PredicateImplicationsForGeneralizedMorphismCategory.tex" )
     );
+    # =#
     
     Finalize( generalized_morphism_category );
     
