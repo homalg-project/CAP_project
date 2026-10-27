@@ -43,10 +43,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B17B7587A449B8E">4.3-2 SourceAid</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87B0A0AF84F8AF7D">4.3-3 RangeAid</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CCBCD5385E55586">4.3-4 Arrow</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X784C006B8525E205">4.3-5 PseudoInverse</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78A8A55883C06AB1">4.3-6 GeneralizedInverseByThreeArrows</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80E329707BAA3B29">4.3-7 IdempotentDefinedBySubobjectByThreeArrows</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8217014B870B3EC2">4.3-8 IdempotentDefinedByFactorobjectByThreeArrows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78A8A55883C06AB1">4.3-5 GeneralizedInverseByThreeArrows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80E329707BAA3B29">4.3-6 IdempotentDefinedBySubobjectByThreeArrows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8217014B870B3EC2">4.3-7 IdempotentDefinedByFactorobjectByThreeArrows</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7DE8E16C7C2D387B">4.4 <span class="Heading">Operations</span></a>
 </span>
@@ -170,27 +169,18 @@
 
 <p>The argument is a generalized morphism <span class="Math">\alpha</span> by three arrows <span class="Math">a \leftarrow b \rightarrow c \leftarrow d</span>. The output is its range aid <span class="Math">b \rightarrow c</span>.</p>
 
-<p><a id="X784C006B8525E205" name="X784C006B8525E205"></a></p>
-
-<h5>4.3-5 PseudoInverse</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PseudoInverse</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,a)</span></p>
-
-<p>The argument is a generalized morphism <span class="Math">\alpha: a \rightarrow b</span> by three arrows. The output is its pseudo inverse <span class="Math">b \rightarrow a</span>.</p>
-
 <p><a id="X78A8A55883C06AB1" name="X78A8A55883C06AB1"></a></p>
 
-<h5>4.3-6 GeneralizedInverseByThreeArrows</h5>
+<h5>4.3-5 GeneralizedInverseByThreeArrows</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedInverseByThreeArrows</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,a)</span></p>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,a)</span> a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,a)</span></p>
 
-<p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b \in \mathbf{A}</span>. The output is its generalized inverse <span class="Math">b \rightarrow a</span> by three arrows.</p>
+<p>The argument is a generalized morphism <span class="Math">\alpha: a \rightarrow b</span> by three arrows. The output is its pseudo inverse <span class="Math">b \rightarrow a</span>. The argument is a morphism <span class="Math">\alpha: a \rightarrow b \in \mathbf{A}</span>. The output is its generalized inverse <span class="Math">b \rightarrow a</span> by three arrows.</p>
 
 <p><a id="X80E329707BAA3B29" name="X80E329707BAA3B29"></a></p>
 
-<h5>4.3-7 IdempotentDefinedBySubobjectByThreeArrows</h5>
+<h5>4.3-6 IdempotentDefinedBySubobjectByThreeArrows</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedBySubobjectByThreeArrows</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,b)</span></p>
@@ -199,7 +189,7 @@
 
 <p><a id="X8217014B870B3EC2" name="X8217014B870B3EC2"></a></p>
 
-<h5>4.3-8 IdempotentDefinedByFactorobjectByThreeArrows</h5>
+<h5>4.3-7 IdempotentDefinedByFactorobjectByThreeArrows</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdempotentDefinedByFactorobjectByThreeArrows</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{\mathbf{G(A)}}(b,b)</span></p>

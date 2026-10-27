@@ -6,9 +6,10 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 4, Q );;[127X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 3, Q );;[127X[104X
-    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 2, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XA := MatrixCategoryObject( vec, 4 );;[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XC := MatrixCategoryObject( vec, 2 );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( A, [127X[104X
     [4X[25X>[125X [27XHomalgMatrix( [ [ 1, 1, 1 ], [ 0, 1, 1 ], [127X[104X
     [4X[25X>[125X [27X[ 1, 0, 1 ], [ 1, 1, 0 ] ], 4, 3, Q ), B );;[127X[104X
@@ -25,6 +26,7 @@
     [4X[28X<A morphism in Generalized morphism category of Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( gen1, gen2 );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   
@@ -59,7 +61,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xold_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;[127X[104X
+    [4X[25Xgap>[125X [27Xold_generalized_morphism_standard := CAP_INTERNAL_FIND_CORRECT_GENERALIZED_CATEGORY_TYPE( CAP_INTERNAL );;[127X[104X
     [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );[127X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
@@ -128,6 +130,7 @@
     [4X[25Xgap>[125X [27XHC := HomologyObject( s, k );[127X[104X
     [4X[28X<An object in WrapperCategory( Category of matrices over Q )>[128X[104X
     [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( old_generalized_morphism_standard );[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   
@@ -138,7 +141,8 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XV := MatrixCategoryObject( vec, 3 );;[127X[104X
     [4X[25Xgap>[125X [27Xmat := HomalgMatrix( [ [ 9, 8, 7 ], [ 6, 5, 4 ], [ 3, 2, 1 ] ], 3, 3, Q );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, mat, V );;[127X[104X
     [4X[25Xgap>[125X [27Xgraph := FiberProductEmbeddingInDirectSum( [127X[104X
@@ -185,6 +189,7 @@
     [4X[28X  [  3,  2,  1 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   
@@ -193,13 +198,14 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XC := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XB_1 := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB_1 := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XC_1 := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XC_1 := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
     [4X[25Xgap>[125X [27Xc1_source_aid := VectorSpaceMorphism( B_1, [ [ 1, 0 ] ], B );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -211,9 +217,9 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27Xc1 := GeneralizedMorphism( c1_source_aid, c1_associated, c1_range_aid );[127X[104X
     [4X[28X<A morphism in Generalized morphism category of Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XB_2 := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB_2 := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XC_2 := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XC_2 := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
     [4X[25Xgap>[125X [27Xc2_source_aid := VectorSpaceMorphism( B_2, [ [ 2, 0 ] ], B );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -241,6 +247,7 @@
     [4X[28X<A morphism in Generalized morphism category of Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XArrow( c1 + c2 );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   [33X[0;0YFirst composition test:[133X
@@ -248,11 +255,12 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XA := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XC := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
     [4X[25Xgap>[125X [27Xphi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -274,6 +282,7 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XRangeAid( composition );[127X[104X
     [4X[28X<An identity morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   [33X[0;0YSecond composition test[133X
@@ -281,11 +290,12 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XA := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XC := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
     [4X[25Xgap>[125X [27Xphi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -307,6 +317,7 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XSourceAid( composition2 );[127X[104X
     [4X[28X<An identity morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   [33X[0;0YThird composition test[133X
@@ -314,19 +325,20 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XA := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XAsub := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XAsub := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XBfac := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27XBfac := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XBsub := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XBsub := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XC := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XCfac := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27XCfac := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
     [4X[25Xgap>[125X [27XAsub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -356,19 +368,19 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XRangeAid( p );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XA := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XAsub := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XAsub := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XBfac := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27XBfac := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XBsub := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XBsub := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XC := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[25Xgap>[125X [27XC := MatrixCategoryObject( vec, 3 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XCfac := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XCfac := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
     [4X[25Xgap>[125X [27XBsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3, 3 ], [ 0, 0 ] ], Cfac );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -390,6 +402,7 @@
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
     [4X[25Xgap>[125X [27XRangeAid( p );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   [33X[0;0YHonest representative test[133X
@@ -397,9 +410,10 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XA := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
     [4X[25Xgap>[125X [27Xphi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 2 ] ], A );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -415,6 +429,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi_tilde );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
   
@@ -423,9 +438,10 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();[127X[104X
     [4X[28XQ[128X[104X
-    [4X[25Xgap>[125X [27XA := VectorSpaceObject( 1, Q );[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XA := MatrixCategoryObject( vec, 1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27XB := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[25Xgap>[125X [27XB := MatrixCategoryObject( vec, 2 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
     [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
@@ -437,5 +453,6 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForObjects( A, B );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   

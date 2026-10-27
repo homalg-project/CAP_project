@@ -92,23 +92,18 @@
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
   \rightarrow c \leftarrow d[123X. The output is its range aid [23Xb \rightarrow c[123X.[133X
   
-  [1X4.3-5 PseudoInverse[101X
-  
-  [33X[1;0Y[29X[2XPseudoInverse[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
-  
-  [33X[0;0YThe  argument  is  a  generalized  morphism [23X\alpha: a \rightarrow b[123X by three
-  arrows. The output is its pseudo inverse [23Xb \rightarrow a[123X.[133X
-  
-  [1X4.3-6 GeneralizedInverseByThreeArrows[101X
+  [1X4.3-5 GeneralizedInverseByThreeArrows[101X
   
   [33X[1;0Y[29X[2XGeneralizedInverseByThreeArrows[102X( [3Xalpha[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X  a  morphism in
+            [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
   
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a \rightarrow b \in \mathbf{A}[123X. The
-  output is its generalized inverse [23Xb \rightarrow a[123X by three arrows.[133X
+  [33X[0;0YThe  argument  is  a  generalized  morphism [23X\alpha: a \rightarrow b[123X by three
+  arrows.  The output is its pseudo inverse [23Xb \rightarrow a[123X. The argument is a
+  morphism  [23X\alpha:  a  \rightarrow  b  \in  \mathbf{A}[123X.  The  output  is  its
+  generalized inverse [23Xb \rightarrow a[123X by three arrows.[133X
   
-  [1X4.3-7 IdempotentDefinedBySubobjectByThreeArrows[101X
+  [1X4.3-6 IdempotentDefinedBySubobjectByThreeArrows[101X
   
   [33X[1;0Y[29X[2XIdempotentDefinedBySubobjectByThreeArrows[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
@@ -117,7 +112,7 @@
   output  is  the idempotent [23Xb \rightarrow b \in \mathbf{G(A)}[123X by three arrows
   defined by [23X\alpha[123X.[133X
   
-  [1X4.3-8 IdempotentDefinedByFactorobjectByThreeArrows[101X
+  [1X4.3-7 IdempotentDefinedByFactorobjectByThreeArrows[101X
   
   [33X[1;0Y[29X[2XIdempotentDefinedByFactorobjectByThreeArrows[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X

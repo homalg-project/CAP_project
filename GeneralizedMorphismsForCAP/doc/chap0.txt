@@ -6,10 +6,10 @@
          [1X Implementations of generalized morphisms for the CAP project [101X
   
   
-                                   2026.10-01
+                                   2026.10-02
   
   
-                                19 October 2026
+                                27 October 2026
   
   
                                Sebastian Gutsche
@@ -152,10 +152,9 @@
       4.3-2 SourceAid
       4.3-3 RangeAid
       4.3-4 Arrow
-      4.3-5 PseudoInverse
-      4.3-6 GeneralizedInverseByThreeArrows
-      4.3-7 IdempotentDefinedBySubobjectByThreeArrows
-      4.3-8 IdempotentDefinedByFactorobjectByThreeArrows
+      4.3-5 GeneralizedInverseByThreeArrows
+      4.3-6 IdempotentDefinedBySubobjectByThreeArrows
+      4.3-7 IdempotentDefinedByFactorobjectByThreeArrows
     4.4 [33X[0;0YOperations[133X
       4.4-1 GeneralizedMorphismFromFactorToSubobjectByThreeArrows
       4.4-2 CommonCoastriction

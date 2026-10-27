@@ -41,7 +41,7 @@
   [2XGeneralizedInverse[102X, for IsCapCategoryMorphism 1.2-13 
   [2XGeneralizedInverseByCospan[102X, for IsCapCategoryMorphism 2.3-6 
   [2XGeneralizedInverseBySpan[102X, for IsCapCategoryMorphism 3.3-6 
-  [2XGeneralizedInverseByThreeArrows[102X, for IsCapCategoryMorphism 4.3-6 
+  [2XGeneralizedInverseByThreeArrows[102X, for IsCapCategoryMorphism 4.3-5 
   [2XGeneralizedKernelEmbedding[102X, for IsGeneralizedMorphism 1.2-5 
   [2XGeneralizedMorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-4 
       for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-5 
@@ -79,11 +79,11 @@
   [2XIdempotentDefinedByFactorobject[102X, for IsCapCategoryMorphism 1.2-15 
   [2XIdempotentDefinedByFactorobjectByCospan[102X, for IsCapCategoryMorphism 2.3-8 
   [2XIdempotentDefinedByFactorobjectBySpan[102X, for IsCapCategoryMorphism 3.3-8 
-  [2XIdempotentDefinedByFactorobjectByThreeArrows[102X, for IsCapCategoryMorphism 4.3-8 
+  [2XIdempotentDefinedByFactorobjectByThreeArrows[102X, for IsCapCategoryMorphism 4.3-7 
   [2XIdempotentDefinedBySubobject[102X, for IsCapCategoryMorphism 1.2-14 
   [2XIdempotentDefinedBySubobjectByCospan[102X, for IsCapCategoryMorphism 2.3-7 
   [2XIdempotentDefinedBySubobjectBySpan[102X, for IsCapCategoryMorphism 3.3-7 
-  [2XIdempotentDefinedBySubobjectByThreeArrows[102X, for IsCapCategoryMorphism 4.3-7 
+  [2XIdempotentDefinedBySubobjectByThreeArrows[102X, for IsCapCategoryMorphism 4.3-6 
   [2XIsGeneralizedMorphism[102X, for IsCapCategoryMorphism 1.1-3 
   [2XIsGeneralizedMorphismByCospan[102X, for IsGeneralizedMorphism 2.1-3 
   [2XIsGeneralizedMorphismBySpan[102X, for IsGeneralizedMorphism 3.1-3 
@@ -107,7 +107,6 @@
   [2XNormalizedSpanTuple[102X, for IsGeneralizedMorphismBySpan 3.3-4 
   [2XPseudoInverse[102X, for IsGeneralizedMorphismByCospan 2.3-5 
       for IsGeneralizedMorphismBySpan 3.3-5 
-      for IsGeneralizedMorphismByThreeArrows 4.3-5 
   [2XRangeAid[102X, for IsGeneralizedMorphismByThreeArrows 4.3-3 
   [2XReversedArrow[102X, for IsGeneralizedMorphismByCospan 2.3-3 
       for IsGeneralizedMorphismBySpan 3.3-3 
