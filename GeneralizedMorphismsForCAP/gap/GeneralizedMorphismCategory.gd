@@ -122,6 +122,7 @@ DeclareAttribute( "GeneralizedCoimageProjection",
 DeclareAttribute( "AssociatedMorphism",
                   IsGeneralizedMorphism );
 
+#= comment for Julia
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.
 #! The output is a triple $( d \hookrightarrow a, d \rightarrow c, b \twoheadrightarrow c )$
@@ -130,6 +131,9 @@ DeclareAttribute( "AssociatedMorphism",
 #! @Arguments alpha
 DeclareAttribute( "DomainAssociatedMorphismCodomainTriple",
                   IsGeneralizedMorphism );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "DomainAssociatedMorphismCodomainTriple" )
 
 #! @Description
 #! The argument is a generalized morphism $\alpha: a \rightarrow b$.

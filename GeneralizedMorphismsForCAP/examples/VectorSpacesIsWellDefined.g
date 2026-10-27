@@ -8,9 +8,10 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-A := VectorSpaceObject( 1, Q );
+vec := MatrixCategory( Q );;
+A := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-B := VectorSpaceObject( 2, Q );
+B := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
 alpha := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );
 #! <A morphism in Category of matrices over Q>
@@ -22,4 +23,5 @@ IsWellDefined( g );
 #! true
 IsEqualForObjects( A, B );
 #! false
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample

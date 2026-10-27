@@ -8,13 +8,14 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-B := VectorSpaceObject( 2, Q );
+vec := MatrixCategory( Q );;
+B := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-C := VectorSpaceObject( 3, Q );
+C := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
-B_1 := VectorSpaceObject( 1, Q );
+B_1 := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-C_1 := VectorSpaceObject( 2, Q );
+C_1 := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
 c1_source_aid := VectorSpaceMorphism( B_1, [ [ 1, 0 ] ], B );
 #! <A morphism in Category of matrices over Q>
@@ -26,9 +27,9 @@ c1_associated := VectorSpaceMorphism( B_1, [ [ 1, 1 ] ], C_1 );
 #! <A morphism in Category of matrices over Q>
 c1 := GeneralizedMorphism( c1_source_aid, c1_associated, c1_range_aid );
 #! <A morphism in Generalized morphism category of Category of matrices over Q>
-B_2 := VectorSpaceObject( 1, Q );
+B_2 := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-C_2 := VectorSpaceObject( 2, Q );
+C_2 := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
 c2_source_aid := VectorSpaceMorphism( B_2, [ [ 2, 0 ] ], B );
 #! <A morphism in Category of matrices over Q>
@@ -56,6 +57,7 @@ c1 + c2;
 #! <A morphism in Generalized morphism category of Category of matrices over Q>
 Arrow( c1 + c2 );
 #! <A morphism in Category of matrices over Q>
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample
 
 #! First composition test:
@@ -63,11 +65,12 @@ Arrow( c1 + c2 );
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-A := VectorSpaceObject( 1, Q );
+vec := MatrixCategory( Q );;
+A := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-B := VectorSpaceObject( 2, Q );
+B := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-C := VectorSpaceObject( 3, Q );
+C := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
 phi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );
 #! <A morphism in Category of matrices over Q>
@@ -89,6 +92,7 @@ SourceAid( composition );
 #! <A morphism in Category of matrices over Q>
 RangeAid( composition );
 #! <An identity morphism in Category of matrices over Q>
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample
 
 #! Second composition test
@@ -96,11 +100,12 @@ RangeAid( composition );
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-A := VectorSpaceObject( 1, Q );
+vec := MatrixCategory( Q );;
+A := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-B := VectorSpaceObject( 2, Q );
+B := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-C := VectorSpaceObject( 3, Q );
+C := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
 phi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );
 #! <A morphism in Category of matrices over Q>
@@ -122,6 +127,7 @@ RangeAid( composition2 );
 #! <A morphism in Category of matrices over Q>
 SourceAid( composition2 );
 #! <An identity morphism in Category of matrices over Q>
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample
 
 #! Third composition test
@@ -129,19 +135,20 @@ SourceAid( composition2 );
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-A := VectorSpaceObject( 3, Q );
+vec := MatrixCategory( Q );;
+A := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
-Asub := VectorSpaceObject( 2, Q );
+Asub := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-B := VectorSpaceObject( 3, Q );
+B := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
-Bfac := VectorSpaceObject( 1, Q );
+Bfac := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-Bsub := VectorSpaceObject( 2, Q );
+Bsub := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-C := VectorSpaceObject( 3, Q );
+C := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
-Cfac := VectorSpaceObject( 1, Q );
+Cfac := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
 Asub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );
 #! <A morphism in Category of matrices over Q>
@@ -171,19 +178,19 @@ Arrow( p );
 #! <A morphism in Category of matrices over Q>
 RangeAid( p );
 #! <A morphism in Category of matrices over Q>
-A := VectorSpaceObject( 3, Q );
+A := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
-Asub := VectorSpaceObject( 2, Q );
+Asub := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-B := VectorSpaceObject( 3, Q );
+B := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
-Bfac := VectorSpaceObject( 1, Q );
+Bfac := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-Bsub := VectorSpaceObject( 2, Q );
+Bsub := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
-C := VectorSpaceObject( 3, Q );
+C := MatrixCategoryObject( vec, 3 );
 #! <A vector space object over Q of dimension 3>
-Cfac := VectorSpaceObject( 2, Q );
+Cfac := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
 Bsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3, 3 ], [ 0, 0 ] ], Cfac );
 #! <A morphism in Category of matrices over Q>
@@ -205,15 +212,17 @@ Arrow( p );
 #! <A morphism in Category of matrices over Q>
 RangeAid( p );
 #! <A morphism in Category of matrices over Q>
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample
 
 #! Honest representative test
 #! @Example
 Q := HomalgFieldOfRationals();
 #! Q
-A := VectorSpaceObject( 1, Q );
+vec := MatrixCategory( Q );;
+A := MatrixCategoryObject( vec, 1 );
 #! <A vector space object over Q of dimension 1>
-B := VectorSpaceObject( 2, Q );
+B := MatrixCategoryObject( vec, 2 );
 #! <A vector space object over Q of dimension 2>
 phi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 2 ] ], A );
 #! <A morphism in Category of matrices over Q>
@@ -229,5 +238,6 @@ IsWellDefined( phi_tilde );
 #! true
 IsWellDefined( psi_tilde );
 #! true
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample
 

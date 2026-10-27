@@ -11,6 +11,37 @@
 ####################################
 
 ##
+# the following optimizations probably do not fulfill the specification "equal input gives equal output", see https://github.com/homalg-project/CAP_project/issues/1669
+# the output is `fail` if no optimization is applicable
+InstallGlobalFunction( PRECOMPOSE_USING_KNOWN_IDENTITY_AS_REVERSED_ARROW_FOR_GENERALIZED_MORPHISMS_BY_COSPANS,
+                       
+  function( cat, morphism1, morphism2 )
+    local honest_category, identity_1, identity_2, arrow;
+    
+    identity_1 := Tester( HasIdentityAsReversedArrow )( morphism1 ) and HasIdentityAsReversedArrow( morphism1 );
+    identity_2 := Tester( HasIdentityAsReversedArrow )( morphism2 ) and HasIdentityAsReversedArrow( morphism2 );
+    
+    if not identity_1 then
+        
+        return fail;
+        
+    fi;
+    
+    honest_category := UnderlyingHonestCategory( cat );
+    
+    arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
+    
+    if identity_2 then
+        
+        return AsGeneralizedMorphismByCospan( arrow );
+        
+    fi;
+    
+    return GeneralizedMorphismByCospan( arrow, ReversedArrow( morphism2 ) );
+    
+end );
+
+##
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_COSPANS,
                        
   function( category )
@@ -64,7 +95,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
     AddPreCompose( category,
                    
       function( cat, morphism1, morphism2 )
-        local honest_category, pushout_diagram, injection_left, injection_right;
+        local honest_category, shortcut, pushout_diagram, injection_left, injection_right;
+        
+        shortcut := PRECOMPOSE_USING_KNOWN_IDENTITY_AS_REVERSED_ARROW_FOR_GENERALIZED_MORPHISMS_BY_COSPANS( cat, morphism1, morphism2 );
+        
+        if shortcut <> fail then
+            
+            return shortcut;
+            
+        fi;
         
         honest_category := UnderlyingHonestCategory( cat );
         
@@ -78,36 +117,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_CO
                                             PreCompose( honest_category, ReversedArrow( morphism2 ), injection_right ) );
         
     end );
-    
-    # the following optimizations probably do not fulfill the specification "equal input gives equal output", see https://github.com/homalg-project/CAP_project/issues/1669
-    InstallOtherMethod( PreCompose,
-                        [ CategoryFilter( category ), MorphismFilter( category ) and HasIdentityAsReversedArrow, MorphismFilter( category ) and HasIdentityAsReversedArrow ],
-                        
-      function( cat, morphism1, morphism2 )
-          local honest_category, arrow, reversed_arrow;
-
-          honest_category := UnderlyingHonestCategory( cat );
-
-          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
-
-          return AsGeneralizedMorphismByCospan( arrow );
-
-    end );
-    
-    InstallOtherMethod( PreCompose,
-                        [ CategoryFilter( category ), MorphismFilter( category ) and HasIdentityAsReversedArrow, MorphismFilter( category ) ],
-                        
-      function( cat, morphism1, morphism2 )
-          local honest_category, arrow;
-
-          honest_category := UnderlyingHonestCategory( cat );
-
-          arrow := PreCompose( honest_category, Arrow( morphism1 ), Arrow( morphism2 ) );
-
-          return GeneralizedMorphismByCospan( arrow, ReversedArrow( morphism2 ) );
-
-    end );
-    
     
     ## AdditionForMorphisms
     
@@ -224,6 +233,8 @@ end );
 ####################################
 
 ##
+#% G2J:julia-only @FilterIntersection( IsGeneralizedMorphismByCospan, HasArrow, HasReversedArrow )
+
 InstallMethod( GeneralizedMorphismCategoryByCospans,
                [ IsCapCategory ],
                
@@ -277,7 +288,7 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
                                              name,
                                              IsGeneralizedMorphismCategoryByCospans,
                                              IsGeneralizedMorphismCategoryByCospansObject,
-                                             IsGeneralizedMorphismByCospan and HasArrow and HasReversedArrow,
+                                             FilterIntersection( IsGeneralizedMorphismByCospan, HasArrow, HasReversedArrow ),
                                              IsCapCategoryTwoCell,
                                              fail,
                                              fail,
@@ -289,15 +300,19 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
     
     SetIsEnrichedOverCommutativeRegularSemigroup( generalized_morphism_category, true );
     
+    #= comment for Julia
     SetFilterObj( generalized_morphism_category, WasCreatedAsGeneralizedMorphismCategoryByCospans );
+    # =#
 
     INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_COSPANS( generalized_morphism_category );
     
+    #= comment for Julia
     AddPredicateImplicationFileToCategory( generalized_morphism_category,
       Filename(
         DirectoriesPackageLibrary( "GeneralizedMorphismsForCAP", "LogicForGeneralizedMorphismCategory" ),
         "PredicateImplicationsForGeneralizedMorphismCategory.tex" )
     );
+    # =#
     
     Finalize( generalized_morphism_category );
     
@@ -536,15 +551,6 @@ InstallMethod( IdempotentDefinedByFactorobjectByCospan,
   function( factorobject )
     
     return GeneralizedMorphismByCospan( factorobject, factorobject );
-    
-end );
-
-InstallMethod( GeneralizedInverseByCospan,
-              [ IsCapCategoryMorphism ],
-              
-  function( morphism )
-    
-    return PseudoInverse( AsGeneralizedMorphismByCospan( morphism ) );
     
 end );
 

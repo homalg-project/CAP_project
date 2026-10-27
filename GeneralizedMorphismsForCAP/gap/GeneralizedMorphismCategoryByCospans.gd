@@ -41,6 +41,8 @@ DeclareCategory( "IsGeneralizedMorphismByCospan",
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_GENERALIZED_MORPHISM_CATEGORY_BY_COSPANS" );
 
+DeclareGlobalFunction( "PRECOMPOSE_USING_KNOWN_IDENTITY_AS_REVERSED_ARROW_FOR_GENERALIZED_MORPHISMS_BY_COSPANS" );
+
 DeclareFilter( "WasCreatedAsGeneralizedMorphismCategoryByCospans" );
 
 ####################################

@@ -4,6 +4,7 @@
 # Implementations
 #
 
+#= comment for Julia
 ## GAP-Hack in order to avoid the pre-installed GAP-method Domain
 BindGlobal( "CAP_INTERNAL_DOMAIN_SAVE", Domain );
 
@@ -20,6 +21,7 @@ Domain := function( arg )
   return CallFuncList( CAP_INTERNAL_DOMAIN_SAVE, arg );
   
 end;
+# =#
 
 InstallMethod( DomainEmbedding,
                [ IsGeneralizedMorphism ],
@@ -43,11 +45,13 @@ InstallMethod( AssociatedMorphism,
     
     associated_morphism := DomainAssociatedMorphismCodomainTriple( generalized_morphism )[2];
     
+    #= comment for Julia
     if CapCategory( generalized_morphism )!.predicate_logic then
         
         INSTALL_TODO_LIST_FROM_GENERALIZED_TO_ASSOCIATED_MORPHISM( generalized_morphism, associated_morphism );
         
     fi;
+    # =#
     
     return associated_morphism;
     
@@ -102,6 +106,7 @@ InstallMethod( ConcatenationProduct,
     
 end );
 
+#= comment for Julia
 ##
 InstallImmediateMethod( IsSingleValued,
                         IsGeneralizedMorphism and HasHasFullCodomain,
@@ -125,6 +130,7 @@ InstallImmediateMethod( HasFullDomain,
                         IsGeneralizedMorphism and HasIsTotal,
                         0,
                         IsTotal );
+# =#
 
 ##
 InstallMethod( IsSingleValued, 
