@@ -395,7 +395,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddAdditiveGenerators( category,
       function( cat )
         
-        return [ CategoryOfRowsObject( cat, 1 ) ];
+        return [ CategoryOfRowsObject( cat, BigInt( 1 ) ) ];
         
     end );
     
@@ -1004,7 +1004,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         AddTensorUnit( category,
           function( cat )
             
-            return CategoryOfRowsObject( cat, 1 );
+            return CategoryOfRowsObject( cat, BigInt( 1 ) );
             
         end );
         
@@ -1342,7 +1342,7 @@ AddFinalDerivationBundle( "Using BasisOfExternalHom and CoefficientsOfMorphism t
   [ ],
   function ( cat )
     
-    return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), 1 );
+    return CategoryOfRowsObject( RangeCategoryOfHomomorphismStructure( cat ), BigInt( 1 ) );
     
   end
 ],
