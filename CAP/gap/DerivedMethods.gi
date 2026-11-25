@@ -68,7 +68,7 @@ AddDerivationToCAP( SetOfMorphismsOfFiniteCategory,
                    Concatenation( List( objs, s ->
                            MorphismsOfExternalHom( C, s, t ) ) ) ) );
     
-end : CategoryFilter := cat -> HasIsFiniteCategory( cat ) and IsFiniteCategory( cat ) );
+end : CategoryFilter := IsFiniteCategory );
 
 ###########################
 ##
@@ -97,7 +97,7 @@ AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
                          ObjectConstructor( cat_op, Source( mor ) ) ) );
     
 end : CategoryGetters := rec( cat := OppositeCategory ),
-      CategoryFilter := cat_op -> HasOppositeCategory( cat_op ) );
+      CategoryFilter := HasOppositeCategory );
 
 ##
 AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
@@ -118,7 +118,7 @@ AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
                          ReinterpretationOfObject( cat, Target( mor ) ) ) );
     
 end : CategoryGetters := rec( modeling_category := ModelingCategory ),
-      CategoryFilter := cat -> HasModelingCategory( cat ) );
+      CategoryFilter := HasModelingCategory );
 
 ###########################
 ##
@@ -2090,7 +2090,7 @@ AddDerivationToCAP( Lift,
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Source( alpha ), Source( beta ), Lift( range_cat, a, b ) );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
 
 ##
 AddDerivationToCAP( IsLiftable,
@@ -2112,7 +2112,7 @@ AddDerivationToCAP( IsLiftable,
     return IsLiftable( range_cat, a, b );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
 
 ## B ←β- C -α→ A, α•ℓ = β ⇔ ν(ℓ)•H(α,B) = ν(β)
 ##
@@ -2136,7 +2136,7 @@ AddDerivationToCAP( Colift,
     return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat, Range( alpha ), Range( beta ), Lift( range_cat, b, a ) );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
 
 ##
 AddDerivationToCAP( IsColiftable,
@@ -2158,7 +2158,7 @@ AddDerivationToCAP( IsColiftable,
     return IsLiftable( range_cat, b, a );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-      CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
+      CategoryFilter := HasRangeCategoryOfHomomorphismStructure );
 
 ##
 AddDerivationToCAP( Lift,
@@ -2672,8 +2672,8 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat )
-                            and HasIsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) ) and IsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) )
+  CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) and
+                           HasIsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) ) and IsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) )
 );
 
 ##
@@ -2712,7 +2712,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter := cat -> HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) and
-                            HasIsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) ) and IsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) )
+                           HasIsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) ) and IsAbelianCategory( RangeCategoryOfHomomorphismStructure( cat ) )
 );
 
 ##
